@@ -1,0 +1,83 @@
+Oracle Database 11g CRS Release 11.1.0.6.0 - Production Copyright 1996, 2007 Oracle. All rights reserved.
+2012-01-02 01:11:18.543: [  OCROSD][3086563824]utread:3: Problem reading buffer 88fe000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.543: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.544: [  OCROSD][3086563824]utread:3: Problem reading buffer 88fe000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.544: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.545: [  OCROSD][3086563824]utread:3: Problem reading buffer 88fe000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.545: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.545: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.546: [  OCROSD][3086563824]utread:3: Problem reading buffer 88fe000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.546: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.546: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.546: [  OCRRAW][3086563824]proprioini: both disks are not OCR formatted
+2012-01-02 01:11:18.546: [  OCRRAW][3086563824]proprinit: Could not open raw device 
+2012-01-02 01:11:18.546: [ default][3086563824]a_init:7!: Backend init unsuccessful : [26]
+2012-01-02 01:11:18.547: [ OCRCONF][3086563824]ocrconfig starts...
+2012-01-02 01:11:18.547: [ OCRCONF][3086563824]Upgrading OCR data
+2012-01-02 01:11:18.565: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.565: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.565: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.565: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.566: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.566: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.566: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.567: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.567: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.567: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.567: [  OCRRAW][3086563824]proprioini: both disks are not OCR formatted
+2012-01-02 01:11:18.567: [  OCRRAW][3086563824]proprinit: Could not open raw device 
+2012-01-02 01:11:18.567: [ default][3086563824]a_init:7!: Backend init unsuccessful : [26]
+2012-01-02 01:11:18.567: [ OCRCONF][3086563824]Exporting OCR data to [OCRUPGRADEFILE]
+2012-01-02 01:11:18.567: [  OCRAPI][3086563824]a_init:7!: Backend init unsuccessful : [33]
+2012-01-02 01:11:18.568: [ OCRCONF][3086563824]There was no previous version of OCR. error:[PROC-33: Oracle Cluster Registry is not configured]
+2012-01-02 01:11:18.586: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.586: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.587: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.587: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.588: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.588: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.588: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.588: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.588: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.588: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.588: [  OCRRAW][3086563824]proprioini: both disks are not OCR formatted
+2012-01-02 01:11:18.588: [  OCRRAW][3086563824]proprinit: Could not open raw device 
+2012-01-02 01:11:18.588: [ default][3086563824]a_init:7!: Backend init unsuccessful : [26]
+2012-01-02 01:11:18.611: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.611: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.612: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.612: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.613: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.613: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.613: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.614: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.614: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.614: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.615: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.615: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.626: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.626: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.626: [  OCRRAW][3086563824]ibctx:1:ERROR: INVALID FORMAT
+2012-01-02 01:11:18.626: [  OCRRAW][3086563824]proprinit:problem reading the bootblock or superbloc 22
+
+2012-01-02 01:11:18.646: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.646: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.647: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 512 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.647: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.648: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.648: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.648: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.648: [  OCROSD][3086563824]utread:3: Problem reading buffer 8921000 buflen 4096 retval 0 phy_offset 102400 retry 0
+2012-01-02 01:11:18.648: [  OCROSD][3086563824]utread:4: Problem reading the buffer errno 2 errstring No such file or directory
+2012-01-02 01:11:18.648: [  OCRRAW][3086563824]propriogid:1: INVALID FORMAT
+2012-01-02 01:11:18.742: [  OCRRAW][3086563824]propriowv: Vote information on disk 0 [/u02/ocr] is adjusted from [0/0] to [1/2]
+2012-01-02 01:11:18.745: [  OCRRAW][3086563824]propriowv: Vote information on disk 1 [/u03/ocr] is adjusted from [0/0] to [1/2]
+2012-01-02 01:11:18.861: [  OCRRAW][3086563824]iniconfig:No 92 configuration
+2012-01-02 01:11:18.862: [  OCRAPI][3086563824]a_init:6a: Backend init successful
+2012-01-02 01:11:19.251: [ OCRCONF][3086563824]Initialized DATABASE keys in OCR
+2012-01-02 01:11:19.403: [ OCRCONF][3086563824]csetskgfrblock0: output from clsmft: [clsfmt: successfully initialized file /u02/ocr
+]
+2012-01-02 01:11:19.506: [ OCRCONF][3086563824]csetskgfrblock0: output from clsmft: [clsfmt: successfully initialized file /u03/ocr
+]
+2012-01-02 01:11:19.507: [ OCRCONF][3086563824]Successfully set skgfr block 0
+2012-01-02 01:11:19.507: [ OCRCONF][3086563824]Exiting [status=success]...

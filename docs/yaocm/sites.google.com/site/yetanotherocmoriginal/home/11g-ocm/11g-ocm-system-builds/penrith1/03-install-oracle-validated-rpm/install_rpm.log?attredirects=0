@@ -1,0 +1,203 @@
+[root@penrith1 ~]# yum localinstall oracle-validated-1.0.0-24.el5.i386.rpm 
+Loaded plugins: rhnplugin, security
+This system is not registered with RHN.
+RHN support will be disabled.
+Setting up Local Package Process
+Examining oracle-validated-1.0.0-24.el5.i386.rpm: oracle-validated-1.0.0-24.el5.i386
+Marking oracle-validated-1.0.0-24.el5.i386.rpm to be installed
+local                                                                                                                                 | 1.3 kB     00:00     
+local/primary                                                                                                                         | 732 kB     00:00     
+local                                                                                                                                              2292/2292
+Resolving Dependencies
+--> Running transaction check
+---> Package oracle-validated.i386 0:1.0.0-24.el5 set to be updated
+--> Processing Dependency: compat-db for package: oracle-validated
+--> Processing Dependency: compat-gcc-34 for package: oracle-validated
+--> Processing Dependency: compat-gcc-34-c++ for package: oracle-validated
+--> Processing Dependency: compat-libstdc++-33 for package: oracle-validated
+--> Processing Dependency: elfutils-libelf-devel for package: oracle-validated
+--> Processing Dependency: gcc for package: oracle-validated
+--> Processing Dependency: gcc-c++ for package: oracle-validated
+--> Processing Dependency: gdb for package: oracle-validated
+--> Processing Dependency: glibc-devel for package: oracle-validated
+--> Processing Dependency: glibc-headers for package: oracle-validated
+--> Processing Dependency: kernel-headers for package: oracle-validated
+--> Processing Dependency: libXp for package: oracle-validated
+--> Processing Dependency: libXtst for package: oracle-validated
+--> Processing Dependency: libaio-devel for package: oracle-validated
+--> Processing Dependency: libgnome for package: oracle-validated
+--> Processing Dependency: libstdc++-devel for package: oracle-validated
+--> Processing Dependency: sysstat for package: oracle-validated
+--> Processing Dependency: unixODBC for package: oracle-validated
+--> Processing Dependency: unixODBC-devel for package: oracle-validated
+--> Processing Dependency: xorg-x11-utils for package: oracle-validated
+--> Processing Dependency: xorg-x11-xinit for package: oracle-validated
+--> Running transaction check
+---> Package compat-db.i386 0:4.2.52-5.1 set to be updated
+---> Package compat-gcc-34.i386 0:3.4.6-4 set to be updated
+---> Package compat-gcc-34-c++.i386 0:3.4.6-4 set to be updated
+---> Package compat-libstdc++-33.i386 0:3.2.3-61 set to be updated
+---> Package elfutils-libelf-devel.i386 0:0.137-3.el5 set to be updated
+--> Processing Dependency: elfutils-libelf-devel-static-i386 = 0.137-3.el5 for package: elfutils-libelf-devel
+---> Package gcc.i386 0:4.1.2-46.el5 set to be updated
+--> Processing Dependency: cpp = 4.1.2-46.el5 for package: gcc
+--> Processing Dependency: libgomp >= 4.1.2-46.el5 for package: gcc
+---> Package gcc-c++.i386 0:4.1.2-46.el5 set to be updated
+---> Package gdb.i386 0:6.8-37.el5 set to be updated
+---> Package glibc-devel.i386 0:2.5-42 set to be updated
+---> Package glibc-headers.i386 0:2.5-42 set to be updated
+---> Package kernel-headers.i386 0:2.6.18-164.el5 set to be updated
+---> Package libXp.i386 0:1.0.0-8.1.el5 set to be updated
+---> Package libXtst.i386 0:1.0.1-3.1 set to be updated
+---> Package libaio-devel.i386 0:0.3.106-3.2 set to be updated
+---> Package libgnome.i386 0:2.16.0-6.el5 set to be updated
+--> Processing Dependency: gnome-vfs2 >= 2.5.3 for package: libgnome
+--> Processing Dependency: libxslt >= 1.0.19 for package: libgnome
+--> Processing Dependency: libbonobo >= 2.13.0 for package: libgnome
+--> Processing Dependency: libbonobo-2.so.0 for package: libgnome
+--> Processing Dependency: libbonobo-activation.so.4 for package: libgnome
+--> Processing Dependency: libaudiofile.so.0 for package: libgnome
+--> Processing Dependency: libgnomevfs-2.so.0 for package: libgnome
+--> Processing Dependency: libesd.so.0 for package: libgnome
+---> Package libstdc++-devel.i386 0:4.1.2-46.el5 set to be updated
+local/filelists                                                                                                                       | 2.3 MB     00:01     
+---> Package sysstat.i386 0:7.0.2-3.el5 set to be updated
+---> Package unixODBC.i386 0:2.2.11-7.1 set to be updated
+---> Package unixODBC-devel.i386 0:2.2.11-7.1 set to be updated
+---> Package xorg-x11-utils.i386 0:7.1-2.fc6 set to be updated
+--> Processing Dependency: libXaw.so.7 for package: xorg-x11-utils
+--> Processing Dependency: libXxf86dga.so.1 for package: xorg-x11-utils
+--> Processing Dependency: libXv.so.1 for package: xorg-x11-utils
+--> Processing Dependency: libdmx.so.1 for package: xorg-x11-utils
+--> Processing Dependency: libXxf86misc.so.1 for package: xorg-x11-utils
+---> Package xorg-x11-xinit.i386 0:1.0.2-15.el5 set to be updated
+--> Processing Dependency: xorg-x11-server-utils for package: xorg-x11-xinit
+--> Processing Dependency: xauth for package: xorg-x11-xinit
+--> Running transaction check
+---> Package audiofile.i386 1:0.2.6-5 set to be updated
+---> Package cpp.i386 0:4.1.2-46.el5 set to be updated
+---> Package elfutils-libelf-devel-static.i386 0:0.137-3.el5 set to be updated
+---> Package esound.i386 1:0.2.36-3 set to be updated
+--> Processing Dependency: libasound.so.2(ALSA_0.9.0rc4) for package: esound
+--> Processing Dependency: libasound.so.2(ALSA_0.9) for package: esound
+--> Processing Dependency: libasound.so.2 for package: esound
+---> Package gnome-vfs2.i386 0:2.16.2-4.el5 set to be updated
+--> Processing Dependency: gnome-mount >= 0.4 for package: gnome-vfs2
+--> Processing Dependency: gnome-mime-data >= 2.0.0-11 for package: gnome-vfs2
+--> Processing Dependency: libavahi-glib.so.1 for package: gnome-vfs2
+--> Processing Dependency: shared-mime-info for package: gnome-vfs2
+---> Package libXaw.i386 0:1.0.2-8.1 set to be updated
+--> Processing Dependency: libXpm.so.4 for package: libXaw
+---> Package libXv.i386 0:1.0.1-4.1 set to be updated
+---> Package libXxf86dga.i386 0:1.0.1-3.1 set to be updated
+---> Package libXxf86misc.i386 0:1.0.1-3.1 set to be updated
+---> Package libbonobo.i386 0:2.16.0-1.fc6 set to be updated
+---> Package libdmx.i386 0:1.0.2-3.1 set to be updated
+---> Package libgomp.i386 0:4.4.0-6.el5 set to be updated
+---> Package libxslt.i386 0:1.1.17-2.el5_2.2 set to be updated
+---> Package xorg-x11-server-utils.i386 0:7.1-4.fc6 set to be updated
+--> Processing Dependency: libXTrap.so.6 for package: xorg-x11-server-utils
+--> Processing Dependency: libXfontcache.so.1 for package: xorg-x11-server-utils
+---> Package xorg-x11-xauth.i386 1:1.0.1-2.1 set to be updated
+--> Running transaction check
+---> Package alsa-lib.i386 0:1.0.17-1.el5 set to be updated
+---> Package avahi-glib.i386 0:0.6.16-6.el5 set to be updated
+---> Package gnome-mime-data.i386 0:2.4.2-3.1 set to be updated
+---> Package gnome-mount.i386 0:0.5-3.el5 set to be updated
+--> Processing Dependency: libgnomecanvas-2.so.0 for package: gnome-mount
+--> Processing Dependency: libbonoboui-2.so.0 for package: gnome-mount
+--> Processing Dependency: libgnome-keyring.so.0 for package: gnome-mount
+--> Processing Dependency: libart_lgpl_2.so.2 for package: gnome-mount
+--> Processing Dependency: libgnomeui-2.so.0 for package: gnome-mount
+---> Package libXTrap.i386 0:1.0.0-3.1 set to be updated
+---> Package libXfontcache.i386 0:1.0.2-3.1 set to be updated
+---> Package libXpm.i386 0:3.5.5-3 set to be updated
+---> Package shared-mime-info.i386 0:0.19-5.el5 set to be updated
+--> Running transaction check
+---> Package gnome-keyring.i386 0:0.6.0-1.fc6 set to be updated
+---> Package libart_lgpl.i386 0:2.3.17-4 set to be updated
+---> Package libbonoboui.i386 0:2.16.0-1.fc6 set to be updated
+---> Package libgnomecanvas.i386 0:2.14.0-4.1 set to be updated
+---> Package libgnomeui.i386 0:2.16.0-5.el5 set to be updated
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=============================================================================================================================================================
+ Package                                     Arch                Version                            Repository                                          Size
+=============================================================================================================================================================
+Installing:
+ oracle-validated                            i386                1.0.0-24.el5                       /oracle-validated-1.0.0-24.el5.i386                 60 k
+Installing for dependencies:
+ alsa-lib                                    i386                1.0.17-1.el5                       local                                              411 k
+ audiofile                                   i386                1:0.2.6-5                          local                                              107 k
+ avahi-glib                                  i386                0.6.16-6.el5                       local                                               15 k
+ compat-db                                   i386                4.2.52-5.1                         local                                              1.7 M
+ compat-gcc-34                               i386                3.4.6-4                            local                                              4.1 M
+ compat-gcc-34-c++                           i386                3.4.6-4                            local                                               11 M
+ compat-libstdc++-33                         i386                3.2.3-61                           local                                              232 k
+ cpp                                         i386                4.1.2-46.el5                       local                                              2.6 M
+ elfutils-libelf-devel                       i386                0.137-3.el5                        local                                               25 k
+ elfutils-libelf-devel-static                i386                0.137-3.el5                        local                                               66 k
+ esound                                      i386                1:0.2.36-3                         local                                              130 k
+ gcc                                         i386                4.1.2-46.el5                       local                                              5.2 M
+ gcc-c++                                     i386                4.1.2-46.el5                       local                                              3.4 M
+ gdb                                         i386                6.8-37.el5                         local                                              3.4 M
+ glibc-devel                                 i386                2.5-42                             local                                              2.0 M
+ glibc-headers                               i386                2.5-42                             local                                              601 k
+ gnome-keyring                               i386                0.6.0-1.fc6                        local                                              170 k
+ gnome-mime-data                             i386                2.4.2-3.1                          local                                              691 k
+ gnome-mount                                 i386                0.5-3.el5                          local                                               70 k
+ gnome-vfs2                                  i386                2.16.2-4.el5                       local                                              1.3 M
+ kernel-headers                              i386                2.6.18-164.el5                     local                                              993 k
+ libXTrap                                    i386                1.0.0-3.1                          local                                               23 k
+ libXaw                                      i386                1.0.2-8.1                          local                                              325 k
+ libXfontcache                               i386                1.0.2-3.1                          local                                              9.7 k
+ libXp                                       i386                1.0.0-8.1.el5                      local                                               22 k
+ libXpm                                      i386                3.5.5-3                            local                                               45 k
+ libXtst                                     i386                1.0.1-3.1                          local                                               16 k
+ libXv                                       i386                1.0.1-4.1                          local                                               14 k
+ libXxf86dga                                 i386                1.0.1-3.1                          local                                               15 k
+ libXxf86misc                                i386                1.0.1-3.1                          local                                               12 k
+ libaio-devel                                i386                0.3.106-3.2                        local                                               11 k
+ libart_lgpl                                 i386                2.3.17-4                           local                                               76 k
+ libbonobo                                   i386                2.16.0-1.fc6                       local                                              501 k
+ libbonoboui                                 i386                2.16.0-1.fc6                       local                                              390 k
+ libdmx                                      i386                1.0.2-3.1                          local                                               13 k
+ libgnome                                    i386                2.16.0-6.el5                       local                                              859 k
+ libgnomecanvas                              i386                2.14.0-4.1                         local                                              222 k
+ libgnomeui                                  i386                2.16.0-5.el5                       local                                              977 k
+ libgomp                                     i386                4.4.0-6.el5                        local                                               70 k
+ libstdc++-devel                             i386                4.1.2-46.el5                       local                                              2.8 M
+ libxslt                                     i386                1.1.17-2.el5_2.2                   local                                              485 k
+ shared-mime-info                            i386                0.19-5.el5                         local                                              148 k
+ sysstat                                     i386                7.0.2-3.el5                        local                                              170 k
+ unixODBC                                    i386                2.2.11-7.1                         local                                              832 k
+ unixODBC-devel                              i386                2.2.11-7.1                         local                                              737 k
+ xorg-x11-server-utils                       i386                7.1-4.fc6                          local                                              163 k
+ xorg-x11-utils                              i386                7.1-2.fc6                          local                                              117 k
+ xorg-x11-xauth                              i386                1:1.0.1-2.1                        local                                               31 k
+ xorg-x11-xinit                              i386                1.0.2-15.el5                       local                                               26 k
+
+Transaction Summary
+=============================================================================================================================================================
+Install     50 Package(s)         
+Update       0 Package(s)         
+Remove       0 Package(s)         
+
+Total size: 47 M
+Total download size: 47 M
+Is this ok [y/N]: y
+Downloading Packages:
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                        363 MB/s |  47 MB     00:00     
+warning: rpmts_HdrFromFdno: Header V3 DSA signature: NOKEY, key ID 37017186
+local/gpgkey                                                                                                                          | 1.1 kB     00:00     
+Importing GPG key 0x37017186 "Red Hat, Inc. (release key) <security@redhat.com>" from /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+Is this ok [y/N]: y
+warning: rpmts_HdrFromFdno: Header V3 DSA signature: NOKEY, key ID 1e5e0159
+
+
+Public key for oracle-validated-1.0.0-24.el5.i386.rpm is not installed
+[root@penrith1 ~]# 
+

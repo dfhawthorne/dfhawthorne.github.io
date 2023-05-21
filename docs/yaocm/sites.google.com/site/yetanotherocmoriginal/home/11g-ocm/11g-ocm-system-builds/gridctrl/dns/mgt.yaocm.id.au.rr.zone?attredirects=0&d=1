@@ -1,0 +1,18 @@
+$ORIGIN 2.168.192.in-addr.arpa.
+$TTL 86400
+@       IN      SOA     gridctrl.yaocm.id.au.   hostmaster.yaocm.id.au. (
+                        2014122901 ; serial
+                        21600      ; refresh after 6 hours
+                        3600       ; retry after 1 hour
+                        604800     ; expire after 1 week
+                        86400 )    ; minimum TTL of 1 day
+;
+@       IN      NS      gridctrl.yaocm.id.au.
+; Redfern Public Network
+140     IN      PTR     redfern1-mgt.yaocm.id.au.
+141     IN      PTR     redfern2-mgt.yaocm.id.au.
+142     IN      PTR     redfern1-mgt-vip.yaocm.id.au.
+143     IN      PTR     redfern2-mgt-vip.yaocm.id.au.
+144     IN      PTR     redfern-mgt-crs.yaocm.id.au.
+145     IN      PTR     redfern-mgt-crs.yaocm.id.au.
+146     IN      PTR     redfern-mgt-crs.yaocm.id.au.

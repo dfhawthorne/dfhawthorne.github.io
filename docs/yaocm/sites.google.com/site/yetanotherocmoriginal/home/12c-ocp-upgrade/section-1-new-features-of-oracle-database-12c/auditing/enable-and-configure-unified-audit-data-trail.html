@@ -1,0 +1,1226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope="" itemtype="http://schema.org/WebPage">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<script type="text/javascript">/* Copyright 2008 Google. */ (function() { /*
+
+Copyright The Closure Library Authors.
+SPDX-License-Identifier: Apache-2.0
+*/
+(function(){function e(g){this.t={};this.tick=function(h,k,f){this.t[h]=[void 0!=f?f:(new Date).getTime(),k];if(void 0==f)try{window.console.timeStamp("CSI/"+h)}catch(m){}};this.getStartTickTime=function(){return this.t.start[0]};this.tick("start",null,g)}var a;if(window.performance)var d=(a=window.performance.timing)&&a.responseStart;var l=0<d?new e(d):new e;window.jstiming={Timer:e,load:l};if(a){var b=a.navigationStart;0<b&&d>=b&&(window.jstiming.srt=d-b)}if(a){var c=window.jstiming.load;0<b&&d>=
+b&&(c.tick("_wtsrt",void 0,b),c.tick("wtsrt_","_wtsrt",d),c.tick("tbsd_","wtsrt_"))}try{a=null,window.chrome&&window.chrome.csi&&(a=Math.floor(window.chrome.csi().pageT),c&&0<b&&(c.tick("_tbnd",void 0,window.chrome.csi().startE),c.tick("tbnd_","_tbnd",b))),null==a&&window.gtbExternal&&(a=window.gtbExternal.pageT()),null==a&&window.external&&(a=window.external.pageT,c&&0<b&&(c.tick("_tbnd",void 0,window.external.startE),c.tick("tbnd_","_tbnd",b))),a&&(window.jstiming.pt=a)}catch(g){}})(); })()
+</script>
+<link rel="shortcut icon" href="../../../../_/rsrc/1294140403248/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="https://ssl.gstatic.com/sites/p/3168fb/system/app/images/apple-touch-icon.png" type="image/png" />
+<script type="text/javascript">/* Copyright 2008 Google. */ (function() { function d(a){return document.getElementById(a)}window.byId=d;function g(a){return a.replace(/^\s+|\s+$/g,"")}window.trim=g;var h=[],k=0;window.JOT_addListener=function(a,b,c){var f=new String(k++);a={eventName:a,handler:b,compId:c,key:f};h.push(a);return f};window.JOT_removeListenerByKey=function(a){for(var b=0;b<h.length;b++)if(h[b].key==a){h.splice(b,1);break}};window.JOT_removeAllListenersForName=function(a){for(var b=0;b<h.length;b++)h[b].eventName==a&&h.splice(b,1)};
+window.JOT_postEvent=function(a,b,c){var f={eventName:a,eventSrc:b||{},payload:c||{}};if(window.JOT_fullyLoaded)for(b=h.length,c=0;c<b&&c<h.length;c++){var e=h[c];e&&e.eventName==a&&(f.listenerCompId=e.compId||"",(e="function"==typeof e.handler?e.handler:window[e.handler])&&e(f))}else window.JOT_delayedEvents.push({eventName:a,eventSrc:b,payload:c})};window.JOT_delayedEvents=[];window.JOT_fullyLoaded=!1;
+window.JOT_formatRelativeToNow=function(a,b){a=((new Date).getTime()-a)/6E4;if(1440<=a||0>a)return null;var c=0;60<=a&&(a/=60,c=2);2<=a&&c++;return b?window.JOT_siteRelTimeStrs[c].replace("__duration__",Math.floor(a)):window.JOT_userRelTimeStrs[c].replace("__duration__",Math.floor(a))}; })()
+</script>
+<script>
+
+  
+
+  var breadcrumbs = [{"path":"/site/yetanotherocmoriginal/home","deleted":false,"title":"Home","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12c-ocp-upgrade","deleted":false,"title":"12C OCP Upgrade","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c","deleted":false,"title":"Section 1: New Features of Oracle Database 12c","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing","deleted":false,"title":"Auditing","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-and-configure-unified-audit-data-trail","deleted":false,"title":"Enable and configure Unified Audit Data Trail","dir":"ltr"}];
+  var JOT_clearDotPath = 'https://ssl.gstatic.com/sites/p/3168fb/system/app/images/cleardot.gif';
+
+  
+  var JOT_userRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ago","__duration__ hours ago"];
+
+  
+  
+
+  
+
+  var webspace = {"gvizGstaticVersion":"current","enableAnalytics":true,"pageSharingId":"jotspot_page","codeembeds":{"outerIframeSrc":"https://www.gstatic.com/jotspot/embeds/code/0f08d42392f2000e7e3f3daf5b427a43/outer_iframe.html","innerIframeSrc":"https://2093977469-jotspot-embeds.googleusercontent.com/code/8d87fa64604b2a11fae2ed06104c58d3/inner_iframe.html"},"enableUniversalAnalytics":false,"sharingPolicy":"OPENED","siteTitle":"Yet Another OCM","experiments":{"enableSubpagesGadgetInTakeout":true,"DisableSiteEditingFeature__disable_site_editing":false},"jot2atari":{"eligibility":"ineligible"},"onepickUrl":"https://docs.google.com/picker","adsensePublisherId":null,"features":{"moreMobileStyleImprovements":null,"subscriptionDataMigrationInProgress":null,"plusBadge":false},"configProperties":{"disableSiteEditing":null},"isPublic":true,"newSitesBaseUrl":"https://sites.google.com","isConsumer":true,"serverFlags":{"jot2AtariLearnMoreUrl":"https://support.google.com/sites/answer/7035197"},"domainAnalyticsAccountId":"","plusPageId":"","signInUrl":"https://accounts.google.com/AccountChooser?continue\u003dhttps://sites.google.com/site/yetanotherocmoriginal/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-and-configure-unified-audit-data-trail\u0026service\u003djotspot","analyticsAccountId":"UA-20772336-1","scottyUrl":"/_/upload","homePath":"/","siteNoticeUrlEnabled":null,"plusPageUrl":"","adsensePromoClickedOrSiteIneligible":true,"csiReportUri":"https://gg.google.com/csi","sharingId":"jotspot","termsUrl":"//www.google.com/intl/en/policies/terms/","gvizVersion":1,"editorResources":{"sitelayout":["https://ssl.gstatic.com/sites/p/3168fb/system/app/css/sitelayouteditor.css"],"text":["https://ssl.gstatic.com/sites/p/3168fb/system/js/codemirror.js","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/codemirror_css.css","https://ssl.gstatic.com/sites/p/3168fb/system/js/trog_edit__en.js","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/trogedit.css","/site/yetanotherocmoriginal/_/rsrc/1619893815000/system/app/css/editor.css","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/codeeditor.css","/site/yetanotherocmoriginal/_/rsrc/1619893815000/system/app/css/camelot/editor-jfk.css"]},"sharingUrlPrefix":"/_/sharing","isAdsenseEnabled":true,"domain":"defaultdomain","baseUri":"/site/yetanotherocmoriginal","name":"yetanotherocmoriginal","siteTemplateId":false,"siteNoticeRevision":null,"siteNoticeUrlAddress":null,"siteNoticeMessage":null,"page":{"isRtlLocale":false,"canDeleteWebspace":null,"isPageDraft":null,"parentPath":"/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing","parentWuid":"wuid:gx:459ec995034489","siteLocale":"en","timeZone":"America/Los_Angeles","type":"text","title":"Enable and configure Unified Audit Data Trail","locale":"en","wuid":"wuid:gx:4f31281cd00c44d7","revision":1,"path":"/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-and-configure-unified-audit-data-trail","isSiteRtlLocale":false,"pageInheritsPermissions":null,"name":"enable-and-configure-unified-audit-data-trail","canChangePath":true,"state":"","properties":{},"bidiEnabled":false,"currentTemplate":{"path":"/system/app/pagetemplates/text","title":"Web Page"}},"canPublishScriptToAnyone":true,"user":{"keyboardShortcuts":true,"sessionIndex":"","guest_":true,"displayNameOrEmail":"guest","userName":"guest","uid":"","renderMobile":false,"domain":"","namespace":"","hasWriteAccess":false,"namespaceUser":false,"primaryEmail":"guest","hasAdminAccess":false},"gadgets":{"baseUri":"/site/yetanotherocmoriginal/system/app/pages/gadgets"}};
+  webspace.page.breadcrumbs = breadcrumbs;
+
+  
+  var JOT_siteRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ago","__duration__ hours ago"];
+
+</script>
+<script type="text/javascript">
+                window.jstiming.load.tick('scl');
+              </script>
+<meta name="title" content="Enable and configure Unified Audit Data Trail - Yet Another OCM" />
+<meta itemprop="name" content="Enable and configure Unified Audit Data Trail - Yet Another OCM" />
+<meta property="og:title" content="Enable and configure Unified Audit Data Trail - Yet Another OCM" />
+<style type="text/css">
+</style>
+<link rel="stylesheet" type="text/css" href="https://ssl.gstatic.com/sites/p/3168fb/system/app/themes/simplywhite/standard-css-simplywhite-ltr-ltr.css" />
+<link rel="stylesheet" type="text/css" href="../../../../_/rsrc/1619893815000/system/app/css/overlay.css%3Fcb=simplywhiteundefineda100%2570200goog-ws-left.css" />
+<link rel="stylesheet" type="text/css" href="../../../../_/rsrc/1619893815000/system/app/css/camelot/allthemes-view.css" />
+<!--[if IE]>
+          <link rel="stylesheet" type="text/css" href="/site/yetanotherocmoriginal/system/app/css/camelot/allthemes%2die.css" />
+        <![endif]-->
+<title>Enable and configure Unified Audit Data Trail - Yet Another OCM</title>
+<script type="text/javascript">
+                window.jstiming.load.tick('cl');
+              </script>
+</head>
+<body xmlns="http://www.google.com/ns/jotspot" id="body" class=" en            ">
+<div id="sites-page-toolbar" class="sites-header-divider">
+<div xmlns="http://www.w3.org/1999/xhtml" id="sites-status" class="sites-status" style="display:none;"><div id="sites-notice" class="sites-notice" role="status" aria-live="assertive"> </div></div>
+</div>
+<div id="sites-chrome-everything-scrollbar">
+<div id="sites-chrome-everything" class="">
+<div id="sites-chrome-page-wrapper" style="direction: ltr">
+<div id="sites-chrome-page-wrapper-inside">
+<div xmlns="http://www.w3.org/1999/xhtml" id="sites-chrome-header-wrapper" style="">
+<table id="sites-chrome-header" class="sites-layout-hbox" cellspacing="0" style="">
+<tr class="sites-header-primary-row" id="sites-chrome-userheader">
+<td id="sites-header-title" class="" role="banner" style="height: 70px"><div class="sites-header-cell-buffer-wrapper"><h2><a href="../../../../index.html" dir="ltr" id="sites-chrome-userheader-title">Yet Another OCM</a></h2></div></td><td class="sites-layout-searchbox  "><div class="sites-header-cell-buffer-wrapper"><form id="sites-searchbox-form" action="https://sites.google.com/site/yetanotherocmoriginal/system/app/pages/search" role="search"><input type="hidden" id="sites-searchbox-scope" name="scope" value="search-site" /><input type="text" id="jot-ui-searchInput" name="q" size="20" value="" aria-label="Search this site" /><div id="sites-searchbox-button-set" class="goog-inline-block"><div role="button" id="sites-searchbox-search-button" class="goog-inline-block jfk-button jfk-button-standard" tabindex="0">Search this site</div></div></form></div></td>
+</tr>
+<tr class="sites-header-secondary-row" id="sites-chrome-horizontal-nav">
+<td colspan="2" id="sites-chrome-header-horizontal-nav-container" role="navigation">
+</td>
+</tr>
+</table>
+</div>
+<div id="sites-chrome-main-wrapper">
+<div id="sites-chrome-main-wrapper-inside">
+<table id="sites-chrome-main" class="sites-layout-hbox" cellspacing="0" cellpadding="{scmCellpadding}" border="0">
+<tr>
+<td id="sites-chrome-sidebar-left" class="sites-layout-sidebar-left initial" style="width:200px">
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_2bd" class="sites-embed" role="navigation"><div class="sites-embed-content sites-sidebar-nav"><ul role="navigation" jotId="navList" class="has-expander"><li class="topLevel nav-first parent " wuid="gx:3b2a480be041e60"><div dir="ltr" style="padding-left: 0px;"><div class="expander"></div><a href="../../../../home.html" jotId="wuid:gx:3b2a480be041e60" class="sites-navigation-link topLevel">Home</a></div><ul role="navigation" class="has-expander"><li class="parent closed " wuid="gx:6854663d0adfa523"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../10g-ocm.html" jotId="wuid:gx:6854663d0adfa523" class="sites-navigation-link">10G OCM</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../10g-ocm/10g-data-guard.html" jotId="wuid:gx:489beb2b832a7114" class="sites-navigation-link">10G Data Guard</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../10g-ocm/10g-ocm-planning.html" jotId="wuid:gx:a88c5dbc7f0baef" class="sites-navigation-link">10G OCM Planning</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../10g-ocm/10g-services.html" jotId="wuid:gx:54b13c32cf65c191" class="sites-navigation-link">10G Services</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../10g-ocm/10g-system-builds.html" jotId="wuid:gx:77c66066c03e2ab7" class="sites-navigation-link">10G System Builds</a></div></li></ul></li><li class="parent closed " wuid="gx:7f73cdd56622237c"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../11g-oce-rac.html" jotId="wuid:gx:7f73cdd56622237c" class="sites-navigation-link">11G OCE RAC</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm.html" jotId="wuid:gx:7780a2761cf95de4" class="sites-navigation-link">Section 1 - Grid Infrastructure: Clusterware and ASM</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-oce-rac/section-2---real-application-clusters.html" jotId="wuid:gx:267824251d3363d4" class="sites-navigation-link">Section 2 - Real Application Clusters</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-oce-rac/system-builds.html" jotId="wuid:gx:30640194b5755edd" class="sites-navigation-link">System Builds</a></div></li></ul></li><li class="parent closed " wuid="gx:5eeac2a35b15a760"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../11g-ocm.html" jotId="wuid:gx:5eeac2a35b15a760" class="sites-navigation-link">11G OCM</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-ocm/11g-ocm-data-and-data-warehouse-management.html" jotId="wuid:gx:71d7afe17670b648" class="sites-navigation-link">11G OCM Data and Data Warehouse Management</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-ocm/11g-ocm-data-guard.html" jotId="wuid:gx:70e445f4702ec675" class="sites-navigation-link">11G OCM Data Guard</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-ocm/11g-ocm-database-rman-em-and-network-configuration.html" jotId="wuid:gx:795d9befe3118e8d" class="sites-navigation-link">11G OCM Database, RMAN, EM and Network Configuration</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-ocm/11g-ocm-performance-management.html" jotId="wuid:gx:5156bf6750dc17a2" class="sites-navigation-link">11G OCM Performance Management</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../11g-ocm/11g-ocm-system-builds.html" jotId="wuid:gx:4389b1e578a37048" class="sites-navigation-link">11G OCM System Builds</a></div></li></ul></li><li class="parent closed " wuid="gx:45debd466b37352f"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../12-ocm.html" jotId="wuid:gx:45debd466b37352f" class="sites-navigation-link">12C OCM</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../12-ocm/12c-ocm-system-builds.html" jotId="wuid:gx:702a95293f377a1f" class="sites-navigation-link">12C OCM System Builds</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../12-ocm/data-and-performance-management.html" jotId="wuid:gx:1384b0e8b9408e1b" class="sites-navigation-link">Data and Performance Management</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../12-ocm/data-guard.html" jotId="wuid:gx:7ee58a5d08758938" class="sites-navigation-link">Data Guard</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../12-ocm/design-journal.html" jotId="wuid:gx:4c1a2046866ab43a" class="sites-navigation-link">Design Journal</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../12-ocm/general-database-and-network-administration-and-backup-strategy.html" jotId="wuid:gx:454ec3cb615b531f" class="sites-navigation-link">General Database and Network Administration, and Backup Strategy</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../12-ocm/grid-infrastructure-and-rac.html" jotId="wuid:gx:69a92aa26af488f2" class="sites-navigation-link">Grid Infrastructure and RAC</a></div></li></ul></li><li class="parent closed " wuid="gx:3a92b59c02fad974"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../12c-ocp-upgrade.html" jotId="wuid:gx:3a92b59c02fad974" class="sites-navigation-link">12C OCP Upgrade</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../section-1-new-features-of-oracle-database-12c.html" jotId="wuid:gx:333d3378e4d8110a" class="sites-navigation-link">Section 1: New Features of Oracle Database 12c</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../section-2-key-dba-skills.html" jotId="wuid:gx:1c496affd5a26d55" class="sites-navigation-link">Section 2: Key DBA Skills</a></div></li></ul></li><li class="parent closed " wuid="gx:ecd2e3476a85dd0"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../database-designs.html" jotId="wuid:gx:ecd2e3476a85dd0" class="sites-navigation-link">Database Designs</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../database-designs/much-ado-about-nothing.html" jotId="wuid:gx:403b416305137e1c" class="sites-navigation-link">Much Ado About Nothing</a></div></li></ul></li><li class="parent closed " wuid="gx:7106fb0a895904cd"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../issues.html" jotId="wuid:gx:7106fb0a895904cd" class="sites-navigation-link">Issues</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../issues/cloud-control-issues.html" jotId="wuid:gx:7c017fe7b1b7db02" class="sites-navigation-link">Cloud Control Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../issues/linux-issues.html" jotId="wuid:gx:6bf0bf8b64edb3f9" class="sites-navigation-link">Linux Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../issues/oracle-patching-issues.html" jotId="wuid:gx:74b8bf5ac4858eb0" class="sites-navigation-link">Oracle Patching Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../issues/oracle-personal-edition-issues.html" jotId="wuid:gx:520e0a14b597913a" class="sites-navigation-link">Oracle Personal Edition Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../issues/ovm-issues.html" jotId="wuid:gx:77bb41fbebb34425" class="sites-navigation-link">OVM Issues</a></div></li></ul></li><li class="parent closed " wuid="gx:29a6fee7cdc745ef"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../knowledge.html" jotId="wuid:gx:29a6fee7cdc745ef" class="sites-navigation-link">Knowledge</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../knowledge/demonstrations.html" jotId="wuid:gx:5566308badf9236b" class="sites-navigation-link">Demonstrations</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../knowledge/help-pages.html" jotId="wuid:gx:524a1fa20211bba4" class="sites-navigation-link">Help Pages</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../knowledge/oracle-utilities.html" jotId="wuid:gx:7e79f0ae6f222cfe" class="sites-navigation-link">Oracle Utilities</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../knowledge/technical-notes.html" jotId="wuid:gx:eb5c1299b9c5629" class="sites-navigation-link">Technical Notes</a></div></li></ul></li><li class="parent closed " wuid="gx:c14ef310b5d580c"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../procedures.html" jotId="wuid:gx:c14ef310b5d580c" class="sites-navigation-link">Procedures</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/create-oracle-database.html" jotId="wuid:gx:66844774cb1472af" class="sites-navigation-link">Create Oracle Database</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/deinstall-oracle-rdbms.html" jotId="wuid:gx:f122a7a035acc27" class="sites-navigation-link">Deinstall Oracle RDBMS</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/install-grid-infrastructure.html" jotId="wuid:gx:2ceeddc46048b732" class="sites-navigation-link">Install Grid Infrastructure</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/install-linux.html" jotId="wuid:gx:1492df0262c2ded3" class="sites-navigation-link">Install Linux</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/install-oracle-rdbms.html" jotId="wuid:gx:eb868e71022bb04" class="sites-navigation-link">Install Oracle RDBMS</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/miscellaneous.html" jotId="wuid:gx:2bcb31c503521cac" class="sites-navigation-link">Miscellaneous</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/patch-oracle-database.html" jotId="wuid:gx:2869e232f218ebdb" class="sites-navigation-link">Patch Oracle Database</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../procedures/upgrade-oracle-database.html" jotId="wuid:gx:504db3f787da1411" class="sites-navigation-link">Upgrade Oracle Database</a></div></li></ul></li><li class="parent closed " wuid="gx:7349065b46fcf29e"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../projects.html" jotId="wuid:gx:7349065b46fcf29e" class="sites-navigation-link">Projects</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../projects/setting-up-a-private-cloud.html" jotId="wuid:gx:4a06d2a31bace57d" class="sites-navigation-link">Setting Up a Private Cloud</a></div></li></ul></li><li class="parent closed " wuid="gx:1751da469fd4a61f"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../reading-notes.html" jotId="wuid:gx:1751da469fd4a61f" class="sites-navigation-link">Reading Notes</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../reading-notes/oracle-vm-implementation-and-administration-guide.html" jotId="wuid:gx:14243848ab9914bb" class="sites-navigation-link">Oracle VM Implementation and Administration Guide</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../reading-notes/pro-oracle-database-12c-administration.html" jotId="wuid:gx:4358cd288f337e82" class="sites-navigation-link">Pro Oracle Database 12c Administration</a></div></li></ul></li><li class="parent closed " wuid="gx:419b9a9eeae58bc4"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../resource-allocations.html" jotId="wuid:gx:419b9a9eeae58bc4" class="sites-navigation-link">Resource Allocations</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../resource-allocations/ip-addresses.html" jotId="wuid:gx:561dea96a669771d" class="sites-navigation-link">IP Addresses</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../resource-allocations/victoria-vm-resources.html" jotId="wuid:gx:68cdf1d51fd331c2" class="sites-navigation-link">Victoria VM Resources</a></div></li></ul></li><li class="parent closed " wuid="gx:763c8c972462e886"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../../system-builds.html" jotId="wuid:gx:763c8c972462e886" class="sites-navigation-link">System Builds</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/auburn.html" jotId="wuid:gx:7333fb4a9cb176e1" class="sites-navigation-link">AUBURN</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/clifton.html" jotId="wuid:gx:65e47d76f4cf9a5d" class="sites-navigation-link">CLIFTON</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/cloudctl.html" jotId="wuid:gx:5fa340d44587d03" class="sites-navigation-link">CLOUDCTL</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/cronulla.html" jotId="wuid:gx:3e6aa0e71514d4b7" class="sites-navigation-link">CRONULLA</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/goldengate.html" jotId="wuid:gx:218d9e7c410189e8" class="sites-navigation-link">GOLDENGATE</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/gordon.html" jotId="wuid:gx:337b55952ad14bf" class="sites-navigation-link">GORDON</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/gridctrl.html" jotId="wuid:gx:22e160f4756f6339" class="sites-navigation-link">GRIDCTRL</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/melbourne.html" jotId="wuid:gx:8ccc77de5c0c0ed" class="sites-navigation-link">MELBOURNE</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/oatley.html" jotId="wuid:gx:7c8d46141284a0d5" class="sites-navigation-link">OATLEY</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/personal.html" jotId="wuid:gx:6bc86e743a02acf1" class="sites-navigation-link">PERSONAL</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/randwick.html" jotId="wuid:gx:7f108dc57ee2f76" class="sites-navigation-link">RANDWICK</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/redfern.html" jotId="wuid:gx:21a1ed3bcc21c853" class="sites-navigation-link">REDFERN</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/revesby.html" jotId="wuid:gx:1a25b24cca382d08" class="sites-navigation-link">Revesby</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../../system-builds/victoria.html" jotId="wuid:gx:a8bab9e3f3d3ebf" class="sites-navigation-link">Victoria</a></div></li></ul></li></ul></li><li class="topLevel parent " wuid="gx:43c2eaccaaff7317"><div dir="ltr" style="padding-left: 0px;"><div class="expander"></div><a href="../../../../announcements.html" jotId="wuid:gx:43c2eaccaaff7317" class="sites-navigation-link topLevel">Announcements</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 38px;"><a href="../../../../announcements/12april2012.html" jotId="wuid:gx:23728264e5601b93" class="sites-navigation-link">12 April 2012</a></div></li><li class=""><div dir="ltr" style="padding-left: 38px;"><a href="../../../../announcements/12march2012.html" jotId="wuid:gx:7b88c20efad9a3da" class="sites-navigation-link">12 March 2012</a></div></li><li class=""><div dir="ltr" style="padding-left: 38px;"><a href="../../../../announcements/27march2012.html" jotId="wuid:gx:632b604734e2dac9" class="sites-navigation-link">27 March 2012</a></div></li></ul></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../../book-reviews.html" jotId="wuid:gx:5d0d248f2da8dddc" class="sites-navigation-link topLevel">Book Reviews</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../../file-cabinet.html" jotId="wuid:gx:2434f251e91aec68" class="sites-navigation-link topLevel">Files</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../../ocm-questions-and-answers.html" jotId="wuid:gx:745e829206f7de92" class="sites-navigation-link topLevel">OCM Questions and Answers</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../../system/app/pages/sitemap/hierarchy.html" jotId="wuid:gx:3ea149e43344b911" class="sites-navigation-link topLevel">Sitemap</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../../system/app/pages/recentChanges.html" jotId="wuid:gx:5e6c553dc0fa9062" class="sites-navigation-link topLevel">Recent site activity</a></div></li></ul></div></div>
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_417369500733912" class="sites-embed" role="complementary"><h4 class="sites-embed-title">Join Our Discussion</h4><div class="sites-embed-content sites-embed-content-sidebar-textbox"><div dir="ltr"><p style="text-align:center"><a href="http://groups.google.com/support/bin/topic.py?topic=9216" target="_blank"><img border="0" src="../../../../_/rsrc/1294140403248/config/app/images/psd-chat-icon-smaller.gif" /></a><br />
+<a href="http://groups.google.com/support/bin/topic.py?topic=9216" target="_blank">Join the Discussion</a></p></div></div></div>
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_35483861481770873" class="sites-embed" role="complementary"><h4 class="sites-embed-title">Template tips</h4><div class="sites-embed-content sites-embed-content-sidebar-textbox"><div dir="ltr"><a href="https://sites.google.com/site/sitetemplateinfo/tips" target="_blank">Learn more about working with templates.</a><br /><br /><a href="https://sites.google.com/site/sitetemplateinfo/tips/customize-your-site-sidebar" target="_blank">How to change this sidebar.</a><br /></div></div></div>
+</td>
+<td id="sites-canvas-wrapper">
+<div id="sites-canvas" role="main">
+<div id="goog-ws-editor-toolbar-container"> </div>
+<div xmlns="http://www.w3.org/1999/xhtml" id="title-crumbs" style="">
+<A href="../../../../home.html" dir="ltr">Home</A>‎ &gt; ‎<A href="../../../12c-ocp-upgrade.html" dir="ltr">12C OCP Upgrade</A>‎ &gt; ‎<A href="../../section-1-new-features-of-oracle-database-12c.html" dir="ltr">Section 1: New Features of Oracle Database 12c</A>‎ &gt; ‎<A href="../auditing.html" dir="ltr">Auditing</A>‎ &gt; ‎
+  </div>
+<h3 xmlns="http://www.w3.org/1999/xhtml" id="sites-page-title-header" style="" align="left">
+<span id="sites-page-title" dir="ltr" tabindex="-1" style="outline: none">Enable and configure Unified Audit Data Trail</span>
+</h3>
+<div id="sites-canvas-main" class="sites-canvas-main">
+<div id="sites-canvas-main-content">
+<table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" class="sites-layout-name-one-column sites-layout-hbox"><tbody><tr><td class="sites-layout-tile sites-tile-name-content-1"><div dir="ltr"><div><div class="sites-embed-align-left-wrapping-off"><div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;"><div class="sites-embed-content sites-embed-type-toc"><div class="goog-toc sites-embed-toc-maxdepth-6"><p>Contents</p><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Summary"><strong>1 </strong>Summary</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-References"><strong>2 </strong>References</a><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Oracle-Manuals"><strong>2.1 </strong>Oracle® Manuals</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-My-Oracle-Support"><strong>2.2 </strong>My Oracle Support</a></li></ol></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Notes"><strong>3 </strong>Notes</a><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-What-is-Unified-Auditing-"><strong>3.1 </strong>What is Unified Auditing?</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Missing-Procedure"><strong>3.2 </strong>Missing Procedure</a></li></ol></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Procedure"><strong>4 </strong>Procedure</a><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Enable-Unified-Auditing"><strong>4.1 </strong>Enable Unified Auditing</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Configure-Unified-Auditing"><strong>4.2 </strong>Configure Unified Auditing</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Generate-OS-Audit-Records-and-Load-Them-into-Audit-Table"><strong>4.3 </strong>Generate OS Audit Records and Load Them into Audit Table</a><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Open-Database-as-Read-Only"><strong>4.3.1 </strong>Open Database as Read-Only</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Generate-OS-Audit-Records"><strong>4.3.2 </strong>Generate OS Audit Records</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Open-Database-as-Read-Write"><strong>4.3.3 </strong>Open Database as Read-Write</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Load-OS-Audit-Records-into-Audit-Table"><strong>4.3.4 </strong>Load OS Audit Records into Audit Table</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Display-Audit-Log"><strong>4.3.5 </strong>Display Audit Log</a></li></ol></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Manually-Flushing-Audit-Records-to-the-Audit-Trail-in-Queued-Write-Mode"><strong>4.4 </strong>Manually Flushing Audit Records to the Audit Trail in Queued-Write Mode</a><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Check-Audit-Write-Mode"><strong>4.4.1 </strong>Check Audit Write Mode</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Manually-Flush-Audit-Records"><strong>4.4.2 </strong>Manually Flush Audit Records</a></li></ol></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Change-Audit-Write-Mode"><strong>4.5 </strong>Change Audit Write Mode</a><ol class="goog-toc"><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Check-Audit-Write-Mode1"><strong>4.5.1 </strong>Check Audit Write Mode</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Switch-Audit-Write-Mode-to-Immediate"><strong>4.5.2 </strong>Switch Audit Write Mode to Immediate</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Check-Audit-Write-Mode2"><strong>4.5.3 </strong>Check Audit Write Mode</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Switch-Audit-Write-Mode-to-Queued"><strong>4.5.4 </strong>Switch Audit Write Mode to Queued</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Check-Audit-Write-Mode3"><strong>4.5.5 </strong>Check Audit Write Mode</a></li><li class="goog-toc"><a href="enable-and-configure-unified-audit-data-trail.html#TOC-Alternative-Method-to-Get-Audit-Write-Mode"><strong>4.5.6 </strong>Alternative Method to Get Audit Write Mode</a></li></ol></li></ol></li></ol></div></div></div></div></div>
+<br />
+<h2><a name="TOC-Summary"></a>Summary</h2>
+<h2><a name="TOC-References"></a>References</h2>
+<h3><a name="TOC-Oracle-Manuals"></a>Oracle<sup>®</sup> Manuals</h3>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database PL/SQL Packages and Types Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#ARPLS241" rel="nofollow">29 DBMS_AUDIT_MGMT</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBFBHG" style="font-family:monospace" rel="nofollow">FLUSH_UNIFIED_AUDIT_TRAIL</a></li>
+<li><a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABHEHDC" style="font-family:monospace" rel="nofollow">GET_AUDIT_TRAIL_PROPERTY_VALUE</a>
+</li><li><a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#ARPLS74517" style="font-family:monospace" rel="nofollow">LOAD_UNIFIED_AUDIT_FILES</a></li>
+<li><a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" style="font-family:monospace" rel="nofollow">SET_AUDIT_TRAIL_PROPERTY</a>
+</li></ul>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-8865F65B-EF6D-44A5-B0A1-3179EFF0C36A.htm" rel="nofollow">Part II Static Data Dictionary Views</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">4.76 DBA_AUDIT_MGMT_CONFIG_PARAMS</a></li>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Security Guide</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/auditing.htm#DBSEG1023" rel="nofollow">21 Introduction to Auditing</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/auditing.htm#GUID-16E8E421-CFCE-4584-B09B-88F01D51B152" rel="nofollow">What is Unified Auditing?</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#DBSEG1026" rel="nofollow">23 Administering the Audit Trail</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-2A5CFDFC-320B-41D0-86AB-B524992E02A8" rel="nofollow">Managing the Unified Audit Trail</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-1DD625ED-AC75-47E7-ADF6-1C7C93656F22" rel="nofollow">Writing the Unified Audit Trail Records to the AUDSYS Schema</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-84EE2115-DE09-4028-ACE9-CC331389A9CA" rel="nofollow">About Writing Unified Audit Trail Records to AUDSYS</a></li>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-6C2F428C-E209-4626-8A5F-616CF0D31476" rel="nofollow">Setting the Write Mode for Unified Audit Trail Records</a></li>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-11FEBEC6-608F-48D9-8582-47BB555FC700" rel="nofollow">Manually Flushing Audit Records to the Audit Trail in Queued-Write Mode</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-91B14CCD-E408-4669-82FA-EE833EDBBBA9" rel="nofollow">Moving Operating System Audit Records into the Unified Audit Trail</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-58CFB1F4-7E76-46A4-8DDD-2546DBD67FBE" rel="nofollow">Archiving the Audit Trail</a></li>
+<li><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-9B891A44-3DF4-4B52-98D4-A931DBFAEC1D" rel="nofollow">Purging Audit Trail Records</a></li>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/UPGRD/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Upgrade Guide</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/UPGRD/afterup.htm#i1008954" rel="nofollow">4 Post-Upgrade Tasks for Oracle Database</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/UPGRD/afterup.htm#CEGHGAIG" rel="nofollow">4.6 Recommended and Best Practices to Complete After Upgrading Oracle Database</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/UPGRD/afterup.htm#CHDEFHGA" rel="nofollow">4.6.13 Migrate Your Upgraded Oracle Databases to Use Unified Auditing</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/UPGRD/afterup.htm#CHDFBBAG" rel="nofollow">4.6.13.2 Migrating to Unified Auditing for Oracle Database</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+</ul>
+<h3><a name="TOC-My-Oracle-Support"></a>My Oracle Support</h3>
+<ul>
+<li><a href="https://support.oracle.com/epmos/faces/DocContentDisplay?id=2212196.1" rel="nofollow">How To Transfer Unified Audit Records To An Internal Relational Table (Doc ID 2212196.1)</a></li>
+</ul>
+<h2><a name="TOC-Notes"></a>Notes</h2>
+<h3><a name="TOC-What-is-Unified-Auditing-"></a>What is Unified Auditing?</h3>
+<p><a href="https://docs.oracle.com/database/121/DBSEG/auditing.htm#GUID-16E8E421-CFCE-4584-B09B-88F01D51B152" rel="nofollow">What is Unified Auditing?</a> says:</p>
+<blockquote>
+<p>The unified audit trail, which resides in a read-only table in the <code style="background-color:#f2f2f2">AUDSYS</code> schema in the <code style="background-color:#f2f2f2">SYSAUX</code> tablespace, makes this information available in a uniform format in the <code style="background-color:#f2f2f2">UNIFIED_AUDIT_TRAIL</code> data dictionary view, and is available in both single-instance and Oracle Database Real Application Clusters environments. In addition to the user <code style="background-color:#f2f2f2">SYS</code>, users who have been granted the <code style="background-color:#f2f2f2">AUDIT_ADMIN</code> and <code style="background-color:#f2f2f2">AUDIT_VIEWER</code> roles can query these views. If your users only need to query the views but not create audit policies, then grant them the <code style="background-color:#f2f2f2">AUDIT_VIEWER</code> role.</p>
+<p>When the database is writeable, audit records are written to the unified audit trail. If the database is not writable, then audit records are written to new format operating system files in the <code style="background-color:#f2f2f2">$ORACLE_BASE/audit/$ORACLE_SID</code> directory.</p>
+</blockquote>
+<h3><a name="TOC-Missing-Procedure"></a>Missing Procedure</h3>
+<p><a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-91B14CCD-E408-4669-82FA-EE833EDBBBA9" rel="nofollow">Moving Operating System Audit Records into the Unified Audit Trail</a> recommends:</p>
+<blockquote>
+<p>From the previous release, the following modes, deprecated but retained for backward compatibility, are available. However, Oracle recommends that you use the <code style="background-color:#f2f2f2">DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS</code> procedure instead, as described in <a href="https://docs.oracle.com/database/121/UPGRD/toc.htm" rel="nofollow"><cite>Oracle Database Upgrade Guide</cite></a>.</p>
+</blockquote>
+<p>This is no mention of <span style="background-color:#f2f2f2;font-family:monospace">DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS</span> in either <a href="https://docs.oracle.com/database/121/UPGRD/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Upgrade Guide</a> or <a href="https://docs.oracle.com/database/121/DBSEG/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database PL/SQL Packages and Types Reference</a>.</p>
+<p>This procedure does not exist in Oracle RDBMS 12.1:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt;c DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS
+BEGIN DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS; END;
+
+                      *
+ERROR at line 1:
+ORA-06550: line 1, column 23:
+PLS-00302: component 'TRANSFER_UNIFIED_AUDIT_RECORDS' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+</pre>
+<p>According to <a href="https://support.oracle.com/epmos/faces/DocContentDisplay?id=2212196.1" rel="nofollow">How To Transfer Unified Audit Records To An Internal Relational Table (Doc ID 2212196.1)</a>,</p>
+<blockquote>
+<p>The procedure is available out of the box in the Oracle RDBMS 12.2 database and in the Oracle RDBMS 12.1.0.2 databases that have been patched with <a href="https://sites.google.com/epmos/faces/ui/patch/PatchDetail.jspx?parent=DOCUMENT&amp;sourceId=2212196.1&amp;patchId=25985768" target="_blank">Patch 25985768</a>. </p>
+</blockquote>
+<h2><a name="TOC-Procedure"></a>Procedure</h2>
+<h3><a name="TOC-Enable-Unified-Auditing"></a>Enable Unified Auditing</h3>
+<p>Followed the procedure in <a href="https://docs.oracle.com/database/121/UPGRD/afterup.htm#CHDFBBAG" rel="nofollow">4.6.13.2 Migrating to Unified Auditing for Oracle Database</a>:</p>
+<blockquote style="font-family:monospace;background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">
+[oracle@personal ~]$ lsnrctl stop<br />
+<br />
+LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 15-APR-2018 21:30:19<br />
+<br />
+Copyright (c) 1991, 2014, Oracle.  All rights reserved.<br />
+<br />
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))<br />
+The command completed successfully<br />
+[oracle@personal ~]$ . oraenv<br />
+ORACLE_SID = [personal] ? jar<br />
+The Oracle base remains unchanged with value /opt/app/oracle<br />
+[oracle@personal ~]$ sqlplus / as sysdba<br />
+<br />
+SQL*Plus: Release 12.1.0.2.0 Production on Sun Apr 15 21:31:07 2018<br />
+<br />
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.<br />
+<br />
+Connected to an idle instance.<br />
+<br />
+SQL&gt; startup<br />
+ORACLE instance started.<br />
+<br />
+Total System Global Area 1543503872 bytes<br />
+Fixed Size          2924736 bytes<br />
+Variable Size         939528000 bytes<br />
+Database Buffers      587202560 bytes<br />
+Redo Buffers           13848576 bytes<br />
+Database mounted.<br />
+Database opened.<br />
+SQL&gt; SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';<br />
+<br />
+VALUE<br />
+----------------------------------------------------------------<br />
+FALSE<br />
+<br />
+SQL&gt; shutdown immediate<br />
+Database closed.<br />
+Database dismounted.<br />
+ORACLE instance shut down.<br />
+SQL&gt; Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production<br />
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options<br />
+<span style="font-weight:bold">[oracle@personal ~]$ cd ${ORACLE_HOME}/rdbms/lib<br />
+[oracle@personal lib]$ make -f ins_rdbms.mk uniaud_on ioracle ORACLE_HOME=$ORACLE_HOME<br /></span>
+/usr/bin/ar d /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a kzanang.o<br />
+/usr/bin/ar cr /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/kzaiang.o <br />
+chmod 755 /opt/app/oracle/product/12.1.0/dbhome_1/bin<br />
+<br />
+ - Linking Oracle <br />
+rm -f /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle<br />
+/opt/app/oracle/product/12.1.0/dbhome_1/bin/orald  -o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle -m64 -z noexecstack -Wl,--disable-new-dtags -L/opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ -L/opt/app/oracle/product/12.1.0/dbhome_1/lib/ -L/opt/app/oracle/product/12.1.0/dbhome_1/lib/stubs/   -Wl,-E /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/opimai.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ssoraed.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ttcsoi.o -Wl,--whole-archive -lperfsrv12 -Wl,--no-whole-archive /opt/app/oracle/product/12.1.0/dbhome_1/lib/nautab.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naeet.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naect.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naedhs.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/config.o  -lserver12 -lodm12 -lcell12 -lnnet12 -lskgxp12 -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lclient12  -lvsn12 -lcommon12 -lgeneric12 -lknlopt `if /usr/bin/ar tv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a | grep xsyeolap.o &gt; /dev/null 2&gt;&amp;1 ; then echo "-loraolap12" ; fi` -lskjcx12 -lslax12 -lpls12  -lrt -lplp12 -lserver12 -lclient12  -lvsn12 -lcommon12 -lgeneric12 `if [ -f /opt/app/oracle/product/12.1.0/dbhome_1/lib/libavserver12.a ] ; then echo "-lavserver12" ; else echo "-lavstub12"; fi` `if [ -f /opt/app/oracle/product/12.1.0/dbhome_1/lib/libavclient12.a ] ; then echo "-lavclient12" ; fi` -lknlopt -lslax12 -lpls12  -lrt -lplp12 -ljavavm12 -lserver12  -lwwg  `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnro12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnnzst12 -lzt12 -lztkg12 -lmm -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lztkg12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnro12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnnzst12 -lzt12 -lztkg12   -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 `if /usr/bin/ar tv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a | grep "kxmnsd.o" &gt; /dev/null 2&gt;&amp;1 ; then echo " " ; else echo "-lordsdo12 -lserver12"; fi` -L/opt/app/oracle/product/12.1.0/dbhome_1/ctx/lib/ -lctxc12 -lctx12 -lzx12 -lgx12 -lctx12 -lzx12 -lgx12 -lordimt12 -lclsra12 -ldbcfg12 -lhasgen12 -lskgxn2 -lnnzst12 -lzt12 -lxml12 -locr12 -locrb12 -locrutl12 -lhasgen12 -lskgxn2 -lnnzst12 -lzt12 -lxml12  -lgeneric12 -loraz -llzopro -lorabz2 -lipp_z -lipp_bz2 -lippdcemerged -lippsemerged -lippdcmerged  -lippsmerged -lippcore  -lippcpemerged -lippcpmerged  -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lsnls12 -lunls12  -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lasmclnt12 -lcommon12 -lcore12  -laio -lons    `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/sysliblist` -Wl,-rpath,/opt/app/oracle/product/12.1.0/dbhome_1/lib -lm    `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/sysliblist` -ldl -lm   -L/opt/app/oracle/product/12.1.0/dbhome_1/lib<br />
+test ! -f /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle ||\<br />
+       mv -f /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracleO<br />
+mv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle<br />
+chmod 6751 /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle<br />
+[oracle@personal lib]$ lsnrctl start<br />
+<br />
+LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 15-APR-2018 21:40:51<br />
+<br />
+Copyright (c) 1991, 2014, Oracle.  All rights reserved.<br />
+<br />
+Starting /opt/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...<br />
+<br />
+TNSLSNR for Linux: Version 12.1.0.2.0 - Production<br />
+System parameter file is /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora<br />
+Log messages written to /opt/app/oracle/diag/tnslsnr/personal/listener/alert/log.xml<br />
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))<br />
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=personal)(PORT=1521)))<br />
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))<br />
+<br />
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))<br />
+STATUS of the LISTENER<br />
+------------------------<br />
+Alias                     LISTENER<br />
+Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production<br />
+Start Date                15-APR-2018 21:40:52<br />
+Uptime                    0 days 0 hr. 0 min. 0 sec<br />
+Trace Level               off<br />
+Security                  ON: Local OS Authentication<br />
+SNMP                      OFF<br />
+Listener Parameter File   /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora<br />
+Listener Log File         /opt/app/oracle/diag/tnslsnr/personal/listener/alert/log.xml<br />
+Listening Endpoints Summary...<br />
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))<br />
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=personal)(PORT=1521)))<br />
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))<br />
+The listener supports no services<br />
+The command completed successfully<br />
+[oracle@personal lib]$ sqlplus / as sysdba<br />
+<br />
+SQL*Plus: Release 12.1.0.2.0 Production on Sun Apr 15 21:41:02 2018<br />
+<br />
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.<br />
+<br />
+Connected to an idle instance.<br />
+<br />
+SQL&gt; startup<br />
+ORACLE instance started.<br />
+<br />
+Total System Global Area 1543503872 bytes<br />
+Fixed Size          2924736 bytes<br />
+Variable Size         939528000 bytes<br />
+Database Buffers      587202560 bytes<br />
+Redo Buffers           13848576 bytes<br />
+Database mounted.<br />
+Database opened.<br />
+SQL&gt; SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';<br />
+<br />
+VALUE<br />
+----------------------------------------------------------------<br />
+TRUE<br />
+<br />
+SQL&gt; <br />
+</blockquote>
+<p>Summary:</p>
+<ol>
+<li>Stop all listeners and database instances</li>
+<li>Rebuild the kernel using the <span style="font-family:monospace;background-color:#f2f2f2">uniaud_on</span> option</li>
+<li>Start all listeners and database instances</li>
+</ol>
+<h3><a name="TOC-Configure-Unified-Auditing"></a>Configure Unified Auditing</h3>
+<h3><a name="TOC-Generate-OS-Audit-Records-and-Load-Them-into-Audit-Table"></a>Generate OS Audit Records and Load Them into Audit Table</h3>
+<p>This scenario is based upon <a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-91B14CCD-E408-4669-82FA-EE833EDBBBA9" rel="nofollow">Moving Operating System Audit Records into the Unified Audit Trail</a>.</p>
+<h4><a name="TOC-Open-Database-as-Read-Only"></a>Open Database as Read-Only</h4>
+<p>First, I open the database as read-only:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">[oracle@personal ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Apr 19 12:23:38 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics, Real Application Testing
+and Unified Auditing options
+
+SQL&gt; shutdown immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL&gt; startup open read only
+ORACLE instance started.
+
+Total System Global Area 1543503872 bytes
+Fixed Size          2924736 bytes
+Variable Size         939528000 bytes
+Database Buffers      587202560 bytes
+Redo Buffers           13848576 bytes
+Database mounted.
+Database opened.
+SQL&gt; select open_mode from v$database;
+
+OPEN_MODE
+--------------------
+READ ONLY
+</pre>
+<h4><a name="TOC-Generate-OS-Audit-Records"></a>Generate OS Audit Records</h4>
+<p>Next, I generate some audit records:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect system
+Enter password: 
+ERROR:
+ORA-28032: Your password has expired and the database is set to read-only
+
+
+Warning: You are no longer connected to ORACLE.
+SQL&gt; connect / as sysdba
+Connected.
+SQL&gt; connect demo
+Enter password: 
+Connected.
+</pre>
+<p>Next, I check for the generation of OS Audit records:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; !ls -lth /opt/app/oracle/audit/personal/
+total 104K
+-rw-r-----. 1 oracle oinstall  10K Apr 19 12:24 ora_audit_11.bin
+-rw-r-----. 1 oracle oinstall 6.0K Apr 19 12:24 ora_audit_00.bin
+-rw-r-----. 1 oracle oinstall  11K Apr 19 12:24 ora_audit_10.bin
+-rw-r-----. 1 oracle oinstall 1.5K Apr 19 12:24 ora_audit_092.bin
+-rw-r-----. 1 oracle oinstall 1.5K Apr 19 12:24 ora_audit_192.bin
+-rw-r-----. 1 oracle oinstall 8.5K Apr 19 08:44 ora_audit_141.bin
+-rw-r-----. 1 oracle oinstall 1.5K Apr 18 23:12 ora_audit_082.bin
+-rw-r-----. 1 oracle oinstall 1.5K Apr 18 23:12 ora_audit_182.bin
+-rw-r-----. 1 oracle oinstall 2.0K Apr 17 21:28 ora_audit_087.bin
+-rw-r-----. 1 oracle oinstall 2.5K Apr 17 21:28 ora_audit_187.bin
+-rw-r-----. 1 oracle oinstall 3.5K Apr 17 18:13 ora_audit_973707194_3058604836.bin
+-rw-r-----. 1 oracle oinstall 1.5K Apr 17 12:46 ora_audit_070.bin
+-rw-r-----. 1 oracle oinstall 1.5K Apr 17 12:45 ora_audit_170.bin
+-rw-r-----. 1 oracle oinstall 3.5K Apr 17 07:27 ora_audit_973668475_2422469920.bin
+-rw-r-----. 1 oracle oinstall 4.0K Apr 16 19:22 ora_audit_143.bin
+-rw-r-----. 1 oracle oinstall 8.5K Apr 16 19:21 ora_audit_973624908_1453341488.bin
+-rw-r-----. 1 oracle oinstall 1.5K Oct  4  2015 ora_audit_159.bin
+SQL&gt; !file /opt/app/oracle/audit/personal/ora_audit_11.bin
+/opt/app/oracle/audit/personal/ora_audit_11.bin: data
+</pre>
+<h4><a name="TOC-Open-Database-as-Read-Write"></a>Open Database as Read-Write</h4>
+<p>Next, open the database as read-write:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect / as sysdba
+Connected.
+SQL&gt; shutdown immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL&gt; startup open read write
+ORACLE instance started.
+
+Total System Global Area 1543503872 bytes
+Fixed Size          2924736 bytes
+Variable Size         939528000 bytes
+Database Buffers      587202560 bytes
+Redo Buffers           13848576 bytes
+Database mounted.
+Database opened.
+SQL&gt; select open_mode from v$database;
+
+OPEN_MODE
+--------------------
+READ WRITE
+</pre>
+<h4><a name="TOC-Load-OS-Audit-Records-into-Audit-Table"></a>Load OS Audit Records into Audit Table</h4>
+<p>Now, load the OS audit records into the audit table using the <span style="font-family:monospace">DBMS_AUDIT_MGMT.<a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#ARPLS74517" rel="nofollow">LOAD_UNIFIED_AUDIT_FILES</a></span> procedure:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; select count(*) from unified_audit_trail;
+
+  COUNT(*)
+----------
+     26393
+
+SQL&gt; exec DBMS_AUDIT_MGMT.<a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#ARPLS74517" rel="nofollow">LOAD_UNIFIED_AUDIT_FILES</a>
+
+PL/SQL procedure successfully completed.
+
+SQL&gt; select count(*) from unified_audit_trail;
+
+  COUNT(*)
+----------
+     26410
+
+SQL&gt; !ls -lth /opt/app/oracle/audit/personal/
+total 0
+</pre>
+<h4><a name="TOC-Display-Audit-Log"></a>Display Audit Log</h4>
+<p>I ran the following SQL to get the audit entries for the above scenario:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">SELECT event_timestamp,
+  dbusername,
+  audit_type,
+  action_name,
+  sql_text,
+  unified_audit_policies
+FROM unified_audit_trail
+WHERE event_timestamp &gt; systimestamp - interval '6' hour
+ORDER BY event_timestamp
+</pre>
+<p>The result was:</p>
+<table border="0" cellpadding="3" cellspacing="0">
+<thead style="background-color:aqua">
+<tr> <th>EVENT_TIMESTAMP</th>
+<th>DBUSERNAME</th>
+<th>AUDIT_TYPE</th>
+<th>ACTION_NAME</th>
+<th>SQL_TEXT</th>
+<th>UNIFIED_AUDIT_POLICIES</th>
+</tr>
+</thead>
+<tbody style="font-family:monospace">
+<tr>
+<td>19-APR-18 12.24.01.754587000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE CLOSE NORMAL</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.02.951241000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE DISMOUNT</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.24.03.404289000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>SHUTDOWN</td>
+<td>SHUTDOWN IMMEDIATE</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.17.186108000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td>CONNECT</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.24.28.918061000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>STARTUP</td>
+<td>STARTUP</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.29.459443000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.24.29.766584000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>SELECT</td>
+<td>SELECT DECODE(null,'','Total System Global Area','') NAME_COL_PLUS_SHOW_SGA,   SUM(VALUE), DECODE (null,'', 'bytes','') units_col_plus_show_sga FROM V$SGA    UNION ALL    SELECT NAME NAME_COL_PLUS_SHOW_SGA , VALUE,    DECODE (null,'', 'bytes','') units_col_plus_show_sga FROM V$SGA</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.36.489172000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE   MOUNT</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.24.36.496004000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGOFF</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.36.525129000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.24.43.689182000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.43.906164000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.24.43.921831000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.24.58.687069000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.25.00.590981000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE OPEN READ ONLY</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.25.14.532989000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>SET ROLE</td>
+<td>set role all</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+<tr>
+<td>19-APR-18 12.25.52.403446000 PM</td>
+<td>SYSTEM</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td>ORA_LOGON_FAILURES</td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.30.54.052754000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE CLOSE NORMAL</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.30.55.157716000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE DISMOUNT</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.30.55.649103000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>SHUTDOWN</td>
+<td>SHUTDOWN IMMEDIATE</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.31.09.459840000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td>CONNECT</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.31.23.641632000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>STARTUP</td>
+<td>STARTUP</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.31.24.128550000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.31.24.426507000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>SELECT</td>
+<td>SELECT DECODE(null,'','Total System Global Area','') NAME_COL_PLUS_SHOW_SGA,   SUM(VALUE), DECODE (null,'', 'bytes','') units_col_plus_show_sga FROM V$SGA    UNION ALL    SELECT NAME NAME_COL_PLUS_SHOW_SGA , VALUE,    DECODE (null,'', 'bytes','') units_col_plus_show_sga FROM V$SGA</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.31.31.066877000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE   MOUNT</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.31.31.067772000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGOFF</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.31.31.083152000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.31.46.619097000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.32.00.265742000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE OPEN</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.32.04.789271000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>SET ROLE</td>
+<td>set role all</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+<tr>
+<td>19-APR-18 12.34.59.775654000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>EXECUTE</td>
+<td>BEGIN DBMS_AUDIT_MGMT.LOAD_UNIFIED_AUDIT_FILES; END;
+</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.51.39.127796000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE CLOSE NORMAL</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.51.40.201923000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE DISMOUNT</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 12.51.40.609504000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>SHUTDOWN</td>
+<td>SHUTDOWN IMMEDIATE</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 12.51.54.230728000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td>CONNECT</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.18.21.446594000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td>CONNECT</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.18.30.195187000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>STARTUP</td>
+<td>STARTUP</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.18.31.128071000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.18.32.275693000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>SELECT</td>
+<td>SELECT DECODE(null,'','Total System Global Area','') NAME_COL_PLUS_SHOW_SGA,   SUM(VALUE), DECODE (null,'', 'bytes','') units_col_plus_show_sga FROM V$SGA    UNION ALL    SELECT NAME NAME_COL_PLUS_SHOW_SGA , VALUE,    DECODE (null,'', 'bytes','') units_col_plus_show_sga FROM V$SGA</td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.18.45.445543000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE   MOUNT</td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.18.45.448749000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGOFF</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.18.45.473787000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.18.54.641736000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.19.09.232185000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.19.24.211608000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.19.39.241177000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.19.54.210791000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.20.09.212651000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.20.24.206411000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.20.39.216334000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.20.54.208924000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.21.09.208645000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.21.24.206576000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.21.39.200686000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.21.54.190210000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.22.09.234622000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.22.24.209157000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.22.39.208905000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.22.54.232325000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.23.09.207302000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.23.24.216992000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.23.39.202139000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>LOGON</td>
+<td> </td>
+<td> </td>
+</tr>
+<tr>
+<td>19-APR-18 04.24.25.142017000 PM</td>
+<td>SYS</td>
+<td>Standard</td>
+<td>ALTER DATABASE</td>
+<td>ALTER DATABASE OPEN</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+<tr style="background-color:lightgreen">
+<td>19-APR-18 04.25.27.745454000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>SET ROLE</td>
+<td>set role all</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+<tr>
+<td>19-APR-18 04.25.49.034433000 PM</td>
+<td>DBSNMP</td>
+<td>Standard</td>
+<td>SET ROLE</td>
+<td>set role all</td>
+<td>ORA_SECURECONFIG</td>
+</tr>
+</tbody></table>
+<h3><a name="TOC-Manually-Flushing-Audit-Records-to-the-Audit-Trail-in-Queued-Write-Mode"></a>Manually Flushing Audit Records to the Audit Trail in Queued-Write Mode</h3>
+<p>Followed the procedure in <a href="https://docs.oracle.com/database/121/DBSEG/audit_admin.htm#GUID-11FEBEC6-608F-48D9-8582-47BB555FC700" rel="nofollow">Manually Flushing Audit Records to the Audit Trail in Queued-Write Mode</a>.</p>
+<p>Flushing audit records is only applicable if the <cite>Audit Write Mode</cite> is set to <cite>Queued</cite>.</p>
+<h4><a name="TOC-Check-Audit-Write-Mode"></a>Check Audit Write Mode</h4>
+<p>The following snippet of code shows that the <cite>Audit Write Mode</cite> is set to <cite>Queued</cite>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+COLUMN parameter_value FORMAT A30
+SELECT parameter_name, parameter_value
+  FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
+  WHERE parameter_name = 'AUDIT WRITE MODE'
+    AND audit_trail = 'UNIFIED AUDIT TRAIL'
+/
+</pre>
+<p>The output is:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+------------------------------ ------------------------------
+AUDIT WRITE MODE               QUEUED WRITE MODE
+</pre>
+<h4><a name="TOC-Manually-Flush-Audit-Records"></a>Manually Flush Audit Records</h4>
+<p>The <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBFBHG" style="font-family:monospace" rel="nofollow">DBMS_AUDIT_MGMT.FLUSH_UNIFIED_AUDIT_TRAIL</a> procedure is called to manually flush the audit records to disk:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">EXEC <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBFBHG" rel="nofollow">DBMS_AUDIT_MGMT.FLUSH_UNIFIED_AUDIT_TRAIL</a>;
+</pre>
+<p>The output is simply:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+</pre>
+<h3><a name="TOC-Change-Audit-Write-Mode"></a>Change Audit Write Mode</h3>
+<h4><a name="TOC-Check-Audit-Write-Mode1"></a>Check Audit Write Mode</h4>
+<p>The following snippet of code shows that the <cite>Audit Write Mode</cite> is set to <cite>Queued</cite>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+COLUMN parameter_value FORMAT A30
+SELECT parameter_name, parameter_value
+  FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
+  WHERE parameter_name = 'AUDIT WRITE MODE'
+    AND audit_trail = 'UNIFIED AUDIT TRAIL'
+/
+</pre>
+<p>The output is:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+------------------------------ ------------------------------
+AUDIT WRITE MODE               QUEUED WRITE MODE
+</pre>
+<h4><a name="TOC-Switch-Audit-Write-Mode-to-Immediate"></a>Switch Audit Write Mode to Immediate</h4>
+<p>The <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" style="font-family:monospace" rel="nofollow">DBMS_AUDIT_MGMT.SET_AUDIT_TRAIL_PROPERTY</a> procedure is called to set the <cite>Audit Write Mode</cite> to <cite>Immediate</cite>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">BEGIN
+ <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" rel="nofollow">DBMS_AUDIT_MGMT.SET_AUDIT_TRAIL_PROPERTY</a>(
+  DBMS_AUDIT_MGMT.AUDIT_TRAIL_UNIFIED,
+  DBMS_AUDIT_MGMT.AUDIT_TRAIL_WRITE_MODE, 
+  DBMS_AUDIT_MGMT.AUDIT_TRAIL_IMMEDIATE_WRITE);
+END;
+/
+</pre>
+<p>The output is simply:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+</pre>
+<h4><a name="TOC-Check-Audit-Write-Mode2"></a>Check Audit Write Mode</h4>
+<p>The following snippet of code shows that the <cite>Audit Write Mode</cite> is now set to <cite>Immediate</cite>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+COLUMN parameter_value FORMAT A30
+SELECT parameter_name, parameter_value
+  FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
+  WHERE parameter_name = 'AUDIT WRITE MODE'
+    AND audit_trail = 'UNIFIED AUDIT TRAIL'
+/
+</pre>
+<p>The output is:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+------------------------------ ------------------------------
+AUDIT WRITE MODE               IMMEDIATE WRITE MODE
+</pre>
+<h4><a name="TOC-Switch-Audit-Write-Mode-to-Queued"></a>Switch Audit Write Mode to Queued</h4>
+<p>The <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" style="font-family:monospace" rel="nofollow">DBMS_AUDIT_MGMT.SET_AUDIT_TRAIL_PROPERTY</a> procedure is called to set the <cite>Audit Write Mode</cite> to <cite>Queued</cite>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">BEGIN
+ <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" rel="nofollow">DBMS_AUDIT_MGMT.SET_AUDIT_TRAIL_PROPERTY</a>(
+  DBMS_AUDIT_MGMT.AUDIT_TRAIL_UNIFIED, 
+  DBMS_AUDIT_MGMT.AUDIT_TRAIL_WRITE_MODE, 
+  DBMS_AUDIT_MGMT.AUDIT_TRAIL_QUEUED_WRITE);
+END;
+/
+</pre>
+<p>The output is simply:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+</pre>
+<h4><a name="TOC-Check-Audit-Write-Mode3"></a>Check Audit Write Mode</h4>
+<p>The following snippet of code shows that the <cite>Audit Write Mode</cite> is now set to <cite>Queued</cite>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+COLUMN parameter_value FORMAT A30
+SELECT parameter_name, parameter_value
+  FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
+  WHERE parameter_name = 'AUDIT WRITE MODE'
+    AND audit_trail = 'UNIFIED AUDIT TRAIL'
+/
+</pre>
+<p>The output is:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+------------------------------ ------------------------------
+AUDIT WRITE MODE               QUEUED WRITE MODE
+</pre>
+<h4><a name="TOC-Alternative-Method-to-Get-Audit-Write-Mode"></a>Alternative Method to Get Audit Write Mode</h4>
+<p>The following snippet of code shows that the <cite>Audit Write Mode</cite> can be gotten by a PL/SQL procedure call to <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABHEHDC" style="font-family:monospace" rel="nofollow">DBMS_AUDIT_MGMT.GET_AUDIT_TRAIL_PROPERTY_VALUE</a>:</p>
+<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">VARIABLE write_mode NUMBER
+BEGIN
+  :write_mode
+    := <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABHEHDC" rel="nofollow">dbms_audit_mgmt.get_audit_trail_property_value</a>(
+        audit_trail_type        =&gt; dbms_audit_mgmt.audit_trail_unified,
+        audit_trail_property    =&gt; dbms_audit_mgmt.audit_trail_write_mode
+        );
+END;
+/
+PRINT write_mode
+</pre>
+<p>The output is:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+
+WRITE_MODE
+----------
+     1
+</pre>
+<p>These values are not in the online documentation. However, by examining the package definition, one finds the following snippet of code:</p>
+<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">  --
+  -- NG Audit Trail write mode configuration
+  AUDIT_TRAIL_WRITE_MODE        CONSTANT NUMBER := 33;
+  -- Values for Write mode
+  AUDIT_TRAIL_QUEUED_WRITE      CONSTANT NUMBER := 1;
+  AUDIT_TRAIL_IMMEDIATE_WRITE   CONSTANT NUMBER := 2;
+  --AUDIT_TRAIL_COMMIT_WRITE      CONSTANT NUMBER := 3;
+</pre>
+<p>Thus, 1 corresponds to <cite>Queued Write</cite>.</p></div></td></tr></tbody></table>
+</div> 
+</div> 
+<div id="sites-canvas-bottom-panel">
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_page-subpages"> </div>
+<div id="sites-attachments-container">
+</div>
+<a xmlns="http://www.w3.org/1999/xhtml" name="page-comments"></a>
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_page-comments"><div class="sites-comment-docos-wrapper"><div class="sites-comment-docos"><div class="sites-comment-docos-background"></div><div class="sites-comment-docos-header"><div class="sites-comment-docos-header-title">Comments</div></div><div id="sites-comment-docos-pane" class="sites-comment-docos-pane"></div></div></div></div>
+</div>
+</div> 
+</td> 
+</tr>
+</table> 
+</div> 
+</div> 
+<div id="sites-chrome-footer-wrapper">
+<div id="sites-chrome-footer-wrapper-inside">
+<div id="sites-chrome-footer">
+</div>
+</div>
+</div>
+</div> 
+</div> 
+<div id="sites-chrome-adminfooter-container">
+<div xmlns="http://www.w3.org/1999/xhtml" class="sites-adminfooter" role="navigation"><p><a class="sites-system-link" href="https://accounts.google.com/ServiceLogin?continue=https://sites.google.com/site/yetanotherocmoriginal/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-and-configure-unified-audit-data-trail&amp;service=jotspot">Sign in</a><span aria-hidden="true">|</span><a class="sites-system-link" href="../../../../system/app/pages/recentChanges.html">Recent Site Activity</a><span aria-hidden="true">|</span><a class="sites-system-link" href="../../../../system/app/pages/reportAbuse.html" target="_blank">Report Abuse</a><span aria-hidden="true">|</span><a class="sites-system-link" href="javascript:;" onclick="window.open(webspace.printUrl)">Print Page</a><span aria-hidden="true">|</span><span class="sites-system-link">Powered By</span> <b class="powered-by"><a href="http://sites.google.com/site">Google Sites</a></b></p></div>
+</div>
+</div> 
+</div> 
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    window.jstiming.load.tick('sjl');
+  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" src="https://ssl.gstatic.com/sites/p/3168fb/system/js/jot_min_view__en.js"></script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    window.jstiming.load.tick('jl');
+  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+                    sites.Searchbox.initialize(
+                        'sites-searchbox-search-button',
+                        {"object":[]}['object'],
+                        'search-site',
+                        {"label":"Configure search options...","url":"/site/yetanotherocmoriginal/system/app/pages/admin/settings"});
+                  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+      gsites.HoverPopupMenu.createSiteDropdownMenus('sites-header-nav-dropdown', false);
+    </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" defer="true">
+            JOT_setupNav("2bd", "Navigation", true);
+            JOT_addListener('titleChange', 'JOT_NAVIGATION_titleChange', 'COMP_2bd');
+          </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+              new sites.CommentPane('//docs.google.com/comments/d/AAHRpnXv0cWRQ3pqMtE0chEx0_mkJAR-LnLvW0OFvFyW2ccia_W20VkefrLsBJ6fsZEXWcvtZSXK5EbQRtBKLnfZnVtThx17XA_KEo2Wzsrx5yYHzQ3Vmwx8Koccu7F_Hu3e6BN1Bfrcivdwyb9E0b__6HDV1FjdJcw/api/js?anon=true',
+                  false, false);
+            </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+  setTimeout(function() {
+    var fingerprint = gsites.date.TimeZone.getFingerprint([1109635200000, 1128902400000, 1130657000000, 1143333000000, 1143806400000, 1145000000000, 1146380000000, 1152489600000, 1159800000000, 1159500000000, 1162095000000, 1162075000000, 1162105500000]);
+    gsites.Xhr.send('https://sites.google.com/site/yetanotherocmoriginal/_/tz', null, null, 'GET', null, null, { afjstz: fingerprint });
+  }, 500);
+</script>
+<script xmlns="http://www.w3.org/1999/xhtml">
+                    window.onload = function() {
+                      if (false) {
+                        JOT_setMobilePreview();
+                      }
+                      var loadTimer = window.jstiming.load;
+                      loadTimer.tick("ol");
+                      loadTimer["name"] = "load," + webspace.page.type + ",user_page";
+                      window.jstiming.report(loadTimer, {}, 'https://gg.google.com/csi');
+                    }
+                  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+        JOT_insertAnalyticsCode(false,
+            false);
+      </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    var maestroRunner = new gsites.pages.view.SitesMaestroRunner(
+        webspace, "en");
+    maestroRunner.initListeners();
+    maestroRunner.installEditRender();
+  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" defer="true">
+  //<![CDATA[
+    // Decorate any fastUI buttons on the page with a class of 'goog-button'.
+    if (webspace.user.hasWriteAccess) {
+      JOT_decorateButtons();
+    }
+
+    // Fires delayed events.
+    (function() {
+      JOT_fullyLoaded = true;
+      var delayedEvents = JOT_delayedEvents;
+      for (var x = 0; x < delayedEvents.length; x++) {
+        var event = delayedEvents[x];
+        JOT_postEvent(event.eventName, event.eventSrc, event.payload);
+      }
+      JOT_delayedEvents = null;
+      JOT_postEvent('pageLoaded');
+    })();
+  //]]>
+</script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    JOT_postEvent('decorateGvizCharts');
+  </script>
+<script type="text/javascript">
+          JOT_setupPostRenderingManager();
+        </script>
+<script type="text/javascript">
+          JOT_postEvent('renderPlus', null, 'sites-chrome-main');
+        </script>
+<script type="text/javascript">
+          sites.codeembed.init();
+        </script>
+<div id="server-timer-div" style="display:none"> </div>
+<script type="text/javascript">
+          window.jstiming.load.tick('render');
+          JOT_postEvent('usercontentrendered', this);
+        </script>
+</body>
+</html>

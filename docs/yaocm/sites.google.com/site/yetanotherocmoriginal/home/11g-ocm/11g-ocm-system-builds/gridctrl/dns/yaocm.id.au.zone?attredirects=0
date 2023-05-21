@@ -1,0 +1,68 @@
+$TTL 86400
+@       SOA     gridctrl.yaocm.id.au.       hostmaster.yaocm.id.au. (
+                2019021701 ; serial
+                21600      ; refresh after 6 hours
+                3600       ; retry after 1 hour
+                604800     ; expire after 1 week
+                86400 )    ; minimum TTL of 1 day
+;
+; Nameservers
+;
+        NS      gridctrl.yaocm.id.au.
+gridctrl    A       192.168.1.252
+;
+;
+@       MX      10      mail.yaocm.id.au.
+mail    A       192.168.1.252
+;
+;
+;
+nundah          A       192.168.1.1
+; Oracle Virtual Server Addresses
+victoria        A       192.168.1.100
+melbourne       A       192.168.1.101
+victoria-bridge A       192.168.1.102
+cloudctl        A       192.168.1.103
+coursera        A       192.168.1.106
+gordon          A       192.168.1.107
+steam           A       192.168.1.108
+auburn          A       192.168.1.109
+padstow         A       192.168.1.110
+botany          A       192.168.1.111
+turramurra      A       192.168.1.112
+xe              A       192.168.1.113
+hammer          A       192.168.1.114
+; Redfern Public Network
+redfern1        A       192.168.1.140
+redfern2        A       192.168.1.141
+redfern1-vip    A       192.168.1.142
+redfern2-vip    A       192.168.1.143
+redfern-crs     A       192.168.1.144
+                A       192.168.1.145
+                A       192.168.1.146
+; GoldenGate Trial
+goldengate1     A       192.168.1.150
+goldengate2     A       192.168.1.151
+; Miscellaneous
+personal        A       192.168.1.152
+perstdby        A       192.168.1.153
+perphys         A       192.168.1.154
+; Oracle VirtualBox hosts
+cronulla        A       192.168.1.200
+clifton         A       192.168.1.201
+; Physical hosts
+penrith         A       192.168.1.249
+marsfield       A       192.168.1.250
+ryde            A       192.168.1.251
+gridctrl        A       192.168.1.252
+narrabri        A       192.168.1.253
+noosa           A       192.168.1.254
+; Redfern Management Network
+redfern1-mgt    A       192.168.2.140
+redfern2-mgt    A       192.168.2.141
+redfern1-mgt-vip A      192.168.2.142
+redfern2-mgt-vip A      192.168.2.143
+redfern-mgt-crs A       192.168.2.144
+                A       192.168.2.145
+                A       192.168.2.146
+;

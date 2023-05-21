@@ -1,0 +1,179 @@
+Checking for required files and bootstrapping ...
+Please wait ...
+Location of logs /opt/app/oraInventory/logs/
+
+############ ORACLE DECONFIG TOOL START ############
+
+
+######################### DECONFIG CHECK OPERATION START #########################
+## [START] Install check configuration ##
+
+
+Checking for existence of the Oracle home location /opt/app/oracle/product/12.1.0/dbhome_1
+Oracle Home type selected for deinstall is: Oracle Single Instance Database
+Oracle Base selected for deinstall is: /opt/app/oracle
+Checking for existence of central inventory location /opt/app/oraInventory
+
+## [END] Install check configuration ##
+
+
+Network Configuration check config START
+
+Network de-configuration trace file location: /opt/app/oraInventory/logs/netdc_check2016-01-01_03-31-13-PM.log
+
+Network Configuration check config END
+
+Database Check Configuration START
+
+Database de-configuration trace file location: /opt/app/oraInventory/logs/databasedc_check2016-01-01_03-31-17-PM.log
+
+Use comma as separator when specifying list of values as input
+
+Specify the list of database names that are configured in this Oracle home []: 
+Database Check Configuration END
+Oracle Configuration Manager check START
+OCM check log file location : /opt/app/oraInventory/logs//ocm_check2350.log
+Oracle Configuration Manager check END
+
+######################### DECONFIG CHECK OPERATION END #########################
+
+
+####################### DECONFIG CHECK OPERATION SUMMARY #######################
+Oracle Home selected for deinstall is: /opt/app/oracle/product/12.1.0/dbhome_1
+Inventory Location where the Oracle home registered is: /opt/app/oraInventory
+Checking the config status for CCR
+Oracle Home exists with CCR directory, but CCR is not configured
+CCR check is finished
+Do you want to continue (y - yes, n - no)? [n]: y
+A log of this session will be written to: '/opt/app/oraInventory/logs/deinstall_deconfig2016-01-01_03-31-08-PM.out'
+Any error messages from this session will be written to: '/opt/app/oraInventory/logs/deinstall_deconfig2016-01-01_03-31-08-PM.err'
+
+######################## DECONFIG CLEAN OPERATION START ########################
+Database de-configuration trace file location: /opt/app/oraInventory/logs/databasedc_clean2016-01-01_03-38-45-PM.log
+
+Network Configuration clean config START
+
+Network de-configuration trace file location: /opt/app/oraInventory/logs/netdc_clean2016-01-01_03-38-45-PM.log
+
+De-configuring backup files...
+Backup files de-configured successfully.
+
+The network configuration has been cleaned up successfully.
+
+Network Configuration clean config END
+
+Oracle Configuration Manager clean START
+OCM clean log file location : /opt/app/oraInventory/logs//ocm_clean2350.log
+Oracle Configuration Manager clean END
+
+######################### DECONFIG CLEAN OPERATION END #########################
+
+
+####################### DECONFIG CLEAN OPERATION SUMMARY #######################
+Cleaning the config for CCR
+As CCR is not configured, so skipping the cleaning of CCR configuration
+CCR clean is finished
+#######################################################################
+
+
+############# ORACLE DECONFIG TOOL END #############
+
+Using properties file /tmp/deinstall2016-01-01_03-29-43PM/response/deinstall_2016-01-01_03-31-08-PM.rsp
+Location of logs /opt/app/oraInventory/logs/
+
+############ ORACLE DEINSTALL TOOL START ############
+
+
+
+
+
+####################### DEINSTALL CHECK OPERATION SUMMARY #######################
+A log of this session will be written to: '/opt/app/oraInventory/logs/deinstall_deconfig2016-01-01_03-31-08-PM.out'
+Any error messages from this session will be written to: '/opt/app/oraInventory/logs/deinstall_deconfig2016-01-01_03-31-08-PM.err'
+
+######################## DEINSTALL CLEAN OPERATION START ########################
+## [START] Preparing for Deinstall ##
+Setting LOCAL_NODE to gordon
+Setting CRS_HOME to false
+Setting oracle.installer.invPtrLoc to /tmp/deinstall2016-01-01_03-29-43PM/oraInst.loc
+Setting oracle.installer.local to false
+
+## [END] Preparing for Deinstall ##
+
+Setting the force flag to false
+Setting the force flag to cleanup the Oracle Base
+Oracle Universal Installer clean START
+
+Detach Oracle home '/opt/app/oracle/product/12.1.0/dbhome_1' from the central inventory on the local node : Done
+
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-17/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-17/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-17/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-17'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-19-56-17/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-19-56-17/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-19-56-17/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-19-56-17'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-20-01-07/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-20-01-07/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-20-01-07/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-28-20-01-07'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-29-13-05-55/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-29-13-05-55/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-29-13-05-55/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver/2015-12-29-13-05-55'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/driver'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-23/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-23/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-23/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-19-56-23'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-07/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-07/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-07/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-07'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-11/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-11/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-11/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-28-20-01-11'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-05-55/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-05-55/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-05-55/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-05-55'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-06-01/machine-readable'. The directory is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-06-01/.tmp'. The directory is in use.
+Failed to delete the file '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-06-01/log.txt'. The file is in use.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan/2015-12-29-13-06-01'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs/oplan'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1/cfgtoollogs'. The directory is not empty.
+Failed to delete the directory '/opt/app/oracle/product/12.1.0/dbhome_1'. The directory is not empty.
+Delete directory '/opt/app/oracle/product/12.1.0/dbhome_1' on the local node : Failed <<<<
+
+The Oracle Base directory '/opt/app/oracle' will not be removed on local node. The directory is in use by Oracle Home '/opt/app/oracle/product/12.1.0/grid'.
+
+Oracle Universal Installer cleanup was successful.
+
+Oracle Universal Installer clean END
+
+
+## [START] Oracle install clean ##
+
+Clean install operation removing temporary directory '/tmp/deinstall2016-01-01_03-29-43PM' on node 'gordon'
+
+## [END] Oracle install clean ##
+
+
+######################### DEINSTALL CLEAN OPERATION END #########################
+
+
+####################### DEINSTALL CLEAN OPERATION SUMMARY #######################
+Successfully detached Oracle home '/opt/app/oracle/product/12.1.0/dbhome_1' from the central inventory on the local node.
+Failed to delete directory '/opt/app/oracle/product/12.1.0/dbhome_1' on the local node.
+Oracle Universal Installer cleanup was successful.
+
+Oracle deinstall tool successfully cleaned up temporary directories.
+#######################################################################
+
+
+############# ORACLE DEINSTALL TOOL END #############
+
+

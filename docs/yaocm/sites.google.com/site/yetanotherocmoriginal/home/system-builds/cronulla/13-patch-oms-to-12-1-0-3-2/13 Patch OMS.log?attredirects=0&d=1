@@ -1,0 +1,103 @@
+[oracle@cronulla 18090046]$ emctl stop oms
+Oracle Enterprise Manager Cloud Control 12c Release 3
+Copyright (c) 1996, 2013 Oracle Corporation.  All rights reserved.
+Stopping WebTier...
+WebTier Successfully Stopped
+Stopping Oracle Management Server...
+Oracle Management Server Successfully Stopped
+Oracle Management Server is Down
+[oracle@cronulla 18090046]$ opatchauto apply -property_file /opt/app/oracle/software/oms.properties
+OPatch Automation Tool
+Copyright (c) 2013, Oracle Corporation.  All rights reserved.
+
+
+OPatchauto version : 11.1.0.10.3
+OUI version        : 11.1.0.11.0
+Running from       : /opt/app/oracle/em/middleware/oms
+Log file location  : /opt/app/oracle/em/middleware/oms/cfgtoollogs/opatch/opatch2014-04-26_18-12-53PM_1.log
+
+opatchauto log file: /opt/app/oracle/em/middleware/oms/cfgtoollogs/opatchauto/18090046/opatch_oms_2014-04-26_18-12-59PM_deploy.log
+
+
+Configuration Validation: Success
+
+
+Running apply prerequisite checks for patch(es) "18090046" and Oracle Home "/opt/app/oracle/em/middleware/oms"...
+Please monitor OPatch log file: /opt/app/oracle/em/middleware/oms/cfgtoollogs/opatch/18090046_Apr_26_2014_18_12_53/ApplyPrereq2014-04-26_18-15-39PM_8.log
+Patches "18090046" are successfully analyzed for Oracle Home "/opt/app/oracle/em/middleware/oms"
+
+To continue, OPatch will do the following:
+[Patch and deploy patch(es) binaries]   : Apply patch(es) [ 18090046 ] to Oracle Home "/opt/app/oracle/em/middleware/oms";
+                                          Apply RCU artifact with patch "/opt/app/oracle/em/middleware/oms/.patch_storage/18090046_Mar_28_2014_07_27_33/original_patch";
+                                          Register MRS artifact "swlib";
+                                          Register MRS artifact "procedures"
+
+
+Do you want to proceed? [y|n]
+y
+User Responded with: Y
+
+Applying patch "18090046" to Oracle Home "/opt/app/oracle/em/middleware/oms"...
+Please monitor OPatch log file: /opt/app/oracle/em/middleware/oms/cfgtoollogs/opatch/18090046_Apr_26_2014_18_12_53/apply2014-04-26_18-16-09PM_10.log
+
+Updating repository with RCU reference file "/opt/app/oracle/em/middleware/oms/.patch_storage/18090046_Mar_28_2014_07_27_33/original_patch"
+
+Registering service "swlib" with register file "/opt/app/oracle/em/middleware/oms/sysman/metadata/swlib/multioms"...
+
+Registering service "swlib" with register file "/opt/app/oracle/em/middleware/oms/sysman/metadata/swlib/patch"...
+
+Registering service "procedures" with register file "/opt/app/oracle/em/middleware/oms/sysman/metadata/procedures/linuxpatch/PatchLinux.xml"...
+
+Copying all logs to: /opt/app/oracle/em/middleware/oms/cfgtoollogs/opatch/2014-04-26_18-12-53PM_SystemPatch_18090046_1
+
+Patching summary:
+Following patch(es) are successfully applied (Oracle home:patch list):
+/opt/app/oracle/em/middleware/oms:18090046
+
+
+Log file location: /opt/app/oracle/em/middleware/oms/cfgtoollogs/opatchauto/18090046/opatch_oms_2014-04-26_18-12-59PM_deploy.log
+
+opatchauto succeeded.
+[oracle@cronulla 18090046]$ emctl start oms
+Oracle Enterprise Manager Cloud Control 12c Release 3
+Copyright (c) 1996, 2013 Oracle Corporation.  All rights reserved.
+Starting Oracle Management Server...
+Starting WebTier...
+WebTier Successfully Started
+Oracle Management Server Successfully Started
+Oracle Management Server is Up
+[oracle@cronulla 18090046]$ emctl status oms -details
+Oracle Enterprise Manager Cloud Control 12c Release 3
+Copyright (c) 1996, 2013 Oracle Corporation.  All rights reserved.
+Enter Enterprise Manager Root (SYSMAN) Password :
+sysman password entered is invalid
+[oracle@cronulla 18090046]$ emctl status oms -details
+Oracle Enterprise Manager Cloud Control 12c Release 3
+Copyright (c) 1996, 2013 Oracle Corporation.  All rights reserved.
+Enter Enterprise Manager Root (SYSMAN) Password :
+Console Server Host        : cronulla.yaocm.id.au
+HTTP Console Port          : 7788
+HTTPS Console Port         : 7802
+HTTP Upload Port           : 4889
+HTTPS Upload Port          : 4903
+EM Instance Home           : /opt/app/oracle/em/gc_inst/em/EMGC_OMS1
+OMS Log Directory Location : /opt/app/oracle/em/gc_inst/em/EMGC_OMS1/sysman/log
+OMS is not configured with SLB or virtual hostname
+Agent Upload is locked.
+OMS Console is locked.
+Active CA ID: 1
+Console URL: https://cronulla.yaocm.id.au:7802/em
+Upload URL: https://cronulla.yaocm.id.au:4903/empbs/upload
+
+WLS Domain Information
+Domain Name            : GCDomain
+Admin Server Host      : cronulla.yaocm.id.au
+Admin Server HTTPS Port: 7102
+Admin Server is RUNNING
+
+Managed Server Information
+Managed Server Instance Name: EMGC_OMS1
+Managed Server Instance Host: cronulla.yaocm.id.au
+WebTier is Up
+Oracle Management Server is Up
+

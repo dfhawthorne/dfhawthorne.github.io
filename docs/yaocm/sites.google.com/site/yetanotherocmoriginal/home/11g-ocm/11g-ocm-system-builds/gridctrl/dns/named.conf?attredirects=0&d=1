@@ -1,0 +1,26 @@
+options{
+     directory "/var/named";            // Working directory
+     allow-query { any; };              // This is the default
+     recursion yes;                     // Do provide recursive service
+};
+// master server for the yaocm.id.au
+zone "yaocm.id.au" IN {
+	type master;
+	file "yaocm.id.au.zone";
+	allow-update { none; };
+     	notify no;
+};
+// reverse mapping for 192.168.1.0/24 subnetwork
+zone "1.168.192.in-addr.arpa" IN {
+	type master;
+	file "yaocm.id.au.rr.zone";
+	allow-update { none; };
+     	notify no;
+};
+// reverse mapping for 192.168.2.0/24 subnetwork
+zone "2.168.192.in-addr.arpa" IN {
+	type master;
+	file "mgt.yaocm.id.au.rr.zone";
+	allow-update { none; };
+     	notify no;
+};

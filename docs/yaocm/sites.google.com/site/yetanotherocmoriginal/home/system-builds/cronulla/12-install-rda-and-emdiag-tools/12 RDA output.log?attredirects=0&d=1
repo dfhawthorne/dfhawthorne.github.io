@@ -1,0 +1,229 @@
+------------------------------------------------------------------------------
+RDA.BEGIN: Initializes the Data Collection
+------------------------------------------------------------------------------
+Enter the Oracle Enterprise Manager Cloud/Grid Control (OMS) home directory
+location
+Hit "Return" to accept the default (/opt/app/oracle/em/middleware/oms)
+>
+
+------------------------------------------------------------------------------
+RDA.CONFIG: Collects Key Configuration Information
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+OS.OS: Collects the Operating System Information
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+OS.PROF: Collects the User Profile
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+OS.PERF: Collects Performance Information
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+OS.NET: Collects Network Information
+------------------------------------------------------------------------------
+Do you want RDA to perform the network ping tests (Y/N)?
+Hit "Return" to accept the default (N)
+>
+
+------------------------------------------------------------------------------
+OS.ONET: Collects Oracle Net Information
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+OS.INST: Collects the Oracle Installation Information
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+OFM.WREQ: Handles the Oracle WebLogic Server Collection Requests
+------------------------------------------------------------------------------
+Are custom scripts used to start Oracle WebLogic servers (Y/N)?
+Hit "Return" to accept the default (N)
+>
+
+Do you want RDA to capture thread dumps when a data collection module requires
+on-line collections (Y/N)?
+Hit "Return" to accept the default (Y)
+>
+
+------------------------------------------------------------------------------
+OFM.IREQ: Handles the Oracle Instance Collection Requests
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+EM.GRID: Collects Oracle Management Server and Repository Information
+------------------------------------------------------------------------------
+Do you want to run the EMDIAG OMSVFY diagnostic kit on the Cloud Control OMS
+(Y/N)?
+Hit "Return" to accept the default (N)
+> Y
+
+To collect the log files from a local EMDIAG OMSVFY diagnostic kit
+installation, enter the EMDIAG OMSVFY diagnostic kit top-level directory
+location, where its 'log' directory is present. Otherwise, enter a dash (-).
+Hit "Return" to accept the default (/opt/app/oracle/em/middleware/oms/emdiag)
+>
+
+Do you want to run the EMDIAG REPVFY diagnostic kit on the Cloud Control
+Repository (Y/N)?
+Hit "Return" to accept the default (N)
+> Y
+
+To collect the log files from a local EMDIAG REPVFY diagnostic kit
+installation, enter the EMDIAG REPVFY diagnostic kit top-level directory
+location, where its 'log' directory is present. Otherwise, enter a dash (-).
+Hit "Return" to accept the default (/opt/app/oracle/em/middleware/oms/emdiag)
+> -
+
+------------------------------------------------------------------------------
+EM.AGT: Collects Oracle Enterprise Manager Agent Information
+------------------------------------------------------------------------------
+For Oracle Enterprise Manager Cloud Control 12c, enter the agent instance
+directory location. For earlier versions, enter the Grid Control agent home
+directory location.
+> /opt/app/oracle/em/agent/agent_inst
+
+Enter the Oracle Enterprise Manager Cloud Control Agent core Oracle home
+directory location
+Hit "Return" to accept the default (/opt/app/oracle/em/agent/core/12.1.0.3.0)
+>
+
+Do you want to run the EMDIAG AGTVFY diagnostic kit (Y/N)?
+Hit "Return" to accept the default (N)
+> Y
+
+To collect AGTVFY information from a local EMDIAG kit installation, enter the
+EMDIAG kit top-level directory location.
+Hit "Return" to accept the default
+(/opt/app/oracle/em/agent/core/12.1.0.3.0/emdiag)
+>
+
+------------------------------------------------------------------------------
+RDA.OCM: Set up the Configuration Manager Interface
+------------------------------------------------------------------------------
+RDA benefits from Oracle Configuration Manager by improving its data
+collection. Oracle Configuration Manager (OCM) collects the configuration
+information and uploads it to the OCM Repository in connected mode. When OCM
+is configured in disconnected mode, it adds the OCM payload to the RDA report
+packages in future RDA runs.
+
+Pending Configurations in /opt/app/oracle/em/middleware:
+  MH_T0001  Middleware home /opt/app/oracle/em/middleware
+
+Hit 'Return' to continue
+
+
+Do you want RDA to configure OCM now (Y/N)?
+Hit "Return" to accept the default (Y)
+>
+
+Oracle Configuration Manager is present in Middleware home
+/opt/app/oracle/em/middleware but its setup is not complete.
+Select the mode that you want to use:
+  C  Connected Mode
+  D  Disconnected Mode
+  N  Do not setup OCM
+Enter the letter corresponding to your choice
+Hit "Return" to accept the default (C)
+>
+
+------------------------------------------------------------------------------
+RDA.STATUS: Produces the Remote Data Collection Reports
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+RDA.LOAD: Produces the External Collection Reports
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+RDA.FILTER: Controls Report Content Filtering
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+RDA.END: Finalizes the Data Collection
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+RDA Data Collection Started 19-Apr-2014 11:22:07
+------------------------------------------------------------------------------
+Processing RDA.BEGIN module ...
+Processing OS.PERF module ...
+Processing RDA.CONFIG module ...
+Processing OS.OS module ...
+Processing OS.PROF module ...
+Processing OS.NET module ...
+Processing OS.ONET module ...
+Listener checks may take a few minutes. Be patient...
+Processing OS.INST module ...
+Processing OFM.WREQ module ...
+This can take time. Be patient ...
+Processing OFM.IREQ module ...
+Processing EM.GRID module ...
+Enter SYSMAN user password:
+Please re-enter it to confirm:
+Processing EM.AGT module ...
+Processing RDA.LOAD module ...
+Processing RDA.END module ...
+------------------------------------------------------------------------------
+RDA Data Collection Ended 19-Apr-2014 11:27:22
+------------------------------------------------------------------------------
+Executing setupCCR script for the Middleware home
+The ORACLE_HOME does not contain java.
+The ORACLE_HOME does not contain a valid JDK/JRE.
+Redefine JAVA_HOME to refer to a JDK/JRE 1.2.2 or greater.
+  You can review the reports by transferring the
+  /opt/app/oracle/software/rda/omsoutput directory structure to a location
+  where you have web-browser access. Then, point your browser at this file to
+  display the reports:
+    RDA__start.htm
+
+  Based on your server configuration, some possible alternative approaches
+  are:
+  - If your client computer with a browser has access to a web shared
+    directory, copy the ? directory structure to the web shared directory and
+    visit this URL:
+    http://machine:port/web_shared_directory/RDA__start.htm
+  or
+  - If your client computer with a browser has FTP access to the server
+    computer with the ? directory, visit this URL:
+    ftp://oracle@cronulla.yaocm.id.au//opt/app/oracle/software/rda/omsoutput
+
+  If this file was generated to assist in resolving a Service Request, please
+  send /opt/app/oracle/software/rda/RDA_omsoutput_cronulla.zip to Oracle
+  Support by uploading the file via My Oracle Support. If ftp'ing the file,
+  please be sure to ftp in BINARY format.
+
+  Please note: Do not submit any health, payment card or other sensitive
+  production data that requires protections greater than those specified in
+  the Oracle GCS Security Practices
+  (http://www.oracle.com/us/support/library/customer-support-security-practices-069170.pdf).
+  Information on how to remove data from your submission is available at
+  https://support.oracle.com/rs?type=doc&id=1227943.1
+
+Processing RDA.OCM module ...
+Processing RDA.LOAD module ...
+Processing RDA.END module ...
+------------------------------------------------------------------------------
+RDA Data Collection Ended 19-Apr-2014 11:27:52
+------------------------------------------------------------------------------
+  You can review the reports by transferring the
+  /opt/app/oracle/software/rda/omsoutput directory structure to a location
+  where you have web-browser access. Then, point your browser at this file to
+  display the reports:
+    RDA__start.htm
+
+  Based on your server configuration, some possible alternative approaches
+  are:
+  - If your client computer with a browser has access to a web shared
+    directory, copy the ? directory structure to the web shared directory and
+    visit this URL:
+    http://machine:port/web_shared_directory/RDA__start.htm
+  or
+  - If your client computer with a browser has FTP access to the server
+    computer with the ? directory, visit this URL:
+    ftp://oracle@cronulla.yaocm.id.au//opt/app/oracle/software/rda/omsoutput
+
+  If this file was generated to assist in resolving a Service Request, please
+  send /opt/app/oracle/software/rda/RDA_omsoutput_cronulla.zip to Oracle
+  Support by uploading the file via My Oracle Support. If ftp'ing the file,
+  please be sure to ftp in BINARY format.
+
+  Please note: Do not submit any health, payment card or other sensitive
+  production data that requires protections greater than those specified in
+  the Oracle GCS Security Practices
+  (http://www.oracle.com/us/support/library/customer-support-security-practices-069170.pdf).
+  Information on how to remove data from your submission is available at
+  https://support.oracle.com/rs?type=doc&id=1227943.1
+

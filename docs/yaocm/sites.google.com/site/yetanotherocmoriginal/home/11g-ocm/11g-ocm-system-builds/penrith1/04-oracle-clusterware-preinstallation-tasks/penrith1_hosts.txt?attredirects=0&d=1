@@ -1,0 +1,12 @@
+# Do not remove the following line, or various programs
+# that require network functionality will fail.
+127.0.0.1               localhost.localdomain localhost
+::1             localhost6.localdomain6 localhost6
+10.1.1.240              penrith1.yaocm.id.au penrith1
+# Private interconnect network
+192.168.1.1             penrith1-priv.yaocm.id.au penrith1-priv
+192.168.1.2             penrith2-priv.yaocm.id.au penrith2-priv
+# Private NAS network
+192.168.2.1             freenas-nas.yaocm.id.au freenas-nas
+192.168.2.2             penrith1-nas.yaocm.id.au penrith1-nas
+192.168.2.3             penrith2-nas.yaocm.id.au penrith2-nas

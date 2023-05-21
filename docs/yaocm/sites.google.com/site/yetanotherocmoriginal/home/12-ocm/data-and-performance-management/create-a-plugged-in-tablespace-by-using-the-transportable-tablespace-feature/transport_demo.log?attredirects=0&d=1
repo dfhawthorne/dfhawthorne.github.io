@@ -1,0 +1,2453 @@
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Sun Apr 29 20:40:51 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='pwiF'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=pwiF_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10283936;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/04/29 20:43:59
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=22 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp tag=TAG20180428T171331
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:02
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgc8hsz1_.ctl
+Finished restore at 2018/04/29 20:44:13
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10283936;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/04/29 20:44:27
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: restoring datafile 00001
+input datafile copy RECID=286 STAMP=974653982 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_system_fg87qgqo_.dbf
+destination for restore of datafile 00001: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00001
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgc8jcz5_.dbf RECID=289 STAMP=974753078
+channel ORA_AUX_DISK_1: restoring datafile 00003
+input datafile copy RECID=285 STAMP=974653952 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_undotbs1_fg87pkys_.dbf
+destination for restore of datafile 00003: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00003
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgc8jv22_.dbf RECID=290 STAMP=974753096
+channel ORA_AUX_DISK_1: restoring datafile 00002
+input datafile copy RECID=284 STAMP=974653924 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_sysaux_fg87oj0y_.dbf
+destination for restore of datafile 00002: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00002
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgc8kb2x_.dbf RECID=291 STAMP=974753117
+channel ORA_AUX_DISK_1: restoring datafile 00005
+input datafile copy RECID=288 STAMP=974654007 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_demo_fg87rnwk_.dbf
+destination for restore of datafile 00005: /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00005
+output file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgc8l363_.dbf RECID=292 STAMP=974753126
+Finished restore at 2018/04/29 20:45:30
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=293 STAMP=974753130 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgc8jcz5_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=294 STAMP=974753131 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgc8jv22_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=295 STAMP=974753131 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgc8kb2x_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=296 STAMP=974753131 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgc8l363_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10283936;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/04/29 20:45:34
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 527 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc
+archived log for thread 1 with sequence 528 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc
+archived log for thread 1 with sequence 529 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc
+archived log for thread 1 with sequence 530 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc
+archived log for thread 1 with sequence 531 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc
+archived log for thread 1 with sequence 532 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc
+archived log for thread 1 with sequence 533 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc
+archived log for thread 1 with sequence 534 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc
+archived log for thread 1 with sequence 535 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc
+archived log for thread 1 with sequence 536 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc
+archived log for thread 1 with sequence 537 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc
+archived log for thread 1 with sequence 538 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc
+archived log for thread 1 with sequence 539 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc
+archived log for thread 1 with sequence 540 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc
+archived log for thread 1 with sequence 541 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc
+archived log for thread 1 with sequence 542 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc
+archived log for thread 1 with sequence 543 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc
+archived log for thread 1 with sequence 544 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc
+archived log for thread 1 with sequence 545 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc
+archived log for thread 1 with sequence 546 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc
+archived log for thread 1 with sequence 547 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc thread=1 sequence=527
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc thread=1 sequence=528
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc thread=1 sequence=529
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc thread=1 sequence=530
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc thread=1 sequence=531
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc thread=1 sequence=532
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc thread=1 sequence=533
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc thread=1 sequence=534
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc thread=1 sequence=535
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc thread=1 sequence=536
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc thread=1 sequence=537
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc thread=1 sequence=538
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc thread=1 sequence=539
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc thread=1 sequence=540
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc thread=1 sequence=541
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc thread=1 sequence=542
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc thread=1 sequence=543
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc thread=1 sequence=544
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc thread=1 sequence=545
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc thread=1 sequence=546
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc thread=1 sequence=547
+media recovery complete, elapsed time: 00:06:04
+Finished recover at 2018/04/29 20:51:42
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_pwiF_lFib":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_pwiF_lFib" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_pwiF_lFib is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fgc8l363_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_pwiF_lFib" successfully completed at Sun Apr 29 20:53:33 2018 elapsed 0 00:00:45
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fgc8l363_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fgc8l363_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fgc8yjts_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fgc8y817_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fgc8y4kv_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fgc8y05b_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgc8kb2x_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgc8jv22_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgc8jcz5_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgc8hsz1_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Sun Apr 29 21:11:48 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='wsjE'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=wsjE_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10287726;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/04/29 21:14:56
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=7 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp tag=TAG20180428T171331
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:03
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgcb9v6j_.ctl
+Finished restore at 2018/04/29 21:15:10
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10287726;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/04/29 21:15:24
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: restoring datafile 00001
+input datafile copy RECID=286 STAMP=974653982 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_system_fg87qgqo_.dbf
+destination for restore of datafile 00001: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00001
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgcbbdty_.dbf RECID=289 STAMP=974754935
+channel ORA_AUX_DISK_1: restoring datafile 00003
+input datafile copy RECID=285 STAMP=974653952 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_undotbs1_fg87pkys_.dbf
+destination for restore of datafile 00003: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00003
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgcbbvxc_.dbf RECID=290 STAMP=974754953
+channel ORA_AUX_DISK_1: restoring datafile 00002
+input datafile copy RECID=284 STAMP=974653924 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_sysaux_fg87oj0y_.dbf
+destination for restore of datafile 00002: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00002
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgcbcc0o_.dbf RECID=291 STAMP=974754971
+channel ORA_AUX_DISK_1: restoring datafile 00005
+input datafile copy RECID=288 STAMP=974654007 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_demo_fg87rnwk_.dbf
+destination for restore of datafile 00005: /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00005
+output file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgcbd44j_.dbf RECID=292 STAMP=974754982
+Finished restore at 2018/04/29 21:16:23
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=293 STAMP=974754983 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgcbbdty_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=294 STAMP=974754984 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgcbbvxc_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=295 STAMP=974754984 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgcbcc0o_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=296 STAMP=974754984 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgcbd44j_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10287726;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/04/29 21:16:26
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 527 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc
+archived log for thread 1 with sequence 528 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc
+archived log for thread 1 with sequence 529 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc
+archived log for thread 1 with sequence 530 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc
+archived log for thread 1 with sequence 531 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc
+archived log for thread 1 with sequence 532 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc
+archived log for thread 1 with sequence 533 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc
+archived log for thread 1 with sequence 534 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc
+archived log for thread 1 with sequence 535 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc
+archived log for thread 1 with sequence 536 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc
+archived log for thread 1 with sequence 537 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc
+archived log for thread 1 with sequence 538 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc
+archived log for thread 1 with sequence 539 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc
+archived log for thread 1 with sequence 540 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc
+archived log for thread 1 with sequence 541 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc
+archived log for thread 1 with sequence 542 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc
+archived log for thread 1 with sequence 543 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc
+archived log for thread 1 with sequence 544 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc
+archived log for thread 1 with sequence 545 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc
+archived log for thread 1 with sequence 546 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc
+archived log for thread 1 with sequence 547 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc
+archived log for thread 1 with sequence 548 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc
+archived log for thread 1 with sequence 549 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc thread=1 sequence=527
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc thread=1 sequence=528
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc thread=1 sequence=529
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc thread=1 sequence=530
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc thread=1 sequence=531
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc thread=1 sequence=532
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc thread=1 sequence=533
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc thread=1 sequence=534
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc thread=1 sequence=535
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc thread=1 sequence=536
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc thread=1 sequence=537
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc thread=1 sequence=538
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc thread=1 sequence=539
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc thread=1 sequence=540
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc thread=1 sequence=541
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc thread=1 sequence=542
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc thread=1 sequence=543
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc thread=1 sequence=544
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc thread=1 sequence=545
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc thread=1 sequence=546
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc thread=1 sequence=547
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc thread=1 sequence=548
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc thread=1 sequence=549
+media recovery complete, elapsed time: 00:06:11
+Finished recover at 2018/04/29 21:22:43
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_wsjE_khjs":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_wsjE_khjs" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_wsjE_khjs is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fgcbd44j_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_wsjE_khjs" successfully completed at Sun Apr 29 21:24:20 2018 elapsed 0 00:00:44
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fgcbd44j_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fgcbd44j_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fgcbrpbq_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fgcbrdb0_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fgcbr8lq_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fgcbr49n_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgcbcc0o_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgcbbvxc_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgcbbdty_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgcb9v6j_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Sun Apr 29 21:28:54 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='zwzz'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=zwzz_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10291691;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/04/29 21:31:53
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=7 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp tag=TAG20180428T171331
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:02
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgcc9mv6_.ctl
+Finished restore at 2018/04/29 21:32:07
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10291691;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/04/29 21:32:20
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: restoring datafile 00001
+input datafile copy RECID=286 STAMP=974653982 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_system_fg87qgqo_.dbf
+destination for restore of datafile 00001: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00001
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgccb549_.dbf RECID=289 STAMP=974755950
+channel ORA_AUX_DISK_1: restoring datafile 00003
+input datafile copy RECID=285 STAMP=974653952 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_undotbs1_fg87pkys_.dbf
+destination for restore of datafile 00003: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00003
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgccbn6b_.dbf RECID=290 STAMP=974755969
+channel ORA_AUX_DISK_1: restoring datafile 00002
+input datafile copy RECID=284 STAMP=974653924 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_sysaux_fg87oj0y_.dbf
+destination for restore of datafile 00002: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00002
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgccc372_.dbf RECID=291 STAMP=974755992
+channel ORA_AUX_DISK_1: restoring datafile 00005
+input datafile copy RECID=288 STAMP=974654007 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_demo_fg87rnwk_.dbf
+destination for restore of datafile 00005: /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00005
+output file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgcccw7j_.dbf RECID=292 STAMP=974755998
+Finished restore at 2018/04/29 21:33:19
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=293 STAMP=974756000 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgccb549_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=294 STAMP=974756000 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgccbn6b_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=295 STAMP=974756001 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgccc372_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=296 STAMP=974756001 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgcccw7j_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10291691;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/04/29 21:33:23
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 527 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc
+archived log for thread 1 with sequence 528 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc
+archived log for thread 1 with sequence 529 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc
+archived log for thread 1 with sequence 530 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc
+archived log for thread 1 with sequence 531 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc
+archived log for thread 1 with sequence 532 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc
+archived log for thread 1 with sequence 533 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc
+archived log for thread 1 with sequence 534 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc
+archived log for thread 1 with sequence 535 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc
+archived log for thread 1 with sequence 536 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc
+archived log for thread 1 with sequence 537 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc
+archived log for thread 1 with sequence 538 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc
+archived log for thread 1 with sequence 539 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc
+archived log for thread 1 with sequence 540 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc
+archived log for thread 1 with sequence 541 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc
+archived log for thread 1 with sequence 542 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc
+archived log for thread 1 with sequence 543 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc
+archived log for thread 1 with sequence 544 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc
+archived log for thread 1 with sequence 545 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc
+archived log for thread 1 with sequence 546 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc
+archived log for thread 1 with sequence 547 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc
+archived log for thread 1 with sequence 548 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc
+archived log for thread 1 with sequence 549 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc
+archived log for thread 1 with sequence 550 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_550_fgcbbbsy_.arc
+archived log for thread 1 with sequence 551 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_551_fgcc19ko_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc thread=1 sequence=527
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc thread=1 sequence=528
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc thread=1 sequence=529
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc thread=1 sequence=530
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc thread=1 sequence=531
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc thread=1 sequence=532
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc thread=1 sequence=533
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc thread=1 sequence=534
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc thread=1 sequence=535
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc thread=1 sequence=536
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc thread=1 sequence=537
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc thread=1 sequence=538
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc thread=1 sequence=539
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc thread=1 sequence=540
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc thread=1 sequence=541
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc thread=1 sequence=542
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc thread=1 sequence=543
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc thread=1 sequence=544
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc thread=1 sequence=545
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc thread=1 sequence=546
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc thread=1 sequence=547
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc thread=1 sequence=548
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc thread=1 sequence=549
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_550_fgcbbbsy_.arc thread=1 sequence=550
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_551_fgcc19ko_.arc thread=1 sequence=551
+media recovery complete, elapsed time: 00:05:56
+Finished recover at 2018/04/29 21:39:23
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_zwzz_rBsw":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_zwzz_rBsw" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_zwzz_rBsw is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fgcccw7j_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_zwzz_rBsw" successfully completed at Sun Apr 29 21:41:08 2018 elapsed 0 00:00:44
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fgcccw7j_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fgcccw7j_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fgccqvhm_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fgccqmtr_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fgccqj6c_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fgccqdwz_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgccc372_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgccbn6b_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgccb549_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgcc9mv6_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Sun Apr 29 22:02:15 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='yhto'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=yhto_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10294258;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/04/29 22:05:14
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=23 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp tag=TAG20180428T171331
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:02
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgcf84x6_.ctl
+Finished restore at 2018/04/29 22:05:28
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10294258;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/04/29 22:05:41
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: restoring datafile 00001
+input datafile copy RECID=286 STAMP=974653982 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_system_fg87qgqo_.dbf
+destination for restore of datafile 00001: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00001
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgcf8p1k_.dbf RECID=289 STAMP=974757952
+channel ORA_AUX_DISK_1: restoring datafile 00003
+input datafile copy RECID=285 STAMP=974653952 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_undotbs1_fg87pkys_.dbf
+destination for restore of datafile 00003: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00003
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgcf953n_.dbf RECID=290 STAMP=974757975
+channel ORA_AUX_DISK_1: restoring datafile 00002
+input datafile copy RECID=284 STAMP=974653924 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_sysaux_fg87oj0y_.dbf
+destination for restore of datafile 00002: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00002
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgcf9y5l_.dbf RECID=291 STAMP=974757999
+channel ORA_AUX_DISK_1: restoring datafile 00005
+input datafile copy RECID=288 STAMP=974654007 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_demo_fg87rnwk_.dbf
+destination for restore of datafile 00005: /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00005
+output file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgcfbq4p_.dbf RECID=292 STAMP=974758010
+Finished restore at 2018/04/29 22:06:54
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=293 STAMP=974758014 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgcf8p1k_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=294 STAMP=974758015 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgcf953n_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=295 STAMP=974758015 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgcf9y5l_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=296 STAMP=974758016 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgcfbq4p_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10294258;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/04/29 22:06:58
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 527 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc
+archived log for thread 1 with sequence 528 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc
+archived log for thread 1 with sequence 529 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc
+archived log for thread 1 with sequence 530 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc
+archived log for thread 1 with sequence 531 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc
+archived log for thread 1 with sequence 532 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc
+archived log for thread 1 with sequence 533 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc
+archived log for thread 1 with sequence 534 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc
+archived log for thread 1 with sequence 535 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc
+archived log for thread 1 with sequence 536 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc
+archived log for thread 1 with sequence 537 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc
+archived log for thread 1 with sequence 538 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc
+archived log for thread 1 with sequence 539 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc
+archived log for thread 1 with sequence 540 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc
+archived log for thread 1 with sequence 541 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc
+archived log for thread 1 with sequence 542 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc
+archived log for thread 1 with sequence 543 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc
+archived log for thread 1 with sequence 544 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc
+archived log for thread 1 with sequence 545 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc
+archived log for thread 1 with sequence 546 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc
+archived log for thread 1 with sequence 547 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc
+archived log for thread 1 with sequence 548 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc
+archived log for thread 1 with sequence 549 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc
+archived log for thread 1 with sequence 550 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_550_fgcbbbsy_.arc
+archived log for thread 1 with sequence 551 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_551_fgcc19ko_.arc
+archived log for thread 1 with sequence 552 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_552_fgccb390_.arc
+archived log for thread 1 with sequence 553 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_553_fgccygn8_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc thread=1 sequence=527
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc thread=1 sequence=528
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc thread=1 sequence=529
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc thread=1 sequence=530
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc thread=1 sequence=531
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc thread=1 sequence=532
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc thread=1 sequence=533
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc thread=1 sequence=534
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc thread=1 sequence=535
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc thread=1 sequence=536
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc thread=1 sequence=537
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc thread=1 sequence=538
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc thread=1 sequence=539
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc thread=1 sequence=540
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc thread=1 sequence=541
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc thread=1 sequence=542
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc thread=1 sequence=543
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc thread=1 sequence=544
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc thread=1 sequence=545
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc thread=1 sequence=546
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc thread=1 sequence=547
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc thread=1 sequence=548
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc thread=1 sequence=549
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_550_fgcbbbsy_.arc thread=1 sequence=550
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_551_fgcc19ko_.arc thread=1 sequence=551
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_552_fgccb390_.arc thread=1 sequence=552
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_553_fgccygn8_.arc thread=1 sequence=553
+media recovery complete, elapsed time: 00:06:33
+Finished recover at 2018/04/29 22:13:35
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_yhto_qyno":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_yhto_qyno" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_yhto_qyno is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fgcfbq4p_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_yhto_qyno" successfully completed at Sun Apr 29 22:15:13 2018 elapsed 0 00:00:44
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fgcfbq4p_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fgcfbq4p_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fgcfr2m7_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fgcfqsj7_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fgcfqoqs_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fgcfqjyo_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgcf9y5l_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgcf953n_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgcf8p1k_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgcf84x6_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Sun Apr 29 22:29:50 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database (not started)
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-00571: ===========================================================
+RMAN-00569: =============== ERROR MESSAGE STACK FOLLOWS ===============
+RMAN-00571: ===========================================================
+RMAN-03002: failure of transport tablespace command at 04/29/2018 22:29:52
+RMAN-06403: could not obtain a fully authorized session
+ORA-01034: ORACLE not available
+ORA-27101: shared memory realm does not exist
+Linux-x86_64 Error: 2: No such file or directory
+Additional information: 3640
+Additional information: 1866219103
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Sun Apr 29 22:42:16 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='mbfm'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=mbfm_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10301493;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/04/29 22:45:17
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=23 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_28/o1_mf_s_974654012_fg87rz3l_.bkp tag=TAG20180428T171331
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:03
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgchm8cf_.ctl
+Finished restore at 2018/04/29 22:45:32
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10301493;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/04/29 22:45:46
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: restoring datafile 00001
+input datafile copy RECID=286 STAMP=974653982 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_system_fg87qgqo_.dbf
+destination for restore of datafile 00001: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00001
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgchmthq_.dbf RECID=289 STAMP=974760355
+channel ORA_AUX_DISK_1: restoring datafile 00003
+input datafile copy RECID=285 STAMP=974653952 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_undotbs1_fg87pkys_.dbf
+destination for restore of datafile 00003: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00003
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgchn9lm_.dbf RECID=290 STAMP=974760374
+channel ORA_AUX_DISK_1: restoring datafile 00002
+input datafile copy RECID=284 STAMP=974653924 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_sysaux_fg87oj0y_.dbf
+destination for restore of datafile 00002: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00002
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgchnrlp_.dbf RECID=291 STAMP=974760394
+channel ORA_AUX_DISK_1: restoring datafile 00005
+input datafile copy RECID=288 STAMP=974654007 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_demo_fg87rnwk_.dbf
+destination for restore of datafile 00005: /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00005
+output file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgchoknb_.dbf RECID=292 STAMP=974760403
+Finished restore at 2018/04/29 22:46:44
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=293 STAMP=974760405 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgchmthq_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=294 STAMP=974760405 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgchn9lm_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=295 STAMP=974760406 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgchnrlp_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=296 STAMP=974760406 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgchoknb_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10301493;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/04/29 22:46:48
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 527 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc
+archived log for thread 1 with sequence 528 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc
+archived log for thread 1 with sequence 529 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc
+archived log for thread 1 with sequence 530 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc
+archived log for thread 1 with sequence 531 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc
+archived log for thread 1 with sequence 532 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc
+archived log for thread 1 with sequence 533 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc
+archived log for thread 1 with sequence 534 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc
+archived log for thread 1 with sequence 535 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc
+archived log for thread 1 with sequence 536 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc
+archived log for thread 1 with sequence 537 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc
+archived log for thread 1 with sequence 538 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc
+archived log for thread 1 with sequence 539 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc
+archived log for thread 1 with sequence 540 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc
+archived log for thread 1 with sequence 541 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc
+archived log for thread 1 with sequence 542 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc
+archived log for thread 1 with sequence 543 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc
+archived log for thread 1 with sequence 544 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc
+archived log for thread 1 with sequence 545 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc
+archived log for thread 1 with sequence 546 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc
+archived log for thread 1 with sequence 547 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc
+archived log for thread 1 with sequence 548 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc
+archived log for thread 1 with sequence 549 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc
+archived log for thread 1 with sequence 550 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_550_fgcbbbsy_.arc
+archived log for thread 1 with sequence 551 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_551_fgcc19ko_.arc
+archived log for thread 1 with sequence 552 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_552_fgccb390_.arc
+archived log for thread 1 with sequence 553 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_553_fgccygn8_.arc
+archived log for thread 1 with sequence 554 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_554_fgcf8n4m_.arc
+archived log for thread 1 with sequence 555 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_555_fgcfyprg_.arc
+archived log for thread 1 with sequence 556 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_556_fgcgrcjh_.arc
+archived log for thread 1 with sequence 557 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_557_fgchdlcb_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_527_fg890stm_.arc thread=1 sequence=527
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_528_fg8brwxs_.arc thread=1 sequence=528
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_529_fg8sbkcc_.arc thread=1 sequence=529
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_530_fg8sqn3r_.arc thread=1 sequence=530
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_28/o1_mf_1_531_fg8vx1g2_.arc thread=1 sequence=531
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_532_fgbdzh3w_.arc thread=1 sequence=532
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_533_fgbgpvz2_.arc thread=1 sequence=533
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_534_fgbjh493_.arc thread=1 sequence=534
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_535_fgbl7fsq_.arc thread=1 sequence=535
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_536_fgbmzoyl_.arc thread=1 sequence=536
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_537_fgboqydj_.arc thread=1 sequence=537
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_538_fgbqj52c_.arc thread=1 sequence=538
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_539_fgbs8dj5_.arc thread=1 sequence=539
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_540_fgbv0opn_.arc thread=1 sequence=540
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_541_fgbwrr9w_.arc thread=1 sequence=541
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_542_fgbyjz76_.arc thread=1 sequence=542
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_543_fgc0966p_.arc thread=1 sequence=543
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_544_fgc21jm7_.arc thread=1 sequence=544
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_545_fgc3sp9f_.arc thread=1 sequence=545
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_546_fgc5kyx5_.arc thread=1 sequence=546
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_547_fgc7b7ks_.arc thread=1 sequence=547
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_548_fgc8jb3t_.arc thread=1 sequence=548
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_549_fgc9ntlz_.arc thread=1 sequence=549
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_550_fgcbbbsy_.arc thread=1 sequence=550
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_551_fgcc19ko_.arc thread=1 sequence=551
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_552_fgccb390_.arc thread=1 sequence=552
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_553_fgccygn8_.arc thread=1 sequence=553
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_554_fgcf8n4m_.arc thread=1 sequence=554
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_555_fgcfyprg_.arc thread=1 sequence=555
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_556_fgcgrcjh_.arc thread=1 sequence=556
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_29/o1_mf_1_557_fgchdlcb_.arc thread=1 sequence=557
+media recovery complete, elapsed time: 00:07:07
+Finished recover at 2018/04/29 22:53:59
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_mbfm_eCaq":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_mbfm_eCaq" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_mbfm_eCaq is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fgchoknb_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_mbfm_eCaq" successfully completed at Sun Apr 29 22:55:52 2018 elapsed 0 00:00:43
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fgchoknb_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fgchoknb_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fgcj3v8x_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fgcj3k7r_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fgcj3f9y_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fgcj3962_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgchnrlp_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgchn9lm_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgchmthq_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgchm8cf_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Mon Apr 30 20:40:58 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='toaq'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=toaq_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10331156;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/04/30 20:44:02
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=24 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_30/o1_mf_s_974828822_fgflhs4l_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_04_30/o1_mf_s_974828822_fgflhs4l_.bkp tag=TAG20180430T174701
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:03
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgfwvx85_.ctl
+Finished restore at 2018/04/30 20:44:17
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10331156;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/04/30 20:44:31
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: restoring datafile 00001
+input datafile copy RECID=291 STAMP=974828803 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_system_fgflgrx4_.dbf
+destination for restore of datafile 00001: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00001
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgfwwhr7_.dbf RECID=294 STAMP=974839483
+channel ORA_AUX_DISK_1: restoring datafile 00003
+input datafile copy RECID=290 STAMP=974828789 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_undotbs1_fgflfytj_.dbf
+destination for restore of datafile 00003: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00003
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgfwwyt1_.dbf RECID=295 STAMP=974839499
+channel ORA_AUX_DISK_1: restoring datafile 00002
+input datafile copy RECID=289 STAMP=974828760 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_sysaux_fgflf5ny_.dbf
+destination for restore of datafile 00002: /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00002
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgfwxfvc_.dbf RECID=296 STAMP=974839518
+channel ORA_AUX_DISK_1: restoring datafile 00005
+input datafile copy RECID=293 STAMP=974828817 file name=/opt/app/oracle/fast_recovery_area/PERSONAL/datafile/o1_mf_demo_fgflhh92_.dbf
+destination for restore of datafile 00005: /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: copied datafile copy of datafile 00005
+output file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgfwy6y7_.dbf RECID=297 STAMP=974839529
+Finished restore at 2018/04/30 20:45:29
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=298 STAMP=974839530 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgfwwhr7_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=299 STAMP=974839531 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgfwwyt1_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=300 STAMP=974839531 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgfwxfvc_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=301 STAMP=974839532 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fgfwy6y7_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10331156;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/04/30 20:45:34
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 561 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_561_fgfls3gw_.arc
+archived log for thread 1 with sequence 562 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_562_fgfnkd5p_.arc
+archived log for thread 1 with sequence 563 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_563_fgfp9nb6_.arc
+archived log for thread 1 with sequence 564 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_564_fgfr1x8j_.arc
+archived log for thread 1 with sequence 565 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_565_fgfst53b_.arc
+archived log for thread 1 with sequence 566 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_566_fgfvldwb_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_561_fgfls3gw_.arc thread=1 sequence=561
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_562_fgfnkd5p_.arc thread=1 sequence=562
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_563_fgfp9nb6_.arc thread=1 sequence=563
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_564_fgfr1x8j_.arc thread=1 sequence=564
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_565_fgfst53b_.arc thread=1 sequence=565
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_04_30/o1_mf_1_566_fgfvldwb_.arc thread=1 sequence=566
+media recovery complete, elapsed time: 00:00:45
+Finished recover at 2018/04/30 20:46:23
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_toaq_qdht":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_toaq_qdht" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_toaq_qdht is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fgfwy6y7_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_toaq_qdht" successfully completed at Mon Apr 30 20:47:59 2018 elapsed 0 00:00:43
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fgfwy6y7_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fgfwy6y7_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fgfx0jz0_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fgfx07gy_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fgfx044j_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fgfx00mp_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fgfwxfvc_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fgfwwyt1_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fgfwwhr7_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fgfwvx85_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.
+
+Recovery Manager: Release 12.1.0.2.0 - Production on Tue May 1 10:45:31 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database: PERSONAL (DBID=3108887152)
+using target database control file instead of recovery catalog
+
+RMAN> # ------------------------------------------------------------------------------
+2> # OCM 12C Upgrade Practice
+3> #   Data and Performance Management
+4> #     Create a plugged-in tablespace by using the transportable tablespace
+5> #         feature
+6> #
+7> # Create Transport Set for DEMO
+8> #
+9> # This is based on the example given in
+10> #   https://docs.oracle.com/database/121/RCMRF/rcmsynta2022.htm#RCMRF1919
+11> # ------------------------------------------------------------------------------
+12> TRANSPORT TABLESPACE demo
+13>   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
+14>   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
+15> 
+RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+
+List of tablespaces expected to have UNDO segments
+Tablespace SYSTEM
+Tablespace UNDOTBS1
+
+Creating automatic instance, with SID='tBFc'
+
+initialization parameters used for automatic instance:
+db_name=PERSONAL
+db_unique_name=tBFc_pitr_PERSONAL
+compatible=12.1.0.2.0
+db_block_size=8192
+db_files=200
+diagnostic_dest=/opt/app/oracle
+_system_trig_enabled=FALSE
+sga_target=1472M
+processes=200
+db_create_file_dest=/opt/app/oracle/oradata/auxdata
+log_archive_dest_1='location=/opt/app/oracle/oradata/auxdata'
+#No auxiliary parameter file used
+
+
+starting up automatic instance PERSONAL
+
+Oracle instance started
+
+Total System Global Area    1543503872 bytes
+
+Fixed Size                     2924736 bytes
+Variable Size                385879872 bytes
+Database Buffers            1140850688 bytes
+Redo Buffers                  13848576 bytes
+Automatic instance created
+Running TRANSPORT_SET_CHECK on recovery set tablespaces
+TRANSPORT_SET_CHECK completed successfully
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10345101;
+# restore the controlfile
+restore clone controlfile;
+ 
+# mount the controlfile
+sql clone 'alter database mount clone database';
+ 
+# archive current online log 
+sql 'alter system archive log current';
+}
+executing Memory Script
+
+executing command: SET until clause
+
+Starting restore at 2018/05/01 10:48:27
+allocated channel: ORA_AUX_DISK_1
+channel ORA_AUX_DISK_1: SID=23 device type=DISK
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: restoring control file
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_05_01/o1_mf_s_974975025_fghdwp24_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/autobackup/2018_05_01/o1_mf_s_974975025_fghdwp24_.bkp tag=TAG20180501T102345
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:03
+output file name=/opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fghgc7bc_.ctl
+Finished restore at 2018/05/01 10:48:42
+
+sql statement: alter database mount clone database
+
+sql statement: alter system archive log current
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10345101;
+# set destinations for recovery set and auxiliary set datafiles
+set newname for clone datafile  1 to new;
+set newname for clone datafile  3 to new;
+set newname for clone datafile  2 to new;
+set newname for clone tempfile  1 to new;
+set newname for datafile  5 to 
+ "/opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf";
+# switch all tempfiles
+switch clone tempfile all;
+# restore the tablespaces in the recovery set and the auxiliary set
+restore clone datafile  1, 3, 2, 5;
+ 
+switch clone datafile all;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+executing command: SET NEWNAME
+
+renamed tempfile 1 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_%u_.tmp in control file
+
+Starting restore at 2018/05/01 10:48:56
+using channel ORA_AUX_DISK_1
+
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_AUX_DISK_1: restoring datafile 00003 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_%u_.dbf
+channel ORA_AUX_DISK_1: restoring datafile 00005 to /opt/app/oracle/oradata/transport/o1_mf_demo_%u_.dbf
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/backupset/2018_05_01/o1_mf_nnndf_TAG20180501T102156_fghdv1fo_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/backupset/2018_05_01/o1_mf_nnndf_TAG20180501T102156_fghdv1fo_.bkp tag=TAG20180501T102156
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:15
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_AUX_DISK_1: restoring datafile 00001 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_%u_.dbf
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/backupset/2018_05_01/o1_mf_nnndf_TAG20180501T102156_fghdv43v_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/backupset/2018_05_01/o1_mf_nnndf_TAG20180501T102156_fghdv43v_.bkp tag=TAG20180501T102156
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:15
+channel ORA_AUX_DISK_1: starting datafile backup set restore
+channel ORA_AUX_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_AUX_DISK_1: restoring datafile 00002 to /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_%u_.dbf
+channel ORA_AUX_DISK_1: reading from backup piece /opt/app/oracle/fast_recovery_area/PERSONAL/backupset/2018_05_01/o1_mf_nnndf_TAG20180501T102156_fghdv0qv_.bkp
+channel ORA_AUX_DISK_1: piece handle=/opt/app/oracle/fast_recovery_area/PERSONAL/backupset/2018_05_01/o1_mf_nnndf_TAG20180501T102156_fghdv0qv_.bkp tag=TAG20180501T102156
+channel ORA_AUX_DISK_1: restored backup piece 1
+channel ORA_AUX_DISK_1: restore complete, elapsed time: 00:00:15
+Finished restore at 2018/05/01 10:49:41
+
+datafile 1 switched to datafile copy
+input datafile copy RECID=298 STAMP=974976582 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fghgd7wx_.dbf
+datafile 3 switched to datafile copy
+input datafile copy RECID=299 STAMP=974976582 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fghgcrsr_.dbf
+datafile 2 switched to datafile copy
+input datafile copy RECID=300 STAMP=974976583 file name=/opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fghgdpz6_.dbf
+datafile 5 switched to datafile copy
+input datafile copy RECID=301 STAMP=974976583 file name=/opt/app/oracle/oradata/transport/o1_mf_demo_fghgcry5_.dbf
+
+contents of Memory Script:
+{
+# set requested point in time
+set until  scn 10345101;
+# online the datafiles restored or switched
+sql clone "alter database datafile  1 online";
+sql clone "alter database datafile  3 online";
+sql clone "alter database datafile  2 online";
+sql clone "alter database datafile  5 online";
+# recover and open resetlogs
+recover clone database tablespace  "DEMO", "SYSTEM", "UNDOTBS1", "SYSAUX" delete archivelog;
+alter clone database open resetlogs;
+}
+executing Memory Script
+
+executing command: SET until clause
+
+sql statement: alter database datafile  1 online
+
+sql statement: alter database datafile  3 online
+
+sql statement: alter database datafile  2 online
+
+sql statement: alter database datafile  5 online
+
+Starting recover at 2018/05/01 10:49:45
+using channel ORA_AUX_DISK_1
+
+starting media recovery
+
+archived log for thread 1 with sequence 571 is already on disk as file /opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_05_01/o1_mf_1_571_fghg3y0y_.arc
+archived log file name=/opt/app/oracle/fast_recovery_area/PERSONAL/archivelog/2018_05_01/o1_mf_1_571_fghg3y0y_.arc thread=1 sequence=571
+media recovery complete, elapsed time: 00:00:04
+Finished recover at 2018/05/01 10:49:53
+
+database opened
+
+contents of Memory Script:
+{
+# make read only the tablespace that will be exported
+sql clone 'alter tablespace  DEMO read only';
+# create directory for datapump export
+sql clone "create or replace directory STREAMS_DIROBJ_DPDIR as ''
+/opt/app/oracle/oradata/transport''";
+}
+executing Memory Script
+
+sql statement: alter tablespace  DEMO read only
+
+sql statement: create or replace directory STREAMS_DIROBJ_DPDIR as ''/opt/app/oracle/oradata/transport''
+
+Performing export of metadata...
+   EXPDP> Starting "SYS"."TSPITR_EXP_tBFc_FtAn":  
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/PLUGTS_BLK
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX/INDEX
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/CONSTRAINT/CONSTRAINT
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/INDEX_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/TABLE_STATISTICS
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/STATISTICS/MARKER
+   EXPDP> Processing object type TRANSPORTABLE_EXPORT/POST_INSTANCE/PLUGTS_BLK
+   EXPDP> Master table "SYS"."TSPITR_EXP_tBFc_FtAn" successfully loaded/unloaded
+   EXPDP> ******************************************************************************
+   EXPDP> Dump file set for SYS.TSPITR_EXP_tBFc_FtAn is:
+   EXPDP>   /opt/app/oracle/oradata/transport/dmpfile.dmp
+   EXPDP> ******************************************************************************
+   EXPDP> Datafiles required for transportable tablespace DEMO:
+   EXPDP>   /opt/app/oracle/oradata/transport/o1_mf_demo_fghgcry5_.dbf
+   EXPDP> Job "SYS"."TSPITR_EXP_tBFc_FtAn" successfully completed at Tue May 1 10:51:36 2018 elapsed 0 00:00:46
+Export completed
+
+/*
+   The following command may be used to import the tablespaces.
+   Substitute values for <logon> and <directory>.
+ 
+   impdp <logon> directory=<directory> dumpfile= 'dmpfile.dmp' transport_datafiles= /opt/app/oracle/oradata/transport/o1_mf_demo_fghgcry5_.dbf 
+*/
+ 
+--
+--
+--
+--
+CREATE DIRECTORY STREAMS$DIROBJ$1 AS  '/opt/app/oracle/oradata/transport/';
+CREATE DIRECTORY STREAMS$DIROBJ$DPDIR AS  '/opt/app/oracle/oradata/transport';
+/* PL/SQL Script to import the exported tablespaces */
+DECLARE
+--
+  tbs_files     dbms_streams_tablespace_adm.file_set;
+  cvt_files     dbms_streams_tablespace_adm.file_set;
+ 
+--
+  dump_file     dbms_streams_tablespace_adm.file;
+  dp_job_name   VARCHAR2(30) := NULL;
+ 
+--
+  ts_names       dbms_streams_tablespace_adm.tablespace_set;
+BEGIN
+--
+  dump_file.file_name :=  'dmpfile.dmp';
+  dump_file.directory_object := 'STREAMS$DIROBJ$DPDIR';
+ 
+--
+  tbs_files( 1).file_name :=  'o1_mf_demo_fghgcry5_.dbf';
+  tbs_files( 1).directory_object :=  'STREAMS$DIROBJ$1';
+ 
+--
+  dbms_streams_tablespace_adm.attach_tablespaces(
+    datapump_job_name      => dp_job_name,
+    dump_file              => dump_file,
+    tablespace_files       => tbs_files,
+    converted_files        => cvt_files,
+    tablespace_names       => ts_names);
+ 
+--
+  IF ts_names IS NOT NULL AND ts_names.first IS NOT NULL THEN
+    FOR i IN ts_names.first .. ts_names.last LOOP
+      dbms_output.put_line('imported tablespace '|| ts_names(i));
+    END LOOP;
+  END IF;
+END;
+/
+ 
+--
+DROP DIRECTORY STREAMS$DIROBJ$1;
+DROP DIRECTORY STREAMS$DIROBJ$DPDIR;
+--------------------------------------------------------------
+-- End of sample PL/SQL script
+--------------------------------------------------------------
+
+Removing automatic instance
+shutting down automatic instance 
+Oracle instance shut down
+Automatic instance removed
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_temp_fghgg3y0_.tmp deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_3_fghgftpy_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_2_fghgfpjb_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/onlinelog/o1_mf_1_fghgflvk_.log deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_sysaux_fghgdpz6_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_undotbs1_fghgcrsr_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/datafile/o1_mf_system_fghgd7wx_.dbf deleted
+auxiliary instance file /opt/app/oracle/oradata/auxdata/PERSONAL/controlfile/o1_mf_fghgc7bc_.ctl deleted
+Could not delete auxiliary instance file dmpfile.dmp
+ORACLE error from target database: 
+ORA-29280: invalid directory path
+
+
+Recovery Manager complete.

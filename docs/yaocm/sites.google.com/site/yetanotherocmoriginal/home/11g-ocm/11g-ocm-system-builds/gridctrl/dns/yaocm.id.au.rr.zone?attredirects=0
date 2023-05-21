@@ -1,0 +1,51 @@
+$ORIGIN 1.168.192.in-addr.arpa.
+$TTL 86400
+@       IN      SOA     gridctrl.yaocm.id.au.   hostmaster.yaocm.id.au. (
+                        2019021701 ; serial
+                        21600      ; refresh after 6 hours
+                        3600       ; retry after 1 hour
+                        604800     ; expire after 1 week
+                        86400 )    ; minimum TTL of 1 day
+;
+@       IN      NS      gridctrl.yaocm.id.au.
+; Networking (start of DHCP)
+1       IN      PTR     nundah.yaocm.id.au.
+; Oracle Virtual Server Addresses
+100     IN      PTR     victoria.yaocm.id.au.
+101     IN      PTR     melbourne.yaocm.id.au.
+102     IN      PTR     victoria-bridge.yaocm.id.au.
+103     IN      PTR     cloudctl.yaocm.id.au.
+106     IN      PTR     coursera.yaocm.id.au.
+107     IN      PTR     gordon.yaocm.id.au.
+108     IN      PTR     steam.yaocm.id.au.
+109     IN      PTR     auburn.yaocm.id.au.
+110     IN      PTR     padstow.yaocm.id.au.
+111     IN      PTR     botany.yaocm.id.au.
+112     IN      PTR     turramurra.yaocm.id.au.
+113     IN      PTR     xe.yaocm.id.au.
+114     IN      PTR     hammer.yaocm.id.au.
+; Redfern Public Network
+140     IN      PTR     redfern1.yaocm.id.au.
+141     IN      PTR     redfern2.yaocm.id.au.
+142     IN      PTR     redfern1-vip.yaocm.id.au.
+143     IN      PTR     redfern2-vip.yaocm.id.au.
+144     IN      PTR     redfern-crs.yaocm.id.au.
+145     IN      PTR     redfern-crs.yaocm.id.au.
+146     IN      PTR     redfern-crs.yaocm.id.au.
+; GoldenGate Trial
+150     IN      PTR     goldengate1.yaocm.id.au.
+151     IN      PTR     goldengate2.yaocm.id.au.
+; Miscellaneous
+152     IN      PTR     personal.yaocm.id.au.
+153     IN      PTR     perstdby.yaocm.id.au.
+154     IN      PTR     perphys.yaocm.id.au.
+; Oracle VirtualBox hosts
+200     IN      PTR     cronulla.yaocm.id.au.
+201     IN      PTR     clifton.yaocm.id.au.
+; Physical Hosts
+249     IN      PTR     penrith.yaocm.id.au.
+250     IN      PTR     marsfield.yaocm.id.au.
+251     IN      PTR     ryde.yaocm.id.au.
+252     IN      PTR     gridctrl.yaocm.id.au.
+253     IN      PTR     narrabri.yaocm.id.au.
+254     IN      PTR     noosa.yaocm.id.au.

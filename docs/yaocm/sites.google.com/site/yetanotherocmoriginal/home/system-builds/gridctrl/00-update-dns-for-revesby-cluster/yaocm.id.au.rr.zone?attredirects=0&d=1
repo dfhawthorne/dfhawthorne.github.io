@@ -1,0 +1,31 @@
+$ORIGIN 1.168.192.in-addr.arpa.
+$TTL 86400
+@       IN      SOA     gridctrl.yaocm.id.au.   hostmaster.yaocm.id.au. (
+                        2013122901 ; serial
+                        21600      ; refresh after 6 hours
+                        3600       ; retry after 1 hour
+                        604800     ; expire after 1 week
+                        86400 )    ; minimum TTL of 1 day
+;
+@       IN      NS      gridctrl.yaocm.id.au.
+; Networking (start of DHCP)
+1       IN      PTR     nundah.yaocm.id.au.
+16      IN      PTR     narrabri.yaocm.id.au.
+; Revesby 12R1 Cluster
+93      IN      PTR     revesby1.yaocm.id.au.
+94      IN      PTR     revesby1-vip.yaocm.id.au.
+95      IN      PTR     revesby2.yaocm.id.au.
+96      IN      PTR     revesby2-vip.yaocm.id.au.
+97      IN      PTR     revesby-scan.yaocm.id.au.
+98      IN      PTR     revesby-scan.yaocm.id.au.
+99      IN      PTR     revesby-scan.yaocm.id.au.
+; Oracle Virtual Server Addresses
+100     IN      PTR     victoria.yaocm.id.au.
+101     IN      PTR     melbourne.yaocm.id.au.
+102     IN      PTR     victoria-bridge.yaocm.id.au.
+103     IN      PTR     cloudctl.yaocm.id.au.
+; Physical Hosts
+249     IN      PTR     penrith.yaocm.id.au.
+250     IN      PTR     marsfield.yaocm.id.au.
+251     IN      PTR     ryde.yaocm.id.au.
+252     IN      PTR     gridctrl.yaocm.id.au.

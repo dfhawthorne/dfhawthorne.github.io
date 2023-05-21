@@ -1,0 +1,846 @@
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><html xmlns:fn="http://www.w3.org/2005/02/xpath-functions">
+<head>
+<title> DB Replay Report </title>
+<script type="text/javascript">
+        function toggle_visibility(id) {
+          var e = document.getElementById(id);
+          if(e.style.display == &apos;none&apos;) {
+            e.style.display = &apos;&apos;;
+          }
+          else {
+            e.style.display = &apos;none&apos;;
+          }
+        }
+      </script>
+<style type="text/css">
+
+        body, table {
+          font-size:          8pt;
+          font-family:        Verdana,Arial;
+          text-decoration:    none;
+          color:              #000000;
+          background-color:   #ffffff;
+        }
+
+        th {
+          color:            #ffffff;
+          background-color: #0066CC;
+          padding:          2px;
+        }
+
+        td {
+          padding:          2px;
+        }
+
+        .report_title {
+          font-size:          20pt;
+          font-weight:        bold;
+          color:              #336699;
+        }
+
+        .chapter_title {
+          font-size:          14pt;
+          font-weight:        bold;
+          color:              #336699;
+          text-decoration:    underline;
+        }
+
+        .section_title {
+          font-size:          12pt;
+          font-weight:        bold;
+          color:              #336699;
+        }
+
+        .subsection_title {
+          font-size:          10pt;
+          font-weight:        bold;
+          color:              #336699;
+          padding-left:       8px;
+        }
+
+        .no_data_message {
+          font-size:          8pt;
+          font-weight:        bold;
+          padding-left:       4px;
+          color:              #000000;
+          background-color:   #ffffff;
+        }
+
+        .hide_this {
+          display:            none;
+        }
+
+        .same_fg_bg {
+          color:   #ffffff;
+          background-color: #ffffff;
+        }
+
+        .row0 {
+          background-color:  #ffffbb;
+        }
+
+        .row1 {
+          background-color:  #ffffff;
+        }
+
+      </style>
+</head>
+<body>
+<div class="report_title">
+      DB Replay Report for 
+      REPLAY-ocm11g.yaocm.id.au-20120222152142</div>
+<hr/>
+<p/>
+<table cellspacing="0" cellpadding="0" border="2">
+<tr>
+<th> DB Name </th>
+<th> DB Id </th>
+<th> Release </th>
+<th> RAC </th>
+<th> Replay Name </th>
+<th> Replay Status </th>
+</tr>
+<tr>
+<td>OCM11G</td>
+<td>3371126031</td>
+<td>11.1.0.7.0</td>
+<td>NO</td>
+<td>REPLAY-ocm11g.yaocm.id.au-20120222152142</td>
+<td>COMPLETED</td>
+</tr>
+</table>
+<p/>
+<div class="subsection_title">
+      Replay Information
+    </div>
+<table cellspacing="0" cellpadding="0" border="2">
+<tr>
+<th align="center">
+          Information
+        </th>
+<th> 
+          Replay
+        </th>
+<th> 
+          Capture
+        </th>
+</tr>
+<tr class="row1">
+<td>
+          Name
+        </td>
+<td>REPLAY-ocm11g.yaocm.id.au-20120222152142</td>
+<td>CAPTURE-ocm11g.yaocm.id.au-20120222114009</td>
+</tr>
+<tr class="row0">
+<td>
+          Status
+        </td>
+<td>COMPLETED</td>
+<td>COMPLETED</td>
+</tr>
+<tr class="row1">
+<td>
+          Database Name
+        </td>
+<td>OCM11G</td>
+<td>OCM11G</td>
+</tr>
+<tr class="row0">
+<td>
+          Database Version
+        </td>
+<td>11.1.0.7.0</td>
+<td>11.1.0.7.0</td>
+</tr>
+<tr class="row1">
+<td>
+          Start Time
+        </td>
+<td>22-FEB-12 15:28:41</td>
+<td>22-FEB-12 11:48:49</td>
+</tr>
+<tr class="row0">
+<td>
+          End Time
+        </td>
+<td>22-FEB-12 15:30:27</td>
+<td>22-FEB-12 11:54:30</td>
+</tr>
+<tr class="row1">
+<td>
+          Duration
+        </td>
+<td>1 minute 46 seconds</td>
+<td>5 minutes 41 seconds</td>
+</tr>
+<tr class="row0">
+<td>
+          Directory Object
+        </td>
+<td>SH_REPLAY</td>
+<td>SH_REPLAY</td>
+</tr>
+<tr class="row1">
+<td>
+          Directory Path
+        </td>
+<td>/u00/app/oracle/replay/sh</td>
+<td>/u00/app/oracle/replay/sh</td>
+</tr>
+</table>
+<p/>
+<div class="subsection_title">
+      Replay Options
+    </div>
+<table cellspacing="0" cellpadding="0" border="2">
+<tr>
+<th align="center">
+          Option Name
+        </th>
+<th>
+          Value
+        </th>
+</tr>
+<tr class="row1">
+<td>
+          Synchronization
+        </td>
+<td>TRUE</td>
+</tr>
+<tr class="row0">
+<td>
+          Connect Time
+        </td>
+<td>100%
+        </td>
+</tr>
+<tr class="row1">
+<td>
+          Think Time
+        </td>
+<td>100%
+        </td>
+</tr>
+<tr class="row0">
+<td>
+          Think Time Auto Correct
+        </td>
+<td>TRUE</td>
+</tr>
+<tr class="row1">
+<td>
+          Number of WRC Clients
+        </td>
+<td>1
+          (1 Completed,
+           
+               0
+             
+           Running
+          )
+        </td>
+</tr>
+</table>
+<p/>
+<div class="subsection_title">
+      Replay Statistics
+    </div>
+<table cellspacing="0" cellpadding="0" border="2">
+<tr>
+<th align="center">
+          Statistic
+        </th>
+<th>
+          Replay
+        </th>
+<th>
+          Capture
+        </th>
+</tr>
+<tr class="row1">
+<td>
+          DB Time
+        </td>
+<td align="right">57.639 seconds
+        </td>
+<td align="right">22.816 seconds
+        </td>
+</tr>
+<tr class="row0">
+<td>
+          Average Active Sessions
+        </td>
+<td align="right">.54</td>
+<td align="right">.07</td>
+</tr>
+<tr class="row1">
+<td>
+          User calls
+        </td>
+<td align="right">414</td>
+<td align="right">414</td>
+</tr>
+<tr class="row0">
+<td>
+          Network Time
+        </td>
+<td align="right">1.160 seconds
+        </td>
+<td>
+<span class="same_fg_bg">.</span>
+</td>
+</tr>
+<tr class="row1">
+<td>
+          Think Time
+        </td>
+<td align="right">0.309 seconds
+        </td>
+<td>
+<span class="same_fg_bg">.</span>
+</td>
+</tr>
+</table>
+<p/>
+<div class="subsection_title">
+      Replay Divergence Summary
+    </div>
+<table cellspacing="0" cellpadding="0" border="2">
+<tr>
+<th align="center">
+          Divergence Type
+        </th>
+<th>
+          Count
+        </th>
+<th>
+          % Total
+        </th>
+</tr>
+<tr class="row1">
+<td>
+          Session Failures During Replay
+        </td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="row0">
+<td>
+          Errors No Longer Seen During Replay
+        </td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="row1">
+<td>
+          New Errors Seen During Replay
+        </td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="row0">
+<td>
+          Errors Mutated During Replay
+        </td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="row1">
+<td>
+          DMLs with Different Number of Rows Modified
+        </td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="row0">
+<td>
+          SELECTs with Different Number of Rows Fetched
+        </td>
+<td align="right">0</td>
+<td align="right">0.00</td>
+</tr>
+</table>
+<p/>
+<hr/>
+<div class="chapter_title">
+       Workload Profile
+     </div>
+<div class="section_title">
+       Top Events
+     </div>
+<ora_invisible>
+<div id="top_events_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_events_show" name="anchor_top_events_show" onclick="toggle_visibility(&apos;top_events&apos;); toggle_visibility(&apos;top_events_show&apos;); toggle_visibility(&apos;top_events_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="top_events_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_events_hide" name="anchor_top_events_hide" onclick="toggle_visibility(&apos;top_events&apos;); toggle_visibility(&apos;top_events_show&apos;); toggle_visibility(&apos;top_events_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="top_events" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<th>Event</th>
+<th>Event Class</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>read by other session</td>
+<td>User I/O</td>
+<td align="right">25.00</td>
+</tr>
+<tr class="           row0">
+<td>log file sync</td>
+<td>Commit</td>
+<td align="right">12.50</td>
+</tr>
+<tr class="           row1">
+<td>db file sequential read</td>
+<td>User I/O</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+<div class="section_title">
+       Top Service/Module/Action
+     </div>
+<ora_invisible>
+<div id="top_service_module_actions_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_service_module_actions_show" name="anchor_top_service_module_actions_show" onclick="toggle_visibility(&apos;top_service_module_actions&apos;); toggle_visibility(&apos;top_service_module_actions_show&apos;); toggle_visibility(&apos;top_service_module_actions_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="top_service_module_actions_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_service_module_actions_hide" name="anchor_top_service_module_actions_hide" onclick="toggle_visibility(&apos;top_service_module_actions&apos;); toggle_visibility(&apos;top_service_module_actions_show&apos;); toggle_visibility(&apos;top_service_module_actions_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="top_service_module_actions" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<th>Service Name</th>
+<th>Module Name</th>
+<th>% Activity</th>
+<th>Action Drilldown</th>
+</tr>
+<tr valign="top" class="           row1">
+<td>SYS$USERS</td>
+<td>SQL*Plus</td>
+<td align="right">37.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Action Name</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>UNNAMED</td>
+<td align="right">37.50</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top" class="           row0">
+<td>ocm11g.yaocm.id.au</td>
+<td>WRC$</td>
+<td align="right">12.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Action Name</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>UNNAMED</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="section_title">
+       Top SQL with Top Events
+     </div>
+<ora_invisible>
+<div id="top_sql_events_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_sql_events_show" name="anchor_top_sql_events_show" onclick="toggle_visibility(&apos;top_sql_events&apos;); toggle_visibility(&apos;top_sql_events_show&apos;); toggle_visibility(&apos;top_sql_events_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="top_sql_events_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_sql_events_hide" name="anchor_top_sql_events_hide" onclick="toggle_visibility(&apos;top_sql_events&apos;); toggle_visibility(&apos;top_sql_events_show&apos;); toggle_visibility(&apos;top_sql_events_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="top_sql_events" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<th>SQL ID</th>
+<th>Planhash</th>
+<th>Sampled Number of Executions</th>
+<th>% Activity</th>
+<th>Event Drilldown</th>
+</tr>
+<tr valign="top" class="           row1">
+<td>
+<a onclick="openWindow(window, &apos;/em/console/database/workload/replay?target=ocm11g.yaocm.id.au&amp;type=oracle_database&amp;replayId=2&amp;event=processReplayReport&amp;sqlID=dgdfqhj9ua2kv&apos;, &apos;_blank&apos;, &apos;&apos;, false, &apos;dialog&apos;, &apos;&apos;)" href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#"/>dgdfqhj9ua2kv</td>
+<td>2491394033</td>
+<td>3</td>
+<td align="right">37.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Event</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>read by other session</td>
+<td align="right">25.00</td>
+</tr>
+<tr class="           row0">
+<td>db file sequential read</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="section_title">
+       Top Sessions with Top Events
+     </div>
+<ora_invisible>
+<div id="top_session_events_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_session_events_show" name="anchor_top_session_events_show" onclick="toggle_visibility(&apos;top_session_events&apos;); toggle_visibility(&apos;top_session_events_show&apos;); toggle_visibility(&apos;top_session_events_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="top_session_events_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_top_session_events_hide" name="anchor_top_session_events_hide" onclick="toggle_visibility(&apos;top_session_events&apos;); toggle_visibility(&apos;top_session_events_show&apos;); toggle_visibility(&apos;top_session_events_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="top_session_events" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<th>Session ID</th>
+<th>Session Serial</th>
+<th>Username</th>
+<th>Program</th>
+<th>% Activity</th>
+<th>Event Drilldown</th>
+</tr>
+<tr valign="top" class="           row1">
+<td>117</td>
+<td>3882</td>
+<td>SYSTEM</td>
+<td>wrc@bankstown.yaocm.id.au (TNS V1-V3)</td>
+<td align="right">12.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Event</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>log file sync</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top" class="           row0">
+<td>122</td>
+<td>7157</td>
+<td>SH</td>
+<td>wrc@bankstown.yaocm.id.au (TNS V1-V3)</td>
+<td align="right">12.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Event</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>read by other session</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top" class="           row1">
+<td>131</td>
+<td>9679</td>
+<td>SH</td>
+<td>wrc@bankstown.yaocm.id.au (TNS V1-V3)</td>
+<td align="right">12.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Event</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>db file sequential read</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr valign="top" class="           row0">
+<td>170</td>
+<td>2502</td>
+<td>SH</td>
+<td>wrc@bankstown.yaocm.id.au (TNS V1-V3)</td>
+<td align="right">12.50</td>
+<td>
+<table cellpadding="0" cellspacing="0" border="2" width="100%">
+<tr>
+<th>Event</th>
+<th>% Activity</th>
+</tr>
+<tr class="           row1">
+<td>read by other session</td>
+<td align="right">12.50</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="chapter_title">
+       Replay Divergence
+     </div>
+<div class="section_title">
+       Session Failures 
+     </div>
+<div class="subsection_title">
+       By Application
+     </div>
+<ora_invisible>
+<div id="session_failures_by_app_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_session_failures_by_app_show" name="anchor_session_failures_by_app_show" onclick="toggle_visibility(&apos;session_failures_by_app&apos;); toggle_visibility(&apos;session_failures_by_app_show&apos;); toggle_visibility(&apos;session_failures_by_app_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="session_failures_by_app_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_session_failures_by_app_hide" name="anchor_session_failures_by_app_hide" onclick="toggle_visibility(&apos;session_failures_by_app&apos;); toggle_visibility(&apos;session_failures_by_app_show&apos;); toggle_visibility(&apos;session_failures_by_app_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="session_failures_by_app" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="section_title">
+       Error Divergence
+     </div>
+<div class="subsection_title">
+       By Application
+     </div>
+<ora_invisible>
+<div id="error_by_app_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_error_by_app_show" name="anchor_error_by_app_show" onclick="toggle_visibility(&apos;error_by_app&apos;); toggle_visibility(&apos;error_by_app_show&apos;); toggle_visibility(&apos;error_by_app_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="error_by_app_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_error_by_app_hide" name="anchor_error_by_app_hide" onclick="toggle_visibility(&apos;error_by_app&apos;); toggle_visibility(&apos;error_by_app_show&apos;); toggle_visibility(&apos;error_by_app_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="error_by_app" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="subsection_title">
+       By SQL
+     </div>
+<ora_invisible>
+<div id="error_by_sql_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_error_by_sql_show" name="anchor_error_by_sql_show" onclick="toggle_visibility(&apos;error_by_sql&apos;); toggle_visibility(&apos;error_by_sql_show&apos;); toggle_visibility(&apos;error_by_sql_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="error_by_sql_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_error_by_sql_hide" name="anchor_error_by_sql_hide" onclick="toggle_visibility(&apos;error_by_sql&apos;); toggle_visibility(&apos;error_by_sql_show&apos;); toggle_visibility(&apos;error_by_sql_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="error_by_sql" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="subsection_title">
+       By Session
+     </div>
+<ora_invisible>
+<div id="error_by_session_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_error_by_session_show" name="anchor_error_by_session_show" onclick="toggle_visibility(&apos;error_by_session&apos;); toggle_visibility(&apos;error_by_session_show&apos;); toggle_visibility(&apos;error_by_session_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="error_by_session_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_error_by_session_hide" name="anchor_error_by_session_hide" onclick="toggle_visibility(&apos;error_by_session&apos;); toggle_visibility(&apos;error_by_session_show&apos;); toggle_visibility(&apos;error_by_session_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="error_by_session" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="section_title">
+       DML Data Divergence
+     </div>
+<div class="subsection_title">
+       By Application
+     </div>
+<ora_invisible>
+<div id="dml_databy_app_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_dml_databy_app_show" name="anchor_dml_databy_app_show" onclick="toggle_visibility(&apos;dml_databy_app&apos;); toggle_visibility(&apos;dml_databy_app_show&apos;); toggle_visibility(&apos;dml_databy_app_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="dml_databy_app_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_dml_databy_app_hide" name="anchor_dml_databy_app_hide" onclick="toggle_visibility(&apos;dml_databy_app&apos;); toggle_visibility(&apos;dml_databy_app_show&apos;); toggle_visibility(&apos;dml_databy_app_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table cellpadding="0" cellspacing="0" border="2" id="dml_databy_app">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="subsection_title">
+       By SQL
+     </div>
+<ora_invisible>
+<div id="dml_data_by_sql_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_dml_data_by_sql_show" name="anchor_dml_data_by_sql_show" onclick="toggle_visibility(&apos;dml_data_by_sql&apos;); toggle_visibility(&apos;dml_data_by_sql_show&apos;); toggle_visibility(&apos;dml_data_by_sql_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="dml_data_by_sql_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_dml_data_by_sql_hide" name="anchor_dml_data_by_sql_hide" onclick="toggle_visibility(&apos;dml_data_by_sql&apos;); toggle_visibility(&apos;dml_data_by_sql_show&apos;); toggle_visibility(&apos;dml_data_by_sql_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="dml_data_by_sql" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="section_title">
+       SELECT Data Divergence
+     </div>
+<div class="subsection_title">
+       By Application
+     </div>
+<ora_invisible>
+<div id="query_databy_app_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_query_databy_app_show" name="anchor_query_databy_app_show" onclick="toggle_visibility(&apos;query_databy_app&apos;); toggle_visibility(&apos;query_databy_app_show&apos;); toggle_visibility(&apos;query_databy_app_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="query_databy_app_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_query_databy_app_hide" name="anchor_query_databy_app_hide" onclick="toggle_visibility(&apos;query_databy_app&apos;); toggle_visibility(&apos;query_databy_app_show&apos;); toggle_visibility(&apos;query_databy_app_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table cellpadding="0" cellspacing="0" border="2" id="query_databy_app">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<div class="chapter_title">
+       Replay Clients Alerts
+     </div>
+<ora_invisible>
+<div id="alerts_show" style="display: none;">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_alerts_show" name="anchor_alerts_show" onclick="toggle_visibility(&apos;alerts&apos;); toggle_visibility(&apos;alerts_show&apos;); toggle_visibility(&apos;alerts_hide&apos;); "> 
+        (+) Show
+      </a>
+</div>
+</ora_invisible>
+<ora_invisible>
+<div id="alerts_hide">
+<a href="workload_report_1329885258683.html%3Fattredirects=0&amp;d=1.html#anchor_alerts_hide" name="anchor_alerts_hide" onclick="toggle_visibility(&apos;alerts&apos;); toggle_visibility(&apos;alerts_show&apos;); toggle_visibility(&apos;alerts_hide&apos;); "> 
+        (-) Hide
+      </a>
+</div>
+</ora_invisible>
+<table id="alerts" cellpadding="0" cellspacing="0" border="2">
+<tr>
+<td>
+<div class="no_data_message">
+          No data exists for this section of the report.
+      </div>
+</td>
+</tr>
+</table>
+<br/>
+<b> End of Report. </b>
+</body>
+</html>
+<PRE>Servlet error: Internal Error has occured. Check the log file for details.</PRE></BODY></HTML>

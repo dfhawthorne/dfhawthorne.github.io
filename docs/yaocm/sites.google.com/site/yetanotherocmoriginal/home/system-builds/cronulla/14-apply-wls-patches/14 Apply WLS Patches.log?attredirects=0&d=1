@@ -1,0 +1,115 @@
+Checking for conflicts...
+No conflict(s) detected
+
+Starting installation of Patch ID: T5F1
+Installing /opt/app/oracle/em/middleware/utils/bsu/cache_dir/T5F1.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/BUG18040640_103608.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/com.bea.core.stax2_2.0.0.0_3-0-3.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/glassfish.jaxb.xjc_1.2.0.0_2-1-14.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/glassfish.jaxb_1.2.0.0_2-1-14.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/glassfish.jaxp_1.4.5.0.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/glassfish.jaxws.mimepull_1.1.0.0_1-3-8.jar
+Updating /opt/app/oracle/em/middleware/patch_wls1036/profiles/default/sys_manifest_classpath/weblogic_patch.jar
+Old manifest value: Class-Path=
+New manifest value: Class-Path=../../../patch_jars/BUG18040640_103608.jar ../../../patch_jars/com.bea.core.stax2_2.0.0.0_3-0-3.jar ../../../patch_jars/glassfish.jaxb.xjc_1.2.0.0_2-1-14.jar ../../../patch_jars/glassfish.jaxb_1.2.0.0_2-1-14.jar ../../../patch_jars/glassfish.jaxp_1.4.5.0.jar ../../../patch_jars/glassfish.jaxws.mimepull_1.1.0.0_1-3-8.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.descriptor.wl.binding_1.4.0.0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/jms-notran-adp.rar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/common/bin/wlsifconfig.sh into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlthint3client.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/common/deployable-libraries/jsf-2.0.war into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/consoleapp/webapp/WEB-INF/lib/console.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/jms-xa-adp.rar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlclient.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/webserviceclient+ssl.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/common/wlst/modules/jython-modules.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wseeclient.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/jdbcdrivers.xml into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/schema/weblogic-domain-binding.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.descriptor.wl.binding_1.4.0.0.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/jms-notran-adp.rar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/common/bin/wlsifconfig.sh
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.stax2_2.0.0.0_3-0-3.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlthint3client.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/common/deployable-libraries/jsf-2.0.war
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/consoleapp/webapp/WEB-INF/lib/console.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/bugsfixed/WLS-PSU-bugsfixed.txt
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/jms-xa-adp.rar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlclient.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/webserviceclient+ssl.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/common/wlst/modules/jython-modules.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wseeclient.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/jdbcdrivers.xml
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/schema/weblogic-domain-binding.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/bugsfixed/18040640-WLS-10.3.6.0.8_PSU_WebServices-ClientSide-Configuration-README.txt
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wljmsclient.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wls-api.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wseeclient.zip into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml2_1.0.0.0_6-2-0-0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.common.security.saml2_1.0.0.0_6-2-0-0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/webserviceclient.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/ws.databinding_1.3.0.0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlw-langx.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml_1.0.0.0_6-2-0-0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.utils_1.10.0.0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/uddiexplorer.war into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.utils.full_1.10.0.0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/ws.databinding.plugins_1.3.0.0.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/modules/com.bea.core.apache_1.3.0.1.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlstestclient.ear into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wljmsclient.jar18684.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wljmsclient.jar18684.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wljmsclient.jar
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.weblogic.stax_1.11.0.0.jar42644.tmp
+Updating /opt/app/oracle/em/middleware/modules/com.bea.core.weblogic.stax_1.11.0.0.jar42644.tmp to /opt/app/oracle/em/middleware/modules/com.bea.core.weblogic.stax_1.11.0.0.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wls-api.jar41499.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wls-api.jar41499.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wls-api.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar25259.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar25259.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wseeclient.zip54003.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wseeclient.zip54003.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wseeclient.zip
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml2_1.0.0.0_6-2-0-0.jar54961.tmp
+Merging /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml2_1.0.0.0_6-2-0-0.jar54961.tmp with /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml2_1.0.0.0_6-2-0-0.jar
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.common.security.saml2_1.0.0.0_6-2-0-0.jar65408.tmp
+Merging /opt/app/oracle/em/middleware/modules/com.bea.core.common.security.saml2_1.0.0.0_6-2-0-0.jar65408.tmp with /opt/app/oracle/em/middleware/modules/com.bea.core.common.security.saml2_1.0.0.0_6-2-0-0.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/webserviceclient.jar31143.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/webserviceclient.jar31143.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/webserviceclient.jar
+Extracting /opt/app/oracle/em/middleware/modules/ws.databinding_1.3.0.0.jar47455.tmp
+Merging /opt/app/oracle/em/middleware/modules/ws.databinding_1.3.0.0.jar47455.tmp with /opt/app/oracle/em/middleware/modules/ws.databinding_1.3.0.0.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlw-langx.jar35299.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlw-langx.jar35299.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlw-langx.jar
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml_1.0.0.0_6-2-0-0.jar51682.tmp
+Merging /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml_1.0.0.0_6-2-0-0.jar51682.tmp with /opt/app/oracle/em/middleware/modules/com.bea.core.bea.opensaml_1.0.0.0_6-2-0-0.jar
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.utils_1.10.0.0.jar47106.tmp
+Merging /opt/app/oracle/em/middleware/modules/com.bea.core.utils_1.10.0.0.jar47106.tmp with /opt/app/oracle/em/middleware/modules/com.bea.core.utils_1.10.0.0.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlt3client.jar18020.tmp
+Updating /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlt3client.jar18020.tmp to /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlt3client.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/uddiexplorer.war39477.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/uddiexplorer.war39477.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/uddiexplorer.war
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.utils.full_1.10.0.0.jar50518.tmp
+Merging /opt/app/oracle/em/middleware/modules/com.bea.core.utils.full_1.10.0.0.jar50518.tmp with /opt/app/oracle/em/middleware/modules/com.bea.core.utils.full_1.10.0.0.jar
+Extracting /opt/app/oracle/em/middleware/modules/ws.databinding.plugins_1.3.0.0.jar13914.tmp
+Merging /opt/app/oracle/em/middleware/modules/ws.databinding.plugins_1.3.0.0.jar13914.tmp with /opt/app/oracle/em/middleware/modules/ws.databinding.plugins_1.3.0.0.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar9984.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar9984.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar
+Extracting /opt/app/oracle/em/middleware/modules/com.bea.core.apache_1.3.0.1.jar10214.tmp
+Merging /opt/app/oracle/em/middleware/modules/com.bea.core.apache_1.3.0.1.jar10214.tmp with /opt/app/oracle/em/middleware/modules/com.bea.core.apache_1.3.0.1.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlt3jmsclient.jar32314.tmp
+Updating /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlt3jmsclient.jar32314.tmp to /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlt3jmsclient.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlstestclient.ear31484.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlstestclient.ear31484.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlstestclient.ear
+Result: Success
+
+Starting installation of Patch ID: GDFA
+Installing /opt/app/oracle/em/middleware/utils/bsu/cache_dir/GDFA.jar
+Extracting /opt/app/oracle/em/middleware/patch_wls1036/patch_jars/BUG16420963_1036.jar
+Updating /opt/app/oracle/em/middleware/patch_wls1036/profiles/default/sys_manifest_classpath/weblogic_patch.jar
+Old manifest value: Class-Path=../../../patch_jars/BUG18040640_103608.jar ../../../patch_jars/com.bea.core.stax2_2.0.0.0_3-0-3.jar ../../../patch_jars/glassfish.jaxb.xjc_1.2.0.0_2-1-14.jar ../../../patch_jars/glassfish.jaxb_1.2.0.0_2-1-14.jar ../../../patch_jars/glassfish.jaxp_1.4.5.0.jar ../../../patch_jars/glassfish.jaxws.mimepull_1.1.0.0_1-3-8.jar
+New manifest value: Class-Path=../../../patch_jars/BUG16420963_1036.jar ../../../patch_jars/BUG18040640_103608.jar ../../../patch_jars/com.bea.core.stax2_2.0.0.0_3-0-3.jar ../../../patch_jars/glassfish.jaxb.xjc_1.2.0.0_2-1-14.jar ../../../patch_jars/glassfish.jaxb_1.2.0.0_2-1-14.jar ../../../patch_jars/glassfish.jaxp_1.4.5.0.jar ../../../patch_jars/glassfish.jaxws.mimepull_1.1.0.0_1-3-8.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Backing up /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar into /opt/app/oracle/em/middleware/patch_wls1036/backup/backup.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar51022.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar51022.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsafclient.jar
+Extracting /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar41592.tmp
+Merging /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar41592.tmp with /opt/app/oracle/em/middleware/wlserver_10.3/server/lib/wlsaft3client.jar
+Result: Success

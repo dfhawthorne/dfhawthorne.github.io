@@ -1,0 +1,108 @@
+[root@penrith2 OCM]# yum localinstall oracle-validated-1.0.0-22.el5.i386.rpm 
+Loaded plugins: rhnplugin, security
+This system is not registered with RHN.
+RHN support will be disabled.
+Setting up Local Package Process
+Examining oracle-validated-1.0.0-22.el5.i386.rpm: oracle-validated-1.0.0-22.el5.i386
+Marking oracle-validated-1.0.0-22.el5.i386.rpm to be installed
+local                                     | 1.3 kB     00:00     
+local/primary                             | 732 kB     00:00     
+local                                                  2292/2292
+Resolving Dependencies
+--> Running transaction check
+---> Package oracle-validated.i386 0:1.0.0-22.el5 set to be updated
+--> Processing Dependency: compat-db for package: oracle-validated
+--> Processing Dependency: compat-gcc-34 for package: oracle-validated
+--> Processing Dependency: compat-gcc-34-c++ for package: oracle-validated
+--> Processing Dependency: compat-libstdc++-33 for package: oracle-validated
+--> Processing Dependency: elfutils-libelf-devel for package: oracle-validated
+--> Processing Dependency: gcc for package: oracle-validated
+--> Processing Dependency: gcc-c++ for package: oracle-validated
+--> Processing Dependency: gdb for package: oracle-validated
+--> Processing Dependency: glibc-devel for package: oracle-validated
+--> Processing Dependency: glibc-headers for package: oracle-validated
+--> Processing Dependency: kernel-headers for package: oracle-validated
+--> Processing Dependency: libXp for package: oracle-validated
+--> Processing Dependency: libaio-devel for package: oracle-validated
+--> Processing Dependency: libstdc++-devel for package: oracle-validated
+--> Processing Dependency: sysstat for package: oracle-validated
+--> Processing Dependency: unixODBC for package: oracle-validated
+--> Processing Dependency: unixODBC-devel for package: oracle-validated
+--> Running transaction check
+---> Package compat-db.i386 0:4.2.52-5.1 set to be updated
+---> Package compat-gcc-34.i386 0:3.4.6-4 set to be updated
+---> Package compat-gcc-34-c++.i386 0:3.4.6-4 set to be updated
+---> Package compat-libstdc++-33.i386 0:3.2.3-61 set to be updated
+---> Package elfutils-libelf-devel.i386 0:0.137-3.el5 set to be updated
+--> Processing Dependency: elfutils-libelf-devel-static-i386 = 0.137-3.el5 for package: elfutils-libelf-devel
+---> Package gcc.i386 0:4.1.2-46.el5 set to be updated
+--> Processing Dependency: libgomp >= 4.1.2-46.el5 for package: gcc
+---> Package gcc-c++.i386 0:4.1.2-46.el5 set to be updated
+---> Package gdb.i386 0:6.8-37.el5 set to be updated
+---> Package glibc-devel.i386 0:2.5-42 set to be updated
+---> Package glibc-headers.i386 0:2.5-42 set to be updated
+---> Package kernel-headers.i386 0:2.6.18-164.el5 set to be updated
+---> Package libXp.i386 0:1.0.0-8.1.el5 set to be updated
+---> Package libaio-devel.i386 0:0.3.106-3.2 set to be updated
+---> Package libstdc++-devel.i386 0:4.1.2-46.el5 set to be updated
+local/filelists                           | 2.3 MB     00:01     
+---> Package sysstat.i386 0:7.0.2-3.el5 set to be updated
+---> Package unixODBC.i386 0:2.2.11-7.1 set to be updated
+---> Package unixODBC-devel.i386 0:2.2.11-7.1 set to be updated
+--> Running transaction check
+---> Package elfutils-libelf-devel-static.i386 0:0.137-3.el5 set to be updated
+---> Package libgomp.i386 0:4.4.0-6.el5 set to be updated
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+=================================================================
+ Package                      Arch Version           Repository
+                                                            Size
+=================================================================
+Installing:
+ oracle-validated             i386 1.0.0-22.el5      /oracle-validated-1.0.0-22.el5.i386
+                                                            43 k
+Installing for dependencies:
+ compat-db                    i386 4.2.52-5.1        local 1.7 M
+ compat-gcc-34                i386 3.4.6-4           local 4.1 M
+ compat-gcc-34-c++            i386 3.4.6-4           local  11 M
+ compat-libstdc++-33          i386 3.2.3-61          local 232 k
+ elfutils-libelf-devel        i386 0.137-3.el5       local  25 k
+ elfutils-libelf-devel-static i386 0.137-3.el5       local  66 k
+ gcc                          i386 4.1.2-46.el5      local 5.2 M
+ gcc-c++                      i386 4.1.2-46.el5      local 3.4 M
+ gdb                          i386 6.8-37.el5        local 3.4 M
+ glibc-devel                  i386 2.5-42            local 2.0 M
+ glibc-headers                i386 2.5-42            local 601 k
+ kernel-headers               i386 2.6.18-164.el5    local 993 k
+ libXp                        i386 1.0.0-8.1.el5     local  22 k
+ libaio-devel                 i386 0.3.106-3.2       local  11 k
+ libgomp                      i386 4.4.0-6.el5       local  70 k
+ libstdc++-devel              i386 4.1.2-46.el5      local 2.8 M
+ sysstat                      i386 7.0.2-3.el5       local 170 k
+ unixODBC                     i386 2.2.11-7.1        local 832 k
+ unixODBC-devel               i386 2.2.11-7.1        local 737 k
+
+Transaction Summary
+=================================================================
+Install     20 Package(s)         
+Update       0 Package(s)         
+Remove       0 Package(s)         
+
+Total size: 37 M
+Total download size: 37 M
+Is this ok [y/N]: y
+Downloading Packages:
+-----------------------------------------------------------------
+Total                            837 MB/s |  37 MB     00:00     
+warning: rpmts_HdrFromFdno: Header V3 DSA signature: NOKEY, key ID 37017186
+local/gpgkey                              | 1.1 kB     00:00     
+Importing GPG key 0x37017186 "Red Hat, Inc. (release key) <security@redhat.com>" from /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+Is this ok [y/N]: y
+warning: rpmts_HdrFromFdno: Header V3 DSA signature: NOKEY, key ID 1e5e0159
+
+
+Public key for oracle-validated-1.0.0-22.el5.i386.rpm is not installed
+[root@penrith2 OCM]# 
+

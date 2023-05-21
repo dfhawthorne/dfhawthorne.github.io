@@ -1,0 +1,220 @@
+Initializing cgroup subsys cpu
+Linux version 2.6.32-200.13.1.el5uek (mockbuild@ca-build9.us.oracle.com) (gcc version 4.1.2 20080704 (Red Hat 4.1.2-50)) #1 SMP Wed Jul 27 21:02:33 EDT 2011
+Command line: ro root=LABEL=/ numa=off
+KERNEL supported cpus:
+  Intel GenuineIntel
+  AMD AuthenticAMD
+  Centaur CentaurHauls
+ACPI in unprivileged domain disabled
+BIOS-provided physical RAM map:
+ Xen: 0000000000000000 - 00000000000a0000 (usable)
+ Xen: 00000000000a0000 - 0000000000100000 (reserved)
+ Xen: 0000000000100000 - 0000000180000000 (usable)
+DMI not present or invalid.
+last_pfn = 0x180000 max_arch_pfn = 0x400000000
+last_pfn = 0x100000 max_arch_pfn = 0x400000000
+init_memory_mapping: 0000000000000000-0000000100000000
+init_memory_mapping: 0000000100000000-0000000180000000
+RAMDISK: 0226c000 - 028bc000
+NUMA turned off
+Faking a node at 0000000000000000-0000000180000000
+Bootmem setup node 0 0000000000000000-0000000180000000
+  NODE_DATA [0000000000008000 - 000000000001dfff]
+  bootmap [000000000001e000 -  000000000004dfff] pages 30
+(8 early reservations) ==> bootmem [0000000000 - 0180000000]
+  #0 [0000000000 - 0000001000]   BIOS data page ==> [0000000000 - 0000001000]
+  #1 [00034bf000 - 00034de000]   XEN PAGETABLES ==> [00034bf000 - 00034de000]
+  #2 [0000006000 - 0000008000]       TRAMPOLINE ==> [0000006000 - 0000008000]
+  #3 [0001000000 - 000224b73c]    TEXT DATA BSS ==> [0001000000 - 000224b73c]
+  #4 [000226c000 - 00028bc000]          RAMDISK ==> [000226c000 - 00028bc000]
+  #5 [00028bc000 - 00034bf000]   XEN START INFO ==> [00028bc000 - 00034bf000]
+  #6 [0000100000 - 00008e3000]          PGTABLE ==> [0000100000 - 00008e3000]
+  #7 [00034de000 - 00038e0000]          PGTABLE ==> [00034de000 - 00038e0000]
+Zone PFN ranges:
+  DMA      0x00000000 -> 0x00001000
+  DMA32    0x00001000 -> 0x00100000
+  Normal   0x00100000 -> 0x00180000
+Movable zone start PFN for each node
+early_node_map[2] active PFN ranges
+    0: 0x00000000 -> 0x000000a0
+    0: 0x00000100 -> 0x00180000
+SMP: Allowing 2 CPUs, 0 hotplug CPUs
+No local APIC present
+APIC: disable apic facility
+PM: Registered nosave memory: 00000000000a0000 - 0000000000100000
+PCI: Warning: Cannot find a gap in the 32bit address range
+PCI: Unassigned devices with 32bit resource registers may break!
+Allocating PCI resources starting at 180100000 (gap: 180100000:400000)
+Booting paravirtualized kernel on Xen
+Xen version: 4.1.2-OVM (preserve-AD)
+NR_CPUS:256 nr_cpumask_bits:256 nr_cpu_ids:2 nr_node_ids:1
+PERCPU: Embedded 29 pages/cpu @ffff88002802c000 s88280 r8192 d22312 u118784
+pcpu-alloc: s88280 r8192 d22312 u118784 alloc=29*4096
+pcpu-alloc: [0] 0 [0] 1
+Xen: using vcpu_info placement
+Built 1 zonelists in Node order, mobility grouping on.  Total pages: 1549242
+Policy zone: Normal
+Kernel command line: ro root=LABEL=/ numa=off
+PID hash table entries: 4096 (order: 3, 32768 bytes)
+Initializing CPU#0
+Checking aperture...
+No AGP bridge found
+PCI-DMA: Using software bounce buffering for IO (SWIOTLB)
+Placing 64MB software IO TLB between ffff880020000000 - ffff880024000000
+software IO TLB at phys 0x20000000 - 0x24000000
+Memory: 6088560k/6291456k available (4454k kernel code, 384k absent, 202512k reserved, 7191k data, 1720k init)
+Hierarchical RCU implementation.
+NR_IRQS:4352 nr_irqs:288
+Console: colour dummy device 80x25
+console [tty0] enabled
+console [hvc0] enabled
+allocated 62914560 bytes of page_cgroup
+please try 'cgroup_disable=memory' option if you don't want memory cgroups
+installing Xen timer for CPU 0
+Detected 3292.450 MHz processor.
+Calibrating delay loop (skipped), value calculated using timer frequency.. 6584.90 BogoMIPS (lpj=3292450)
+Security Framework initialized
+SELinux:  Initializing.
+Dentry cache hash table entries: 1048576 (order: 11, 8388608 bytes)
+Inode-cache hash table entries: 524288 (order: 10, 4194304 bytes)
+Mount-cache hash table entries: 256
+Initializing cgroup subsys ns
+Initializing cgroup subsys cpuacct
+Initializing cgroup subsys memory
+Initializing cgroup subsys devices
+Initializing cgroup subsys freezer
+Initializing cgroup subsys net_cls
+CPU: L1 I cache: 32K, L1 D cache: 32K
+CPU: L2 cache: 256K
+CPU: L3 cache: 8192K
+CPU 0/0x4 -> Node 0
+CPU: Unsupported number of siblings 16
+Performance Events: unsupported p6 CPU model 42 no PMU driver, software events only.
+SMP alternatives: switching to UP code
+ftrace: converting mcount calls to 0f 1f 44 00 00
+ftrace: allocating 26665 entries in 105 pages
+installing Xen timer for CPU 1
+SMP alternatives: switching to SMP code
+Initializing CPU#1
+CPU: L1 I cache: 32K, L1 D cache: 32K
+CPU: L2 cache: 256K
+CPU: L3 cache: 8192K
+CPU 1/0x4 -> Node 0
+CPU: Unsupported number of siblings 16
+Brought up 2 CPUs
+Grant table initialized
+regulator: core version 0.5
+Time: 165:165:165  Date: 165/165/65
+NET: Registered protocol family 16
+PCI: Fatal: No config space access function found
+bio: create slab <bio-0> at 0
+ACPI: Interpreter disabled.
+xen_balloon: Initialising balloon driver.
+vgaarb: loaded
+SCSI subsystem initialized
+usbcore: registered new interface driver usbfs
+usbcore: registered new interface driver hub
+usbcore: registered new device driver usb
+PCI: System does not support PCI
+PCI: System does not support PCI
+NetLabel: Initializing
+NetLabel:  domain hash size = 128
+NetLabel:  protocols = UNLABELED CIPSOv4
+NetLabel:  unlabeled traffic allowed by default
+Switching to clocksource xen
+pnp: PnP ACPI: disabled
+NET: Registered protocol family 2
+IP route cache hash table entries: 262144 (order: 9, 2097152 bytes)
+TCP established hash table entries: 524288 (order: 11, 8388608 bytes)
+TCP bind hash table entries: 65536 (order: 8, 1048576 bytes)
+TCP: Hash tables configured (established 524288 bind 65536)
+TCP reno registered
+NET: Registered protocol family 1
+Trying to unpack rootfs image as initramfs...
+Freeing initrd memory: 6464k freed
+platform rtc_cmos: registered platform RTC device (no PNP device found)
+audit: initializing netlink socket (disabled)
+type=2000 audit(1351323598.137:1): initialized
+HugeTLB registered 2 MB page size, pre-allocated 0 pages
+VFS: Disk quotas dquot_6.5.2
+Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+msgmni has been set to 11904
+alg: No test for stdrng (krng)
+ksign: Installing public key data
+Loading keyring
+- Added public key 5485A53074ED249D
+- User ID: Oracle America, Inc. (Kernel Module GPG key)
+Block layer SCSI generic (bsg) driver version 0.4 loaded (major 252)
+io scheduler noop registered
+io scheduler anticipatory registered
+io scheduler deadline registered (default)
+io scheduler cfq registered
+pci_hotplug: PCI Hot Plug PCI Core version: 0.5
+pciehp: PCI Express Hot Plug Controller Driver version: 0.4
+acpiphp: ACPI Hot Plug PCI Controller Driver version: 0.5
+Console: switching to colour frame buffer device 100x37
+console [tty0] enabled
+Non-volatile memory driver v1.3
+Linux agpgart interface v0.103
+Serial: 8250/16550 driver, 4 ports, IRQ sharing enabled
+brd: module loaded
+loop: module loaded
+input: Macintosh mouse button emulation as /class/input/input0
+Fixed MDIO Bus: probed
+ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+uhci_hcd: USB Universal Host Controller Interface driver
+PNP: No PS/2 controller found. Probing ports directly.
+i8042.c: No controller found.
+mice: PS/2 mouse device common for all mice
+input: Xen Virtual Keyboard as /class/input/input1
+input: Xen Virtual Pointer as /class/input/input2
+rtc_cmos: probe of rtc_cmos failed with error -16
+device-mapper: uevent: version 1.0.3
+device-mapper: ioctl: 4.15.0-ioctl (2009-04-01) initialised: dm-devel@redhat.com
+cpuidle: using governor ladder
+cpuidle: using governor menu
+usbcore: registered new interface driver hiddev
+usbcore: registered new interface driver usbhid
+usbhid: v2.6:USB HID core driver
+TCP cubic registered
+Initializing XFRM netlink socket
+NET: Registered protocol family 17
+registered taskstats version 1
+No TPM chip found, activating TPM-bypass!
+XENBUS: Device with no driver: device/vbd/51712
+XENBUS: Device with no driver: device/vbd/51728
+XENBUS: Device with no driver: device/vif/0
+XENBUS: Device with no driver: device/console/0
+  Magic number: 1:252:3141
+drivers/rtc/hctosys.c: unable to open rtc device (rtc0)
+Initalizing network drop monitor service
+Freeing unused kernel memory: 1720k freed
+Write protecting the kernel read-only data: 6760k
+blkfront: xvda: barriers enabled (tag)
+ xvda: xvda1 xvda2 xvda3
+blkfront: xvdb: barriers enabled (tag)
+ xvdb: xvdb1
+kjournald starting.  Commit interval 5 seconds
+EXT3-fs: mounted filesystem with ordered data mode.
+SELinux:  class peer not defined in policy
+SELinux:  class capability2 not defined in policy
+SELinux:  class kernel_service not defined in policy
+SELinux:  class tun_socket not defined in policy
+SELinux:  permission open in class dir not defined in policy
+SELinux:  permission open in class file not defined in policy
+SELinux:  permission open in class chr_file not defined in policy
+SELinux:  permission open in class blk_file not defined in policy
+SELinux:  permission open in class sock_file not defined in policy
+SELinux:  permission open in class fifo_file not defined in policy
+SELinux:  permission recvfrom in class node not defined in policy
+SELinux:  permission sendto in class node not defined in policy
+SELinux:  permission ingress in class netif not defined in policy
+SELinux:  permission egress in class netif not defined in policy
+SELinux:  permission module_request in class system not defined in policy
+SELinux:  permission setfcap in class capability not defined in policy
+SELinux:  permission nlmsg_tty_audit in class netlink_audit_socket not defined in policy
+SELinux:  permission forward_in in class packet not defined in policy
+SELinux:  permission forward_out in class packet not defined in policy
+SELinux: the above unknown classes and permissions will be allowed
+type=1403 audit(1351323619.227:2): policy loaded auid=4294967295 ses=4294967295

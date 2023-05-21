@@ -1,0 +1,130 @@
+
+Performing post-checks for cluster services setup 
+
+Checking node reachability...
+
+Check: Node reachability from node "penrith1"
+  Destination Node                      Reachable?              
+  ------------------------------------  ------------------------
+  penrith1                              yes                     
+  penrith2                              yes                     
+Result: Node reachability check passed from node "penrith1".
+
+
+Checking user equivalence...
+
+Check: User equivalence for user "crs"
+  Node Name                             Comment                 
+  ------------------------------------  ------------------------
+  penrith2                              passed                  
+  penrith1                              passed                  
+Result: User equivalence check passed for user "crs".
+
+Checking Cluster manager integrity... 
+
+
+Checking CSS daemon...
+  Node Name                             Status                  
+  ------------------------------------  ------------------------
+  penrith2                              running                 
+  penrith1                              running                 
+Result: Daemon status check passed for "CSS daemon".
+
+Cluster manager integrity check passed.
+
+Checking cluster integrity... 
+
+  Node Name                           
+  ------------------------------------
+  penrith1                            
+  penrith2                            
+
+Cluster integrity check passed
+
+
+Checking OCR integrity...
+
+Checking the absence of a non-clustered configuration...
+All nodes free of non-clustered, local-only configurations.
+
+Uniqueness check for OCR device passed.
+
+Checking the version of OCR...
+OCR of correct Version "2" exists.
+
+Checking data integrity of OCR...
+Data integrity check for OCR passed.
+
+OCR integrity check passed.
+
+Checking CRS integrity...
+
+Checking daemon liveness...
+
+Check: Liveness for "CRS daemon"
+  Node Name                             Running                 
+  ------------------------------------  ------------------------
+  penrith2                              yes                     
+  penrith1                              yes                     
+Result: Liveness check passed for "CRS daemon".
+
+Checking daemon liveness...
+
+Check: Liveness for "CSS daemon"
+  Node Name                             Running                 
+  ------------------------------------  ------------------------
+  penrith2                              yes                     
+  penrith1                              yes                     
+Result: Liveness check passed for "CSS daemon".
+
+Checking daemon liveness...
+
+Check: Liveness for "EVM daemon"
+  Node Name                             Running                 
+  ------------------------------------  ------------------------
+  penrith2                              yes                     
+  penrith1                              yes                     
+Result: Liveness check passed for "EVM daemon".
+
+Liveness of all the daemons
+  Node Name     CRS daemon                CSS daemon                EVM daemon
+  ------------  ------------------------  ------------------------  ----------
+  penrith2      yes                       yes                       yes       
+  penrith1      yes                       yes                       yes       
+
+Checking CRS health...
+
+Check: Health of CRS
+  Node Name                             CRS OK?                 
+  ------------------------------------  ------------------------
+  penrith2                              yes                     
+  penrith1                              yes                     
+Result: CRS health check passed.
+
+CRS integrity check passed.
+
+Checking node application existence... 
+
+Checking existence of VIP node application 
+  Node Name     Required                  Status                    Comment   
+  ------------  ------------------------  ------------------------  ----------
+  penrith2      yes                       exists                    passed    
+  penrith1      yes                       exists                    passed    
+Result: Check passed. 
+
+Checking existence of ONS node application 
+  Node Name     Required                  Status                    Comment   
+  ------------  ------------------------  ------------------------  ----------
+  penrith2      no                        exists                    passed    
+  penrith1      no                        exists                    passed    
+Result: Check passed. 
+
+Checking existence of GSD node application 
+  Node Name     Required                  Status                    Comment   
+  ------------  ------------------------  ------------------------  ----------
+  penrith2      no                        exists                    passed    
+  penrith1      no                        exists                    passed    
+Result: Check passed. 
+
+
+Post-check for cluster services setup was successful. 

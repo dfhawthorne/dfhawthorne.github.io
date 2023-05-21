@@ -1,0 +1,518 @@
+Repository Creation Utility - Checking Prerequisites
+Checking Global Prerequisites
+Repository Creation Utility - Checking Prerequisites
+Checking Component Prerequisites
+Repository Creation Utility - Creating Tablespaces
+Validating and Creating Tablespaces
+Repository Creation Utility - Create
+Repository Create in progress.
+Repository Creation Utility: Create - Completion Summary
+Database details:
+Connect Descriptor                      : (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=gridctrl.yaocm.id.au)(PORT=1521)))(CONNECT_DATA=(SID=repos)))
+Connected As                    : SYS
+RCU Logfile                     : /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/rcu.log
+Component schemas created:
+Component                       Status  Logfile
+EM Repository Pre-Upgrade Configuration         Success /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/em_repos_preupgrade.log
+EM Repository Init Configuration                Success /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/em_repos_init.log
+EM Repository Common            Success /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/em_repos_common.log
+
+Repository Creation Utility - Create : Operation Completed
+Processing command line ....
+Repository Creation Utility - Checking Prerequisites
+Checking Global Prerequisites
+Repository Creation Utility - Checking Prerequisites
+Checking Component Prerequisites
+Repository Creation Utility - Creating Tablespaces
+Validating and Creating Tablespaces
+Repository Creation Utility - Create
+Repository Create in progress.
+HTTP Test Inserted Successfully
+DHTML Test Inserted Successfully
+HTTPPING Test Inserted Successfully
+Ping Test Inserted Successfully
+DNS Test Inserted Successfully
+FTP Test Inserted Successfully
+Port Test Inserted Successfully
+TNS Test Inserted Successfully
+SQLT Test Inserted Successfully
+JDBC Test Inserted Successfully
+Forms Test Inserted Successfully
+OS Test Inserted Successfully
+Oats Test Inserted Successfully
+Successfully Added HTTP Query Descriptors
+
+Successfully Added DHTML Query Descriptors
+
+Successfully Added PING Query Descriptors
+
+Successfully Added DNS Query Descriptors
+
+Successfully Added FTP Query Descriptors
+
+Successfully Added Port Query Descriptors
+
+Successfully Added TNS Query Descriptors
+
+Successfully Added SQLT Query Descriptors
+
+Successfully Added JDBC Query Descriptors
+
+Successfully Added Forms Query Descriptors
+
+Successfully Added OS Query Descriptors
+
+Successfully Added OPENSCRIPT Query Descriptors
+
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/imap.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :imap_host
+PropertyName :imap_port
+PropertyName :imap_user_name
+PropertyName :imap_password
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: IMAP , generic_service , 1.0
+Enabled test for: IMAP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/imap.properties.v2
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :imap_host
+PropertyName :imap_port
+PropertyName :imap_user_name
+PropertyName :imap_password
+PropertyName :imap_header_count
+PropertyName :connection
+PropertyName :secure_auth
+PropertyName :timeout
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: IMAP , generic_service , 1.0
+Enabled test for: IMAP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/imap.properties.v3
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :imap_host
+PropertyName :imap_port
+PropertyName :imap_user_name
+PropertyName :imap_password
+PropertyName :imap_header_count
+PropertyName :connection
+PropertyName :secure_auth
+PropertyName :timeout
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: IMAP , generic_service , 1.0
+Enabled test for: IMAP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/smtp.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :smtp_address
+PropertyName :smtp_sender_id
+PropertyName :smtp_recipient_id
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: SMTP , generic_service , 1.0
+Enabled test for: SMTP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/smtp.properties.v2
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :smtp_address
+PropertyName :smtp_port
+PropertyName :smtp_sender_id
+PropertyName :smtp_recipient_id
+PropertyName :connection
+PropertyName :secure_auth
+PropertyName :timeout
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: SMTP , generic_service , 1.0
+Enabled test for: SMTP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/smtp.properties.v3
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: SMTP , generic_service , 1.0
+Enabled test for: SMTP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/smtp.properties.v4
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: SMTP , generic_service , 1.0
+Enabled test for: SMTP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/ldap.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :ldap_address
+PropertyName :ldap_port
+PropertyName :ldap_user_name
+PropertyName :ldap_password
+PropertyName :numretries
+PropertyName :retryinterval
+PropertyName :ldap_filter
+PropertyName :ldap_base
+PropertyName :ldap_attrname
+PropertyName :ldap_attrvalue
+PropertyName :ldap_timeout
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: LDAP , generic_service , 1.0
+Enabled test for: LDAP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/ldap.properties.v2
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :ldap_address
+PropertyName :ldap_port
+PropertyName :ldap_user_name
+PropertyName :ldap_password
+PropertyName :numretries
+PropertyName :retryinterval
+PropertyName :ldap_filter
+PropertyName :ldap_base
+PropertyName :ldap_attrname
+PropertyName :ldap_attrvalue
+PropertyName :ldap_timeout
+PropertyName :connection
+PropertyName :secure_auth
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: LDAP , generic_service , 1.0
+Enabled test for: LDAP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/pop.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :pop_host
+PropertyName :pop_user_name
+PropertyName :pop_password
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: POP , generic_service , 1.0
+Enabled test for: POP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/nntp.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :nntp_address
+PropertyName :nntp_newsgroup
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: NNTP , generic_service , 1.0
+Enabled test for: NNTP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/soap.properties.v2
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :soap_endpoint
+PropertyName :soap_payload
+PropertyName :soap_action_uri
+PropertyName :soap_auth_realm
+PropertyName :soap_auth_username
+PropertyName :soap_auth_password
+PropertyName :numretries
+PropertyName :retryinterval
+PropertyName :soap_wsdl_url
+PropertyName :soap_operation
+PropertyName :soap_parameters
+PropertyName :soap_wadl_resn
+PropertyName :soap_wadl_methn
+PropertyName :soap_wadl_reqtype
+PropertyName :soap_wadl_restype
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: SOAP , generic_service , 1.0
+Enabled test for: SOAP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/siebel.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :retryinterval
+PropertyName :txnDetails
+PropertyName :timeoutduration
+PropertyName :granularity
+PropertyName :username
+PropertyName :password
+PropertyName :isSecureCommand
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/xmpp.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :host
+PropertyName :port
+PropertyName :user_name
+PropertyName :password
+PropertyName :contact_name
+PropertyName :connection
+PropertyName :secure_auth
+PropertyName :timeout
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: XMPP , generic_service , 1.0
+Enabled test for: XMPP , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/webdav.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :url
+PropertyName :user_name
+PropertyName :password
+PropertyName :trash_url
+PropertyName :secure_auth
+PropertyName :timeout
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: WebDAV , generic_service , 1.0
+Enabled test for: WebDAV , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+  ********   ORACLE_HOME is /opt/app/oracle/em/middleware2/oms
+test properties path: /opt/app/oracle/em/middleware2/oms/sysman/admin/emdrep/prop/caldav.properties
+CreateTestType:createCompleteTest: BEGIN
+CreateTestType:createTestMetadataObject: BEGIN
+CreateTestType:createTestMetadataObject: END
+CreateTestType:createPropertyGroups: BEGIN
+CreateTestType:createPropertyGroups: END
+CreateTestType:createStrayProperties: BEGIN
+CreateTestType:createStrayProperties: END
+CreateTestType:createDefaultPromotions: BEGIN
+CreateTestType:createDefaultPromotions: END
+CreateTestType:createDefaultThresholds: BEGIN
+CreateTestType:createDefaultThresholds: END
+CreateTestType:createMetrics4TestType: BEGIN
+CreateTestType:createMetrics4TestType: END
+PropertyName :url
+PropertyName :user_name
+PropertyName :password
+PropertyName :view_date
+PropertyName :secure_auth
+PropertyName :timeout
+PropertyName :numretries
+PropertyName :retryinterval
+CreateTestType:createQueryDescriptor: BEGIN
+CreateTestType:createQueryDescriptor: END
+Enabled test for: CalDAV , generic_service , 1.0
+Enabled test for: CalDAV , aggregate_service , 1.0
+CreateTestType:createCompleteTest: END
+Repository Creation Utility: Create - Completion Summary
+Database details:
+Connect Descriptor                      : (DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=gridctrl.yaocm.id.au)(PORT=1521)))(CONNECT_DATA=(SID=repos)))
+Connected As                    : SYS
+RCU Logfile                     : /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/rcu.log
+Component schemas created:
+Component                       Status  Logfile
+EM Repository Upgrade Configuration             Success /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/em_repos_modify.log
+EM Repository Init Configuration                Success /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/em_repos_init.log
+EM Repository Common            Success /opt/app/oracle/em/middleware2/oms/sysman/log/schemamanager/m_061514_0839_PM/m_061514_0839_PM.PREUPGRADE/em_repos_common.log
+
+Repository Creation Utility - Create : Operation Completed
+

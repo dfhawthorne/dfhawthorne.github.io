@@ -1,0 +1,128 @@
+Starting Oracle Universal Installer...
+
+Checking swap space: must be greater than 500 MB.   Actual 4031 MB    Passed
+Checking monitor: must be configured to display at least 256 colors.    Actual 16777216    Passed
+Preparing to launch Oracle Universal Installer from /tmp/OraInstall2014-01-26_06-54-41PM. Please wait ...[oracle@gridctrl ~]$ Oracle Universal Installer, Version 11.2.0.3.0 Production
+Copyright (C) 1999, 2011, Oracle. All rights reserved.
+
+
+[oracle@gridctrl ~]$ find /opt/oracle/11.2.0.3/grid -name deinstall -type f -ls
+70680604   16 -rwxrwx---   1 oracle   oinstall     9648 Sep 18  2011 /opt/oracle/11.2.0.3/grid/inventory/Templates/deinstall/deinstall
+69705243   16 -rwxr-xr-x   1 oracle   oinstall     9648 Oct  1  2012 /opt/oracle/11.2.0.3/grid/deinstall/deinstall
+[oracle@gridctrl ~]$ /opt/oracle/11.2.0.3/grid/deinstall/deinstall
+Checking for required files and bootstrapping ...
+Please wait ...
+Location of logs /opt/oracle/oraInventory/logs/
+
+############ ORACLE DEINSTALL & DECONFIG TOOL START ############
+
+
+######################### CHECK OPERATION START #########################
+## [START] Install check configuration ##
+
+
+Checking for existence of the Oracle home location /opt/oracle/11.2.0.3/grid
+Oracle Home type selected for deinstall is: Oracle Grid Infrastructure for a Standalone Server
+Oracle Base selected for deinstall is: /opt/oracle/app
+Checking for existence of central inventory location /opt/oracle/oraInventory
+Checking for existence of the Oracle Grid Infrastructure home /opt/oracle/11.2.0.3/grid
+Checking for sufficient temp space availability on node(s) : 'gridctrl.yaocm.id.au'
+
+## [END] Install check configuration ##
+
+Traces log file: /opt/oracle/oraInventory/logs//crsdc.log
+
+Network Configuration check config START
+
+Network de-configuration trace file location: /opt/oracle/oraInventory/logs/netdc_check2014-01-26_06-56-46-PM.log
+
+Network Configuration check config END
+
+Asm Check Configuration START
+
+ASM de-configuration trace file location: /opt/oracle/oraInventory/logs/asmcadc_check2014-01-26_06-56-46-PM.log
+
+ASM configuration was not detected in this Oracle home. Was ASM configured in this Oracle home (y|n) [n]: y
+Specify the ASM Diagnostic Destination [ ]:
+Specify the diskstring []:
+Specify the diskgroups that are managed by this ASM instance []:
+
+
+######################### CHECK OPERATION END #########################
+
+
+####################### CHECK OPERATION SUMMARY #######################
+Oracle Grid Infrastructure Home is: /opt/oracle/11.2.0.3/grid
+The cluster node(s) on which the Oracle home deinstallation will be performed are:null
+Oracle Home selected for deinstall is: /opt/oracle/11.2.0.3/grid
+Inventory Location where the Oracle home registered is: /opt/oracle/oraInventory
+ASM instance will be de-configured from this Oracle home
+Do you want to continue (y - yes, n - no)? [n]: y
+A log of this session will be written to: '/opt/oracle/oraInventory/logs/deinstall_deconfig2014-01-26_06-56-39-PM.out'
+Any error messages from this session will be written to: '/opt/oracle/oraInventory/logs/deinstall_deconfig2014-01-26_06-56-39-PM.err'
+
+######################## CLEAN OPERATION START ########################
+ASM de-configuration trace file location: /opt/oracle/oraInventory/logs/asmcadc_clean2014-01-26_06-59-47-PM.log
+ASM Clean Configuration START
+ASM Clean Configuration END
+
+Network Configuration clean config START
+
+Network de-configuration trace file location: /opt/oracle/oraInventory/logs/netdc_clean2014-01-26_06-59-48-PM.log
+
+De-configuring backup files...
+Backup files de-configured successfully.
+
+The network configuration has been cleaned up successfully.
+
+Network Configuration clean config END
+
+
+---------------------------------------->
+
+Run the following command as the root user or the administrator on node "gridctrl".
+
+/tmp/deinstall2014-01-26_06-56-19PM/perl/bin/perl -I/tmp/deinstall2014-01-26_06-56-19PM/perl/lib -I/tmp/deinstall2014-01-26_06-56-19PM/crs/install /tmp/deinstall2014-01-26_06-56-19PM/crs/install/roothas.pl -force  -deconfig -paramfile "/tmp/deinstall2014-01-26_06-56-19PM/response/deinstall_Ora11g_gridinfrahome1.rsp"
+
+Press Enter after you finish running the above commands
+
+<----------------------------------------
+
+Setting the force flag to false
+Setting the force flag to cleanup the Oracle Base
+Oracle Universal Installer clean START
+
+Detach Oracle home '/opt/oracle/11.2.0.3/grid' from the central inventory on the local node : Done
+
+Delete directory '/opt/oracle/11.2.0.3/grid' on the local node : Done
+
+The Oracle Base directory '/opt/oracle/app' will not be removed on local node. The directory is in use by Oracle Home '/opt/oracle/app/OracleHomes/db11g'.
+
+Oracle Universal Installer cleanup was successful.
+
+Oracle Universal Installer clean END
+
+
+## [START] Oracle install clean ##
+
+Clean install operation removing temporary directory '/tmp/deinstall2014-01-26_06-56-19PM' on node 'gridctrl'
+
+## [END] Oracle install clean ##
+
+
+######################### CLEAN OPERATION END #########################
+
+
+####################### CLEAN OPERATION SUMMARY #######################
+ASM instance was de-configured successfully from the Oracle home
+Oracle Restart was already stopped and de-configured on node "gridctrl"
+Oracle Restart is stopped and de-configured successfully.
+Successfully detached Oracle home '/opt/oracle/11.2.0.3/grid' from the central inventory on the local node.
+Successfully deleted directory '/opt/oracle/11.2.0.3/grid' on the local node.
+Oracle Universal Installer cleanup was successful.
+
+Oracle deinstall tool successfully cleaned up temporary directories.
+#######################################################################
+
+
+############# ORACLE DEINSTALL & DECONFIG TOOL END #############

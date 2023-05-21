@@ -1,0 +1,112 @@
+
+Performing post-checks for hardware and operating system setup 
+
+Checking node reachability...
+
+Check: Node reachability from node "penrith1"
+  Destination Node                      Reachable?              
+  ------------------------------------  ------------------------
+  penrith1                              yes                     
+  penrith2                              yes                     
+Result: Node reachability check passed from node "penrith1".
+
+
+Checking user equivalence...
+
+Check: User equivalence for user "crs"
+  Node Name                             Comment                 
+  ------------------------------------  ------------------------
+  penrith2                              passed                  
+  penrith1                              passed                  
+Result: User equivalence check passed for user "crs".
+
+Checking node connectivity...
+
+
+Interface information for node "penrith2"
+  Interface Name    IP Address    Subnet        Subnet Gateway  Default Gateway  Hardware Address
+  ----------------  ------------  ------------  ------------  ------------  ------------
+  eth0              10.1.1.242    10.1.1.0      0.0.0.0       10.1.1.242    00:0C:29:77:2E:65
+  eth1              192.168.1.2   192.168.1.0   0.0.0.0       10.1.1.242    00:0C:29:77:2E:6F
+  eth2              192.168.2.3   192.168.2.0   0.0.0.0       10.1.1.242    00:0C:29:77:2E:79
+
+
+Interface information for node "penrith1"
+  Interface Name    IP Address    Subnet        Subnet Gateway  Default Gateway  Hardware Address
+  ----------------  ------------  ------------  ------------  ------------  ------------
+  eth0              10.1.1.240    10.1.1.0      0.0.0.0       10.1.1.240    00:0C:29:3E:5D:FC
+  eth1              192.168.1.1   192.168.1.0   0.0.0.0       10.1.1.240    00:0C:29:3E:5D:06
+  eth2              192.168.2.2   192.168.2.0   0.0.0.0       10.1.1.240    00:0C:29:3E:5D:10
+
+
+Check: Node connectivity of subnet "10.1.1.0"
+  Source                          Destination                     Connected?      
+  ------------------------------  ------------------------------  ----------------
+  penrith2:eth0                   penrith1:eth0                   yes             
+Result: Node connectivity check passed for subnet "10.1.1.0" with node(s) penrith2,penrith1.
+
+Check: Node connectivity of subnet "192.168.1.0"
+  Source                          Destination                     Connected?      
+  ------------------------------  ------------------------------  ----------------
+  penrith2:eth1                   penrith1:eth1                   yes             
+Result: Node connectivity check passed for subnet "192.168.1.0" with node(s) penrith2,penrith1.
+
+Check: Node connectivity of subnet "192.168.2.0"
+  Source                          Destination                     Connected?      
+  ------------------------------  ------------------------------  ----------------
+  penrith2:eth2                   penrith1:eth2                   yes             
+Result: Node connectivity check passed for subnet "192.168.2.0" with node(s) penrith2,penrith1.
+
+Interfaces found on subnet "10.1.1.0" that are likely candidates for VIP:
+penrith2 eth0:10.1.1.242
+penrith1 eth0:10.1.1.240
+
+Interfaces found on subnet "192.168.1.0" that are likely candidates for a private interconnect:
+penrith2 eth1:192.168.1.2
+penrith1 eth1:192.168.1.1
+
+Interfaces found on subnet "192.168.2.0" that are likely candidates for a private interconnect:
+penrith2 eth2:192.168.2.3
+penrith1 eth2:192.168.2.2
+
+Result: Node connectivity check passed.
+
+
+Checking shared storage accessibility...
+
+WARNING: 
+Unable to determine the sharedness of /dev/sda on nodes:
+	penrith2,penrith1
+
+WARNING: 
+Unable to determine the sharedness of /dev/sdb on nodes:
+	penrith2,penrith1
+
+  NFS                                   Sharing Nodes (2 in count)
+  ------------------------------------  ------------------------
+  /u00                                  penrith2 penrith1       
+
+  NFS                                   Sharing Nodes (2 in count)
+  ------------------------------------  ------------------------
+  /u02                                  penrith2 penrith1       
+
+  NFS                                   Sharing Nodes (2 in count)
+  ------------------------------------  ------------------------
+  /u03                                  penrith2 penrith1       
+
+  NFS                                   Sharing Nodes (2 in count)
+  ------------------------------------  ------------------------
+  /u04                                  penrith2 penrith1       
+
+  NFS                                   Sharing Nodes (2 in count)
+  ------------------------------------  ------------------------
+  /u05                                  penrith2 penrith1       
+
+  NFS                                   Sharing Nodes (2 in count)
+  ------------------------------------  ------------------------
+  /u06                                  penrith2 penrith1       
+
+
+Shared storage check was successful on nodes "penrith2,penrith1".
+
+Post-check for hardware and operating system setup was successful. 

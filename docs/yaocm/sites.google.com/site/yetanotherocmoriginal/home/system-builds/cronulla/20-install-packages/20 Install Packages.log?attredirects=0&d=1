@@ -1,0 +1,136 @@
+Loaded plugins: security
+public_ol6_UEKR3_latest                                  | 1.2 kB     00:00     
+public_ol6_UEKR3_latest/primary                          |  14 MB     00:18     
+public_ol6_UEKR3_latest                                                 360/360
+public_ol6_latest                                        | 1.4 kB     00:00     
+public_ol6_latest/primary                                |  48 MB     01:03     
+public_ol6_latest                                                   29908/29908
+Setting up Install Process
+Resolving Dependencies
+--> Running transaction check
+---> Package glibc-devel.i686 0:2.12-1.149.el6_6.9 will be installed
+--> Processing Dependency: glibc = 2.12-1.149.el6_6.9 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: glibc-headers = 2.12-1.149.el6_6.9 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libthread_db.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnss_files.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnsl.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libm.so.6 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libresolv.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libdl.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnss_dns.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnss_nisplus.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnss_nis.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnss_compat.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libcrypt.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libcidn.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: librt.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libanl.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libutil.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libnss_hesiod.so.2 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libBrokenLocale.so.1 for package: glibc-devel-2.12-1.149.el6_6.9.i686
+--> Running transaction check
+---> Package glibc.x86_64 0:2.12-1.132.el6 will be updated
+--> Processing Dependency: glibc = 2.12-1.132.el6 for package: glibc-common-2.12-1.132.el6.x86_64
+--> Processing Dependency: glibc = 2.12-1.132.el6 for package: glibc-devel-2.12-1.132.el6.x86_64
+---> Package glibc.i686 0:2.12-1.149.el6_6.9 will be installed
+--> Processing Dependency: libfreebl3.so for package: glibc-2.12-1.149.el6_6.9.i686
+--> Processing Dependency: libfreebl3.so(NSSRAWHASH_3.12.3) for package: glibc-2.12-1.149.el6_6.9.i686
+---> Package glibc.x86_64 0:2.12-1.149.el6_6.9 will be an update
+---> Package glibc-headers.x86_64 0:2.12-1.132.el6 will be updated
+---> Package glibc-headers.x86_64 0:2.12-1.149.el6_6.9 will be an update
+--> Running transaction check
+---> Package glibc-common.x86_64 0:2.12-1.132.el6 will be updated
+---> Package glibc-common.x86_64 0:2.12-1.149.el6_6.9 will be an update
+---> Package glibc-devel.x86_64 0:2.12-1.132.el6 will be updated
+---> Package glibc-devel.x86_64 0:2.12-1.149.el6_6.9 will be an update
+---> Package nss-softokn-freebl.x86_64 0:3.14.3-9.el6 will be updated
+---> Package nss-softokn-freebl.i686 0:3.14.3-22.el6_6 will be installed
+---> Package nss-softokn-freebl.x86_64 0:3.14.3-22.el6_6 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch     Version                Repository           Size
+================================================================================
+Installing:
+ glibc-devel          i686     2.12-1.149.el6_6.9     public_ol6_latest   984 k
+Installing for dependencies:
+ glibc                i686     2.12-1.149.el6_6.9     public_ol6_latest   4.3 M
+ nss-softokn-freebl   i686     3.14.3-22.el6_6        public_ol6_latest   156 k
+Updating for dependencies:
+ glibc                x86_64   2.12-1.149.el6_6.9     public_ol6_latest   3.8 M
+ glibc-common         x86_64   2.12-1.149.el6_6.9     public_ol6_latest    14 M
+ glibc-devel          x86_64   2.12-1.149.el6_6.9     public_ol6_latest   983 k
+ glibc-headers        x86_64   2.12-1.149.el6_6.9     public_ol6_latest   612 k
+ nss-softokn-freebl   x86_64   3.14.3-22.el6_6        public_ol6_latest   166 k
+
+Transaction Summary
+================================================================================
+Install       3 Package(s)
+Upgrade       5 Package(s)
+
+Total download size: 25 M
+Is this ok [y/N]: y
+Downloading Packages:
+(1/8): glibc-2.12-1.149.el6_6.9.i686.rpm                 | 4.3 MB     00:05     
+(2/8): glibc-2.12-1.149.el6_6.9.x86_64.rpm               | 3.8 MB     00:04     
+(3/8): glibc-common-2.12-1.149.el6_6.9.x86_64.rpm        |  14 MB     00:18     
+(4/8): glibc-devel-2.12-1.149.el6_6.9.i686.rpm           | 984 kB     00:01     
+(5/8): glibc-devel-2.12-1.149.el6_6.9.x86_64.rpm         | 983 kB     00:01     
+(6/8): glibc-headers-2.12-1.149.el6_6.9.x86_64.rpm       | 612 kB     00:00     
+(7/8): nss-softokn-freebl-3.14.3-22.el6_6.i686.rpm       | 156 kB     00:00     
+(8/8): nss-softokn-freebl-3.14.3-22.el6_6.x86_64.rpm     | 166 kB     00:00     
+--------------------------------------------------------------------------------
+Total                                           765 kB/s |  25 MB     00:33     
+warning: rpmts_HdrFromFdno: Header V3 RSA/SHA256 Signature, key ID ec551f03: NOKEY
+Retrieving key from http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6
+Importing GPG key 0xEC551F03:
+ Userid: "Oracle OSS group (Open Source Software group) <build@oss.oracle.com>"
+ From  : http://public-yum.oracle.com/RPM-GPG-KEY-oracle-ol6
+Is this ok [y/N]: y
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Updating   : glibc-common-2.12-1.149.el6_6.9.x86_64                      1/13 
+  Updating   : nss-softokn-freebl-3.14.3-22.el6_6.x86_64                   2/13 
+  Updating   : glibc-2.12-1.149.el6_6.9.x86_64                             3/13 
+  Updating   : glibc-headers-2.12-1.149.el6_6.9.x86_64                     4/13 
+  Installing : nss-softokn-freebl-3.14.3-22.el6_6.i686                     5/13 
+  Installing : glibc-2.12-1.149.el6_6.9.i686                               6/13 
+  Installing : glibc-devel-2.12-1.149.el6_6.9.i686                         7/13 
+  Updating   : glibc-devel-2.12-1.149.el6_6.9.x86_64                       8/13 
+  Cleanup    : glibc-devel-2.12-1.132.el6.x86_64                           9/13 
+  Cleanup    : glibc-headers-2.12-1.132.el6.x86_64                        10/13 
+  Cleanup    : glibc-common-2.12-1.132.el6.x86_64                         11/13 
+  Cleanup    : nss-softokn-freebl-3.14.3-9.el6.x86_64                     12/13 
+  Cleanup    : glibc-2.12-1.132.el6.x86_64                                13/13 
+  Verifying  : glibc-headers-2.12-1.149.el6_6.9.x86_64                     1/13 
+  Verifying  : glibc-devel-2.12-1.149.el6_6.9.x86_64                       2/13 
+  Verifying  : glibc-2.12-1.149.el6_6.9.x86_64                             3/13 
+  Verifying  : glibc-common-2.12-1.149.el6_6.9.x86_64                      4/13 
+  Verifying  : nss-softokn-freebl-3.14.3-22.el6_6.x86_64                   5/13 
+  Verifying  : glibc-2.12-1.149.el6_6.9.i686                               6/13 
+  Verifying  : nss-softokn-freebl-3.14.3-22.el6_6.i686                     7/13 
+  Verifying  : glibc-devel-2.12-1.149.el6_6.9.i686                         8/13 
+  Verifying  : nss-softokn-freebl-3.14.3-9.el6.x86_64                      9/13 
+  Verifying  : glibc-2.12-1.132.el6.x86_64                                10/13 
+  Verifying  : glibc-devel-2.12-1.132.el6.x86_64                          11/13 
+  Verifying  : glibc-common-2.12-1.132.el6.x86_64                         12/13 
+  Verifying  : glibc-headers-2.12-1.132.el6.x86_64                        13/13 
+
+Installed:
+  glibc-devel.i686 0:2.12-1.149.el6_6.9                                         
+
+Dependency Installed:
+  glibc.i686 0:2.12-1.149.el6_6.9   nss-softokn-freebl.i686 0:3.14.3-22.el6_6  
+
+Dependency Updated:
+  glibc.x86_64 0:2.12-1.149.el6_6.9                                             
+  glibc-common.x86_64 0:2.12-1.149.el6_6.9                                      
+  glibc-devel.x86_64 0:2.12-1.149.el6_6.9                                       
+  glibc-headers.x86_64 0:2.12-1.149.el6_6.9                                     
+  nss-softokn-freebl.x86_64 0:3.14.3-22.el6_6                                   
+
+Complete!

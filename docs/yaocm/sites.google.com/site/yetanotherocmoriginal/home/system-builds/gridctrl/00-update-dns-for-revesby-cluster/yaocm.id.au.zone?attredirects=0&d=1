@@ -1,0 +1,41 @@
+$TTL 86400
+@       SOA     gridctrl.yaocm.id.au.       hostmaster.yaocm.id.au. (
+                2013122901 ; serial
+                21600      ; refresh after 6 hours
+                3600       ; retry after 1 hour
+                604800     ; expire after 1 week
+                86400 )    ; minimum TTL of 1 day
+;
+; Nameservers
+;
+        NS      gridctrl.yaocm.id.au.
+gridctrl    A       192.168.1.252
+;
+;
+@       MX      10      mail.yaocm.id.au.
+mail    A       192.168.1.252
+;
+;
+;
+nundah          A       192.168.1.1
+;
+narrabri        A       192.168.1.16
+; Revesby 12R1 Cluster
+revesby1        A       192.168.1.93
+revesby1-vip    A       192.168.1.94
+revesby2        A       192.168.1.95
+revesby2-vip    A       192.168.1.96
+revesby-scan    A       192.168.1.97
+                A       192.168.1.98
+                A       192.168.1.99
+; Oracle Virtual Server Addresses
+victoria        A       192.168.1.100
+melbourne       A       192.168.1.101
+victoria-bridge A       192.168.1.102
+cloudctl        A       192.168.1.103
+; Physical hosts
+penrith         A       192.168.1.249
+marsfield       A       192.168.1.250
+ryde            A       192.168.1.251
+gridctrl        A       192.168.1.252
+;

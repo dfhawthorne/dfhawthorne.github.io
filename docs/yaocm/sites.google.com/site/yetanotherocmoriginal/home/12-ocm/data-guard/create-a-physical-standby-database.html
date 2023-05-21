@@ -1,0 +1,1003 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" itemscope="" itemtype="http://schema.org/WebPage">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<script type="text/javascript">/* Copyright 2008 Google. */ (function() { /*
+
+Copyright The Closure Library Authors.
+SPDX-License-Identifier: Apache-2.0
+*/
+(function(){function e(g){this.t={};this.tick=function(h,k,f){this.t[h]=[void 0!=f?f:(new Date).getTime(),k];if(void 0==f)try{window.console.timeStamp("CSI/"+h)}catch(m){}};this.getStartTickTime=function(){return this.t.start[0]};this.tick("start",null,g)}var a;if(window.performance)var d=(a=window.performance.timing)&&a.responseStart;var l=0<d?new e(d):new e;window.jstiming={Timer:e,load:l};if(a){var b=a.navigationStart;0<b&&d>=b&&(window.jstiming.srt=d-b)}if(a){var c=window.jstiming.load;0<b&&d>=
+b&&(c.tick("_wtsrt",void 0,b),c.tick("wtsrt_","_wtsrt",d),c.tick("tbsd_","wtsrt_"))}try{a=null,window.chrome&&window.chrome.csi&&(a=Math.floor(window.chrome.csi().pageT),c&&0<b&&(c.tick("_tbnd",void 0,window.chrome.csi().startE),c.tick("tbnd_","_tbnd",b))),null==a&&window.gtbExternal&&(a=window.gtbExternal.pageT()),null==a&&window.external&&(a=window.external.pageT,c&&0<b&&(c.tick("_tbnd",void 0,window.external.startE),c.tick("tbnd_","_tbnd",b))),a&&(window.jstiming.pt=a)}catch(g){}})(); })()
+</script>
+<link rel="shortcut icon" href="../../../_/rsrc/1294140403248/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="https://ssl.gstatic.com/sites/p/3168fb/system/app/images/apple-touch-icon.png" type="image/png" />
+<script type="text/javascript">/* Copyright 2008 Google. */ (function() { function d(a){return document.getElementById(a)}window.byId=d;function g(a){return a.replace(/^\s+|\s+$/g,"")}window.trim=g;var h=[],k=0;window.JOT_addListener=function(a,b,c){var f=new String(k++);a={eventName:a,handler:b,compId:c,key:f};h.push(a);return f};window.JOT_removeListenerByKey=function(a){for(var b=0;b<h.length;b++)if(h[b].key==a){h.splice(b,1);break}};window.JOT_removeAllListenersForName=function(a){for(var b=0;b<h.length;b++)h[b].eventName==a&&h.splice(b,1)};
+window.JOT_postEvent=function(a,b,c){var f={eventName:a,eventSrc:b||{},payload:c||{}};if(window.JOT_fullyLoaded)for(b=h.length,c=0;c<b&&c<h.length;c++){var e=h[c];e&&e.eventName==a&&(f.listenerCompId=e.compId||"",(e="function"==typeof e.handler?e.handler:window[e.handler])&&e(f))}else window.JOT_delayedEvents.push({eventName:a,eventSrc:b,payload:c})};window.JOT_delayedEvents=[];window.JOT_fullyLoaded=!1;
+window.JOT_formatRelativeToNow=function(a,b){a=((new Date).getTime()-a)/6E4;if(1440<=a||0>a)return null;var c=0;60<=a&&(a/=60,c=2);2<=a&&c++;return b?window.JOT_siteRelTimeStrs[c].replace("__duration__",Math.floor(a)):window.JOT_userRelTimeStrs[c].replace("__duration__",Math.floor(a))}; })()
+</script>
+<script>
+
+  
+
+  var breadcrumbs = [{"path":"/site/yetanotherocmoriginal/home","deleted":false,"title":"Home","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12-ocm","deleted":false,"title":"12C OCM","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12-ocm/data-guard","deleted":false,"title":"Data Guard","dir":"ltr"},{"path":"/site/yetanotherocmoriginal/home/12-ocm/data-guard/create-a-physical-standby-database","deleted":false,"title":"Create a physical standby database","dir":"ltr"}];
+  var JOT_clearDotPath = 'https://ssl.gstatic.com/sites/p/3168fb/system/app/images/cleardot.gif';
+
+  
+  var JOT_userRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ago","__duration__ hours ago"];
+
+  
+  
+
+  
+
+  var webspace = {"gvizGstaticVersion":"current","enableAnalytics":true,"pageSharingId":"jotspot_page","codeembeds":{"outerIframeSrc":"https://www.gstatic.com/jotspot/embeds/code/0f08d42392f2000e7e3f3daf5b427a43/outer_iframe.html","innerIframeSrc":"https://1453023391-jotspot-embeds.googleusercontent.com/code/8d87fa64604b2a11fae2ed06104c58d3/inner_iframe.html"},"enableUniversalAnalytics":false,"sharingPolicy":"OPENED","siteTitle":"Yet Another OCM","experiments":{"enableSubpagesGadgetInTakeout":true,"DisableSiteEditingFeature__disable_site_editing":false},"jot2atari":{"eligibility":"ineligible"},"onepickUrl":"https://docs.google.com/picker","adsensePublisherId":null,"features":{"moreMobileStyleImprovements":null,"subscriptionDataMigrationInProgress":null,"plusBadge":false},"configProperties":{"disableSiteEditing":null},"isPublic":true,"newSitesBaseUrl":"https://sites.google.com","isConsumer":true,"serverFlags":{"jot2AtariLearnMoreUrl":"https://support.google.com/sites/answer/7035197"},"domainAnalyticsAccountId":"","plusPageId":"","signInUrl":"https://accounts.google.com/AccountChooser?continue\u003dhttps://sites.google.com/site/yetanotherocmoriginal/home/12-ocm/data-guard/create-a-physical-standby-database\u0026service\u003djotspot","analyticsAccountId":"UA-20772336-1","scottyUrl":"/_/upload","homePath":"/","siteNoticeUrlEnabled":null,"plusPageUrl":"","adsensePromoClickedOrSiteIneligible":true,"csiReportUri":"https://gg.google.com/csi","sharingId":"jotspot","termsUrl":"//www.google.com/intl/en/policies/terms/","gvizVersion":1,"editorResources":{"sitelayout":["https://ssl.gstatic.com/sites/p/3168fb/system/app/css/sitelayouteditor.css"],"text":["https://ssl.gstatic.com/sites/p/3168fb/system/js/codemirror.js","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/codemirror_css.css","https://ssl.gstatic.com/sites/p/3168fb/system/js/trog_edit__en.js","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/trogedit.css","/site/yetanotherocmoriginal/_/rsrc/1619893815000/system/app/css/editor.css","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/codeeditor.css","/site/yetanotherocmoriginal/_/rsrc/1619893815000/system/app/css/camelot/editor-jfk.css"]},"sharingUrlPrefix":"/_/sharing","isAdsenseEnabled":true,"domain":"defaultdomain","baseUri":"/site/yetanotherocmoriginal","name":"yetanotherocmoriginal","siteTemplateId":false,"siteNoticeRevision":null,"siteNoticeUrlAddress":null,"siteNoticeMessage":null,"page":{"isRtlLocale":false,"canDeleteWebspace":null,"isPageDraft":null,"parentPath":"/home/12-ocm/data-guard","parentWuid":"wuid:gx:7ee58a5d08758938","siteLocale":"en","timeZone":"America/Los_Angeles","type":"text","title":"Create a physical standby database","locale":"en","wuid":"wuid:gx:563fe62396ec0835","revision":6,"path":"/home/12-ocm/data-guard/create-a-physical-standby-database","isSiteRtlLocale":false,"pageInheritsPermissions":null,"name":"create-a-physical-standby-database","canChangePath":true,"state":"","properties":{},"bidiEnabled":false,"currentTemplate":{"path":"/system/app/pagetemplates/text","title":"Web Page"}},"canPublishScriptToAnyone":true,"user":{"keyboardShortcuts":true,"sessionIndex":"","guest_":true,"displayNameOrEmail":"guest","userName":"guest","uid":"","renderMobile":false,"domain":"","namespace":"","hasWriteAccess":false,"namespaceUser":false,"primaryEmail":"guest","hasAdminAccess":false},"gadgets":{"baseUri":"/site/yetanotherocmoriginal/system/app/pages/gadgets"}};
+  webspace.page.breadcrumbs = breadcrumbs;
+
+  
+  var JOT_siteRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ago","__duration__ hours ago"];
+
+</script>
+<script type="text/javascript">
+                window.jstiming.load.tick('scl');
+              </script>
+<meta name="title" content="Create a physical standby database - Yet Another OCM" />
+<meta itemprop="name" content="Create a physical standby database - Yet Another OCM" />
+<meta property="og:title" content="Create a physical standby database - Yet Another OCM" />
+<style type="text/css">
+</style>
+<link rel="stylesheet" type="text/css" href="https://ssl.gstatic.com/sites/p/3168fb/system/app/themes/simplywhite/standard-css-simplywhite-ltr-ltr.css" />
+<link rel="stylesheet" type="text/css" href="../../../_/rsrc/1619893815000/system/app/css/overlay.css%3Fcb=simplywhiteundefineda100%2570200goog-ws-left.css" />
+<link rel="stylesheet" type="text/css" href="../../../_/rsrc/1619893815000/system/app/css/camelot/allthemes-view.css" />
+<!--[if IE]>
+          <link rel="stylesheet" type="text/css" href="/site/yetanotherocmoriginal/system/app/css/camelot/allthemes%2die.css" />
+        <![endif]-->
+<title>Create a physical standby database - Yet Another OCM</title>
+<script type="text/javascript">
+                window.jstiming.load.tick('cl');
+              </script>
+</head>
+<body xmlns="http://www.google.com/ns/jotspot" id="body" class=" en            ">
+<div id="sites-page-toolbar" class="sites-header-divider">
+<div xmlns="http://www.w3.org/1999/xhtml" id="sites-status" class="sites-status" style="display:none;"><div id="sites-notice" class="sites-notice" role="status" aria-live="assertive"> </div></div>
+</div>
+<div id="sites-chrome-everything-scrollbar">
+<div id="sites-chrome-everything" class="">
+<div id="sites-chrome-page-wrapper" style="direction: ltr">
+<div id="sites-chrome-page-wrapper-inside">
+<div xmlns="http://www.w3.org/1999/xhtml" id="sites-chrome-header-wrapper" style="">
+<table id="sites-chrome-header" class="sites-layout-hbox" cellspacing="0" style="">
+<tr class="sites-header-primary-row" id="sites-chrome-userheader">
+<td id="sites-header-title" class="" role="banner" style="height: 70px"><div class="sites-header-cell-buffer-wrapper"><h2><a href="../../../index.html" dir="ltr" id="sites-chrome-userheader-title">Yet Another OCM</a></h2></div></td><td class="sites-layout-searchbox  "><div class="sites-header-cell-buffer-wrapper"><form id="sites-searchbox-form" action="https://sites.google.com/site/yetanotherocmoriginal/system/app/pages/search" role="search"><input type="hidden" id="sites-searchbox-scope" name="scope" value="search-site" /><input type="text" id="jot-ui-searchInput" name="q" size="20" value="" aria-label="Search this site" /><div id="sites-searchbox-button-set" class="goog-inline-block"><div role="button" id="sites-searchbox-search-button" class="goog-inline-block jfk-button jfk-button-standard" tabindex="0">Search this site</div></div></form></div></td>
+</tr>
+<tr class="sites-header-secondary-row" id="sites-chrome-horizontal-nav">
+<td colspan="2" id="sites-chrome-header-horizontal-nav-container" role="navigation">
+</td>
+</tr>
+</table>
+</div>
+<div id="sites-chrome-main-wrapper">
+<div id="sites-chrome-main-wrapper-inside">
+<table id="sites-chrome-main" class="sites-layout-hbox" cellspacing="0" cellpadding="{scmCellpadding}" border="0">
+<tr>
+<td id="sites-chrome-sidebar-left" class="sites-layout-sidebar-left initial" style="width:200px">
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_2bd" class="sites-embed" role="navigation"><div class="sites-embed-content sites-sidebar-nav"><ul role="navigation" jotId="navList" class="has-expander"><li class="topLevel nav-first parent " wuid="gx:3b2a480be041e60"><div dir="ltr" style="padding-left: 0px;"><div class="expander"></div><a href="../../../home.html" jotId="wuid:gx:3b2a480be041e60" class="sites-navigation-link topLevel">Home</a></div><ul role="navigation" class="has-expander"><li class="parent closed " wuid="gx:6854663d0adfa523"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../10g-ocm.html" jotId="wuid:gx:6854663d0adfa523" class="sites-navigation-link">10G OCM</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../10g-ocm/10g-data-guard.html" jotId="wuid:gx:489beb2b832a7114" class="sites-navigation-link">10G Data Guard</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../10g-ocm/10g-ocm-planning.html" jotId="wuid:gx:a88c5dbc7f0baef" class="sites-navigation-link">10G OCM Planning</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../10g-ocm/10g-services.html" jotId="wuid:gx:54b13c32cf65c191" class="sites-navigation-link">10G Services</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../10g-ocm/10g-system-builds.html" jotId="wuid:gx:77c66066c03e2ab7" class="sites-navigation-link">10G System Builds</a></div></li></ul></li><li class="parent closed " wuid="gx:7f73cdd56622237c"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../11g-oce-rac.html" jotId="wuid:gx:7f73cdd56622237c" class="sites-navigation-link">11G OCE RAC</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm.html" jotId="wuid:gx:7780a2761cf95de4" class="sites-navigation-link">Section 1 - Grid Infrastructure: Clusterware and ASM</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-oce-rac/section-2---real-application-clusters.html" jotId="wuid:gx:267824251d3363d4" class="sites-navigation-link">Section 2 - Real Application Clusters</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-oce-rac/system-builds.html" jotId="wuid:gx:30640194b5755edd" class="sites-navigation-link">System Builds</a></div></li></ul></li><li class="parent closed " wuid="gx:5eeac2a35b15a760"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../11g-ocm.html" jotId="wuid:gx:5eeac2a35b15a760" class="sites-navigation-link">11G OCM</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-ocm/11g-ocm-data-and-data-warehouse-management.html" jotId="wuid:gx:71d7afe17670b648" class="sites-navigation-link">11G OCM Data and Data Warehouse Management</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-ocm/11g-ocm-data-guard.html" jotId="wuid:gx:70e445f4702ec675" class="sites-navigation-link">11G OCM Data Guard</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-ocm/11g-ocm-database-rman-em-and-network-configuration.html" jotId="wuid:gx:795d9befe3118e8d" class="sites-navigation-link">11G OCM Database, RMAN, EM and Network Configuration</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-ocm/11g-ocm-performance-management.html" jotId="wuid:gx:5156bf6750dc17a2" class="sites-navigation-link">11G OCM Performance Management</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../11g-ocm/11g-ocm-system-builds.html" jotId="wuid:gx:4389b1e578a37048" class="sites-navigation-link">11G OCM System Builds</a></div></li></ul></li><li class="parent closed " wuid="gx:45debd466b37352f"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../12-ocm.html" jotId="wuid:gx:45debd466b37352f" class="sites-navigation-link">12C OCM</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../12c-ocm-system-builds.html" jotId="wuid:gx:702a95293f377a1f" class="sites-navigation-link">12C OCM System Builds</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../data-and-performance-management.html" jotId="wuid:gx:1384b0e8b9408e1b" class="sites-navigation-link">Data and Performance Management</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../data-guard.html" jotId="wuid:gx:7ee58a5d08758938" class="sites-navigation-link">Data Guard</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../design-journal.html" jotId="wuid:gx:4c1a2046866ab43a" class="sites-navigation-link">Design Journal</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../general-database-and-network-administration-and-backup-strategy.html" jotId="wuid:gx:454ec3cb615b531f" class="sites-navigation-link">General Database and Network Administration, and Backup Strategy</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../grid-infrastructure-and-rac.html" jotId="wuid:gx:69a92aa26af488f2" class="sites-navigation-link">Grid Infrastructure and RAC</a></div></li></ul></li><li class="parent closed " wuid="gx:3a92b59c02fad974"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../12c-ocp-upgrade.html" jotId="wuid:gx:3a92b59c02fad974" class="sites-navigation-link">12C OCP Upgrade</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c.html" jotId="wuid:gx:333d3378e4d8110a" class="sites-navigation-link">Section 1: New Features of Oracle Database 12c</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../12c-ocp-upgrade/section-2-key-dba-skills.html" jotId="wuid:gx:1c496affd5a26d55" class="sites-navigation-link">Section 2: Key DBA Skills</a></div></li></ul></li><li class="parent closed " wuid="gx:ecd2e3476a85dd0"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../database-designs.html" jotId="wuid:gx:ecd2e3476a85dd0" class="sites-navigation-link">Database Designs</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../database-designs/much-ado-about-nothing.html" jotId="wuid:gx:403b416305137e1c" class="sites-navigation-link">Much Ado About Nothing</a></div></li></ul></li><li class="parent closed " wuid="gx:7106fb0a895904cd"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../issues.html" jotId="wuid:gx:7106fb0a895904cd" class="sites-navigation-link">Issues</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../issues/cloud-control-issues.html" jotId="wuid:gx:7c017fe7b1b7db02" class="sites-navigation-link">Cloud Control Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../issues/linux-issues.html" jotId="wuid:gx:6bf0bf8b64edb3f9" class="sites-navigation-link">Linux Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../issues/oracle-patching-issues.html" jotId="wuid:gx:74b8bf5ac4858eb0" class="sites-navigation-link">Oracle Patching Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../issues/oracle-personal-edition-issues.html" jotId="wuid:gx:520e0a14b597913a" class="sites-navigation-link">Oracle Personal Edition Issues</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../issues/ovm-issues.html" jotId="wuid:gx:77bb41fbebb34425" class="sites-navigation-link">OVM Issues</a></div></li></ul></li><li class="parent closed " wuid="gx:29a6fee7cdc745ef"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../knowledge.html" jotId="wuid:gx:29a6fee7cdc745ef" class="sites-navigation-link">Knowledge</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../knowledge/demonstrations.html" jotId="wuid:gx:5566308badf9236b" class="sites-navigation-link">Demonstrations</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../knowledge/help-pages.html" jotId="wuid:gx:524a1fa20211bba4" class="sites-navigation-link">Help Pages</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../knowledge/oracle-utilities.html" jotId="wuid:gx:7e79f0ae6f222cfe" class="sites-navigation-link">Oracle Utilities</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../knowledge/technical-notes.html" jotId="wuid:gx:eb5c1299b9c5629" class="sites-navigation-link">Technical Notes</a></div></li></ul></li><li class="parent closed " wuid="gx:c14ef310b5d580c"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../procedures.html" jotId="wuid:gx:c14ef310b5d580c" class="sites-navigation-link">Procedures</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/create-oracle-database.html" jotId="wuid:gx:66844774cb1472af" class="sites-navigation-link">Create Oracle Database</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/deinstall-oracle-rdbms.html" jotId="wuid:gx:f122a7a035acc27" class="sites-navigation-link">Deinstall Oracle RDBMS</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/install-grid-infrastructure.html" jotId="wuid:gx:2ceeddc46048b732" class="sites-navigation-link">Install Grid Infrastructure</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/install-linux.html" jotId="wuid:gx:1492df0262c2ded3" class="sites-navigation-link">Install Linux</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/install-oracle-rdbms.html" jotId="wuid:gx:eb868e71022bb04" class="sites-navigation-link">Install Oracle RDBMS</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/miscellaneous.html" jotId="wuid:gx:2bcb31c503521cac" class="sites-navigation-link">Miscellaneous</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/patch-oracle-database.html" jotId="wuid:gx:2869e232f218ebdb" class="sites-navigation-link">Patch Oracle Database</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../procedures/upgrade-oracle-database.html" jotId="wuid:gx:504db3f787da1411" class="sites-navigation-link">Upgrade Oracle Database</a></div></li></ul></li><li class="parent closed " wuid="gx:7349065b46fcf29e"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../projects.html" jotId="wuid:gx:7349065b46fcf29e" class="sites-navigation-link">Projects</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../projects/setting-up-a-private-cloud.html" jotId="wuid:gx:4a06d2a31bace57d" class="sites-navigation-link">Setting Up a Private Cloud</a></div></li></ul></li><li class="parent closed " wuid="gx:1751da469fd4a61f"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../reading-notes.html" jotId="wuid:gx:1751da469fd4a61f" class="sites-navigation-link">Reading Notes</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../reading-notes/oracle-vm-implementation-and-administration-guide.html" jotId="wuid:gx:14243848ab9914bb" class="sites-navigation-link">Oracle VM Implementation and Administration Guide</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../reading-notes/pro-oracle-database-12c-administration.html" jotId="wuid:gx:4358cd288f337e82" class="sites-navigation-link">Pro Oracle Database 12c Administration</a></div></li></ul></li><li class="parent closed " wuid="gx:419b9a9eeae58bc4"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../resource-allocations.html" jotId="wuid:gx:419b9a9eeae58bc4" class="sites-navigation-link">Resource Allocations</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../resource-allocations/ip-addresses.html" jotId="wuid:gx:561dea96a669771d" class="sites-navigation-link">IP Addresses</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../resource-allocations/victoria-vm-resources.html" jotId="wuid:gx:68cdf1d51fd331c2" class="sites-navigation-link">Victoria VM Resources</a></div></li></ul></li><li class="parent closed " wuid="gx:763c8c972462e886"><div dir="ltr" style="padding-left: 19px;"><div class="expander"></div><a href="../../system-builds.html" jotId="wuid:gx:763c8c972462e886" class="sites-navigation-link">System Builds</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/auburn.html" jotId="wuid:gx:7333fb4a9cb176e1" class="sites-navigation-link">AUBURN</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/clifton.html" jotId="wuid:gx:65e47d76f4cf9a5d" class="sites-navigation-link">CLIFTON</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/cloudctl.html" jotId="wuid:gx:5fa340d44587d03" class="sites-navigation-link">CLOUDCTL</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/cronulla.html" jotId="wuid:gx:3e6aa0e71514d4b7" class="sites-navigation-link">CRONULLA</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/goldengate.html" jotId="wuid:gx:218d9e7c410189e8" class="sites-navigation-link">GOLDENGATE</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/gordon.html" jotId="wuid:gx:337b55952ad14bf" class="sites-navigation-link">GORDON</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/gridctrl.html" jotId="wuid:gx:22e160f4756f6339" class="sites-navigation-link">GRIDCTRL</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/melbourne.html" jotId="wuid:gx:8ccc77de5c0c0ed" class="sites-navigation-link">MELBOURNE</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/oatley.html" jotId="wuid:gx:7c8d46141284a0d5" class="sites-navigation-link">OATLEY</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/personal.html" jotId="wuid:gx:6bc86e743a02acf1" class="sites-navigation-link">PERSONAL</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/randwick.html" jotId="wuid:gx:7f108dc57ee2f76" class="sites-navigation-link">RANDWICK</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/redfern.html" jotId="wuid:gx:21a1ed3bcc21c853" class="sites-navigation-link">REDFERN</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/revesby.html" jotId="wuid:gx:1a25b24cca382d08" class="sites-navigation-link">Revesby</a></div></li><li class=""><div dir="ltr" style="padding-left: 57px;"><a href="../../system-builds/victoria.html" jotId="wuid:gx:a8bab9e3f3d3ebf" class="sites-navigation-link">Victoria</a></div></li></ul></li></ul></li><li class="topLevel parent " wuid="gx:43c2eaccaaff7317"><div dir="ltr" style="padding-left: 0px;"><div class="expander"></div><a href="../../../announcements.html" jotId="wuid:gx:43c2eaccaaff7317" class="sites-navigation-link topLevel">Announcements</a></div><ul role="navigation" class="has-expander"><li class=""><div dir="ltr" style="padding-left: 38px;"><a href="../../../announcements/12april2012.html" jotId="wuid:gx:23728264e5601b93" class="sites-navigation-link">12 April 2012</a></div></li><li class=""><div dir="ltr" style="padding-left: 38px;"><a href="../../../announcements/12march2012.html" jotId="wuid:gx:7b88c20efad9a3da" class="sites-navigation-link">12 March 2012</a></div></li><li class=""><div dir="ltr" style="padding-left: 38px;"><a href="../../../announcements/27march2012.html" jotId="wuid:gx:632b604734e2dac9" class="sites-navigation-link">27 March 2012</a></div></li></ul></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../book-reviews.html" jotId="wuid:gx:5d0d248f2da8dddc" class="sites-navigation-link topLevel">Book Reviews</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../file-cabinet.html" jotId="wuid:gx:2434f251e91aec68" class="sites-navigation-link topLevel">Files</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../ocm-questions-and-answers.html" jotId="wuid:gx:745e829206f7de92" class="sites-navigation-link topLevel">OCM Questions and Answers</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../system/app/pages/sitemap/hierarchy.html" jotId="wuid:gx:3ea149e43344b911" class="sites-navigation-link topLevel">Sitemap</a></div></li><li class="topLevel "><div dir="ltr" style="padding-left: 19px;"><a href="../../../system/app/pages/recentChanges.html" jotId="wuid:gx:5e6c553dc0fa9062" class="sites-navigation-link topLevel">Recent site activity</a></div></li></ul></div></div>
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_417369500733912" class="sites-embed" role="complementary"><h4 class="sites-embed-title">Join Our Discussion</h4><div class="sites-embed-content sites-embed-content-sidebar-textbox"><div dir="ltr"><p style="text-align:center"><a href="http://groups.google.com/support/bin/topic.py?topic=9216" target="_blank"><img border="0" src="../../../_/rsrc/1294140403248/config/app/images/psd-chat-icon-smaller.gif" /></a><br />
+<a href="http://groups.google.com/support/bin/topic.py?topic=9216" target="_blank">Join the Discussion</a></p></div></div></div>
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_35483861481770873" class="sites-embed" role="complementary"><h4 class="sites-embed-title">Template tips</h4><div class="sites-embed-content sites-embed-content-sidebar-textbox"><div dir="ltr"><a href="https://sites.google.com/site/sitetemplateinfo/tips" target="_blank">Learn more about working with templates.</a><br /><br /><a href="https://sites.google.com/site/sitetemplateinfo/tips/customize-your-site-sidebar" target="_blank">How to change this sidebar.</a><br /></div></div></div>
+</td>
+<td id="sites-canvas-wrapper">
+<div id="sites-canvas" role="main">
+<div id="goog-ws-editor-toolbar-container"> </div>
+<div xmlns="http://www.w3.org/1999/xhtml" id="title-crumbs" style="">
+<A href="../../../home.html" dir="ltr">Home</A>‎ &gt; ‎<A href="../../12-ocm.html" dir="ltr">12C OCM</A>‎ &gt; ‎<A href="../data-guard.html" dir="ltr">Data Guard</A>‎ &gt; ‎
+  </div>
+<h3 xmlns="http://www.w3.org/1999/xhtml" id="sites-page-title-header" style="" align="left">
+<span id="sites-page-title" dir="ltr" tabindex="-1" style="outline: none">Create a physical standby database</span>
+</h3>
+<div id="sites-canvas-main" class="sites-canvas-main">
+<div id="sites-canvas-main-content">
+<table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" class="sites-layout-name-one-column sites-layout-hbox"><tbody><tr><td class="sites-layout-tile sites-tile-name-content-1"><div dir="ltr"><div><div class="sites-embed-align-left-wrapping-off"><div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;"><div class="sites-embed-content sites-embed-type-toc"><div class="goog-toc sites-embed-toc-maxdepth-6"><p>Contents</p><ol class="goog-toc"><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Summary"><strong>1 </strong>Summary</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-References"><strong>2 </strong>References</a><ol class="goog-toc"><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Linux-Documentation"><strong>2.1 </strong>Linux Documentation</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Oracle-Manuals"><strong>2.2 </strong>Oracle Manuals</a></li></ol></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Preparation"><strong>3 </strong>Preparation</a><ol class="goog-toc"><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Create-Database"><strong>3.1 </strong>Create Database</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Enable-Force-Logging"><strong>3.2 </strong>Enable Force Logging</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Redo-Transport-Authentication"><strong>3.3 </strong>Redo Transport Authentication</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Configure-the-Primary-Database-to-Receive-Redo-Data"><strong>3.4 </strong>Configure the Primary Database to Receive Redo Data</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Set-Primary-Database-Initialization-Parameters"><strong>3.5 </strong>Set Primary Database Initialization Parameters</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Enable-Archiving"><strong>3.6 </strong>Enable Archiving</a></li></ol></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Creating-a-Physical-Standby"><strong>4 </strong>Creating a Physical Standby</a><ol class="goog-toc"><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-1:-Create-a-Backup-Copy-of-the-Primary-Database-Data-Files"><strong>4.1 </strong>Task 1: Create a Backup Copy of the Primary Database Data Files</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-2:-Create-a-Control-File-for-the-Standby-Database"><strong>4.2 </strong>Task 2: Create a Control File for the Standby Database</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-3:-Create-a-Parameter-File-for-the-Standby-Database"><strong>4.3 </strong>Task 3: Create a Parameter File for the Standby Database</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-4:-Copy-Files-from-the-Primary-System-to-the-Standby-System"><strong>4.4 </strong>Task 4: Copy Files from the Primary System to the Standby System</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-5:-Set-Up-the-Environment-to-Support-the-Standby-Database"><strong>4.5 </strong>Task 5: Set Up the Environment to Support the Standby Database</a><ol class="goog-toc"><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-2.-Copy-Remote-Password-File-to-Botany"><strong>4.5.1 </strong>2. Copy Remote Password File to Botany</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-3.-Configure-and-Start-Listener-on-Botany"><strong>4.5.2 </strong>3. Configure and Start Listener on Botany</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-4.-Create-Oracle-Net-service-names"><strong>4.5.3 </strong>4. Create Oracle Net service names</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-5.-Create-SPFILE"><strong>4.5.4 </strong>5. Create SPFILE</a></li></ol></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-6:-Start-the-Physical-Standby-Database"><strong>4.6 </strong>Task 6: Start the Physical Standby Database</a></li><li class="goog-toc"><a href="create-a-physical-standby-database.html#TOC-Task-7:-Verify-the-Physical-Standby-Database-Is-Performing-Properly"><strong>4.7 </strong>Task 7: Verify the Physical Standby Database Is Performing Properly</a></li></ol></li></ol></div></div></div></div></div>
+<h2><a name="TOC-Summary"></a>Summary</h2>
+<p>This is the basic procedure from the Data Guard manual. This does not use RMAN DUPLICATE or Cloud Control.</p>
+<p>The primary database is on <a href="../12c-ocm-system-builds/padstow.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</a> with the physical standby database on <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a>.</p>
+<h2><a name="TOC-References"></a>References</h2>
+<h3><a name="TOC-Linux-Documentation"></a>Linux Documentation</h3>
+<p><a href="http://man7.org/linux/man-pages/index.html" rel="nofollow">Linux man pages online</a></p>
+<ul>
+<li><a href="http://man7.org/linux/man-pages/man1/cp.1.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">cp</a></li>
+<li><a href="http://man7.org/linux/man-pages/man1/diff.1.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">diff</a></li>
+<li><a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">mkdir</a></li>
+<li><a href="http://man7.org/linux/man-pages/man1/mv.1.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">mv</a></li>
+<li><a href="http://man7.org/linux/man-pages/man1/scp.1.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">scp</a></li>
+<li><a href="http://man7.org/linux/man-pages/man1/tar.1.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">tar</a></li>
+<li><a href="http://man7.org/linux/man-pages/man1/vi.1p.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">vi</a></li>
+</ul>
+<h3><a name="TOC-Oracle-Manuals"></a>Oracle Manuals</h3>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Data Guard Concepts and Administration</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#SBYDB00200" rel="nofollow">3 Creating a Physical Standby Database</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-3DA747A3-1976-4A70-A96A-56281872D4D9" rel="nofollow">3.1 Preparing the Primary Database for Standby Database Creation</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-AE2B1237-57A1-4745-A04C-4246A831A963" rel="nofollow">3.1.1 Enable Forced Logging</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-0DC30726-3471-4588-BFE0-9CA0736328E2" rel="nofollow">3.1.2 Configure Redo Transport Authentication</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-CA9076B9-3360-4A36-87AF-3390B391CEFF" rel="nofollow">3.1.3 Configure the Primary Database to Receive Redo Data</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-0FD317D6-1A49-4DB3-A141-D00CB3089E84" rel="nofollow">3.1.4 Set Primary Database Initialization Parameters</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-0379019D-0995-4EB7-8861-B07B708C7B4C" rel="nofollow">3.1.5 Enable Archiving</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-A86D403B-B3F5-4B05-9255-5BADD513F9CF" rel="nofollow">3.2 Step-by-Step Instructions for Creating a Physical Standby Database</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-C40DD1FB-1DB5-4674-839D-D17ECA99FB93" rel="nofollow">3.2.1 Creating a Physical Standby Task 1: Create a Backup Copy of the Primary Database Data Files</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-B471D788-AFD3-48B3-9709-D63C34DBC269" rel="nofollow">3.2.2 Creating a Physical Standby Task 2: Create a Control File for the Standby Database</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-06FDC24C-6E90-420B-BB63-3B6BAC4D8AFA" rel="nofollow">3.2.3 Creating a Physical Standby Task 3: Create a Parameter File for the Standby Database</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-4834C26E-6493-4C5A-91F7-680FD43FADF7" rel="nofollow">3.2.4 Creating a Physical Standby Task 4: Copy Files from the Primary System to the Standby System</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-2FD8DBAB-C439-4F03-9A94-01C6FEF33392" rel="nofollow">3.2.5 Creating a Physical Standby Task 5: Set Up the Environment to Support the Standby Database</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-3D65210D-9FE5-490E-938E-57FC2E07A569" rel="nofollow">3.2.6 Creating a Physical Standby Task 6: Start the Physical Standby Database</a></li>
+<li><a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-AAA6D97B-A345-4825-A320-B662BB16E2ED" rel="nofollow">3.2.7 Creating a Physical Standby Task 7: Verify the Physical Standby Database Is Performing Properly</a></li>
+</ul>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/RCMRF/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Backup and Recovery Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta004.htm#GUID-9320BFF7-0728-4B3D-85B9-2184557ECDCE" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">ALLOCATE CHANNEL</a></li>
+<li><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta006.htm#RCMRF107" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">BACKUP</a></li>
+<li><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta015.htm#GUID-FB4EAC69-4978-42F7-8B09-77C6736188B3" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">DELETE</a></li>
+<li><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta2012.htm#GUID-88250EEF-DC49-42A9-822C-4011B1345C7B" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">RUN</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-FD266F6F-D047-4EBB-8D96-B51B1DCA2D61.htm" rel="nofollow">1 Initialization Parameters</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-E8B4E0EA-B073-4349-9EA9-E053F499FB9E.htm#REFRN10038" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">DB_FILE_NAME_CONVERT</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-D8A5CD6B-2C72-47EF-B7D8-A6FC69934314.htm#REFRN10041" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">DB_NAME</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-3547C937-5DDA-49FF-A9F9-14FF306545D8.htm#REFRN10242" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">DB_UNIQUE_NAME</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-4F034B79-AE2A-44E3-8485-E055AA2DDD29.htm#REFRN10056" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">FAL_SERVER</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-4DABDBE9-04B6-44D2-B93D-DAB15EA71427.htm#REFRN10237" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">LOG_ARCHIVE_CONFIG</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-10BD97BF-6295-4E85-A1A3-854E15E05A44.htm#REFRN10086" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">LOG_ARCHIVE_DEST_n</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-2D8A4B78-E94C-426E-AD55-EDE886AF29AC.htm#REFRN10089" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">LOG_ARCHIVE_FORMAT</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-3D5894EF-C33D-4687-978F-F640174F6FCC.htm#REFRN10098" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">LOG_FILE_NAME_CONVERT</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-6619299E-95E8-4821-B123-3B5899F046C7.htm#REFRN10184" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">REMOTE_LOGIN_PASSWORDFILE</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-8C5690B0-DE10-4460-86DF-80111869CF4C.htm" rel="nofollow">Part III Dynamic Performance Views</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-C62A7B96-2DD4-4E70-A0D9-26EE4BFBE256.htm" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">V$DATABASE</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-7BF7955C-9705-40F4-B2F6-5D7F3A32DD30.htm" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">V$DATAFILE</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-AE0B85B3-6B51-4FBD-A460-2D7090D9E0B5.htm" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">V$LOGFILE</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-CBE1185A-B3A3-4D66-B8B4-D6A26A0C0DB2.htm#REFRN30144" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">V$MANAGED_STANDBY</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-C86F3AB0-1191-447F-8EDF-4727D8693754.htm" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">V$PARAMETER</a></li>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/NETAG/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Net Services Administrator's Guide</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/NETAG/connect.htm#NETAG357" rel="nofollow">15 Testing Connections</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/NETAG/connect.htm#i427276" rel="nofollow">Using the TNSPING Utility to Test Connectivity from the Client</a></li>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/SQLRF/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database SQL Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SQLRF/statements_1006.htm#i2079942" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">ALTER DATABASE</a></li>
+<li><a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#i2053602" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">ALTER SYSTEM</a></li>
+<li><a href="https://docs.oracle.com/database/121/SQLRF/statements_6009.htm#i2072768" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">CREATE PFILE</a></li>
+<li><a href="https://docs.oracle.com/database/121/SQLRF/statements_6018.htm#i2072626" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">CREATE SPFILE</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/NETRF/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 Database Net Services Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/NETRF/lsnrctl.htm#NETRF001" rel="nofollow">1 Listener Control Utility</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/database/121/SQPUG/toc.htm" rel="nofollow">Oracle<sup>®</sup> 12.1 SQL*Plus<sup>®</sup> User's Guide and Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve.htm#SQPUG022" rel="nofollow">SQL*Plus Command Reference</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">STARTUP</a></li>
+</ul>
+</ul>
+</ul>
+<h2><a name="TOC-Preparation"></a>Preparation</h2>
+<h3><a name="TOC-Create-Database"></a>Create Database</h3>
+<p>I created the <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">OCM12PRI</span> CDB on <a href="../12c-ocm-system-builds/padstow.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</a> using <code>dbca</code>. It has one (1) PDB: <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">EXAMPLES</span>.</p>
+<h3><a name="TOC-Enable-Force-Logging"></a>Enable Force Logging</h3>
+<p>Following the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-AE2B1237-57A1-4745-A04C-4246A831A963" rel="nofollow">3.1.1 Enable Forced Logging</a>”, I ran the following commands on <a href="../12c-ocm-system-builds/padstow.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</a> as the <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">ORACLE</span> user:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">sqlplus / as sysdba
+</pre>
+<p>The output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">SQL*Plus: Release 12.1.0.2.0 Production on Wed Jul 4 20:44:38 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+</pre>
+<p>Startup the database instance in MOUNT mode:</p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a> mount
+</pre>
+<p>The output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">ORACLE instance started.
+
+Total System Global Area 1258291200 bytes
+Fixed Size          2923920 bytes
+Variable Size         822084208 bytes
+Database Buffers      419430400 bytes
+Redo Buffers           13852672 bytes
+Database mounted.
+</pre>
+<p>Determine the current settings:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">select name, log_mode, force_logging from <a href="https://docs.oracle.com/database/121/REFRN/GUID-C62A7B96-2DD4-4E70-A0D9-26EE4BFBE256.htm" rel="nofollow">v$database</a>;
+</pre>
+<p>The output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">NAME      LOG_MODE     FORCE_LOGGING
+--------- ------------ ---------------------------------------
+OCM12PRI  NOARCHIVELOG NO
+</pre>
+<p>Change the settings with the following commands:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_1006.htm#i2079942" rel="nofollow">ALTER DATABASE</a> FORCE LOGGING;
+<a href="https://docs.oracle.com/database/121/SQLRF/statements_1006.htm#i2079942" rel="nofollow">ALTER DATABASE</a> ARCHIVELOG;
+</pre>
+<p>Verify that the settings are correct:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">select name, log_mode, force_logging from <a href="https://docs.oracle.com/database/121/REFRN/GUID-C62A7B96-2DD4-4E70-A0D9-26EE4BFBE256.htm" rel="nofollow">v$database</a>;
+</pre>
+<p>The output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">NAME      LOG_MODE     FORCE_LOGGING
+--------- ------------ ---------------------------------------
+OCM12PRI  ARCHIVELOG   YES
+</pre>
+<p>In addition to enabling <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">FORCE LOGGING</span>, I also enabled <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">ARCHIVELOG</span> mode.</p>
+<h3><a name="TOC-Redo-Transport-Authentication"></a>Redo Transport Authentication</h3>
+<p>Since I do not have OID configured in my environment, there is no need to <a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-0DC30726-3471-4588-BFE0-9CA0736328E2" rel="nofollow">Configure Redo Transport Authentication</a>.</p>
+<h3><a name="TOC-Configure-the-Primary-Database-to-Receive-Redo-Data"></a>Configure the Primary Database to Receive Redo Data</h3>
+<p>Since this environment is only used for a fast fail-over test, there is no need to <a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-CA9076B9-3360-4A36-87AF-3390B391CEFF" rel="nofollow">Configure the Primary Database to Receive Redo Data</a>.</p>
+<h3><a name="TOC-Set-Primary-Database-Initialization-Parameters"></a>Set Primary Database Initialization Parameters</h3>
+<p>For the list of parameters described in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-0FD317D6-1A49-4DB3-A141-D00CB3089E84" rel="nofollow">3.1.4 Set Primary Database Initialization Parameters</a>”, I ran the following query to get current values:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">COLUMN name   FORMAT A25
+COLUMN value  FORMAT A50
+SET PAGESIZE 100
+SELECT
+    name,
+    value
+  FROM
+    <a href="https://docs.oracle.com/database/121/REFRN/GUID-C86F3AB0-1191-447F-8EDF-4727D8693754.htm" rel="nofollow">v$parameter</a>
+  WHERE
+    NAME IN (
+      'db_name',
+      'db_unique_name',
+      'log_archive_config',
+      'control_files',
+      'log_archive_dest_1',
+      'log_archive_dest_2',
+      'remote_login_passwordfile',
+      'log_archive_format'
+    )
+  ORDER BY
+    name
+/</pre>
+<p>The result was:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">NAME                      VALUE
+------------------------- --------------------------------------------------
+control_files             /opt/app/oracle/oradata/ocm12pri/control01.ctl, /o
+                          pt/app/oracle/fast_recovery_area/ocm12pri/control0
+                          2.ctl
+
+db_name                   ocm12pri
+db_unique_name            ocm12pri_padstow
+log_archive_config
+log_archive_dest_1
+log_archive_dest_2
+log_archive_format        %t_%s_%r.dbf
+remote_login_passwordfile EXCLUSIVE
+
+8 rows selected.
+</pre>
+<p>Added the following lines to <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">/opt/app/oracle/product/12.1.0/dbhome_1/network/admin/tnsnames.ora</span> on <a href="../12c-ocm-system-builds/padstow.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</a>:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">OCM12PRI_BOTANY =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = botany.yaocm.id.au)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = ocm12pri_botany.yaocm.id.au)
+    )
+  )
+</pre>
+<p>Verified the changes as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/NETAG/connect.htm#i427276" rel="nofollow">tnsping</a> ocm12pri_botany
+</pre>
+<p>The output was:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">TNS Ping Utility for Linux: Version 12.1.0.2.0 - Production on 14-JUL-2018 21:34:53
+
+Copyright (c) 1997, 2014, Oracle.  All rights reserved.
+
+Used parameter files:
+/opt/app/oracle/product/12.1.0/dbhome_1/network/admin/sqlnet.ora
+
+
+Used TNSNAMES adapter to resolve the alias
+Attempting to contact (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = botany.yaocm.id.au)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = ocm12pri_botany.yaocm.id.au)))
+OK (10 msec)
+</pre>
+<p>In all, I only had to make the following three (3) parameter changes:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#i2053602" rel="nofollow">ALTER SYSTEM</a> SET <a href="https://docs.oracle.com/database/121/REFRN/GUID-4DABDBE9-04B6-44D2-B93D-DAB15EA71427.htm#REFRN10237" rel="nofollow">log_archive_config</a>='DG_CONFIG=(OCM12PRI_PADSTOW,OCM12PRI_BOTANY)';
+<a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#i2053602" rel="nofollow">ALTER SYSTEM</a> SET <a href="https://docs.oracle.com/database/121/REFRN/GUID-10BD97BF-6295-4E85-A1A3-854E15E05A44.htm#REFRN10086" rel="nofollow">log_archive_dest_1</a>='LOCATION=USE_DB_RECOVERY_FILE_DEST VALID_FOR=(ALL_LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=OCM12PRI_PADSTOW';
+<a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#i2053602" rel="nofollow">ALTER SYSTEM</a> SET <a href="https://docs.oracle.com/database/121/REFRN/GUID-10BD97BF-6295-4E85-A1A3-854E15E05A44.htm#REFRN10086" rel="nofollow">log_archive_dest_2</a>='SERVICE=OCM12PRI_BOTANY ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=OCM12PRI_BOTANY';
+</pre>
+<p>The new set of parameters are:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">NAME                      VALUE
+------------------------- --------------------------------------------------
+control_files             /opt/app/oracle/oradata/ocm12pri/control01.ctl, /o
+                          pt/app/oracle/fast_recovery_area/ocm12pri/control0
+                          2.ctl
+
+db_name                   ocm12pri
+db_unique_name            ocm12pri_padstow
+log_archive_config        DG_CONFIG=(OCM12PRI_PADSTOW,OCM12PRI_BOTANY)
+log_archive_dest_1        LOCATION=USE_DB_RECOVERY_FILE_DEST VALID_FOR=(ALL_
+                          LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=OCM12PRI_PADSTO
+                          W
+
+log_archive_dest_2        SERVICE=OCM12PRI_BOTANY ASYNC VALID_FOR=(ONLINE_LO
+                          GFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=OCM12PRI_BOTAN
+                          Y
+
+log_archive_format        %t_%s_%r.dbf
+remote_login_passwordfile EXCLUSIVE
+
+8 rows selected.
+</pre>
+<p>Since I only plan to do fail-over tests, there is now need to configure the other parameters or to allocate standby redo log files.</p>
+<h3><a name="TOC-Enable-Archiving"></a>Enable Archiving</h3>
+<p>I had already enabled archiving earlier (see <a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-0379019D-0995-4EB7-8861-B07B708C7B4C" rel="nofollow">3.1.5 Enable Archiving</a> for procedure).</p>
+<h2><a name="TOC-Creating-a-Physical-Standby"></a>Creating a Physical Standby</h2>
+<h3><a name="TOC-Task-1:-Create-a-Backup-Copy-of-the-Primary-Database-Data-Files"></a>Task 1: Create a Backup Copy of the Primary Database Data Files</h3>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-C40DD1FB-1DB5-4674-839D-D17ECA99FB93" rel="nofollow">3.2.1 Creating a Physical Standby Task 1: Create a Backup Copy of the Primary Database Data Files</a>”.</p>
+<p>I used the following RMAN commands to backup the database:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta2012.htm#GUID-88250EEF-DC49-42A9-822C-4011B1345C7B" rel="nofollow">run</a> {
+  <a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta004.htm#GUID-9320BFF7-0728-4B3D-85B9-2184557ECDCE" rel="nofollow">allocate channel</a> d1 device type disk;
+  <a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta004.htm#GUID-9320BFF7-0728-4B3D-85B9-2184557ECDCE" rel="nofollow">allocate channel</a> d2 device type disk;
+  <a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta006.htm#RCMRF107" rel="nofollow">backup</a> database archivelog all delete input;
+  <a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta015.htm#GUID-FB4EAC69-4978-42F7-8B09-77C6736188B3" rel="nofollow">delete</a> noprompt obsolete;
+}
+</pre>
+<p>The RMAN output is as follows:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">using target database control file instead of recovery catalog
+allocated channel: d1
+channel d1: SID=85 device type=DISK
+
+allocated channel: d2
+channel d2: SID=82 device type=DISK
+
+Starting backup at 14-JUL-18
+channel d1: starting full datafile backup set
+channel d1: specifying datafile(s) in backup set
+input datafile file number=00011 name=/opt/app/oracle/oradata/ocm12pri/examples/example01.dbf
+input datafile file number=00010 name=/opt/app/oracle/oradata/ocm12pri/examples/SAMPLE_SCHEMA_users01.dbf
+channel d1: starting piece 1 at 14-JUL-18
+channel d2: starting full datafile backup set
+channel d2: specifying datafile(s) in backup set
+input datafile file number=00001 name=/opt/app/oracle/oradata/ocm12pri/system01.dbf
+input datafile file number=00004 name=/opt/app/oracle/oradata/ocm12pri/undotbs01.dbf
+channel d2: starting piece 1 at 14-JUL-18
+channel d1: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsb4nm_.bkp tag=TAG20180714T215755 comment=NONE
+channel d1: backup set complete, elapsed time: 00:00:27
+channel d1: starting archived log backup set
+channel d1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=34 RECID=1 STAMP=981485203
+input archived log thread=1 sequence=35 RECID=2 STAMP=981485482
+channel d1: starting piece 1 at 14-JUL-18
+channel d1: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T215755_fnmsbz5y_.bkp tag=TAG20180714T215755 comment=NONE
+channel d1: backup set complete, elapsed time: 00:00:08
+channel d1: deleting archived log(s)
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_34_fnmg3lps_.arc thread=1 sequence=34
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_35_fnmgd9mw_.arc thread=1 sequence=35
+channel d1: starting archived log backup set
+channel d1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=36 RECID=3 STAMP=981485640
+input archived log thread=1 sequence=37 RECID=4 STAMP=981495926
+channel d1: starting piece 1 at 14-JUL-18
+channel d1: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T215755_fnmsc7k9_.bkp tag=TAG20180714T215755 comment=NONE
+channel d1: backup set complete, elapsed time: 00:00:07
+channel d1: deleting archived log(s)
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_36_fnmgk7xc_.arc thread=1 sequence=36
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_37_fnmrlokk_.arc thread=1 sequence=37
+channel d1: starting full datafile backup set
+channel d1: specifying datafile(s) in backup set
+input datafile file number=00009 name=/opt/app/oracle/oradata/ocm12pri/examples/sysaux01.dbf
+input datafile file number=00008 name=/opt/app/oracle/oradata/ocm12pri/examples/system01.dbf
+channel d1: starting piece 1 at 14-JUL-18
+channel d2: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsb7dy_.bkp tag=TAG20180714T215755 comment=NONE
+channel d2: backup set complete, elapsed time: 00:01:18
+channel d2: starting full datafile backup set
+channel d2: specifying datafile(s) in backup set
+input datafile file number=00003 name=/opt/app/oracle/oradata/ocm12pri/sysaux01.dbf
+input datafile file number=00006 name=/opt/app/oracle/oradata/ocm12pri/users01.dbf
+channel d2: starting piece 1 at 14-JUL-18
+channel d1: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmschh2_.bkp tag=TAG20180714T215755 comment=NONE
+channel d1: backup set complete, elapsed time: 00:01:02
+channel d1: starting full datafile backup set
+channel d1: specifying datafile(s) in backup set
+input datafile file number=00007 name=/opt/app/oracle/oradata/ocm12pri/pdbseed/sysaux01.dbf
+channel d1: starting piece 1 at 14-JUL-18
+channel d2: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsdowp_.bkp tag=TAG20180714T215755 comment=NONE
+channel d2: backup set complete, elapsed time: 00:00:42
+channel d2: starting full datafile backup set
+channel d2: specifying datafile(s) in backup set
+input datafile file number=00005 name=/opt/app/oracle/oradata/ocm12pri/pdbseed/system01.dbf
+channel d2: starting piece 1 at 14-JUL-18
+channel d1: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsfftt_.bkp tag=TAG20180714T215755 comment=NONE
+channel d1: backup set complete, elapsed time: 00:00:42
+channel d2: finished piece 1 at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsfykn_.bkp tag=TAG20180714T215755 comment=NONE
+channel d2: backup set complete, elapsed time: 00:00:25
+Finished backup at 14-JUL-18
+
+Starting Control File and SPFILE Autobackup at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/autobackup/2018_07_14/o1_mf_s_981496824_fnmsgwtq_.bkp comment=NONE
+Finished Control File and SPFILE Autobackup at 14-JUL-18
+
+RMAN retention policy will be applied to the command
+RMAN retention policy is set to redundancy 1
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_34_fnmg3lps_.arc thread=1 sequence=34
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_35_fnmgd9mw_.arc thread=1 sequence=35
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_36_fnmgk7xc_.arc thread=1 sequence=36
+<span style="font-weight:bold">RMAN-08137: WARNING: archived log not deleted, needed for standby or upstream capture process</span>
+archived log file name=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/archivelog/2018_07_14/o1_mf_1_37_fnmrlokk_.arc thread=1 sequence=37
+Deleting the following obsolete backups and copies:
+Type                 Key    Completion Time    Filename/Handle
+-------------------- ------ ------------------ --------------------
+Backup Set           2      14-JUL-18         
+  Backup Piece       2      14-JUL-18          /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T215755_fnmsbz5y_.bkp
+Backup Set           3      14-JUL-18         
+  Backup Piece       3      14-JUL-18          /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T215755_fnmsc7k9_.bkp
+deleted backup piece
+backup piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T215755_fnmsbz5y_.bkp RECID=2 STAMP=981496702
+deleted backup piece
+backup piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T215755_fnmsc7k9_.bkp RECID=3 STAMP=981496711
+Deleted 2 objects
+
+released channel: d1
+released channel: d2
+</pre>
+<div style="display:block;background-color:cyan;margin-left:20px;padding:5px;border-left:5px solid blue">
+<span style="font-weight:bold;font-size:x-large;font-family:sans-serif;color:blue">Note:</span>
+<p>The above warnings are caused by the Data Guard settings I had configured earlier in that the marked archived redo log files have not been yet applied the non-existent standby database as specified in the parameter, <a href="https://docs.oracle.com/database/121/REFRN/GUID-10BD97BF-6295-4E85-A1A3-854E15E05A44.htm#REFRN10086" style="font-family:monospace;background-color:#f2f2f2;font-size:large" rel="nofollow">log_archive_dest_2</a>.</p>
+</div>
+<p>To make the copying of the RMAN backup files easier, I used the following RMAN command to backup the entire recovery area to <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">/tmp</span>:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta006.htm#RCMRF107" rel="nofollow">backup</a> recovery area to destination '/tmp';
+</pre>
+<p>The RMAN output is as follows:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">Starting backup at 14-JUL-18
+using channel ORA_DISK_1
+specification does not match any datafile copy in the repository
+channel ORA_DISK_1: starting archived log backup set
+channel ORA_DISK_1: specifying archived log(s) in backup set
+input archived log thread=1 sequence=34 RECID=1 STAMP=981485203
+input archived log thread=1 sequence=35 RECID=2 STAMP=981485482
+input archived log thread=1 sequence=36 RECID=3 STAMP=981485640
+input archived log thread=1 sequence=37 RECID=4 STAMP=981495926
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+piece handle=/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T222835_fnmv3mlz_.bkp tag=TAG20180714T222835 comment=NONE
+channel ORA_DISK_1: backup set complete, elapsed time: 00:00:07
+channel ORA_DISK_1: input backup set: count=1, stamp=981496675, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsb4nm_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv3to3_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:07
+channel ORA_DISK_1: input backup set: count=2, stamp=981496676, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsb7dy_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv41p9_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:25
+channel ORA_DISK_1: input backup set: count=5, stamp=981496718, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmschh2_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv4tr2_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:25
+channel ORA_DISK_1: input backup set: count=6, stamp=981496755, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsdowp_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv5mt2_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:15
+channel ORA_DISK_1: input backup set: count=7, stamp=981496781, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsfftt_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv62vw_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:15
+channel ORA_DISK_1: input backup set: count=8, stamp=981496797, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmsfykn_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv6kxr_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:07
+channel ORA_DISK_1: input backup set: count=9, stamp=981496824, piece=1
+channel ORA_DISK_1: starting piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece /opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/autobackup/2018_07_14/o1_mf_s_981496824_fnmsgwtq_.bkp
+piece handle=/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_ncsnf_TAG20180714T220024_fnmv6s0g_.bkp comment=NONE
+channel ORA_DISK_1: finished piece 1 at 14-JUL-18
+channel ORA_DISK_1: backup piece complete, elapsed time: 00:00:04
+Finished backup at 14-JUL-18
+
+Starting Control File and SPFILE Autobackup at 14-JUL-18
+piece handle=/opt/app/oracle/fast_recovery_area/OCM12PRI_PADSTOW/autobackup/2018_07_14/o1_mf_s_981498620_fnmv706q_.bkp comment=NONE
+Finished Control File and SPFILE Autobackup at 14-JUL-18
+</pre>
+<p>Created a compressed TAR archive as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> cvzf /tmp/padstow.gz /tmp/OCM12PRI_PADSTOW
+</pre>
+<p>The output is as follows:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">tar: Removing leading `/' from member names
+/tmp/OCM12PRI_PADSTOW/
+/tmp/OCM12PRI_PADSTOW/backupset/
+/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/
+/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv41p9_.bkp
+/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T222835_fnmv3mlz_.bkp
+/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_ncsnf_TAG20180714T220024_fnmv6s0g_.bkp
+/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv5mt2_.bkp
+/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/
+/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/
+/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/
+/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv6kxr_.bkp
+/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv62vw_.bkp
+/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/
+/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/
+/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/
+/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv4tr2_.bkp
+/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv3to3_.bkp
+</pre>
+<h3><a name="TOC-Task-2:-Create-a-Control-File-for-the-Standby-Database"></a> Task 2: Create a Control File for the Standby Database</h3>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-B471D788-AFD3-48B3-9709-D63C34DBC269" rel="nofollow">3.2.2 Creating a Physical Standby Task 2: Create a Control File for the Standby Database</a>”.</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_1006.htm#i2079942" rel="nofollow">ALTER DATABASE</a> CREATE STANDBY CONTROLFILE AS '/tmp/botany.ctl';
+</pre>
+<h3><a name="TOC-Task-3:-Create-a-Parameter-File-for-the-Standby-Database"></a>Task 3: Create a Parameter File for the Standby Database</h3>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-06FDC24C-6E90-420B-BB63-3B6BAC4D8AFA" rel="nofollow">3.2.3 Creating a Physical Standby Task 3: Create a Parameter File for the Standby Database</a>”.</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6009.htm#i2072768" rel="nofollow">CREATE PFILE</a>='/tmp/initpadstow.ora' FROM SPFILE;
+</pre>
+<p>I used the following commands to make changes to the proposed parameter file for the standby database on <span style="font-family:monospace;background-color:#f2f2f2;font-size:large"><a href="../12c-ocm-system-builds/botany.html">BOTANY</a></span>:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">[oracle@padstow ~]$ <a href="http://man7.org/linux/man-pages/man1/cp.1.html" rel="nofollow">cp</a> /tmp/initpadstow.ora /tmp/initbotany.ora
+[oracle@padstow ~]$ <a href="http://man7.org/linux/man-pages/man1/vi.1p.html" rel="nofollow">vi</a> /tmp/initbotany.ora
+[oracle@padstow ~]$ <a href="http://man7.org/linux/man-pages/man1/diff.1.html" rel="nofollow">diff</a> /tmp/initpadstow.ora /tmp/initbotany.ora 
+21c21
+&lt; *.db_unique_name='ocm12pri_padstow'
+---
+&gt; *.db_unique_name='ocm12pri_botany'
+24a25
+&gt; *.fal_server='ocm12pri_padstow'
+27,28c28
+&lt; *.log_archive_dest_1='LOCATION=USE_DB_RECOVERY_FILE_DEST VALID_FOR=(ALL_LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=OCM12PRI_PADSTOW'
+&lt; *.log_archive_dest_2='SERVICE=OCM12PRI_BOTANY ASYNC VALID_FOR=(ONLINE_LOGFILES,PRIMARY_ROLE) DB_UNIQUE_NAME=OCM12PRI_BOTANY'
+---
+&gt; *.log_archive_dest_1='LOCATION=USE_DB_RECOVERY_FILE_DEST VALID_FOR=(ALL_LOGFILES,ALL_ROLES) DB_UNIQUE_NAME=OCM12PRI_BOTANY'
+</pre>
+<div style="display:block;background-color:cyan;margin-left:20px;padding-left:5px;border-left:5px solid blue">
+<span style="font-weight:bold;font-size:x-large;font-family:sans-serif;color:blue">Note:</span>
+<p>The above changes are much simpler than the ones given in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-06FDC24C-6E90-420B-BB63-3B6BAC4D8AFA" rel="nofollow">3.2.3 Creating a Physical Standby Task 3: Create a Parameter File for the Standby Database</a>” because I am not going to do a switchover.</p>
+<p>I did not include the following system parameters because the current files do not include the DB unique name:</p>
+<ul>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-E8B4E0EA-B073-4349-9EA9-E053F499FB9E.htm#REFRN10038" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">DB_FILE_NAME_CONVERT</a></li>
+<li><a href="https://docs.oracle.com/database/121/REFRN/GUID-3D5894EF-C33D-4687-978F-F640174F6FCC.htm#REFRN10098" style="font-family:monospace;font-size:large;background-color:#f2f2f2" rel="nofollow">LOG_FILE_NAME_CONVERT</a></li>
+</ul>
+<p>The values currently are:</p>
+<pre style="background-color:#f2f2f2;margin-left:10px;padding:2px">SQL&gt; SELECT name FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-7BF7955C-9705-40F4-B2F6-5D7F3A32DD30.htm" rel="nofollow">v$datafile</a> ORDER BY 1;
+
+NAME
+--------------------------------------------------------------------------------
+/opt/app/oracle/oradata/ocm12pri/examples/SAMPLE_SCHEMA_users01.dbf
+/opt/app/oracle/oradata/ocm12pri/examples/example01.dbf
+/opt/app/oracle/oradata/ocm12pri/examples/sysaux01.dbf
+/opt/app/oracle/oradata/ocm12pri/examples/system01.dbf
+/opt/app/oracle/oradata/ocm12pri/pdbseed/sysaux01.dbf
+/opt/app/oracle/oradata/ocm12pri/pdbseed/system01.dbf
+/opt/app/oracle/oradata/ocm12pri/sysaux01.dbf
+/opt/app/oracle/oradata/ocm12pri/system01.dbf
+/opt/app/oracle/oradata/ocm12pri/undotbs01.dbf
+/opt/app/oracle/oradata/ocm12pri/users01.dbf
+
+10 rows selected.
+
+SQL&gt; SELECT member FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-AE0B85B3-6B51-4FBD-A460-2D7090D9E0B5.htm" rel="nofollow">v$logfile</a> ORDER BY 1;
+
+MEMBER
+--------------------------------------------------------------------------------
+/opt/app/oracle/oradata/ocm12pri/redo01.log
+/opt/app/oracle/oradata/ocm12pri/redo02.log
+/opt/app/oracle/oradata/ocm12pri/redo03.log
+</pre>
+</div>
+<h3><a name="TOC-Task-4:-Copy-Files-from-the-Primary-System-to-the-Standby-System"></a>Task 4: Copy Files from the Primary System to the Standby System</h3>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-4834C26E-6493-4C5A-91F7-680FD43FADF7" rel="nofollow">3.2.4 Creating a Physical Standby Task 4: Copy Files from the Primary System to the Standby System</a>”.</p>
+<p>Ran the following commands to copy the files from <span style="font-family:monospace;background-color:#f2f2f2;font-size:large"><a href="../12c-ocm-system-builds/padstow.html">PADSTOW</a></span> to <span style="font-family:monospace;background-color:#f2f2f2;font-size:large"><a href="../12c-ocm-system-builds/botany.html">BOTANY</a></span>:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/scp.1.html" rel="nofollow">scp</a> /tmp/botany.ctl botany:/tmp
+<a href="http://man7.org/linux/man-pages/man1/scp.1.html" rel="nofollow">scp</a> /tmp/initbotany.ora botany:/tmp
+<a href="http://man7.org/linux/man-pages/man1/scp.1.html" rel="nofollow">scp</a> /tmp/padstow.gz botany:/tmp
+<a href="http://man7.org/linux/man-pages/man1/scp.1.html" rel="nofollow">scp</a> /opt/app/oracle/product/12.1.0/dbhome_1/dbs/orapwocm12pri botany:/opt/app/oracle/product/12.1.0/dbhome_1/dbs
+</pre>
+<p>Used the following command to restore the backup of the recovery area from <a href="../12c-ocm-system-builds/padstow.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</a> into the current directory on <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a>:</p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> xvzf /tmp/padstow.gz
+</pre>
+<p>The output was:</p>
+<pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">tmp/OCM12PRI_PADSTOW/
+tmp/OCM12PRI_PADSTOW/backupset/
+tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/
+tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv41p9_.bkp
+tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_annnn_TAG20180714T222835_fnmv3mlz_.bkp
+tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_ncsnf_TAG20180714T220024_fnmv6s0g_.bkp
+tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv5mt2_.bkp
+tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/
+tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/
+tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/
+tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv6kxr_.bkp
+tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv62vw_.bkp
+tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/
+tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/
+tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/
+tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv4tr2_.bkp
+tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv3to3_.bkp
+</pre>
+<p>Move the backups from the current directory back to the <span style="font-family:monospace;background-color:#f2f2f2;font-size:large">/tmp</span> directory:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/mv.1.html" rel="nofollow">mv</a> tmp/OCM12PRI_PADSTOW /tmp
+</pre>
+<p>Create the required directories on <span style="font-family:monospace;background-color:#f2f2f2;font-size:large"><a href="../12c-ocm-system-builds/botany.html">BOTANY</a></span>:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" rel="nofollow">mkdir</a> -p /opt/app/oracle/oradata/ocm12pri
+<a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" rel="nofollow">mkdir</a> -p /opt/app/oracle/fast_recovery_area/ocm12pri
+<a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" rel="nofollow">mkdir</a> -p /opt/app/oracle/oradata/ocm12pri/examples
+<a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" rel="nofollow">mkdir</a> -p /opt/app/oracle/oradata/ocm12pri/pdbseed
+</pre>
+<p>Update <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">/etc/oratab</span> as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">cat &gt;&gt;/etc/oratab &lt;&lt;DONE
+ocm12pri:/opt/app/oracle/product/12.1.0/dbhome_1:N
+DONE
+</pre>
+<h3><a name="TOC-Task-5:-Set-Up-the-Environment-to-Support-the-Standby-Database"></a>Task 5: Set Up the Environment to Support the Standby Database</h3>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-2FD8DBAB-C439-4F03-9A94-01C6FEF33392" rel="nofollow">3.2.5 Creating a Physical Standby Task 5: Set Up the Environment to Support the Standby Database</a>”.</p>
+<h4><a name="TOC-2.-Copy-Remote-Password-File-to-Botany"></a>2. Copy Remote Password File to Botany</h4>
+<p>Ran the following command on <a href="../12c-ocm-system-builds/padstow.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</a>:</p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://man7.org/linux/man-pages/man1/scp.1.html" rel="nofollow">scp</a> $ORACLE_HOME/dbs/orapwocm12pri botany:$ORACLE_HOME/dbs/
+</pre>
+<h4><a name="TOC-3.-Configure-and-Start-Listener-on-Botany"></a>3. Configure and Start Listener on Botany</h4>
+<p>Listener was already configure when <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a> was cloned from <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">PADSTOW</span>. This is confirmed as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/NETRF/toc.htm" rel="nofollow">lsnrctl</a> status
+</pre>
+<p>The output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 23-JUL-2018 19:58:53
+
+Copyright (c) 1991, 2014, Oracle.  All rights reserved.
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
+Start Date                23-JUL-2018 11:39:43
+Uptime                    0 days 8 hr. 19 min. 9 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora
+Listener Log File         /opt/app/oracle/diag/tnslsnr/botany/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=botany)(PORT=1521)))
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
+The listener supports no services
+The command completed successfully
+</pre>
+<h4><a name="TOC-4.-Create-Oracle-Net-service-names"></a>4. Create Oracle Net service names</h4>
+<p>Added the following lines to <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">/opt/app/oracle/product/12.1.0/dbhome_1/network/admin/tnsnames.ora</span> on <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a>:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">OCM12PRI_PADSTOW =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = padstow.yaocm.id.au)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = ocm12pri_padstow.yaocm.id.au)
+    )
+  )
+</pre>
+<p>Verified the changes as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/NETAG/connect.htm#i427276" rel="nofollow">tnsping</a> ocm12pri_padstow
+</pre>
+<p>The output was:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">TNS Ping Utility for Linux: Version 12.1.0.2.0 - Production on 23-JUL-2018 21:28:12
+
+Copyright (c) 1997, 2014, Oracle.  All rights reserved.
+
+Used parameter files:
+/opt/app/oracle/product/12.1.0/dbhome_1/network/admin/sqlnet.ora
+
+
+Used TNSNAMES adapter to resolve the alias
+Attempting to contact (DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = padstow.yaocm.id.au)(PORT = 1521)) (CONNECT_DATA = (SERVER = DEDICATED) (SERVICE_NAME = ocm12pri_padstow.yaocm.id.au)))
+OK (10 msec)
+</pre>
+<h4><a name="TOC-5.-Create-SPFILE"></a>5. Create SPFILE</h4>
+<p>Configure an environment for an idle instance (on <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a>) as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">. oraenv
+</pre>
+<p>Use the following parameters:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">ORACLE_SID = [personal] ? ocm12pri
+ORACLE_HOME = [/home/oracle] ? /opt/app/oracle/product/12.1.0/dbhome_1
+The Oracle base remains unchanged with value /opt/app/oracle
+</pre>
+<p>Start session with an idle instance as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">sqlplus / as sysdba
+</pre>
+<p>The output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">SQL*Plus: Release 12.1.0.2.0 Production on Mon Jul 23 21:31:35 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+</pre>
+<p>Convert the parameter file into a SPFILE as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6018.htm#i2072626" rel="nofollow">create spfile</a> from pfile='/tmp/initbotany.ora';
+</pre>
+<p>The expected output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">File created.
+</pre>
+<p>Exit from SQL*Plus as follows as all following commands will be done through RMAN:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">exit
+</pre>
+<p>The expected output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics, Real Application Testing
+and Unified Auditing options
+</pre>
+<h3><a name="TOC-Task-6:-Start-the-Physical-Standby-Database"></a>Task 6: Start the Physical Standby Database</h3>
+<div style="display:block;background-color:cyan;margin-left:20px;padding-left:5px;border-left:5px solid blue">
+<span style="font-weight:bold;font-size:x-large;font-family:sans-serif;color:blue">Note:</span>
+<p>There is a missing step here: I did not record how I used the standby control (<span style="font-family:monospace;background-color:lightgrey">/tmp/botany.ctl</span>) to create the cotrolfiles on the physical standby.</p>
+</div>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-3D65210D-9FE5-490E-938E-57FC2E07A569" rel="nofollow">3.2.6 Creating a Physical Standby Task 6: Start the Physical Standby Database</a>”.</p>
+<p>Start a RMAN session (on <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a>):</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">rman target /
+</pre>
+<p>Sample output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">Recovery Manager: Release 12.1.0.2.0 - Production on Fri Aug 3 21:45:27 2018
+
+Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
+
+connected to target database (not started)
+</pre>
+<p>Mount the database:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">startup mount
+</pre>
+<p>Sample output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">Oracle instance started
+database mounted
+
+Total System Global Area    1224736768 bytes
+
+Fixed Size                     2923824 bytes
+Variable Size                771752656 bytes
+Database Buffers             436207616 bytes
+Redo Buffers                  13852672 bytes
+</pre>
+<p>Restore the database as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">restore database;
+</pre>
+<p>Sample output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">Starting restore at 04-AUG-18
+Starting implicit crosscheck backup at 04-AUG-18
+allocated channel: ORA_DISK_1
+channel ORA_DISK_1: SID=23 device type=DISK
+Crosschecked 16 objects
+Finished implicit crosscheck backup at 04-AUG-18
+
+Starting implicit crosscheck copy at 04-AUG-18
+using channel ORA_DISK_1
+Crosschecked 2 objects
+Finished implicit crosscheck copy at 04-AUG-18
+
+searching for all files in the recovery area
+cataloging files...
+cataloging done
+
+List of Cataloged Files
+=======================
+File Name: /opt/app/oracle/fast_recovery_area/OCM12PRI_BOTANY/archivelog/2018_07_31/o1_mf_1_49_fp0j6kf2_.arc
+File Name: /opt/app/oracle/fast_recovery_area/OCM12PRI_BOTANY/archivelog/2018_07_31/o1_mf_1_50_fp0j6hr5_.arc
+
+using channel ORA_DISK_1
+
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00010 to /opt/app/oracle/oradata/ocm12pri/examples/SAMPLE_SCHEMA_users01.dbf
+channel ORA_DISK_1: restoring datafile 00011 to /opt/app/oracle/oradata/ocm12pri/examples/example01.dbf
+channel ORA_DISK_1: reading from backup piece /tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv3to3_.bkp
+channel ORA_DISK_1: piece handle=/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv3to3_.bkp tag=TAG20180714T215755
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:25
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00001 to /opt/app/oracle/oradata/ocm12pri/system01.dbf
+channel ORA_DISK_1: restoring datafile 00004 to /opt/app/oracle/oradata/ocm12pri/undotbs01.dbf
+channel ORA_DISK_1: reading from backup piece /tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv41p9_.bkp
+channel ORA_DISK_1: piece handle=/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv41p9_.bkp tag=TAG20180714T215755
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:25
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00008 to /opt/app/oracle/oradata/ocm12pri/examples/system01.dbf
+channel ORA_DISK_1: restoring datafile 00009 to /opt/app/oracle/oradata/ocm12pri/examples/sysaux01.dbf
+channel ORA_DISK_1: reading from backup piece /tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv4tr2_.bkp
+channel ORA_DISK_1: piece handle=/tmp/OCM12PRI_PADSTOW/708F04B2A880250FE0536E01A8C01CF7/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv4tr2_.bkp tag=TAG20180714T215755
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:26
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00003 to /opt/app/oracle/oradata/ocm12pri/sysaux01.dbf
+channel ORA_DISK_1: restoring datafile 00006 to /opt/app/oracle/oradata/ocm12pri/users01.dbf
+channel ORA_DISK_1: reading from backup piece /tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv5mt2_.bkp
+channel ORA_DISK_1: piece handle=/tmp/OCM12PRI_PADSTOW/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv5mt2_.bkp tag=TAG20180714T215755
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:15
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00007 to /opt/app/oracle/oradata/ocm12pri/pdbseed/sysaux01.dbf
+channel ORA_DISK_1: reading from backup piece /tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv62vw_.bkp
+channel ORA_DISK_1: piece handle=/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv62vw_.bkp tag=TAG20180714T215755
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:15
+channel ORA_DISK_1: starting datafile backup set restore
+channel ORA_DISK_1: specifying datafile(s) to restore from backup set
+channel ORA_DISK_1: restoring datafile 00005 to /opt/app/oracle/oradata/ocm12pri/pdbseed/system01.dbf
+channel ORA_DISK_1: reading from backup piece /tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv6kxr_.bkp
+channel ORA_DISK_1: piece handle=/tmp/OCM12PRI_PADSTOW/708E7D80672721D0E0536E01A8C0111B/backupset/2018_07_14/o1_mf_nnndf_TAG20180714T215755_fnmv6kxr_.bkp tag=TAG20180714T215755
+channel ORA_DISK_1: restored backup piece 1
+channel ORA_DISK_1: restore complete, elapsed time: 00:00:07
+Finished restore at 04-AUG-18
+</pre>
+<p>Start the recovery process as follows:</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_1006.htm#i2079942" rel="nofollow">alter database</a> recover managed standby database disconnect from session;;
+</pre>
+<p>Sample output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">Statement processed
+</pre>
+<h3><a name="TOC-Task-7:-Verify-the-Physical-Standby-Database-Is-Performing-Properly"></a>Task 7: Verify the Physical Standby Database Is Performing Properly</h3>
+<p>Followed the procedure in “<a href="https://docs.oracle.com/database/121/SBYDB/create_ps.htm#GUID-AAA6D97B-A345-4825-A320-B662BB16E2ED" rel="nofollow">3.2.7 Creating a Physical Standby Task 7: Verify the Physical Standby Database Is Performing Properly</a>”.</p>
+<p>Run the following query to see the status of the apply process (on <a href="../12c-ocm-system-builds/botany.html" style="font-family:monospace;font-size:large;background-color:#f2f2f2">BOTANY</a>):</p>
+<pre style="background-color:lightgreen;border:5px groove black;padding:2px;margin-left:10px">SELECT CLIENT_PROCESS, PROCESS, THREAD#, SEQUENCE#, STATUS FROM 
+<a href="https://docs.oracle.com/database/121/REFRN/GUID-CBE1185A-B3A3-4D66-B8B4-D6A26A0C0DB2.htm#REFRN30144" rel="nofollow">V$MANAGED_STANDBY</a> WHERE CLIENT_PROCESS='LGWR' OR PROCESS='MRP0'; 
+</pre>
+<p>Sample output is:</p>
+<pre style="background-color:lightblue;border:5px groove black;padding:2px;margin-left:10px">CLIENT_P PROCESS      THREAD#  SEQUENCE# STATUS      
+-------- --------- ---------- ---------- ------------
+LGWR     RFS                1         53 IDLE        
+N/A      MRP0               1         53 WAIT_FOR_LOG
+</pre></div></td></tr></tbody></table>
+</div> 
+</div> 
+<div id="sites-canvas-bottom-panel">
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_page-subpages"> </div>
+<div id="sites-attachments-container">
+</div>
+<a xmlns="http://www.w3.org/1999/xhtml" name="page-comments"></a>
+<div xmlns="http://www.w3.org/1999/xhtml" id="COMP_page-comments"><div class="sites-comment-docos-wrapper"><div class="sites-comment-docos"><div class="sites-comment-docos-background"></div><div class="sites-comment-docos-header"><div class="sites-comment-docos-header-title">Comments</div></div><div id="sites-comment-docos-pane" class="sites-comment-docos-pane"></div></div></div></div>
+</div>
+</div> 
+</td> 
+</tr>
+</table> 
+</div> 
+</div> 
+<div id="sites-chrome-footer-wrapper">
+<div id="sites-chrome-footer-wrapper-inside">
+<div id="sites-chrome-footer">
+</div>
+</div>
+</div>
+</div> 
+</div> 
+<div id="sites-chrome-adminfooter-container">
+<div xmlns="http://www.w3.org/1999/xhtml" class="sites-adminfooter" role="navigation"><p><a class="sites-system-link" href="https://accounts.google.com/ServiceLogin?continue=https://sites.google.com/site/yetanotherocmoriginal/home/12-ocm/data-guard/create-a-physical-standby-database&amp;service=jotspot">Sign in</a><span aria-hidden="true">|</span><a class="sites-system-link" href="../../../system/app/pages/recentChanges.html">Recent Site Activity</a><span aria-hidden="true">|</span><a class="sites-system-link" href="../../../system/app/pages/reportAbuse.html" target="_blank">Report Abuse</a><span aria-hidden="true">|</span><a class="sites-system-link" href="javascript:;" onclick="window.open(webspace.printUrl)">Print Page</a><span aria-hidden="true">|</span><span class="sites-system-link">Powered By</span> <b class="powered-by"><a href="http://sites.google.com/site">Google Sites</a></b></p></div>
+</div>
+</div> 
+</div> 
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    window.jstiming.load.tick('sjl');
+  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" src="https://ssl.gstatic.com/sites/p/3168fb/system/js/jot_min_view__en.js"></script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    window.jstiming.load.tick('jl');
+  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+                    sites.Searchbox.initialize(
+                        'sites-searchbox-search-button',
+                        {"object":[]}['object'],
+                        'search-site',
+                        {"label":"Configure search options...","url":"/site/yetanotherocmoriginal/system/app/pages/admin/settings"});
+                  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+      gsites.HoverPopupMenu.createSiteDropdownMenus('sites-header-nav-dropdown', false);
+    </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" defer="true">
+            JOT_setupNav("2bd", "Navigation", true);
+            JOT_addListener('titleChange', 'JOT_NAVIGATION_titleChange', 'COMP_2bd');
+          </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+              new sites.CommentPane('//docs.google.com/comments/d/AAHRpnXv0cWRQ3pqMtE0chEx0_mkJAR-LnLvW0OFvFyW2ccia_W20VkefrLsBJ6fsZEXWcvvLAqGHkfyjGx3Dw3Zxrgr7lsfk1d6WxhB7RpnWk66GR98MiWQLr7lBRwrHh8A6nAFjtGTtdd2QT2BK2bb1S7th2S9mJQ/api/js?anon=true',
+                  false, false);
+            </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+  setTimeout(function() {
+    var fingerprint = gsites.date.TimeZone.getFingerprint([1109635200000, 1128902400000, 1130657000000, 1143333000000, 1143806400000, 1145000000000, 1146380000000, 1152489600000, 1159800000000, 1159500000000, 1162095000000, 1162075000000, 1162105500000]);
+    gsites.Xhr.send('https://sites.google.com/site/yetanotherocmoriginal/_/tz', null, null, 'GET', null, null, { afjstz: fingerprint });
+  }, 500);
+</script>
+<script xmlns="http://www.w3.org/1999/xhtml">
+                    window.onload = function() {
+                      if (false) {
+                        JOT_setMobilePreview();
+                      }
+                      var loadTimer = window.jstiming.load;
+                      loadTimer.tick("ol");
+                      loadTimer["name"] = "load," + webspace.page.type + ",user_page";
+                      window.jstiming.report(loadTimer, {}, 'https://gg.google.com/csi');
+                    }
+                  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+        JOT_insertAnalyticsCode(false,
+            false);
+      </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    var maestroRunner = new gsites.pages.view.SitesMaestroRunner(
+        webspace, "en");
+    maestroRunner.initListeners();
+    maestroRunner.installEditRender();
+  </script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript" defer="true">
+  //<![CDATA[
+    // Decorate any fastUI buttons on the page with a class of 'goog-button'.
+    if (webspace.user.hasWriteAccess) {
+      JOT_decorateButtons();
+    }
+
+    // Fires delayed events.
+    (function() {
+      JOT_fullyLoaded = true;
+      var delayedEvents = JOT_delayedEvents;
+      for (var x = 0; x < delayedEvents.length; x++) {
+        var event = delayedEvents[x];
+        JOT_postEvent(event.eventName, event.eventSrc, event.payload);
+      }
+      JOT_delayedEvents = null;
+      JOT_postEvent('pageLoaded');
+    })();
+  //]]>
+</script>
+<script xmlns="http://www.w3.org/1999/xhtml" type="text/javascript">
+    JOT_postEvent('decorateGvizCharts');
+  </script>
+<script type="text/javascript">
+          JOT_setupPostRenderingManager();
+        </script>
+<script type="text/javascript">
+          JOT_postEvent('renderPlus', null, 'sites-chrome-main');
+        </script>
+<script type="text/javascript">
+          sites.codeembed.init();
+        </script>
+<div id="server-timer-div" style="display:none"> </div>
+<script type="text/javascript">
+          window.jstiming.load.tick('render');
+          JOT_postEvent('usercontentrendered', this);
+        </script>
+</body>
+</html>

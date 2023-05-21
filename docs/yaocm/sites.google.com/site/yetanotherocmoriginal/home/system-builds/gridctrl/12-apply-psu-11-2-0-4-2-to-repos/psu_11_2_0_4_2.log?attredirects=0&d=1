@@ -1,0 +1,96 @@
+Oracle Interim Patch Installer version 11.2.0.3.6
+Copyright (c) 2013, Oracle Corporation.  All rights reserved.
+
+
+Oracle Home       : /opt/oracle/app/OracleHomes/db11g
+Central Inventory : /opt/oracle/oraInventory
+   from           : /opt/oracle/app/OracleHomes/db11g/oraInst.loc
+OPatch version    : 11.2.0.3.6
+OUI version       : 11.2.0.4.0
+Log file location : /opt/oracle/app/OracleHomes/db11g/cfgtoollogs/opatch/opatch2014-04-16_18-35-51PM_1.log
+
+Verifying environment and performing prerequisite checks...
+OPatch continues with these patches:   17478514  18031668
+
+Do you want to proceed? [y|n]
+y
+User Responded with: Y
+All checks passed.
+Provide your email address to be informed of security issues, install and
+initiate Oracle Configuration Manager. Easier for you if you use your My
+Oracle Support Email address/User Name.
+Visit http://www.oracle.com/support/policies.html for details.
+Email address/User Name:
+
+You have not provided an email address for notification of security issues.
+Do you wish to remain uninformed of security issues ([Y]es, [N]o) [N]:  Y
+
+
+
+Please shutdown Oracle instances running out of this ORACLE_HOME on the local system.
+(Oracle Home = '/opt/oracle/app/OracleHomes/db11g')
+
+
+Is the local system ready for patching? [y|n]
+y
+User Responded with: Y
+Backing up files...
+Applying sub-patch '17478514' to OH '/opt/oracle/app/OracleHomes/db11g'
+
+Patching component oracle.rdbms, 11.2.0.4.0...
+
+Patching component oracle.rdbms.rsf, 11.2.0.4.0...
+
+Patching component oracle.sdo, 11.2.0.4.0...
+
+Patching component oracle.sysman.agent, 10.2.0.4.5...
+
+Patching component oracle.xdk, 11.2.0.4.0...
+
+Patching component oracle.rdbms.dbscripts, 11.2.0.4.0...
+
+Patching component oracle.sdo.locator, 11.2.0.4.0...
+
+Patching component oracle.nlsrtl.rsf, 11.2.0.4.0...
+
+Patching component oracle.xdk.rsf, 11.2.0.4.0...
+
+Patching component oracle.rdbms.rman, 11.2.0.4.0...
+
+Verifying the update...
+Applying sub-patch '18031668' to OH '/opt/oracle/app/OracleHomes/db11g'
+
+Patching component oracle.rdbms, 11.2.0.4.0...
+
+Patching component oracle.rdbms.rsf, 11.2.0.4.0...
+
+Patching component oracle.ldap.rsf, 11.2.0.4.0...
+
+Patching component oracle.rdbms.crs, 11.2.0.4.0...
+
+Patching component oracle.precomp.common, 11.2.0.4.0...
+
+Patching component oracle.ldap.rsf.ic, 11.2.0.4.0...
+
+Patching component oracle.rdbms.deconfig, 11.2.0.4.0...
+
+Patching component oracle.rdbms.dbscripts, 11.2.0.4.0...
+
+Patching component oracle.rdbms.rman, 11.2.0.4.0...
+
+Verifying the update...
+
+OPatch found the word "warning" in the stderr of the make command.
+Please look at this stderr. You can re-run this make command.
+Stderr output:
+ins_emagent.mk:113: warning: overriding commands for target `nmosudo'
+ins_emagent.mk:52: warning: ignoring old commands for target `nmosudo'
+/opt/oracle/app/OracleHomes/db11g/sysman/lib/ins_emagent.mk:113: warning: overriding commands for target `nmosudo'
+/opt/oracle/app/OracleHomes/db11g/sysman/lib/ins_emagent.mk:52: warning: ignoring old commands for target `nmosudo'
+
+
+Composite patch 18031668 successfully applied.
+OPatch Session completed with warnings.
+Log file location: /opt/oracle/app/OracleHomes/db11g/cfgtoollogs/opatch/opatch2014-04-16_18-35-51PM_1.log
+
+OPatch completed with warnings.
