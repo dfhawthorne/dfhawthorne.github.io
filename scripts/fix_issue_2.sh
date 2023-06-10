@@ -3,11 +3,17 @@
 # Script to do changes to fix issue #2
 # ------------------------------------------------------------------------------
 
-pgm_dir="$(dirname $0)"
-pushd ~/Documents/dfhawthorne.github.io/docs
+pgm_dir="$(dirname $(realpath $0))"
+pushd "${pgm_dir}"/../docs
 
 # ------------------------------------------------------------------------------
-# Update HTML files to point to away from _/rsrc and replace Google Sites URLs
+# Update HTML files:
+# (1) to point to away from _/rsrc;
+# (2) replace Google Sites URLs;
+# (3) remove search bar
+# (4) remove discussions widget
+# (5) remove recent activity widget
+# (6) remove subpages list in footer
 # ------------------------------------------------------------------------------
 
 while read file_name
@@ -16,6 +22,7 @@ do
         --regexp-extended \
         --file="${pgm_dir}/fix_issue_2.sed" \
         "${file_name}"
+    python3 "${pgm_dir}/fix_issue_2.py" --replace "${file_name}"
 done < <(find . -type f -name "*.html")
 
 # ------------------------------------------------------------------------------
@@ -39,12 +46,15 @@ done < <(find _ -type f)
 # Remove empty directories from _/rsrc
 # ------------------------------------------------------------------------------
 
-for dir in _/rsrc/*
-do
-    count=$(find "${dir}" -type f | wc -l)
-    [[ ${count} -eq 0 ]] && \
-        git rm -f -r "${dir}"
-done
+if [[ -d "_/rsrc" ]]
+then
+    for dir in _/rsrc/*
+    do
+        count=$(find "${dir}" -type f | wc -l)
+        [[ ${count} -eq 0 ]] && \
+            git rm -f -r "${dir}"
+    done
+fi
 
 popd 
 

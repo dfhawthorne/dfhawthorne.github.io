@@ -1,14 +1,21 @@
 #!/usr/bin/env sed -rf 
 # ------------------------------------------------------------------------------
 # Fix up old Google Sites HTML file
+#
+# Note:
+# (1) Requires the '-E, -r, --regexp-extended' option ("use extended regular
+#     expressions in the script (for portability use POSIX -E)").
 # ------------------------------------------------------------------------------
 #
 # ------------------------------------------------------------------------------
 # Change URLs from Google Sites to GitHub
 # ------------------------------------------------------------------------------
 s!https://sites.google.com/site/yetanotherocmoriginal/!https://dfhawthorne.github.io/!g
+s!https://sites.google.com/site/yetanotherocm/!https://dfhawthorne.github.io/!g
 s!"/site/yetanotherocmoriginal/!"/!g
 s!"/site/yetanotherocmoriginal"!"/"!g
+s!"/site/yetanotherocm/!"/!g
+s!"/site/yetanotherocm"!"/"!g
 # ------------------------------------------------------------------------------
 # Move referenced files out of _/rsrc subdirectory
 # ------------------------------------------------------------------------------
