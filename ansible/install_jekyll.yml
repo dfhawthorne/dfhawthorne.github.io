@@ -1,0 +1,55 @@
+---
+# ------------------------------------------------------------------------------
+# Installs Jekyll on OL9
+# Ref: https://jekyllrb.com/docs/installation/other-linux/
+# ------------------------------------------------------------------------------
+
+- hosts:                localhost
+  tasks:
+
+  # ----------------------------------------------------------------------------
+  # Install prerequisites
+  # ----------------------------------------------------------------------------
+
+  - name:               "Install Ruby and the 'Development tools' package group"
+    ansible.builtin.dnf:
+      name:
+        -               ruby
+        -               ruby-devel
+        -               '@Development tools'
+        -               rubygems
+      state:            present
+    become:             yes
+    become_user:        root
+
+  # ----------------------------------------------------------------------------
+  # Avoid installing RubyGems packages (called gems) as the root user. Instead,
+  # set up a gem installation directory for your user account. The following
+  # commands will add environment variables to your ~/.bashrc file to configure
+  # the gem installation path:
+  # ----------------------------------------------------------------------------
+
+  - name:              "Update .bashrc for GEMS"
+    ansible.builtin.blockinfile:
+      insertafter:     EOF
+      path:            "{{ ansible_user_dir }}/.bashrc"
+      state:           present
+      block: |
+        # Install Ruby Gems to ~/gems
+        export GEM_HOME="${HOME}/gems"
+        export PATH="${HOME}/gems/bin:${PATH}"
+
+  # ----------------------------------------------------------------------------
+  # Finally, install Jekyll and Bundler:
+  # ----------------------------------------------------------------------------
+
+  - name:             "Install Jekyll and Bundler"
+    community.general.gem:
+      include_doc:    yes
+      name:           "{{ item }}"
+      state:          present
+    loop:
+      -               jekyll
+      -               bundler
+
+...
