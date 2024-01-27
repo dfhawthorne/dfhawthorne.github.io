@@ -1,0 +1,9 @@
+<nav class="nav_bar">
+    {% for item in site.data.top_nav %}
+        {% if item contains "url" and item contains "nav_bar" and page contains "url" %}
+            {% if page.url == item.url %}
+                {{ item.nav_bar }}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+</nav>

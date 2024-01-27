@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    {% include head.html %}
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
+  </head>
+  <body>
+    <div class="two-col-grid-container">
+        {% include banner.html %}
+        <div class="side-nav">{% include side_nav.html %}</div>
+        <div class="content">{{ content }}</div>
+    </div>
+  </body>
+</html>

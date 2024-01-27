@@ -1,0 +1,46 @@
+- name: announcements
+  url: announcements
+  title: Announcements
+- name: home
+  url: home
+  title: Yet Another OCM
+  sub_pages:
+  - name: 10g-ocm
+    url: home/10g-ocm
+    title: 10G OCM
+  - name: 11g-oce-rac
+    url: home/11g-oce-rac
+    title: 11G OCE RAC
+  - name: 11g-ocm
+    url: home/11g-ocm
+    title: 11G OCM
+  - name: 12c-ocm
+    url: home/12c-ocm
+    title: 12C OCM
+  - name: 12c-ocp-upgrade
+    url: home/12c-ocp-upgrade
+    title: 12C OCP Upgrade
+  - name: database-designs
+    url: home/database-designs
+    title: Database Designs
+  - name: issues
+    url: home/issues
+    title: Issues
+  - name: knowledge
+    url: home/knowledge
+    title: Knowledge
+  - name: procedures
+    url: home/procedures
+    title: Procedures
+  - name: projects
+    url: home/projects
+    title: Projects
+  - name: reading-notes
+    url: home/reading-notes
+    title: Reading Notes
+  - name: resource-allocations
+    url: home/resource-allocations
+    title: Resource Allocations
+  - name: system-builds
+    url: home/system-builds
+    title: System Builds

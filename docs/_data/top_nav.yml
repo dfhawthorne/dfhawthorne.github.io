@@ -1,0 +1,30 @@
+- url: announcements
+  nav_bar: '<a href="announcements">Announcements</a>'
+- url: home/10g-ocm
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/10g-ocm">10G OCM</a>'
+- url: home/11g-oce-rac
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/11g-oce-rac">11G OCE RAC</a>'
+- url: home/11g-ocm
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/11g-ocm">11G OCM</a>'
+- url: home/12c-ocm
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/12c-ocm">12C OCM</a>'
+- url: home/12c-ocp-upgrade
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/12c-ocp-upgrade">12C OCP Upgrade</a>'
+- url: home/database-designs
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/database-designs">Database Designs</a>'
+- url: home/issues
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/issues">Issues</a>'
+- url: home/knowledge
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/knowledge">Knowledge</a>'
+- url: home/procedures
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/procedures">Procedures</a>'
+- url: home/projects
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/projects">Projects</a>'
+- url: home/reading-notes
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/reading-notes">Reading Notes</a>'
+- url: home/resource-allocations
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/resource-allocations">Resource Allocations</a>'
+- url: home/system-builds
+  nav_bar: '<a href="home">Yet Another OCM</a> &gt; <a href="home/system-builds">System Builds</a>'
+- url: home
+  nav_bar: '<a href="home">Yet Another OCM</a>'

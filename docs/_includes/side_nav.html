@@ -1,0 +1,16 @@
+<nav class="nav_bar">
+    {% for item in site.data.side_nav %}
+      {% if item contains "url" and item contains "title" %}
+        <a href="{{ item.url }}" {% if page.url == item.url %}style="color: red;"{% endif %}>
+          {{ item.title }} 
+        </a><br />
+        {% if item contains "sub_pages" %}
+          {% for sub_item in item.sub_pages %}
+            &nbsp;&nbsp;<a href="{{ sub_item.url }}" {% if page.url == sub_item.url %}style="color: red;"{% endif %}>
+              {{ sub_item.title }} 
+            </a><br />
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </nav>
