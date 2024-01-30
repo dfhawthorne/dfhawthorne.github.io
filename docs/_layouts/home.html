@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     {% include head.html %}
     <title>{{ page.title }}</title>
@@ -9,6 +9,7 @@
     <div class="two-col-grid-container">
         {% include banner.html %}
         <div class="side-nav">{% include side_nav.html %}</div>
+        <div class="page-title">{{ page.title }}</div>
         <div class="content">{{ content }}</div>
     </div>
   </body>
