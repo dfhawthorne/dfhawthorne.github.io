@@ -1,11 +1,13 @@
 ---
-# Main style page
+
 --- 
 
 @import 'banner';
 @import 'content';
-@import 'side_nav_bar';
-@import 'top_nav_bar';
+@import 'navigation';
+@import 'breadcrumbs';
 @import 'page_title';
 @import 'grid_container';
-
+@import 'footer';
+@import 'link';
+@import 'table_of_contents';

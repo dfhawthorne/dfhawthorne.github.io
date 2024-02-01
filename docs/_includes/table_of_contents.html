@@ -1,0 +1,17 @@
+{% if page contains "table-of-contents" %}
+<div class="table-of-contents">
+    <p>Contents</p>
+    <ol>
+        {% for item in page.table-of-contents %}
+            <li><a href="#TOC-{{ item.toc-url }}">{{ item.toc-text }}</a></li>
+            {% if item contains "toc-menu" %}
+                <ol>
+                {% for sub_item in item.toc-menu %}
+                <li><a href="#TOC-{{ sub_item.toc-url }}">{{ sub_item.toc-text }}</a></li>
+                {% endfor %}
+                </ol>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</div>
+{% endif %}

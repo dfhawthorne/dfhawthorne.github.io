@@ -15,3 +15,4 @@ Table of Contents
 * [2024-01-27](2024_01_27.md) First Build of Wiki Using Jekyll
 * [2024-01-29](2024_01_29.md) Updated Index Page
 * [2024-01-31](2024_01_31.md) Conversion of Wiki to Jekyll - Proposed Structure
+* [2024-02-01](2024_02_01.md) Conversion of Wiki to Jekyll - Navigation and Table of Contents
