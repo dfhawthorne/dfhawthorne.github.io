@@ -3,16 +3,20 @@
   <head>
     {% include head.html %}
     <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ '/assets/css/default_styles.css' | relative_url }}" />
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
   </head>
   <body>
     <div class="two-col-grid-container">
-      {% include banner.html %}
-      <h1 class="page-title">{{ page.title }}</h1>
-      {% include breadcrumbs.html %}
-      <div class="navigation">{% include navigation.html %}</div>
-      <div class="content">{{ content }}</div>
-      {% include footer.html %}
+      {% include banner.html %} <!-- R1 -->
+      <h1 class="page-title">{{ page.title }}</h1> <!-- R2 -->
+      {% include navigation.html %} <!-- R2 -->
+      {% include breadcrumbs.html %} <!-- R3 -->
+      <div class="top_link">{% include link.html %}</div> <!-- R4 -->
+      {% include table_of_contents.html %} <!-- R5 -->
+      <div class="content">{{ content }}</div> <!-- R6 -->
+      {% include sub_pages.html %} <!-- R7 -->
+      <div class="bottom_link">{% include link.html %}</div> <!-- R8 -->
+      {% include footer.html %} <!-- R9 -->
     </div>
   </body>
 </html>
