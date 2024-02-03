@@ -1,1 +1,12 @@
-<div class="sub-pages"></div>
+{%- if page contains "sub-pages" -%}
+    <div class="sub-pages">
+        {%- if page contains "sub-pages-title" -%}
+        <p class="sub-pages">{{ page.sub-pages-title }}</p>
+        {%- endif -%}
+        <ul class="sub-pages">
+        {%- for item in page.sub-pages -%}
+            <li class="sub-pages"><a href="{{ item.url }}">{{ item.title }}</a></li>
+        {%- endfor -%}
+        </ul>
+    </div>
+{%- endif -%}

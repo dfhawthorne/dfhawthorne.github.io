@@ -1,7 +1,7 @@
 <nav class="breadcrumbs">
     {%- if page contains "breadcrumbs" -%}
         {%- for item in page.breadcrumbs -%}
-            <a href="{{ item.url }}">{{ item.title }}</a> &gt;
+            <a href="{{ item.url }}">{{ item.title }}</a> &gt;&nbsp;
         {%- endfor -%}
     {%- endif -%}
 </nav>
