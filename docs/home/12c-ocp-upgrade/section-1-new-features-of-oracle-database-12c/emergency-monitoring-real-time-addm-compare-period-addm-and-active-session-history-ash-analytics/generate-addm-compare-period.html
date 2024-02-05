@@ -1,21 +1,92 @@
-<html>
- <head>
-  <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
-  <script language="javascript" type="text/javascript">
-   <!--
-      var version = "12.1.0.2.0";
-     var swf_base_path = "http://download.oracle.com/otn_software/";
-      
-         document.write('<script language="javascript" type="text/javascript" ' + 
-                        'src="' + swf_base_path + 'emviewers/scripts/activeReportInit.js?' + 
-                        Math.floor((new Date()).getTime()/(7*24*60*60*1000)) + 
-                       '"></' + 'script>'); 
-      -->
-  </script>
- </head>
- <body onload="sendXML();">
-  <script type="text/javascript">
-   writeIframe();
-  </script>
- </body>
-</html>
+---
+layout: default
+title: Generate ADDM Compare Period
+breadcrumbs:
+- title: Home
+  url: home
+- title: 12C OCP Upgrade
+  url: home/12c-ocp-upgrade
+- title: Section 1: New Features of Oracle Database 12c
+  url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c
+- title: Emergency Monitoring, Real-Time ADDM, Compare Period ADDM, and Active Session History (ASH) Analytics
+  url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics
+table-of-contents:
+- toc-url: Overview
+  toc-text: Overview
+- toc-url: References
+  toc-text: References
+- toc-url: Procedure
+  toc-text: Procedure
+  toc-menu:
+  - toc-url: Access-Compare-ADDM-via-Performance-Menu-in-OEM
+    toc-text: Access Compare ADDM via Performance Menu in OEM
+  - toc-url: Fill-in-Compare-ADDM-Period-Parameter
+    toc-text: Fill in Compare ADDM Period Parameter
+  - toc-url: Generate-ADDM-Compare-Report-in-SQL-Plus
+    toc-text: Generate ADDM Compare Report in SQL*Plus
+---
+
+<h2 id="TOC-Overview">Overview</h2>
+<p>The easiest option to use the OEM facility under AWR in Performance. The alternative is to use the <a href="https://docs.oracle.com/database/121/ARPLS/d_addm.htm#CIAIBHCB">COMPARE_INSTANCES Function</a> in SQL*Plus.</p>
+<h2 id="TOC-References">References</h2>
+<ol>
+	<li><a href="https://docs.oracle.com/database/121/ARPLS/toc.htm">Database PL/SQL Packages and Types Reference</li>
+	<ol>
+		<li><a href="https://docs.oracle.com/database/121/ARPLS/d_addm.htm#CACIFHFA">17 DBMS_ADDM</a></li>
+		<ol>
+			<li><a href="https://docs.oracle.com/database/121/ARPLS/d_addm.htm#CIAIBHCB">COMPARE_INSTANCES Function</a></li>
+		</ol>
+	</ol>
+</ol>
+<h2 id="TOC-Procedure">Procedure</h2>
+<h3 id="TOC-Access-Compare-ADDM-via-Performance-Menu-in-OEM">Access Compare ADDM via Performance Menu in OEM</h3>
+<p>From the database home page in OEM, access the Compare Period ADDM from the AWR sub-menu of the Performance pull-down menu as shown below:</p>
+<img border="0" src="access_compare_addm_via_oem.png" />
+<h3 id="TOC-Fill-in-Compare-ADDM-Period-Parameter">Fill in Compare ADDM Period Parameter</h3>
+<p>In the screenshot below, I have chosen the most recent two (2) hour AWR snapshot, and compare it to the immediately preceding one:</p>
+<img border="0" src="fill_in_compare_addm_period_parm.png" />
+<p>When I hit the run button, I get the following message:</p>
+<img border="0" src="error_msg.png" />
+<h3 id="TOC-Generate-ADDM-Compare-Report-in-SQL-Plus">Generate ADDM Compare Report in SQL*Plus</h3>
+<p>Run the following commands in SQL*Plus to generate a HTML report through the <a href="https://docs.oracle.com/database/121/ARPLS/d_addm.htm#CIAIBHCB">COMPARE_INSTANCES Function</a> Function. A sample is uploaded as Compare_ADDM_Period_sample.html. Adobe Flashplayer is required to display it.</p>
+<pre>
+REM ============================================================================ 
+REM Get Current DBID 
+REM ============================================================================  
+
+VARIABLE dbid NUMBER
+
+BEGIN
+    SELECT
+            dbid
+            INTO :dbid
+        FROM
+            v$database;
+END; 
+/
+
+REM ============================================================================ 
+REM Produce ADDM Compare Period Report as HTML 
+REM ============================================================================ 
+ 
+SET LINESIZE 32767 PAGESIZE 1000 LONG 9999 HEADING OFF FEEDBACK OFF 
+ 
+COLUMN report FORMAT A32767 
+ 
+SELECT 
+        dbms_addm.compare_instances( 
+            base_dbid          => :dbid, 
+            base_instance_id   => 1, 
+            base_begin_snap_id => 299, 
+            base_end_snap_id   => 300, 
+            comp_dbid          => :dbid, 
+            comp_instance_id   => 1, 
+            comp_begin_snap_id => 298, 
+            comp_end_snap_id   => 299, 
+            report_type        => 'HTML')
+        AS report 
+    FROM 
+        dual; 
+</pre>
+
+<p>The alternative formats are 'TEXT' and 'XML' which both produce XML documents.</p>
