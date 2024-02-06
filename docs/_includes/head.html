@@ -5,7 +5,16 @@
 <meta content="Yet Another OCM" name="title"/>
 <meta content="Yet Another OCM" itemprop="name"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="keywords" content="Oracle RDBMS, OCM 10G, OCM 11G, OCM 12C, Oracle Certified Master, Wiki, DB Knowledge, Book Reviews, DB Procedures, DB Issues">
+<meta name="keywords" content="Oracle RDBMS, Oracle Certified Master, Wiki 
+{%- if page contains 'keywords' -%}
+  , {{ page.keywords }} 
+{%- endif -%}">
 <meta name="description" content="Personal Wiki for Douglas Hawthorne for study for OCM exam and DB-related knowledge">
 <meta name="author" content="Douglas Hawthorne">
 <meta name="generator" content="jekyll 4.3.3">
+{% if jekyll.environment == "development" -%}
+    <base href="http://127.0.0.1:4000/">
+{%- endif %}
+{% if jekyll.environment == "production" -%}
+    <base href="https://dfhawthorne.github.io/">
+{%- endif %}

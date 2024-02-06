@@ -19,3 +19,4 @@ Table of Contents
 * [2024-02-02](2024_02_02.md) Conversion of Wiki to Jekyll - Table of Contents Established
 * [2024-02-03](2024_02_03.md) Conversion of Wiki to Jekyll - Scroll and Sub-Menu
 * [2024-02-04](2024_02_04.md) Conversion of Wiki to Jekyll - Web Page Conversion Started
+* [2024-02-06](2024_02_06.md) Conversion of Wiki to Jekyll - New Google Sites Pages

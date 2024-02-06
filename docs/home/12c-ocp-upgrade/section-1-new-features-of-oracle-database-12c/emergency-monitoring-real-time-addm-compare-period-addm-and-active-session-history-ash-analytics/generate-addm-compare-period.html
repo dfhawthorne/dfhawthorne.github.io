@@ -1,15 +1,17 @@
 ---
 layout: default
 title: Generate ADDM Compare Period
+base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/generate-addm-compare-period.html
+keywords: 12C OCP, ADDM, OEM
 breadcrumbs:
 - title: Home
-  url: home
+  url: home.html
 - title: 12C OCP Upgrade
-  url: home/12c-ocp-upgrade
-- title: Section 1: New Features of Oracle Database 12c
-  url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c
+  url: home/12c-ocp-upgrade.html
+- title: Section 1 - New Features of Oracle Database 12c
+  url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c.html
 - title: Emergency Monitoring, Real-Time ADDM, Compare Period ADDM, and Active Session History (ASH) Analytics
-  url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics
+  url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics.html
 table-of-contents:
 - toc-url: Overview
   toc-text: Overview
@@ -41,14 +43,14 @@ table-of-contents:
 <h2 id="TOC-Procedure">Procedure</h2>
 <h3 id="TOC-Access-Compare-ADDM-via-Performance-Menu-in-OEM">Access Compare ADDM via Performance Menu in OEM</h3>
 <p>From the database home page in OEM, access the Compare Period ADDM from the AWR sub-menu of the Performance pull-down menu as shown below:</p>
-<img border="0" src="access_compare_addm_via_oem.png" />
+<img border="0" src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/access_compare_addm_via_oem.png" />
 <h3 id="TOC-Fill-in-Compare-ADDM-Period-Parameter">Fill in Compare ADDM Period Parameter</h3>
 <p>In the screenshot below, I have chosen the most recent two (2) hour AWR snapshot, and compare it to the immediately preceding one:</p>
-<img border="0" src="fill_in_compare_addm_period_parm.png" />
+<img border="0" src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/fill_in_compare_addm_period_parm.png" />
 <p>When I hit the run button, I get the following message:</p>
-<img border="0" src="error_msg.png" />
+<img border="0" src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/error_msg.png" />
 <h3 id="TOC-Generate-ADDM-Compare-Report-in-SQL-Plus">Generate ADDM Compare Report in SQL*Plus</h3>
-<p>Run the following commands in SQL*Plus to generate a HTML report through the <a href="https://docs.oracle.com/database/121/ARPLS/d_addm.htm#CIAIBHCB">COMPARE_INSTANCES Function</a> Function. A sample is uploaded as Compare_ADDM_Period_sample.html. Adobe Flashplayer is required to display it.</p>
+<p>Run the following commands in SQL*Plus to generate a HTML report through the <a href="https://docs.oracle.com/database/121/ARPLS/d_addm.htm#CIAIBHCB">COMPARE_INSTANCES Function</a> Function.</p>
 <pre>
 REM ============================================================================ 
 REM Get Current DBID 

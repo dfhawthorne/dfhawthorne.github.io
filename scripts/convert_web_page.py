@@ -5,6 +5,7 @@
 
 import argparse
 import bs4
+import os
 import re
 
 # ------------------------------------------------------------------------------
@@ -40,6 +41,9 @@ if b.startswith('---'):
     print(f"{args.input_html_file_name[0]} has been already converted")
     exit(1)
 
+url_prefix = os.path.dirname(args.input_html_file_name[0])
+if args.verbose: print(f"url_prefix='{url_prefix}'")
+
 soup = bs4.BeautifulSoup(b, 'html.parser')
 doctype_items = [item for item in soup.contents if isinstance(item, bs4.Doctype)]
 if args.verbose:
@@ -72,9 +76,12 @@ else:
 
 if title is not None:
     title = title.replace(' - Yet Another OCM','')
-    page_header += 'title: ' + title + '\n'
+    page_header += f'title: {title}\n'
 
-if args.verbose: print(f"title='{title}'")
+if args.verbose: print(f"title='{title}'\n")
+
+page_header += f'base-url: {args.input_html_file_name[0]}\n'
+if args.verbose: print(f"base-url='{args.input_html_file_name[0]}'")
 
 # ------------------------------------------------------------------------------
 # Extract Breadcrumbs
@@ -95,9 +102,13 @@ if all_scripts is not None:
         else:
             if args.verbose: print(f"No breadcrumbs found")
 
-page_header += 'breadcrumbs:\n'
+if len(breadcrumbs) > 0: page_header += 'breadcrumbs:\n'
 for crumb in breadcrumbs:
-    page_header += f"- title: {crumb['title']}\n  url: {crumb['path']}\n"
+    page_header += f"- title: {crumb['title']}\n"
+    if crumb['path'].endswith('.html'):
+        page_header += f"  url: {crumb['path']}\n"
+    else:
+        page_header += f"  url: {crumb['path']}.html\n"
 
 # ------------------------------------------------------------------------------
 # Table of Contents
@@ -106,41 +117,57 @@ for crumb in breadcrumbs:
     
 all_toc = soup.find_all('div', 'goog-toc')
 if all_toc is not None and len(all_toc) > 0:
-    page_header += 'table-of-contents:'
+    page_header += 'table-of-contents:\n'
     toc_root = all_toc[0].ol
     for toc_level_1 in toc_root.children:
+        if args.verbose: print(toc_level_1)
         if toc_level_1.name == "li":
-            page_header += f"- toc-url: {toc_level_1.a['href']}\n"
-            page_header += f"  toc-text: {toc_level_1.a.string.strip()}"
+            page_header += f"- toc-url: {toc_level_1.a['href'].split('#TOC-')[1]}\n"
+            page_header += f"  toc-text: "
+            if toc_level_1.a.string is not None:
+                page_header += f"{toc_level_1.a.string.strip()}\n"
+            else:
+                page_header += f"{toc_level_1.a.contents[2].string.strip()}\n"
         if toc_level_1.name == "ol":
             for toc_level_2 in toc_level_1.children:
+                if args.verbose: print(toc_level_2)
                 if toc_level_2.name == "li":
-                    page_header += f"  - toc-url: {toc_level_2.a['href']}\n"
-                    page_header += f"    toc-text: {toc_level_2.a.string.strip()}"
+                    page_header += f"  - toc-url: {toc_level_2.a['href'].split('#TOC-')[1]}\n"
+                    page_header += f"  toc-text: "
+                    if toc_level_2.a.string is not None:
+                        page_header += f"{toc_level_2.a.string.strip()}\n"
+                    else:
+                        page_header += f"{toc_level_2.a.contents[2].string.strip()}\n"
 
 # ------------------------------------------------------------------------------
 # Sub-pages
 # ------------------------------------------------------------------------------
 
 all_sub_pages = soup.find_all('div', id='sites-toc-undefined')
-if all_sub_pages is not None:
+if all_sub_pages is not None and len(all_sub_pages) > 0:
     sub_page = all_sub_pages[0]
     page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\nsub-pages:\n"
     for menu in sub_page.find_all('li'):
         entry = menu.a
-        page_header += f"- title: {entry.string.strip()}\n  url: {entry['href']}\n"
+        page_header += f"- title: {entry.string.strip()}\n  url: {url_prefix}/{entry['href']}\n"
 
 # ------------------------------------------------------------------------------
 # Extracts contents
 # ------------------------------------------------------------------------------
 
-all_content = soup.find_all("div","sites-tile-name-content-1")
+all_content = soup.find_all("td","sites-tile-name-content-1")
 
 # ------------------------------------------------------------------------------
 # Print out YAML data
 # ------------------------------------------------------------------------------
 
 page_header += '---\n'
-print(page_header)
-if all_content is not None and len(all_content) > 0:
-    print(all_content[0].prettify())
+if args.replace:
+    with open(args.input_html_file_name[0],'w') as f:
+        f.write(page_header)
+        for content in all_content:
+            f.write(content.div.prettify())
+else:
+    print(page_header)
+    for content in all_content:
+        print(content.div.prettify())
