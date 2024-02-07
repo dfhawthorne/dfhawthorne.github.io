@@ -21,164 +21,26 @@ table-of-contents:
 - toc-url: Diagnosis
   toc-text: Diagnosis
 ---
-<div dir="ltr">
- <div>
- </div>
- <div>
-  <div class="sites-embed-align-left-wrapping-off">
-   <div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
-    <div class="sites-embed-content sites-embed-type-toc">
-     <div class="goog-toc sites-embed-toc-maxdepth-6">
-      <p>
-       Contents
-      </p>
-      <ol class="goog-toc">
-       <li class="goog-toc">
-        <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Overview">
-         <strong>
-          1
-         </strong>
-         Overview
-        </a>
-       </li>
-       <li class="goog-toc">
-        <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Status">
-         <strong>
-          2
-         </strong>
-         Status
-        </a>
-       </li>
-       <li class="goog-toc">
-        <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Work-Around">
-         <strong>
-          3
-         </strong>
-         Work Around
-        </a>
-       </li>
-       <li class="goog-toc">
-        <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Diagnosis">
-         <strong>
-          4
-         </strong>
-         Diagnosis
-        </a>
-        <ol class="goog-toc">
-         <li class="goog-toc">
-          <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Agent-Not-Running">
-           <strong>
-            4.1
-           </strong>
-           Agent Not Running
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-OMS-Not-Running">
-           <strong>
-            4.2
-           </strong>
-           OMS Not Running
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Repository-Database-is-Down">
-           <strong>
-            4.3
-           </strong>
-           Repository Database is Down
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-Listener-is-not-Running">
-           <strong>
-            4.4
-           </strong>
-           Listener is not Running
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="cloud-control-not-starting-automatically-in-ovm_em12r2.html#TOC-OMS-is-Running">
-           <strong>
-            4.5
-           </strong>
-           OMS is Running
-          </a>
-         </li>
-        </ol>
-       </li>
-      </ol>
-     </div>
-    </div>
-   </div>
-  </div>
- </div>
- <h2>
-  <a name="TOC-1">
-  </a>
-  <br/>
- </h2>
- <h2>
-  <a name="TOC-Overview">
-  </a>
-  Overview
- </h2>
- <p>
-  After booting the VM created in
-  <a href="../../procedures/miscellaneous/manually-create-cloud-control-vm-from-appliance.html">
-   Manually Create Cloud Control VM from Appliance
-  </a>
-  , the OMS was not running.
- </p>
- <h2>
-  <a name="TOC-Status">
-  </a>
-  Status
- </h2>
- <p style="font-size:xx-large;color:rgb(255,153,0)">
-  Work Around Available
- </p>
- <h2>
-  <a name="TOC-Work-Around">
-  </a>
-  Work Around
- </h2>
- <p>
-  The work around is to start everything manually:
- </p>
- <p>
-  <code>
-   /u01/OracleHomes/agent/agent_inst/bin/emctl start agent
-   <br/>
-   export ORACLE_HOME=/u01/OracleHomes/db11g/product/11.2.0/dbhome_1
-   <br/>
-   export ORACLE_SID=emrepus
-   <br/>
-   /u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/lsnrctl start
-   <br/>
-   /u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/sqlplus / as sysdba
-   <br/>
-   startup
-   <br/>
-   exit
-   <br/>
-   /u01/OracleHomes/Middleware/oms/bin/emctl start oms
-  </code>
- </p>
- <h2>
-  <a name="TOC-Diagnosis">
-  </a>
-  Diagnosis
- </h2>
- <h3>
-  <a name="TOC-Agent-Not-Running">
-  </a>
-  Agent Not Running
- </h3>
- <p>
-  The EM12C agent was not running, so I started it:
- </p>
- <pre>[oracle@cloudctl ~]$ /u01/OracleHomes/agent/agent_inst/bin/emctl status agent
+<h2><a name="TOC-Overview"></a>Overview</h2>
+<p>After booting the VM created in <a href="homes/procedures/miscellaneous/manually-create-cloud-control-vm-from-appliance.html">Manually Create Cloud Control VM from Appliance</a>, the OMS was not running.</p>
+<h2><a name="TOC-Status"></a>Status</h2>
+<p style="font-size:xx-large;color:rgb(255,153,0)">Work Around Available</p>
+<h2><a name="TOC-Work-Around"></a>Work Around</h2>
+<p>The work around is to start everything manually:</p>
+<pre>
+/u01/OracleHomes/agent/agent_inst/bin/emctl start agent
+export ORACLE_HOME=/u01/OracleHomes/db11g/product/11.2.0/dbhome_1
+export ORACLE_SID=emrepus
+/u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/lsnrctl start
+/u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/sqlplus / as sysdba
+startup
+exit
+/u01/OracleHomes/Middleware/oms/bin/emctl start oms
+</pre>
+<h2><a name="TOC-Diagnosis"></a>Diagnosis</h2>
+<h3><a name="TOC-Agent-Not-Running"></a>Agent Not Running</h3>
+<p>The EM12C agent was not running, so I started it:</p>
+<pre>[oracle@cloudctl ~]$ /u01/OracleHomes/agent/agent_inst/bin/emctl status agent
 Oracle Enterprise Manager Cloud Control 12c Release 2
 Copyright (c) 1996, 2012 Oracle Corporation.  All rights reserved.
 ---------------------------------------------------------------
@@ -218,15 +80,9 @@ Next scheduled heartbeat to OMS              : 2012-10-27 18:02:41
 ---------------------------------------------------------------
 Agent is Running and Ready
 </pre>
- <h3>
-  <a name="TOC-OMS-Not-Running">
-  </a>
-  OMS Not Running
- </h3>
- <p>
-  The Oracle Management Server (OMS) was not running as well, so I started as well:
- </p>
- <pre>[oracle@cloudctl ~]$ /u01/OracleHomes/Middleware/oms/bin/emctl status oms
+<h3><a name="TOC-OMS-Not-Running"></a>OMS Not Running</h3>
+<p>The Oracle Management Server (OMS) was not running as well, so I started as well:</p>
+<pre>[oracle@cloudctl ~]$ /u01/OracleHomes/Middleware/oms/bin/emctl status oms
 Oracle Enterprise Manager Cloud Control 12c Release 2
 Copyright (c) 1996, 2012 Oracle Corporation.  All rights reserved.
 WebTier is Down
@@ -240,15 +96,9 @@ WebTier Successfully Started
 Oracle Management Server is not functioning because of the following reason:
 Failed to connect to repository database. OMS will be automatically restarted once it identifies that database and listener are up.
 </pre>
- <h3>
-  <a name="TOC-Repository-Database-is-Down">
-  </a>
-  Repository Database is Down
- </h3>
- <p>
-  Isn't this fun? The repository database is down as well. Didn't anythibng start on reboot?
- </p>
- <pre>[oracle@cloudctl ~]$ /u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/srvctl status
+<h3><a name="TOC-Repository-Database-is-Down"></a>Repository Database is Down</h3>
+<p>Isn't this fun? The repository database is down as well. Didn't anythibng start on reboot?</p>
+<pre>[oracle@cloudctl ~]$ /u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/srvctl status
 ****Unable to retrieve Oracle Clusterware home.
 Start Oracle Clusterware stack and try again.
 [oracle@cloudctl ~]$ find /u01 -name crsctl -type f -print
@@ -278,25 +128,17 @@ SQL&gt; exit
 Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.3.0 - 64bit Production
 With the Partitioning, OLAP, Data Mining and Real Application Testing options
 </pre>
- <p>
-  Check OMS:
- </p>
- <pre>[oracle@cloudctl ~]$ /u01/OracleHomes/Middleware/oms/bin/emctl status oms
+<p>Check OMS:</p>
+<pre>[oracle@cloudctl ~]$ /u01/OracleHomes/Middleware/oms/bin/emctl status oms
 Oracle Enterprise Manager Cloud Control 12c Release 2
 Copyright (c) 1996, 2012 Oracle Corporation.  All rights reserved.
 WebTier is Up
 Oracle Management Server is not functioning because of the following reason:
 Failed to connect to repository database. OMS will be automatically restarted once it identifies that database and listener are up.
 </pre>
- <h3>
-  <a name="TOC-Listener-is-not-Running">
-  </a>
-  Listener is not Running
- </h3>
- <p>
-  The listener must be down:
- </p>
- <pre>[oracle@cloudctl ~]$ /u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/lsnrctl status
+<h3><a name="TOC-Listener-is-not-Running"></a>Listener is not Running</h3>
+<p>The listener must be down:</p>
+<pre>[oracle@cloudctl ~]$ /u01/OracleHomes/db11g/product/11.2.0/dbhome_1/bin/lsnrctl status
 
 LSNRCTL for Linux: Version 11.2.0.3.0 - Production on 27-OCT-2012 18:33:32
 
@@ -344,15 +186,9 @@ Listening Endpoints Summary...
 The listener supports no services
 The command completed successfully
 </pre>
- <h3>
-  <a name="TOC-OMS-is-Running">
-  </a>
-  OMS is Running
- </h3>
- <p>
-  Got the OMS finally up:
- </p>
- <pre>[oracle@cloudctl ~]$ /u01/OracleHomes/Middleware/oms/bin/emctl status oms
+<h3><a name="TOC-OMS-is-Running"></a>OMS is Running</h3>
+<p>Got the OMS finally up:</p>
+<pre>[oracle@cloudctl ~]$ /u01/OracleHomes/Middleware/oms/bin/emctl status oms
 Oracle Enterprise Manager Cloud Control 12c Release 2
 Copyright (c) 1996, 2012 Oracle Corporation.  All rights reserved.
 WebTier is Up
@@ -380,4 +216,3 @@ Copyright (c) 1996, 2012 Oracle Corporation.  All rights reserved.
 WebTier is Up
 Oracle Management Server is Up
 </pre>
-</div>

@@ -1,11 +1,18 @@
 {%- if page contains "sub-pages" -%}
-    <div class="sub-pages">
+    <div class="sub-pages" style="grid-column: 2; grid-row: 7;">
         {%- if page contains "sub-pages-title" -%}
         <p class="sub-pages">{{ page.sub-pages-title }}</p>
         {%- endif -%}
         <ul class="sub-pages">
         {%- for item in page.sub-pages -%}
             <li class="sub-pages"><a href="{{ item.url }}">{{ item.title }}</a></li>
+            {%- if item contains "sub-sub-pages" -%}
+                <ul class="sub-sub-pages">
+                {%- for sub-item in item.sub-sub-pages -%}
+                    <li class="sub-sub-pages"><a href="{{ sub-item.url }}">{{ sub-item.title }}</a></li>
+                {%- endfor -%}
+                </ul>
+            {%- endif -%}
         {%- endfor -%}
         </ul>
     </div>
