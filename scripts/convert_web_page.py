@@ -163,8 +163,7 @@ if all_toc is not None and len(all_toc) > 0:
     toc_root = all_toc[0].ol
     for toc_level_1 in toc_root.children:
         if args.verbose:
-            args.log.write(toc_level_1)
-            args.log.write('\n')
+            args.log.write(str(toc_level_1)+'\n')
         if toc_level_1.name == "li":
             page_header += f"- toc-url: {toc_level_1.a['href'].split('#TOC-')[1]}\n"
             page_header += f"  toc-text: "
@@ -175,8 +174,7 @@ if all_toc is not None and len(all_toc) > 0:
         if toc_level_1.name == "ol":
             for toc_level_2 in toc_level_1.children:
                 if args.verbose:
-                    args.log.write(toc_level_2)
-                    args.log.write('\n')
+                    args.log.write(str(toc_level_2)+'\n')
                 if toc_level_2.name == "li":
                     page_header += f"  - toc-url: {toc_level_2.a['href'].split('#TOC-')[1]}\n"
                     page_header += f"  toc-text: "
@@ -188,7 +186,7 @@ if all_toc is not None and len(all_toc) > 0:
         toc_entry.decompose()
 
 # ------------------------------------------------------------------------------
-# Sub-pages
+# Sub-pagesurl_parts.path
 # ------------------------------------------------------------------------------
 
 all_sub_pages = soup.find_all('div', id='sites-toc-undefined')
@@ -211,11 +209,17 @@ for content in all_content:
     for addr in content.find_all('a'):
         href = addr.get('href')
         if href is not None:
+            if args.verbose:
+                args.log.write(f'A HREF Before: {str(href)}\n')
             url_parts = urlparse(href)
             if url_parts.scheme in ['http','https']:
-                addr['href'] = url_parts._replace(scheme='',netloc='').geturl()
+                if url_parts.netloc == 'dfhawthorne.github.io':
+                    addr['href'] = url_parts._replace(scheme='',netloc='').geturl()
+                if url_parts.netloc == 'sites.google.com':
+                    new_addr_path = os.path.relpath(url_parts.path, start='view/yetanotherocm')
+                    addr['href'] = url_parts._replace(scheme='',netloc='',path=new_addr_path).geturl()
             else:
-                old_url_path = url_parts.path
+                old_url_path = url_parts.path.replace('../yetanotherocm/','')
                 if old_url_path is not None and old_url_path != '':
                     new_url_path = os.path.relpath(
                         os.path.realpath(
@@ -223,17 +227,29 @@ for content in all_content:
                             ),
                             start=doc_base
                         )
-                    if new_url_path.startswith("../yetanotherocm/"):
-                        new_url_path = new_url_path[17:]
-                    addr['href'] = new_url_path
+                    addr['href'] = url_parts._replace(path=new_url_path).geturl()
+            if args.verbose:
+                args.log.write(f"A HREF After: {str(addr['href'])}\n")
     for addr in content.find_all('img'):
         href = addr.get('src')
         if href is not None:
+            local_image_path = None
+            if args.verbose:
+                args.log.write(f'IMG SRC Before: {str(href)}\n')
             url_parts = urlparse(href)
             if url_parts.scheme in ['http','https']:
-                addr['src'] = url_parts._replace(scheme='',netloc='').geturl()
+                if url_parts.netloc == 'dfhawthorne.github.io':
+                    addr['src']      = url_parts._replace(scheme='',netloc='').geturl()
+                    local_image_path = doc_base + '/' + url_parts.path
+                elif url_parts.netloc == 'sites.google.com':
+                    new_addr_path    = os.path.relpath(url_parts.path, start='view/yetanotherocm')
+                    addr['src']      = url_parts._replace(scheme='',netloc='',path=new_addr_path).geturl()
+                    local_image_path = doc_base + '/' + new_addr_path
+                else:
+                    if args.verbose:
+                        args.log.write(f'No adjustment to URL\n')
             else:
-                old_url_path = url_parts.path
+                old_url_path = url_parts.path.replace('../yetanotherocm/','')
                 if old_url_path is not None and old_url_path != '':
                     new_url_path = os.path.relpath(
                         os.path.realpath(
@@ -241,9 +257,14 @@ for content in all_content:
                             ),
                             start=doc_base
                         )
-                    if new_url_path.startswith("../yetanotherocm/"):
-                        new_url_path = new_url_path[17:]
-                    addr['src'] = new_url_path
+                    addr['src'] = url_parts._replace(scheme='',netloc='',path=new_url_path).geturl()
+                    local_image_path = doc_base + '/' + new_url_path
+            if local_image_path is not None and not os.path.exists(local_image_path):
+                print(f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}")
+                if args.verbose:
+                    args.log.write(f"Unable to locate image file, '{local_image_path}")
+            if args.verbose:
+                args.log.write(f"SRC IMG After: {str(addr['src'])}\n")
 
 # ------------------------------------------------------------------------------
 # Print out YAML data
@@ -251,7 +272,7 @@ for content in all_content:
 
 page_header += '---\n'
 if args.replace:
-    with open(args.input_html_file_name[0],'w') as f:
+    with open(os.path.basename(args.input_html_file_name[0]),'w') as f:
         f.write(page_header)
         for content in all_content:
             if content.div is not None:
