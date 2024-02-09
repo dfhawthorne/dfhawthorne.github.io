@@ -192,10 +192,12 @@ if all_toc is not None and len(all_toc) > 0:
 all_sub_pages = soup.find_all('div', id='sites-toc-undefined')
 if all_sub_pages is not None and len(all_sub_pages) > 0:
     sub_page = all_sub_pages[0]
-    page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\nsub-pages:\n"
+    page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
+    page_header += f"sub-pages:\n"
     for menu in sub_page.find_all('li'):
         entry = menu.a
-        page_header += f"- title: {entry.string.strip()}\n  url: {url_prefix}/{entry['href']}\n"
+        page_header += f"- title: {entry.string.strip()}\n"
+        page_header += f"  url: {url_prefix}/{entry['href']}\n"
     for sub_page in all_sub_pages:
         sub_page.decompose()
 
@@ -214,10 +216,17 @@ for content in all_content:
             url_parts = urlparse(href)
             if url_parts.scheme in ['http','https']:
                 if url_parts.netloc == 'dfhawthorne.github.io':
-                    addr['href'] = url_parts._replace(scheme='',netloc='').geturl()
-                if url_parts.netloc == 'sites.google.com':
-                    new_addr_path = os.path.relpath(url_parts.path, start='view/yetanotherocm')
-                    addr['href'] = url_parts._replace(scheme='',netloc='',path=new_addr_path).geturl()
+                    addr['href'] = url_parts._replace(
+                                    scheme='',
+                                    netloc='').geturl()
+                elif url_parts.netloc == 'sites.google.com':
+                    new_addr_path = os.path.relpath(
+                                    url_parts.path,
+                                    start='view/yetanotherocm')
+                    addr['href'] = url_parts._replace(
+                                    scheme='',
+                                    netloc='',
+                                    path=new_addr_path).geturl()
             else:
                 old_url_path = url_parts.path.replace('../yetanotherocm/','')
                 if old_url_path is not None and old_url_path != '':
@@ -227,7 +236,8 @@ for content in all_content:
                             ),
                             start=doc_base
                         )
-                    addr['href'] = url_parts._replace(path=new_url_path).geturl()
+                    addr['href'] = url_parts._replace(
+                                    path=new_url_path).geturl()
             if args.verbose:
                 args.log.write(f"A HREF After: {str(addr['href'])}\n")
     for addr in content.find_all('img'):
@@ -239,11 +249,19 @@ for content in all_content:
             url_parts = urlparse(href)
             if url_parts.scheme in ['http','https']:
                 if url_parts.netloc == 'dfhawthorne.github.io':
-                    addr['src']      = url_parts._replace(scheme='',netloc='').geturl()
+                    addr['src']      = url_parts._replace(
+                                        scheme='',
+                                        netloc='').geturl()
                     local_image_path = doc_base + '/' + url_parts.path
                 elif url_parts.netloc == 'sites.google.com':
-                    new_addr_path    = os.path.relpath(url_parts.path, start='view/yetanotherocm')
-                    addr['src']      = url_parts._replace(scheme='',netloc='',path=new_addr_path).geturl()
+                    new_addr_path    = os.path.relpath(
+                                        url_parts.path,
+                                        start='view/yetanotherocm'
+                                        )
+                    addr['src']      = url_parts._replace(
+                                        scheme='',
+                                        netloc='',
+                                        path=new_addr_path).geturl()
                     local_image_path = doc_base + '/' + new_addr_path
                 else:
                     if args.verbose:
@@ -257,14 +275,35 @@ for content in all_content:
                             ),
                             start=doc_base
                         )
-                    addr['src'] = url_parts._replace(scheme='',netloc='',path=new_url_path).geturl()
+                    addr['src'] = url_parts._replace(
+                                    scheme='',
+                                    netloc='',
+                                    path=new_url_path).geturl()
                     local_image_path = doc_base + '/' + new_url_path
-            if local_image_path is not None and not os.path.exists(local_image_path):
-                print(f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}")
+            if local_image_path is not None and \
+                not os.path.exists(local_image_path):
+                print(
+                    f"{args.input_html_file_name[0]}: Unable to locate image file,
+                    '{local_image_path}"
+                    )
                 if args.verbose:
-                    args.log.write(f"Unable to locate image file, '{local_image_path}")
+                    args.log.write(
+                        f"Unable to locate image file,
+                        '{local_image_path}"
+                        )
             if args.verbose:
                 args.log.write(f"SRC IMG After: {str(addr['src'])}\n")
+
+# ------------------------------------------------------------------------------
+# Remove Empty DIV tags in up to four (4) levels
+# ------------------------------------------------------------------------------
+                
+for retries in range(4):
+    for content in all_content:
+        all_div_tags = content.find_all('div')
+        for tag in all_div_tags:
+            if len([child for child in tag.children]) == 0:
+                tag.decmpose()
 
 # ------------------------------------------------------------------------------
 # Print out YAML data

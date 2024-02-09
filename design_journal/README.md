@@ -20,5 +20,7 @@ Table of Contents
 * [2024-02-03](2024_02_03.md) Conversion of Wiki to Jekyll - Scroll and Sub-Menu
 * [2024-02-04](2024_02_04.md) Conversion of Wiki to Jekyll - Web Page Conversion Started
 * [2024-02-06](2024_02_06.md) Conversion of Wiki to Jekyll - New Google Sites Pages
-* [2024-02-07](2024_02_07.md) # 2024-02-06: Conversion of Wiki to Jekyll - Alignment to a Single Base
-* [2024-02-08](2024_02_08.md) # 2024-02-06: Conversion of Wiki to Jekyll - Cleaned Up Links to Images
+* [2024-02-07](2024_02_07.md) Conversion of Wiki to Jekyll - Alignment to a Single Base
+* [2024-02-08](2024_02_08.md) Conversion of Wiki to Jekyll - Cleaned Up Links to Images
+* [2024-02-09](2024_02_09.md) Conversion of Wiki to Jekyll - Cleaned Up Empty DIV Tags
+
