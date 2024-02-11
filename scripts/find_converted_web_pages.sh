@@ -9,8 +9,9 @@ docs_path="$(dirname $(dirname $(realpath $0)))/docs"
 
 while read file_name
 do 
-    echo "${file_name}" | grep -qE '/_site/'
-    [[ $? -eq 0 ]] && continue
-    head -n 1 "${file_name}" | grep -qE '^---$'
-    [[ $? -eq 0 ]] && printf "%s\n" "${file_name}"
+    [[ "${file_name}" =~ /_site/ ]] && continue
+    [[ "$(head -n 1 ""${file_name}"")" == '---' ]] && \
+        printf "%s\n" "${file_name}"
 done < <(find "${docs_path}" -name "*.html" -type f)
+
+exit 0
