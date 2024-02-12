@@ -7,6 +7,7 @@ import argparse
 import bs4
 import os
 import re
+import subprocess
 import sys
 from urllib.parse import urlparse
 
@@ -30,6 +31,12 @@ parser.add_argument(
     help='Replaces input file with converted one'
     )
 parser.add_argument(
+    '-g',
+    '--git-remove',
+    action='store_true',
+    help='Removed extra files that are no longer linked to'
+    )
+parser.add_argument(
     '-l',
     '--log',
     default=sys.stdout,
@@ -46,6 +53,7 @@ args = parser.parse_args()
 if args.verbose:
     args.log.write(f"""Passed arguments:
     replace={args.replace}
+    git-remove={args.git_remove}
     input_html_file_name={args.input_html_file_name}
 """)
 
@@ -61,6 +69,16 @@ with open(args.input_html_file_name[0], 'r') as f:
 if b.startswith('---'):
     print(f"{args.input_html_file_name[0]} has been already converted")
     exit(1)
+
+# ------------------------------------------------------------------------------
+# Locate the input file within:
+# (1) documents base which is a sibling of the scripts directory (doc_base)
+# (2) relative directory to where the script is invoked from (page_rel_url)
+# (3) the whole file system (curr_dir)
+#
+# Change the working directory to where the input file is located. This is
+# necessary as Classic Google Sites pages use page-relative URLs.
+# ------------------------------------------------------------------------------
 
 doc_base = os.path.dirname(
     os.path.dirname(
@@ -82,6 +100,11 @@ if args.verbose:
     args.log.write(f"doc_base='{doc_base}'\n")
     args.log.write(f"curr_dir='{curr_dir}\n")
     args.log.write(f"url_prefix='{url_prefix}'\n")
+
+# ------------------------------------------------------------------------------
+# Parse the input file as a HTML file
+# Exit if the format is from the new Google Sites
+# ------------------------------------------------------------------------------
 
 soup = bs4.BeautifulSoup(b, 'html.parser')
 doctype_items = [item for item in soup.contents if isinstance(item, bs4.Doctype)]
@@ -208,7 +231,7 @@ for h3 in soup.find_all('h3'):
         h3.decompose()
         continue
     if len(children) < 2: continue
-    if children[0].name == 'a':
+    if children[0].name is not None and children[0].name == 'a':
         addr_children = [child for child in children[0].children]
         if len(addr_children) > 0: continue
     if len(children) == 2 and children[1].name == 'br':
@@ -237,111 +260,163 @@ if all_sub_pages is not None and len(all_sub_pages) > 0:
         sub_page.decompose()
 
 # ------------------------------------------------------------------------------
+# Auxiliary function to convert URL into one relative to the base of the Wiki
+# (1) Remove prefixes of the form
+#     - http://dfhawthorne.github.io/'
+#     - https://dfhawthorne.github.io/'
+#     - http://sites.google.com/view/yetanotherocm/'
+#     - https://sites.google.com/view/yetanotherocm/'
+# (2) Convert relative paths from the current page to the documents base
+# (3) Leave other URLs unchanged
+# (4) Change URL encoding: %2F to '?'
+# ------------------------------------------------------------------------------
+
+def normalise_url(href):
+    assert href is not None, "href parameter expected"
+    assert type(href) == str, "expected href to be passed as a string"
+
+    href = href.replace('%2F','?')
+    url_parts = urlparse(href)
+    if url_parts.scheme in ['http','https']:
+        if url_parts.netloc == 'dfhawthorne.github.io':
+            return url_parts._replace(
+                scheme='',
+                netloc='').geturl()
+        elif url_parts.netloc == 'sites.google.com':
+            new_addr_path = os.path.relpath(
+                            url_parts.path,
+                            start='/view/yetanotherocm')
+            return url_parts._replace(
+                scheme='',
+                netloc='',
+                path=new_addr_path).geturl()
+        else:
+            return href
+    else:
+        old_url_path = url_parts.path.replace('../yetanotherocm/','')
+        if old_url_path is not None and old_url_path != '':
+            new_url_path = os.path.relpath(
+                os.path.realpath(
+                    old_url_path
+                    ),
+                    start=doc_base
+                )
+            return url_parts._replace(path=new_url_path).geturl()
+        else:
+            return href
+
+# ------------------------------------------------------------------------------
+# Auxiliary function to determine if the file referenced by a URL needs to be
+# removed. The following suffixes are considered for removal:
+# - .png.html
+# - .gif.html
+# - attredirects=0
+# ------------------------------------------------------------------------------
+
+def need_to_remove_url(url):
+    assert url is not None, 'URL is required'
+    assert type(url) == str, 'URL is string'
+
+    need_to_remove = False
+    if href.endswith('.png.html'):
+        need_to_remove = True
+    elif href.endswith('.gif.html'):
+        need_to_remove = True
+    elif href.endswith('attredirects=0'):
+        need_to_remove = True
+    else:
+        need_to_remove = False
+    
+    if args.verbose:
+        args.log.write(f'URL: {str(url)} needs to be removed={str(need_to_remove)}\n')
+    
+    return need_to_remove
+
+# ------------------------------------------------------------------------------
 # Extracts contents
 # (1) Change URL to relative to Wiki base
-# (2) Remove links to images
-# (3) Remove links to png.html pages
+# (2) Remove links with imageanchor
+# (3) Remove links to *%3Fattredirects=0 files
+# (4) Remove links to *png.html pages
+# (5) Remove links to *gif.html pages
 # ------------------------------------------------------------------------------
+
+tags_to_be_deleted = list() # Tags to be deleted
 
 all_content = soup.find_all("td","sites-tile-name-content-1")
 for content in all_content:
     for addr in content.find_all('a'):
+        if addr.get('imageanchor') is not None:
+            tags_to_be_deleted.append(addr)
         href         = addr.get('href')
-        image_anchor = addr.get('imageanchor')
-        if image_anchor is not None:
-            if args.verbose:
-                args.log.write(f'Image anchor found and removed: {str(addr)}\n')
-            addr.replace_with(addr.img)
-            if href is not None:
-                print(f'git rm {str(href)}')
-            continue
-        if href is not None:
-            if args.verbose:
-                args.log.write(f'A HREF Before: {str(href)}\n')
-            url_parts = urlparse(href)
-            if url_parts.scheme in ['http','https']:
-                if url_parts.netloc == 'dfhawthorne.github.io':
-                    addr['href'] = url_parts._replace(
-                                    scheme='',
-                                    netloc='').geturl()
-                elif url_parts.netloc == 'sites.google.com':
-                    new_addr_path = os.path.relpath(
-                                    url_parts.path,
-                                    start='view/yetanotherocm')
-                    addr['href'] = url_parts._replace(
-                                    scheme='',
-                                    netloc='',
-                                    path=new_addr_path).geturl()
-            else:
-                old_url_path = url_parts.path.replace('../yetanotherocm/','')
-                if old_url_path is not None and old_url_path != '':
-                    new_url_path = os.path.relpath(
-                        os.path.realpath(
-                            old_url_path
-                            ),
-                            start=doc_base
-                        )
-                    addr['href'] = url_parts._replace(
-                                    path=new_url_path).geturl()
-            if args.verbose:
-                args.log.write(f"A HREF After: {str(addr['href'])}\n")
+        if href is None: continue
+        # Regularise the URL to be relative to the documents base
+        if args.verbose:
+            args.log.write(f'A HREF Before: {str(href)}\n')
+        addr['href'] = normalise_url(href)
+        if args.verbose:
+            args.log.write(f"A HREF After: {str(addr['href'])}\n")
+        if need_to_remove_url(addr['href']):
+            tags_to_be_deleted.append(addr)
+
     for addr in content.find_all('img'):
         href = addr.get('src')
-        if href is not None:
-            if href.endswith('.png.html'):
-                addr.decompose()
-                if args.verbose:
-                    args.log.write(f"A removed: {str(href)}\n")
-                print(f"git rm {str(href)}")
-                continue
-            local_image_path = None
+        # Regularise the URL to be relative to the documents base
+        if href is None: continue
+        if args.verbose:
+            args.log.write(f'IMG SRC Before: {str(href)}\n')
+        new_url_path = normalise_url(href)
+        addr['src'] = new_url_path
+        if args.verbose:
+            args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
+        local_image_path = doc_base + '/' + new_url_path
+        if local_image_path is not None and not os.path.exists(local_image_path):
+            print(
+                f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}'"
+                )
             if args.verbose:
-                args.log.write(f'IMG SRC Before: {str(href)}\n')
-            url_parts = urlparse(href)
-            if url_parts.scheme in ['http','https']:
-                if url_parts.netloc == 'dfhawthorne.github.io':
-                    addr['src']      = url_parts._replace(
-                                        scheme='',
-                                        netloc='').geturl()
-                    local_image_path = doc_base + '/' + url_parts.path
-                elif url_parts.netloc == 'sites.google.com':
-                    new_addr_path    = os.path.relpath(
-                                        url_parts.path,
-                                        start='view/yetanotherocm'
-                                        )
-                    addr['src']      = url_parts._replace(
-                                        scheme='',
-                                        netloc='',
-                                        path=new_addr_path).geturl()
-                    local_image_path = doc_base + '/' + new_addr_path
-                else:
-                    if args.verbose:
-                        args.log.write(f'No adjustment to URL\n')
-            else:
-                old_url_path = url_parts.path.replace('../yetanotherocm/','')
-                if old_url_path is not None and old_url_path != '':
-                    new_url_path = os.path.relpath(
-                        os.path.realpath(
-                            old_url_path
-                            ),
-                            start=doc_base
-                        )
-                    addr['src'] = url_parts._replace(
-                                    scheme='',
-                                    netloc='',
-                                    path=new_url_path).geturl()
-                    local_image_path = doc_base + '/' + new_url_path
-            if local_image_path is not None and \
-                not os.path.exists(local_image_path):
-                print(
-                    f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}'"
+                args.log.write(
+                    f"Unable to locate image file, '{local_image_path}'"
                     )
-                if args.verbose:
-                    args.log.write(
-                        f"Unable to locate image file, '{local_image_path}'"
-                        )
-            if args.verbose:
-                args.log.write(f"SRC IMG After: {str(addr['src'])}\n")
+        if need_to_remove_url(new_url_path):
+            tags_to_be_deleted.append(addr)
+
+# ------------------------------------------------------------------------------
+# Remove unnecessary tags
+# ------------------------------------------------------------------------------
+
+git_removals = list()
+if args.verbose:
+    args.log.write(f"Tags to be deleted: {str(tags_to_be_deleted)}\n")
+for tag in tags_to_be_deleted:
+    num_children = len([child for child in tag.children if child.name is not None])
+    num_strings  = len([child for child in tag.stripped_strings])
+    child_names  = [child.name for child in tag.children]
+    if args.verbose:
+        args.log.write(f"Tag found: {str(tag)}\n")
+        args.log.write(f"num_children={num_children}\n")
+        args.log.write(f"num_strings={num_strings}\n")
+        args.log.write(f"child_names={str(child_names)}\n")
+    if tag.name == "a":
+        href = tag.get('href')
+        if href is not None:
+            file_name = doc_base + '/' + href.replace('%3F','?')
+            if file_name not in git_removals and os.path.exists(file_name):
+                git_removals.append(file_name)
+    elif tag.name == "img":
+        src = tag.get('src')
+        if src is not None:
+            file_name = doc_base + '/' + src.replace('%3F','?')
+            if file_name not in git_removals and os.path.exists(file_name):
+                git_removals.append(file_name)
+    if num_children == 0 and num_strings == 0:
+        if args.verbose:
+            args.log.write(f"Removed empty tag: {str(tag)}\n")
+        tag.decompose()
+    else:
+        if args.verbose:
+            args.log.write(f"Unwrapped tag: {str(tag)}\n")
+        tag.unwrap()
 
 # ------------------------------------------------------------------------------
 # Remove Empty DIV tags in up to four (4) levels
@@ -351,8 +426,18 @@ for retries in range(4):
     for content in all_content:
         all_div_tags = content.find_all('div')
         for tag in all_div_tags:
-            if len([child for child in tag.children]) == 0:
-                tag.decmpose()
+            num_children = len([child for child in tag.children if child.name is not None])
+            num_strings  = len([child for child in tag.stripped_strings])
+            child_names  = [child.name for child in tag.children]
+            if args.verbose:
+                args.log.write(f"DIV tag found: {str(tag)}\n")
+                args.log.write(f"num_children={num_children}\n")
+                args.log.write(f"num_strings={num_strings}\n")
+                args.log.write(f"child_names={str(child_names)}\n")
+            if num_children == 0 and num_strings == 0:
+                if args.verbose:
+                    args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
+                tag.decompose()
 
 # ------------------------------------------------------------------------------
 # Print out YAML data
@@ -370,3 +455,18 @@ else:
     for content in all_content:
         if content.div is not None:
             print(content.div.prettify())
+
+# ------------------------------------------------------------------------------
+# GIT Removals
+# ------------------------------------------------------------------------------
+
+cmd = ['git', 'rm']
+cmd.extend(git_removals)
+cmd_str = ' '.join(cmd)
+
+if args.verbose:
+    args.log.write(f"GIT command: {str(cmd_str)}\n")
+if args.git_remove and len(git_removals) > 0:
+    p = subprocess.run(cmd, capture_output=True)
+    if args.verbose:
+        args.log.write(f"GIT STDOUT:\n{p.stdout}\n\nGIT STDERR:\n{p.stderr}")
