@@ -146,6 +146,8 @@ if all_scripts is not None:
 if len(breadcrumbs) > 0:
     page_header += 'breadcrumbs:\n'
     for crumb in breadcrumbs:
+        if args.verbose:
+            args.log.write(f"Breadcrumb: '{crumb['title']}' '{crumb['path']}'\n")
         page_header += f"- title: {crumb['title']}\n"
         if crumb['path'].endswith('.html'):
             page_header += f"  url: {crumb['path'][1:]}\n"
@@ -163,7 +165,7 @@ if all_toc is not None and len(all_toc) > 0:
     toc_root = all_toc[0].ol
     for toc_level_1 in toc_root.children:
         if args.verbose:
-            args.log.write(str(toc_level_1)+'\n')
+            args.log.write('toc_level_1: '+str(toc_level_1)+'\n')
         if toc_level_1.name == "li":
             page_header += f"- toc-url: {toc_level_1.a['href'].split('#TOC-')[1]}\n"
             page_header += f"  toc-text: "
@@ -174,7 +176,7 @@ if all_toc is not None and len(all_toc) > 0:
         if toc_level_1.name == "ol":
             for toc_level_2 in toc_level_1.children:
                 if args.verbose:
-                    args.log.write(str(toc_level_2)+'\n')
+                    args.log.write('toc_level_2: '+str(toc_level_2)+'\n')
                 if toc_level_2.name == "li":
                     page_header += f"  - toc-url: {toc_level_2.a['href'].split('#TOC-')[1]}\n"
                     page_header += f"  toc-text: "
@@ -183,10 +185,39 @@ if all_toc is not None and len(all_toc) > 0:
                     else:
                         page_header += f"{toc_level_2.a.contents[2].string.strip()}\n"
     for toc_entry in all_toc:
+        if args.verbose:
+            args.log.write('TOC removed: '+str(toc_entry)+'\n')
         toc_entry.decompose()
 
 # ------------------------------------------------------------------------------
-# Sub-pagesurl_parts.path
+# Remove empty headers of the type:
+# <h3>
+#  <a name="TOC-1">
+#  </a>
+#  <br/>
+# </h3>
+# ------------------------------------------------------------------------------
+
+for h3 in soup.find_all('h3'):
+    if args.verbose:
+        args.log.write('h3: '+str(h3)+'\n')
+    children = [child for child in h3.children]
+    if len(children) == 0:
+        if args.verbose:
+            args.log.write('h3 removed\n')
+        h3.decompose()
+        continue
+    if len(children) < 2: continue
+    if children[0].name == 'a':
+        addr_children = [child for child in children[0].children]
+        if len(addr_children) > 0: continue
+    if len(children) == 2 and children[1].name == 'br':
+        if args.verbose:
+            args.log.write('h3 removed\n')
+        h3.decompose()
+
+# ------------------------------------------------------------------------------
+# Convert Sub-pages Plug-in to YAML menu entries
 # ------------------------------------------------------------------------------
 
 all_sub_pages = soup.find_all('div', id='sites-toc-undefined')
@@ -198,18 +229,32 @@ if all_sub_pages is not None and len(all_sub_pages) > 0:
         entry = menu.a
         page_header += f"- title: {entry.string.strip()}\n"
         page_header += f"  url: {url_prefix}/{entry['href']}\n"
+        if args.verbose:
+            args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
     for sub_page in all_sub_pages:
+        if args.verbose:
+            args.log.write(f"Sub page removed: '{sub_page}'\n")
         sub_page.decompose()
 
 # ------------------------------------------------------------------------------
 # Extracts contents
-# Change URL to relative to Wiki base
+# (1) Change URL to relative to Wiki base
+# (2) Remove links to images
+# (3) Remove links to png.html pages
 # ------------------------------------------------------------------------------
 
 all_content = soup.find_all("td","sites-tile-name-content-1")
 for content in all_content:
     for addr in content.find_all('a'):
-        href = addr.get('href')
+        href         = addr.get('href')
+        image_anchor = addr.get('imageanchor')
+        if image_anchor is not None:
+            if args.verbose:
+                args.log.write(f'Image anchor found and removed: {str(addr)}\n')
+            addr.replace_with(addr.img)
+            if href is not None:
+                print(f'git rm {str(href)}')
+            continue
         if href is not None:
             if args.verbose:
                 args.log.write(f'A HREF Before: {str(href)}\n')
@@ -243,6 +288,12 @@ for content in all_content:
     for addr in content.find_all('img'):
         href = addr.get('src')
         if href is not None:
+            if href.endswith('.png.html'):
+                addr.decompose()
+                if args.verbose:
+                    args.log.write(f"A removed: {str(href)}\n")
+                print(f"git rm {str(href)}")
+                continue
             local_image_path = None
             if args.verbose:
                 args.log.write(f'IMG SRC Before: {str(href)}\n')
@@ -283,13 +334,11 @@ for content in all_content:
             if local_image_path is not None and \
                 not os.path.exists(local_image_path):
                 print(
-                    f"{args.input_html_file_name[0]}: Unable to locate image file,
-                    '{local_image_path}"
+                    f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}'"
                     )
                 if args.verbose:
                     args.log.write(
-                        f"Unable to locate image file,
-                        '{local_image_path}"
+                        f"Unable to locate image file, '{local_image_path}'"
                         )
             if args.verbose:
                 args.log.write(f"SRC IMG After: {str(addr['src'])}\n")
