@@ -27,3 +27,4 @@ Table of Contents
 * [2024-02-12](2024_02_12.md) Conversion of Wiki to Jekyll - Resolved Issues and Removed Extra Image Links
 * [2024-02-16](2024_02_16.md) Conversion of Wiki to Jekyll - Automatic Removal of Extra Image Files and Links
 * [2024-02-18](2024_02_18.md) Conversion of Wiki to Jekyll - Journal Scroll Bars
+* [2024-02-19](2024_02_19.md) Conversion of Wiki to Jekyll - Journal Scroll Bars (2)

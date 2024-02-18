@@ -457,16 +457,23 @@ for tag in all_tables:
         for col in tag.find_all('td'):
             align = col.get('align')
             url   = col.find('a')
-            if align is None or url is None: continue
+            if url is None: continue
             title = ' '.join([s for s in url.stripped_strings])
             if first_col:
                 page_header += "scroll-bar:\n"
                 first_col = False
-            if align == "left":
+            if align is None or align == "left":
                 page_header += f"  left-link:\n"
             elif align == "right":
                 page_header += f"  right-link:\n"
-            page_header += f"    url: {url['href']}\n    title: {title}\n"
+            link = url.get('href')
+            if link is None:
+                print("missing URL for journal link")
+            elif link.endswith('.html'):
+                pass
+            else:
+                link += '.html'
+            page_header += f"    url: {link}\n    title: {title}\n"
         first_table = False
     tag.decompose()
 
