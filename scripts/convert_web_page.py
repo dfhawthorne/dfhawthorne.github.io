@@ -440,6 +440,37 @@ for retries in range(4):
                 tag.decompose()
 
 # ------------------------------------------------------------------------------
+# Detect and Convert Journal Scroll Bar
+# ------------------------------------------------------------------------------
+
+req_attrs  = dict()
+req_attrs['border']      = "0"
+req_attrs['cellspacing'] = "10"
+req_attrs['width']       = "100%"
+all_tables = soup.find_all('table',attrs=req_attrs)
+first_table = True
+for tag in all_tables:
+    if args.verbose:
+        args.log.write(f">>> table=\n{str(tag)}\n>>>")
+    if first_table:
+        first_col = True
+        for col in tag.find_all('td'):
+            align = col.get('align')
+            url   = col.find('a')
+            if align is None or url is None: continue
+            title = ' '.join([s for s in url.stripped_strings])
+            if first_col:
+                page_header += "scroll-bar:\n"
+                first_col = False
+            if align == "left":
+                page_header += f"  left-link:\n"
+            elif align == "right":
+                page_header += f"  right-link:\n"
+            page_header += f"    url: {url['href']}\n    title: {title}\n"
+        first_table = False
+    tag.decompose()
+
+# ------------------------------------------------------------------------------
 # Print out YAML data
 # ------------------------------------------------------------------------------
 

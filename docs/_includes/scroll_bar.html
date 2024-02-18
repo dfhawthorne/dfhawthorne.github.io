@@ -1,14 +1,14 @@
-{%- if page contains "scroll_bar" -%}
+{%- if page contains "scroll-bar" -%}
 <div class="left_scroll_link">
-    {%- if page.scroll_bar contains "left_link" -%}
-    <a href="{{ page.scroll_bar.left_link.url }}">{{ page.scroll_bar.left_link.title }}</a>
+    {%- if page.scroll-bar contains "left-link" -%}
+    <a href="{{ page.scroll-bar.left-link.url }}">{{ page.scroll-bar.left-link.title }}</a>
     {%- else -%}
     &nbsp;
     {%- endif -%}
 </div>
 <div class="right_scroll_link">
-    {%- if page.scroll_bar contains "right_link" -%}
-    <a href="{{ page.scroll_bar.right_link.url }}">{{ page.scroll_bar.right_link.title }}</a>
+    {%- if page.scroll-bar contains "right-link" -%}
+    <a href="{{ page.scroll-bar.right-link.url }}">{{ page.scroll-bar.right-link.title }}</a>
     {%- else -%}
     &nbsp;
     {%- endif -%}
