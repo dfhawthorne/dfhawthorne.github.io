@@ -271,29 +271,76 @@ if all_sub_pages is not None and len(all_sub_pages) > 0:
 # (4) Change URL encoding: %2F to '?'
 # ------------------------------------------------------------------------------
 
+bigblog_redirects = {
+    "id=121586": "home/10g-ocm/10g-system-builds/miscellaneous/first-vm-created.html",
+    "id=121648": "home/10g-ocm/10g-system-builds/miscellaneous/vmware-clustering-problem.html",
+    "id=200037": "home/10g-ocm/10g-system-builds/miscellaneous/cluvfy-crsinst.html"
+    }
+
 def normalise_url(href):
     assert href is not None, "href parameter expected"
     assert type(href) == str, "expected href to be passed as a string"
 
     href = href.replace('%2F','?')
     url_parts = urlparse(href)
+    if args.verbose:
+        args.log.write(f'URL_parts: {str(url_parts)}\n')
     if url_parts.scheme in ['http','https']:
+        if args.verbose:
+            args.log.write(f'URL is external: {url_parts.scheme}\n')
         if url_parts.netloc == 'dfhawthorne.github.io':
+            if args.verbose:
+                args.log.write(f'URL is from GITHub: {url_parts.path}\n')
             return url_parts._replace(
                 scheme='',
                 netloc='').geturl()
         elif url_parts.netloc == 'sites.google.com':
+            if args.verbose:
+                args.log.write(f'URL is from Google Sites: {url_parts.path}\n')
             new_addr_path = os.path.relpath(
                             url_parts.path,
                             start='/view/yetanotherocm')
+            if args.verbose:
+                args.log.write(f'URL converted to: {new_addr_path}\n')
             return url_parts._replace(
                 scheme='',
                 netloc='',
                 path=new_addr_path).geturl()
+        elif url_parts.netloc == 'yaocm.bigblog.com.au':
+            if args.verbose:
+                args.log.write(f'BigBlog URL found: \n')
+            new_addr_path = bigblog_redirects.get(
+                url_parts.query,
+                "home/10g-ocm/missing-bigblog-links.html"
+                )
+            if args.verbose:
+                args.log.write(f'URL converted to: {new_addr_path}\n')
+            return url_parts._replace(
+                scheme='',
+                netloc='',
+                path=new_addr_path).geturl()
+        elif url_parts.netloc == 'yaocm.bigblog.com.au':
+            if args.verbose:
+                args.log.write(f'BigBlog URL found: \n')
+            new_addr_path = bigblog_redirects.get(
+                url_parts.query,
+                "home/10g-ocm/missing-bigblog-links.html"
+                )
+            if args.verbose:
+                args.log.write(f'URL converted to: {new_addr_path}\n')
+            return url_parts._replace(
+                scheme='',
+                netloc='',
+                query='',
+                path=new_addr_path).geturl()
         else:
+            if args.verbose:
+                args.log.write(f'External URL unchanged\n')
             return href
     else:
         old_url_path = url_parts.path.replace('../yetanotherocm/','')
+        if args.verbose:
+            args.log.write(f'Internal URL found: {old_url_path}\n')
         if old_url_path is not None and old_url_path != '':
             new_url_path = os.path.relpath(
                 os.path.realpath(
@@ -301,8 +348,12 @@ def normalise_url(href):
                     ),
                     start=doc_base
                 )
+            if args.verbose:
+                args.log.write(f'Internal URL changed to {new_url_path}\n')
             return url_parts._replace(path=new_url_path).geturl()
         else:
+            if args.verbose:
+                args.log.write(f'Internal URL unchanged\n')
             return href
 
 # ------------------------------------------------------------------------------
