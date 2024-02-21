@@ -26,6 +26,7 @@ find "${site_base_loc}" \
     sed -re 's!/./!/!g' \
         -e 's!/home/douglas/git-repositories/dfhawthorne.github.io/docs!!' \
         -e 's!//!/!g' \
+        -e 's!:/!://!' \
     >> "${site_map_loc}/sitemap.xml"
 
 cat >> "${site_map_loc}/sitemap.xml" <<DONE
