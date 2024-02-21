@@ -29,3 +29,4 @@ Table of Contents
 * [2024-02-18](2024_02_18.md) Conversion of Wiki to Jekyll - Journal Scroll Bars
 * [2024-02-19](2024_02_19.md) Conversion of Wiki to Jekyll - Journal Scroll Bars (2)
 * [2024-02-20](2024_02_20.md) Conversion of Wiki to Jekyll - Resolving Hanging BigBlog Links
+* [2024-02-21](2024_02_21.md) Conversion of Wiki to Jekyll - Updated Site Map for Google Search

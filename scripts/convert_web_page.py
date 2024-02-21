@@ -291,7 +291,7 @@ def normalise_url(href):
         if url_parts.netloc == 'dfhawthorne.github.io':
             if args.verbose:
                 args.log.write(f'URL is from GITHub: {url_parts.path}\n')
-            return url_parts._replace(
+            normalised_url = url_parts._replace(
                 scheme='',
                 netloc='').geturl()
         elif url_parts.netloc == 'sites.google.com':
@@ -302,7 +302,7 @@ def normalise_url(href):
                             start='/view/yetanotherocm')
             if args.verbose:
                 args.log.write(f'URL converted to: {new_addr_path}\n')
-            return url_parts._replace(
+            normalised_url = url_parts._replace(
                 scheme='',
                 netloc='',
                 path=new_addr_path).geturl()
@@ -315,7 +315,7 @@ def normalise_url(href):
                 )
             if args.verbose:
                 args.log.write(f'URL converted to: {new_addr_path}\n')
-            return url_parts._replace(
+            normalised_url = url_parts._replace(
                 scheme='',
                 netloc='',
                 path=new_addr_path).geturl()
@@ -328,7 +328,7 @@ def normalise_url(href):
                 )
             if args.verbose:
                 args.log.write(f'URL converted to: {new_addr_path}\n')
-            return url_parts._replace(
+            normalised_url = url_parts._replace(
                 scheme='',
                 netloc='',
                 query='',
@@ -336,7 +336,7 @@ def normalise_url(href):
         else:
             if args.verbose:
                 args.log.write(f'External URL unchanged\n')
-            return href
+            normalised_url = href
     else:
         old_url_path = url_parts.path.replace('../yetanotherocm/','')
         if args.verbose:
@@ -350,11 +350,20 @@ def normalise_url(href):
                 )
             if args.verbose:
                 args.log.write(f'Internal URL changed to {new_url_path}\n')
-            return url_parts._replace(path=new_url_path).geturl()
+            normalised_url = url_parts._replace(path=new_url_path).geturl()
         else:
             if args.verbose:
                 args.log.write(f'Internal URL unchanged\n')
-            return href
+            normalised_url = href
+    
+    if normalised_url.endswith('.html'):
+        return normalised_url
+    elif normalised_url.endswith('.gif'):
+        return normalised_url
+    elif normalised_url.endswith('.png'):
+        return normalised_url
+    else:
+        return normalised_url + '.html'
 
 # ------------------------------------------------------------------------------
 # Auxiliary function to determine if the file referenced by a URL needs to be
