@@ -21,12 +21,14 @@ find "${site_base_loc}" \
     sed -re '/\/_site\//d' \
         -e '/\/system\/errors\/NodeNotFound/d' \
         -e '/\/system\/app\/pages\//d' \
-        -e '/\?attredirects/d' | \
+        -e '/\?attredirects/d' \
+        -e '/\/google.*.html$/d' | \
     xargs -I@ stat --print "${url_fmt}" "@" | \
     sed -re 's!/./!/!g' \
-        -e 's!/home/douglas/git-repositories/dfhawthorne.github.io/docs!!' \
+        -e "s!${site_base_loc}!!" \
         -e 's!//!/!g' \
         -e 's!:/!://!' \
+        -e 's!(<lastmod>.{10}).*(</lastmod>)!\1\2!' \
     >> "${site_map_loc}/sitemap.xml"
 
 cat >> "${site_map_loc}/sitemap.xml" <<DONE
