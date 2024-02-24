@@ -186,6 +186,21 @@ all_toc = soup.find_all('div', 'goog-toc')
 if all_toc is not None and len(all_toc) > 0:
     page_header += 'table-of-contents:\n'
     toc_root = all_toc[0].ol
+    if toc_root is None:
+        if args.verbose:
+            args.log.write('TOC has no ordered list\n')
+        toc_root = all_toc[0].ul
+        if toc_root is None:
+            if args.verbose:
+                args.log.write('TOC has no unordered list\n')
+            print('TOC has no list')
+            exit(1)
+    toc_children = [c for c in toc_root.children]
+    if args.verbose:
+        args.log.write(f'toc_children={str(toc_children)}\n')
+    if len(toc_children) == 0:
+        if args.verbose:
+            args.log.write('No TOC children found\n')
     for toc_level_1 in toc_root.children:
         if args.verbose:
             args.log.write('toc_level_1: '+str(toc_level_1)+'\n')
@@ -238,26 +253,6 @@ for h3 in soup.find_all('h3'):
         if args.verbose:
             args.log.write('h3 removed\n')
         h3.decompose()
-
-# ------------------------------------------------------------------------------
-# Convert Sub-pages Plug-in to YAML menu entries
-# ------------------------------------------------------------------------------
-
-all_sub_pages = soup.find_all('div', id='sites-toc-undefined')
-if all_sub_pages is not None and len(all_sub_pages) > 0:
-    sub_page = all_sub_pages[0]
-    page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
-    page_header += f"sub-pages:\n"
-    for menu in sub_page.find_all('li'):
-        entry = menu.a
-        page_header += f"- title: {entry.string.strip()}\n"
-        page_header += f"  url: {url_prefix}/{entry['href']}\n"
-        if args.verbose:
-            args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
-    for sub_page in all_sub_pages:
-        if args.verbose:
-            args.log.write(f"Sub page removed: '{sub_page}'\n")
-        sub_page.decompose()
 
 # ------------------------------------------------------------------------------
 # Auxiliary function to convert URL into one relative to the base of the Wiki
@@ -318,25 +313,12 @@ def normalise_url(href):
             normalised_url = url_parts._replace(
                 scheme='',
                 netloc='',
-                path=new_addr_path).geturl()
-        elif url_parts.netloc == 'yaocm.bigblog.com.au':
-            if args.verbose:
-                args.log.write(f'BigBlog URL found: \n')
-            new_addr_path = bigblog_redirects.get(
-                url_parts.query,
-                "home/10g-ocm/missing-bigblog-links.html"
-                )
-            if args.verbose:
-                args.log.write(f'URL converted to: {new_addr_path}\n')
-            normalised_url = url_parts._replace(
-                scheme='',
-                netloc='',
                 query='',
                 path=new_addr_path).geturl()
         else:
             if args.verbose:
                 args.log.write(f'External URL unchanged\n')
-            normalised_url = href
+            return href
     else:
         old_url_path = url_parts.path.replace('../yetanotherocm/','')
         if args.verbose:
@@ -355,6 +337,8 @@ def normalise_url(href):
             if args.verbose:
                 args.log.write(f'Internal URL unchanged\n')
             normalised_url = href
+
+    # Check the suffixes for internal URLs
     
     if normalised_url.endswith('.html'):
         return normalised_url
@@ -399,47 +383,77 @@ def need_to_remove_url(url):
 # (3) Remove links to *%3Fattredirects=0 files
 # (4) Remove links to *png.html pages
 # (5) Remove links to *gif.html pages
+# (6) Convert Sub-pages Plug-in to YAML menu entries, unless content follows
 # ------------------------------------------------------------------------------
 
 tags_to_be_deleted = list() # Tags to be deleted
 
-all_content = soup.find_all("td","sites-tile-name-content-1")
-for content in all_content:
-    for addr in content.find_all('a'):
-        if addr.get('imageanchor') is not None:
-            tags_to_be_deleted.append(addr)
-        href         = addr.get('href')
-        if href is None: continue
-        # Regularise the URL to be relative to the documents base
-        if args.verbose:
-            args.log.write(f'A HREF Before: {str(href)}\n')
-        addr['href'] = normalise_url(href)
-        if args.verbose:
-            args.log.write(f"A HREF After: {str(addr['href'])}\n")
-        if need_to_remove_url(addr['href']):
-            tags_to_be_deleted.append(addr)
+try:
+    content = soup.find("table",xmlns='http://www.w3.org/1999/xhtml').tbody.tr.td.div
+except:
+    print("Unable to find the table containing the main table")
+    exit(1)
 
-    for addr in content.find_all('img'):
-        href = addr.get('src')
-        # Regularise the URL to be relative to the documents base
-        if href is None: continue
+content_parts = [c.name for c in content.children if c.name is not None]
+if args.verbose:
+    args.log.write(f'Major tags in content are: {str(content_parts)}\n')
+
+sub_page = content.find('div', id='sites-toc-undefined')
+if sub_page is not None and len(content_parts) == 2:
+    if args.verbose:
+        args.log.write('Sub-page widget without following content found.\n')
+    page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
+    page_header += f"sub-pages:\n"
+    for menu in sub_page.find_all('li'):
+        entry = menu.a
+        page_header += f"- title: {entry.string.strip()}\n"
+        page_header += f"  url: {url_prefix}/{entry['href']}\n"
         if args.verbose:
-            args.log.write(f'IMG SRC Before: {str(href)}\n')
-        new_url_path = normalise_url(href)
-        addr['src'] = new_url_path
+            args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+    if args.verbose:
+        args.log.write(f"Sub page removed: '{sub_page}'\n")
+    sub_page.decompose()
+
+for addr in content.find_all('a'):
+    if addr.get('imageanchor') is not None:
+        tags_to_be_deleted.append(addr)
+    href         = addr.get('href')
+    if href is None: continue
+    # Regularise the URL to be relative to the documents base
+    if args.verbose:
+        args.log.write(f'A HREF Before: {str(href)}\n')
+    addr['href'] = normalise_url(href)
+    if args.verbose:
+        args.log.write(f"A HREF After: {str(addr['href'])}\n")
+    if need_to_remove_url(addr['href']):
+        tags_to_be_deleted.append(addr)
+
+for addr in content.find_all('img'):
+    href = addr.get('src')
+    # Regularise the URL to be relative to the documents base
+    if href is None: continue
+    if args.verbose:
+        args.log.write(f'IMG SRC Before: {str(href)}\n')
+    new_url_path = normalise_url(href)
+    addr['src'] = new_url_path
+    if args.verbose:
+        args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
+    local_image_path = doc_base + '/' + new_url_path
+    if local_image_path is not None and not os.path.exists(local_image_path):
+        print(
+            f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}'"
+            )
         if args.verbose:
-            args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
-        local_image_path = doc_base + '/' + new_url_path
-        if local_image_path is not None and not os.path.exists(local_image_path):
-            print(
-                f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}'"
+            args.log.write(
+                f"Unable to locate image file, '{local_image_path}'"
                 )
-            if args.verbose:
-                args.log.write(
-                    f"Unable to locate image file, '{local_image_path}'"
-                    )
-        if need_to_remove_url(new_url_path):
-            tags_to_be_deleted.append(addr)
+    if need_to_remove_url(new_url_path):
+        tags_to_be_deleted.append(addr)
+
+if args.verbose:
+    args.log.write('============> Start of Main Content (after rebasing of URLs) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after rebasing of URLs) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Remove unnecessary tags
@@ -478,26 +492,40 @@ for tag in tags_to_be_deleted:
             args.log.write(f"Unwrapped tag: {str(tag)}\n")
         tag.unwrap()
 
+if args.verbose:
+    args.log.write('============> Start of Main Content (after removal of unneeded tags) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after removal of unneeded tags) <==================\n')
+
 # ------------------------------------------------------------------------------
 # Remove Empty DIV tags in up to four (4) levels
 # ------------------------------------------------------------------------------
                 
 for retries in range(4):
-    for content in all_content:
-        all_div_tags = content.find_all('div')
-        for tag in all_div_tags:
-            num_children = len([child for child in tag.children if child.name is not None])
-            num_strings  = len([child for child in tag.stripped_strings])
-            child_names  = [child.name for child in tag.children]
+    all_div_tags = content.find_all('div')
+    for tag in all_div_tags:
+        num_children = len([child for child in tag.children if child.name is not None])
+        num_strings  = len([child for child in tag.stripped_strings])
+        child_names  = [child.name for child in tag.children  if child.name is not None]
+        if args.verbose:
+            args.log.write(f"DIV tag found: {str(tag)}\n")
+            args.log.write(f"num_children={num_children}\n")
+            args.log.write(f"num_strings={num_strings}\n")
+            args.log.write(f"child_names={str(child_names)}\n")
+        if num_children == 0 and num_strings == 0:
             if args.verbose:
-                args.log.write(f"DIV tag found: {str(tag)}\n")
-                args.log.write(f"num_children={num_children}\n")
-                args.log.write(f"num_strings={num_strings}\n")
-                args.log.write(f"child_names={str(child_names)}\n")
-            if num_children == 0 and num_strings == 0:
+                args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
+            tag.decompose()
+        elif num_children == 1 and num_strings == 0:
+            if child_names[0] == 'br':
                 if args.verbose:
-                    args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
+                    args.log.write(f"Removed DIV with solitary BR tag: {str(tag)}\n")
                 tag.decompose()
+
+if args.verbose:
+    args.log.write('============> Start of Main Content (after removal of empty DIV tags) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after removal of empty DIV tags) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Detect and Convert Journal Scroll Bar
@@ -537,6 +565,11 @@ for tag in all_tables:
         first_table = False
     tag.decompose()
 
+if args.verbose:
+    args.log.write('============> Start of Main Content (after Journal Scroll Bar) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after Journal Scroll Bar) <==================\n')
+
 # ------------------------------------------------------------------------------
 # Print out YAML data
 # ------------------------------------------------------------------------------
@@ -545,14 +578,10 @@ page_header += '---\n'
 if args.replace:
     with open(os.path.basename(args.input_html_file_name[0]),'w') as f:
         f.write(page_header)
-        for content in all_content:
-            if content.div is not None:
-                f.write(content.div.prettify())
+        f.write(content.prettify())
 else:
     print(page_header)
-    for content in all_content:
-        if content.div is not None:
-            print(content.div.prettify())
+    print(content.prettify())
 
 # ------------------------------------------------------------------------------
 # GIT Removals
