@@ -391,15 +391,20 @@ tags_to_be_deleted = list() # Tags to be deleted
 try:
     content = soup.find("table",xmlns='http://www.w3.org/1999/xhtml').tbody.tr.td.div
 except:
-    print("Unable to find the table containing the main table")
+    print("Unable to find the table containing the main content")
     exit(1)
 
 content_parts = [c.name for c in content.children if c.name is not None]
+top_text      = list()
+for tag in content.children:
+    if tag.name == 'div': continue
+    top_text.extend([s for s in tag.stripped_strings])
 if args.verbose:
     args.log.write(f'Major tags in content are: {str(content_parts)}\n')
+    args.log.write(f'Top level text in content are: {str(top_text)}\n')
 
 sub_page = content.find('div', id='sites-toc-undefined')
-if sub_page is not None and len(content_parts) == 2:
+if sub_page is not None and len(top_text) == 1:
     if args.verbose:
         args.log.write('Sub-page widget without following content found.\n')
     page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
