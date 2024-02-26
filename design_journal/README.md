@@ -32,3 +32,4 @@ Table of Contents
 * [2024-02-21](2024_02_21.md) Conversion of Wiki to Jekyll - Updated Site Map for Google Search
 * [2024-02-24](2024_02_24.md) Conversion of Wiki to Jekyll - Sub-pages within Main Content
 * [2024-02-25](2024_02_25.md) Conversion of Wiki to Jekyll - TOC Problems
+* [2024-02-26](2024_02_26.md) Conversion of Wiki to Jekyll - Version 2 Schedule
