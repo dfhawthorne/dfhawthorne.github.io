@@ -15,14 +15,7 @@ cat > "${site_map_loc}/sitemap.xml" <<DONE
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 DONE
 
-find "${site_base_loc}" \
-        -type f \
-        \( -name "*.html" -o -name "*.gif" -o -name "*.png" \) | \
-    sed -re '/\/_site\//d' \
-        -e '/\/system\/errors\/NodeNotFound/d' \
-        -e '/\/system\/app\/pages\//d' \
-        -e '/\?attredirects/d' \
-        -e '/\/google.*.html$/d' | \
+"${script_loc}/find_converted_web_pages.sh" | \
     xargs -I@ stat --print "${url_fmt}" "@" | \
     sed -re 's!/./!/!g' \
         -e "s!${site_base_loc}!!" \

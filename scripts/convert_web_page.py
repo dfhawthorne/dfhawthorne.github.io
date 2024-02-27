@@ -178,56 +178,6 @@ if len(breadcrumbs) > 0:
             page_header += f"  url: {crumb['path'][1:]}.html\n"
 
 # ------------------------------------------------------------------------------
-# Table of Contents
-# Only descend two (2) levels
-# ------------------------------------------------------------------------------
-    
-all_toc = soup.find_all('div', 'goog-toc')
-if all_toc is not None and len(all_toc) > 0:
-    page_header += 'table-of-contents:\n'
-    toc_root = all_toc[0].ol
-    if toc_root is None:
-        if args.verbose:
-            args.log.write('TOC has no ordered list\n')
-        toc_root = all_toc[0].ul
-        if toc_root is None:
-            if args.verbose:
-                args.log.write('TOC has no unordered list\n')
-            print('TOC has no list')
-            exit(1)
-    toc_children = [c for c in toc_root.children]
-    if args.verbose:
-        args.log.write(f'toc_children={str(toc_children)}\n')
-    if len(toc_children) == 0:
-        if args.verbose:
-            args.log.write('No TOC children found\n')
-    for toc_level_1 in toc_root.children:
-        if args.verbose:
-            args.log.write('toc_level_1: '+str(toc_level_1)+'\n')
-        if toc_level_1.name == "li":
-            page_header += f"- toc-url: {toc_level_1.a['href'].split('#TOC-')[1]}\n"
-            page_header += f"  toc-text: "
-            if toc_level_1.a.string is not None:
-                page_header += f"{toc_level_1.a.string.strip()}\n"
-            else:
-                page_header += f"{toc_level_1.a.contents[2].string.strip()}\n"
-        if toc_level_1.name == "ol":
-            for toc_level_2 in toc_level_1.children:
-                if args.verbose:
-                    args.log.write('toc_level_2: '+str(toc_level_2)+'\n')
-                if toc_level_2.name == "li":
-                    page_header += f"  - toc-url: {toc_level_2.a['href'].split('#TOC-')[1]}\n"
-                    page_header += f"  toc-text: "
-                    if toc_level_2.a.string is not None:
-                        page_header += f"{toc_level_2.a.string.strip()}\n"
-                    else:
-                        page_header += f"{toc_level_2.a.contents[2].string.strip()}\n"
-    for toc_entry in all_toc:
-        if args.verbose:
-            args.log.write('TOC removed: '+str(toc_entry)+'\n')
-        toc_entry.decompose()
-
-# ------------------------------------------------------------------------------
 # Remove empty headers of the type:
 # <h3>
 #  <a name="TOC-1">
@@ -377,13 +327,10 @@ def need_to_remove_url(url):
     return need_to_remove
 
 # ------------------------------------------------------------------------------
-# Extracts contents
-# (1) Change URL to relative to Wiki base
-# (2) Remove links with imageanchor
-# (3) Remove links to *%3Fattredirects=0 files
-# (4) Remove links to *png.html pages
-# (5) Remove links to *gif.html pages
-# (6) Convert Sub-pages Plug-in to YAML menu entries, unless content follows
+# Extract the main content.
+#
+# In Classic Google Sites, the main content is in the first division of the
+# first cell of the first row of the table with an XMLNS attribute.
 # ------------------------------------------------------------------------------
 
 tags_to_be_deleted = list() # Tags to be deleted
@@ -394,30 +341,107 @@ except:
     print("Unable to find the table containing the main content")
     exit(1)
 
-content_parts = [c.name for c in content.children if c.name is not None]
-top_text      = list()
-for tag in content.children:
-    if tag.name == 'div': continue
-    top_text.extend([s for s in tag.stripped_strings])
 if args.verbose:
-    args.log.write(f'Major tags in content are: {str(content_parts)}\n')
-    args.log.write(f'Top level text in content are: {str(top_text)}\n')
+    args.log.write('============> Start of Main Content (initial) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (initial) <==================\n')
 
-sub_page = content.find('div', id='sites-toc-undefined')
-if sub_page is not None and len(top_text) == 1:
+# ------------------------------------------------------------------------------
+# Convert Sub-pages Widget to YAML menu entries, unless content follows
+#
+# The sub-pages widget is implemented as a division that is either the first or
+# element of the main content.
+#
+# If preceding content is present, this is kept as the main content with the
+# sub-pages widget removed.
+#
+# However if there is content after the sub-pages widget, the widget is not
+# converted to YML format, and the main content is undisturbed.
+# ------------------------------------------------------------------------------
+
+sub_pages_widget_found   = False
+subsequent_content_found = False
+sub_page                 = None
+
+for tag in content.children:
     if args.verbose:
-        args.log.write('Sub-page widget without following content found.\n')
-    page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
-    page_header += f"sub-pages:\n"
-    for menu in sub_page.find_all('li'):
-        entry = menu.a
-        page_header += f"- title: {entry.string.strip()}\n"
-        page_header += f"  url: {url_prefix}/{entry['href']}\n"
+        if tag.name is None:
+            args.log.write(f"tag: {str(tag)}\n")
+        else:
+            args.log.write(f"tag: name={tag.name}, id={tag.attrs.get('id')}\n")
+    if sub_pages_widget_found:
+        for s in tag.stripped_strings:
+            subsequent_content_found = True
+            break
+        if subsequent_content_found: break
+    elif tag.name is None:
+        continue
+    else:
+        if tag.attrs.get('id') == 'sites-toc-undefined':
+            if args.verbose:
+                args.log.write(f"sub_page attrs: {str(tag.attrs)}\n")
+            sub_page = tag
+            sub_pages_widget_found = True
+        else:
+            sub_page = tag.div
+            if sub_page is not None: 
+                if args.verbose:
+                    args.log.write(f"sub_page attrs: {str(sub_page.attrs)}\n")
+                if sub_page.attrs.get('id') == 'sites-toc-undefined':
+                    sub_pages_widget_found = True
+
+if args.verbose:
+    args.log.write(f'sub_pages_widget_found   = {sub_pages_widget_found}\n')
+    args.log.write(f'subsequent_content_found = {subsequent_content_found}\n')
+    args.log.write(f'sub_page: {str(sub_page)}\n')
+
+if sub_pages_widget_found:
+    if args.verbose:
+        args.log.write(f'Sub-page widget found: {str(sub_page)}\n\n')
+    if not subsequent_content_found:
         if args.verbose:
-            args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+            args.log.write('Sub-page widget without following content found.\n')
+        page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
+        page_header += f"sub-pages:\n"
+        for menu in sub_page.children:
+            if menu.name == 'li':
+                entry = menu.a
+                page_header += f"- title: {entry.string.strip()}\n"
+                page_header += f"  url: {url_prefix}/{entry['href']}\n"
+                if args.verbose:
+                    args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+            elif menu.name in ['ol','ul']:
+                page_header += "  sub-sub-pages:\n"
+                for sub_menu in menu.children:
+                    if menu.name == 'li':
+                        entry = menu.a
+                        page_header += f"  - title: {entry.string.strip()}\n"
+                        page_header += f"    url: {url_prefix}/{entry['href']}\n"
+                        if args.verbose:
+                            args.log.write(f"Sub-Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+        if args.verbose:
+            args.log.write(f"Sub page removed: '{sub_page}'\n")
+        sub_page.decompose()
+    else:
+        if args.verbose:
+            args.log.write('Sub-page widget with following content found.\n')
+        print('Sub-page widget not removed.')
+else:
     if args.verbose:
-        args.log.write(f"Sub page removed: '{sub_page}'\n")
-    sub_page.decompose()
+        args.log.write('No sub-page widget found.\n')
+
+if args.verbose:
+    args.log.write('============> Start of Main Content (after removal of sub-page widget) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after removal of sub-page widget) <==================\n')
+
+# ------------------------------------------------------------------------------
+# (1) Change URL to relative to Wiki base
+# (2) Remove links with imageanchor
+# (3) Remove links to *%3Fattredirects=0 files
+# (4) Remove links to *png.html pages
+# (5) Remove links to *gif.html pages
+# ------------------------------------------------------------------------------
 
 for addr in content.find_all('a'):
     if addr.get('imageanchor') is not None:
@@ -531,6 +555,61 @@ if args.verbose:
     args.log.write('============> Start of Main Content (after removal of empty DIV tags) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after removal of empty DIV tags) <==================\n')
+
+# ------------------------------------------------------------------------------
+# Table of Contents
+# Only descend two (2) levels
+# ------------------------------------------------------------------------------
+    
+all_toc = soup.find_all('div', 'goog-toc')
+if all_toc is not None and len(all_toc) > 0:
+    page_header += 'table-of-contents:\n'
+    toc_root = all_toc[0].ol
+    if toc_root is None:
+        if args.verbose:
+            args.log.write('TOC has no ordered list\n')
+        toc_root = all_toc[0].ul
+        if toc_root is None:
+            if args.verbose:
+                args.log.write('TOC has no unordered list\n')
+            print('TOC has no list')
+            exit(1)
+    toc_children = [c for c in toc_root.children]
+    if args.verbose:
+        args.log.write(f'toc_children={str(toc_children)}\n')
+    if len(toc_children) == 0:
+        if args.verbose:
+            args.log.write('No TOC children found\n')
+    for toc_level_1 in toc_root.children:
+        if args.verbose:
+            args.log.write('toc_level_1: '+str(toc_level_1)+'\n')
+        if toc_level_1.name == "li":
+            page_header += f"- toc-url: {toc_level_1.a['href'].split('#TOC-')[1]}\n"
+            page_header += f"  toc-text: "
+            if toc_level_1.a.string is not None:
+                page_header += f"{toc_level_1.a.string.strip()}\n"
+            else:
+                page_header += f"{toc_level_1.a.contents[2].string.strip()}\n"
+        if toc_level_1.name == "ol":
+            for toc_level_2 in toc_level_1.children:
+                if args.verbose:
+                    args.log.write('toc_level_2: '+str(toc_level_2)+'\n')
+                if toc_level_2.name == "li":
+                    page_header += f"  - toc-url: {toc_level_2.a['href'].split('#TOC-')[1]}\n"
+                    page_header += f"  toc-text: "
+                    if toc_level_2.a.string is not None:
+                        page_header += f"{toc_level_2.a.string.strip()}\n"
+                    else:
+                        page_header += f"{toc_level_2.a.contents[2].string.strip()}\n"
+    for toc_entry in all_toc:
+        if args.verbose:
+            args.log.write('TOC removed: '+str(toc_entry)+'\n')
+        toc_entry.decompose()
+
+if args.verbose:
+    args.log.write('============> Start of Main Content (after removal of TOC) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after removal of TOC) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Detect and Convert Journal Scroll Bar
