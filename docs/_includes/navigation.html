@@ -1,0 +1,52 @@
+<nav class="navigation">
+  <ul>
+    <li><a href="/home">Home</a></li>
+    <ul>
+      {%- for page in site.data.navigation -%}
+        {%- if page contains "name" and page contains "sub_pages" and page.name == "home" -%}
+          {%- for item in page.sub_pages -%}
+            {%- if item contains "url" and item contains "title" %}
+              <li><a href="{{ item.url }}" {%- if page.url == item.url -%}style="background-color: #dbdbdb; color: #333;"{%- endif -%}>
+                {{ item.title }} 
+              </a></li>
+              {%- if item contains "sub_pages" -%}
+                <ul>
+                {%- for sub_item in item.sub_pages -%}
+                  <li><a href="{{ sub_item.url }}" {%- if page.url == sub_item.url -%}style="color: red;"{%- endif -%}>
+                    {{ sub_item.title }} 
+                  </a></li>
+                {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    <li><a href="/announcements">Announcements</a></li>
+    <ul>
+      {%- for page in site.data.navigation -%}
+        {%- if page contains "name" and page contains "sub_pages" and page.name == "announcements" -%}
+          {%- for item in page.sub_pages -%}
+            {%- if item contains "url" and item contains "title" %}
+              <li><a href="{{ item.url }}" {%- if page.url == item.url -%}style="background-color: #dbdbdb; color: #333;"{%- endif -%}>
+                {{ item.title }} 
+              </a></li>
+              {%- if item contains "sub_pages" -%}
+                <ul>
+                {%- for sub_item in item.sub_pages -%}
+                  <li><a href="{{ sub_item.url }}" {%- if page.url == sub_item.url -%}style="color: red;"{%- endif -%}>
+                    {{ sub_item.title }} 
+                  </a></li>
+                {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+    <li><a href="/book-reviews">Book Reviews</a></li>
+    <li><a href="/ocm-questions-and-answers">OCM Questions and Answers</a></li>
+  </ul>
+</nav>

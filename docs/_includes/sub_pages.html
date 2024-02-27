@@ -1,0 +1,19 @@
+{%- if page contains "sub-pages" -%}
+    <div class="sub-pages">
+        {%- if page contains "sub-pages-title" -%}
+        <p>{{ page.sub-pages-title }}</p>
+        {%- endif -%}
+        <ul>
+        {%- for item in page.sub-pages -%}
+            <li><a href="{{ item.url }}">{{ item.title }}</a></li>
+            {%- if item contains "sub-sub-pages" -%}
+                <ul>
+                {%- for sub-item in item.sub-sub-pages -%}
+                    <li><a href="{{ sub-item.url }}">{{ sub-item.title }}</a></li>
+                {%- endfor -%}
+                </ul>
+            {%- endif -%}
+        {%- endfor -%}
+        </ul>
+    </div>
+{%- endif -%}
