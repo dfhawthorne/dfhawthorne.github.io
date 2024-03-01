@@ -561,7 +561,7 @@ if args.verbose:
 # Only descend two (2) levels
 # ------------------------------------------------------------------------------
     
-all_toc = soup.find_all('div', 'goog-toc')
+all_toc = soup.find_all('div', 'sites-embed-toc-maxdepth-6')
 if all_toc is not None and len(all_toc) > 0:
     page_header += 'table-of-contents:\n'
     toc_root = all_toc[0].ol
