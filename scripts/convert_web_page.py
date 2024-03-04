@@ -67,7 +67,7 @@ with open(args.input_html_file_name[0], 'r') as f:
     b = f.read()
 
 if b.startswith('---'):
-    print(f"{args.input_html_file_name[0]} has been already converted")
+    print(f"{args.input_html_file_name[0]} has been already converted",file=sys.stderr)
     exit(1)
 
 # ------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ if args.verbose:
         args.log.write(item)
         args.log.write('\n')
 if len(doctype_items) > 0 and doctype_items[0] == 'html':
-    print(f"{args.input_html_file_name[0]} is a New Google Sites page")
+    print(f"{args.input_html_file_name[0]} is a New Google Sites page",file=sys.stderr)
     exit(1)
 
 page_header = "---\nlayout: default\n"
@@ -230,6 +230,9 @@ def normalise_url(href):
     url_parts = urlparse(href)
     if args.verbose:
         args.log.write(f'URL_parts: {str(url_parts)}\n')
+    if url_parts.scheme == 'javascript':
+        print(f'javascript link found: {str(href)}',file=sys.stderr)
+        exit(1)
     if url_parts.scheme in ['http','https']:
         if args.verbose:
             args.log.write(f'URL is external: {url_parts.scheme}\n')
@@ -296,6 +299,8 @@ def normalise_url(href):
         return normalised_url
     elif normalised_url.endswith('.png'):
         return normalised_url
+    elif normalised_url.endswith('attredirects=0'):
+        return normalised_url
     else:
         return normalised_url + '.html'
 
@@ -344,7 +349,7 @@ tags_to_be_deleted = list() # Tags to be deleted
 try:
     content = soup.find("table",xmlns='http://www.w3.org/1999/xhtml').tbody.tr.td.div
 except:
-    print("Unable to find the table containing the main content")
+    print("Unable to find the table containing the main content",file=sys.stderr)
     exit(1)
 
 if args.verbose:
@@ -372,11 +377,11 @@ for tag in content.children:
         possible_sub_page   = tag.find('div',{'id': 'sites-toc-undefined'})
         possible_toc_widget = tag.find('div','sites-embed-toc-maxdepth-6')
         if possible_sub_page is not None and possible_toc_widget is not None:
-            print('Overlapping sub page and TOC widgets')
+            print('Overlapping sub page and TOC widgets',file=sys.stderr)
             exit(1)
         if possible_sub_page is not None:
             if sub_pages_widget_found:
-                print('Duplicate sub-page widget found')
+                print('Duplicate sub-page widget found',file=sys.stderr)
                 exit(1)
             else:
                 sub_pages_widget_found = True
@@ -384,7 +389,7 @@ for tag in content.children:
                 continue
         if possible_toc_widget is not None:
             if toc_widget_found:
-                print('Multiple TOC widgets found')
+                print('Multiple TOC widgets found',file=sys.stderr)
                 multiple_toc_widget_found = True
             else:
                 toc_widget_found = True
@@ -428,7 +433,7 @@ if sub_pages_widget_found and not subsequent_content_found:
     page_header += f"sub-pages:\n"
     sub_page_menu = sub_page.find('ul',{'jotid': "navList"})
     if sub_page_menu is None:
-        print('No sub-page menu found in sub-page widget')
+        print('No sub-page menu found in sub-page widget',file=sys.stderr)
         exit(1)
     for menu in sub_page_menu.children:
         if menu.name == 'li':
@@ -475,7 +480,7 @@ for addr in content.find_all('a'):
     addr['href'] = normalise_url(href)
     if args.verbose:
         args.log.write(f"A HREF After: {str(addr['href'])}\n")
-    if need_to_remove_url(addr['href']):
+    if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
         tags_to_be_deleted.append(addr)
 
 for addr in content.find_all('img'):
@@ -490,17 +495,14 @@ for addr in content.find_all('img'):
         args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
     local_image_path = doc_base + '/' + new_url_path
     if local_image_path is not None and not os.path.exists(local_image_path):
-        print(
-            f"{args.input_html_file_name[0]}: Unable to locate image file, '{local_image_path}'"
-            )
+        print(f"Unable to locate image file, '{local_image_path}'",file=sys.stderr)
         if args.verbose:
-            args.log.write(
-                f"Unable to locate image file, '{local_image_path}'"
-                )
-    if need_to_remove_url(new_url_path):
+            args.log.write(f"Unable to locate image file, '{local_image_path}'")
+    if need_to_remove_url(new_url_path) and addr not in tags_to_be_deleted:
         tags_to_be_deleted.append(addr)
 
 if args.verbose:
+    args.log.write(f'tags_to_be_deleted: --------->\n{str(tags_to_be_deleted)}\n<---------------\n')
     args.log.write('============> Start of Main Content (after rebasing of URLs) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after rebasing of URLs) <==================\n')
@@ -525,14 +527,38 @@ for tag in tags_to_be_deleted:
         href = tag.get('href')
         if href is not None:
             file_name = doc_base + '/' + href.replace('%3F','?')
-            if file_name not in git_removals and os.path.exists(file_name):
-                git_removals.append(file_name)
+            if file_name not in git_removals:
+                if os.path.exists(file_name):
+                    git_removals.append(file_name)
+                    if args.verbose:
+                        args.log.write(f"A HREF to be deleted: {str(file_name)}\n")
+                else:
+                    if args.verbose:
+                        args.log.write(f"A HREF does not exist: {str(file_name)}\n")
+            else:
+                if args.verbose:
+                    args.log.write(f"A HREF already in git_removal: {str(file_name)}\n")
+        else:
+            if args.verbose:
+                args.log.write(f"A has no HREF attribute\n")
     elif tag.name == "img":
         src = tag.get('src')
         if src is not None:
             file_name = doc_base + '/' + src.replace('%3F','?')
-            if file_name not in git_removals and os.path.exists(file_name):
-                git_removals.append(file_name)
+            if file_name not in git_removals:
+                if os.path.exists(file_name):
+                    git_removals.append(file_name)
+                    if args.verbose:
+                        args.log.write(f"IMG SRC to be deleted: {str(file_name)}\n")
+                else:
+                    if args.verbose:
+                        args.log.write(f"IMG SRC does not exist: {str(file_name)}\n")
+            else:
+                if args.verbose:
+                    args.log.write(f"IMG SRC already in git_removal: {str(file_name)}\n")
+        else:
+            if args.verbose:
+                args.log.write(f"IMG has no SRC attribute\n")
     if num_children == 0 and num_strings == 0:
         if args.verbose:
             args.log.write(f"Removed empty tag: {str(tag)}\n")
@@ -546,11 +572,6 @@ if args.verbose:
     args.log.write('============> Start of Main Content (after removal of unneeded tags) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after removal of unneeded tags) <==================\n')
-
-if args.verbose:
-    args.log.write('============> Start of Main Content (after removal of empty DIV tags) <================\n')
-    args.log.write(f'{str(content)}\n')
-    args.log.write('============> End of Main Content (after removal of empty DIV tags) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Table of Contents
@@ -570,7 +591,7 @@ if toc_widget_found and not antecedent_content_found and not multiple_toc_widget
         if toc_root is None:
             if args.verbose:
                 args.log.write('TOC has no unordered list\n')
-            print('TOC has no list')
+            print('TOC has no list',file=sys.stderr)
             exit(1)
     toc_children = [c for c in toc_root.children]
     if args.verbose:
@@ -637,7 +658,7 @@ for tag in all_tables:
                 page_header += f"  right-link:\n"
             link = url.get('href')
             if link is None:
-                print("missing URL for journal link")
+                print("missing URL for journal link",file=sys.stderr)
             elif link.endswith('.html'):
                 pass
             else:
@@ -694,6 +715,11 @@ elif num_children == 1 and num_strings == 0:
             args.log.write(f"Removed content with solitary BR tag: {str(tag)}\n")
         content.decompose()
         content = None
+
+if args.verbose:
+    args.log.write('============> Start of Main Content (after removal of empty DIV tags) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after removal of empty DIV tags) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Print out YAML data
