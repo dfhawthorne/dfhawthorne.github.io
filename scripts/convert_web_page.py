@@ -139,7 +139,7 @@ else:
 
 if title is not None:
     title = title.replace(' - Yet Another OCM','')
-    page_header += f'title: {title}\n'
+    page_header += f"title: '{title}'\n"
 
 if args.verbose: args.log.write(f"title='{title}'\n")
 
@@ -171,7 +171,7 @@ if len(breadcrumbs) > 0:
     for crumb in breadcrumbs:
         if args.verbose:
             args.log.write(f"Breadcrumb: '{crumb['title']}' '{crumb['path']}'\n")
-        page_header += f"- title: {crumb['title']}\n"
+        page_header += f"- title: '{crumb['title']}'\n"
         if crumb['path'].endswith('.html'):
             page_header += f"  url: {crumb['path'][1:]}\n"
         else:
@@ -327,10 +327,16 @@ def need_to_remove_url(url):
     return need_to_remove
 
 # ------------------------------------------------------------------------------
-# Extract the main content.
+# Extract and analyse the main content.
 #
 # In Classic Google Sites, the main content is in the first division of the
 # first cell of the first row of the table with an XMLNS attribute.
+#
+# There are four (4) main parts of the main content to be identified:
+# (1) Prologue (displayable text at start of main content)
+# (2) TOC (Table of Contents) - optional
+# (3) Sub-pages Menu - optional
+# (4) Epilogue (displayable text after optional elements)
 # ------------------------------------------------------------------------------
 
 tags_to_be_deleted = list() # Tags to be deleted
@@ -346,6 +352,62 @@ if args.verbose:
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (initial) <==================\n')
 
+sub_pages_widget_found    = False
+antecedent_content_found  = False
+subsequent_content_found  = False
+any_content_found         = False
+toc_widget_found          = False
+multiple_toc_widget_found = False
+
+sub_page                  = None
+toc_widget                = None
+
+for tag in content.children:
+    if args.verbose:
+        if tag.name is None:
+            args.log.write(f"tag: {str(tag)}\n")
+        else:
+            args.log.write(f"tag: name={tag.name}, id={tag.attrs.get('id')}\n")
+    if tag.name == 'div':
+        possible_sub_page   = tag.find('div',{'id': 'sites-toc-undefined'})
+        possible_toc_widget = tag.find('div','sites-embed-toc-maxdepth-6')
+        if possible_sub_page is not None and possible_toc_widget is not None:
+            print('Overlapping sub page and TOC widgets')
+            exit(1)
+        if possible_sub_page is not None:
+            if sub_pages_widget_found:
+                print('Duplicate sub-page widget found')
+                exit(1)
+            else:
+                sub_pages_widget_found = True
+                sub_page               = possible_sub_page
+                continue
+        if possible_toc_widget is not None:
+            if toc_widget_found:
+                print('Multiple TOC widgets found')
+                multiple_toc_widget_found = True
+            else:
+                toc_widget_found = True
+                toc_widget       = possible_toc_widget
+            continue
+    if not toc_widget_found and not antecedent_content_found:
+        for s in tag.stripped_strings:
+            antecedent_content_found = True
+            break
+    if sub_pages_widget_found and not subsequent_content_found:
+        for s in tag.stripped_strings:
+            subsequent_content_found = True
+            break
+
+if args.verbose:
+    args.log.write(f'sub_pages_widget_found    = {sub_pages_widget_found}\n')
+    args.log.write(f'toc_widget_found          = {toc_widget_found}\n')
+    args.log.write(f'multiple_toc_widget_found = {multiple_toc_widget_found}\n')
+    args.log.write(f'antecedent_content_found  = {antecedent_content_found}\n')
+    args.log.write(f'subsequent_content_found  = {subsequent_content_found}\n')
+    args.log.write(f'sub_page: {str(sub_page)}\n')
+    args.log.write(f'toc_widget: {str(toc_widget)}\n')
+
 # ------------------------------------------------------------------------------
 # Convert Sub-pages Widget to YAML menu entries, unless content follows
 #
@@ -359,76 +421,35 @@ if args.verbose:
 # converted to YML format, and the main content is undisturbed.
 # ------------------------------------------------------------------------------
 
-sub_pages_widget_found   = False
-subsequent_content_found = False
-sub_page                 = None
-
-for tag in content.children:
+if sub_pages_widget_found and not subsequent_content_found:
     if args.verbose:
-        if tag.name is None:
-            args.log.write(f"tag: {str(tag)}\n")
-        else:
-            args.log.write(f"tag: name={tag.name}, id={tag.attrs.get('id')}\n")
-    if sub_pages_widget_found:
-        for s in tag.stripped_strings:
-            subsequent_content_found = True
-            break
-        if subsequent_content_found: break
-    elif tag.name is None:
-        continue
-    else:
-        if tag.attrs.get('id') == 'sites-toc-undefined':
+        args.log.write('Sub-page widget without following content found.\n')
+    page_header += f"sub-pages-title: '{sub_page.h4.string.strip()}'\n"
+    page_header += f"sub-pages:\n"
+    sub_page_menu = sub_page.find('ul',{'jotid': "navList"})
+    if sub_page_menu is None:
+        print('No sub-page menu found in sub-page widget')
+        exit(1)
+    for menu in sub_page_menu.children:
+        if menu.name == 'li':
+            entry = menu.a
+            page_header += f"- title: '{entry.string.strip()}'\n"
+            page_header += f"  url: {url_prefix}/{entry['href']}\n"
             if args.verbose:
-                args.log.write(f"sub_page attrs: {str(tag.attrs)}\n")
-            sub_page = tag
-            sub_pages_widget_found = True
-        else:
-            sub_page = tag.div
-            if sub_page is not None: 
-                if args.verbose:
-                    args.log.write(f"sub_page attrs: {str(sub_page.attrs)}\n")
-                if sub_page.attrs.get('id') == 'sites-toc-undefined':
-                    sub_pages_widget_found = True
+                args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+        elif menu.name in ['ol','ul']:
+            page_header += "  sub-sub-pages:\n"
+            for sub_menu in menu.children:
+                if menu.name == 'li':
+                    entry = menu.a
+                    page_header += f"  - title: '{entry.string.strip()}'\n"
+                    page_header += f"    url: {url_prefix}/{entry['href']}\n"
+                    if args.verbose:
+                        args.log.write(f"Sub-Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
 
-if args.verbose:
-    args.log.write(f'sub_pages_widget_found   = {sub_pages_widget_found}\n')
-    args.log.write(f'subsequent_content_found = {subsequent_content_found}\n')
-    args.log.write(f'sub_page: {str(sub_page)}\n')
-
-if sub_pages_widget_found:
     if args.verbose:
-        args.log.write(f'Sub-page widget found: {str(sub_page)}\n\n')
-    if not subsequent_content_found:
-        if args.verbose:
-            args.log.write('Sub-page widget without following content found.\n')
-        page_header += f"sub-pages-title: {sub_page.h4.string.strip()}\n"
-        page_header += f"sub-pages:\n"
-        for menu in sub_page.children:
-            if menu.name == 'li':
-                entry = menu.a
-                page_header += f"- title: {entry.string.strip()}\n"
-                page_header += f"  url: {url_prefix}/{entry['href']}\n"
-                if args.verbose:
-                    args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
-            elif menu.name in ['ol','ul']:
-                page_header += "  sub-sub-pages:\n"
-                for sub_menu in menu.children:
-                    if menu.name == 'li':
-                        entry = menu.a
-                        page_header += f"  - title: {entry.string.strip()}\n"
-                        page_header += f"    url: {url_prefix}/{entry['href']}\n"
-                        if args.verbose:
-                            args.log.write(f"Sub-Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
-        if args.verbose:
-            args.log.write(f"Sub page removed: '{sub_page}'\n")
-        sub_page.decompose()
-    else:
-        if args.verbose:
-            args.log.write('Sub-page widget with following content found.\n')
-        print('Sub-page widget not removed.')
-else:
-    if args.verbose:
-        args.log.write('No sub-page widget found.\n')
+        args.log.write(f"Sub page removed: '{sub_page}'\n")
+    sub_page.decompose()
 
 if args.verbose:
     args.log.write('============> Start of Main Content (after removal of sub-page widget) <================\n')
@@ -526,31 +547,6 @@ if args.verbose:
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after removal of unneeded tags) <==================\n')
 
-# ------------------------------------------------------------------------------
-# Remove Empty DIV tags in up to four (4) levels
-# ------------------------------------------------------------------------------
-                
-for retries in range(4):
-    all_div_tags = content.find_all('div')
-    for tag in all_div_tags:
-        num_children = len([child for child in tag.children if child.name is not None])
-        num_strings  = len([child for child in tag.stripped_strings])
-        child_names  = [child.name for child in tag.children  if child.name is not None]
-        if args.verbose:
-            args.log.write(f"DIV tag found: {str(tag)}\n")
-            args.log.write(f"num_children={num_children}\n")
-            args.log.write(f"num_strings={num_strings}\n")
-            args.log.write(f"child_names={str(child_names)}\n")
-        if num_children == 0 and num_strings == 0:
-            if args.verbose:
-                args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
-            tag.decompose()
-        elif num_children == 1 and num_strings == 0:
-            if child_names[0] == 'br':
-                if args.verbose:
-                    args.log.write(f"Removed DIV with solitary BR tag: {str(tag)}\n")
-                tag.decompose()
-
 if args.verbose:
     args.log.write('============> Start of Main Content (after removal of empty DIV tags) <================\n')
     args.log.write(f'{str(content)}\n')
@@ -559,16 +555,18 @@ if args.verbose:
 # ------------------------------------------------------------------------------
 # Table of Contents
 # Only descend two (2) levels
+# Do not convert TOC if either:
+# (1) There is displayable text preceding the TOC entries
+# (2) There are multiple TOCs found
 # ------------------------------------------------------------------------------
     
-all_toc = soup.find_all('div', 'goog-toc')
-if all_toc is not None and len(all_toc) > 0:
+if toc_widget_found and not antecedent_content_found and not multiple_toc_widget_found:
     page_header += 'table-of-contents:\n'
-    toc_root = all_toc[0].ol
+    toc_root = toc_widget.ol
     if toc_root is None:
         if args.verbose:
             args.log.write('TOC has no ordered list\n')
-        toc_root = all_toc[0].ul
+        toc_root = toc_widget.ul
         if toc_root is None:
             if args.verbose:
                 args.log.write('TOC has no unordered list\n')
@@ -601,10 +599,9 @@ if all_toc is not None and len(all_toc) > 0:
                         page_header += f"{toc_level_2.a.string.strip()}\n"
                     else:
                         page_header += f"{toc_level_2.a.contents[2].string.strip()}\n"
-    for toc_entry in all_toc:
-        if args.verbose:
-            args.log.write('TOC removed: '+str(toc_entry)+'\n')
-        toc_entry.decompose()
+    if args.verbose:
+        args.log.write('TOC removed: '+str(toc_widget)+'\n')
+    toc_widget.decompose()
 
 if args.verbose:
     args.log.write('============> Start of Main Content (after removal of TOC) <================\n')
@@ -645,7 +642,7 @@ for tag in all_tables:
                 pass
             else:
                 link += '.html'
-            page_header += f"    url: {link}\n    title: {title}\n"
+            page_header += f"    url: {link}\n    title: '{title}'\n"
         first_table = False
     tag.decompose()
 
@@ -655,6 +652,50 @@ if args.verbose:
     args.log.write('============> End of Main Content (after Journal Scroll Bar) <==================\n')
 
 # ------------------------------------------------------------------------------
+# Remove Empty DIV tags in up to four (4) levels
+# ------------------------------------------------------------------------------
+                
+for retries in range(5):
+    all_div_tags = content.find_all('div')
+    for tag in all_div_tags:
+        num_children = len([child for child in tag.children if child.name is not None])
+        num_strings  = len([child for child in tag.stripped_strings])
+        child_names  = [child.name for child in tag.children  if child.name is not None]
+        if args.verbose:
+            args.log.write(f"DIV tag found: {str(tag)}\n")
+            args.log.write(f"num_children={num_children}\n")
+            args.log.write(f"num_strings={num_strings}\n")
+            args.log.write(f"child_names={str(child_names)}\n")
+        if num_children == 0 and num_strings == 0:
+            if args.verbose:
+                args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
+            tag.decompose()
+        elif num_children == 1 and num_strings == 0:
+            if child_names[0] == 'br':
+                if args.verbose:
+                    args.log.write(f"Removed DIV with solitary BR tag: {str(tag)}\n")
+                tag.decompose()
+
+num_children = len([child for child in content.children if child.name is not None])
+num_strings  = len([child for child in content.stripped_strings])
+child_names  = [child.name for child in content.children if child.name is not None]
+if args.verbose:
+    args.log.write(f"num_children in content={num_children}\n")
+    args.log.write(f"num_strings in content={num_strings}\n")
+    args.log.write(f"child_names in content={str(child_names)}\n")
+if num_children == 0 and num_strings == 0:
+    if args.verbose:
+        args.log.write(f"Removed empty content: {str(content)}\n")
+    content.decompose()
+    content = None
+elif num_children == 1 and num_strings == 0:
+    if child_names[0] == 'br':
+        if args.verbose:
+            args.log.write(f"Removed content with solitary BR tag: {str(tag)}\n")
+        content.decompose()
+        content = None
+
+# ------------------------------------------------------------------------------
 # Print out YAML data
 # ------------------------------------------------------------------------------
 
@@ -662,10 +703,12 @@ page_header += '---\n'
 if args.replace:
     with open(os.path.basename(args.input_html_file_name[0]),'w') as f:
         f.write(page_header)
-        f.write(content.prettify())
+        if content is not None:
+            f.write(content.prettify())
 else:
     print(page_header)
-    print(content.prettify())
+    if content is not None:
+        print(content.prettify())
 
 # ------------------------------------------------------------------------------
 # GIT Removals
