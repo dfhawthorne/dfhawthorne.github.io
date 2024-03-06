@@ -38,3 +38,4 @@ Table of Contents
 * [2024-03-03](2024_03_03.md) Conversion of Wiki to Jekyll - Deeper Analysis of Web Pages
 * [2024-03-04](2024_03_04.md) Conversion of Wiki to Jekyll - Start of 11G OCM Conversion
 * [2024-03-05](2024_03_05.md) Conversion of Wiki to Jekyll - Issues During 11G OCM Conversion
+* [2024-03-06](2024_03_06.md) Conversion of Wiki to Jekyll - TOC Fixed

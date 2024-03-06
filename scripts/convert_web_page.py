@@ -301,6 +301,8 @@ def normalise_url(href):
         return normalised_url
     elif normalised_url.endswith('attredirects=0'):
         return normalised_url
+    elif '#' in normalised_url:
+        return normalised_url
     else:
         return normalised_url + '.html'
 
@@ -494,12 +496,15 @@ for addr in content.find_all('img'):
     if args.verbose:
         args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
     local_image_path = doc_base + '/' + new_url_path
-    if local_image_path is not None and not os.path.exists(local_image_path):
-        print(f"Unable to locate image file, '{local_image_path}'",file=sys.stderr)
-        if args.verbose:
-            args.log.write(f"Unable to locate image file, '{local_image_path}'")
     if need_to_remove_url(new_url_path) and addr not in tags_to_be_deleted:
         tags_to_be_deleted.append(addr)
+    elif local_image_path is not None and not os.path.exists(local_image_path):
+        print(f"Unable to locate image file, '{local_image_path}'",file=sys.stderr)
+        if args.verbose:
+            args.log.write(f"Unable to locate image file, '{local_image_path}'\n")
+    else:
+        if args.verbose:
+            args.log.write(f"Will retain existing image file, '{local_image_path}'\n")
 
 if args.verbose:
     args.log.write(f'tags_to_be_deleted: --------->\n{str(tags_to_be_deleted)}\n<---------------\n')
@@ -580,46 +585,51 @@ if args.verbose:
 # (1) There is displayable text preceding the TOC entries
 # (2) There are multiple TOCs found
 # ------------------------------------------------------------------------------
-    
-if toc_widget_found and not antecedent_content_found and not multiple_toc_widget_found:
-    page_header += 'table-of-contents:\n'
-    toc_root = toc_widget.ol
-    if toc_root is None:
-        if args.verbose:
-            args.log.write('TOC has no ordered list\n')
-        toc_root = toc_widget.ul
-        if toc_root is None:
-            if args.verbose:
-                args.log.write('TOC has no unordered list\n')
-            print('TOC has no list',file=sys.stderr)
-            exit(1)
-    toc_children = [c for c in toc_root.children]
+
+def extract_toc_level(toc_root, toc_level):
+    if toc_root is None: return ''
+    assert type(toc_level) == int and toc_level > 0, 'toc_level must be an integer > 0'
+
     if args.verbose:
+        args.log.write(f'Extracting TOC at level {toc_level}\n')
+
+    toc_children = [c for c in toc_root.children if c.name is not None]
+
+    if args.verbose:
+        args.log.write(f'len(toc_children)={len(toc_children)}\n')
         args.log.write(f'toc_children={str(toc_children)}\n')
+
     if len(toc_children) == 0:
         if args.verbose:
-            args.log.write('No TOC children found\n')
-    for toc_level_1 in toc_root.children:
+            args.log.write(f'No TOC children found at level {toc_level}\n')
+
+    result = ''
+    toc_indent = ''.ljust(2*(toc_level-1))
+    if toc_level > 1:
+        result += f'{toc_indent}toc-menu:\n'
+
+    for toc_item in toc_children:
         if args.verbose:
-            args.log.write('toc_level_1: '+str(toc_level_1)+'\n')
-        if toc_level_1.name == "li":
-            page_header += f"- toc-url: {toc_level_1.a['href'].split('#TOC-')[1]}\n"
-            page_header += f"  toc-text: "
-            if toc_level_1.a.string is not None:
-                page_header += f"{toc_level_1.a.string.strip()}\n"
-            else:
-                page_header += f"{toc_level_1.a.contents[2].string.strip()}\n"
-        if toc_level_1.name == "ol":
-            for toc_level_2 in toc_level_1.children:
-                if args.verbose:
-                    args.log.write('toc_level_2: '+str(toc_level_2)+'\n')
-                if toc_level_2.name == "li":
-                    page_header += f"  - toc-url: {toc_level_2.a['href'].split('#TOC-')[1]}\n"
-                    page_header += f"  toc-text: "
-                    if toc_level_2.a.string is not None:
-                        page_header += f"{toc_level_2.a.string.strip()}\n"
-                    else:
-                        page_header += f"{toc_level_2.a.contents[2].string.strip()}\n"
+            args.log.write(f'toc_item: {str(toc_item)}\n')
+        if toc_item.name != "li": continue
+        toc_url = toc_item.a['href'].split('#TOC-')[1]
+        if toc_item.a.string is not None:
+            toc_text = toc_item.a.string.strip()
+        else:
+            toc_text = toc_item.a.contents[2].string.strip()
+        if args.verbose:
+            args.log.write(f'  toc_url (L{toc_level}): {toc_url}\n')
+            args.log.write(f'  toc_text (L{toc_level}): {toc_text}\n')
+        result += f"{toc_indent}- toc-url: {toc_url}\n"
+        result += f"{toc_indent}  toc-text: {toc_text}\n"
+        result += extract_toc_level(toc_item.ol, toc_level+1)
+
+    assert type(result) == str and len(result) > 0, 'result must be a non-zero string'
+    return result
+
+if toc_widget_found and not antecedent_content_found and not multiple_toc_widget_found:
+    page_header += 'table-of-contents:\n'
+    page_header += extract_toc_level(toc_widget.ol, 1)
     if args.verbose:
         args.log.write('TOC removed: '+str(toc_widget)+'\n')
     toc_widget.decompose()

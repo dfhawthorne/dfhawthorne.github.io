@@ -9,8 +9,17 @@
                 {%- assign toc2 = 1 -%}
                 <ol>
                 {%- for sub_item in item.toc-menu -%}
-                <li><strong>{{ toc1 }}.{{ toc2 }}</strong> <a href="{{ page.base-url }}#TOC-{{ sub_item.toc-url }}">{{ sub_item.toc-text }}</a></li>
-                {%- assign toc2 = toc2 | plus: 1 -%}
+                    <li><strong>{{ toc1 }}.{{ toc2 }}</strong> <a href="{{ page.base-url }}#TOC-{{ sub_item.toc-url }}">{{ sub_item.toc-text }}</a></li>
+                    {%- if sub_item contains "toc-menu" -%}
+                        {%- assign toc3 = 1 -%}
+                        <ol>
+                        {%- for sub_sub_item in sub_item.toc-menu -%}
+                            <li><strong>{{ toc1 }}.{{ toc2 }}.{{ toc3 }}</strong> <a href="{{ page.base-url }}#TOC-{{ sub_sub_item.toc-url }}">{{ sub_sub_item.toc-text }}</a></li>
+                        {%- assign toc3 = toc3 | plus: 1 -%}
+                        {%- endfor -%}
+                        </ol>
+                    {%- endif -%}
+                    {%- assign toc2 = toc2 | plus: 1 -%}
                 {%- endfor -%}
                 </ol>
             {%- endif -%}
