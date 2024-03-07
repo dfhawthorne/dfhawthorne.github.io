@@ -67,7 +67,10 @@ with open(args.input_html_file_name[0], 'r') as f:
     b = f.read()
 
 if b.startswith('---'):
-    print(f"{args.input_html_file_name[0]} has been already converted",file=sys.stderr)
+    error_msg = f"{args.input_html_file_name[0]} has been already converted"
+    print(error_msg,file=sys.stderr)
+    if args.verbose:
+        args.log.write(error_msg + "\n")
     exit(1)
 
 # ------------------------------------------------------------------------------
@@ -114,7 +117,10 @@ if args.verbose:
         args.log.write(item)
         args.log.write('\n')
 if len(doctype_items) > 0 and doctype_items[0] == 'html':
-    print(f"{args.input_html_file_name[0]} is a New Google Sites page",file=sys.stderr)
+    error_msg = f"{args.input_html_file_name[0]} is a New Google Sites page"
+    print(error_msg,file=sys.stderr)
+    if args.verbose:
+        args.log.write(error_msg + '\n')
     exit(1)
 
 page_header = "---\nlayout: default\n"
@@ -231,7 +237,10 @@ def normalise_url(href):
     if args.verbose:
         args.log.write(f'URL_parts: {str(url_parts)}\n')
     if url_parts.scheme == 'javascript':
-        print(f'javascript link found: {str(href)}',file=sys.stderr)
+        error_msg = f'javascript link found: {str(href)}'
+        print(error_msg,file=sys.stderr)
+        if args.verbose:
+            args.log.write(error_msg + '\n')
         exit(1)
     if url_parts.scheme in ['http','https']:
         if args.verbose:
@@ -351,7 +360,10 @@ tags_to_be_deleted = list() # Tags to be deleted
 try:
     content = soup.find("table",xmlns='http://www.w3.org/1999/xhtml').tbody.tr.td.div
 except:
-    print("Unable to find the table containing the main content",file=sys.stderr)
+    error_msg = "Unable to find the table containing the main content"
+    print(error_msg,file=sys.stderr)
+    if args.verbose:
+        args.log.write(error_msg + '\n')
     exit(1)
 
 if args.verbose:
@@ -379,11 +391,17 @@ for tag in content.children:
         possible_sub_page   = tag.find('div',{'id': 'sites-toc-undefined'})
         possible_toc_widget = tag.find('div','sites-embed-toc-maxdepth-6')
         if possible_sub_page is not None and possible_toc_widget is not None:
-            print('Overlapping sub page and TOC widgets',file=sys.stderr)
+            error_msg = 'Overlapping sub page and TOC widgets'
+            print(error_msg,file=sys.stderr)
+            if args.verbose:
+                args.log.write(error_msg + '\n')
             exit(1)
         if possible_sub_page is not None:
             if sub_pages_widget_found:
-                print('Duplicate sub-page widget found',file=sys.stderr)
+                error_msg = 'Duplicate sub-page widget found'
+                print(error_msg,file=sys.stderr)
+                if args.verbose:
+                    args.log.write(error_msg + '\n')
                 exit(1)
             else:
                 sub_pages_widget_found = True
@@ -435,7 +453,10 @@ if sub_pages_widget_found and not subsequent_content_found:
     page_header += f"sub-pages:\n"
     sub_page_menu = sub_page.find('ul',{'jotid': "navList"})
     if sub_page_menu is None:
-        print('No sub-page menu found in sub-page widget',file=sys.stderr)
+        error_msg = 'No sub-page menu found in sub-page widget'
+        print(error_msg,file=sys.stderr)
+        if args.verbose:
+            args.log.write(error_msg + '\n')
         exit(1)
     for menu in sub_page_menu.children:
         if menu.name == 'li':
@@ -743,11 +764,6 @@ if uploaded_files_widget is not None:
     files_dir_name = doc_base + '/' + page_rel_url[:-5]
     if args.verbose:
         args.log.write(f'files_dir_name: {str(files_dir_name)}\n')
-    if not os.path.exists(files_dir_name):
-        print(f"Uploaded files directory ('{files_dir_name}') does not exist", file=sys.stderr)
-        if args.verbose:
-            args.log.write(f"Uploaded files directory ('{files_dir_name}') does not exist\n")
-        exit(1)
 
     uploaded_file_tags = uploaded_files_widget.find_all('div', 'sites-attachments-name')
     if args.verbose:
@@ -755,11 +771,20 @@ if uploaded_files_widget is not None:
             args.log.write(f'Uploaded file tags found: {str(uploaded_file_tags)}\n')
         else:
             args.log.write('No uploaded file tags found\n')
+    if len(uploaded_file_tags) > 0 and not os.path.exists(files_dir_name):
+        error_msg = f"Uploaded files directory ('{files_dir_name}') does not exist and uploaded files found"
+        print(error_msg, file=sys.stderr)
+        if args.verbose:
+            args.log.write(error_msg + "\n")
+        exit(1)
     uploaded_file_list = list()
     for tag in uploaded_file_tags:
         if args.verbose:
             args.log.write(f'Uploaded file tag found: {str(tag)}\n')
-        uploaded_file_name = tag.a.string.strip()
+        if tag.a is None:
+            uploaded_file_name = [s for s in tag.stripped_strings][0]
+        else:
+            uploaded_file_name = tag.a.string.strip()
         if args.verbose:
             args.log.write(f'Uploaded file name: {str(uploaded_file_name)}\n')
         uploaded_file_list.append(uploaded_file_name)
@@ -771,9 +796,10 @@ if uploaded_files_widget is not None:
             if args.verbose:
                 args.log.write(f'Download file name: {str(download_file_name)}\n')
             if not os.path.exists(f'{curr_dir}/{download_file_name}'):
-                print(f"Uploaded file ('{curr_dir}/{download_file_name}') does not exist", file=sys.stderr)
+                error_msg = f"Uploaded file ('{curr_dir}/{download_file_name}') does not exist"
+                print(error_msg, file=sys.stderr)
                 if args.verbose:
-                    args.log.write(f"Uploaded file ('{curr_dir}/{download_file_name}') does not exist\n")
+                    args.log.write(error_msg + "\n")
                 exit(1)
             git_mv_cmds.append(f"git mv {curr_dir}/{download_file_name} {files_dir_name}/{uploaded_file_name}")
     
@@ -790,11 +816,21 @@ if uploaded_files_widget is not None:
                 args.log.write(f'Occurrence found: {str(descendant)}\n')
         if args.verbose:
             args.log.write(f"{len(occurrences)} occurrences of '{uploaded_file_name}' found\n")
+        wrapping_done = False
         for occurrence in occurrences:
+            if occurrence.string.strip() != uploaded_file_name: continue
+            wrapping_done = True
             new_a_tag = occurrence.string.wrap(soup.new_tag('a'))
             new_a_tag['href'] = os.path.relpath(f'{files_dir_name}/{uploaded_file_name}',doc_base)
             if args.verbose:
                 args.log.write(f'Occurrence wrapped: {str(occurrence)}\n')
+
+        if not wrapping_done:
+            error_msg = f"No occurrences of '{uploaded_file_name}' were wrapped."
+            print(error_msg, file=sys.stderr)
+            if args.verbose:
+                args.log.write(error_msg + '\n')
+            exit(1)
 
     if args.verbose:
         args.log.write(f'GIT MV Cmds: {str(git_mv_cmds)}\n')
