@@ -732,6 +732,79 @@ if args.verbose:
     args.log.write('============> End of Main Content (after removal of empty DIV tags) <==================\n')
 
 # ------------------------------------------------------------------------------
+# Detect and convert Uploaded Files
+# ------------------------------------------------------------------------------
+
+git_mv_cmds = list()
+uploaded_files_widget = soup.find('div', {'id': 'sites-attachments-container'})
+if uploaded_files_widget is not None:
+    if args.verbose:
+        args.log.write(f'Uploaded files widget found: {str(uploaded_files_widget)}\n')
+    files_dir_name = doc_base + '/' + page_rel_url[:-5]
+    if args.verbose:
+        args.log.write(f'files_dir_name: {str(files_dir_name)}\n')
+    if not os.path.exists(files_dir_name):
+        print(f"Uploaded files directory ('{files_dir_name}') does not exist", file=sys.stderr)
+        if args.verbose:
+            args.log.write(f"Uploaded files directory ('{files_dir_name}') does not exist\n")
+        exit(1)
+
+    uploaded_file_tags = uploaded_files_widget.find_all('div', 'sites-attachments-name')
+    if args.verbose:
+        if len(uploaded_file_tags) > 0:
+            args.log.write(f'Uploaded file tags found: {str(uploaded_file_tags)}\n')
+        else:
+            args.log.write('No uploaded file tags found\n')
+    uploaded_file_list = list()
+    for tag in uploaded_file_tags:
+        if args.verbose:
+            args.log.write(f'Uploaded file tag found: {str(tag)}\n')
+        uploaded_file_name = tag.a.string.strip()
+        if args.verbose:
+            args.log.write(f'Uploaded file name: {str(uploaded_file_name)}\n')
+        uploaded_file_list.append(uploaded_file_name)
+        download_file_tag = uploaded_files_widget.find('a', {'aria-label': "Download " + uploaded_file_name})
+        if download_file_tag is not None:
+            if args.verbose:
+                args.log.write(f'Download file tag: {str(download_file_tag)}\n')
+            download_file_name = download_file_tag['href'].strip().replace('%3F','?')
+            if args.verbose:
+                args.log.write(f'Download file name: {str(download_file_name)}\n')
+            if not os.path.exists(f'{curr_dir}/{download_file_name}'):
+                print(f"Uploaded file ('{curr_dir}/{download_file_name}') does not exist", file=sys.stderr)
+                if args.verbose:
+                    args.log.write(f"Uploaded file ('{curr_dir}/{download_file_name}') does not exist\n")
+                exit(1)
+            git_mv_cmds.append(f"git mv {curr_dir}/{download_file_name} {files_dir_name}/{uploaded_file_name}")
+    
+    for uploaded_file_name in uploaded_file_list:
+        if args.verbose:
+            args.log.write(f"Searching for occurrences of '{uploaded_file_name}':\n")
+        occurrences = list()
+        for descendant in content.descendants:
+            if descendant.name is not None or \
+               descendant.string is None or \
+               descendant.string.count(uploaded_file_name) == 0: continue
+            occurrences.append(descendant)
+            if args.verbose:
+                args.log.write(f'Occurrence found: {str(descendant)}\n')
+        if args.verbose:
+            args.log.write(f"{len(occurrences)} occurrences of '{uploaded_file_name}' found\n")
+        for occurrence in occurrences:
+            new_a_tag = occurrence.string.wrap(soup.new_tag('a'))
+            new_a_tag['href'] = os.path.relpath(f'{files_dir_name}/{uploaded_file_name}',doc_base)
+            if args.verbose:
+                args.log.write(f'Occurrence wrapped: {str(occurrence)}\n')
+
+    if args.verbose:
+        args.log.write(f'GIT MV Cmds: {str(git_mv_cmds)}\n')
+
+if args.verbose:
+    args.log.write('============> Start of Main Content (after conversion of uploaded files) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after conversion of uploaded files) <==================\n')
+
+# ------------------------------------------------------------------------------
 # Print out YAML data
 # ------------------------------------------------------------------------------
 
@@ -747,16 +820,27 @@ else:
         print(content.prettify())
 
 # ------------------------------------------------------------------------------
-# GIT Removals
+# GIT Removals and Movements
 # ------------------------------------------------------------------------------
 
-cmd = ['git', 'rm']
-cmd.extend(git_removals)
-cmd_str = ' '.join(cmd)
+rm_cmd = ['git', 'rm']
+rm_cmd.extend(git_removals)
+rm_cmd_str = ' '.join(rm_cmd)
 
 if args.verbose:
-    args.log.write(f"GIT command: {str(cmd_str)}\n")
-if args.git_remove and len(git_removals) > 0:
-    p = subprocess.run(cmd, capture_output=True)
-    if args.verbose:
-        args.log.write(f"GIT STDOUT:\n{p.stdout}\n\nGIT STDERR:\n{p.stderr}")
+    args.log.write(f"GIT commands:\n")
+    args.log.write(f"  {str(rm_cmd_str)}\n")
+    for mv_cmd_str in git_mv_cmds:
+        args.log.write(f"  {str(mv_cmd_str)}\n")
+if args.git_remove:
+    if len(git_removals) > 0:
+        p = subprocess.run(rm_cmd, capture_output=True)
+        if args.verbose:
+            args.log.write(f"GIT STDOUT:\n{p.stdout}\n\nGIT STDERR:\n{p.stderr}")
+    for mv_cmd_str in git_mv_cmds:
+        mv_cmd = mv_cmd_str.split()
+        if args.verbose:
+            args.log.write(f"mv_cmd_str: {str(mv_cmd_str)}\nmv_cmd: {str(mv_cmd)}\n")
+        p = subprocess.run(mv_cmd, capture_output=True)
+        if args.verbose:
+            args.log.write(f"GIT STDOUT:\n{p.stdout}\n\nGIT STDERR:\n{p.stderr}")
