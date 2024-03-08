@@ -2,107 +2,571 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://dfhawthorne.github.io/home/resource-allocations.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/issues/ovm-issues/eth0-has-wrong-mac-address-after-upgrade-to-ovms-3-2-6.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/issues/oracle-personal-edition-issues.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/issues/cloud-control-issues/cloud-control-not-starting-automatically-in-ovm_em12r2.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/system-builds.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm.html</loc>
+    <lastmod>2024-03-08</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm.html</loc>
     <lastmod>2024-02-28</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-configure-flashback-data-archive.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-configure-a-schema-to-support-a-star-transformation-query.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-create-partitioned-tables.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-troubleshoot-fast-materialized-views-to-fast-refresh-and-query-rewrite.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-guard.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-sql-plan-management-feature.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-multi-column-statistics.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-configure-baseline-templates.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-gather-statistics-on-a-specific-table-without-invalidating-cursors.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-replay-a-captured-workload.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-set-up-and-configure-resource-manager.html</loc>
+    <lastmod>2024-03-07</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-sql-tuning-advisor.html</loc>
+    <lastmod>2024-03-07</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-partitioned-indexes.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-result-cache.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-sql-access-advisor.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-guard/11g-ocm-configure-the-data-guard-environment-to-reduce-overheads-of-fast-incremental-backups-on-the-primary-database.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-guard/11g-ocm-configure-archivelog-deletion-policy-for-the-dataguard-configuration.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-base-recovery-catalog.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-and-manage-a-tablespace-that-uses-nfs-mounted-file-system-file.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-and-manage-encrypted-tablespaces.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-an-archival-backup.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-install-and-configure-em-agent.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-performance-management.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-and-data-warehouse-management.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/data-guard/01-copy-wallet-to-padstow.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/freenas/03-create-nfs-volumes.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/freenas/01-create-vm-image.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/freenas/02-create-os-image.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/freenas.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/design-overview.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/padstow/01-create-padstow-system.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/data-guard.html</loc>
+    <lastmod>2024-03-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/design-overview/00-original-design.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/design-overview/02-newer-design.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/design-overview/01-cut-down-design.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/redfern/01-create-oracle-client.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith2.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/redfern.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith2/01-problem-with-penrith2.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/04-oracle-clusterware-preinstallation-tasks.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/14-set-up-directnfs-for-example-database.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/11-create-database-failed.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/07-oracle-clusterware-postinstallation-procedures.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/12-remove-directnfs-in-asm.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/06-installing-oracle-clusterware.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/02-install-penrith1-os.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/09-install-oracle-database-software.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/08-install-asm-software.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/01-build-penrith1-vm-image.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/05-set-up-shared-disk-storage.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/15-deploy-em-agent-on-penrith-cluster.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/16-set-up-rman-on-example.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/10-configure-asm-storage.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/13-create-database-successful.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/03-install-oracle-validated-rpm.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1/17-voting-disk-problems-on-penrith1.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/03-upgrade-to-em-agent-10-2-0-5-0.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/05-some-start-up-fixed.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/02-deploy-em-agent-on-bankstown.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/01-creation-with-asm-storage.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/07-adjusted-memory_target-for-ocm11g-database.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/06-em-agent-does-not-start-after-server-is-on-new-subnet.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/bankstown/04-startup-problems-for-bankstown.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/gridctrl/oms-does-not-start-after-server-is-on-new-subnet.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/gridctrl/set-up-agent-deploy-application.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/gridctrl/reset-agent-timezone.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/gridctrl/oem-online-patching-set-up.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/gridctrl/dns.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/penrith1.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/padstow.html</loc>
+    <lastmod>2024-03-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-system-builds/gridctrl.html</loc>
+    <lastmod>2024-03-05</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/generate-addm-compare-period.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac.html</loc>
+    <lastmod>2024-03-04</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/database-designs/much-ado-about-nothing.html</loc>
-    <lastmod>2024-02-25</lastmod>
+    <lastmod>2024-02-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/describe-cluster-hardware-best-practices.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/understand-oracle-clusterware-architecture.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/describe-how-grid-plug-and-play-affects-clusterware.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/explain-the-principles-and-purposes-of-clusters.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation/perform-pre-install-tasks-for-grid-infrastructure.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation/install-grid-infrastructure.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation/verify-the-installation.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware/demonstrate-ocr-backup-and-recovery-techniques.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware/display-clusterware-management-proficiency.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware/managing-network-settings.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware/describe-the-high-availability-components-of-oracle-clusterwar.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware/describe-the-functionality-of-server-pools.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware/contrast-policy-managed-and-administration-managed-databases.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware/use-oui-to-remove-a-node-from-an-oracle-clusterware-home.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware/use-oracle-universal-installer-oui-to-add-a-node-to-an-oracle-clusterware-home.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware/perform-prerequisite-steps-for-extending-a-cluster.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/troubleshoot-the-oracle-cluster-registry-ocr-file.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/enable-component-level-debugging.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/enable-resource-debugging.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/locate-oracle-clusterware-log-files.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/gather-all-log-files-using-diagcollection-pl.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/enable-tracing-for-java-based-tools.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/07-response-from-oracle-support.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/02-problem-installing-vm-manager.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/04-finish-oem-virtualisation-intallation.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/03-patch-gridctrl.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/01-install-vm-server.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/06-build-vm-server-manually.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/08-upgrade-to-oem-12c.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria/05-diagnose-vm-agent-problem.html</loc>
+    <lastmod>2024-03-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/panania1.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/victoria.html</loc>
+    <lastmod>2024-03-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/11g-oce-rac/system-builds/panania1/00-create-vmware-image.html</loc>
+    <lastmod>2024-03-06</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/missing-bigblog-links.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-ocm-planning.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-03.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-12.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-10.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-02.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-09.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-05.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-07.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-08.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-04.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-01.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-06.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard/10g-data-guard-11.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds.html</loc>
@@ -110,91 +574,91 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-10.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-11.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-08.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-02.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-04.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-03.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-01.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-05.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-09.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-06.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow/padstow-07.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-09.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-06.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-02.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-04.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-10.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-01.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-08.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-03.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-07.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/botany/botany-05.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous.html</loc>
@@ -202,311 +666,311 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-07.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-12.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-09.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-05.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-11.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-21.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-20.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-19.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-14.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-02.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-04.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-13.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-03.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-10.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-01.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-22.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-15.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-16.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-06.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-17.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-08.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-23.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-18.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/rmancat/rmancat-01.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/rmancat/rmancat-02.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/rmancat/rmancat-03.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/rmancat/rmancat-05.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/rmancat/rmancat-04.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/rmancat.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-07.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-01.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-06.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-05.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-02.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-03.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/richmond-database/richmond-database-04.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/first-vm-created.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/spfile-on-raw.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/linux-cds-downloaded.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/cluvfy-crsinst.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/newer-network-design.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vmware-clustering-problem.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-01.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-02.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-04.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-03.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/10-2-0-2-upgrade.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vmware-problems.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/going-in-circles.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-system-builds/padstow.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-16.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-05.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-14.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-03-04</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-07.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-10.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-12.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-03-04</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-03.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-15.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-06.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-04.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-01.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-08.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-09.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-11.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-13.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control/grid-control-02.html</loc>
-    <lastmod>2024-02-26</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp/ntp-05.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp/ntp-04.html</loc>
-    <lastmod>2024-02-22</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp/ntp-01.html</loc>
-    <lastmod>2024-02-22</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp/ntp-06.html</loc>
-    <lastmod>2024-02-22</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp/ntp-03.html</loc>
-    <lastmod>2024-02-22</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/ntp/ntp-02.html</loc>
-    <lastmod>2024-02-22</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services/grid-control.html</loc>
-    <lastmod>2024-02-27</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-data-guard.html</loc>
@@ -514,38 +978,38 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/issues.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/announcements.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/book-reviews.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/ocm-questions-and-answers.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/announcements/12march2012.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/announcements/27march2012.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/announcements/12april2012.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/index.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home.html</loc>
-    <lastmod>2024-02-21</lastmod>
+    <lastmod>2024-02-28</lastmod>
   </url>
 </urlset>
