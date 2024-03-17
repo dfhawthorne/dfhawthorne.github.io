@@ -446,11 +446,33 @@ if args.verbose:
 # converted to YML format, and the main content is undisturbed.
 # ------------------------------------------------------------------------------
 
+def extract_sub_menu_level( sub_page_menu, level ):
+    assert sub_page_menu is not None, "sub_page_menu must not be None"
+    assert type(level) == int and level > 0, "level must be a positive integer"
+
+    indent = ''.ljust(2*(level-1))
+    result = f"{indent}sub-pages:\n"
+    for menu in sub_page_menu.children:
+        if args.verbose:
+            args.log.write(f'Sub-pages element: {menu.name}\n')
+        if menu.name == 'li':
+            entry = menu.a
+            result += f"{indent}- title: '{entry.string.strip()}'\n"
+            result += f"{indent}  url: {url_prefix}/{entry['href']}\n"
+            if args.verbose:
+                args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+            if menu.ul is not None:
+                result += extract_sub_menu_level( menu.ul, level + 1 )
+        elif menu.name in ['ol','ul']:
+            result += extract_sub_menu_level( menu, level + 1 )
+
+    assert type(result) == str and len(result) > 0, "Result must be a non-empty string"
+    return result
+
 if sub_pages_widget_found and not subsequent_content_found:
     if args.verbose:
         args.log.write('Sub-page widget without following content found.\n')
     page_header += f"sub-pages-title: '{sub_page.h4.string.strip()}'\n"
-    page_header += f"sub-pages:\n"
     sub_page_menu = sub_page.find('ul',{'jotid': "navList"})
     if sub_page_menu is None:
         error_msg = 'No sub-page menu found in sub-page widget'
@@ -458,22 +480,7 @@ if sub_pages_widget_found and not subsequent_content_found:
         if args.verbose:
             args.log.write(error_msg + '\n')
         exit(1)
-    for menu in sub_page_menu.children:
-        if menu.name == 'li':
-            entry = menu.a
-            page_header += f"- title: '{entry.string.strip()}'\n"
-            page_header += f"  url: {url_prefix}/{entry['href']}\n"
-            if args.verbose:
-                args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
-        elif menu.name in ['ol','ul']:
-            page_header += "  sub-sub-pages:\n"
-            for sub_menu in menu.children:
-                if menu.name == 'li':
-                    entry = menu.a
-                    page_header += f"  - title: '{entry.string.strip()}'\n"
-                    page_header += f"    url: {url_prefix}/{entry['href']}\n"
-                    if args.verbose:
-                        args.log.write(f"Sub-Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+    page_header += extract_sub_menu_level( sub_page_menu, 1 )
 
     if args.verbose:
         args.log.write(f"Sub page removed: '{sub_page}'\n")
@@ -601,7 +608,6 @@ if args.verbose:
 
 # ------------------------------------------------------------------------------
 # Table of Contents
-# Only descend two (2) levels
 # Do not convert TOC if either:
 # (1) There is displayable text preceding the TOC entries
 # (2) There are multiple TOCs found
