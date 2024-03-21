@@ -313,7 +313,20 @@ def normalise_url(href):
     elif '#' in normalised_url:
         return normalised_url
     else:
-        return normalised_url + '.html'
+        full_name_path = doc_base + os.path.sep + normalised_url
+        if os.path.isfile(full_name_path):
+            if args.verbose:
+                args.log.write(f"URL: file '{normalised_url}' exists\n")
+            return normalised_url
+        elif os.path.isfile(full_name_path + '.html'):
+            if args.verbose:
+                args.log.write(f"URL: file '{normalised_url}.html' exists\n")
+            return normalised_url + '.html'
+        else:
+            if args.verbose:
+                args.log.write(f"URL: Neither '{normalised_url}' or '{normalised_url}.html' exist as a file\n")
+            print(f"URL: Neither '{normalised_url}' or '{normalised_url}.html' exist\n", file=sys.stderr)
+            exit(1)
 
 # ------------------------------------------------------------------------------
 # Auxiliary function to determine if the file referenced by a URL needs to be
@@ -492,16 +505,10 @@ if args.verbose:
     args.log.write('============> End of Main Content (after removal of sub-page widget) <==================\n')
 
 # ------------------------------------------------------------------------------
-# (1) Change URL to relative to Wiki base
-# (2) Remove links with imageanchor
-# (3) Remove links to *%3Fattredirects=0 files
-# (4) Remove links to *png.html pages
-# (5) Remove links to *gif.html pages
+# Change URL to relative to Wiki base
 # ------------------------------------------------------------------------------
 
 for addr in content.find_all('a'):
-    if addr.get('imageanchor') is not None:
-        tags_to_be_deleted.append(addr)
     href         = addr.get('href')
     if href is None: continue
     # Regularise the URL to be relative to the documents base
@@ -523,8 +530,71 @@ for addr in content.find_all('img'):
     addr['src'] = new_url_path
     if args.verbose:
         args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
-    local_image_path = doc_base + '/' + new_url_path
-    if need_to_remove_url(new_url_path) and addr not in tags_to_be_deleted:
+
+# ------------------------------------------------------------------------------
+# Replace '<A>' tags with imageanchor attributes with '<IMG>' tags
+# ------------------------------------------------------------------------------
+
+git_mv_cmds = list()
+git_removals = list()
+
+image_anchors = content.find_all('a', {'imageanchor': 1})
+for tag in image_anchors:
+    if args.verbose:
+        args.log.write(f'image anchor tag found: {str(tag)}\n')
+    if tag.img is None:
+        print(f"No <IMG> child found for <A> tag with imageanchor attribute", file=sys.stderr)
+        exit(1)
+    href = tag['href']
+    if href.endswith('?attredirects=0'):
+        new_file_name = href.replace('?attredirects=0','')
+        if os.path.isfile(doc_base + os.path.sep + href):
+            git_mv_cmd = \
+                'git mv ' + \
+                doc_base + os.path.sep + href + ' ' + \
+                doc_base + os.path.sep + new_file_name
+            if args.verbose:
+                args.log.write(git_mv_cmd + '\n')
+            git_mv_cmds.append(git_mv_cmd)
+        elif os.path.isfile(doc_base + os.path.sep + new_file_name):
+            if args.verbose:
+                args.log.write(f"'{new_file_name}' already exists.\n")
+        else:
+            error_msg = f"Neither '{href}' nor '{new_file_name}' exist."
+            if args.verbose:
+                args.log.write(error_msg + "\n")
+            print(error_msg, file=sys.stderr)
+            exit(1)
+    else:
+        new_file_name = href
+    image_src = tag.img['src']
+    if image_src not in git_removals and image_src not in [href, new_file_name]:
+        if args.verbose:
+            args.log.write(f"'{image_src}' to be removed\n")
+        git_removals.append(image_src)
+    tag.unwrap()
+    tag['src'] = new_file_name
+    if args.verbose:
+        args.log.write(f"Tag after conversion: s{str(tag)}\n")
+
+# ------------------------------------------------------------------------------
+# (1) Remove links to *%3Fattredirects=0 files
+# (2) Remove links to *png.html pages
+# (3) Remove links to *gif.html pages
+# ------------------------------------------------------------------------------
+
+for addr in content.find_all('a'):
+    if addr.get('href') is None: continue
+    if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
+        tags_to_be_deleted.append(addr)
+
+for addr in content.find_all('img'):
+    href = addr.get('src')
+    if href is None: continue
+    if args.verbose:
+        args.log.write(f"IMG SRC After: {str(href)}\n")
+    local_image_path = doc_base + os.path.sep + href
+    if need_to_remove_url(href) and addr not in tags_to_be_deleted:
         tags_to_be_deleted.append(addr)
     elif local_image_path is not None and not os.path.exists(local_image_path):
         print(f"Unable to locate image file, '{local_image_path}'",file=sys.stderr)
@@ -544,7 +614,6 @@ if args.verbose:
 # Remove unnecessary tags
 # ------------------------------------------------------------------------------
 
-git_removals = list()
 if args.verbose:
     args.log.write(f"Tags to be deleted: {str(tags_to_be_deleted)}\n")
 for tag in tags_to_be_deleted:
@@ -559,7 +628,7 @@ for tag in tags_to_be_deleted:
     if tag.name == "a":
         href = tag.get('href')
         if href is not None:
-            file_name = doc_base + '/' + href.replace('%3F','?')
+            file_name = doc_base + os.path.sep + href.replace('%3F','?')
             if file_name not in git_removals:
                 if os.path.exists(file_name):
                     git_removals.append(file_name)
@@ -577,7 +646,7 @@ for tag in tags_to_be_deleted:
     elif tag.name == "img":
         src = tag.get('src')
         if src is not None:
-            file_name = doc_base + '/' + src.replace('%3F','?')
+            file_name = doc_base + os.path.sep + src.replace('%3F','?')
             if file_name not in git_removals:
                 if os.path.exists(file_name):
                     git_removals.append(file_name)
@@ -762,12 +831,11 @@ if args.verbose:
 # Detect and convert Uploaded Files
 # ------------------------------------------------------------------------------
 
-git_mv_cmds = list()
 uploaded_files_widget = soup.find('div', {'id': 'sites-attachments-container'})
 if uploaded_files_widget is not None:
     if args.verbose:
         args.log.write(f'Uploaded files widget found: {str(uploaded_files_widget)}\n')
-    files_dir_name = doc_base + '/' + page_rel_url[:-5]
+    files_dir_name = doc_base + os.path.sep + page_rel_url[:-5]
     if args.verbose:
         args.log.write(f'files_dir_name: {str(files_dir_name)}\n')
 

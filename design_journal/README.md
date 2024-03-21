@@ -43,3 +43,4 @@ Table of Contents
 * [2024-03-08](2024_03_08.md) Conversion of Wiki to Jekyll - V2R2 Released
 * [2024-03-17](2024_03_17.md) Conversion of Wiki to Jekyll - First Conversion Run of 12C OCP Upgrade
 * [2024-03-18](2024_03_18.md) Conversion of Wiki to Jekyll - Partial Conversion of OCP 12C Upgrade Section 1
+* [2024-03-21](2024_03_21.md) Conversion of Wiki to Jekyll - Missing Image Files
