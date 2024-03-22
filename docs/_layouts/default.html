@@ -2,13 +2,17 @@
 <html lang="en">
   <head>
     {% include head.html %}
+    {%- if page contains "title" -%}
     <title>{{ page.title }}</title>
+    {%- endif -%}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
   </head>
   <body>
     <div class="two-col-grid-container">
       {% include banner.html %} <!-- R1 -->
+      {%- if page contains "title" -%}
       <h1 class="page-title">{{ page.title }}</h1> <!-- R2 -->
+      {%- endif -%}
       {% include navigation.html %} <!-- R2 -->
       {% include search_box.html %} <!-- R3 -->
       {% include breadcrumbs.html %} <!-- R4 -->

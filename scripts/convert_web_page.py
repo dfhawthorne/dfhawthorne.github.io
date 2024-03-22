@@ -126,6 +126,28 @@ if len(doctype_items) > 0 and doctype_items[0] == 'html':
 page_header = "---\nlayout: default\n"
 
 # ------------------------------------------------------------------------------
+# Find any auxiliary files:
+# - If there are auxiliary files, then there a sibling directory with the name
+#   with the '.html' suffix stripped.
+# ------------------------------------------------------------------------------
+
+(auxiliary_dir, suffix) = os.path.splitext(
+        curr_dir + os.path.sep + os.path.basename(args.input_html_file_name[0])
+    )
+if args.verbose:
+    args.log.write(f"auxiliary_dir='{auxiliary_dir}'\n")
+if os.path.isdir(auxiliary_dir):
+    auxiliary_files = [f 
+                       for f in os.listdir(auxiliary_dir)
+                         if os.path.isfile(auxiliary_dir + os.path.sep + f)]
+    if args.verbose:
+        args.log.write(f"auxiliary files found='{str(auxiliary_files)}'\n")
+else:
+    auxiliary_files = list()
+    if args.verbose:
+        args.log.write(f"NO auxiliary files were found\n")
+
+# ------------------------------------------------------------------------------
 # Extract the title
 # ------------------------------------------------------------------------------
 
@@ -341,11 +363,11 @@ def need_to_remove_url(url):
     assert type(url) == str, 'URL is string'
 
     need_to_remove = False
-    if href.endswith('.png.html'):
+    if url.endswith('.png.html'):
         need_to_remove = True
-    elif href.endswith('.gif.html'):
+    elif url.endswith('.gif.html'):
         need_to_remove = True
-    elif href.endswith('attredirects=0'):
+    elif url.endswith('attredirects=0'):
         need_to_remove = True
     else:
         need_to_remove = False
@@ -471,9 +493,10 @@ def extract_sub_menu_level( sub_page_menu, level ):
         if menu.name == 'li':
             entry = menu.a
             result += f"{indent}- title: '{entry.string.strip()}'\n"
-            result += f"{indent}  url: {url_prefix}/{entry['href']}\n"
+            menu_url = url_prefix + os.path.sep + entry['href']
+            result += f"{indent}  url: {menu_url}\n"
             if args.verbose:
-                args.log.write(f"Menu item added: '{entry.string.strip()}', '{url_prefix}/{entry['href']}'\n")
+                args.log.write(f"Menu item added: '{entry.string.strip()}', '{menu_url}'\n")
             if menu.ul is not None:
                 result += extract_sub_menu_level( menu.ul, level + 1 )
         elif menu.name in ['ol','ul']:
@@ -697,7 +720,7 @@ def extract_toc_level(toc_root, toc_level):
 
     if len(toc_children) == 0:
         if args.verbose:
-            args.log.write(f'No TOC children found at level {toc_level}\n')
+            args.log.write(f'No TOC chscripts/convert_web_page.pyildren found at level {toc_level}\n')
 
     result = ''
     toc_indent = ''.ljust(2*(toc_level-1))
@@ -716,19 +739,21 @@ def extract_toc_level(toc_root, toc_level):
         if args.verbose:
             args.log.write(f'  toc_url (L{toc_level}): {toc_url}\n')
             args.log.write(f'  toc_text (L{toc_level}): {toc_text}\n')
-        result += f"{toc_indent}- toc-url: {toc_url}\n"
-        result += f"{toc_indent}  toc-text: {toc_text}\n"
+        result += f"{toc_indent}- toc-url: '{toc_url}'\n"
+        result += f"{toc_indent}  toc-text: '{toc_text}'\n"
         result += extract_toc_level(toc_item.ol, toc_level+1)
 
     assert type(result) == str and len(result) > 0, 'result must be a non-zero string'
     return result
 
 if toc_widget_found and not antecedent_content_found and not multiple_toc_widget_found:
-    page_header += 'table-of-contents:\n'
-    page_header += extract_toc_level(toc_widget.ol, 1)
+    toc_header  = 'table-of-contents:\n'
+    toc_header += extract_toc_level(toc_widget.ol, 1)
     if args.verbose:
         args.log.write('TOC removed: '+str(toc_widget)+'\n')
     toc_widget.decompose()
+else:
+    toc_header  = ''
 
 if args.verbose:
     args.log.write('============> Start of Main Content (after removal of TOC) <================\n')
@@ -832,12 +857,11 @@ if args.verbose:
 # ------------------------------------------------------------------------------
 
 uploaded_files_widget = soup.find('div', {'id': 'sites-attachments-container'})
+add_file_menu_toc     = False
+
 if uploaded_files_widget is not None:
     if args.verbose:
         args.log.write(f'Uploaded files widget found: {str(uploaded_files_widget)}\n')
-    files_dir_name = doc_base + os.path.sep + page_rel_url[:-5]
-    if args.verbose:
-        args.log.write(f'files_dir_name: {str(files_dir_name)}\n')
 
     uploaded_file_tags = uploaded_files_widget.find_all('div', 'sites-attachments-name')
     if args.verbose:
@@ -845,8 +869,8 @@ if uploaded_files_widget is not None:
             args.log.write(f'Uploaded file tags found: {str(uploaded_file_tags)}\n')
         else:
             args.log.write('No uploaded file tags found\n')
-    if len(uploaded_file_tags) > 0 and not os.path.exists(files_dir_name):
-        error_msg = f"Uploaded files directory ('{files_dir_name}') does not exist and uploaded files found"
+    if len(uploaded_file_tags) > 0 and len(auxiliary_files) == 0:
+        error_msg = f"Uploaded files directory ('{auxiliary_dir}') does not exist and uploaded files found"
         print(error_msg, file=sys.stderr)
         if args.verbose:
             args.log.write(error_msg + "\n")
@@ -862,20 +886,24 @@ if uploaded_files_widget is not None:
         if args.verbose:
             args.log.write(f'Uploaded file name: {str(uploaded_file_name)}\n')
         uploaded_file_list.append(uploaded_file_name)
+        add_file_menu_toc = True
         download_file_tag = uploaded_files_widget.find('a', {'aria-label': "Download " + uploaded_file_name})
         if download_file_tag is not None:
+            download_file_name = download_file_tag['href'].strip().replace('%3F','?')
+            full_download_file_name = curr_dir + os.path.sep + download_file_name
             if args.verbose:
                 args.log.write(f'Download file tag: {str(download_file_tag)}\n')
-            download_file_name = download_file_tag['href'].strip().replace('%3F','?')
-            if args.verbose:
-                args.log.write(f'Download file name: {str(download_file_name)}\n')
-            if not os.path.exists(f'{curr_dir}/{download_file_name}'):
-                error_msg = f"Uploaded file ('{curr_dir}/{download_file_name}') does not exist"
+                args.log.write(f'Download file name: {download_file_name}\n')
+                args.log.write(f'Full download file name: {full_download_file_name}\n')
+            if os.path.basename(download_file_name) not in auxiliary_files:
+                error_msg = f"Uploaded file ('{full_download_file_name}') does not exist"
                 print(error_msg, file=sys.stderr)
                 if args.verbose:
                     args.log.write(error_msg + "\n")
                 exit(1)
-            git_mv_cmds.append(f"git mv {curr_dir}/{download_file_name} {files_dir_name}/{uploaded_file_name}")
+            else:
+                auxiliary_files.remove(os.path.basename(download_file_name))
+            git_mv_cmds.append(f"git mv {full_download_file_name} {auxiliary_dir}/{uploaded_file_name}")
     
     for uploaded_file_name in uploaded_file_list:
         if args.verbose:
@@ -895,19 +923,39 @@ if uploaded_files_widget is not None:
             if occurrence.string.strip() != uploaded_file_name: continue
             wrapping_done = True
             new_a_tag = occurrence.string.wrap(soup.new_tag('a'))
-            new_a_tag['href'] = os.path.relpath(f'{files_dir_name}/{uploaded_file_name}',doc_base)
+            new_a_tag['href'] = os.path.relpath(auxiliary_dir + os.path.sep + uploaded_file_name,doc_base)
             if args.verbose:
                 args.log.write(f'Occurrence wrapped: {str(occurrence)}\n')
 
         if not wrapping_done:
             error_msg = f"No occurrences of '{uploaded_file_name}' were wrapped."
-            print(error_msg, file=sys.stderr)
             if args.verbose:
                 args.log.write(error_msg + '\n')
-            exit(1)
 
     if args.verbose:
         args.log.write(f'GIT MV Cmds: {str(git_mv_cmds)}\n')
+    
+    if add_file_menu_toc:
+        if len(toc_header) > 0:
+            toc_header += "- toc-url: 'File-Downloads'\n  toc-text: 'File Downloads'\n"
+        file_downloads_tag = soup.new_tag('div')
+        file_downloads_tag['class'] = 'file_downloads'
+        content.append(file_downloads_tag)
+        file_downloads_header = soup.new_tag('h2', id='TOC-File-Downloads')
+        file_downloads_header.append('File Downloads')
+        file_downloads_tag.append(file_downloads_header)
+        file_downloads_list = soup.new_tag('ol')
+        file_downloads_tag.append(file_downloads_list)
+        for uploaded_file_name in uploaded_file_list:
+            file_downloads_entry = soup.new_tag('li')
+            file_downloads_list.append(file_downloads_entry)
+            href = os.path.relpath(auxiliary_dir + os.path.sep + uploaded_file_name, doc_base)
+            file_downloads_addr  = soup.new_tag('a', href=href)
+            file_downloads_addr.append(uploaded_file_name)
+            file_downloads_entry.append(file_downloads_addr)
+    
+    for file_name in auxiliary_files:
+        git_removals.append(auxiliary_dir + os.path.sep + file_name)
 
 if args.verbose:
     args.log.write('============> Start of Main Content (after conversion of uploaded files) <================\n')
@@ -918,6 +966,7 @@ if args.verbose:
 # Print out YAML data
 # ------------------------------------------------------------------------------
 
+page_header += toc_header
 page_header += '---\n'
 if args.replace:
     with open(os.path.basename(args.input_html_file_name[0]),'w') as f:
