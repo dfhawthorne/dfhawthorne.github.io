@@ -493,7 +493,10 @@ def extract_sub_menu_level( sub_page_menu, level ):
         if menu.name == 'li':
             entry = menu.a
             result += f"{indent}- title: '{entry.string.strip()}'\n"
-            menu_url = url_prefix + os.path.sep + entry['href']
+            menu_url = normalise_url(entry['href'])
+            if args.verbose:
+                args.log.write(f"Sub-pages url is '{entry['href']}'\n")
+                args.log.write(f"Sub-pages url normalised to '{menu_url}'\n")
             result += f"{indent}  url: {menu_url}\n"
             if args.verbose:
                 args.log.write(f"Menu item added: '{entry.string.strip()}', '{menu_url}'\n")
@@ -938,6 +941,8 @@ if uploaded_files_widget is not None:
     if add_file_menu_toc:
         if len(toc_header) > 0:
             toc_header += "- toc-url: 'File-Downloads'\n  toc-text: 'File Downloads'\n"
+            if args.verbose:
+                args.log.write("TOC Header updated for file downloads:\n{toc_header}\n")
         file_downloads_tag = soup.new_tag('div')
         file_downloads_tag['class'] = 'file_downloads'
         content.append(file_downloads_tag)
@@ -953,9 +958,16 @@ if uploaded_files_widget is not None:
             file_downloads_addr  = soup.new_tag('a', href=href)
             file_downloads_addr.append(uploaded_file_name)
             file_downloads_entry.append(file_downloads_addr)
+        if args.verbose:
+            args.log.write("Appended file downloads list to main content:\n")
+            args.log.write("=============================================\n")
+            args.log.write(str(file_downloads_tag))
+            args.log.write("\n=============================================\n")
     
-    for file_name in auxiliary_files:
-        git_removals.append(auxiliary_dir + os.path.sep + file_name)
+        # for file_name in auxiliary_files:
+        #     git_removals.append(auxiliary_dir + os.path.sep + file_name)
+        #     if args.verbose:
+        #         args.log.write(f"Scheduling auxiliary file '{file_name}' for removal\n")
 
 if args.verbose:
     args.log.write('============> Start of Main Content (after conversion of uploaded files) <================\n')
