@@ -6,10 +6,17 @@
         <ul>
         {%- for item in page.sub-pages -%}
             <li><a href="{{ item.url }}">{{ item.title }}</a></li>
-            {%- if item contains "sub-sub-pages" -%}
+            {%- if item contains "sub-pages" -%}
                 <ul>
-                {%- for sub-item in item.sub-sub-pages -%}
+                {%- for sub-item in item.sub-pages -%}
                     <li><a href="{{ sub-item.url }}">{{ sub-item.title }}</a></li>
+                    {%- if sub-item contains "sub-pages" -%}
+                    <ul>
+                    {%- for sub-sub-item in sub-item.sub-pages -%}
+                        <li><a href="{{ sub-sub-item.url }}">{{ sub-sub-item.title }}</a></li>
+                    {%- endfor -%}
+                    </ul>
+                    {%- endif -%}
                 {%- endfor -%}
                 </ul>
             {%- endif -%}
