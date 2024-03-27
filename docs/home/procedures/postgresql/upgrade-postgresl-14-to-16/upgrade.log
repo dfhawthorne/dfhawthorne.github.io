@@ -1,0 +1,140 @@
+Finding the real data directory for the source cluster        ok
+Performing Consistency Checks
+-----------------------------
+Checking cluster versions                                     ok
+Checking database user is the install user                    ok
+Checking database connection settings                         ok
+Checking for prepared transactions                            ok
+Checking for system-defined composite types in user tables    ok
+Checking for reg* data types in user tables                   ok
+Checking for contrib/isn with bigint-passing mismatch         ok
+Checking for incompatible "aclitem" data type in user tables  ok
+Creating dump of global objects                               ok
+Creating dump of database schemas                             
+  template1                                                   
+  postgres                                                    
+  books                                                       
+  douglas                                                     
+  postgresql_book                                             
+
+                                                              ok
+Checking for presence of required libraries                   ok
+Checking database user is the install user                    ok
+Checking for prepared transactions                            ok
+Checking for new cluster tablespace directories               ok
+
+If pg_upgrade fails after this point, you must re-initdb the
+new cluster before continuing.
+
+Performing Upgrade
+------------------
+Setting locale and encoding for new cluster                   ok
+Analyzing all rows in the new cluster                         ok
+Freezing all rows in the new cluster                          ok
+Deleting files from new pg_xact                               ok
+Copying old pg_xact to new server                             ok
+Setting oldest XID for new cluster                            ok
+Setting next transaction ID and epoch for new cluster         ok
+Deleting files from new pg_multixact/offsets                  ok
+Copying old pg_multixact/offsets to new server                ok
+Deleting files from new pg_multixact/members                  ok
+Copying old pg_multixact/members to new server                ok
+Setting next multixact ID and offset for new cluster          ok
+Resetting WAL archives                                        ok
+Setting frozenxid and minmxid counters in new cluster         ok
+Restoring global objects in the new cluster                   ok
+Restoring database schemas in the new cluster                 
+  template1                                                   
+  postgres                                                    
+  books                                                       
+  douglas                                                     
+  postgresql_book                                             
+
+                                                              ok
+Copying user relation files                                   
+  /var/lib/postgresql/14/main/base/1/2613                     
+  /var/lib/postgresql/14/main/base/1/2683                     
+  /var/lib/postgresql/14/main/base/13795/2613                 
+  /var/lib/postgresql/14/main/base/13795/2683                 
+  /var/lib/postgresql/14/main/base/13795/16397                
+  /var/lib/postgresql/14/main/base/13795/16397_fsm            
+  /var/lib/postgresql/14/main/base/13795/16400                
+  /var/lib/postgresql/14/main/base/13795/16401                
+  /var/lib/postgresql/14/main/base/13795/16407                
+  /var/lib/postgresql/14/main/base/13795/16407_fsm            
+  /var/lib/postgresql/14/main/base/13795/16410                
+  /var/lib/postgresql/14/main/base/13795/16411                
+  /var/lib/postgresql/14/main/base/13795/16412                
+  /var/lib/postgresql/14/main/base/13795/16412_fsm            
+  /var/lib/postgresql/14/main/base/13795/16415                
+  /var/lib/postgresql/14/main/base/13795/16415_fsm            
+  /var/lib/postgresql/14/main/base/13795/16418                
+  /var/lib/postgresql/14/main/base/13795/16419                
+  /var/lib/postgresql/14/main/base/13795/16421                
+  /var/lib/postgresql/14/main/base/13795/16425                
+  /var/lib/postgresql/14/main/base/13795/16428                
+  /var/lib/postgresql/14/main/base/13795/16429                
+  /var/lib/postgresql/14/main/base/13795/16435                
+  /var/lib/postgresql/14/main/base/13795/16435_fsm            
+  /var/lib/postgresql/14/main/base/13795/16438                
+  /var/lib/postgresql/14/main/base/13795/16440                
+  /var/lib/postgresql/14/main/base/13795/16442                
+  /var/lib/postgresql/14/main/base/13795/16444                
+  /var/lib/postgresql/14/main/base/13795/16446                
+  /var/lib/postgresql/14/main/base/13795/16448                
+  /var/lib/postgresql/14/main/base/13795/16450                
+  /var/lib/postgresql/14/main/base/13795/16452                
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/2613      
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/2683      
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16494     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16494_fsm 
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16497     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16498     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16504     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16504_fsm 
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16507     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16508     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16509     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16509_fsm 
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16512     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16512_fsm 
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16515     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16516     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16518     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16522     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16525     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16526     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16532     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16532_fsm 
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16535     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16537     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16539     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16541     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16543     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16545     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16547     
+  /var/lib/postgresql/14/main/PG_14_202107181/16483/16549     
+  /var/lib/postgresql/14/main/base/16580/2613                 
+  /var/lib/postgresql/14/main/base/16580/2683                 
+  /var/lib/postgresql/14/main/base/16591/2613                 
+  /var/lib/postgresql/14/main/base/16591/2683                 
+  /var/lib/postgresql/14/main/base/16591/16603                
+  /var/lib/postgresql/14/main/base/16591/16606                
+  /var/lib/postgresql/14/main/base/16591/16607                
+
+                                                              ok
+Setting next OID for new cluster                              ok
+Sync data directory to disk                                   ok
+
+WARNING:  user-defined tablespace locations should not be inside the data directory, i.e. /var/lib/postgresql/14/main
+Checking for extension updates                                ok
+
+Upgrade Complete
+----------------
+Optimizer statistics are not transferred by pg_upgrade.
+Once you start the new server, consider running:
+    /usr/lib/postgresql/16/bin/vacuumdb --all --analyze-in-stages
+Could not create a script to delete the old cluster's data files
+because user-defined tablespaces or the new cluster's data directory
+exist in the old cluster directory.  The old cluster's contents must
+be deleted manually.

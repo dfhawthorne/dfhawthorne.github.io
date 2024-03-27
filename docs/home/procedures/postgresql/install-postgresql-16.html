@@ -1,0 +1,249 @@
+---
+layout: default
+title: 'Install PostgreSQL 16'
+base-url: home/procedures/postgresql/install-postgresql-16.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'PostgreSQL'
+  url: home/procedures/postgresql.html
+table-of-contents:
+- toc-url: Overview
+  toc-text: 'Overview'
+- toc-url: Current-Status
+  toc-text: 'Current Status'
+- toc-url: Install-Postgres-16
+  toc-text: 'Install Postgres 16'
+  toc-menu:
+  - toc-url: Import-PostgreSQL-APT-Repository-on-Ubuntu
+    toc-text: 'Import PostgreSQL APT Repository on Ubuntu'
+    toc-menu:
+    - toc-url: Install-Initial-Packages-for-PostgreSQL-16
+      toc-text: 'Install Initial Packages for PostgreSQL 16'
+    - toc-url: Add-PostgreSQL-16-APT-Repository
+      toc-text: 'Add PostgreSQL 16 APT Repository'
+    - toc-url: Stable-Repository-for-Production-General-Use
+      toc-text: 'Stable Repository for Production / General Use'
+  - toc-url: Install-PostgreSQL-16-on-Ubuntu-via-APT
+    toc-text: 'Install PostgreSQL 16 on Ubuntu via APT'
+    toc-menu:
+    - toc-url: First-Attempt-to-Install-PostreSQL-16
+      toc-text: 'First Attempt to Install PostreSQL 16'
+    - toc-url: Diagnosing-Installation-Failure
+      toc-text: 'Diagnosing Installation Failure'
+    - toc-url: Second-Attempt-to-Install-PostreSQL-16
+      toc-text: 'Second Attempt to Install PostreSQL 16'
+- toc-url: Status-after-Postgres-16-Installation
+  toc-text: 'Status after Postgres 16 Installation'
+- toc-url: References
+  toc-text: 'References'
+- toc-url: 'File-Downloads'
+  toc-text: 'File Downloads'
+---
+<h2 id="TOC-Overview">Overview</h2>
+<p>This procedure install PostgreSQL 16 onto an Ubuntu workstation using a package manager. PostgreSQL 16 will coexist with PostGreSQL 14 until the upgrade is done.</p>
+<h2 id="TOC-Current-Status">Current Status</h2>
+<p>I ran the following command to determine the status of the PostgreSQL service on my Ubuntu workstation:</p>
+<pre class="bash-cmd">systemctl status postgresql</pre>
+<p>The status is:</p>
+<pre class="text"><font color="#55FF55"><b>●</b></font> postgresql.service - PostgreSQL RDBMS
+     Loaded: loaded (/lib/systemd/system/postgresql.service; enabled; vendor preset: enabled)
+     Active: <font color="#55FF55"><b>active (exited)</b></font> since Tue 2024-03-26 16:45:24 AEDT; 46min ago
+    Process: 1629 ExecStart=/bin/true (code=exited, status=0/SUCCESS)
+   Main PID: 1629 (code=exited, status=0/SUCCESS)
+        CPU: 976us
+
+Mar 26 16:45:24 coogee systemd[1]: Starting PostgreSQL RDBMS...
+Mar 26 16:45:24 coogee systemd[1]: Finished PostgreSQL RDBMS.
+</pre>
+<p>However, this does not give me the current version. The following command points to the possible version of PostGreSQL that I am running:
+<pre class="bash-cmd">systemctl status system-postgresql.slice</pre>
+<p>The output is:</p>
+<pre class="text"><font color="#55FF55"><b>●</b></font> system-postgresql.slice - Slice /system/postgresql
+     Loaded: loaded
+     Active: <font color="#55FF55"><b>active</b></font> since Tue 2024-03-26 16:44:28 AEDT; 1h 20min ago
+      Tasks: 7
+     Memory: 32.8M
+        CPU: 1.415s
+     CGroup: /system.slice/system-postgresql.slice
+             └─postgresql@14-main.service
+               ├─1370 /usr/lib/postgresql/14/bin/postgres -D /var/lib/postgresq<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─1538 &quot;postgres: 14/main: checkpointer &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─1539 &quot;postgres: 14/main: background writer &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─1540 &quot;postgres: 14/main: walwriter &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─1541 &quot;postgres: 14/main: autovacuum launcher &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─1542 &quot;postgres: 14/main: stats collector &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               └─1543 &quot;postgres: 14/main: logical replication launcher &quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+
+Notice: journal has been rotated since unit was started, output may be incomple<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+</pre>
+<p>That the version is 14 is confirmed by the following command:</p>
+<pre class="bash-cmd">psql --version</pre>
+<p>The output is:</p>
+<pre class="text">psql (PostgreSQL) 14.11 (Ubuntu 14.11-0ubuntu0.22.04.1)</pre>
+
+<h2 id="TOC-Install-Postgres-16">Install Postgres 16</h2>
+<p>I am following the procedure in "<a href="https://www.linuxcapable.com/how-to-install-postgresql-16-on-ubuntu-linux/">How to Install PostgreSQL 16 on Ubuntu 24.04, 22.04 or 20.04</a>".</p>
+<h3 id="TOC-Import-PostgreSQL-APT-Repository-on-Ubuntu">Import PostgreSQL APT Repository on Ubuntu</h3>
+<h4 id="TOC-Install-Initial-Packages-for-PostgreSQL-16">Install Initial Packages for PostgreSQL 16</h4>
+<p>As advised by the above procedure, I ran the following command to install extra packages to aid in the installation of database software:</p>
+<pre class="bash-cmd">sudo apt install dirmngr ca-certificates software-properties-common apt-transport-https lsb-release curl -y</pre>
+<p>The output is:</p>
+<pre class="text">[sudo] password for douglas: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+lsb-release is already the newest version (11.1.0ubuntu4).
+ca-certificates is already the newest version (20230311ubuntu0.22.04.1).
+curl is already the newest version (7.81.0-1ubuntu1.15).
+curl set to manually installed.
+dirmngr is already the newest version (2.2.27-3ubuntu2.1).
+software-properties-common is already the newest version (0.99.22.9).
+The following NEW packages will be installed:
+  apt-transport-https
+0 to upgrade, 1 to newly install, 0 to remove and 0 not to upgrade.
+Need to get 1,510 B of archives.
+After this operation, 170 kB of additional disk space will be used.
+Get:1 http://au.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 apt-transport-https all 2.4.11 [1,510 B]
+Fetched 1,510 B in 1s (2,255 B/s)<font color="#AA5500">               </font>
+Selecting previously unselected package apt-transport-https.
+(Reading database ... 417029 files and directories currently installed.)
+Preparing to unpack .../apt-transport-https_2.4.11_all.deb ...
+Unpacking apt-transport-https (2.4.11) ...
+Setting up apt-transport-https (2.4.11) ...
+</pre>
+<h4 id="TOC-Add-PostgreSQL-16-APT-Repository">Add PostgreSQL 16 APT Repository</h4>
+<p>I verified that the GPG file does not exist using the following command:</p>
+<pre class="bash-cmd">sudo file /usr/share/keyrings/postgresql.gpg</pre>
+<p>The output is:</p>
+<pre class="text">/usr/share/keyrings/postgresql.gpg: cannot open `/usr/share/keyrings/postgresql.gpg&apos; (No such file or directory)
+</pre>
+<p>I used the following command to import the PostgreSQL GPG key:</p>
+<pre class="bash-cmd">curl -fSsL https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
+    gpg --dearmor | \
+    sudo tee /usr/share/keyrings/postgresql.gpg > /dev/null
+</pre>
+<h4 id="TOC-Stable-Repository-for-Production-General-Use">Stable Repository for Production / General Use</h4>
+<p>I chose the production version using the following command:</p>
+<pre class="bash-cmd">echo deb [arch=amd64,arm64,ppc64el signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main | \
+    sudo tee /etc/apt/sources.list.d/postgresql.list
+</pre>
+<p>The output is:</p>
+<pre class="text">[sudo] password for douglas: 
+deb [arch=amd64,arm64,ppc64el signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main
+</pre>
+<h3 id="TOC-Install-PostgreSQL-16-on-Ubuntu-via-APT">Install PostgreSQL 16 on Ubuntu via APT</h3>
+<h4 id="TOC-First-Attempt-to-Install-PostreSQL-16">First Attempt to Install PostreSQL 16</h4>
+<p>I ran the following command in attempt to install version 16 of the PostgreSQL software:</p>
+<pre class="bash-cmd">sudo apt install postgresql-client-16 postgresql-16</pre>
+<p>The following error messages were returned:</p>
+<pre class="text">Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+<font color="#FF5555"><b>E: </b></font>Unable to locate package postgresql-client-16
+<font color="#FF5555"><b>E: </b></font>Unable to locate package postgresql-16</pre>
+<h4 id="TOC-Diagnosing-Installation-Failure">Diagnosing Installation Failure</h4>
+<p>Checking for package source:</p>
+<pre class="bash-cmd">grep -ir postgre /etc/apt/sources.list* | \
+    grep -vE '(:#|\.save:)'</pre>
+<p>The files found are:</p>
+<pre class="text">/etc/apt/sources.list.d/pgadmin4.list.distUpgrade:deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/focal pgadmin4 main
+/etc/apt/sources.list.d/postgresql.list:deb [arch=amd64,arm64,ppc64el signed-by=/usr/share/keyrings/postgresql.gpg] http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main
+/etc/apt/sources.list.d/pgdg.list.distUpgrade:deb http://apt.postgresql.org/pub/repos/apt focal-pgdg main
+</pre>
+<p>The sources appear to be correct.</p>
+<p>The problem was caused by me skipping a step. I failed to update the local database. This was corrected by the following command:</p>
+<pre class="bash-cmd">sudo apt update</pre>
+<p>The result was:</p>
+<pre class="text">[sudo] password for douglas: 
+Hit:2 http://au.archive.ubuntu.com/ubuntu jammy InRelease                      
+Get:3 https://cli.github.com/packages stable InRelease [3,917 B]               
+Hit:4 http://au.archive.ubuntu.com/ubuntu jammy-updates InRelease              
+Hit:5 http://au.archive.ubuntu.com/ubuntu jammy-backports InRelease            
+Hit:1 https://packages.microsoft.com/repos/code stable InRelease               
+Get:6 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]      
+Ign:7 https://download.webmin.com/download/newkey/repository stable InRelease  
+Hit:8 http://apt.postgresql.org/pub/repos/apt jammy-pgdg InRelease             
+Hit:9 https://download.webmin.com/download/newkey/repository stable Release    
+Get:10 https://esm.ubuntu.com/apps/ubuntu jammy-apps-security InRelease [7,553 B]
+Ign:12 https://pkg.jenkins.io/debian-stable binary/ InRelease                  
+Hit:13 https://pkg.jenkins.io/debian-stable binary/ Release                    
+Get:14 https://esm.ubuntu.com/apps/ubuntu jammy-apps-updates InRelease [7,456 B]
+Hit:15 https://ppa.launchpadcontent.net/sunderme/texstudio/ubuntu jammy InRelease
+Get:17 https://esm.ubuntu.com/infra/ubuntu jammy-infra-security InRelease [7,450 B]
+Get:18 http://security.ubuntu.com/ubuntu jammy-security/main i386 Packages [429 kB]
+Get:19 https://esm.ubuntu.com/infra/ubuntu jammy-infra-updates InRelease [7,449 B]
+Get:20 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1,290 kB]
+Get:21 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [851 kB]
+Fetched 2,713 kB in 3s (789 kB/s)                          
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+15 packages can be upgraded. Run 'apt list --upgradable' to see them.
+</pre>
+<p>The upgradable packages are:</p>
+<pre class="text">Listing... Done
+<font color="#00AA00">libdbd-pg-perl</font>/jammy-pgdg 3.18.0-1.pgdg22.04+1 amd64 [upgradable from: 3.15.1-1]
+<font color="#00AA00">libpq5</font>/jammy-pgdg 16.2-1.pgdg22.04+1 amd64 [upgradable from: 14.11-0ubuntu0.22.04.1]
+<font color="#00AA00">postgresql-14</font>/jammy-pgdg 14.11-1.pgdg22.04+1 amd64 [upgradable from: 14.11-0ubuntu0.22.04.1]
+<font color="#00AA00">postgresql-client-12</font>/jammy-pgdg 12.18-1.pgdg22.04+1 amd64 [upgradable from: 12.12-1.pgdg20.04+1]
+<font color="#00AA00">postgresql-client-14</font>/jammy-pgdg 14.11-1.pgdg22.04+1 amd64 [upgradable from: 14.11-0ubuntu0.22.04.1]
+<font color="#00AA00">postgresql-client-common</font>/jammy-pgdg,jammy-pgdg,jammy-pgdg 257.pgdg22.04+1 all [upgradable from: 242.pgdg20.04+1]
+<font color="#00AA00">postgresql-common</font>/jammy-pgdg,jammy-pgdg,jammy-pgdg 257.pgdg22.04+1 all [upgradable from: 242.pgdg20.04+1]
+<font color="#00AA00">postgresql-contrib</font>/jammy-pgdg,jammy-pgdg,jammy-pgdg 16+257.pgdg22.04+1 all [upgradable from: 14+242.pgdg20.04+1]
+<font color="#00AA00">postgresql</font>/jammy-pgdg,jammy-pgdg,jammy-pgdg 16+257.pgdg22.04+1 all [upgradable from: 14+242.pgdg20.04+1]
+<font color="#00AA00">python-psycopg2-doc</font>/jammy-pgdg,jammy-pgdg,jammy-pgdg 2.9.9-1.pgdg22.04+1 all [upgradable from: 2.9.2-1build2]
+<font color="#00AA00">python3-psycopg2</font>/jammy-pgdg 2.9.9-1.pgdg22.04+1 amd64 [upgradable from: 2.9.2-1build2]
+<font color="#00AA00">thunderbird-gnome-support</font>/jammy-security 1:115.9.0+build1-0ubuntu0.22.04.1 amd64 [upgradable from: 1:115.8.1+build1-0ubuntu0.22.04.1]
+<font color="#00AA00">thunderbird-locale-en-us</font>/jammy-security,jammy-security 1:115.9.0+build1-0ubuntu0.22.04.1 all [upgradable from: 1:115.8.1+build1-0ubuntu0.22.04.1]
+<font color="#00AA00">thunderbird-locale-en</font>/jammy-security 1:115.9.0+build1-0ubuntu0.22.04.1 amd64 [upgradable from: 1:115.8.1+build1-0ubuntu0.22.04.1]
+<font color="#00AA00">thunderbird</font>/jammy-security 1:115.9.0+build1-0ubuntu0.22.04.1 amd64 [upgradable from: 1:115.8.1+build1-0ubuntu0.22.04.1]
+</pre>
+<p>Most of the updates are for older versions of Postgres and associated software. I updated the software as follows:</p>
+<pre class="bash-cmd">sudo apt -y upgrade &gt;<a href="home/procedures/postgresql/install-postgresql-16/update_all_packages.log">update_all_packages.log</a> 2&gt;&amp;1
+</pre>
+<p><span style="font-family:monospace;">postgresql-client-16</span> was installed automatically.</p>
+<h4 id="TOC-Second-Attempt-to-Install-PostreSQL-16">Second Attempt to Install PostreSQL 16</h4>
+<p>I ran the following command in attempt to install version 16 of the PostgreSQL software:</p>
+<pre class="bash-cmd">sudo apt -y install postgresql-16 &gt;<a href="home/procedures/postgresql/install-postgresql-16/install_postgres_16.log">install_postgres_16.log</a> 2&gt;&amp;1</pre>
+<h2 id="TOC-Status-after-Postgres-16-Installation">Status after Postgres 16 Installation</h2>
+<p>After installation, I used the following command to display the current status:</p>
+<pre class="bash-cmd">systemctl status system-postgresql.slice</pre>
+<p>The output was:</p>
+<pre class="text"><font color="#55FF55"><b>●</b></font> system-postgresql.slice - Slice /system/postgresql
+     Loaded: loaded
+     Active: <font color="#55FF55"><b>active</b></font> since Tue 2024-03-26 16:44:28 AEDT; 6h ago
+      Tasks: 13
+     Memory: 60.7M
+        CPU: 15.416s
+     CGroup: /system.slice/system-postgresql.slice
+             ├─postgresql@14-main.service
+             │ ├─40899 /usr/lib/postgresql/14/bin/postgres -D /var/lib/postgres<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             │ ├─40901 &quot;postgres: 14/main: checkpointer &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             │ ├─40902 &quot;postgres: 14/main: background writer &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             │ ├─40903 &quot;postgres: 14/main: walwriter &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             │ ├─40904 &quot;postgres: 14/main: autovacuum launcher &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             │ ├─40905 &quot;postgres: 14/main: stats collector &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             │ └─40906 &quot;postgres: 14/main: logical replication launcher &quot; &quot;&quot; &quot;&quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+             └─postgresql@16-main.service
+               ├─46844 /usr/lib/postgresql/16/bin/postgres -D /var/lib/postgres<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─46845 &quot;postgres: 16/main: checkpointer &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─46846 &quot;postgres: 16/main: background writer &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─46848 &quot;postgres: 16/main: walwriter &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; <span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               ├─46849 &quot;postgres: 16/main: autovacuum launcher &quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+               └─46850 &quot;postgres: 16/main: logical replication launcher &quot; &quot;&quot; &quot;&quot;<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+
+Notice: journal has been rotated since unit was started, output may be incomple<span style="background-color:#000000"><font color="#FFFFFF">&gt;</font></span>
+<span style="background-color:#000000"><font color="#FFFFFF">lines 1-24/24 (END)</font></span>
+</pre>
+<h2 id="TOC-References">References</h2>
+<ul>
+<li><a href="https://www.linuxcapable.com/how-to-install-postgresql-16-on-ubuntu-linux/">How to Install PostgreSQL 16 on Ubuntu 24.04, 22.04 or 20.04</a></li>
+</ul>
+<h2 id="TOC-File-Downloads">File Downloads</h2>
+<ul>
+<li><a href="home/procedures/postgresql/install-postgresql-16/install_postgres_16.log">install_postgres_16.log</a></li>
+<li><a href="home/procedures/postgresql/install-postgresql-16/update_all_packages.log">update_all_packages.log</a></li>
+</ul>

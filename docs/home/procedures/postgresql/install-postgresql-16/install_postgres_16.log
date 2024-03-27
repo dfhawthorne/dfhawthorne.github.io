@@ -1,0 +1,64 @@
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following package was automatically installed and is no longer required:
+  libllvm14
+Use 'sudo apt autoremove' to remove it.
+The following additional packages will be installed:
+  postgresql-client-common postgresql-common
+The following packages will be REMOVED:
+  pgdg-keyring
+The following NEW packages will be installed:
+  postgresql-16
+The following packages will be upgraded:
+  postgresql-client-common postgresql-common
+2 to upgrade, 1 to newly install, 1 to remove and 2 not to upgrade.
+Need to get 18.4 MB of archives.
+After this operation, 59.6 MB of additional disk space will be used.
+Get:1 http://apt.postgresql.org/pub/repos/apt jammy-pgdg/main amd64 postgresql-client-common all 257.pgdg22.04+1 [94.3 kB]
+Get:2 http://apt.postgresql.org/pub/repos/apt jammy-pgdg/main amd64 postgresql-common all 257.pgdg22.04+1 [239 kB]
+Get:3 http://apt.postgresql.org/pub/repos/apt jammy-pgdg/main amd64 postgresql-16 amd64 16.2-1.pgdg22.04+1 [18.1 MB]
+Preconfiguring packages ...
+Fetched 18.4 MB in 20s (920 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 417678 files and directories currently installed.)
+Preparing to unpack .../postgresql-client-common_257.pgdg22.04+1_all.deb ...
+Unpacking postgresql-client-common (257.pgdg22.04+1) over (242.pgdg20.04+1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 417677 files and directories currently installed.)
+Removing pgdg-keyring (2018.2) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 417672 files and directories currently installed.)
+Preparing to unpack .../postgresql-common_257.pgdg22.04+1_all.deb ...
+Leaving 'diversion of /usr/bin/pg_config to /usr/bin/pg_config.libpq-dev by postgresql-common'
+Unpacking postgresql-common (257.pgdg22.04+1) over (242.pgdg20.04+1) ...
+Selecting previously unselected package postgresql-16.
+Preparing to unpack .../postgresql-16_16.2-1.pgdg22.04+1_amd64.deb ...
+Unpacking postgresql-16 (16.2-1.pgdg22.04+1) ...
+Setting up postgresql-client-common (257.pgdg22.04+1) ...
+Setting up postgresql-common (257.pgdg22.04+1) ...
+Merging postmaster.1.gz alternatives into psql.1.gz link group ...
+update-alternatives: warning: forcing reinstallation of alternative /usr/share/postgresql/16/man/man1/psql.1.gz because link group psql.1.gz is broken
+Setting up postgresql-16 (16.2-1.pgdg22.04+1) ...
+Creating new PostgreSQL cluster 16/main ...
+/usr/lib/postgresql/16/bin/initdb -D /var/lib/postgresql/16/main --auth-local peer --auth-host scram-sha-256 --no-instructions
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_AU.UTF-8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/16/main ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Australia/Sydney
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+Processing triggers for man-db (2.10.2-1) ...

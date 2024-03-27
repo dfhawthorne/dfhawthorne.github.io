@@ -1,0 +1,25 @@
+.:
+total 12
+drwx------ 2 postgres postgres 4096 Mar 28 15:14 pg_14_books_backup
+drwx------ 2 postgres postgres 4096 Mar 28 15:14 pg_14_douglas_backup
+drwx------ 2 postgres postgres 4096 Mar 28 15:14 pg_14_postgresql_book_backup
+
+./pg_14_books_backup:
+total 56
+-rw-rw-r-- 1 postgres postgres  8225 Mar 28 15:14 3402.dat.gz
+-rw-rw-r-- 1 postgres postgres  6361 Mar 28 15:14 3403.dat.gz
+-rw-rw-r-- 1 postgres postgres  2361 Mar 28 15:14 3404.dat.gz
+-rw-rw-r-- 1 postgres postgres  1953 Mar 28 15:14 3405.dat.gz
+-rw-rw-r-- 1 postgres postgres  1174 Mar 28 15:14 3407.dat.gz
+-rw-rw-r-- 1 postgres postgres   281 Mar 28 15:14 3408.dat.gz
+-rw-rw-r-- 1 postgres postgres  1732 Mar 28 15:14 3410.dat.gz
+-rw-rw-r-- 1 postgres postgres 15062 Mar 28 15:14 toc.dat
+
+./pg_14_douglas_backup:
+total 4
+-rw-rw-r-- 1 postgres postgres 1250 Mar 28 15:14 toc.dat
+
+./pg_14_postgresql_book_backup:
+total 12
+-rw-rw-r-- 1 postgres postgres   25 Mar 28 15:14 3345.dat.gz
+-rw-rw-r-- 1 postgres postgres 6292 Mar 28 15:14 toc.dat

@@ -1,0 +1,138 @@
+---
+layout: default
+title: 'Upgrade PostgreSQL 14 to 16'
+base-url: home/procedures/postgresql/upgrade-postgresql-14-to-16.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'PostgreSQL'
+  url: home/procedures/postgresql.html
+table-of-contents:
+- toc-url: Overview
+  toc-text: 'Overview'
+- toc-url: Upgrade-Current-Database
+  toc-text: 'Upgrade Current Database'
+  toc-menu:
+  - toc-url: Pre-Upgrade-Checks
+    toc-text: 'Pre-Upgrade Checks'
+  - toc-url: Adjust-authentication
+    toc-text: 'Adjust authentication'
+  - toc-url: Get-Config-Settings
+    toc-text: 'Get Config Settings'
+  - toc-url: Stop-both-servers
+    toc-text: 'Stop both servers'
+  - toc-url: Configure-Upgrade
+    toc-text: 'Configure Upgrade'
+  - toc-url: Do-Upgrade
+    toc-text: 'Do Upgrade'
+- toc-url: References
+  toc-text: 'References'
+- toc-url: 'File-Downloads'
+  toc-text: 'File Downloads'
+---
+
+<h2 id="TOC-Overview">Overview</h2>
+<p></p>
+<h2 id="TOC-Upgrade-Current-Database">Upgrade Current Database</h2>
+<p>I plan to use <a href="https://www.postgresql.org/docs/current/pgupgrade.html" style="font-family: monospace;">pg_upgrade</a> to upgrade my current database.</p>
+<h3 id="TOC-Pre-Upgrade-Checks">Pre-Upgrade Checks</h3>
+<p>The following upgrade steps were skipped:</p>
+<ol>
+  <li><strong>Optionally move the old cluster</strong> is not needed as the database is stored in the standard locations.</li>
+  <li><strong>For source installs, build the new version</strong> is not needed as the binaries were installed.</li>
+  <li><strong>Install the new PostgreSQL binaries</strong> was done above.</li>
+  <li><strong>Initialize the new PostgreSQL cluster</strong> was done as part of the APT command.</li>
+  <li><strong>Copy custom full-text search files</strong> is not needed as I have none.</li> 
+</ol>
+<h3 id="TOC-Examine-Extensions">Examine Extensions</h3>
+<p>The advice is to <strong>Install extension shared object files</strong>. I used the following command to discover what extensions have been installed:</p>
+<pre class="sql-cmd">postgres=# \dx
+                        List of installed extensions
+   Name    | Version |   Schema   |               Description               
+-----------+---------+------------+-----------------------------------------
+ adminpack | 2.1     | pg_catalog | administrative functions for PostgreSQL
+ plpgsql   | 1.0     | pg_catalog | PL/pgSQL procedural language
+(2 rows)
+</pre>
+<h3 id="TOC-Adjust-authentication">Adjust authentication</h3>
+<p>I located the <span style="font-family: monospace;">pga_hba.conf</span> file as follows through <code>psql</code>:</p>
+<pre class="sql-cmd">postgres=# \dconfig hba_file
+  List of configuration parameters
+Parameter |                Value                
+-----------+-------------------------------------
+hba_file  | /etc/postgresql/14/main/pg_hba.conf
+(1 row)
+</pre>
+<p>The rules appear to be correct:</p>
+<pre class="text">postgres@coogee:~$ grep -vE &quot;(^#|^$)&quot; /etc/postgresql/14/main/pg_hba.conf
+  local   all             postgres                                peer
+  local   all             all                                     peer
+  host    all             all             127.0.0.1/32            scram-sha-256
+  host    all             all             ::1/128                 scram-sha-256
+  local   replication     all                                     peer
+  host    replication     all             127.0.0.1/32            scram-sha-256
+  host    replication     all             ::1/128                 scram-sha-256
+</pre>
+<h3 id="TOC-Get-Config-Settings">Get Config Settings</h2>
+<p>The current data directory is found as follows through <code>psql</code>:</p>
+<pre class="sql-cmd">postgres=# \dconfig data_directory
+        List of configuration parameters
+   Parameter    |            Value            
+----------------+-----------------------------
+ data_directory | /var/lib/postgresql/14/main
+(1 row)
+</pre>
+<p>I also recorded the location of the configuration file (through <code>psql</code>):</p>
+<pre class="sql-cmd">postgres=# \dconfig config_file
+           List of configuration parameters
+  Parameter  |                  Value                  
+-------------+-----------------------------------------
+ config_file | /etc/postgresql/14/main/postgresql.conf
+(1 row)
+</pre>
+<h3 id="TOC-Stop-both-servers">Stop both servers</h2>
+<p>I attempt to stop the current server as follows:</p>
+<pre class="bash-cmd">/usr/lib/postgresql/14/bin/pg_ctl -D /var/lib/postgresql/14/main stop</pre>
+<p>The output is:</p>
+<pre class="text">
+waiting for server to shut down.... done
+server stopped
+</pre>
+<p>The new server is shut down as follows:</p>
+<pre class="bash-cmd">/usr/lib/postgresql/16/bin/pg_ctl -D /var/lib/postgresql/16/main stop</pre>
+<p>The result is:</p>
+<pre class="text">
+waiting for server to shut down.... done
+server stopped
+</pre>
+<h3 id="TOC-Configure-Upgrade">Configure Upgrade</h3>
+<p>I chose to configure the upgrade using environment variables as follows (using the values retrieved above):</p>
+<pre class="bash-cmd"># Configure upgrade using environment variables
+export PGBINOLD=/usr/lib/postgresql/14/bin
+export PGBINNEW=/usr/lib/postgresql/16/bin
+export PGDATAOLD=/etc/postgresql/14/main
+export PGDATANEW=/etc/postgresql/16/main
+export PGPORTOLD=5433
+export PGPORTNEW=5434
+export PGUSER=postgres
+# Ensure new binaries are used
+export PATH=${PGBINNEW}:${PATH}
+command -v pg_upgrade
+</pre>
+<p>The output is:</p>
+<pre class="bash-cmd">/usr/lib/postgresql/16/bin/pg_upgrade</pre>
+<h3 id="TOC-Do-Upgrade">Do Upgrade</h3>
+<p>I ran the following command as the <code>postgres</code> user:</p>
+<pre class="bash-cmd">pg_upgrade --jobs 6</pre>
+<p>The output is captured in <a href="home/procedures/postgresql/upgrade-postgresl-14-to-16/upgrade.log">upgrade.log</a>.</p>
+
+<h2 id="TOC-References">References</h2>
+<ul>
+<li><a href="https://www.postgresql.org/docs/current/pgupgrade.html">pg_upgrade</a></li>
+</ul>
+<h2 id="TOC-File-Downloads">File Downloads</h2>
+<ul>
+<li><a href="home/procedures/postgresql/upgrade-postgresl-14-to-16/upgrade.log">upgrade.log</a></li>
+</ul>
