@@ -1,0 +1,404 @@
+---
+layout: default
+title: 'Backup PostgreSQL DB'
+base-url: home/procedures/postgresql/backup_postgresql_db.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'PostgreSQL'
+  url: home/procedures/postgresql.html
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'Access-to-PostgreSQL-Server'
+  toc-text: 'Access to PostgreSQL Server'
+  toc-menu:
+  - toc-url: 'Password-Less-Access'
+    toc-text: 'Password-Less Access'
+  - toc-url: 'Listening-Port'
+    toc-text: 'Listening Port'
+- toc-url: 'Backup-All-DB'
+  toc-text: 'Backup All DB'
+  toc-menu:
+  - toc-url: 'Find-User-Databases'
+    toc-text: 'Find User Databases'
+  - toc-url: 'Backup-User-Databases'
+    toc-text: 'Backup User Databases'
+  - toc-url: 'Contents-of-TOC-DAT'
+    toc-text: 'Contents of TOC.DAT'
+- toc-url: 'Backup-Global-Settings'
+  toc-text: 'Backup Global Settings'
+- toc-url: 'Backup-Configuration-Files'
+  toc-text: 'Backup Configuration Files'
+- toc-url: 'Outline-of-Server-Restoration'
+  toc-text: 'Outline of Server Restoration'
+- toc-url: 'References'
+  toc-text: 'References'
+- toc-url: 'File-Downloads'
+  toc-text: 'File Downloads'
+---
+<h2 id="TOC-Overview">
+ Overview
+</h2>
+<p>
+ This procedure does a full backup of all user databases in a PostgreSQL 14 server.
+</p>
+<h2 id="TOC-Access-to-PostgreSQL-Server">
+ Access to PostgreSQL Server
+</h2>
+<h3 id="TOC-Password-Less-Access">
+ Password-Less Access
+</h3>
+<p>
+ The user,
+ <code>
+  postgres
+ </code>, can access the PostgreSQL 14 server without needing to provide a password because of the following settings in
+ <code>
+  /etc/postgresql/14/main/pg_hba.conf
+ </code>
+ :
+</p>
+<pre class="text">local   all             postgres                                peer</pre>
+<p>
+ This is set up by default.
+</p>
+<h3 id="TOC-Listening-Port">
+ Listening Port
+</h3>
+<p>
+ The PostgreSQL 14 server is listening on port 5434.
+</p>
+<p>
+ I had originally installed PostgreSQL 12 and upgraded from there. The next iteration of the PostgreSQL software chose the next available port after the default of 5433.
+</p>
+<h2 id="TOC-Backup-All-DB">
+ Backup All DB
+</h2>
+<h3 id="TOC-Find-User-Databases">
+ Find User Databases
+</h3>
+<p>
+ I used the following command as the
+ <code>
+  postgres
+ </code>
+ user to find all database in the PostgreSQL 14 server (listening on port 5434):
+</p>
+<pre class="bash-cmd">/usr/lib/postgresql/14/bin/psql \
+    --port=5434 \
+    --command '\l'</pre>
+<p>
+ The output is:
+</p>
+<pre class="text">
+                                     List of databases
+      Name       |  Owner   | Encoding |   Collate   |    Ctype    |   Access privileges   
+-----------------+----------+----------+-------------+-------------+-----------------------
+ books           | douglas  | UTF8     | en_AU.UTF-8 | en_AU.UTF-8 | 
+ douglas         | postgres | UTF8     | en_AU.UTF-8 | en_AU.UTF-8 | 
+ postgres        | postgres | UTF8     | en_AU.UTF-8 | en_AU.UTF-8 | 
+ postgresql_book | douglas  | UTF8     | en_AU.UTF-8 | en_AU.UTF-8 | 
+ template0       | postgres | UTF8     | en_AU.UTF-8 | en_AU.UTF-8 | =c/postgres          +
+                 |          |          |             |             | postgres=CTc/postgres
+ template1       | postgres | UTF8     | en_AU.UTF-8 | en_AU.UTF-8 | =c/postgres          +
+                 |          |          |             |             | postgres=CTc/postgres
+(6 rows)
+</pre>
+<p>
+ The following databases are installed when the
+ <code>
+  initdb
+ </code>
+ is run, and are not considered user databases:
+</p>
+<ul>
+ <li>
+  <code>
+   postgres
+  </code>
+ </li>
+ <li>
+  <code>
+   template0
+  </code>
+ </li>
+ <li>
+  <code>
+   template1
+  </code>
+ </li>
+</ul>
+<p>
+ Thus, the following databases need to be backed up:
+</p>
+<ul>
+ <li>
+  <code>
+   books
+  </code>
+ </li>
+ <li>
+  <code>
+   douglas
+  </code>
+ </li>
+ <li>
+  <code>
+   postgresql_book
+  </code>
+ </li>
+</ul>
+<h3 id="TOC-Backup-User-Databases">
+ Backup User Databases
+</h3>
+<p>
+ I used the following commands as the
+ <code>
+  postgres
+ </code>
+ user to backup all user databases in the PostgreSQL 14 server.
+ <strong>
+  The directories used be empty
+ </strong>
+ :
+</p>
+<pre class="bash-cmd">
+mkdir ~/backups
+cd ~/backups 
+for db_name in books douglas postgresql_book
+do /usr/lib/postgresql/14/bin/pg_dump \
+    --port=5434 \
+    --blobs \
+    --create \
+    --file=pg_14_${db_name}_backup \
+    --format=custom \
+    --format=directory \
+    --jobs=6 \
+    --verbose \
+    ${db_name}
+done
+</pre>
+<p>
+</p>
+<p>
+ The output has been uploaded as
+ <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_all_14_db.log">
+  full_backup_all_14_db.log
+ </a>
+ . The list of files can be found in
+ <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_files.lst">
+  full_backup_files.lst
+ </a>
+ .
+</p>
+<h3 id="TOC-Contents-of-TOC-DAT">
+ Contents of TOC.DAT
+</h3>
+<p>
+ As can be seen from the listings in
+ <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_files.lst">
+  full_backup_files.lst
+ </a>
+ , there is a
+ <code>
+  toc.dat
+ </code>
+ in every backup directory. The printable contents of one of these (
+ <code>
+  backup/pg_14_douglas_backup/toc.dat
+ </code>
+ ) is:
+</p>
+<pre class="text">PGDMP
+douglas
+14.11 (Ubuntu 14.11-1.pgdg22.04+1)
+14.11 (Ubuntu 14.11-1.pgdg22.04+1)
+ENCODING
+ENCODING
+SET client_encoding = 'UTF8';
+false
+STDSTRINGS
+STDSTRINGS
+SET standard_conforming_strings = 'on';
+false
+SEARCHPATH
+SEARCHPATH
+SELECT pg_catalog.set_config('search_path', '', false);
+false
+1262
+16480
+douglas
+DATABASE
+CREATE DATABASE douglas WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'en_AU.UTF-8';
+DROP DATABASE douglas;
+postgres
+false
+3079
+16481
+adminpack
+EXTENSION
+CREATE EXTENSION IF NOT EXISTS adminpack WITH SCHEMA pg_catalog;
+DROP EXTENSION adminpack;
+false
+EXTENSION adminpack
+COMMENT
+COMMENT ON EXTENSION adminpack IS 'administrative functions for PostgreSQL';
+false
+</pre>
+<h2 id="TOC-Backup-Global-Settings">
+ Backup Global Settings
+</h2>
+<p>
+ I used the following commands as the
+ <code>
+  postgres
+ </code>
+ user to backup the global settings for the PostgreSQL 14 server running on port 5434:
+</p>
+<pre class="bash-cmd">
+cd ~/backups
+pg_dumpall --globals-only --file=globals.backup</pre>
+<p>
+ The editted contents of
+ <code>
+  globals.backup
+ </code>
+ are:
+</p>
+<pre class="text">
+--
+-- PostgreSQL database cluster dump
+--
+
+SET default_transaction_read_only = off;
+
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+
+--
+-- Roles
+--
+
+CREATE ROLE books;
+ALTER ROLE books WITH NOSUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:****************************************************************************************************=';
+CREATE ROLE douglas;
+ALTER ROLE douglas WITH SUPERUSER INHERIT NOCREATEROLE NOCREATEDB LOGIN NOREPLICATION NOBYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:****************************************************************************************************=';
+CREATE ROLE postgres;
+ALTER ROLE postgres WITH SUPERUSER INHERIT CREATEROLE CREATEDB LOGIN REPLICATION BYPASSRLS PASSWORD 'SCRAM-SHA-256$4096:***************************************************************************************************=';
+
+
+
+
+--
+-- Tablespaces
+--
+
+CREATE TABLESPACE books OWNER douglas LOCATION '/var/lib/postgresql/14/main';
+
+
+--
+-- PostgreSQL database cluster dump complete
+--
+</pre>
+<h2 id="TOC-Backup-Configuration-Files">
+ Backup Configuration Files
+</h2>
+<p>
+ I used the following commands to backup the configuration files for the PostgreSQL 14 server:
+</p>
+<pre class="bash-cmd">cd /etc/postgresql/14/main
+postgres@coogee:/etc/postgresql/14/main$ tar czvf ~/backup/settings.tgz .</pre>
+<p>
+ The following files and directories are backed up:
+</p>
+<pre class="text">./
+./start.conf
+./postgresql.conf
+./conf.d/
+./pg_hba.conf
+./pg_ctl.conf
+./pg_ident.conf
+./environment
+</pre>
+<h2 id="TOC-Outline-of-Server-Restoration">
+ Outline of Server Restoration
+</h2>
+<p>
+ The general steps to restore the PostgreSQL 14 server are:
+</p>
+<ol>
+ <li>
+  Install PostgreSQL 14 software, if required. This will create a default server with three (3) databases.
+ </li>
+ <li>
+  Restore configuration files, if required. The installation of the PostgreSQL 14 software will create default configuration files.
+ </li>
+ <li>
+  Start PostgreSQL 14 server, if required. The installation of the PostgreSQL 14 software will start the server automatically.
+ </li>
+ <li>
+  Restore global settings.
+ </li>
+ <li>
+  Restore all user databases.
+ </li>
+</ol>
+<h2 id="TOC-References">
+ References
+</h2>
+<ul>
+ <li>
+  <a href="https://www.postgresql.org/docs/14/index.html">
+   PostgreSQL 14.11 Documentation
+  </a>
+ </li>
+ <ul>
+  <li>
+   <a href="https://www.postgresql.org/docs/14/reference.html">
+    Part VI. Reference
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="https://www.postgresql.org/docs/14/reference-client.html">
+     PostgreSQL Client Applications
+    </a>
+   </li>
+   <ul>
+    <li>
+     <a href="https://www.postgresql.org/docs/14/app-pgdump.html">
+      pg_dump
+     </a>
+    </li>
+    <li>
+     <a href="https://www.postgresql.org/docs/14/app-pgdumpall.html">
+      pg_dumpall
+     </a>
+    </li>
+    <li>
+     <a href="https://www.postgresql.org/docs/14/app-psql.html">
+      psql
+     </a>
+    </li>
+   </ul>
+  </ul>
+ </ul>
+</ul>
+<h2 id="TOC-File-Downloads">
+ File Downloads
+</h2>
+<ul>
+ <li>
+  <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_all_14_db.log">
+   full_backup_all_14_db.log
+  </a>
+ </li>
+ <li>
+  <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_files.lst">
+   full_backup_files.lst
+  </a>
+ </li>
+</ul>

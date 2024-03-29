@@ -24,3 +24,24 @@ div.goog-toc {
     background:none;
     border: 1px solid #ccc;
 }
+
+pre.bash-cmd {
+    border:           5px groove black;
+    margin-left:      10px;
+    padding:          2px;
+    background-color: lightgreen;
+    }
+        
+pre.sql-cmd {
+    border:           5px groove black;
+    margin-left:      10px;
+    padding:          2px;
+    background-color: #def87c;
+    }
+        
+pre.text {
+    border:      5px groove black;
+    margin-left: 10px;
+    padding:     2px;
+    background-color: #7ccdf8;
+    }
