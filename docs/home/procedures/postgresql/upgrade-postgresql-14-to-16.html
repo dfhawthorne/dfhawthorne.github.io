@@ -127,7 +127,18 @@ command -v pg_upgrade
 <p>I ran the following command as the <code>postgres</code> user:</p>
 <pre class="bash-cmd">pg_upgrade --jobs 6</pre>
 <p>The output is captured in <a href="home/procedures/postgresql/upgrade-postgresl-14-to-16/upgrade.log">upgrade.log</a>.</p>
-
+<p>The following warning was issued:</p>
+<pre class="text">WARNING:  user-defined tablespace locations should not be inside the data directory, i.e. /var/lib/postgresql/14/main</pre>
+<p>And the following post-installation steps were recommended:</p>
+<pre class="text">Upgrade Complete
+----------------
+Optimizer statistics are not transferred by pg_upgrade.
+Once you start the new server, consider running:
+    /usr/lib/postgresql/16/bin/vacuumdb --all --analyze-in-stages
+Could not create a script to delete the old cluster's data files
+because user-defined tablespaces or the new cluster's data directory
+exist in the old cluster directory.  The old cluster's contents must
+be deleted manually.</pre>
 <h2 id="TOC-References">References</h2>
 <ul>
 <li><a href="https://www.postgresql.org/docs/current/pgupgrade.html">pg_upgrade</a></li>

@@ -1,0 +1,123 @@
+---
+
+layout: default
+title: 'Move Default Tablespace'
+base-url: home/procedures/postgresql/move-default-tablespace.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'PostgreSQL'
+  url: home/procedures/postgresql.html
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'Set-Correct-Port-for-PostgreSQL-16-Server'
+  toc-text: 'Set Correct Port for PostgreSQL 16 Server'
+- toc-url: 'Display-Current-Configuration'
+  toc-text: 'Display Current Configuration'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'Rename-Old-Tablespace'
+    toc-text: 'Rename Old Tablespace'
+  - toc-url: 'Create-New-Tablespace'
+    toc-text: 'Create New Tablespace'
+  - toc-url: 'Change-Default-Tablespace'
+    toc-text: 'Change Default Tablespace'
+  - toc-url: 'Drop-Old-Tablespace'
+    toc-text: 'Drop Old Tablespace'
+---
+
+<h2 id="TOC-Overview">Overview</h2>
+<p>The procedure for moving the default tablespace for a database is different from other tablespaces. The actual movement is done through the <code>ALTER DATABASE</code> rather than through the <code>ALTER TABLE</code> command.</p>
+<h2 id="TOC-Set-Correct-Port-for-PostgreSQL-16-Server">Set Correct Port for PostgreSQL 16 Server</h2>
+<p>I ran the following command to ensure that the correct PostgreSQL server is selected:</p>
+<pre class="bash-cmd">export PGPORT=5432</pre>
+<p>All of the following commands are run as the <strong><code>postgres</code></strong> user.</p>
+<h2 id="TOC-Display-Current-Configuration">Display Current Configuration</h2>
+<p><span style="font-weight: bold; color: darkblue; background-color: lightblue; font-size: larger;">Note:</span> I ran the following commands to display the current configuration for the <code>books</code> database and tablespace:</p>
+<pre class="bash-cmd">psql --command='\l+ books'
+psql --command='\db+ *books*'</pre>
+<p>The results are:</p>
+<pre class="text">                                                                     List of databases
+ Name  |  Owner  | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules | Access privileges |  Size   | Tablespace | Description 
+-------+---------+----------+-----------------+-------------+-------------+------------+-----------+-------------------+---------+------------+-------------
+ <strong>books</strong> | douglas | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           |                   | <strong>8284 kB</strong> | <strong>books</strong>      | 
+(1 row)
+
+                                            List of tablespaces
+ Name  | Owner |               Location               | Access privileges | Options |  Size   | Description 
+-------+-------+--------------------------------------+-------------------+---------+---------+-------------
+ <strong>books</strong> | books | <strong>/var/lib/postgresql/user_tablespaces</strong> |                   |         | <strong>8296 kB</strong> | 
+(1 row)</pre>
+<p>Important things to note are:</p>
+<ul>
+<li>The default tablespace for the <code>books</code> database is called <code>books</code>.</li>
+<li>There is 12 KB more in the <code>books</code> tablespace (8296 KB) than is reported for the <code>books</code> database (8284 KB). I have no explanation for this discrepency.</li>
+<li>The <code>books</code> tablespace is located in the <code>/var/lib/postgresql/user_tablespaces</code> directory.</li>
+</ul>
+<h2 id="TOC-Procedure">Procedure</h2>
+<p>There are four (4) steps involved:</p>
+<ol>
+<li>Rename Old Tablespace</li>
+<li>Create New Tablespace</li>
+<li>Change Default Tablespace</li>
+<li>Drop Old Tablespace</li>
+</ol>
+<h3 id="TOC-Rename-Old-Tablespace">Rename Old Tablespace</h3>
+<p>I ran the following commands to rename the <code>books</code> tablespace to <code>old_books</code> and display the resulting configuration:</p>
+<pre class="bash-cmd">psql --command='ALTER TABLESPACE books RENAME TO old_books'
+psql --command='\l+ books'
+psql --command='\db+ *books*'</pre>
+<p>The results are:</p>
+<pre class="text">ALTER TABLESPACE
+                                                                     List of databases
+ Name  |  Owner  | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules | Access privileges |  Size   | Tablespace | Description 
+-------+---------+----------+-----------------+-------------+-------------+------------+-----------+-------------------+---------+------------+-------------
+ books | douglas | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           |                   | 8284 kB | old_books  | 
+(1 row)
+
+                                              List of tablespaces
+   Name    | Owner |               Location               | Access privileges | Options |  Size   | Description 
+-----------+-------+--------------------------------------+-------------------+---------+---------+-------------
+ old_books | books | /var/lib/postgresql/user_tablespaces |                   |         | 8296 kB | 
+(1 row)</pre>
+<h3 id="TOC-Create-New-Tablespace">Create New Tablespace</h3>
+<p>I ran the following commands to create the directory for the new tablespace, <code>books</code>; create the new tablespace; and display the resulting configuration:</p>
+<pre class="bash-cmd">mkdir -p /var/lib/postgresql/user_ts/books
+psql --command="CREATE TABLESPACE books OWNER books LOCATION '/var/lib/postgresql/user_ts/books'"</pre>
+<p>The results are:</p>
+<pre class="text">CREATE TABLESPACE</pre>
+<h3 id="TOC-Change-Default-Tablespace">Change Default Tablespace</h3>
+<p>I ran the following command to change the default tablespace for the <code>books</code> databases from <code>old_books</code> to <code>books</code>, and display the resulting configuration:</p>
+<pre class="bash-cmd">psql --command='ALTER DATABASE books SET TABLESPACE books'
+psql --command='\db+ books'</pre>
+<p>The results are:</p>
+<pre class="text">ALTER DATABASE
+                                              List of tablespaces
+   Name    | Owner |               Location               | Access privileges | Options |  Size   | Description 
+-----------+-------+--------------------------------------+-------------------+---------+---------+-------------
+ books     | books | /var/lib/postgresql/user_ts/books    |                   |         | 8296 kB | 
+ old_books | books | /var/lib/postgresql/user_tablespaces |                   |         | 0 bytes | 
+(2 rows)</pre>
+<h3 id="TOC-Drop-Old-Tablespace">Drop Old Tablespace</h3>
+<p>I ran the following commands to drop the old tablespace, <code>old_books</code>, and display the resulting configuration:</p>
+<pre class="bash-cmd">psql --command='DROP TABLESPACE old_books'
+psql --command='\l+ books'
+psql --command='\db+ *books*'</pre>
+<p>The results are:</p>
+<pre class="text">DROP TABLESPACE
+                                                                     List of databases
+ Name  |  Owner  | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules | Access privileges |  Size   | Tablespace | Description 
+-------+---------+----------+-----------------+-------------+-------------+------------+-----------+-------------------+---------+------------+-------------
+ <strong>books</strong> | douglas | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           |                   | <strong>8284 kB</strong> | <strong>books</strong>      | 
+(1 row)
+
+                                           List of tablespaces
+ Name  | Owner |             Location              | Access privileges | Options |  Size   | Description 
+-------+-------+-----------------------------------+-------------------+---------+---------+-------------
+ <strong>books</strong> | books | <strong>/var/lib/postgresql/user_ts/books</strong> |                   |         | <strong>8296 kB</strong> | 
+(1 row)</pre>
+<p>It is important to note that the resulting configuration matches the original configuration, except for the location which points to the new directory, <code>/var/lib/postgresql/user_ts/books</code>.</p>

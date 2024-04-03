@@ -200,10 +200,11 @@ if len(breadcrumbs) > 0:
         if args.verbose:
             args.log.write(f"Breadcrumb: '{crumb['title']}' '{crumb['path']}'\n")
         page_header += f"- title: '{crumb['title']}'\n"
-        if crumb['path'].endswith('.html'):
-            page_header += f"  url: {crumb['path'][1:]}\n"
+        crumb_url = crumb['path'][1:].replace('/12-ocm','/12c-ocm')
+        if crumb_url.endswith('.html'):
+            page_header += f"  url: {crumb_url}\n"
         else:
-            page_header += f"  url: {crumb['path'][1:]}.html\n"
+            page_header += f"  url: {crumb_url}.html\n"
 
 # ------------------------------------------------------------------------------
 # Remove empty headers of the type:

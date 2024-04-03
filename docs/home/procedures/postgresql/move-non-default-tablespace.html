@@ -1,0 +1,29 @@
+---
+layout: default
+title: 'Move Non-Default Tablespace'
+base-url: home/procedures/postgresql/move-non-default-tablespace.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'PostgreSQL'
+  url: home/procedures/postgresql.html
+---
+<h2>Overview</h2>
+<p>I moved a user-defined tablespace from its location inside the data directory to another directory.</p>
+<p><span style="font-weight: bold; color: blue; background-color: lightblue; font-size: larger;">Note:</span> This procedure is for tablespaces that are not default for a database. For those tablespaces, refer to the procedure in <a href="home/procedures/postgresql/move-default-tablespace.html">Move Default Tablespace</a></p>
+<h2>Initial Plan</h2>
+<p>Based on my reading of the PostgreSQL documentation, I planned to move the <code>user_ts</code> tablespace by using the following steps:</p>
+<ol>
+    <li>Rename tablespace <code>user_ts</code> to <code>old_user_ts</code></li>
+    <li>Create new directory</li>
+    <li>Create a new tablespace, <code>user_ts</code>, in the new directory</li>
+    <li>Connect to user database</li>
+    <li>Move all tables and indexes using the following commands:</li>
+    <ul>
+        <li><code>ALTER TABLE ALL IN TABLESPACE old_user_ts SET TABLESPACE user_ts</code></li>
+        <li><code>ALTER INDEX ALL IN TABLESPACE old_user_ts SET TABLESPACE user_ts</code></li>
+    </ul>
+    <li>Drop the tablespace, <code>old_user_ts</code></li>
+</ol>
