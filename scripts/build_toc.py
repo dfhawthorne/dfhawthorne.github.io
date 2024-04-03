@@ -136,6 +136,6 @@ if args.verbose:
 if args.replace:
     with open(args.input_html_file_name[0],'w') as f:
         f.write(new_page_header)
-        f.write(soup.prettify())
+        f.write(str(soup))
 else:
-    print(new_page_header + soup.prettify())
+    print(new_page_header + str(soup))
