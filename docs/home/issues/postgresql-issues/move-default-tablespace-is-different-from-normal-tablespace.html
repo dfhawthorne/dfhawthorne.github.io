@@ -1,0 +1,180 @@
+---
+layout: default
+title: Move Default Tablespace is Different from Normal Tablespace
+base-url: home/issues/postgresql-issues/move-default-tablespace-is-different-from-normal-tablespace.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: 'Issues'
+  url: home/issues.html
+- title: 'PostgreSQL Issues'
+  url: home/issues/postgresql-issues.html
+---
+
+<h2>Overview</h2>
+<p>Relations in the default tablespace for a database do not have the tablespace name displayed in the <code>pg_tables</code> view. This is different from normal tablespaces. Changing the default tablespace for a database also moves the associated relations. However dropping the original default tablespace and renaming the new default one to the original name undoes all of the movement and restores the original directory. The solution is to rename the tablespace then change the default tablespace.</p>
+<h2>Status</h2>
+<p style="font-weight:bold;font-family:sans-serif;color:green;font-size:xx-large">RESOLVED</p>
+<h2>Workaround</h2>
+<p>None found</p>
+<h2>Resolution</h2>
+<p>Created procedure in <a href="home/procedures/postgresql/move-default-tablespace.html">Move Default Tablespace</a>.</p>
+<h2>Diagnosis</h2>
+<h3>Summary</h3>
+<p>The following are a detailed diary as I investigated how to move the tablespace <code>books</code> to another directory. </p>
+<h3>Find Number of Tables in BOOKS Tablespace</h3>
+<p>To see how many tables there are in that tablespace, I ran the following command:</p>
+<pre class="bash-cmd">psql --command="SELECT count(*) FROM pg_tables WHERE tablespace = 'books'"</pre>
+<p>The results were surprising:</p>
+<pre class="text"> count 
+-------
+      0
+(1 row)
+</pre>
+<h3>First Attempt to Drop Tablespace</h3>
+<p>Based on the PostgreSQL 16 server reporting that there are no tables in the tablespace <code>books</code>, I decided to drop that tablespace as follows:</p>
+<pre class="bash-cmd">psql --command="DROP TABLESPACE books"</pre>
+<p>But I got the following error message:</p>
+<pre class="text">ERROR:  tablespace "books" is not empty</pre>
+<p>I reran the command with an additional parameter to get more details as follows:</p>
+<pre class="bash-cmd">psql --set=VERBOSITY=verbose --command="DROP TABLESPACE books"</pre>
+<p>But the results were not as I expected:</p>
+<pre class="text">
+ERROR:  55000: tablespace "books" is not empty
+LOCATION:  DropTableSpace, tablespace.c:528  
+</pre>
+<h3>Create NEW_BOOKS Tablespace</h3>
+<p>Given that I do not know what tables are in the <code>books</code> tablespace, I will proceed to move the tables to a new tablespace called <code>new_books</code> which will be renamed to <code>books</code> once the old tablespace has been dropped. I used the following commands to create the new tablespace:</p>
+<pre class="bash-cmd">mkdir -p /var/lib/postgresql/user_ts/books
+psql --command="CREATE TABLESPACE new_books OWNER books LOCATION '/var/lib/postgresql/user_ts/books'"</pre>
+<p><strong>Note:</strong> In PostgreSQL, a tablespace is mapped to a directory. Tablespaces cannot share the same directory. In the above command, the sub-directory name, <code>books</code>, refers to the eventual tablespace name, not the curent one.</p>
+<p>The response is:</p>
+<pre class="text">CREATE TABLESPACE</pre>
+<p>The contents of the tablespace directory immediately after creation are:</p>
+<pre class="text">/var/lib/postgresql/user_ts/books:
+total 0</pre>
+<p>I used the following command to list all tablespaces that I am interested in:</p>
+<pre class="bash-cmd">psql --command="\db+ *books*"</pre>
+<p>There are two (2) tablespaces as expected:</p>
+<pre class="text">                                              List of tablespaces
+   Name    |  Owner  |             Location              | Access privileges | Options |  Size   | Description 
+-----------+---------+-----------------------------------+-------------------+---------+---------+-------------
+ books     | douglas | /var/lib/postgresql/14/main       |                   |         | 9181 kB | 
+ new_books | books   | /var/lib/postgresql/user_ts/books |                   |         | 0 bytes | 
+(2 rows)
+</pre>
+<p>The <code>books</code> tablespace continues to grow!</p>
+<h3>Move All Tables in BOOKS Tablespace to NEW_BOOKS</h3>
+<pre class="bash-cmd">psql --command="ALTER TABLE ALL IN TABLESPACE books SET TABLESPACE new_books"</pre>
+<p>This failed with the following message for the default database, <code>postgres</code>:</p>
+<pre class="text">NOTICE:  no matching relations in tablespace "books" found
+ALTER TABLE</pre>
+<p>However, if I specify the correct database, <code>books</code>, as follows:</p>
+<pre class="bash-cmd">psql --dbname books --command="ALTER TABLE ALL IN TABLESPACE books SET TABLESPACE new_books"</pre>
+<p>the command succeeds as shown below:</p>
+<pre class="text">ALTER TABLE</pre>
+<p>When I check the number of tables that exist in the <code>new_books</code> tabkespace with the following command:</p>
+<pre class="bash-cmd">psql --dbname books --command="SELECT count(*) FROM pg_tables WHERE tablespace = 'new_books'"</pre>
+<p>I find that there are eleven (11) tables in the <code>new_books</code> tablespace.</p>
+<h3>Second Attempt to Drop Tablespace</h3>
+<p>Now that I have moved all tables out of the tablespace <code>books</code>, I tried to drop that tablespace as follows:</p>
+<pre class="bash-cmd">psql --command="DROP TABLESPACE books"</pre>
+<p>But I got the following error message:</p>
+<pre class="text">ERROR:  tablespace "books" is not empty</pre>
+<p>I tried to move any remaining tables out of the <code>books</code> tablespace for the <code>books</code> database:</p>
+<pre class="bash-cmd">psql --dbname=books --command="ALTER TABLE ALL IN TABLESPACE books SET TABLESPACE new_books"</pre>
+<p>But the command fails with the following message:</p>
+<pre class="text">NOTICE:  no matching relations in tablespace "books" found
+ALTER TABLE</pre>
+<h3>Examine BOOKS Database</h3>
+<p>I looked at the definition of the <code>books</code> database using the following command:</p>
+<pre class="bash-cmd">psql --command="\l+ books"</pre>
+<p>The result is:</p>
+<pre class="text">                                                                     List of databases
+ Name  |  Owner  | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules | Access privileges |  Size   | Tablespace | Description 
+-------+---------+----------+-----------------+-------------+-------------+------------+-----------+-------------------+---------+------------+-------------
+ books | douglas | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           |                   | 9169 kB | books      | 
+(1 row)
+</pre>
+<p>It would appear that the default tablespace for the <code>books</code> database is <code>books</code>.</p>
+<h3>First Attempt to Change Default Tablespace for BOOKS Database</h3>
+<p>I used the following command to change the default tablespace for the <code>books</code> database to <code>new_books</code>:</p>
+<pre class="bash-cmd">psql --command="ALTER DATABASE books SET TABLESPACE new_books"</pre>
+<p>The result is:</p>
+<pre class="text">ERROR:  some relations of database "books" are already in tablespace "new_books"
+HINT:  You must move them back to the database's default tablespace before using this command.
+</pre>
+<h3>Move Tables Back to BOOKS Tablespace</h3>
+<p>I used the following command to move all tables from the <code>new_books</code> tablespace to the <code>books</code> one for the <code>books</code> database:</p>
+<pre class="bash-cmd">psql --dbname=books --command="ALTER TABLE ALL IN TABLESPACE new_books SET TABLESPACE books"</pre>
+<p>The result is:</p>
+<pre class="text">ALTER TABLE</pre>
+<h3>Second Attempt to Change Default Tablespace for BOOKS Database</h3>
+<p>I used the following command to change the default tablespace for the <code>books</code> database to <code>new_books</code>:</p>
+<pre class="bash-cmd">psql --command="ALTER DATABASE books SET TABLESPACE new_books"</pre>
+<p>The result is:</p>
+<pre class="text">ALTER DATABASE</pre>
+<p>Now when I check for tables in the <code>books</code> and <code>new_books</code> tablespaces using the following command:</p>
+<pre class="bash-cmd">psql --command="SELECT tablespace,count(*) FROM pg_tables WHERE tablespace IN ('books','new_books') GROUP BY tablespace"</pre>
+<p>The result is:</p>
+<pre class="text"> tablespace | count 
+------------+-------
+(0 rows)</pre>
+<h3>Third Attempt to Move Tables to NEW_BOOKS Tablespace</h3>
+<p>Now that I have successfully changed the default tablespace for the <code>books</code> database to <code>new_books</code>, I moved all tables in the <code>books</code> tablespace to <code>new_books</code> using the following command:</p>
+<pre class="bash-cmd">psql --dbname=books --command="ALTER TABLE ALL IN TABLESPACE books SET TABLESPACE new_books"</pre>
+<p>The result is:</p>
+<pre class="text">NOTICE:  no matching relations in tablespace "books" found
+ALTER TABLE</pre>
+<p>I checked the default tablespace for the <code>books</code> database using the following command:</p>
+<pre class="bash-cmd">psql --command='\l+ books'</pre>
+<p>The expected value of <code>new_books</code> is confirmed by:</p>
+<pre class="text">
+                                                                    List of databases
+ Name  |  Owner  | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules | Access privileges |  Size   | Tablespace | Description 
+-------+---------+----------+-----------------+-------------+-------------+------------+-----------+-------------------+---------+------------+-------------
+ books | douglas | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           |                   | 9185 kB | new_books  | 
+(1 row)
+</pre>
+<p>I checked the sizes of the <code>books</code> and <code>new_books</code> tablespaces using the following command:</p>
+<pre class="bash-cmd">psql --command='\db+ *books*'</pre>
+<p>The result is:</p>
+<pre class="text">                                                List of tablespaces
+    Name    |  Owner  |             Location              | Access privileges | Options |  Size   | Description 
+ -----------+---------+-----------------------------------+-------------------+---------+---------+-------------
+  books     | douglas | /var/lib/postgresql/14/main       |                   |         | 0 bytes | 
+  new_books | books   | /var/lib/postgresql/user_ts/books |                   |         | 9197 kB | 
+ (2 rows)
+</pre>
+<p>It would appear that the change to the default tablespace for the database moved all of the tables to the new tablespace.</p>
+<h3>Second Attempt to Drop BOOKS Tablespace</h3>
+<p>I used the following command to drop the <code>books</code> tablespace using the following command:</p>
+<pre class="bash-cmd">psql --command='DROP TABLESPACE books'</pre>
+<p>The result is:</p>
+<pre class="text">DROP TABLESPACE</pre>
+<h3>Rename NEW_BOOKS Tablespace</h3>
+<p>I used the following command to rename the <code>new_books</code> tablespace to <code>books</code>:</p>
+<pre class="bash-cmd">psql --command='ALTER TABLESPACE new_books RENAME TO books'</pre>
+<p>The result is:</p>
+<pre class="text">ALTER TABLESPACE</pre>
+<p>The default tablespace for the <code>books</code> database is renamed as well:</p>
+<pre class="bash-cmd">psql --command='\l+ books'</pre>
+<p>The result is:</p>
+<pre class="text">                                                                     List of databases
+ Name  |  Owner  | Encoding | Locale Provider |   Collate   |    Ctype    | ICU Locale | ICU Rules | Access privileges |  Size   | Tablespace | Description 
+-------+---------+----------+-----------------+-------------+-------------+------------+-----------+-------------------+---------+------------+-------------
+ books | douglas | UTF8     | libc            | en_AU.UTF-8 | en_AU.UTF-8 |            |           |                   | 9185 kB | books      | 
+(1 row) 
+</pre>
+<h3>BOOKS Tablespace is Restored in Original Directory</h3>
+<p>When I check the <code>books</code> tablespace, I find it is back to its original directory:</p>
+<pre class="bash-cmd">psql --command='\db+ *books*'</pre>
+<p>The following output shows the original directory:</p>
+<pre class="text">
+  List of tablespaces
+  Name  | Owner |               Location               | Access privileges | Options |  Size   | Description 
+ -------+-------+--------------------------------------+-------------------+---------+---------+-------------
+  books | books | /var/lib/postgresql/user_tablespaces |                   |         | 8296 kB | 
+ (1 row)
+</pre>
+
