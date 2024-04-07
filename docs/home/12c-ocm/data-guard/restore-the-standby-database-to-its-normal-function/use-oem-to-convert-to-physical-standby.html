@@ -1,0 +1,174 @@
+---
+layout: default
+title: 'Use OEM to Convert to Physical Standby'
+base-url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-standby.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: '12C OCM'
+  url: home/12c-ocm.html
+- title: 'Data Guard'
+  url: home/12c-ocm/data-guard.html
+- title: 'Restore the standby database to its normal function'
+  url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function.html
+- title: 'Use OEM to Convert to Physical Standby'
+  url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby.html
+table-of-contents:
+- toc-url: 'Summary'
+  toc-text: 'Summary'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'Setup'
+    toc-text: 'Setup'
+  - toc-url: 'Prepare-for-Conversion'
+    toc-text: 'Prepare for Conversion'
+  - toc-url: 'Enter-Host-Credentials'
+    toc-text: 'Enter Host Credentials'
+  - toc-url: 'Conversion-Confirmation'
+    toc-text: 'Conversion Confirmation'
+  - toc-url: 'Processing:-Convert-Standby-Database'
+    toc-text: 'Processing: Convert Standby Database'
+  - toc-url: 'Conversion-Complete'
+    toc-text: 'Conversion Complete'
+---
+<div dir="ltr">
+ <br/>
+ <h2>
+  <a name="TOC-Summary">
+  </a>
+  Summary
+ </h2>
+ <p>
+  The snapshot standby can be restored to its normal function as a physical standby through Oracle Enterprise Manager (OEM)
+ </p>
+ <h2>
+  <a name="TOC-Procedure">
+  </a>
+  Procedure
+ </h2>
+ <h3>
+  <a name="TOC-Setup">
+  </a>
+  Setup
+ </h3>
+ <p>
+  Three systems are involved:
+ </p>
+ <ol>
+  <li>
+   <a href="home/system-builds/cronulla.html">
+    CRONULLA
+   </a>
+  </li>
+  <li>
+   <a href="home/12c-ocm/12c-ocm-system-builds/padstow.html">
+    PADTSOW
+   </a>
+  </li>
+  <li>
+   <a href="home/12c-ocm/12c-ocm-system-builds/botany.html">
+    BOTANY
+   </a>
+  </li>
+ </ol>
+ <h3>
+  <a name="TOC-Prepare-for-Conversion">
+  </a>
+  Prepare for Conversion
+ </h3>
+ <p>
+  Navigate to the
+  <cite>
+   Data Guard Administration
+  </cite>
+  page where I have the following:
+ </p>
+ <div style="display:block;text-align:left">
+  <img alt="OEM Data Guard Administration page" border="0" src="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby/Restore_as_Physical_Standby_01.png"/>
+ </div>
+ <br/>
+ <p>
+  Since there is only one (1) standby database defined, there is no need to make a selection.
+ </p>
+ <p>
+  Click
+  <cite>
+   Convert
+  </cite>
+  .
+ </p>
+ <h3>
+  <a name="TOC-Enter-Host-Credentials">
+  </a>
+  Enter Host Credentials
+ </h3>
+ <p>
+  Ensure that the correct host credentials are entered for where the snapshot standby database instance is running. In this case, that host is
+  <span style="font-family:monospace">
+   BOTANY
+  </span>
+  :
+ </p>
+ <div style="display:block;text-align:left">
+  <img alt="OEM Enter host credentials for standby machine" border="0" src="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby/Restore_as_Physical_Standby_02.png"/>
+ </div>
+ <br/>
+ <p>
+  Click
+  <cite>
+   Continue
+  </cite>
+  .
+ </p>
+ <h3>
+  <a name="TOC-Conversion-Confirmation">
+  </a>
+  Conversion Confirmation
+ </h3>
+ <p>
+  The following screen asks for confirmation to convert the snapshot standby to a physical standby:
+ </p>
+ <div style="display:block;text-align:left">
+  <img alt="OEM Confirm conversion to physical standby" border="0" src="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby/Restore_as_Physical_Standby_03.png"/>
+ </div>
+ <br/>
+ <p>
+  Click
+  <cite>
+   Yes
+  </cite>
+  .
+ </p>
+ <h3>
+  <a name="TOC-Processing:-Convert-Standby-Database">
+  </a>
+  Processing: Convert Standby Database
+ </h3>
+ <p>
+  The following progress screen appears:
+ </p>
+ <div style="display:block;text-align:left">
+  <img alt="EM Processing: Convert Standby Database" border="0" src="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby/Restore_as_Physical_Standby_04.png"/>
+ </div>
+ <br/>
+ <h3>
+  <a name="TOC-Conversion-Complete">
+  </a>
+  Conversion Complete
+ </h3>
+ <p>
+  When the conversion has completed successfully, the main data guard administration screen reappears with a message as follows:
+ </p>
+ <div style="display:block;text-align:left">
+  <img alt="OEM Conversion Complete" border="0" src="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby/Restore_as_Physical_Standby_05.png"/>
+ </div>
+ <br/>
+ <p>
+  Note that the role has changed to
+  <cite>
+   Physical Standby
+  </cite>
+  .
+ </p>
+</div>
