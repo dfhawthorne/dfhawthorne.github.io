@@ -1,0 +1,244 @@
+---
+layout: default
+title: 'Use SQL*Plus to Convert to Physical Standby'
+base-url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-sql-plus-to-convert-to-physical-standby.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: '12C OCM'
+  url: home/12c-ocm.html
+- title: 'Data Guard'
+  url: home/12c-ocm/data-guard.html
+- title: 'Restore the standby database to its normal function'
+  url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function.html
+- title: 'Use SQL*Plus to Convert to Physical Standby'
+  url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-sql-plus-to-convert-to-physical-standby.html
+table-of-contents:
+- toc-url: 'Summary'
+  toc-text: 'Summary'
+- toc-url: 'References'
+  toc-text: 'References'
+  toc-menu:
+  - toc-url: 'Oracle-Manuals'
+    toc-text: 'Oracle Manuals'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'Setup'
+    toc-text: 'Setup'
+  - toc-url: 'Ensure-Correct-State'
+    toc-text: 'Ensure Correct State'
+  - toc-url: 'Shut-Database-Instance-Down'
+    toc-text: 'Shut Database Instance Down'
+  - toc-url: 'Put-Instance-Into-MOUNT-Mode'
+    toc-text: 'Put Instance Into MOUNT Mode'
+  - toc-url: 'Check-Instance-Mode-and-Role'
+    toc-text: 'Check Instance Mode and Role'
+  - toc-url: 'Convert-to-Physical-Standby'
+    toc-text: 'Convert to Physical Standby'
+  - toc-url: 'Check-Instance-Mode-and-Role1'
+    toc-text: 'Check Instance Mode and Role'
+---
+<div dir="ltr">
+ <br/>
+ <h2>
+  <a name="TOC-Summary">
+  </a>
+  Summary
+ </h2>
+ <p>
+  The snapshot standby can be restored to its normal function as a physical standby through through SQL*Plus using the procedure described in
+  <cite>
+   <a href="https://docs.oracle.com/database/121/SBYDB/manage_ps.htm#SBYDB-GUID-36B87563-A971-43B4-8320-52BBA27EE749" rel="nofollow">
+    10.7.3 Converting a Snapshot Standby Database into a Physical Standby Database
+   </a>
+  </cite>
+  .
+ </p>
+ <h2>
+  <a name="TOC-References">
+  </a>
+  References
+ </h2>
+ <h3>
+  <a name="TOC-Oracle-Manuals">
+  </a>
+  Oracle Manuals
+ </h3>
+ <ul>
+  <li>
+   <a href="https://docs.oracle.com/database/121/SBYDB/toc.htm" rel="nofollow">
+    Oracle
+    <sup>
+     ®
+    </sup>
+    12.1 Data Guard Concepts and Administration
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="https://docs.oracle.com/database/121/SBYDB/manage_ps.htm#SBYDB00700" rel="nofollow">
+     10 Managing Physical and Snapshot Standby Databases
+    </a>
+   </li>
+   <ul>
+    <li>
+     <a href="https://docs.oracle.com/database/121/SBYDB/manage_ps.htm#GUID-CE30E2D6-5B53-4389-8B02-FC0F341C8C1A" rel="nofollow">
+      10.7 Managing a Snapshot Standby Database
+     </a>
+    </li>
+    <ul>
+     <li>
+      <a href="https://docs.oracle.com/database/121/SBYDB/manage_ps.htm#SBYDB-GUID-36B87563-A971-43B4-8320-52BBA27EE749" rel="nofollow">
+       10.7.3 Converting a Snapshot Standby Database into a Physical Standby Database
+      </a>
+     </li>
+    </ul>
+   </ul>
+  </ul>
+ </ul>
+ <h2>
+  <a name="TOC-Procedure">
+  </a>
+  Procedure
+ </h2>
+ <h3>
+  <a name="TOC-Setup">
+  </a>
+  Setup
+ </h3>
+ <p>
+  One (1) system is involved:
+ </p>
+ <ol>
+  <li>
+   <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+    BOTANY
+   </a>
+  </li>
+ </ol>
+ <h3>
+  <a name="TOC-Ensure-Correct-State">
+  </a>
+  Ensure Correct State
+ </h3>
+ <p>
+  On
+  <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+   BOTANY
+  </a>
+  , use the following SQL*Plus command to find out what the current mode and role is for the database instance:
+ </p>
+ <pre style="background-color:lightgreen;margin-left:5px;padding:2px;border:5px groove black">select open_mode, database_role from v$database;
+</pre>
+ <p>
+  The expected output is:
+ </p>
+ <pre style="background-color:lightblue;margin-left:5px;padding:2px;border:5px groove black">OPEN_MODE	     DATABASE_ROLE
+-------------------- ----------------
+READ WRITE	     SNAPSHOT STANDBY
+</pre>
+ <h3>
+  <a name="TOC-Shut-Database-Instance-Down">
+  </a>
+  Shut Database Instance Down
+ </h3>
+ <p>
+  On
+  <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+   BOTANY
+  </a>
+  , use the following SQL*Plus command to shutdown the database instance:
+ </p>
+ <pre style="background-color:lightgreen;margin-left:5px;padding:2px;border:5px groove black">shutdown immediate</pre>
+ <p>
+  The expected output is:
+ </p>
+ <pre style="background-color:lightblue;margin-left:5px;padding:2px;border:5px groove black">Database closed.
+Database dismounted.
+ORACLE instance shut down.</pre>
+ <h3>
+  <a name="TOC-Put-Instance-Into-MOUNT-Mode">
+  </a>
+  Put Instance Into MOUNT Mode
+ </h3>
+ <p>
+  On
+  <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+   BOTANY
+  </a>
+  , use the following SQL*Plus command to mount the database instance:
+ </p>
+ <pre style="background-color:lightgreen;margin-left:5px;padding:2px;border:5px groove black">startup mount</pre>
+ <p>
+  The expected output is:
+ </p>
+ <pre style="background-color:lightblue;margin-left:5px;padding:2px;border:5px groove black">ORACLE instance started.
+
+Total System Global Area 1258291200 bytes
+Fixed Size		    2923920 bytes
+Variable Size		  973079152 bytes
+Database Buffers	  268435456 bytes
+Redo Buffers		   13852672 bytes
+Database mounted.
+</pre>
+ <h3>
+  <a name="TOC-Check-Instance-Mode-and-Role">
+  </a>
+  Check Instance Mode and Role
+ </h3>
+ <p>
+  On
+  <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+   BOTANY
+  </a>
+  , use the following SQL*Plus command to find out what the current mode and role is for the database instance:
+ </p>
+ <pre style="background-color:lightgreen;margin-left:5px;padding:2px;border:5px groove black">select open_mode, database_role from v$database;
+</pre>
+ <p>
+  The expected output is:
+ </p>
+ <pre style="background-color:lightblue;margin-left:5px;padding:2px;border:5px groove black">OPEN_MODE	     DATABASE_ROLE
+-------------------- ----------------
+MOUNTED 	     SNAPSHOT STANDBY
+</pre>
+ <h3>
+  <a name="TOC-Convert-to-Physical-Standby">
+  </a>
+  Convert to Physical Standby
+ </h3>
+ <p>
+  On
+  <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+   BOTANY
+  </a>
+  , use the following SQL*Plus command to find out what the current mode and role is for the database instance:
+ </p>
+ <pre style="background-color:lightgreen;margin-left:5px;padding:2px;border:5px groove black">ALTER DATABASE CONVERT TO PHYSICAL STANDBY;</pre>
+ <p>
+  The expected output is:
+ </p>
+ <pre style="background-color:lightblue;margin-left:5px;padding:2px;border:5px groove black">Database altered.</pre>
+ <h3>
+  <a name="TOC-Check-Instance-Mode-and-Role1">
+  </a>
+  Check Instance Mode and Role
+ </h3>
+ <p>
+  On
+  <a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace">
+   BOTANY
+  </a>
+  , use the following SQL*Plus command to find out what the current mode and role is for the database instance:
+ </p>
+ <pre style="background-color:lightgreen;margin-left:5px;padding:2px;border:5px groove black">select open_mode, database_role from v$database;
+</pre>
+ <p>
+  The expected output is:
+ </p>
+ <pre style="background-color:lightblue;margin-left:5px;padding:2px;border:5px groove black">OPEN_MODE	     DATABASE_ROLE
+-------------------- ----------------
+MOUNTED 	     PHYSICAL STANDBY
+</pre>
+</div>

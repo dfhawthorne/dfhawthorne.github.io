@@ -1,1135 +1,278 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html itemscope="" itemtype="http://schema.org/WebPage" xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
-  <meta content="chrome=1" http-equiv="X-UA-Compatible"/>
-  <script type="text/javascript">
-   /* Copyright 2008 Google. */ (function() { /*
-
-Copyright The Closure Library Authors.
-SPDX-License-Identifier: Apache-2.0
-*/
-(function(){function e(g){this.t={};this.tick=function(h,k,f){this.t[h]=[void 0!=f?f:(new Date).getTime(),k];if(void 0==f)try{window.console.timeStamp("CSI/"+h)}catch(m){}};this.getStartTickTime=function(){return this.t.start[0]};this.tick("start",null,g)}var a;if(window.performance)var d=(a=window.performance.timing)&&a.responseStart;var l=0<d?new e(d):new e;window.jstiming={Timer:e,load:l};if(a){var b=a.navigationStart;0<b&&d>=b&&(window.jstiming.srt=d-b)}if(a){var c=window.jstiming.load;0<b&&d>=
-b&&(c.tick("_wtsrt",void 0,b),c.tick("wtsrt_","_wtsrt",d),c.tick("tbsd_","wtsrt_"))}try{a=null,window.chrome&&window.chrome.csi&&(a=Math.floor(window.chrome.csi().pageT),c&&0<b&&(c.tick("_tbnd",void 0,window.chrome.csi().startE),c.tick("tbnd_","_tbnd",b))),null==a&&window.gtbExternal&&(a=window.gtbExternal.pageT()),null==a&&window.external&&(a=window.external.pageT,c&&0<b&&(c.tick("_tbnd",void 0,window.external.startE),c.tick("tbnd_","_tbnd",b))),a&&(window.jstiming.pt=a)}catch(g){}})(); })()
-  </script>
-  <link href="../../../favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-  <link href="https://ssl.gstatic.com/sites/p/3168fb/system/app/images/apple-touch-icon.png" rel="apple-touch-icon" type="image/png"/>
-  <script type="text/javascript">
-   /* Copyright 2008 Google. */ (function() { function d(a){return document.getElementById(a)}window.byId=d;function g(a){return a.replace(/^\s+|\s+$/g,"")}window.trim=g;var h=[],k=0;window.JOT_addListener=function(a,b,c){var f=new String(k++);a={eventName:a,handler:b,compId:c,key:f};h.push(a);return f};window.JOT_removeListenerByKey=function(a){for(var b=0;b<h.length;b++)if(h[b].key==a){h.splice(b,1);break}};window.JOT_removeAllListenersForName=function(a){for(var b=0;b<h.length;b++)h[b].eventName==a&&h.splice(b,1)};
-window.JOT_postEvent=function(a,b,c){var f={eventName:a,eventSrc:b||{},payload:c||{}};if(window.JOT_fullyLoaded)for(b=h.length,c=0;c<b&&c<h.length;c++){var e=h[c];e&&e.eventName==a&&(f.listenerCompId=e.compId||"",(e="function"==typeof e.handler?e.handler:window[e.handler])&&e(f))}else window.JOT_delayedEvents.push({eventName:a,eventSrc:b,payload:c})};window.JOT_delayedEvents=[];window.JOT_fullyLoaded=!1;
-window.JOT_formatRelativeToNow=function(a,b){a=((new Date).getTime()-a)/6E4;if(1440<=a||0>a)return null;var c=0;60<=a&&(a/=60,c=2);2<=a&&c++;return b?window.JOT_siteRelTimeStrs[c].replace("__duration__",Math.floor(a)):window.JOT_userRelTimeStrs[c].replace("__duration__",Math.floor(a))}; })()
-  </script>
-  <script>
-   var breadcrumbs = [{"path":"/home","deleted":false,"title":"Home","dir":"ltr"},{"path":"/home/12-ocm","deleted":false,"title":"12C OCM","dir":"ltr"},{"path":"/home/12-ocm/data-and-performance-management","deleted":false,"title":"Data and Performance Management","dir":"ltr"},{"path":"/home/12-ocm/data-and-performance-management/create-sql-plan-baselines","deleted":false,"title":"Create SQL Plan baselines","dir":"ltr"}];
-  var JOT_clearDotPath = 'https://ssl.gstatic.com/sites/p/3168fb/system/app/images/cleardot.gif';
-
-  
-  var JOT_userRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ago","__duration__ hours ago"];
-
-  
-  
-
-  
-
-  var webspace = {"gvizGstaticVersion":"current","enableAnalytics":true,"pageSharingId":"jotspot_page","codeembeds":{"outerIframeSrc":"https://www.gstatic.com/jotspot/embeds/code/0f08d42392f2000e7e3f3daf5b427a43/outer_iframe.html","innerIframeSrc":"https://36080062-jotspot-embeds.googleusercontent.com/code/8d87fa64604b2a11fae2ed06104c58d3/inner_iframe.html"},"enableUniversalAnalytics":false,"sharingPolicy":"OPENED","siteTitle":"Yet Another OCM","experiments":{"enableSubpagesGadgetInTakeout":true,"DisableSiteEditingFeature__disable_site_editing":false},"jot2atari":{"eligibility":"ineligible"},"onepickUrl":"https://docs.google.com/picker","adsensePublisherId":null,"features":{"moreMobileStyleImprovements":null,"subscriptionDataMigrationInProgress":null,"plusBadge":false},"configProperties":{"disableSiteEditing":null},"isPublic":true,"newSitesBaseUrl":"https://sites.google.com","isConsumer":true,"serverFlags":{"jot2AtariLearnMoreUrl":"https://support.google.com/sites/answer/7035197"},"domainAnalyticsAccountId":"","plusPageId":"","signInUrl":"https://accounts.google.com/AccountChooser?continue\u003dhttps://dfhawthorne.github.io/home/12-ocm/data-and-performance-management/create-sql-plan-baselines\u0026service\u003djotspot","analyticsAccountId":"UA-20772336-1","scottyUrl":"/_/upload","homePath":"/","siteNoticeUrlEnabled":null,"plusPageUrl":"","adsensePromoClickedOrSiteIneligible":true,"csiReportUri":"https://gg.google.com/csi","sharingId":"jotspot","termsUrl":"//www.google.com/intl/en/policies/terms/","gvizVersion":1,"editorResources":{"sitelayout":["https://ssl.gstatic.com/sites/p/3168fb/system/app/css/sitelayouteditor.css"],"text":["https://ssl.gstatic.com/sites/p/3168fb/system/js/codemirror.js","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/codemirror_css.css","https://ssl.gstatic.com/sites/p/3168fb/system/js/trog_edit__en.js","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/trogedit.css","/system/app/css/editor.css","https://ssl.gstatic.com/sites/p/3168fb/system/app/css/codeeditor.css","/system/app/css/camelot/editor-jfk.css"]},"sharingUrlPrefix":"/_/sharing","isAdsenseEnabled":true,"domain":"defaultdomain","baseUri":"/","name":"yetanotherocmoriginal","siteTemplateId":false,"siteNoticeRevision":null,"siteNoticeUrlAddress":null,"siteNoticeMessage":null,"page":{"isRtlLocale":false,"canDeleteWebspace":null,"isPageDraft":null,"parentPath":"/home/12-ocm/data-and-performance-management","parentWuid":"wuid:gx:1384b0e8b9408e1b","siteLocale":"en","timeZone":"America/Los_Angeles","type":"text","title":"Create SQL Plan baselines","locale":"en","wuid":"wuid:gx:39277db25c539be2","revision":6,"path":"/home/12-ocm/data-and-performance-management/create-sql-plan-baselines","isSiteRtlLocale":false,"pageInheritsPermissions":null,"name":"create-sql-plan-baselines","canChangePath":true,"state":"","properties":{},"bidiEnabled":false,"currentTemplate":{"path":"/system/app/pagetemplates/text","title":"Web Page"}},"canPublishScriptToAnyone":true,"user":{"keyboardShortcuts":true,"sessionIndex":"","guest_":true,"displayNameOrEmail":"guest","userName":"guest","uid":"","renderMobile":false,"domain":"","namespace":"","hasWriteAccess":false,"namespaceUser":false,"primaryEmail":"guest","hasAdminAccess":false},"gadgets":{"baseUri":"/system/app/pages/gadgets"}};
-  webspace.page.breadcrumbs = breadcrumbs;
-
-  
-  var JOT_siteRelTimeStrs = ["a minute ago","__duration__ minutes ago","an hour ago","__duration__ hours ago"];
-  </script>
-  <script type="text/javascript">
-   window.jstiming.load.tick('scl');
-  </script>
-  <meta content="Create SQL Plan baselines - Yet Another OCM" name="title"/>
-  <meta content="Create SQL Plan baselines - Yet Another OCM" itemprop="name"/>
-  <meta content="Create SQL Plan baselines - Yet Another OCM" property="og:title"/>
-  <style type="text/css">
-  </style>
-  <link href="https://ssl.gstatic.com/sites/p/3168fb/system/app/themes/simplywhite/standard-css-simplywhite-ltr-ltr.css" rel="stylesheet" type="text/css"/>
-  <link href="../../../system/app/css/overlay.css%3Fcb=simplywhiteundefineda100%2570200goog-ws-left.css" rel="stylesheet" type="text/css"/>
-  <link href="../../../system/app/css/camelot/allthemes-view.css" rel="stylesheet" type="text/css"/>
-  <!--[if IE]>
-          <link rel="stylesheet" type="text/css" href="/system/app/css/camelot/allthemes%2die.css" />
-        <![endif]-->
-  <title>
-   Create SQL Plan baselines - Yet Another OCM
-  </title>
-  <meta content="https://dfhawthorne.github.io/home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_Control_Access.png" itemprop="image"/>
-  <meta content="https://dfhawthorne.github.io/home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_Control_Access.png" property="og:image"/>
-  <script type="text/javascript">
-   window.jstiming.load.tick('cl');
-  </script>
- </head>
- <body class="en" id="body" xmlns="http://www.google.com/ns/jotspot">
-  <div class="sites-header-divider" id="sites-page-toolbar">
-   <div class="sites-status" id="sites-status" style="display:none;" xmlns="http://www.w3.org/1999/xhtml">
-    <div aria-live="assertive" class="sites-notice" id="sites-notice" role="status">
-    </div>
-   </div>
-  </div>
-  <div id="sites-chrome-everything-scrollbar">
-   <div class="" id="sites-chrome-everything">
-    <div id="sites-chrome-page-wrapper" style="direction: ltr">
-     <div id="sites-chrome-page-wrapper-inside">
-      <div id="sites-chrome-header-wrapper" style="" xmlns="http://www.w3.org/1999/xhtml">
-       <table cellspacing="0" class="sites-layout-hbox" id="sites-chrome-header" style="">
-        <tr class="sites-header-primary-row" id="sites-chrome-userheader">
-         <td class="" id="sites-header-title" role="banner" style="height: 70px">
-          <div class="sites-header-cell-buffer-wrapper">
-           <h2>
-            <a dir="ltr" href="../../../index.html" id="sites-chrome-userheader-title">
-             Yet Another OCM
-            </a>
-           </h2>
-          </div>
-         </td>
-         <td class="sites-layout-searchbox">
-          <div class="sites-header-cell-buffer-wrapper">
-           ../
-          </div>
-         </td>
-        </tr>
-        <tr class="sites-header-secondary-row" id="sites-chrome-horizontal-nav">
-         <td colspan="2" id="sites-chrome-header-horizontal-nav-container" role="navigation">
-         </td>
-        </tr>
-       </table>
-      </div>
-      <div id="sites-chrome-main-wrapper">
-       <div id="sites-chrome-main-wrapper-inside">
-        <table border="0" cellpadding="{scmCellpadding}" cellspacing="0" class="sites-layout-hbox" id="sites-chrome-main">
-         <tr>
-          <td class="sites-layout-sidebar-left initial" id="sites-chrome-sidebar-left" style="width:200px">
-           <div class="sites-embed" id="COMP_2bd" role="navigation" xmlns="http://www.w3.org/1999/xhtml">
-            <div class="sites-embed-content sites-sidebar-nav">
-             <ul class="has-expander" jotid="navList" role="navigation">
-              <li class="topLevel nav-first parent" wuid="gx:3b2a480be041e60">
-               <div dir="ltr" style="padding-left: 0px;">
-                <div class="expander">
-                </div>
-                <a class="sites-navigation-link topLevel" href="../../../home.html" jotid="wuid:gx:3b2a480be041e60">
-                 Home
-                </a>
-               </div>
-               <ul class="has-expander" role="navigation">
-                <li class="parent closed" wuid="gx:6854663d0adfa523">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../10g-ocm.html" jotid="wuid:gx:6854663d0adfa523">
-                   10G OCM
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../10g-ocm/10g-data-guard.html" jotid="wuid:gx:489beb2b832a7114">
-                     10G Data Guard
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../10g-ocm/10g-ocm-planning.html" jotid="wuid:gx:a88c5dbc7f0baef">
-                     10G OCM Planning
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../10g-ocm/10g-services.html" jotid="wuid:gx:54b13c32cf65c191">
-                     10G Services
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../10g-ocm/10g-system-builds.html" jotid="wuid:gx:77c66066c03e2ab7">
-                     10G System Builds
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:7f73cdd56622237c">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../11g-oce-rac.html" jotid="wuid:gx:7f73cdd56622237c">
-                   11G OCE RAC
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm.html" jotid="wuid:gx:7780a2761cf95de4">
-                     Section 1 - Grid Infrastructure: Clusterware and ASM
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-oce-rac/section-2---real-application-clusters.html" jotid="wuid:gx:267824251d3363d4">
-                     Section 2 - Real Application Clusters
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-oce-rac/system-builds.html" jotid="wuid:gx:30640194b5755edd">
-                     System Builds
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:5eeac2a35b15a760">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../11g-ocm.html" jotid="wuid:gx:5eeac2a35b15a760">
-                   11G OCM
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-ocm/11g-ocm-data-and-data-warehouse-management.html" jotid="wuid:gx:71d7afe17670b648">
-                     11G OCM Data and Data Warehouse Management
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-ocm/11g-ocm-data-guard.html" jotid="wuid:gx:70e445f4702ec675">
-                     11G OCM Data Guard
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-ocm/11g-ocm-database-rman-em-and-network-configuration.html" jotid="wuid:gx:795d9befe3118e8d">
-                     11G OCM Database, RMAN, EM and Network Configuration
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-ocm/11g-ocm-performance-management.html" jotid="wuid:gx:5156bf6750dc17a2">
-                     11G OCM Performance Management
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../11g-ocm/11g-ocm-system-builds.html" jotid="wuid:gx:4389b1e578a37048">
-                     11G OCM System Builds
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:45debd466b37352f">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../12-ocm.html" jotid="wuid:gx:45debd466b37352f">
-                   12C OCM
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../12c-ocm-system-builds.html" jotid="wuid:gx:702a95293f377a1f">
-                     12C OCM System Builds
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../data-and-performance-management.html" jotid="wuid:gx:1384b0e8b9408e1b">
-                     Data and Performance Management
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../data-guard.html" jotid="wuid:gx:7ee58a5d08758938">
-                     Data Guard
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../design-journal.html" jotid="wuid:gx:4c1a2046866ab43a">
-                     Design Journal
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../general-database-and-network-administration-and-backup-strategy.html" jotid="wuid:gx:454ec3cb615b531f">
-                     General Database and Network Administration, and Backup Strategy
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../grid-infrastructure-and-rac.html" jotid="wuid:gx:69a92aa26af488f2">
-                     Grid Infrastructure and RAC
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:3a92b59c02fad974">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../12c-ocp-upgrade.html" jotid="wuid:gx:3a92b59c02fad974">
-                   12C OCP Upgrade
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c.html" jotid="wuid:gx:333d3378e4d8110a">
-                     Section 1: New Features of Oracle Database 12c
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../12c-ocp-upgrade/section-2-key-dba-skills.html" jotid="wuid:gx:1c496affd5a26d55">
-                     Section 2: Key DBA Skills
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:ecd2e3476a85dd0">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../database-designs.html" jotid="wuid:gx:ecd2e3476a85dd0">
-                   Database Designs
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../database-designs/much-ado-about-nothing.html" jotid="wuid:gx:403b416305137e1c">
-                     Much Ado About Nothing
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:7106fb0a895904cd">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../issues.html" jotid="wuid:gx:7106fb0a895904cd">
-                   Issues
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../issues/cloud-control-issues.html" jotid="wuid:gx:7c017fe7b1b7db02">
-                     Cloud Control Issues
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../issues/linux-issues.html" jotid="wuid:gx:6bf0bf8b64edb3f9">
-                     Linux Issues
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../issues/oracle-patching-issues.html" jotid="wuid:gx:74b8bf5ac4858eb0">
-                     Oracle Patching Issues
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../issues/oracle-personal-edition-issues.html" jotid="wuid:gx:520e0a14b597913a">
-                     Oracle Personal Edition Issues
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../issues/ovm-issues.html" jotid="wuid:gx:77bb41fbebb34425">
-                     OVM Issues
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:29a6fee7cdc745ef">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../knowledge.html" jotid="wuid:gx:29a6fee7cdc745ef">
-                   Knowledge
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../knowledge/demonstrations.html" jotid="wuid:gx:5566308badf9236b">
-                     Demonstrations
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../knowledge/help-pages.html" jotid="wuid:gx:524a1fa20211bba4">
-                     Help Pages
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../knowledge/oracle-utilities.html" jotid="wuid:gx:7e79f0ae6f222cfe">
-                     Oracle Utilities
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../knowledge/technical-notes.html" jotid="wuid:gx:eb5c1299b9c5629">
-                     Technical Notes
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:c14ef310b5d580c">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../procedures.html" jotid="wuid:gx:c14ef310b5d580c">
-                   Procedures
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/create-oracle-database.html" jotid="wuid:gx:66844774cb1472af">
-                     Create Oracle Database
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/deinstall-oracle-rdbms.html" jotid="wuid:gx:f122a7a035acc27">
-                     Deinstall Oracle RDBMS
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/install-grid-infrastructure.html" jotid="wuid:gx:2ceeddc46048b732">
-                     Install Grid Infrastructure
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/install-linux.html" jotid="wuid:gx:1492df0262c2ded3">
-                     Install Linux
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/install-oracle-rdbms.html" jotid="wuid:gx:eb868e71022bb04">
-                     Install Oracle RDBMS
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/miscellaneous.html" jotid="wuid:gx:2bcb31c503521cac">
-                     Miscellaneous
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/patch-oracle-database.html" jotid="wuid:gx:2869e232f218ebdb">
-                     Patch Oracle Database
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../procedures/upgrade-oracle-database.html" jotid="wuid:gx:504db3f787da1411">
-                     Upgrade Oracle Database
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:7349065b46fcf29e">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../projects.html" jotid="wuid:gx:7349065b46fcf29e">
-                   Projects
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../projects/setting-up-a-private-cloud.html" jotid="wuid:gx:4a06d2a31bace57d">
-                     Setting Up a Private Cloud
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:1751da469fd4a61f">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../reading-notes.html" jotid="wuid:gx:1751da469fd4a61f">
-                   Reading Notes
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../reading-notes/oracle-vm-implementation-and-administration-guide.html" jotid="wuid:gx:14243848ab9914bb">
-                     Oracle VM Implementation and Administration Guide
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../reading-notes/pro-oracle-database-12c-administration.html" jotid="wuid:gx:4358cd288f337e82">
-                     Pro Oracle Database 12c Administration
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:419b9a9eeae58bc4">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../resource-allocations.html" jotid="wuid:gx:419b9a9eeae58bc4">
-                   Resource Allocations
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../resource-allocations/ip-addresses.html" jotid="wuid:gx:561dea96a669771d">
-                     IP Addresses
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../resource-allocations/victoria-vm-resources.html" jotid="wuid:gx:68cdf1d51fd331c2">
-                     Victoria VM Resources
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-                <li class="parent closed" wuid="gx:763c8c972462e886">
-                 <div dir="ltr" style="padding-left: 19px;">
-                  <div class="expander">
-                  </div>
-                  <a class="sites-navigation-link" href="../../system-builds.html" jotid="wuid:gx:763c8c972462e886">
-                   System Builds
-                  </a>
-                 </div>
-                 <ul class="has-expander" role="navigation">
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/auburn.html" jotid="wuid:gx:7333fb4a9cb176e1">
-                     AUBURN
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/clifton.html" jotid="wuid:gx:65e47d76f4cf9a5d">
-                     CLIFTON
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/cloudctl.html" jotid="wuid:gx:5fa340d44587d03">
-                     CLOUDCTL
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/cronulla.html" jotid="wuid:gx:3e6aa0e71514d4b7">
-                     CRONULLA
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/goldengate.html" jotid="wuid:gx:218d9e7c410189e8">
-                     GOLDENGATE
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/gordon.html" jotid="wuid:gx:337b55952ad14bf">
-                     GORDON
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/gridctrl.html" jotid="wuid:gx:22e160f4756f6339">
-                     GRIDCTRL
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/melbourne.html" jotid="wuid:gx:8ccc77de5c0c0ed">
-                     MELBOURNE
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/oatley.html" jotid="wuid:gx:7c8d46141284a0d5">
-                     OATLEY
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/personal.html" jotid="wuid:gx:6bc86e743a02acf1">
-                     PERSONAL
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/randwick.html" jotid="wuid:gx:7f108dc57ee2f76">
-                     RANDWICK
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/redfern.html" jotid="wuid:gx:21a1ed3bcc21c853">
-                     REDFERN
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/revesby.html" jotid="wuid:gx:1a25b24cca382d08">
-                     Revesby
-                    </a>
-                   </div>
-                  </li>
-                  <li class="">
-                   <div dir="ltr" style="padding-left: 57px;">
-                    <a class="sites-navigation-link" href="../../system-builds/victoria.html" jotid="wuid:gx:a8bab9e3f3d3ebf">
-                     Victoria
-                    </a>
-                   </div>
-                  </li>
-                 </ul>
-                </li>
-               </ul>
-              </li>
-              <li class="topLevel parent" wuid="gx:43c2eaccaaff7317">
-               <div dir="ltr" style="padding-left: 0px;">
-                <div class="expander">
-                </div>
-                <a class="sites-navigation-link topLevel" href="../../../announcements.html" jotid="wuid:gx:43c2eaccaaff7317">
-                 Announcements
-                </a>
-               </div>
-               <ul class="has-expander" role="navigation">
-                <li class="">
-                 <div dir="ltr" style="padding-left: 38px;">
-                  <a class="sites-navigation-link" href="../../../announcements/12april2012.html" jotid="wuid:gx:23728264e5601b93">
-                   12 April 2012
-                  </a>
-                 </div>
-                </li>
-                <li class="">
-                 <div dir="ltr" style="padding-left: 38px;">
-                  <a class="sites-navigation-link" href="../../../announcements/12march2012.html" jotid="wuid:gx:7b88c20efad9a3da">
-                   12 March 2012
-                  </a>
-                 </div>
-                </li>
-                <li class="">
-                 <div dir="ltr" style="padding-left: 38px;">
-                  <a class="sites-navigation-link" href="../../../announcements/27march2012.html" jotid="wuid:gx:632b604734e2dac9">
-                   27 March 2012
-                  </a>
-                 </div>
-                </li>
-               </ul>
-              </li>
-              <li class="topLevel">
-               <div dir="ltr" style="padding-left: 19px;">
-                <a class="sites-navigation-link topLevel" href="../../../book-reviews.html" jotid="wuid:gx:5d0d248f2da8dddc">
-                 Book Reviews
-                </a>
-               </div>
-              </li>
-              <li class="topLevel">
-               <div dir="ltr" style="padding-left: 19px;">
-                <a class="sites-navigation-link topLevel" href="../../../file-cabinet.html" jotid="wuid:gx:2434f251e91aec68">
-                 Files
-                </a>
-               </div>
-              </li>
-              <li class="topLevel">
-               <div dir="ltr" style="padding-left: 19px;">
-                <a class="sites-navigation-link topLevel" href="../../../ocm-questions-and-answers.html" jotid="wuid:gx:745e829206f7de92">
-                 OCM Questions and Answers
-                </a>
-               </div>
-              </li>
-              <li class="topLevel">
-               <div dir="ltr" style="padding-left: 19px;">
-                <a class="sites-navigation-link topLevel" href="../../../system/app/pages/sitemap/hierarchy.html" jotid="wuid:gx:3ea149e43344b911">
-                 Sitemap
-                </a>
-               </div>
-              </li>
-              <li class="topLevel">
-               <div dir="ltr" style="padding-left: 19px;">
-               </div>
-              </li>
-             </ul>
-            </div>
-           </div>
-           <div class="sites-embed" id="COMP_417369500733912" role="complementary" xmlns="http://www.w3.org/1999/xhtml">
-           </div>
-           <div class="sites-embed" id="COMP_35483861481770873" role="complementary" xmlns="http://www.w3.org/1999/xhtml">
-           </div>
-          </td>
-          <td id="sites-canvas-wrapper">
-           <div id="sites-canvas" role="main">
-            <div id="goog-ws-editor-toolbar-container">
-            </div>
-            <div id="title-crumbs" style="" xmlns="http://www.w3.org/1999/xhtml">
-             <a dir="ltr" href="../../../home.html">
-              Home
-             </a>
-             ‎ &gt; ‎
-             <a dir="ltr" href="../../12-ocm.html">
-              12C OCM
-             </a>
-             ‎ &gt; ‎
-             <a dir="ltr" href="../data-and-performance-management.html">
-              Data and Performance Management
-             </a>
-             ‎ &gt; ‎
-            </div>
-            <h3 align="left" id="sites-page-title-header" style="" xmlns="http://www.w3.org/1999/xhtml">
-             <span dir="ltr" id="sites-page-title" style="outline: none" tabindex="-1">
-              Create SQL Plan baselines
-             </span>
-            </h3>
-            <div class="sites-canvas-main" id="sites-canvas-main">
-             <div id="sites-canvas-main-content">
-              <table cellspacing="0" class="sites-layout-name-one-column sites-layout-hbox" xmlns="http://www.w3.org/1999/xhtml">
-               <tbody>
-                <tr>
-                 <td class="sites-layout-tile sites-tile-name-content-1">
-                  <div dir="ltr">
-                   <div>
-                    <div class="sites-embed-align-left-wrapping-off">
-                     <div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
-                      <div class="sites-embed-content sites-embed-type-toc">
-                       <div class="goog-toc sites-embed-toc-maxdepth-6">
-                        <p>
-                         Contents
-                        </p>
-                        <ol class="goog-toc">
-                         <li class="goog-toc">
-                          <a href="create-sql-plan-baselines.html#TOC-Summary">
-                           <strong>
-                            1
-                           </strong>
-                           Summary
-                          </a>
-                         </li>
-                         <li class="goog-toc">
-                          <a href="create-sql-plan-baselines.html#TOC-References">
-                           <strong>
-                            2
-                           </strong>
-                           References
-                          </a>
-                         </li>
-                         <li class="goog-toc">
-                          <a href="create-sql-plan-baselines.html#TOC-Sample-Session-Using-SQL-Plus">
-                           <strong>
-                            3
-                           </strong>
-                           Sample Session Using SQL*Plus
-                          </a>
-                          <ol class="goog-toc">
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Determine-Current-Parameter-Settings">
-                             <strong>
-                              3.1
-                             </strong>
-                             Determine Current Parameter Settings
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Capture-All-SQL-Plan-Baselines">
-                             <strong>
-                              3.2
-                             </strong>
-                             Capture All SQL Plan Baselines
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Generate-Some-Test-Plans">
-                             <strong>
-                              3.3
-                             </strong>
-                             Generate Some Test Plans
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Check-To-See-If-Any-SQL-Plans-Were-Captured">
-                             <strong>
-                              3.4
-                             </strong>
-                             Check To See If Any SQL Plans Were Captured
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-After-Second-Sample-SQL-Execution">
-                             <strong>
-                              3.5
-                             </strong>
-                             After Second Sample SQL Execution
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Create-Index-to-Improve-SQL-Plan">
-                             <strong>
-                              3.6
-                             </strong>
-                             Create Index to Improve SQL Plan
-                            </a>
-                           </li>
-                          </ol>
-                         </li>
-                         <li class="goog-toc">
-                          <a href="create-sql-plan-baselines.html#TOC-Using-OEM">
-                           <strong>
-                            4
-                           </strong>
-                           Using OEM
-                          </a>
-                          <ol class="goog-toc">
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Access-SQL-Plan-Control">
-                             <strong>
-                              4.1
-                             </strong>
-                             Access SQL Plan Control
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Access-SQL-Plan-Baseline-Tab">
-                             <strong>
-                              4.2
-                             </strong>
-                             Access SQL Plan Baseline Tab
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Captured-SQL-Plan-Baselines">
-                             <strong>
-                              4.3
-                             </strong>
-                             Captured SQL Plan Baselines
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Finding-Sample-SQL-Plan-Baselines">
-                             <strong>
-                              4.4
-                             </strong>
-                             Finding Sample SQL Plan Baselines
-                            </a>
-                           </li>
-                           <li class="goog-toc">
-                            <a href="create-sql-plan-baselines.html#TOC-Details-of-SQL-Plan-Baseline">
-                             <strong>
-                              4.5
-                             </strong>
-                             Details of SQL Plan Baseline
-                            </a>
-                           </li>
-                          </ol>
-                         </li>
-                         <li class="goog-toc">
-                          <a href="create-sql-plan-baselines.html#TOC-Using-SQL-Tuning-Sets-to-Create-SQL-Plan-Baselines">
-                           <strong>
-                            5
-                           </strong>
-                           Using SQL Tuning Sets to Create SQL Plan Baselines
-                          </a>
-                         </li>
-                        </ol>
-                       </div>
-                      </div>
-                     </div>
-                    </div>
-                   </div>
-                   <br/>
-                   <h2>
-                    <a name="TOC-Summary">
-                    </a>
-                    Summary
-                   </h2>
-                   <p>
-                    SQL Plan Baselines can be:
-                   </p>
-                   <ul>
-                    <li>
-                     Created automatically by setting the
-                     <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">
-                      optimizer_capture_sql_plan_baselines
-                     </a>
-                     initialisation parameter either at the CDB or PDB level;
-                    </li>
-                    <li>
-                     Created from a SQL Tuning Set (STS)
-                    </li>
-                    <li>
-                     Created from the Cursor Cache
-                    </li>
-                   </ul>
-                   <p>
-                    Each of these options can be done through OEM or SQL*Plus
-                   </p>
-                   <h2>
-                    <a name="TOC-References">
-                    </a>
-                    References
-                   </h2>
-                   <ul>
-                    <li>
-                     <a href="https://docs.oracle.com/database/121/TDPPT/toc.htm" rel="nofollow">
-                      Oracle
-                      <sup>
-                       ®
-                      </sup>
-                      12.1 Database 2 Day + Performance Tuning Guide
-                     </a>
-                    </li>
-                    <ul>
-                     <li>
-                      <a href="https://docs.oracle.com/database/121/TDPPT/tdppt_sqltune.htm#GUID-6B386EC1-A58F-4CFC-AEFB-9F787A112396" rel="nofollow">
-                       12 Tuning SQL Statements
-                      </a>
-                     </li>
-                     <ul>
-                      <li>
-                       <a href="https://docs.oracle.com/database/121/TDPPT/tdppt_sqltune.htm#GUID-5DDF477C-5169-4490-B98A-45EB0036488D" rel="nofollow">
-                        Managing SQL Plan Baselines
-                       </a>
-                      </li>
-                      <ul>
-                       <li>
-                        <a href="https://docs.oracle.com/database/121/TDPPT/tdppt_sqltune.htm#GUID-BD5C16D9-6940-4EA4-B891-AA314BEAA64A" rel="nofollow">
-                         Capturing SQL Plan Baselines Automatically
-                        </a>
-                       </li>
-                      </ul>
-                     </ul>
-                    </ul>
-                    <li>
-                     <a href="https://docs.oracle.com/database/121/TGSQL/toc.htm" rel="nofollow">
-                      Oracle
-                      <sup>
-                       ®
-                      </sup>
-                      12.1 Database SQL Tuning Guide
-                     </a>
-                    </li>
-                    <ul>
-                     <li>
-                      <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#GUID-7024369A-F98D-48E4-921C-C899485C954F" rel="nofollow">
-                       23 Managing SQL Plan Baselines
-                      </a>
-                     </li>
-                     <ul>
-                      <li>
-                       <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#GUID-3D701147-1371-4604-8127-F9199EA0EDE0" rel="nofollow">
-                        Configuring SQL Plan Management
-                       </a>
-                      </li>
-                      <li>
-                       <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#GUID-C6AC4856-3C8C-42D8-A7FD-629974E98D36" rel="nofollow">
-                        Loading SQL Plan Baselines
-                       </a>
-                      </li>
-                      <li>
-                       <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#TGSQL653" rel="nofollow">
-                        Evolving SQL Plan Baselines Manually
-                       </a>
-                      </li>
-                      <ul>
-                       <li>
-                        <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#TGSQL94653" rel="nofollow">
-                         Managing an Evolve Task
-                        </a>
-                       </li>
-                      </ul>
-                     </ul>
-                    </ul>
-                    <li>
-                     <a href="https://docs.oracle.com/database/121/REFRN/toc.htm" rel="nofollow">
-                      Oracle
-                      <sup>
-                       ®
-                      </sup>
-                      12.1 Database Reference
-                     </a>
-                    </li>
-                    <ul>
-                     <li>
-                      <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">
-                       optimizer_capture_sql_plan_baselines
-                      </a>
-                     </li>
-                     <li>
-                      <a href="https://docs.oracle.com/database/121/REFRN/GUID-6218A4B0-B8B9-416E-ADB6-3FFA70F412DA.htm#REFRN10293" rel="nofollow">
-                       optimizer_use_sql_plan_baselines
-                      </a>
-                     </li>
-                     <li>
-                      <a href="https://docs.oracle.com/database/121/REFRN/GUID-101D8477-5600-4659-9A3C-9528391E500D.htm#REFRN23714" rel="nofollow">
-                       DBA_SQL_PLAN_BASELINES
-                      </a>
-                     </li>
-                    </ul>
-                   </ul>
-                   <h2>
-                    <a name="TOC-Sample-Session-Using-SQL-Plus">
-                    </a>
-                    Sample Session Using SQL*Plus
-                   </h2>
-                   <p>
-                    This sample session is based on the tutorial described in “
-                    <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#TGSQL94653" rel="nofollow">
-                     Managing an Evolve Task
-                    </a>
-                    ”.
-                   </p>
-                   <p>
-                    The scripts used can be found at
-                    <a href="https://github.com/dfhawthorne/sql-ocm12c/tree/master/Data%20and%20performance%20management/Create%20SQL%20Plan%20Baselines" rel="nofollow">
-                     sql-ocm12c/Data and performance management/Create SQL Plan Baselines/
-                    </a>
-                    GIT repository.
-                   </p>
-                   <h3>
-                    <a name="TOC-Determine-Current-Parameter-Settings">
-                    </a>
-                    Determine Current Parameter Settings
-                   </h3>
-                   <p>
-                    Used the following SQL*Plus command to show the relevant parameter settings for SQL Plan Baselines:
-                   </p>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">show parameter sql_plan_baselines</pre>
-                   <p>
-                    The result was:
-                   </p>
-                   <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">NAME                    TYPE    VALUE
+---
+layout: default
+title: 'Create SQL Plan baselines'
+base-url: home/12c-ocm/data-and-performance-management/create-sql-plan-baselines.html
+breadcrumbs:
+- title: 'Home'
+  url: home.html
+- title: '12C OCM'
+  url: home/12c-ocm.html
+- title: 'Data and Performance Management'
+  url: home/12c-ocm/data-and-performance-management.html
+- title: 'Create SQL Plan baselines'
+  url: home/12c-ocm/data-and-performance-management/create-sql-plan-baselines.html
+table-of-contents:
+- toc-url: 'Summary'
+  toc-text: 'Summary'
+- toc-url: 'References'
+  toc-text: 'References'
+- toc-url: 'Sample-Session-Using-SQL-Plus'
+  toc-text: 'Sample Session Using SQL*Plus'
+  toc-menu:
+  - toc-url: 'Determine-Current-Parameter-Settings'
+    toc-text: 'Determine Current Parameter Settings'
+  - toc-url: 'Capture-All-SQL-Plan-Baselines'
+    toc-text: 'Capture All SQL Plan Baselines'
+  - toc-url: 'Generate-Some-Test-Plans'
+    toc-text: 'Generate Some Test Plans'
+  - toc-url: 'Check-To-See-If-Any-SQL-Plans-Were-Captured'
+    toc-text: 'Check To See If Any SQL Plans Were Captured'
+  - toc-url: 'After-Second-Sample-SQL-Execution'
+    toc-text: 'After Second Sample SQL Execution'
+  - toc-url: 'Create-Index-to-Improve-SQL-Plan'
+    toc-text: 'Create Index to Improve SQL Plan'
+- toc-url: 'Using-OEM'
+  toc-text: 'Using OEM'
+  toc-menu:
+  - toc-url: 'Access-SQL-Plan-Control'
+    toc-text: 'Access SQL Plan Control'
+  - toc-url: 'Access-SQL-Plan-Baseline-Tab'
+    toc-text: 'Access SQL Plan Baseline Tab'
+  - toc-url: 'Captured-SQL-Plan-Baselines'
+    toc-text: 'Captured SQL Plan Baselines'
+  - toc-url: 'Finding-Sample-SQL-Plan-Baselines'
+    toc-text: 'Finding Sample SQL Plan Baselines'
+  - toc-url: 'Details-of-SQL-Plan-Baseline'
+    toc-text: 'Details of SQL Plan Baseline'
+- toc-url: 'Using-SQL-Tuning-Sets-to-Create-SQL-Plan-Baselines'
+  toc-text: 'Using SQL Tuning Sets to Create SQL Plan Baselines'
+---
+<div dir="ltr">
+ <br/>
+ <h2>
+  <a name="TOC-Summary">
+  </a>
+  Summary
+ </h2>
+ <p>
+  SQL Plan Baselines can be:
+ </p>
+ <ul>
+  <li>
+   Created automatically by setting the
+   <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">
+    optimizer_capture_sql_plan_baselines
+   </a>
+   initialisation parameter either at the CDB or PDB level;
+  </li>
+  <li>
+   Created from a SQL Tuning Set (STS)
+  </li>
+  <li>
+   Created from the Cursor Cache
+  </li>
+ </ul>
+ <p>
+  Each of these options can be done through OEM or SQL*Plus
+ </p>
+ <h2>
+  <a name="TOC-References">
+  </a>
+  References
+ </h2>
+ <ul>
+  <li>
+   <a href="https://docs.oracle.com/database/121/TDPPT/toc.htm" rel="nofollow">
+    Oracle
+    <sup>
+     ®
+    </sup>
+    12.1 Database 2 Day + Performance Tuning Guide
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="https://docs.oracle.com/database/121/TDPPT/tdppt_sqltune.htm#GUID-6B386EC1-A58F-4CFC-AEFB-9F787A112396" rel="nofollow">
+     12 Tuning SQL Statements
+    </a>
+   </li>
+   <ul>
+    <li>
+     <a href="https://docs.oracle.com/database/121/TDPPT/tdppt_sqltune.htm#GUID-5DDF477C-5169-4490-B98A-45EB0036488D" rel="nofollow">
+      Managing SQL Plan Baselines
+     </a>
+    </li>
+    <ul>
+     <li>
+      <a href="https://docs.oracle.com/database/121/TDPPT/tdppt_sqltune.htm#GUID-BD5C16D9-6940-4EA4-B891-AA314BEAA64A" rel="nofollow">
+       Capturing SQL Plan Baselines Automatically
+      </a>
+     </li>
+    </ul>
+   </ul>
+  </ul>
+  <li>
+   <a href="https://docs.oracle.com/database/121/TGSQL/toc.htm" rel="nofollow">
+    Oracle
+    <sup>
+     ®
+    </sup>
+    12.1 Database SQL Tuning Guide
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#GUID-7024369A-F98D-48E4-921C-C899485C954F" rel="nofollow">
+     23 Managing SQL Plan Baselines
+    </a>
+   </li>
+   <ul>
+    <li>
+     <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#GUID-3D701147-1371-4604-8127-F9199EA0EDE0" rel="nofollow">
+      Configuring SQL Plan Management
+     </a>
+    </li>
+    <li>
+     <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#GUID-C6AC4856-3C8C-42D8-A7FD-629974E98D36" rel="nofollow">
+      Loading SQL Plan Baselines
+     </a>
+    </li>
+    <li>
+     <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#TGSQL653" rel="nofollow">
+      Evolving SQL Plan Baselines Manually
+     </a>
+    </li>
+    <ul>
+     <li>
+      <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#TGSQL94653" rel="nofollow">
+       Managing an Evolve Task
+      </a>
+     </li>
+    </ul>
+   </ul>
+  </ul>
+  <li>
+   <a href="https://docs.oracle.com/database/121/REFRN/toc.htm" rel="nofollow">
+    Oracle
+    <sup>
+     ®
+    </sup>
+    12.1 Database Reference
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">
+     optimizer_capture_sql_plan_baselines
+    </a>
+   </li>
+   <li>
+    <a href="https://docs.oracle.com/database/121/REFRN/GUID-6218A4B0-B8B9-416E-ADB6-3FFA70F412DA.htm#REFRN10293" rel="nofollow">
+     optimizer_use_sql_plan_baselines
+    </a>
+   </li>
+   <li>
+    <a href="https://docs.oracle.com/database/121/REFRN/GUID-101D8477-5600-4659-9A3C-9528391E500D.htm#REFRN23714" rel="nofollow">
+     DBA_SQL_PLAN_BASELINES
+    </a>
+   </li>
+  </ul>
+ </ul>
+ <h2>
+  <a name="TOC-Sample-Session-Using-SQL-Plus">
+  </a>
+  Sample Session Using SQL*Plus
+ </h2>
+ <p>
+  This sample session is based on the tutorial described in “
+  <a href="https://docs.oracle.com/database/121/TGSQL/tgsql_spm.htm#TGSQL94653" rel="nofollow">
+   Managing an Evolve Task
+  </a>
+  ”.
+ </p>
+ <p>
+  The scripts used can be found at
+  <a href="https://github.com/dfhawthorne/sql-ocm12c/tree/master/Data%20and%20performance%20management/Create%20SQL%20Plan%20Baselines" rel="nofollow">
+   sql-ocm12c/Data and performance management/Create SQL Plan Baselines/
+  </a>
+  GIT repository.
+ </p>
+ <h3>
+  <a name="TOC-Determine-Current-Parameter-Settings">
+  </a>
+  Determine Current Parameter Settings
+ </h3>
+ <p>
+  Used the following SQL*Plus command to show the relevant parameter settings for SQL Plan Baselines:
+ </p>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">show parameter sql_plan_baselines</pre>
+ <p>
+  The result was:
+ </p>
+ <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">NAME                    TYPE    VALUE
 ------------------------------------ ----------- ------------------------------
 <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">optimizer_capture_sql_plan_baselines</a> boolean     FALSE
 <a href="https://docs.oracle.com/database/121/REFRN/GUID-6218A4B0-B8B9-416E-ADB6-3FFA70F412DA.htm#REFRN10293" rel="nofollow">optimizer_use_sql_plan_baselines</a>     boolean     TRUE
 </pre>
-                   <h3>
-                    <a name="TOC-Capture-All-SQL-Plan-Baselines">
-                    </a>
-                    Capture All SQL Plan Baselines
-                   </h3>
-                   <p>
-                    Used the following SQL*Plus command to capture all SQL Plan Baselines:
-                   </p>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">alter system set <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">optimizer_capture_sql_plan_baselines</a>=true</pre>
-                   <h3>
-                    <a name="TOC-Generate-Some-Test-Plans">
-                    </a>
-                    Generate Some Test Plans
-                   </h3>
-                   <p>
-                    Used the following SQL*Plus command to run SQL in the SH schema of the EXAMPLES PDB:
-                   </p>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">alter session set container=examples;
+ <h3>
+  <a name="TOC-Capture-All-SQL-Plan-Baselines">
+  </a>
+  Capture All SQL Plan Baselines
+ </h3>
+ <p>
+  Used the following SQL*Plus command to capture all SQL Plan Baselines:
+ </p>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">alter system set <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">optimizer_capture_sql_plan_baselines</a>=true</pre>
+ <h3>
+  <a name="TOC-Generate-Some-Test-Plans">
+  </a>
+  Generate Some Test Plans
+ </h3>
+ <p>
+  Used the following SQL*Plus command to run SQL in the SH schema of the EXAMPLES PDB:
+ </p>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">alter session set container=examples;
 alter session set current_schema=sh;
 </pre>
-                   <p>
-                    Used the following SQL as the sample:
-                   </p>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SELECT /* q1_group_by */ prod_name, sum(quantity_sold)
+ <p>
+  Used the following SQL as the sample:
+ </p>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SELECT /* q1_group_by */ prod_name, sum(quantity_sold)
   FROM   products p, sales s
   WHERE  p.prod_id = s.prod_id
   AND    p.prod_category_id =203
   GROUP BY prod_name;
 </pre>
-                   <h3>
-                    <a name="TOC-Check-To-See-If-Any-SQL-Plans-Were-Captured">
-                    </a>
-                    Check To See If Any SQL Plans Were Captured
-                   </h3>
-                   <p>
-                    Used the following SQL to confirm that no SQL plans were captured after just one (1) execution of the above sample SQL:
-                   </p>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SELECT SQL_HANDLE, SQL_TEXT, PLAN_NAME, ORIGIN, ENABLED, 
+ <h3>
+  <a name="TOC-Check-To-See-If-Any-SQL-Plans-Were-Captured">
+  </a>
+  Check To See If Any SQL Plans Were Captured
+ </h3>
+ <p>
+  Used the following SQL to confirm that no SQL plans were captured after just one (1) execution of the above sample SQL:
+ </p>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SELECT SQL_HANDLE, SQL_TEXT, PLAN_NAME, ORIGIN, ENABLED, 
        ACCEPTED, FIXED, AUTOPURGE
 FROM   <a href="https://docs.oracle.com/database/121/REFRN/GUID-101D8477-5600-4659-9A3C-9528391E500D.htm#REFRN23714" rel="nofollow">DBA_SQL_PLAN_BASELINES</a>
 WHERE  SQL_TEXT LIKE '%q1_group%';
 </pre>
-                   <p>
-                    The expected result is:
-                   </p>
-                   <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">no rows selected
+ <p>
+  The expected result is:
+ </p>
+ <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">no rows selected
 </pre>
-                   <h3>
-                    <a name="TOC-After-Second-Sample-SQL-Execution">
-                    </a>
-                    After Second Sample SQL Execution
-                   </h3>
-                   <p>
-                    After the second execution of the sample SQLDetermine Current Parameter Settings
-                   </p>
-                   <p>
-                    Used the following SQL*Plus commands to discover that the SQL plan was captured after the second execution of the above sample SQL:
-                   </p>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SET PAGES 10000 LINES 140
+ <h3>
+  <a name="TOC-After-Second-Sample-SQL-Execution">
+  </a>
+  After Second Sample SQL Execution
+ </h3>
+ <p>
+  After the second execution of the sample SQLDetermine Current Parameter Settings
+ </p>
+ <p>
+  Used the following SQL*Plus commands to discover that the SQL plan was captured after the second execution of the above sample SQL:
+ </p>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SET PAGES 10000 LINES 140
 SET SERVEROUTPUT ON
 COL SQL_TEXT FORMAT A20
 COL SQL_HANDLE FORMAT A20
@@ -1143,10 +286,10 @@ SELECT SQL_HANDLE, SQL_TEXT, PLAN_NAME, ORIGIN, ENABLED,
 FROM   <a href="https://docs.oracle.com/database/121/REFRN/GUID-101D8477-5600-4659-9A3C-9528391E500D.htm#REFRN23714" rel="nofollow">DBA_SQL_PLAN_BASELINES</a>
 WHERE  SQL_TEXT LIKE '%q1_group%';
 </pre>
-                   <p>
-                    The result is:
-                   </p>
-                   <pre style="background-color:lightblue;border:5px groove black;margin-left:10pxdetermine Current Parameter Settings;padding:2px">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
+ <p>
+  The result is:
+ </p>
+ <pre style="background-color:lightblue;border:5px groove black;margin-left:10pxdetermine Current Parameter Settings;padding:2px">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
 -------------------- -------------------- ------------------------------ ------------ --- --- ---
 SQL_07f16c76ff893342 SELECT /* q1_group_b SQL_PLAN_0gwbcfvzskcu242949306 AUTO-CAPTURE YES YES NO
                      y */ prod_name, sum(
@@ -1159,20 +302,20 @@ SQL_07f16c76ff893342 SELECT /* q1_group_b SQL_PLAN_0gwbcfvzskcu242949306 AUTO-CA
                      gory_id =203
                        GROUP BY prod_name
 </pre>
-                   <h3>
-                    <a name="TOC-Create-Index-to-Improve-SQL-Plan">
-                    </a>
-                    Create Index to Improve SQL Plan
-                   </h3>
-                   <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">CREATE INDEX ind_prod_cat_name 
+ <h3>
+  <a name="TOC-Create-Index-to-Improve-SQL-Plan">
+  </a>
+  Create Index to Improve SQL Plan
+ </h3>
+ <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">CREATE INDEX ind_prod_cat_name 
   ON products(prod_category_id, prod_name, prod_id);<cite>SQL Plan Control</cite> page
 CREATE INDEX ind_sales_prod_qty_sold 
   ON sales(prod_id, quantity_sold);
 </pre>
-                   <p>
-                    The SQL Plans now include the following entries for the sample query:
-                   </p>
-                   <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
+ <p>
+  The SQL Plans now include the following entries for the sample query:
+ </p>
+ <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
 -------------------- -------------------- ------------------------------ ------------ --- --- ---
 SQL_07f16c76ff893342 SELECT /* q1_group_b SQL_PLAN_0gwbcfvzskcu242949306 AUTO-CAPTURE YES YES NO
                      y */ prod_name, sum(
@@ -1205,297 +348,153 @@ SQL_a8431fd849deb87e SELECT SQL_HANDLE, S SQL_PLAN_ahhszv14xxf3y6ded1a00 AUTO-CA
                      WHERE  SQL_TEXT LIKE
                       '%q1_group%'
 </pre>
-                   <p>
-                    There are now two (2) SQL Plan Baselines for the sample query, and one (1) for the retrieval of the SQL Plan baselines.
-                   </p>
-                   <h2>
-                    <a name="TOC-Using-OEM">
-                    </a>
-                    Using OEM
-                   </h2>
-                   <h3>
-                    <a name="TOC-Access-SQL-Plan-Control">
-                    </a>
-                    Access SQL Plan Control
-                   </h3>
-                   <p>
-                    Access the SQL Plan Baselines by following the following pull-down menus on the database home page:
-                   </p>
-                   <ul>
-                    <li>
-                     <cite>
-                      Performance
-                     </cite>
-                     then
-                    </li>
-                    <ul>
-                     <li>
-                      <cite>
-                       SQL
-                      </cite>
-                      then
-                     </li>
-                     <ul>
-                      <li>
-                       Click on
-                       <cite>
-                        SQL Plan Control
-                       </cite>
-                      </li>
-                     </ul>
-                    </ul>
-                   </ul>
-                   <img alt="Database home page, then Performance, then SQL Plan Control" src="../../../home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_Control_Access.png"/>
-                   <p>
-                    You will be taken to the
-                    <cite>
-                     SQL Plan Control
-                    </cite>
-                    page.
-                   </p>
-                   <h3>
-                    <a name="TOC-Access-SQL-Plan-Baseline-Tab">
-                    </a>
-                    Access SQL Plan Baseline Tab
-                   </h3>
-                   <p>
-                    On the
-                    <cite>
-                     SQL Plan Control
-                    </cite>
-                    page, click on the
-                    <cite>
-                     SQL Plan Baseline
-                    </cite>
-                    tab:
-                   </p>
-                   <img alt="Access SQL Plan Baseline tab" src="../../../home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_Control_Landing_Page.png"/>
-                   <h3>
-                    <a name="TOC-Captured-SQL-Plan-Baselines">
-                    </a>
-                    Captured SQL Plan Baselines
-                   </h3>
-                   <p>
-                    You will note that the first two (2) settings correspond to the initialisation parameters that were examined about in
-                    <cite>
-                     Determine Current Parameter Settings
-                    </cite>
-                    .
-                   </p>
-                   <img alt="All captured SQL Plan Baselines" src="../../../home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_All_SQL_Plan_Baselines.png"/>
-                   <p>
-                    Since
-                    <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow" style="font-family:monospace">
-                     optimizer_capture_sql_plan_baselines
-                    </a>
-                    is enabled, you will note that all of the plans displayed have an origin of
-                    <span style="font-family:monospace;font-weight:bold">
-                     AUTO-CAPTURE
-                    </span>
-                    .
-                   </p>
-                   <h3>
-                    <a name="TOC-Finding-Sample-SQL-Plan-Baselines">
-                    </a>
-                    Finding Sample SQL Plan Baselines
-                   </h3>
-                   <p>
-                    In the
-                    <cite>
-                     SQL Text
-                    </cite>
-                    box under
-                    <cite>
-                     Search
-                    </cite>
-                    , I entered
-                    <cite>
-                     q1_group_by
-                    </cite>
-                    to locate all SQL Plan Baselines for the sample SQL I executed above. The result is:
-                   </p>
-                   <img alt="SQL Plan Baselines found for the sample SQL executed above" src="../../../home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_baselines_filtered.png"/>
-                   <h3>
-                    <a name="TOC-Details-of-SQL-Plan-Baseline">
-                    </a>
-                    Details of SQL Plan Baseline
-                   </h3>
-                   <p>
-                    Clicking on the first SQL Plan Baseline on the current page yields the following details of the SQL Plan Baseline.
-                   </p>
-                   <img src="../../../home/12-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_baseline_sample.png"/>
-                   <h2>
-                    <a name="TOC-Using-SQL-Tuning-Sets-to-Create-SQL-Plan-Baselines">
-                    </a>
-                    Using SQL Tuning Sets to Create SQL Plan Baselines
-                   </h2>
-                   <p>
-                    I have created a shell script, called
-                    <a href="https://github.com/dfhawthorne/sql-ocm12c/blob/master/Data%20and%20performance%20management/Create%20SQL%20Plan%20Baselines/load_smb_from_sts.sh" rel="nofollow">
-                     load_smb_from_sts.sh
-                    </a>
-                    , which runs a simple scenario to:
-                   </p>
-                   <ol>
-                    <li>
-                     Disable automatic generation of SQL Plan Baselines
-                    </li>
-                    <li>
-                     Delete all existing SQL Plan Baselines
-                    </li>
-                    <li>
-                     Generate some execution plans
-                    </li>
-                    <li>
-                     Load these execution plans into a SQL Tuning Set (see
-                     <a href="https://github.com/dfhawthorne/sql-ocm12c/blob/master/Data%20and%20performance%20management/Create%20SQL%20Plan%20Baselines/load_smb_from_sts.sql" rel="nofollow">
-                      load_smb_from_sts.sql
-                     </a>
-                     ).
-                    </li>
-                   </ol>
-                  </div>
-                 </td>
-                </tr>
-               </tbody>
-              </table>
-             </div>
-            </div>
-            <div id="sites-canvas-bottom-panel">
-             <div id="COMP_page-subpages" xmlns="http://www.w3.org/1999/xhtml">
-             </div>
-             <div id="sites-attachments-container">
-             </div>
-             <a name="page-comments" xmlns="http://www.w3.org/1999/xhtml">
-             </a>
-             <div id="COMP_page-comments" xmlns="http://www.w3.org/1999/xhtml">
-              <div class="sites-comment-docos-wrapper">
-               <div class="sites-comment-docos">
-                <div class="sites-comment-docos-background">
-                </div>
-                <div class="sites-comment-docos-header">
-                 <div class="sites-comment-docos-header-title">
-                  Comments
-                 </div>
-                </div>
-                <div class="sites-comment-docos-pane" id="sites-comment-docos-pane">
-                </div>
-               </div>
-              </div>
-             </div>
-            </div>
-           </div>
-          </td>
-         </tr>
-        </table>
-       </div>
-      </div>
-      <div id="sites-chrome-footer-wrapper">
-       <div id="sites-chrome-footer-wrapper-inside">
-        <div id="sites-chrome-footer">
-        </div>
-       </div>
-      </div>
-     </div>
-    </div>
-    <div id="sites-chrome-adminfooter-container">
-     <div class="sites-adminfooter" role="navigation" xmlns="http://www.w3.org/1999/xhtml">
-      <p>
-       | |
-       <a class="sites-system-link" href="javascript:;" onclick="window.open(webspace.printUrl)">
-        Print Page
-       </a>
-       <span aria-hidden="true">
-        |
-       </span>
-      </p>
-     </div>
-    </div>
-   </div>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    window.jstiming.load.tick('sjl');
-   </script>
-   <script src="https://ssl.gstatic.com/sites/p/3168fb/system/js/jot_min_view__en.js" xmlns="http://www.w3.org/1999/xhtml">
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    window.jstiming.load.tick('jl');
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    gsites.HoverPopupMenu.createSiteDropdownMenus('sites-header-nav-dropdown', false);
-   </script>
-   <script defer="true" type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    JOT_setupNav("2bd", "Navigation", true);
-            JOT_addListener('titleChange', 'JOT_NAVIGATION_titleChange', 'COMP_2bd');
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    new sites.CommentPane('//docs.google.com/comments/d/AAHRpnXv0cWRQ3pqMtE0chEx0_mkJAR-LnLvW0OFvFyW2ccia_W20VkefrLsBJ6fsZEXWcvtzfXwVE5iPSpfjQkgxgaTt1QqVcEfqzq0yjSO9i8hbs1duR_M79NvnzAE8G8VduN7xqlacvAk3GQs9P3kwVSerfnKw4w/api/js?anon=true',
-                  false, false);
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    setTimeout(function() {
-    var fingerprint = gsites.date.TimeZone.getFingerprint([1109635200000, 1128902400000, 1130657000000, 1143333000000, 1143806400000, 1145000000000, 1146380000000, 1152489600000, 1159800000000, 1159500000000, 1162095000000, 1162075000000, 1162105500000]);
-    gsites.Xhr.send('https://dfhawthorne.github.io/_/tz', null, null, 'GET', null, null, { afjstz: fingerprint });
-  }, 500);
-   </script>
-   <script xmlns="http://www.w3.org/1999/xhtml">
-    window.onload = function() {
-                      if (false) {
-                        JOT_setMobilePreview();
-                      }
-                      var loadTimer = window.jstiming.load;
-                      loadTimer.tick("ol");
-                      loadTimer["name"] = "load," + webspace.page.type + ",user_page";
-                      window.jstiming.report(loadTimer, {}, 'https://gg.google.com/csi');
-                    }
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    JOT_insertAnalyticsCode(false,
-            false);
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    var maestroRunner = new gsites.pages.view.SitesMaestroRunner(
-        webspace, "en");
-    maestroRunner.initListeners();
-    maestroRunner.installEditRender();
-   </script>
-   <script defer="true" type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    //<![CDATA[
-    // Decorate any fastUI buttons on the page with a class of 'goog-button'.
-    if (webspace.user.hasWriteAccess) {
-      JOT_decorateButtons();
-    }
-
-    // Fires delayed events.
-    (function() {
-      JOT_fullyLoaded = true;
-      var delayedEvents = JOT_delayedEvents;
-      for (var x = 0; x < delayedEvents.length; x++) {
-        var event = delayedEvents[x];
-        JOT_postEvent(event.eventName, event.eventSrc, event.payload);
-      }
-      JOT_delayedEvents = null;
-      JOT_postEvent('pageLoaded');
-    })();
-  //]]>
-   </script>
-   <script type="text/javascript" xmlns="http://www.w3.org/1999/xhtml">
-    JOT_postEvent('decorateGvizCharts');
-   </script>
-   <script type="text/javascript">
-    JOT_setupPostRenderingManager();
-   </script>
-   <script type="text/javascript">
-    JOT_postEvent('renderPlus', null, 'sites-chrome-main');
-   </script>
-   <script type="text/javascript">
-    sites.codeembed.init();
-   </script>
-   <div id="server-timer-div" style="display:none">
-   </div>
-   <script type="text/javascript">
-    window.jstiming.load.tick('render');
-          JOT_postEvent('usercontentrendered', this);
-   </script>
-  </div>
- </body>
-</html>
+ <p>
+  There are now two (2) SQL Plan Baselines for the sample query, and one (1) for the retrieval of the SQL Plan baselines.
+ </p>
+ <h2>
+  <a name="TOC-Using-OEM">
+  </a>
+  Using OEM
+ </h2>
+ <h3>
+  <a name="TOC-Access-SQL-Plan-Control">
+  </a>
+  Access SQL Plan Control
+ </h3>
+ <p>
+  Access the SQL Plan Baselines by following the following pull-down menus on the database home page:
+ </p>
+ <ul>
+  <li>
+   <cite>
+    Performance
+   </cite>
+   then
+  </li>
+  <ul>
+   <li>
+    <cite>
+     SQL
+    </cite>
+    then
+   </li>
+   <ul>
+    <li>
+     Click on
+     <cite>
+      SQL Plan Control
+     </cite>
+    </li>
+   </ul>
+  </ul>
+ </ul>
+ <img alt="Database home page, then Performance, then SQL Plan Control" src="home/12c-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_Control_Access.png"/>
+ <p>
+  You will be taken to the
+  <cite>
+   SQL Plan Control
+  </cite>
+  page.
+ </p>
+ <h3>
+  <a name="TOC-Access-SQL-Plan-Baseline-Tab">
+  </a>
+  Access SQL Plan Baseline Tab
+ </h3>
+ <p>
+  On the
+  <cite>
+   SQL Plan Control
+  </cite>
+  page, click on the
+  <cite>
+   SQL Plan Baseline
+  </cite>
+  tab:
+ </p>
+ <img alt="Access SQL Plan Baseline tab" src="home/12c-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_Control_Landing_Page.png"/>
+ <h3>
+  <a name="TOC-Captured-SQL-Plan-Baselines">
+  </a>
+  Captured SQL Plan Baselines
+ </h3>
+ <p>
+  You will note that the first two (2) settings correspond to the initialisation parameters that were examined about in
+  <cite>
+   Determine Current Parameter Settings
+  </cite>
+  .
+ </p>
+ <img alt="All captured SQL Plan Baselines" src="home/12c-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_All_SQL_Plan_Baselines.png"/>
+ <p>
+  Since
+  <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow" style="font-family:monospace">
+   optimizer_capture_sql_plan_baselines
+  </a>
+  is enabled, you will note that all of the plans displayed have an origin of
+  <span style="font-family:monospace;font-weight:bold">
+   AUTO-CAPTURE
+  </span>
+  .
+ </p>
+ <h3>
+  <a name="TOC-Finding-Sample-SQL-Plan-Baselines">
+  </a>
+  Finding Sample SQL Plan Baselines
+ </h3>
+ <p>
+  In the
+  <cite>
+   SQL Text
+  </cite>
+  box under
+  <cite>
+   Search
+  </cite>
+  , I entered
+  <cite>
+   q1_group_by
+  </cite>
+  to locate all SQL Plan Baselines for the sample SQL I executed above. The result is:
+ </p>
+ <img alt="SQL Plan Baselines found for the sample SQL executed above" src="home/12c-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_baselines_filtered.png"/>
+ <h3>
+  <a name="TOC-Details-of-SQL-Plan-Baseline">
+  </a>
+  Details of SQL Plan Baseline
+ </h3>
+ <p>
+  Clicking on the first SQL Plan Baseline on the current page yields the following details of the SQL Plan Baseline.
+ </p>
+ <img src="home/12c-ocm/data-and-performance-management/create-sql-plan-baselines/OEM_SQL_Plan_baseline_sample.png"/>
+ <h2>
+  <a name="TOC-Using-SQL-Tuning-Sets-to-Create-SQL-Plan-Baselines">
+  </a>
+  Using SQL Tuning Sets to Create SQL Plan Baselines
+ </h2>
+ <p>
+  I have created a shell script, called
+  <a href="https://github.com/dfhawthorne/sql-ocm12c/blob/master/Data%20and%20performance%20management/Create%20SQL%20Plan%20Baselines/load_smb_from_sts.sh" rel="nofollow">
+   load_smb_from_sts.sh
+  </a>
+  , which runs a simple scenario to:
+ </p>
+ <ol>
+  <li>
+   Disable automatic generation of SQL Plan Baselines
+  </li>
+  <li>
+   Delete all existing SQL Plan Baselines
+  </li>
+  <li>
+   Generate some execution plans
+  </li>
+  <li>
+   Load these execution plans into a SQL Tuning Set (see
+   <a href="https://github.com/dfhawthorne/sql-ocm12c/blob/master/Data%20and%20performance%20management/Create%20SQL%20Plan%20Baselines/load_smb_from_sts.sql" rel="nofollow">
+    load_smb_from_sts.sql
+   </a>
+   ).
+  </li>
+ </ol>
+</div>

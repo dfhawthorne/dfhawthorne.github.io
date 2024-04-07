@@ -7,7 +7,6 @@ import argparse
 import bs4
 import os
 import re
-import subprocess
 import sys
 from urllib.parse import urlparse
 
@@ -200,10 +199,11 @@ if len(breadcrumbs) > 0:
         if args.verbose:
             args.log.write(f"Breadcrumb: '{crumb['title']}' '{crumb['path']}'\n")
         page_header += f"- title: '{crumb['title']}'\n"
-        if crumb['path'].endswith('.html'):
-            page_header += f"  url: {crumb['path'][1:]}\n"
+        crumb_url = crumb['path'][1:].replace('/12-ocm','/12c-ocm')
+        if crumb_url.endswith('.html'):
+            page_header += f"  url: {crumb_url}\n"
         else:
-            page_header += f"  url: {crumb['path'][1:]}.html\n"
+            page_header += f"  url: {crumb_url}.html\n"
 
 # ------------------------------------------------------------------------------
 # Remove empty headers of the type:
@@ -254,7 +254,7 @@ def normalise_url(href):
     assert href is not None, "href parameter expected"
     assert type(href) == str, "expected href to be passed as a string"
 
-    href = href.replace('%2F','?')
+    href = href.replace('%3F','?').replace('/12-ocm/','/12c-ocm/')
     url_parts = urlparse(href)
     if args.verbose:
         args.log.write(f'URL_parts: {str(url_parts)}\n')
@@ -375,6 +375,8 @@ def need_to_remove_url(url):
     if args.verbose:
         args.log.write(f'URL: {str(url)} needs to be removed={str(need_to_remove)}\n')
     
+    assert type(need_to_remove) == bool, "need_to_remove must be Boolean"
+
     return need_to_remove
 
 # ------------------------------------------------------------------------------
@@ -416,57 +418,58 @@ multiple_toc_widget_found = False
 sub_page                  = None
 toc_widget                = None
 
-for tag in content.children:
-    if args.verbose:
-        if tag.name is None:
-            args.log.write(f"tag: {str(tag)}\n")
-        else:
-            args.log.write(f"tag: name={tag.name}, id={tag.attrs.get('id')}\n")
-    if tag.name == 'div':
-        possible_sub_page   = tag.find('div',{'id': 'sites-toc-undefined'})
-        possible_toc_widget = tag.find('div','sites-embed-toc-maxdepth-6')
-        if possible_sub_page is not None and possible_toc_widget is not None:
-            error_msg = 'Overlapping sub page and TOC widgets'
-            print(error_msg,file=sys.stderr)
-            if args.verbose:
-                args.log.write(error_msg + '\n')
-            exit(1)
-        if possible_sub_page is not None:
-            if sub_pages_widget_found:
-                error_msg = 'Duplicate sub-page widget found'
+if content is not None and content.children is not None:
+    for tag in content.children:
+        if args.verbose:
+            if tag.name is None:
+                args.log.write(f"tag: {str(tag)}\n")
+            else:
+                args.log.write(f"tag: name={tag.name}, id={tag.attrs.get('id')}\n")
+        if tag.name == 'div':
+            possible_sub_page   = tag.find('div',{'id': 'sites-toc-undefined'})
+            possible_toc_widget = tag.find('div','sites-embed-toc-maxdepth-6')
+            if possible_sub_page is not None and possible_toc_widget is not None:
+                error_msg = 'Overlapping sub page and TOC widgets'
                 print(error_msg,file=sys.stderr)
                 if args.verbose:
                     args.log.write(error_msg + '\n')
                 exit(1)
-            else:
-                sub_pages_widget_found = True
-                sub_page               = possible_sub_page
+            if possible_sub_page is not None:
+                if sub_pages_widget_found:
+                    error_msg = 'Duplicate sub-page widget found'
+                    print(error_msg,file=sys.stderr)
+                    if args.verbose:
+                        args.log.write(error_msg + '\n')
+                    exit(1)
+                else:
+                    sub_pages_widget_found = True
+                    sub_page               = possible_sub_page
+                    continue
+            if possible_toc_widget is not None:
+                if toc_widget_found:
+                    print('Multiple TOC widgets found',file=sys.stderr)
+                    multiple_toc_widget_found = True
+                else:
+                    toc_widget_found = True
+                    toc_widget       = possible_toc_widget
                 continue
-        if possible_toc_widget is not None:
-            if toc_widget_found:
-                print('Multiple TOC widgets found',file=sys.stderr)
-                multiple_toc_widget_found = True
-            else:
-                toc_widget_found = True
-                toc_widget       = possible_toc_widget
-            continue
-    if not toc_widget_found and not antecedent_content_found:
-        for s in tag.stripped_strings:
-            antecedent_content_found = True
-            break
-    if sub_pages_widget_found and not subsequent_content_found:
-        for s in tag.stripped_strings:
-            subsequent_content_found = True
-            break
+        if not toc_widget_found and not antecedent_content_found:
+            for s in tag.stripped_strings:
+                antecedent_content_found = True
+                break
+        if sub_pages_widget_found and not subsequent_content_found:
+            for s in tag.stripped_strings:
+                subsequent_content_found = True
+                break
 
-if args.verbose:
-    args.log.write(f'sub_pages_widget_found    = {sub_pages_widget_found}\n')
-    args.log.write(f'toc_widget_found          = {toc_widget_found}\n')
-    args.log.write(f'multiple_toc_widget_found = {multiple_toc_widget_found}\n')
-    args.log.write(f'antecedent_content_found  = {antecedent_content_found}\n')
-    args.log.write(f'subsequent_content_found  = {subsequent_content_found}\n')
-    args.log.write(f'sub_page: {str(sub_page)}\n')
-    args.log.write(f'toc_widget: {str(toc_widget)}\n')
+    if args.verbose:
+        args.log.write(f'sub_pages_widget_found    = {sub_pages_widget_found}\n')
+        args.log.write(f'toc_widget_found          = {toc_widget_found}\n')
+        args.log.write(f'multiple_toc_widget_found = {multiple_toc_widget_found}\n')
+        args.log.write(f'antecedent_content_found  = {antecedent_content_found}\n')
+        args.log.write(f'subsequent_content_found  = {subsequent_content_found}\n')
+        args.log.write(f'sub_page: {str(sub_page)}\n')
+        args.log.write(f'toc_widget: {str(toc_widget)}\n')
 
 # ------------------------------------------------------------------------------
 # Convert Sub-pages Widget to YAML menu entries, unless content follows
@@ -534,28 +537,29 @@ if args.verbose:
 # Change URL to relative to Wiki base
 # ------------------------------------------------------------------------------
 
-for addr in content.find_all('a'):
-    href         = addr.get('href')
-    if href is None: continue
-    # Regularise the URL to be relative to the documents base
-    if args.verbose:
-        args.log.write(f'A HREF Before: {str(href)}\n')
-    addr['href'] = normalise_url(href)
-    if args.verbose:
-        args.log.write(f"A HREF After: {str(addr['href'])}\n")
-    if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
-        tags_to_be_deleted.append(addr)
+if content is not None:
+    for addr in content.find_all('a'):
+        href         = addr.get('href')
+        if href is None: continue
+        # Regularise the URL to be relative to the documents base
+        if args.verbose:
+            args.log.write(f'A HREF Before: {str(href)}\n')
+        addr['href'] = normalise_url(href)
+        if args.verbose:
+            args.log.write(f"A HREF After: {str(addr['href'])}\n")
+        if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
+            tags_to_be_deleted.append(addr)
 
-for addr in content.find_all('img'):
-    href = addr.get('src')
-    # Regularise the URL to be relative to the documents base
-    if href is None: continue
-    if args.verbose:
-        args.log.write(f'IMG SRC Before: {str(href)}\n')
-    new_url_path = normalise_url(href)
-    addr['src'] = new_url_path
-    if args.verbose:
-        args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
+    for addr in content.find_all('img'):
+        href = addr.get('src')
+        # Regularise the URL to be relative to the documents base
+        if href is None: continue
+        if args.verbose:
+            args.log.write(f'IMG SRC Before: {str(href)}\n')
+        new_url_path = normalise_url(href)
+        addr['src'] = new_url_path
+        if args.verbose:
+            args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
 
 # ------------------------------------------------------------------------------
 # Replace '<A>' tags with imageanchor attributes with '<IMG>' tags
@@ -564,44 +568,54 @@ for addr in content.find_all('img'):
 git_mv_cmds = list()
 git_removals = list()
 
-image_anchors = content.find_all('a', {'imageanchor': 1})
-for tag in image_anchors:
-    if args.verbose:
-        args.log.write(f'image anchor tag found: {str(tag)}\n')
-    if tag.img is None:
-        print(f"No <IMG> child found for <A> tag with imageanchor attribute", file=sys.stderr)
-        exit(1)
-    href = tag['href']
-    if href.endswith('?attredirects=0'):
-        new_file_name = href.replace('?attredirects=0','')
-        if os.path.isfile(doc_base + os.path.sep + href):
-            git_mv_cmd = \
-                'git mv ' + \
-                doc_base + os.path.sep + href + ' ' + \
-                doc_base + os.path.sep + new_file_name
-            if args.verbose:
-                args.log.write(git_mv_cmd + '\n')
-            git_mv_cmds.append(git_mv_cmd)
-        elif os.path.isfile(doc_base + os.path.sep + new_file_name):
-            if args.verbose:
-                args.log.write(f"'{new_file_name}' already exists.\n")
-        else:
-            error_msg = f"Neither '{href}' nor '{new_file_name}' exist."
-            if args.verbose:
-                args.log.write(error_msg + "\n")
-            print(error_msg, file=sys.stderr)
-            exit(1)
-    else:
-        new_file_name = href
-    image_src = tag.img['src']
-    if image_src not in git_removals and image_src not in [href, new_file_name]:
+if content is not None:
+    image_anchors = content.find_all('a', {'imageanchor': 1})
+    for tag in image_anchors:
         if args.verbose:
-            args.log.write(f"'{image_src}' to be removed\n")
-        git_removals.append(image_src)
-    tag.unwrap()
-    tag['src'] = new_file_name
-    if args.verbose:
-        args.log.write(f"Tag after conversion: s{str(tag)}\n")
+            args.log.write(f'image anchor tag found: {str(tag)}\n')
+        if tag.img is None:
+            print(f"No <IMG> child found for <A> tag with imageanchor attribute", file=sys.stderr)
+            exit(1)
+        old_file_name = doc_base + os.path.sep + tag['href'].replace('%3F','?')
+        if old_file_name.endswith('?attredirects=0'):
+            new_file_name = old_file_name.replace('?attredirects=0','')
+            if os.path.isfile(old_file_name):
+                if os.path.isfile(new_file_name):
+                    if args.verbose:
+                        args.log.write(f"'{new_file_name}' already exists.\n")
+                    print(f"'{new_file_name}' already exists", file=sys.stderr)
+                    git_removals.append(old_file_name)
+                    if args.verbose:
+                        args.log.write(f"'{old_file_name}' scheduled for deletion.\n")
+                else:
+                    git_mv_cmd = f"git mv '{old_file_name}' '{new_file_name}'"
+                    if args.verbose:
+                        args.log.write(git_mv_cmd + '\n')
+                    git_mv_cmds.append(git_mv_cmd)
+            elif os.path.isfile(new_file_name):
+                if args.verbose:
+                    args.log.write(f"'{new_file_name}' already exists.\n")
+            else:
+                error_msg = f"Neither '{old_file_name}' nor '{new_file_name}' exist."
+                if args.verbose:
+                    args.log.write(error_msg + "\n")
+                print(error_msg, file=sys.stderr)
+                exit(1)
+        else:
+            new_file_name = old_file_name
+        image_src = doc_base + os.path.sep + tag.img['src']
+        if args.verbose:
+            args.log.write(f"href='{old_file_name}'\nnew_file_name='{new_file_name}'\nimg_src='{image_src}'\n")
+            args.log.write(f"image_src matched old_file_name='{old_file_name == image_src}'\n")
+            args.log.write(f"new_file_name matched image_src='{new_file_name == image_src}'\n\n")
+        if image_src not in git_removals and image_src not in [old_file_name, new_file_name]:
+            if args.verbose:
+                args.log.write(f"'{image_src}' to be removed\n")
+            git_removals.append(image_src)
+        tag.unwrap()
+        tag['src'] = os.path.relpath(new_file_name, doc_base)
+        if args.verbose:
+            args.log.write(f"Tag after conversion: s{str(tag)}\n")
 
 # ------------------------------------------------------------------------------
 # (1) Remove links to *%3Fattredirects=0 files
@@ -609,32 +623,33 @@ for tag in image_anchors:
 # (3) Remove links to *gif.html pages
 # ------------------------------------------------------------------------------
 
-for addr in content.find_all('a'):
-    if addr.get('href') is None: continue
-    if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
-        tags_to_be_deleted.append(addr)
+if content is not None:
+    for addr in content.find_all('a'):
+        if addr.get('href') is None: continue
+        if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
+            tags_to_be_deleted.append(addr)
 
-for addr in content.find_all('img'):
-    href = addr.get('src')
-    if href is None: continue
+    for addr in content.find_all('img'):
+        href = addr.get('src')
+        if href is None: continue
+        if args.verbose:
+            args.log.write(f"IMG SRC After: {str(href)}\n")
+        local_image_path = doc_base + os.path.sep + href
+        if need_to_remove_url(href) and addr not in tags_to_be_deleted:
+            tags_to_be_deleted.append(addr)
+        elif local_image_path is not None and not os.path.exists(local_image_path):
+            print(f"Unable to locate image file, '{local_image_path}'",file=sys.stderr)
+            if args.verbose:
+                args.log.write(f"Unable to locate image file, '{local_image_path}'\n")
+        else:
+            if args.verbose:
+                args.log.write(f"Will retain existing image file, '{local_image_path}'\n")
+
     if args.verbose:
-        args.log.write(f"IMG SRC After: {str(href)}\n")
-    local_image_path = doc_base + os.path.sep + href
-    if need_to_remove_url(href) and addr not in tags_to_be_deleted:
-        tags_to_be_deleted.append(addr)
-    elif local_image_path is not None and not os.path.exists(local_image_path):
-        print(f"Unable to locate image file, '{local_image_path}'",file=sys.stderr)
-        if args.verbose:
-            args.log.write(f"Unable to locate image file, '{local_image_path}'\n")
-    else:
-        if args.verbose:
-            args.log.write(f"Will retain existing image file, '{local_image_path}'\n")
-
-if args.verbose:
-    args.log.write(f'tags_to_be_deleted: --------->\n{str(tags_to_be_deleted)}\n<---------------\n')
-    args.log.write('============> Start of Main Content (after rebasing of URLs) <================\n')
-    args.log.write(f'{str(content)}\n')
-    args.log.write('============> End of Main Content (after rebasing of URLs) <==================\n')
+        args.log.write(f'tags_to_be_deleted: --------->\n{str(tags_to_be_deleted)}\n<---------------\n')
+        args.log.write('============> Start of Main Content (after rebasing of URLs) <================\n')
+        args.log.write(f'{str(content)}\n')
+        args.log.write('============> End of Main Content (after rebasing of URLs) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Remove unnecessary tags
@@ -809,46 +824,47 @@ if args.verbose:
 # ------------------------------------------------------------------------------
 # Remove Empty DIV tags in up to four (4) levels
 # ------------------------------------------------------------------------------
-                
-for retries in range(5):
-    all_div_tags = content.find_all('div')
-    for tag in all_div_tags:
-        num_children = len([child for child in tag.children if child.name is not None])
-        num_strings  = len([child for child in tag.stripped_strings])
-        child_names  = [child.name for child in tag.children  if child.name is not None]
-        if args.verbose:
-            args.log.write(f"DIV tag found: {str(tag)}\n")
-            args.log.write(f"num_children={num_children}\n")
-            args.log.write(f"num_strings={num_strings}\n")
-            args.log.write(f"child_names={str(child_names)}\n")
-        if num_children == 0 and num_strings == 0:
-            if args.verbose:
-                args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
-            tag.decompose()
-        elif num_children == 1 and num_strings == 0:
-            if child_names[0] == 'br':
-                if args.verbose:
-                    args.log.write(f"Removed DIV with solitary BR tag: {str(tag)}\n")
-                tag.decompose()
 
-num_children = len([child for child in content.children if child.name is not None])
-num_strings  = len([child for child in content.stripped_strings])
-child_names  = [child.name for child in content.children if child.name is not None]
-if args.verbose:
-    args.log.write(f"num_children in content={num_children}\n")
-    args.log.write(f"num_strings in content={num_strings}\n")
-    args.log.write(f"child_names in content={str(child_names)}\n")
-if num_children == 0 and num_strings == 0:
+if content is not None:                
+    for retries in range(5):
+        all_div_tags = content.find_all('div')
+        for tag in all_div_tags:
+            num_children = len([child for child in tag.children if child.name is not None])
+            num_strings  = len([child for child in tag.stripped_strings])
+            child_names  = [child.name for child in tag.children  if child.name is not None]
+            if args.verbose:
+                args.log.write(f"DIV tag found: {str(tag)}\n")
+                args.log.write(f"num_children={num_children}\n")
+                args.log.write(f"num_strings={num_strings}\n")
+                args.log.write(f"child_names={str(child_names)}\n")
+            if num_children == 0 and num_strings == 0:
+                if args.verbose:
+                    args.log.write(f"Removed empty DIV tag: {str(tag)}\n")
+                tag.decompose()
+            elif num_children == 1 and num_strings == 0:
+                if child_names[0] == 'br':
+                    if args.verbose:
+                        args.log.write(f"Removed DIV with solitary BR tag: {str(tag)}\n")
+                    tag.decompose()
+
+    num_children = len([child for child in content.children if child.name is not None])
+    num_strings  = len([child for child in content.stripped_strings])
+    child_names  = [child.name for child in content.children if child.name is not None]
     if args.verbose:
-        args.log.write(f"Removed empty content: {str(content)}\n")
-    content.decompose()
-    content = None
-elif num_children == 1 and num_strings == 0:
-    if child_names[0] == 'br':
+        args.log.write(f"num_children in content={num_children}\n")
+        args.log.write(f"num_strings in content={num_strings}\n")
+        args.log.write(f"child_names in content={str(child_names)}\n")
+    if num_children == 0 and num_strings == 0:
         if args.verbose:
-            args.log.write(f"Removed content with solitary BR tag: {str(tag)}\n")
+            args.log.write(f"Removed empty content: {str(content)}\n")
         content.decompose()
         content = None
+    elif num_children == 1 and num_strings == 0:
+        if child_names[0] == 'br':
+            if args.verbose:
+                args.log.write(f"Removed content with solitary BR tag: {str(tag)}\n")
+            content.decompose()
+            content = None
 
 if args.verbose:
     args.log.write('============> Start of Main Content (after removal of empty DIV tags) <================\n')
@@ -892,7 +908,7 @@ if uploaded_files_widget is not None:
         add_file_menu_toc = True
         download_file_tag = uploaded_files_widget.find('a', {'aria-label': "Download " + uploaded_file_name})
         if download_file_tag is not None:
-            download_file_name = download_file_tag['href'].strip().replace('%3F','?')
+            download_file_name = download_file_tag['href'].strip().replace('%3F','?').replace('/12-ocm/','/12c-ocm/')
             full_download_file_name = curr_dir + os.path.sep + download_file_name
             if args.verbose:
                 args.log.write(f'Download file tag: {str(download_file_tag)}\n')
@@ -975,6 +991,39 @@ if args.verbose:
     args.log.write('============> End of Main Content (after conversion of uploaded files) <==================\n')
 
 # ------------------------------------------------------------------------------
+# GIT Removals and Movements
+#
+# Because of an issue with process.run, GIT commands have to be run manually.
+# Movement commands take precedence over removals. That is, if the source file
+# is to be removed, it is dropped from the removal list.
+# ------------------------------------------------------------------------------
+
+for mv_cmd_str in git_mv_cmds:
+    src_file_name = mv_cmd_str.split()[2].strip("'")
+    if src_file_name in git_removals:
+        git_removals.remove(src_file_name)
+        if args.verbose:
+            args.log.write(f"'{src_file_name}' removed from list of GIT RM commands\n")
+
+if args.verbose:
+    args.log.write(f"GIT commands:\n")
+    for rm_file in git_removals:
+        args.log.write(f"  git rm '{rm_file}'\n")
+    for mv_cmd_str in git_mv_cmds:
+        args.log.write(f"  {mv_cmd_str}\n")
+if args.git_remove:
+    print('Run the following commands manually:')
+    for rm_file in git_removals:
+        rm_cmd_str = f"git rm '{rm_file}'"
+        print(rm_cmd_str)
+        if args.verbose:
+            args.log.write(f"rm_cmd_str: {rm_cmd_str}\n")
+    for mv_cmd_str in git_mv_cmds:
+        print(mv_cmd_str)
+        if args.verbose:
+            args.log.write(f"mv_cmd_str: {mv_cmd_str}\n")
+
+# ------------------------------------------------------------------------------
 # Print out YAML data
 # ------------------------------------------------------------------------------
 
@@ -989,29 +1038,3 @@ else:
     print(page_header)
     if content is not None:
         print(content.prettify())
-
-# ------------------------------------------------------------------------------
-# GIT Removals and Movements
-# ------------------------------------------------------------------------------
-
-rm_cmd = ['git', 'rm']
-rm_cmd.extend(git_removals)
-rm_cmd_str = ' '.join(rm_cmd)
-
-if args.verbose:
-    args.log.write(f"GIT commands:\n")
-    args.log.write(f"  {str(rm_cmd_str)}\n")
-    for mv_cmd_str in git_mv_cmds:
-        args.log.write(f"  {str(mv_cmd_str)}\n")
-if args.git_remove:
-    if len(git_removals) > 0:
-        p = subprocess.run(rm_cmd, capture_output=True)
-        if args.verbose:
-            args.log.write(f"GIT STDOUT:\n{p.stdout}\n\nGIT STDERR:\n{p.stderr}")
-    for mv_cmd_str in git_mv_cmds:
-        mv_cmd = mv_cmd_str.split()
-        if args.verbose:
-            args.log.write(f"mv_cmd_str: {str(mv_cmd_str)}\nmv_cmd: {str(mv_cmd)}\n")
-        p = subprocess.run(mv_cmd, capture_output=True)
-        if args.verbose:
-            args.log.write(f"GIT STDOUT:\n{p.stdout}\n\nGIT STDERR:\n{p.stderr}")
