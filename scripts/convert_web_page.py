@@ -241,7 +241,8 @@ for h3 in soup.find_all('h3'):
 #     - https://sites.google.com/view/yetanotherocm/'
 # (2) Convert relative paths from the current page to the documents base
 # (3) Leave other URLs unchanged
-# (4) Change URL encoding: %2F to '?'
+# (4) Change URL encoding: %3F to '?'
+# (5) Change URL directory from '/12-ocm/' to '/12c-ocm/'
 # ------------------------------------------------------------------------------
 
 bigblog_redirects = {
@@ -782,42 +783,74 @@ if args.verbose:
 # Detect and Convert Journal Scroll Bar
 # ------------------------------------------------------------------------------
 
-req_attrs  = dict()
-req_attrs['border']      = "0"
-req_attrs['cellspacing'] = "10"
-req_attrs['width']       = "100%"
-all_tables = soup.find_all('table',attrs=req_attrs)
-first_table = True
-for tag in all_tables:
+first_block = True
+
+def extract_journal_links(tag):
+    assert tag is not None and type(tag) == bs4.element.Tag, \
+        "Tag must be a BeautifulSoup Tag Element"
+
+    scroll_bar  = ''
+
     if args.verbose:
-        args.log.write(f">>> table=\n{str(tag)}\n>>>")
-    if first_table:
+        args.log.write(f">>> div=\n{str(tag)}\n>>>\n")
+    if first_block:
         first_col = True
-        for col in tag.find_all('td'):
-            align = col.get('align')
+        if tag.name == 'table':
+            sub_tag_name = 'td'
+        else:
+            sub_tag_name = 'div'
+        for col in tag.find_all(sub_tag_name):
+            style = col.get('style')
             url   = col.find('a')
+            if args.verbose:
+                args.log.write(f"{sub_tag_name}: style='{style}'\nurl='{url}'\n")
             if url is None: continue
+            if style is None: continue
             title = ' '.join([s for s in url.stripped_strings])
             if first_col:
-                page_header += "scroll-bar:\n"
+                scroll_bar += "scroll-bar:\n"
                 first_col = False
-            if align is None or align == "left":
-                page_header += f"  left-link:\n"
-            elif align == "right":
-                page_header += f"  right-link:\n"
+            if "left" in style:
+                scroll_bar += f"  left-link:\n"
+            elif "right" in style:
+                scroll_bar += f"  right-link:\n"
             link = url.get('href')
+            if args.verbose:
+                args.log.write(f"A: link='{link}'\n")
             if link is None:
+                if args.verbose:
+                    args.log.write("missing URL for journal link\n")
                 print("missing URL for journal link",file=sys.stderr)
+                exit(1)
             elif link.endswith('.html'):
                 pass
             else:
                 link += '.html'
-            page_header += f"    url: {link}\n    title: '{title}'\n"
-        first_table = False
+            scroll_bar += f"    url: {link}\n    title: '{title}'\n"
+        first_block = False
     tag.decompose()
 
+    assert scroll_bar is not None and type(scroll_bar) == str, \
+        "scroll_bar must a string"
+    return scroll_bar
+
+block_attrs_list   = list()
+block_attrs_list.append(('table', {'border': "0", 'cellspacing': "10", 'width': "100%"}))
+block_attrs_list.append(('div', {'style': "display:block;width:100%"}))
+block_attrs_list.append(('div', {'style': "display:block"}))
+block_attrs_list.append(('div', {'style': "display:grid"}))
+
+scroll_bar         = ''
+for (block_name, req_attrs) in block_attrs_list:
+    all_blocks         = soup.find_all(block_name, req_attrs)
+    for tag in all_blocks:
+        scroll_bar += extract_journal_links(tag)
+    if scroll_bar != '': break
+
 if args.verbose:
-    args.log.write('============> Start of Main Content (after Journal Scroll Bar) <================\n')
+    args.log.write(f"\nscroll_bar: ====================================\n{scroll_bar}")
+    args.log.write( "================================================\n")
+    args.log.write('\n============> Start of Main Content (after Journal Scroll Bar) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after Journal Scroll Bar) <==================\n')
 
@@ -922,7 +955,10 @@ if uploaded_files_widget is not None:
                 exit(1)
             else:
                 auxiliary_files.remove(os.path.basename(download_file_name))
-            git_mv_cmds.append(f"git mv {full_download_file_name} {auxiliary_dir}/{uploaded_file_name}")
+            git_mv_cmd = f"git mv '{full_download_file_name}' '{auxiliary_dir}/{uploaded_file_name}'"
+            if args.verbose:
+                args.log.write(git_mv_cmd + '\n')
+            git_mv_cmds.append(git_mv_cmd)
     
     for uploaded_file_name in uploaded_file_list:
         if args.verbose:
@@ -1012,7 +1048,8 @@ if args.verbose:
     for mv_cmd_str in git_mv_cmds:
         args.log.write(f"  {mv_cmd_str}\n")
 if args.git_remove:
-    print('Run the following commands manually:')
+    if len(git_removals) + len(git_mv_cmds) > 0:
+        print('Run the following commands manually:')
     for rm_file in git_removals:
         rm_cmd_str = f"git rm '{rm_file}'"
         print(rm_cmd_str)
