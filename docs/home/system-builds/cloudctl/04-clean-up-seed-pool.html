@@ -16,34 +16,41 @@ table-of-contents:
   toc-text: 'Overview'
 - toc-url: 'Procedure'
   toc-text: 'Procedure'
+scroll-bar:
+  left-link:
+    url: 'home/system-builds/cloudctl/03-fix-networking-issues.html'
+    title: '03 Fix Networking Issues'
+  right-link:
+    url: 'home/system-builds/cloudctl/05-save-vm-uuid-in-configuration-file.html'
+    title: '05 Save VM UUID in Configuration File'
 ---
 <div dir="ltr">
- <br/>
- <h2>
-  <a name="TOC-Overview">
-  </a>
+<br/>
+<h2>
+<a name="TOC-Overview">
+</a>
   Overview
  </h2>
- <p>
+<p>
   The
   <span style="font-family:monospace">
    seed_pool
   </span>
   is cleaned up after the template has been extracted.
  </p>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
+<h2>
+<a name="TOC-Procedure">
+</a>
   Procedure
  </h2>
- <p>
+<p>
   On
   <span style="font-family:monospace">
    VICTORIA
   </span>
   , run the following commands to remove the downloaded files and move the extracted files into the correct directory:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   cd /OVS/seed_pool/OVM_EM12R3
   <br/>
   rm -f *.tgz *.zip
@@ -52,20 +59,5 @@ table-of-contents:
   <br/>
   rmdir OVM_EM
  </blockquote>
- <table width="100%">
-  <tbody>
-   <tr>
-    <td width="50%">
-     <a href="home/system-builds/cloudctl/03-fix-networking-issues.html">
-      03 Fix Networking Issues
-     </a>
-    </td>
-    <td align="right" width="50%">
-     <a href="home/system-builds/cloudctl/05-save-vm-uuid-in-configuration-file.html">
-      05 Save VM UUID in Configuration File
-     </a>
-    </td>
-   </tr>
-  </tbody>
- </table>
+
 </div>

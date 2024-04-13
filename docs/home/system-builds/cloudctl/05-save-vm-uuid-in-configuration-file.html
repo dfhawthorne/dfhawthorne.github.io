@@ -21,15 +21,19 @@ table-of-contents:
     toc-text: 'Find Current UUID'
   - toc-url: 'Update-UUID-in-Configuration-File'
     toc-text: 'Update UUID in Configuration File'
+scroll-bar:
+  left-link:
+    url: 'home/system-builds/cloudctl/04-clean-up-seed-pool.html'
+    title: '04 Clean Up Seed Pool'
 ---
 <div dir="ltr">
- <br/>
- <h2>
-  <a name="TOC-Overview">
-  </a>
+<br/>
+<h2>
+<a name="TOC-Overview">
+</a>
   Overview
  </h2>
- <p>
+<p>
   Configuration files for OVMS include the UUID for the VM. I have updated the
   <span style="font-family:monospace">
    &gt;vm.cfg
@@ -40,62 +44,50 @@ table-of-contents:
   </span>
   to preserve the UUID from the current incarnation across restarts.
  </p>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
+<h2>
+<a name="TOC-Procedure">
+</a>
   Procedure
  </h2>
- <h3>
-  <a name="TOC-Find-Current-UUID">
-  </a>
+<h3>
+<a name="TOC-Find-Current-UUID">
+</a>
   Find Current UUID
  </h3>
- <p>
+<p>
   Run the following command on
   <span style="font-family:monospace">
    CLOUCTL
   </span>
   :
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   xl list -l OVM_EM12R3 | grep -i uuid
  </blockquote>
- <p>
+<p>
   The result is:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   (uuid f8e1757e-f79d-43b5-a764-44a205ead04e)
  </blockquote>
- <h3>
-  <a name="TOC-Update-UUID-in-Configuration-File">
-  </a>
+<h3>
+<a name="TOC-Update-UUID-in-Configuration-File">
+</a>
   Update UUID in Configuration File
  </h3>
- <p>
+<p>
   Run the following command on
   <span style="font-family:monospace">
    CLOUCTL
   </span>
   :
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   cat &gt;&gt;/OVS/running_pool/OVM_EM12R3/vm.cfg &lt;&lt;DONE
   <br/>
   uuid = 'f8e1757e-f79d-43b5-a764-44a205ead04e'
   <br/>
   DONE
  </blockquote>
- <table width="100%">
-  <tbody>
-   <tr>
-    <td width="50%">
-     <a href="home/system-builds/cloudctl/04-clean-up-seed-pool.html">
-      04 Clean Up Seed Pool
-     </a>
-    </td>
-    <td align="right" width="50%">
-    </td>
-   </tr>
-  </tbody>
- </table>
+
 </div>

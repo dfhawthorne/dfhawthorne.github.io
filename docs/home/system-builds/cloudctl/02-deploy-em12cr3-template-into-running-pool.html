@@ -38,281 +38,288 @@ table-of-contents:
     toc-text: 'Repository database details'
 - toc-url: 'Access-the-OEM-Console'
   toc-text: 'Access the OEM Console'
+scroll-bar:
+  left-link:
+    url: 'home/system-builds/cloudctl/01-extract-template-into-seed-pool.html'
+    title: '01 Extract Template into Seed Pool'
+  right-link:
+    url: 'home/system-builds/cloudctl/03-fix-networking-issues.html'
+    title: '03 Fix Networking Issues'
 ---
 <div dir="ltr">
- <br/>
- <h2>
-  <a name="TOC-Overview">
-  </a>
+<br/>
+<h2>
+<a name="TOC-Overview">
+</a>
   Overview
  </h2>
- <p>
+<p>
   The OVM Template for Cloud Control 12.1.0.3.0 (EM12CR3) needs to be customised before starting, and on first start-up.
  </p>
- <h2>
-  <a name="TOC-References">
-  </a>
+<h2>
+<a name="TOC-References">
+</a>
   References
  </h2>
- <p>
+<p>
   Readme for Media Pack B75437-01
  </p>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
+<h2>
+<a name="TOC-Procedure">
+</a>
   Procedure
  </h2>
- <h3>
-  <a name="TOC-Copy-the-Files-to-the-Running-Pool">
-  </a>
+<h3>
+<a name="TOC-Copy-the-Files-to-the-Running-Pool">
+</a>
   Copy the Files to the Running Pool
  </h3>
- <p>
+<p>
   Run the following command on
   <a href="home/system-builds/victoria.html" style="font-family:monospace">
    VICTORIA
   </a>
   to copy the extracted files:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   cp /OVS/seed_pool/OVM_EM12R3/OVM_EM/* /OVS/running_pool/OVM_EM12R3/
  </blockquote>
- <h3>
-  <a name="TOC-Customise-the-Configuration-File">
-  </a>
+<h3>
+<a name="TOC-Customise-the-Configuration-File">
+</a>
   Customise the Configuration File
  </h3>
- <p>
+<p>
   Run the following commands on
   <a href="home/system-builds/victoria.html" style="font-family:monospace">
    VICTORIA
   </a>
   to extract the OVM files:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   cd /OVS/running_pool/OVM_EM12R3/
   <br/>
   vi vm.cfg
  </blockquote>
- <p>
+<p>
   Change the following lines:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   disk = ['file:/OVS1/seed_pool/OVM_EM/System.img,xvda,w',
   <br/>
   'file:/OVS1/seed_pool/OVM_EM/em.img,xvdb,w']
  </blockquote>
- <p>
+<p>
   to:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   disk = ['file:/OVS/running_pool/OVM_EM12R3/System.img,xvda,w',
   <br/>
   'file:/OVS/running_pool/OVM_EM12R3/em.img,xvdb,w']
  </blockquote>
- <p>
+<p>
   Change the following line so that the name of the machine matches the subdirectory from where the machine is launched:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   name = 'OVM_EM'
  </blockquote>
- <p>
+<p>
   to:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   name = 'OVM_EM12R3'
  </blockquote>
- <p>
+<p>
   Change the following line so that we are using a HVM with the bridge as created in
   <a href="home/system-builds/victoria/2013-12-24-1-add-bridge.html">
    01 Add Bridge
   </a>
   :
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   vif = ['type=netfront']
  </blockquote>
- <p>
+<p>
   to:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   vif = [ 'bridge=xenbr0, type=netfront, mac=00:16:3E:00:00:01' ]
  </blockquote>
- <h2>
-  <a name="TOC-Set-up-the-CLOUDCTL-VM">
-  </a>
+<h2>
+<a name="TOC-Set-up-the-CLOUDCTL-VM">
+</a>
   Set up the CLOUDCTL VM
  </h2>
- <p>
+<p>
   Further configuration of the
   <span style="font-family:monospace">
    CLOUDCTL
   </span>
   VM is required on first start up of the VM.
  </p>
- <h3>
-  <a name="TOC-Start-Up-the-VM">
-  </a>
+<h3>
+<a name="TOC-Start-Up-the-VM">
+</a>
   Start Up the VM
  </h3>
- <p>
+<p>
   The VM is started on
   <span style="font-family:monospace">
    VICTORIA
   </span>
   by using the following commands:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   cd /OVS/running_pool/OVM_EM12R3
   <br/>
   xl create vm.cfg
  </blockquote>
- <h3>
-  <a name="TOC-Connect-to-Console-via-VNC">
-  </a>
+<h3>
+<a name="TOC-Connect-to-Console-via-VNC">
+</a>
   Connect to Console via VNC
  </h3>
- <p>
+<p>
   Used VNCVIewer through
   <a href="http://mobaxterm.mobatek.net/" rel="nofollow">
    MobaXTerm
   </a>
   to 192.168.1.100. No password is needed.
  </p>
- <h3>
-  <a name="TOC-Log-File-Location">
-  </a>
+<h3>
+<a name="TOC-Log-File-Location">
+</a>
   Log File Location
  </h3>
- <p>
+<p>
   The log file is
   <span style="font-family:monospace">
    /var/log/emgc_clone.log
   </span>
   .
  </p>
- <h3>
-  <a name="TOC-Configuration-Questions-and-Answers">
-  </a>
+<h3>
+<a name="TOC-Configuration-Questions-and-Answers">
+</a>
   Configuration Questions and Answers
  </h3>
- <p>
+<p>
   During the configuration process, the following questions were answered:
  </p>
- <table border="1">
-  <thead>
-   <tr>
-    <td>
+<table border="1">
+<thead>
+<tr>
+<td>
      Question
     </td>
-    <td>
+<td>
      Answer
     </td>
-   </tr>
-  </thead>
-  <tbody>
-   <tr>
-    <td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
      Do you want to enable dynamic IP configuration (DHCP) (Y|n)?
     </td>
-    <td>
+<td>
      n
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      Enter IP address:
     </td>
-    <td>
+<td>
      182.168.1.103
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      Enter netmask address
     </td>
-    <td>
+<td>
      255.255.255.0
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      Enter hostname
     </td>
-    <td>
+<td>
      cloudctl.yaocm.id.au
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      Enter default gateway address
     </td>
-    <td>
+<td>
      192.168.1.103
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      Enter DNS server IP address
     </td>
-    <td>
+<td>
      192.168.1.252
     </td>
-   </tr>
-  </tbody>
- </table>
- <h3>
-  <a name="TOC-Repository-database-details">
-  </a>
+</tr>
+</tbody>
+</table>
+<h3>
+<a name="TOC-Repository-database-details">
+</a>
   Repository database details
  </h3>
- <p>
+<p>
   Repository database details are:
  </p>
- <table border="0">
-  <thead>
-   <tr>
-    <td>
+<table border="0">
+<thead>
+<tr>
+<td>
      Parameter
     </td>
-    <td>
+<td>
      Value
     </td>
-   </tr>
-  </thead>
-  <tbody>
-   <tr>
-    <td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
      Listener address
     </td>
-    <td>
+<td>
      192.168.1.103
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      Listener port
     </td>
-    <td>
+<td>
      1521
     </td>
-   </tr>
-   <tr>
-    <td>
+</tr>
+<tr>
+<td>
      SID
     </td>
-    <td>
+<td>
      emrepus
     </td>
-   </tr>
-  </tbody>
- </table>
- <h2>
-  <a name="TOC-Access-the-OEM-Console">
-  </a>
+</tr>
+</tbody>
+</table>
+<h2>
+<a name="TOC-Access-the-OEM-Console">
+</a>
   Access the OEM Console
  </h2>
- <p>
+<p>
   Use the url
   <a href="https://192.168.1.103:4900/em" rel="nofollow">
    https://192.168.1.103:4900/em
@@ -323,20 +330,5 @@ table-of-contents:
   </span>
   .
  </p>
- <table width="100%">
-  <tbody>
-   <tr>
-    <td width="50%">
-     <a href="home/system-builds/cloudctl/01-extract-template-into-seed-pool.html">
-      01 Extract Template into Seed Pool
-     </a>
-    </td>
-    <td align="right" width="50%">
-     <a href="home/system-builds/cloudctl/03-fix-networking-issues.html">
-      03 Fix Networking Issues
-     </a>
-    </td>
-   </tr>
-  </tbody>
- </table>
+
 </div>

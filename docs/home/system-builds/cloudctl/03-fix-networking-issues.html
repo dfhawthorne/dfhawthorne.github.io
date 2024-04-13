@@ -23,15 +23,22 @@ table-of-contents:
     toc-text: 'Add an Extra DNS Server'
   - toc-url: 'Update-Routing-Table'
     toc-text: 'Update Routing Table'
+scroll-bar:
+  left-link:
+    url: 'home/system-builds/cloudctl/02-deploy-em12cr3-template-into-running-pool.html'
+    title: '02 Deploy EM12CR3 Template into Running Pool'
+  right-link:
+    url: 'home/system-builds/cloudctl/04-clean-up-seed-pool.html'
+    title: '04 Clean Up Seed Pool'
 ---
 <div dir="ltr">
- <br/>
- <h2>
-  <a name="TOC-Overview">
-  </a>
+<br/>
+<h2>
+<a name="TOC-Overview">
+</a>
   Overview
  </h2>
- <p>
+<p>
   When I tried to connect to
   <a href="http://support.oracl.com" rel="nofollow">
    My Oracle Support
@@ -42,36 +49,36 @@ table-of-contents:
   </span>
   , I got the following error:
  </p>
- <blockquote>
+<blockquote>
   Unable to complete network operation against My Oracle Support. Please check network connectivity to Oracle Support Site.
  </blockquote>
- <h2>
-  <a name="TOC-Diagnosis">
-  </a>
+<h2>
+<a name="TOC-Diagnosis">
+</a>
   Diagnosis
  </h2>
- <p>
+<p>
   There were two (2) problems:
  </p>
- <ol>
-  <li>
+<ol>
+<li>
    Only one (1) DNS server was specified during set up
   </li>
-  <li>
+<li>
    IP routing was incorrect
   </li>
- </ol>
- <h2>
-  <a name="TOC-Resolution">
-  </a>
+</ol>
+<h2>
+<a name="TOC-Resolution">
+</a>
   Resolution
  </h2>
- <h3>
-  <a name="TOC-Add-an-Extra-DNS-Server">
-  </a>
+<h3>
+<a name="TOC-Add-an-Extra-DNS-Server">
+</a>
   Add an Extra DNS Server
  </h3>
- <p>
+<p>
   The following line was appended to
   <span style="font-family:monospace">
    /etc/resolv.conf
@@ -82,40 +89,25 @@ table-of-contents:
   </span>
   :
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   nameserver 10.1.1.1
  </blockquote>
- <h3>
-  <a name="TOC-Update-Routing-Table">
-  </a>
+<h3>
+<a name="TOC-Update-Routing-Table">
+</a>
   Update Routing Table
  </h3>
- <p>
+<p>
   The following commands were run on
   <span style="font-family:monospace">
    CLOUDCTL
   </span>
   :
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   route del default
   <br/>
   route add default gw 192.168.1.1 metric 3 dev eth0
  </blockquote>
- <table width="100%">
-  <tbody>
-   <tr>
-    <td width="50%">
-     <a href="home/system-builds/cloudctl/02-deploy-em12cr3-template-into-running-pool.html">
-      02 Deploy EM12CR3 Template into Running Pool
-     </a>
-    </td>
-    <td align="right" width="50%">
-     <a href="home/system-builds/cloudctl/04-clean-up-seed-pool.html">
-      04 Clean Up Seed Pool
-     </a>
-    </td>
-   </tr>
-  </tbody>
- </table>
+
 </div>

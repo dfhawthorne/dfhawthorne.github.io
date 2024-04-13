@@ -23,155 +23,159 @@ table-of-contents:
     toc-text: 'Create Template Directory'
   - toc-url: 'Upload-the-Files-to-VICTORIA'
     toc-text: 'Upload the Files to VICTORIA'
+scroll-bar:
+  right-link:
+    url: 'home/system-builds/cloudctl/01-extract-template-into-seed-pool.html'
+    title: '01 Extract Template into Seed Pool'
 ---
 <div dir="ltr">
- <br/>
- <h2>
-  <a name="TOC-Overview">
-  </a>
+<br/>
+<h2>
+<a name="TOC-Overview">
+</a>
   Overview
  </h2>
- <p>
+<p>
   I used the new OVM server created on
   <a href="home/system-builds/victoria.html" style="font-family:monospace">
-   VICTOIA
+   VICTORIA
   </a>
   to host the downloaded template of Cloud Control 12.1.0.3.
  </p>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
+<h2>
+<a name="TOC-Procedure">
+</a>
   Procedure
  </h2>
- <h3>
-  <a name="TOC-Download-Software">
-  </a>
+<h3>
+<a name="TOC-Download-Software">
+</a>
   Download Software
  </h3>
- <ol>
-  <li>
+<ol>
+<li>
    Go to
    <a href="https://edelivery.oracle.com/EPD/LinuxWelcome/get_form" rel="nofollow">
     Oracle Software Delivery Cloud - Oracle Linux and Oracle VM
    </a>
-  </li>
-  <li>
+</li>
+<li>
    Sign in using your Oracle account
   </li>
-  <li>
+<li>
    Accept the conditions
   </li>
-  <li>
+<li>
    Search using:
   </li>
-  <table>
-   <tbody>
-    <tr>
-     <td>
+<table>
+<tbody>
+<tr>
+<td>
       Select a Product Pack
      </td>
-     <td>
+<td>
       Oracle VM Template
      </td>
-    </tr>
-    <tr>
-     <td>
+</tr>
+<tr>
+<td>
       Platform
      </td>
-     <td>
+<td>
       x86 64 bit
      </td>
-    </tr>
-   </tbody>
-  </table>
-  <li>
+</tr>
+</tbody>
+</table>
+<li>
    Click
    <span style="font-weight:bold">
     Go
    </span>
-  </li>
-  <li>
+</li>
+<li>
    Select
    <span style="font-style:italic">
     Oracle VM Template for Oracle Enterprise Manager Cloud Control 12c Release 3 (12.1.0.3) Media Pack for x86 (64 bit)
    </span>
-  </li>
-  <li>
+</li>
+<li>
    Click
    <span style="font-weight:bold">
     Continue
    </span>
    (at the bottom of the page)
   </li>
-  <li>
+<li>
    Download
    <span style="font-weight:bold">
     Oracle VM Template for Oracle Enterprise Manager Cloud Control 12c Release 3 (12.1.0.3), Plug-ins Update 1 for Linux x86-64 Disk1of5
    </span>
    (V41319-01)
   </li>
-  <li>
+<li>
    Download
    <span style="font-weight:bold">
     Oracle VM Template for Oracle Enterprise Manager Cloud Control 12c Release 3 (12.1.0.3), Plug-ins Update 1 for Linux x86-64 Disk2of5
    </span>
    (V41320-01)
   </li>
-  <li>
+<li>
    Download
    <span style="font-weight:bold">
     Oracle VM Template for Oracle Enterprise Manager Cloud Control 12c Release 3 (12.1.0.3), Plug-ins Update 1 for Linux x86-64 Disk3of5
    </span>
    (V41321-01)
   </li>
-  <li>
+<li>
    Download
    <span style="font-weight:bold">
     Oracle VM Template for Oracle Enterprise Manager Cloud Control 12c Release 3 (12.1.0.3), Plug-ins Update 1 for Linux x86-64 Disk4of5
    </span>
    (V41322-01)
   </li>
-  <li>
+<li>
    Download
    <span style="font-weight:bold">
     Oracle VM Template for Oracle Enterprise Manager Cloud Control 12c Release 3 (12.1.0.3), Plug-ins Update 1 for Linux x86-64 Disk5of5
    </span>
    (V41323-01)
   </li>
- </ol>
- <p>
+</ol>
+<p>
   Part number is B75437-01.
  </p>
- <h3>
-  <a name="TOC-Create-Template-Directory">
-  </a>
+<h3>
+<a name="TOC-Create-Template-Directory">
+</a>
   Create Template Directory
  </h3>
- <p>
+<p>
   On
   <a href="home/system-builds/victoria.html" style="font-family:monospace">
    VICTORIA
   </a>
   , run the following command:
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   mkdir -p /OVS/seed_pool/OVM_EM12R3
   <br/>
   mkdir -p /OVS/running_pool/OVM_EM12R3
  </blockquote>
- <h3>
-  <a name="TOC-Upload-the-Files-to-VICTORIA">
-  </a>
+<h3>
+<a name="TOC-Upload-the-Files-to-VICTORIA">
+</a>
   Upload the Files to VICTORIA
  </h3>
- <p>
+<p>
   On the Windows 8.1 system, run the following commands under
   <a href="http://mobaxterm.mobatek.net/" rel="nofollow">
    MobaXTerm
   </a>
   :
  </p>
- <blockquote style="font-family:monospace">
+<blockquote style="font-family:monospace">
   sftp root@192.168.1.100
   <br/>
   cd /OVS/seed_pool/OVM_EM12R3
@@ -180,17 +184,5 @@ table-of-contents:
   <br/>
   exit
  </blockquote>
- <table width="100%">
-  <tbody>
-   <tr>
-    <td width="50%">
-    </td>
-    <td align="right" width="50%">
-     <a href="home/system-builds/cloudctl/01-extract-template-into-seed-pool.html">
-      01 Extract Template into Seed Pool
-     </a>
-    </td>
-   </tr>
-  </tbody>
- </table>
+
 </div>

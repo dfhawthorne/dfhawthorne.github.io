@@ -124,6 +124,8 @@ first_block = True
 def extract_journal_links(tag):
     assert tag is not None and type(tag) == bs4.element.Tag, \
         "Tag must be a BeautifulSoup Tag Element"
+    
+    global first_block
 
     scroll_bar  = ''
 
@@ -131,21 +133,27 @@ def extract_journal_links(tag):
         args.log.write(f">>> div=\n{str(tag)}\n>>>\n")
     if first_block:
         first_col = True
-        for col in tag.find_all('div'):
+        if tag.name == 'table':
+            sub_tag_name = 'td'
+        else:
+            sub_tag_name = 'div'
+        for col in tag.find_all(sub_tag_name):
             style = col.get('style')
+            align = col.get('align', 'left')
             url   = col.find('a')
             if args.verbose:
-                args.log.write(f"DIV: style='{style}'\nurl='{url}'\n")
+                args.log.write(f"{sub_tag_name}: style='{style}'\nalign='{align}'\nurl='{url}'\n")
             if url is None: continue
-            if style is None: continue
+            if style is not None:
+                if "left" in style:  align = "left"
+                if "right" in style: align = "right"
+            if args.verbose:
+                args.log.write(f"{sub_tag_name}: align={align}\n")
             title = ' '.join([s for s in url.stripped_strings])
             if first_col:
                 scroll_bar += "scroll-bar:\n"
                 first_col = False
-            if "left" in style:
-                scroll_bar += f"  left-link:\n"
-            elif "right" in style:
-                scroll_bar += f"  right-link:\n"
+            scroll_bar += f"  {align}-link:\n"
             link = url.get('href')
             if args.verbose:
                 args.log.write(f"A: link='{link}'\n")
@@ -158,20 +166,28 @@ def extract_journal_links(tag):
                 pass
             else:
                 link += '.html'
-            scroll_bar += f"    url: {link}\n    title: '{title}'\n"
+            scroll_bar += f"    url: '{link}'\n    title: '{title}'\n"
         first_block = False
     tag.decompose()
+
+    if args.verbose:
+        args.log.write(  "scroll_bar: ===============================\n")
+        args.log.write(scroll_bar)
+        args.log.write("\n===========================================\n")
 
     assert scroll_bar is not None and type(scroll_bar) == str, \
         "scroll_bar must a string"
     return scroll_bar
 
-req_attrs          = dict()
-div_styles         = ["display:block;width:100%", "display:block", "display:grid"]
+block_attrs  = [ \
+    ("table", {'width':"100%"}), \
+    ("div", {'style':"display:block;width:100%"}), \
+    ("div", {'style':"display:block"}), \
+    ("div", {'style':"display:grid"}) \
+    ]
 scroll_bar         = ''
-for style in div_styles:
-    req_attrs['style'] = style
-    all_blocks         = soup.find_all('div', req_attrs)
+for (tag_name,req_attrs) in block_attrs:
+    all_blocks         = soup.find_all(tag_name, req_attrs)
     for tag in all_blocks:
         scroll_bar += extract_journal_links(tag)
     if scroll_bar != '': break
