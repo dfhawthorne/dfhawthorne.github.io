@@ -11,195 +11,126 @@ breadcrumbs:
   url: home/system-builds/auburn.html
 - title: '2020-01-02 Upgrade to Python3 for Ansible'
   url: home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'References'
+  toc-text: 'References'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'First-Attempt-to-Install-Python3-Version-of-Ansible'
+    toc-text: 'First Attempt to Install Python3 Version of Ansible'
+  - toc-url: 'Install-Pip3'
+    toc-text: 'Install Pip3'
+  - toc-url: 'Second-Attempt-to-Install-Python3-Version-of-Ansible'
+    toc-text: 'Second Attempt to Install Python3 Version of Ansible'
+  - toc-url: 'Verify-Installation'
+    toc-text: 'Verify Installation'
+  - toc-url: 'Uninstall-and-Re-install-Ansible'
+    toc-text: 'Uninstall and Re-install Ansible'
+  - toc-url: 'Find-All-Versions-of-Ansible'
+    toc-text: 'Find All Versions of Ansible'
+  - toc-url: 'Logoff-and-Logon'
+    toc-text: 'Logoff and Logon'
+scroll-bar:
+  left-link:
+    url: 'home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html'
+    title: '2018-03-29 Add Extra Disk Drive'
 ---
 <div dir="ltr">
- <div style="display:grid">
-  <div>
-   <a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html">
-    2018-03-29 Add Extra Disk Drive
-   </a>
-  </div>
- </div>
- <br/>
- <div>
-  <div class="sites-embed-align-left-wrapping-off">
-   <div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
-    <div class="sites-embed-content sites-embed-type-toc">
-     <div class="goog-toc sites-embed-toc-maxdepth-6">
-      <p>
-       Contents
-      </p>
-      <ol class="goog-toc">
-       <li class="goog-toc">
-        <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Overview">
-         <strong>
-          1
-         </strong>
-         Overview
-        </a>
-       </li>
-       <li class="goog-toc">
-        <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-References">
-         <strong>
-          2
-         </strong>
-         References
-        </a>
-       </li>
-       <li class="goog-toc">
-        <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Procedure">
-         <strong>
-          3
-         </strong>
-         Procedure
-        </a>
-        <ol class="goog-toc">
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-First-Attempt-to-Install-Python3-Version-of-Ansible">
-           <strong>
-            3.1
-           </strong>
-           First Attempt to Install Python3 Version of Ansible
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Install-Pip3">
-           <strong>
-            3.2
-           </strong>
-           Install Pip3
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Second-Attempt-to-Install-Python3-Version-of-Ansible">
-           <strong>
-            3.3
-           </strong>
-           Second Attempt to Install Python3 Version of Ansible
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Verify-Installation">
-           <strong>
-            3.4
-           </strong>
-           Verify Installation
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Uninstall-and-Re-install-Ansible">
-           <strong>
-            3.5
-           </strong>
-           Uninstall and Re-install Ansible
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Find-All-Versions-of-Ansible">
-           <strong>
-            3.6
-           </strong>
-           Find All Versions of Ansible
-          </a>
-         </li>
-         <li class="goog-toc">
-          <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html#TOC-Logoff-and-Logon">
-           <strong>
-            3.7
-           </strong>
-           Logoff and Logon
-          </a>
-         </li>
-        </ol>
-       </li>
-      </ol>
-     </div>
-    </div>
-   </div>
-  </div>
- </div>
- <br/>
- <h2>
-  <a name="TOC-Overview">
-  </a>
+
+<br/>
+<div>
+<div class="sites-embed-align-left-wrapping-off">
+<div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
+<div class="sites-embed-content sites-embed-type-toc">
+</div>
+</div>
+</div>
+</div>
+<br/>
+<h2>
+<a name="TOC-Overview">
+</a>
   Overview
  </h2>
- <p>
+<p>
   I wanted to update Ansible to use Python3.
  </p>
- <h2>
-  <a name="TOC-References">
-  </a>
+<h2>
+<a name="TOC-References">
+</a>
   References
  </h2>
- <ul>
-  <li>
-   <a href="https://docs.ansible.com/ansible/latest/index.html" rel="nofollow">
+<ul>
+<li>
+<a href="https://docs.ansible.com/ansible/latest/index.html" rel="nofollow">
     Ansible Documentation
    </a>
-  </li>
-  <ul>
-   <li>
-    <a href="https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html" rel="nofollow">
+</li>
+<ul>
+<li>
+<a href="https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html" rel="nofollow">
      Python 3 Support
     </a>
-   </li>
-  </ul>
- </ul>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
+</li>
+</ul>
+</ul>
+<h2>
+<a name="TOC-Procedure">
+</a>
   Procedure
  </h2>
- <h3>
-  <a name="TOC-First-Attempt-to-Install-Python3-Version-of-Ansible">
-  </a>
+<h3>
+<a name="TOC-First-Attempt-to-Install-Python3-Version-of-Ansible">
+</a>
   First Attempt to Install Python3 Version of Ansible
  </h3>
- <p>
+<p>
   The procedure given in “
   <a href="https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html" rel="nofollow">
    Python 3 Support
   </a>
   ” is very simple:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 install ansible</pre>
- <p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 install ansible</pre>
+<p>
   The command failed with:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Command 'pip3' not found, but can be installed with:
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Command 'pip3' not found, but can be installed with:
 
 sudo apt install python3-pip
 </pre>
- <h3>
-  <a name="TOC-Install-Pip3">
-  </a>
+<h3>
+<a name="TOC-Install-Pip3">
+</a>
   Install Pip3
  </h3>
- <p>
+<p>
   As suggested by the error messages above, I ran the following command:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo apt install python3-pip</pre>
- <p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo apt install python3-pip</pre>
+<p>
   The command succeeded (the log is attached as install_pip3.log)
  </p>
- <h3>
-  <a name="TOC-Second-Attempt-to-Install-Python3-Version-of-Ansible">
-  </a>
+<h3>
+<a name="TOC-Second-Attempt-to-Install-Python3-Version-of-Ansible">
+</a>
   Second Attempt to Install Python3 Version of Ansible
  </h3>
- <p>
+<p>
   I repeated the procedure given in “
   <a href="https://docs.ansible.com/ansible/latest/reference_appendices/python_3_support.html" rel="nofollow">
    Python 3 Support
   </a>
   ”:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 install ansible</pre>
- <p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 install ansible</pre>
+<p>
   The command succeeded as shown below:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Collecting ansible
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Collecting ansible
   Downloading https://files.pythonhosted.org/packages/f3/0d/ee54843308769f2c78be849d9e9f65dc8d63781941dc880f68507aae33ba/ansible-2.9.2.tar.gz (14.2MB)
     100% |████████████████████████████████| 14.2MB 99kB/s 
 Collecting PyYAML (from ansible)
@@ -232,67 +163,67 @@ Successfully built ansible PyYAML pycparser
 Installing collected packages: PyYAML, six, pycparser, cffi, cryptography, MarkupSafe, jinja2, ansible
 Successfully installed MarkupSafe-1.1.1 PyYAML-5.2 ansible-2.9.2 cffi-1.13.2 cryptography-2.8 jinja2-2.10.3 pycparser-2.19 six-1.13.0
 </pre>
- <h3>
-  <a name="TOC-Verify-Installation">
-  </a>
+<h3>
+<a name="TOC-Verify-Installation">
+</a>
   Verify Installation
  </h3>
- <p>
+<p>
   I used the following procedure to verify the installation of the Python3 version of Ansible:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">ansible --version</pre>
- <p>
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">ansible --version</pre>
+<p>
   The Python2 version was still active as shown below:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">ansible 2.6.3
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">ansible 2.6.3
   config file = /etc/ansible/ansible-ocm12c/ansible.cfg
   configured module search path = [u'/home/douglas/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python2.7/dist-packages/ansible
   executable location = /usr/bin/ansible
   python version = 2.7.17 (default, Nov  7 2019, 10:07:09) [GCC 7.4.0]
 </pre>
- <h3>
-  <a name="TOC-Uninstall-and-Re-install-Ansible">
-  </a>
+<h3>
+<a name="TOC-Uninstall-and-Re-install-Ansible">
+</a>
   Uninstall and Re-install Ansible
  </h3>
- <p>
+<p>
   I used the following commands to uninstall and re-install Ansible. This time, I will use elevated privileges (as
   <span style="font-family:mono;font-size:13px;background-color:#d7dbdb">
    root
   </span>
   ) to install Ansible:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 uninstall ansible
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 uninstall ansible
 sudo pip3 install ansible
 </pre>
- <p>
+<p>
   The logs are similar to above.
  </p>
- <h3>
-  <a name="TOC-Find-All-Versions-of-Ansible">
-  </a>
+<h3>
+<a name="TOC-Find-All-Versions-of-Ansible">
+</a>
   Find All Versions of Ansible
  </h3>
- <p>
+<p>
   The verification tests said that I was still finding the Python2 version of Ansible. I used the following command to find all versions of the Ansible executable:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo find / -name ansible -executable -type f 2&gt;/dev/null
+<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo find / -name ansible -executable -type f 2&gt;/dev/null
 </pre>
- <p>
+<p>
   The following three (3) versions were returned:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">/usr/local/lib/python3.6/dist-packages/ansible_test/_data/injector/ansible
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">/usr/local/lib/python3.6/dist-packages/ansible_test/_data/injector/ansible
 /usr/local/bin/ansible
 /usr/bin/ansible
 </pre>
- <p>
+<p>
   I assume I can safely ignore the first result returned.
  </p>
- <p>
+<p>
   The second result is the Python2 as shown below:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/bin/ansible --version
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/bin/ansible --version
 ansible 2.6.3
   config file = /etc/ansible/ansible-ocm12c/ansible.cfg
   configured module search path = [u'/home/douglas/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -300,10 +231,10 @@ ansible 2.6.3
   executable location = /usr/bin/ansible
   <span style="font-weight:bold;background-color:white">python version = 2.7.17</span> (default, Nov  7 2019, 10:07:09) [GCC 7.4.0]
 </pre>
- <p>
+<p>
   The third result is the Python3 version as shown below:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/local/bin/ansible --version
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/local/bin/ansible --version
 ansible 2.9.2
   config file = /etc/ansible/ansible-ocm12c/ansible.cfg
   configured module search path = ['/home/douglas/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -311,15 +242,15 @@ ansible 2.9.2
   executable location = /usr/local/bin/ansible
   <span style="font-weight:bold;background-color:white">python version = 3.6.9</span> (default, Nov  7 2019, 10:44:02) [GCC 8.3.0]
 </pre>
- <h3>
-  <a name="TOC-Logoff-and-Logon">
-  </a>
+<h3>
+<a name="TOC-Logoff-and-Logon">
+</a>
   Logoff and Logon
  </h3>
- <p>
+<p>
   I got the new version of Ansible after I logged off and back on to Auburn:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>~</b>$ which ansible
+<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>~</b>$ which ansible
 /usr/local/bin/ansible
 <b>douglas@auburn</b>:<b>~</b>$ ansible --version
 ansible 2.9.2
@@ -329,23 +260,17 @@ ansible 2.9.2
   executable location = /usr/local/bin/ansible
   <span style="font-weight:bold;background-color:white">python version = 3.6.9</span> (default, Nov  7 2019, 10:44:02) [GCC 8.3.0]
 </pre>
- <div style="display:grid">
-  <div>
-   <a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html">
-    2018-03-29 Add Extra Disk Drive
-   </a>
-  </div>
- </div>
- <div class="file_downloads">
-  <h2 id="TOC-File-Downloads">
+
+<div class="file_downloads">
+<h2 id="TOC-File-Downloads">
    File Downloads
   </h2>
-  <ol>
-   <li>
-    <a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible/install_pip3.log">
+<ol>
+<li>
+<a href="home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible/install_pip3.log">
      install_pip3.log
     </a>
-   </li>
-  </ol>
- </div>
+</li>
+</ol>
+</div>
 </div>

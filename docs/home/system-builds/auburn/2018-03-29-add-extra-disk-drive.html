@@ -18,161 +18,51 @@ scroll-bar:
   right-link:
     url: home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html
     title: '2020-01-02 Upgrade to Python3 for Ansible'
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'References'
+  toc-text: 'References'
+  toc-menu:
+  - toc-url: 'Ubuntu-Documentation'
+    toc-text: 'Ubuntu Documentation'
+- toc-url: 'XEN-Documentation'
+  toc-text: 'XEN Documentation'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'Shutdown-AUBURN'
+    toc-text: 'Shutdown AUBURN'
+  - toc-url: 'Create-New-Disk-Drive'
+    toc-text: 'Create New Disk Drive'
+  - toc-url: 'Update-Configuration-File'
+    toc-text: 'Update Configuration File'
+  - toc-url: 'Start-AUBURN'
+    toc-text: 'Start AUBURN'
+  - toc-url: 'Detect-LVM-Volumes'
+    toc-text: 'Detect LVM Volumes'
+  - toc-url: 'Create-Physical-Volume'
+    toc-text: 'Create Physical Volume'
+  - toc-url: 'Extend-Logical-Volume-to-New-Physical-Volume'
+    toc-text: 'Extend Logical Volume to New Physical Volume'
+  - toc-url: 'First-Attempt-to-Resize-Root-Logical-Volume'
+    toc-text: 'First Attempt to Resize Root Logical Volume'
+  - toc-url: 'Second-Attempt-to-Resize-Root-Logical-Volume'
+    toc-text: 'Second Attempt to Resize Root Logical Volume'
+  - toc-url: 'Determine-Device-Name-for-Root-Logical-Volume'
+    toc-text: 'Determine Device Name for Root Logical Volume'
+  - toc-url: 'Resize-Root-File-System'
+    toc-text: 'Resize Root File System'
+  - toc-url: 'Verify-Size-of-Root-File-System'
+    toc-text: 'Verify Size of Root File System'
 ---
 <div dir="ltr">
-
 <br/>
 <div>
 <div class="sites-embed-align-left-wrapping-off">
 <div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
 <div class="sites-embed-content sites-embed-type-toc">
-<div class="goog-toc sites-embed-toc-maxdepth-6">
-<p>
-       Contents
-      </p>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Overview">
-<strong>
-          1
-         </strong>
-         Overview
-        </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-References">
-<strong>
-          2
-         </strong>
-         References
-        </a>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Ubuntu-Documentation">
-<strong>
-            2.1
-           </strong>
-           Ubuntu Documentation
-          </a>
-</li>
-</ol>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-XEN-Documentation">
-<strong>
-          3
-         </strong>
-         XEN Documentation
-        </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Procedure">
-<strong>
-          4
-         </strong>
-         Procedure
-        </a>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Shutdown-AUBURN">
-<strong>
-            4.1
-           </strong>
-           Shutdown AUBURN
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Create-New-Disk-Drive">
-<strong>
-            4.2
-           </strong>
-           Create New Disk Drive
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Update-Configuration-File">
-<strong>
-            4.3
-           </strong>
-           Update Configuration File
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Start-AUBURN">
-<strong>
-            4.4
-           </strong>
-           Start AUBURN
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Detect-LVM-Volumes">
-<strong>
-            4.5
-           </strong>
-           Detect LVM Volumes
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Create-Physical-Volume">
-<strong>
-            4.6
-           </strong>
-           Create Physical Volume
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Extend-Logical-Volume-to-New-Physical-Volume">
-<strong>
-            4.7
-           </strong>
-           Extend Logical Volume to New Physical Volume
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-First-Attempt-to-Resize-Root-Logical-Volume">
-<strong>
-            4.8
-           </strong>
-           First Attempt to Resize Root Logical Volume
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Second-Attempt-to-Resize-Root-Logical-Volume">
-<strong>
-            4.9
-           </strong>
-           Second Attempt to Resize Root Logical Volume
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Determine-Device-Name-for-Root-Logical-Volume">
-<strong>
-            4.10
-           </strong>
-           Determine Device Name for Root Logical Volume
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Resize-Root-File-System">
-<strong>
-            4.11
-           </strong>
-           Resize Root File System
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html#TOC-Verify-Size-of-Root-File-System">
-<strong>
-            4.12
-           </strong>
-           Verify Size of Root File System
-          </a>
-</li>
-</ol>
-</li>
-</ol>
-</div>
+
 </div>
 </div>
 </div>
@@ -671,5 +561,4 @@ The filesystem on /dev/mapper/auburn--vg-root is now 2988032 (4k) blocks long.
 /dev/mapper/auburn--vg-root   12G  2.2G  8.6G  21% /
 </pre>
 <br/>
-
 </div>

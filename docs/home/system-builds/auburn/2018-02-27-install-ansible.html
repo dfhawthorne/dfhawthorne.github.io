@@ -18,147 +18,48 @@ scroll-bar:
   right-link:
     url: home/system-builds/auburn/2018-03-25-install-extra-python-modules.html
     title: '2018-03-25 Install Extra Python Modules'
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'References'
+  toc-text: 'References'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'Resynchronize-Package-Index-Files'
+    toc-text: 'Resynchronize Package Index Files'
+  - toc-url: 'Install-software-properties-common-Package'
+    toc-text: 'Install software-properties-common Package'
+  - toc-url: 'Install-software-properties-common-Package1'
+    toc-text: 'Install software-properties-common Package'
+  - toc-url: 'Resynchronize-Package-Index-Files1'
+    toc-text: 'Resynchronize Package Index Files'
+  - toc-url: 'Install-Ansible'
+    toc-text: 'Install Ansible'
+- toc-url: 'Establish-SSH-Connectivity'
+  toc-text: 'Establish SSH Connectivity'
+  toc-menu:
+  - toc-url: 'Establish-SSH-Credentials-on-AUBURN'
+    toc-text: 'Establish SSH Credentials on AUBURN'
+  - toc-url: 'Propagate-SSH-Credentials-to-PENRITH'
+    toc-text: 'Propagate SSH Credentials to PENRITH'
+  - toc-url: 'Propagate-SSH-Credentials-to-PENRITH1'
+    toc-text: 'Propagate SSH Credentials to PENRITH'
+- toc-url: 'Testing'
+  toc-text: 'Testing'
+  toc-menu:
+  - toc-url: 'Establish-Hosts-Inventory'
+    toc-text: 'Establish Hosts Inventory'
+  - toc-url: 'Do-PING-Test'
+    toc-text: 'Do PING Test'
 ---
 <div dir="ltr">
-
 <br/>
 <div>
 <div class="sites-embed-align-left-wrapping-off">
 <div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
 <div class="sites-embed-content sites-embed-type-toc">
-<div class="goog-toc sites-embed-toc-maxdepth-6">
-<p>
-       Contents
-      </p>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Overview">
-<strong>
-          1
-         </strong>
-         Overview
-        </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-References">
-<strong>
-          2
-         </strong>
-         References
-        </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Procedure">
-<strong>
-          3
-         </strong>
-         Procedure
-        </a>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Resynchronize-Package-Index-Files">
-<strong>
-            3.1
-           </strong>
-           Resynchronize Package Index Files
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Install-software-properties-common-Package">
-<strong>
-            3.2
-           </strong>
-           Install software-properties-common Package
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Install-software-properties-common-Package1">
-<strong>
-            3.3
-           </strong>
-           Install software-properties-common Package
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Resynchronize-Package-Index-Files1">
-<strong>
-            3.4
-           </strong>
-           Resynchronize Package Index Files
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Install-Ansible">
-<strong>
-            3.5
-           </strong>
-           Install Ansible
-          </a>
-</li>
-</ol>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Establish-SSH-Connectivity">
-<strong>
-          4
-         </strong>
-         Establish SSH Connectivity
-        </a>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Establish-SSH-Credentials-on-AUBURN">
-<strong>
-            4.1
-           </strong>
-           Establish SSH Credentials on AUBURN
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Propagate-SSH-Credentials-to-PENRITH">
-<strong>
-            4.2
-           </strong>
-           Propagate SSH Credentials to PENRITH
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Propagate-SSH-Credentials-to-PENRITH1">
-<strong>
-            4.3
-           </strong>
-           Propagate SSH Credentials to PENRITH
-          </a>
-</li>
-</ol>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Testing">
-<strong>
-          5
-         </strong>
-         Testing
-        </a>
-<ol class="goog-toc">
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Establish-Hosts-Inventory">
-<strong>
-            5.1
-           </strong>
-           Establish Hosts Inventory
-          </a>
-</li>
-<li class="goog-toc">
-<a href="home/system-builds/auburn/2018-02-27-install-ansible.html#TOC-Do-PING-Test">
-<strong>
-            5.2
-           </strong>
-           Do PING Test
-          </a>
-</li>
-</ol>
-</li>
-</ol>
-</div>
+
 </div>
 </div>
 </div>
@@ -740,5 +641,4 @@ penrith.yaocm.id.au | SUCCESS =&gt; {
     "unreachable": true
 }</span>
 </pre>
-
 </div>

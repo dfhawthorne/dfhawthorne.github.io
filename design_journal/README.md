@@ -50,3 +50,4 @@ Table of Contents
 * [2024-04-07](2024_04_07.md) Conversion of Wiki to Jekyll - 12C OCM Completed
 * [2024-04-11](2024_04_11.md) Conversion of Wiki to Jekyll - Start of Conversion of System Builds
 * [2024-04-13](2024_04_13.md) Conversion of Wiki to Jekyll - Increased Detection of Journal Scroll Bars
+* [2024-04-14](2024_04_14.md) Conversion of Wiki to Jekyll - Fixed Issues with TOC and Journal Links

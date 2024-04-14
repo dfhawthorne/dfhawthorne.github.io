@@ -739,7 +739,7 @@ def extract_toc_level(toc_root, toc_level):
 
     if len(toc_children) == 0:
         if args.verbose:
-            args.log.write(f'No TOC chscripts/convert_web_page.pyildren found at level {toc_level}\n')
+            args.log.write(f'No TOC children found at level {toc_level}\n')
 
     result = ''
     toc_indent = ''.ljust(2*(toc_level-1))
@@ -789,6 +789,8 @@ def extract_journal_links(tag):
     assert tag is not None and type(tag) == bs4.element.Tag, \
         "Tag must be a BeautifulSoup Tag Element"
 
+    global first_block
+
     scroll_bar  = ''
 
     if args.verbose:
@@ -801,19 +803,21 @@ def extract_journal_links(tag):
             sub_tag_name = 'div'
         for col in tag.find_all(sub_tag_name):
             style = col.get('style')
+            align = col.get('align', 'left')
             url   = col.find('a')
             if args.verbose:
-                args.log.write(f"{sub_tag_name}: style='{style}'\nurl='{url}'\n")
+                args.log.write(f"{sub_tag_name}: style='{style}'\nalign='{align}'\nurl='{url}'\n")
             if url is None: continue
-            if style is None: continue
+            if style is None:
+                if "left" in style:  align = "left"
+                if "right" in style: align = "right"
+            if args.verbose:
+                args.log.write(f"{sub_tag_name}: align={align}\n")
             title = ' '.join([s for s in url.stripped_strings])
             if first_col:
                 scroll_bar += "scroll-bar:\n"
                 first_col = False
-            if "left" in style:
-                scroll_bar += f"  left-link:\n"
-            elif "right" in style:
-                scroll_bar += f"  right-link:\n"
+            scroll_bar += f"  {align}-link:\n"
             link = url.get('href')
             if args.verbose:
                 args.log.write(f"A: link='{link}'\n")
@@ -830,12 +834,18 @@ def extract_journal_links(tag):
         first_block = False
     tag.decompose()
 
+    if args.verbose:
+        args.log.write(  "scroll_bar: ===============================\n")
+        args.log.write(scroll_bar)
+        args.log.write("\n===========================================\n")
+
     assert scroll_bar is not None and type(scroll_bar) == str, \
         "scroll_bar must a string"
     return scroll_bar
 
 block_attrs_list   = list()
 block_attrs_list.append(('table', {'border': "0", 'cellspacing': "10", 'width': "100%"}))
+block_attrs_list.append(('table', {'width': "100%"}))
 block_attrs_list.append(('div', {'style': "display:block;width:100%"}))
 block_attrs_list.append(('div', {'style': "display:block"}))
 block_attrs_list.append(('div', {'style': "display:grid"}))
