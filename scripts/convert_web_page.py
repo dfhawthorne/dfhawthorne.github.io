@@ -808,7 +808,7 @@ def extract_journal_links(tag):
             if args.verbose:
                 args.log.write(f"{sub_tag_name}: style='{style}'\nalign='{align}'\nurl='{url}'\n")
             if url is None: continue
-            if style is None:
+            if style is not None:
                 if "left" in style:  align = "left"
                 if "right" in style: align = "right"
             if args.verbose:
@@ -856,6 +856,8 @@ for (block_name, req_attrs) in block_attrs_list:
     for tag in all_blocks:
         scroll_bar += extract_journal_links(tag)
     if scroll_bar != '': break
+
+if scroll_bar != '': page_header += scroll_bar
 
 if args.verbose:
     args.log.write(f"\nscroll_bar: ====================================\n{scroll_bar}")
