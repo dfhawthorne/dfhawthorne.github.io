@@ -10,12 +10,12 @@
   <body>
     <div class="two-col-grid-container">
       {% include banner.html %} <!-- R1 -->
-      {%- if page contains "title" -%}
-      <h1 class="page-title">{{ page.title }}</h1> <!-- R2 -->
-      {%- endif -%}
       {% include navigation.html %} <!-- R2 -->
-      {% include search_box.html %} <!-- R3 -->
-      {% include breadcrumbs.html %} <!-- R4 -->
+      {% include breadcrumbs.html %} <!-- R2 -->
+      {%- if page contains "title" -%}
+      <h1 class="page-title">{{ page.title }}</h1> <!-- R3 -->
+      {%- endif -%}
+      {% include search_box.html %} <!-- R4 -->
       <div class="top_scroll_bar">{% include scroll_bar.html %}</div> <!-- R5 -->
       {% include table_of_contents.html %} <!-- R6 -->
       <div class="content">{{ content }}</div> <!-- R7 -->
