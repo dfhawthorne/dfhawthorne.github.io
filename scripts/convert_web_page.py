@@ -214,9 +214,12 @@ if len(breadcrumbs) > 0:
 # </h3>
 # ------------------------------------------------------------------------------
 
+if args.verbose:
+    args.log.write('Removing empty h3 headers\n')
+
 for h3 in soup.find_all('h3'):
     if args.verbose:
-        args.log.write('h3: '+str(h3)+'\n')
+        args.log.write(f'h3: {str(h3)}\n')
     children = [child for child in h3.children]
     if len(children) == 0:
         if args.verbose:
@@ -232,6 +235,9 @@ for h3 in soup.find_all('h3'):
             args.log.write('h3 removed\n')
         h3.decompose()
 
+if args.verbose:
+    args.log.write('Empty h3 headers removed\n')
+
 # ------------------------------------------------------------------------------
 # Auxiliary function to convert URL into one relative to the base of the Wiki
 # (1) Remove prefixes of the form
@@ -241,7 +247,8 @@ for h3 in soup.find_all('h3'):
 #     - https://sites.google.com/view/yetanotherocm/'
 # (2) Convert relative paths from the current page to the documents base
 # (3) Leave other URLs unchanged
-# (4) Change URL encoding: %2F to '?'
+# (4) Change URL encoding: %3F to '?'
+# (5) Change URL directory from '/12-ocm/' to '/12c-ocm/'
 # ------------------------------------------------------------------------------
 
 bigblog_redirects = {
@@ -385,11 +392,12 @@ def need_to_remove_url(url):
 # In Classic Google Sites, the main content is in the first division of the
 # first cell of the first row of the table with an XMLNS attribute.
 #
-# There are four (4) main parts of the main content to be identified:
-# (1) Prologue (displayable text at start of main content)
-# (2) TOC (Table of Contents) - optional
-# (3) Sub-pages Menu - optional
-# (4) Epilogue (displayable text after optional elements)
+# There are five (5) main parts of the main content to be identified:
+# (1) Journal scroll bar - optional
+# (2) Prologue (displayable text at start of main content)
+# (3) TOC (Table of Contents) - optional
+# (4) Sub-pages Menu - optional
+# (5) Epilogue (displayable text after optional elements)
 # ------------------------------------------------------------------------------
 
 tags_to_be_deleted = list() # Tags to be deleted
@@ -407,6 +415,125 @@ if args.verbose:
     args.log.write('============> Start of Main Content (initial) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (initial) <==================\n')
+
+# ------------------------------------------------------------------------------
+# Change URL to relative to Wiki base
+# ------------------------------------------------------------------------------
+
+if content is not None:
+    for addr in content.find_all('a'):
+        href         = addr.get('href')
+        if href is None: continue
+        # Regularise the URL to be relative to the documents base
+        if args.verbose:
+            args.log.write(f'A HREF Before: {str(href)}\n')
+        addr['href'] = normalise_url(href)
+        if args.verbose:
+            args.log.write(f"A HREF After: {str(addr['href'])}\n")
+        if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
+            tags_to_be_deleted.append(addr)
+
+    for addr in content.find_all('img'):
+        href = addr.get('src')
+        # Regularise the URL to be relative to the documents base
+        if href is None: continue
+        if args.verbose:
+            args.log.write(f'IMG SRC Before: {str(href)}\n')
+        new_url_path = normalise_url(href)
+        addr['src'] = new_url_path
+        if args.verbose:
+            args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
+
+# ------------------------------------------------------------------------------
+# Detect and Convert Journal Scroll Bar
+# ------------------------------------------------------------------------------
+
+first_block = True
+
+def extract_journal_links(tag):
+    assert tag is not None and type(tag) == bs4.element.Tag, \
+        "Tag must be a BeautifulSoup Tag Element"
+
+    global first_block
+
+    scroll_bar  = ''
+
+    if args.verbose:
+        args.log.write(f">>> div=\n{str(tag)}\n>>>\n")
+    if first_block:
+        first_col = True
+        if tag.name == 'table':
+            sub_tag_name = 'td'
+        else:
+            sub_tag_name = 'div'
+        for col in tag.find_all(sub_tag_name):
+            style = col.get('style')
+            align = col.get('align', 'left')
+            url   = col.find('a')
+            if args.verbose:
+                args.log.write(f"{sub_tag_name}: style='{style}'\nalign='{align}'\nurl='{url}'\n")
+            if url is None: continue
+            if style is not None:
+                if "left" in style:  align = "left"
+                if "right" in style: align = "right"
+            if args.verbose:
+                args.log.write(f"{sub_tag_name}: align={align}\n")
+            title = ' '.join([s for s in url.stripped_strings])
+            if first_col:
+                scroll_bar += "scroll-bar:\n"
+                first_col = False
+            scroll_bar += f"  {align}-link:\n"
+            link = url.get('href')
+            if args.verbose:
+                args.log.write(f"A: link='{link}'\n")
+            if link is None:
+                if args.verbose:
+                    args.log.write("missing URL for journal link\n")
+                print("missing URL for journal link",file=sys.stderr)
+                exit(1)
+            elif link.endswith('.html'):
+                pass
+            else:
+                link += '.html'
+            scroll_bar += f"    url: {link}\n    title: '{title}'\n"
+        first_block = False
+    tag.decompose()
+
+    if args.verbose:
+        args.log.write(  "scroll_bar: ===============================\n")
+        args.log.write(scroll_bar)
+        args.log.write("\n===========================================\n")
+
+    assert scroll_bar is not None and type(scroll_bar) == str, \
+        "scroll_bar must a string"
+    return scroll_bar
+
+block_attrs_list   = list()
+block_attrs_list.append(('table', {'border': "0", 'cellspacing': "10", 'width': "100%"}))
+block_attrs_list.append(('table', {'width': "100%"}))
+block_attrs_list.append(('div', {'style': "display:block;width:100%"}))
+block_attrs_list.append(('div', {'style': "display:block"}))
+block_attrs_list.append(('div', {'style': "display:grid"}))
+
+scroll_bar         = ''
+for (block_name, req_attrs) in block_attrs_list:
+    all_blocks         = soup.find_all(block_name, req_attrs)
+    for tag in all_blocks:
+        scroll_bar += extract_journal_links(tag)
+    if scroll_bar != '': break
+
+if scroll_bar != '': page_header += scroll_bar
+
+if args.verbose:
+    args.log.write(f"\nscroll_bar: ====================================\n{scroll_bar}")
+    args.log.write( "================================================\n")
+    args.log.write('\n============> Start of Main Content (after Journal Scroll Bar) <================\n')
+    args.log.write(f'{str(content)}\n')
+    args.log.write('============> End of Main Content (after Journal Scroll Bar) <==================\n')
+
+# ------------------------------------------------------------------------------
+# Analyse content after removal of optional scroll bar
+# ------------------------------------------------------------------------------
 
 sub_pages_widget_found    = False
 antecedent_content_found  = False
@@ -455,9 +582,16 @@ if content is not None and content.children is not None:
                 continue
         if not toc_widget_found and not antecedent_content_found:
             for s in tag.stripped_strings:
+                if args.verbose:
+                    tag_string = ' '.join([s for s in tag.stripped_strings])
+                    args.log.write(f"antecedent_content_found=True\ntag='{tag}'\ntag_string='{tag_string}'\n")
                 antecedent_content_found = True
                 break
         if sub_pages_widget_found and not subsequent_content_found:
+            for s in tag.stripped_strings:
+                if args.verbose:
+                    tag_string = ' '.join([s for s in tag.stripped_strings])
+                    args.log.write(f"subsequent_content_found=True\ntag='{tag}'\ntag_string='{tag_string}'\n")
             for s in tag.stripped_strings:
                 subsequent_content_found = True
                 break
@@ -532,34 +666,6 @@ if args.verbose:
     args.log.write('============> Start of Main Content (after removal of sub-page widget) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after removal of sub-page widget) <==================\n')
-
-# ------------------------------------------------------------------------------
-# Change URL to relative to Wiki base
-# ------------------------------------------------------------------------------
-
-if content is not None:
-    for addr in content.find_all('a'):
-        href         = addr.get('href')
-        if href is None: continue
-        # Regularise the URL to be relative to the documents base
-        if args.verbose:
-            args.log.write(f'A HREF Before: {str(href)}\n')
-        addr['href'] = normalise_url(href)
-        if args.verbose:
-            args.log.write(f"A HREF After: {str(addr['href'])}\n")
-        if need_to_remove_url(addr['href']) and addr not in tags_to_be_deleted:
-            tags_to_be_deleted.append(addr)
-
-    for addr in content.find_all('img'):
-        href = addr.get('src')
-        # Regularise the URL to be relative to the documents base
-        if href is None: continue
-        if args.verbose:
-            args.log.write(f'IMG SRC Before: {str(href)}\n')
-        new_url_path = normalise_url(href)
-        addr['src'] = new_url_path
-        if args.verbose:
-            args.log.write(f"IMG SRC After: {str(new_url_path)}\n")
 
 # ------------------------------------------------------------------------------
 # Replace '<A>' tags with imageanchor attributes with '<IMG>' tags
@@ -738,7 +844,7 @@ def extract_toc_level(toc_root, toc_level):
 
     if len(toc_children) == 0:
         if args.verbose:
-            args.log.write(f'No TOC chscripts/convert_web_page.pyildren found at level {toc_level}\n')
+            args.log.write(f'No TOC children found at level {toc_level}\n')
 
     result = ''
     toc_indent = ''.ljust(2*(toc_level-1))
@@ -777,49 +883,6 @@ if args.verbose:
     args.log.write('============> Start of Main Content (after removal of TOC) <================\n')
     args.log.write(f'{str(content)}\n')
     args.log.write('============> End of Main Content (after removal of TOC) <==================\n')
-
-# ------------------------------------------------------------------------------
-# Detect and Convert Journal Scroll Bar
-# ------------------------------------------------------------------------------
-
-req_attrs  = dict()
-req_attrs['border']      = "0"
-req_attrs['cellspacing'] = "10"
-req_attrs['width']       = "100%"
-all_tables = soup.find_all('table',attrs=req_attrs)
-first_table = True
-for tag in all_tables:
-    if args.verbose:
-        args.log.write(f">>> table=\n{str(tag)}\n>>>")
-    if first_table:
-        first_col = True
-        for col in tag.find_all('td'):
-            align = col.get('align')
-            url   = col.find('a')
-            if url is None: continue
-            title = ' '.join([s for s in url.stripped_strings])
-            if first_col:
-                page_header += "scroll-bar:\n"
-                first_col = False
-            if align is None or align == "left":
-                page_header += f"  left-link:\n"
-            elif align == "right":
-                page_header += f"  right-link:\n"
-            link = url.get('href')
-            if link is None:
-                print("missing URL for journal link",file=sys.stderr)
-            elif link.endswith('.html'):
-                pass
-            else:
-                link += '.html'
-            page_header += f"    url: {link}\n    title: '{title}'\n"
-        first_table = False
-    tag.decompose()
-
-if args.verbose:
-    args.log.write('============> Start of Main Content (after Journal Scroll Bar) <================\n')
-    args.log.write(f'{str(content)}\n')
-    args.log.write('============> End of Main Content (after Journal Scroll Bar) <==================\n')
 
 # ------------------------------------------------------------------------------
 # Remove Empty DIV tags in up to four (4) levels
@@ -922,7 +985,10 @@ if uploaded_files_widget is not None:
                 exit(1)
             else:
                 auxiliary_files.remove(os.path.basename(download_file_name))
-            git_mv_cmds.append(f"git mv {full_download_file_name} {auxiliary_dir}/{uploaded_file_name}")
+            git_mv_cmd = f"git mv '{full_download_file_name}' '{auxiliary_dir}/{uploaded_file_name}'"
+            if args.verbose:
+                args.log.write(git_mv_cmd + '\n')
+            git_mv_cmds.append(git_mv_cmd)
     
     for uploaded_file_name in uploaded_file_list:
         if args.verbose:
@@ -1012,7 +1078,8 @@ if args.verbose:
     for mv_cmd_str in git_mv_cmds:
         args.log.write(f"  {mv_cmd_str}\n")
 if args.git_remove:
-    print('Run the following commands manually:')
+    if len(git_removals) + len(git_mv_cmds) > 0:
+        print('Run the following commands manually:')
     for rm_file in git_removals:
         rm_cmd_str = f"git rm '{rm_file}'"
         print(rm_cmd_str)
@@ -1033,8 +1100,12 @@ if args.replace:
     with open(os.path.basename(args.input_html_file_name[0]),'w') as f:
         f.write(page_header)
         if content is not None:
-            f.write(content.prettify())
+            f.write('\n<!-- {% raw %} -->\n')
+            f.write(str(content))
+            f.write('\n<!-- {% endraw %} -->\n')
 else:
     print(page_header)
     if content is not None:
-        print(content.prettify())
+        print('<!-- {% raw %} -->')
+        print(str(content))
+        print('<!-- {% endraw %} -->')

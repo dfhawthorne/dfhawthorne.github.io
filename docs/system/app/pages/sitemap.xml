@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/system-builds.html</loc>
-    <lastmod>2024-02-28</lastmod>
+    <lastmod>2024-04-12</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/11g-ocm.html</loc>
@@ -777,6 +777,598 @@
     <lastmod>2024-03-24</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/personal.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2013-12-25-fix-networking-issues.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2013-12-24-1-add-bridge.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2020-02-17-mount-iso-images.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2015-04-01-set-up-ovs-file-system.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2013-12-24-0-install-ovms-3-2-6.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2018-01-16-upgrade-to-ovms-3-4-4.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2013-12-24-2-create-repository.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2015-04-26-rebuild-victoria-again.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2018-02-01-upgrade-to-ovms-3-3-4---attempt-2.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2014-04-26-rebuild-victoria.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2019-12-28-create-cpu-pools.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2015-03-29-install-ovms-3-3-1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2015-04-04-set-up-xen-network.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria/2019-11-19-set-jumbo-frames-on-bridges-1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/goldengate.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/randwick.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/melbourne/04-install-tightvnc.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/melbourne/00-design.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/melbourne/02-install-ovmm-3-2-6.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/melbourne/03-enabling-remote-log-ins.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/melbourne/01-create-vm.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-17-ansible-playbook-to-install-gi-software.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-07-ansible-playbook-for-gi-storage.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2014-12-29-set-up-redfern1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2017-11-28-recreate-redfern-cluster-on-victoria.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-02-01-revised-planning.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2014-12-23-planning.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-02-ansible-playbook-for-oracle-user.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2017-12-02-gi-installation-attempt-3.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-24-ansible-rearrange-variables.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2017-11-25-asm-fails-to-start.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-20-ansible-playbook-for-install-gi-software-2.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-02-02-install-oel-7-4.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-11-ansible-playbook-for-asmlib-setup.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-02-28-ansible-playbook-for-gi-12-1-0-2-install.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2017-11-19-correct-udev-settings.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2016-04-23-install-gi-12-1-0-2.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-15-ansible-roles.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-01-ansible-playbook-for-oracle-directories.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-06-ansible-playbook-for-gi-network.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2015-04-06-build-redfern2-on-victoria.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-27-manage-ansible-playbook-in-git.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2015-04-06-build-redfern1-on-victoria.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2015-01-01-set-up-dns-and-iscsi.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-05-22-use-iscsi.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2015-04-04-create-redfern1-with-oel7.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-03-14-ansible-playbook-for-software-nfs.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2017-11-30-de-install-gi.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern/2018-06-17-nmcli-commands.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/16-upgrade-oms-12-1-0-4-0.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/03-prepare-to-install-oms-12-1-0-3-1.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/07-complete-oms-12-1-0-3-1-installation.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/17-upgrade-bip.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/04-install-oms-12-1-0-3-1.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/09-additional-configuration-tasks.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/06-install-oms-12-1-0-3-1-again.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/00-design.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/05-add-extra-disk-space.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/14-apply-wls-patches.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/13-patch-oms-to-12-1-0-3-2.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/22-replace-omr.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/2020-01-28-updated-bashrc-for-oms-and-opmn.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/19-re-install-as-vm-on-victoria.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/20-install-packages.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/12-install-rda-and-emdiag-tools.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/11-install-guest-additions.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/21-install-oms-12-1-0-4.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/15-integrate-bi-publisher-into-oem.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/08-configure-firewall-rules.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/18-patch-wls-after-oms-12-1-0-4.html</loc>
+    <lastmod>2024-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/02-fix-os-install-issues.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/10-apply-wls-patches.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cronulla/01-create-vm.html</loc>
+    <lastmod>2024-04-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/allawah.html</loc>
+    <lastmod>2024-04-12</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/oatley/2020-04-13-planning-and-initial-build.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/victoria.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/clifton.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/09-move-omr---fourth-attempt.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/01-patch-gi-and-db-with-psu-12-1-0-2-5.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/05-disable-firewall.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/08-move-omr---third-attempt.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/12-patch-gi-with-psu-12-1-0-2-161018.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/13-downgrade-gordon-to-oel6u5.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/03-fix-up-12-1-0-2-5-and-recreate-emrepos.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/10-move-gordon-to-victoria.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/06-move-omr.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/04-install-oem-agent.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/00-setup.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/11-correct-gordon-network-interface.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/07-move-omr---second-attempt.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gordon/02-create-emrepos-database-using-dbca.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/redfern.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-03-27-create-git-repository.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-02-27-install-ansible.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-02-21-planning.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-02-26-finish-server-installation.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-02-22-create-vm.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-03-25-install-extra-python-modules.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html</loc>
+    <lastmod>2024-04-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/clifton/2016-09-07-1-build-vm.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/clifton/2016-09-07-0-planning.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/clifton/2017-08-01-convert-to-xen.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/clifton/2020-01-09-install-oracle-client.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby/02-set-up-networking-for-rac.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby/00-download-ovm-template-for-db-to-victoria.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby/03-set-up-shared-disks-for-rac.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby/05-start-up-fails.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby/01-extract-template-into-seed-pool.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/revesby/04-deploy-rac-nodes.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/randwick/2020-03-14-planning.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/oatley.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/personal/2020-03-09-upgrade-to-19c.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/goldengate/01-set-up-goldengate1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/goldengate/00-planning.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl/00-download-em12cr3-template-to-victoria.html</loc>
+    <lastmod>2024-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl/04-clean-up-seed-pool.html</loc>
+    <lastmod>2024-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl/05-save-vm-uuid-in-configuration-file.html</loc>
+    <lastmod>2024-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl/02-deploy-em12cr3-template-into-running-pool.html</loc>
+    <lastmod>2024-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl/01-extract-template-into-seed-pool.html</loc>
+    <lastmod>2024-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/cloudctl/03-fix-networking-issues.html</loc>
+    <lastmod>2024-04-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/17-apply-psu-11-2-0-4-6-to-repos.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/05-install-em12cr3p1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/01-upgrade-em12cr3p1-1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/06-set-up-xdcmp.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/02-upgrade-em12cr3p1-2.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/07-set-login-timeout-and-login-profile.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/15-apply-psu-11-2-0-4-3-to-repos.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/16-apply-psu-11-2-0-4-5-to-repos.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/03-deinstall-em12cr1-and-others.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/13-install-repvfy.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/00-update-dns-for-revesby-cluster.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/08-performance-problems.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/12-apply-psu-11-2-0-4-2-to-repos.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/09-deinstall-em12103p1.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/11-fix-repos-for-oms-install.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/10-automate-repos-start-up.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/04-install-db-psu-11-2-0-4-0.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/14-change-db-parameters-for-oem-12-1-0-4.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl/18-apply-patch-17583185.html</loc>
+    <lastmod>2024-04-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/melbourne.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/system-builds/gridctrl.html</loc>
+    <lastmod>2024-04-08</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/11g-oce-rac.html</loc>
     <lastmod>2024-03-04</lastmod>
   </url>
@@ -822,7 +1414,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-guard/configure-fast-start-failover.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-sql-plus-to-convert-to-snapshot-standby.html</loc>
@@ -838,7 +1430,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-guard/configure-a-standby-database-for-testing.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-standby.html</loc>
@@ -854,7 +1446,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-guard/create-a-physical-standby-database.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-guard/administer-a-data-guard-environment.html</loc>
@@ -862,19 +1454,19 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/modify-materialized-views.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/configure-the-database-to-retrieve-all-previous-versions-of-the-table-rows.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/tune-sql-statements.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/create-partitioned-tables.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/configure-the-oracle-database-resource-manager.html</loc>
@@ -886,83 +1478,83 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/create-a-plugged-in-tablespace-by-using-the-transportable-tablespace-feature.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management/perform-real-application-testing.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/12c-ocm-system-builds/botany.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/12c-ocm-system-builds/padstow/2018-05-09-initial-build.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/12c-ocm-system-builds/botany/2018-05-10-initial-build.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/12c-ocm-system-builds/padstow.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/data-and-performance-management.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/administer-oracle-clusterware.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/install-oracle-database-12c-software.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/configure-database-services.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/create-a-real-application-clusters-rac-database.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/install-oracle-grid-infrastructure.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/create-asm-disk-groups.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/create-asm-cloud-file-system-acfs.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac/create-and-manage-asm-instances.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/grid-infrastructure-and-rac.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/protect-the-database-from-data-loss-due-to-failure.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-database-configuration-files.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/configure-the-network-environment-to-allow-connections-to-multiple-databases.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-users-roles-and-privileges.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases.html</loc>
@@ -970,7 +1562,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/create-snapshot-copy-clone.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/create-pdb-using-dbca-simple.html</loc>
@@ -978,19 +1570,19 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/clone-pdb-from-unplugged-pdb.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/general-database-and-network-administration-and-backup-strategy.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/design-journal.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocm/12c-ocm-system-builds.html</loc>
-    <lastmod>2024-04-06</lastmod>
+    <lastmod>2024-04-07</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware.html</loc>

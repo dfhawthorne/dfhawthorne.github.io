@@ -51,7 +51,7 @@ do
     [[ "${file_name}" =~ /_site/ ]] && continue
     case "$(head -n 1 ""${file_name}"")" in
         '---') ;;
-        '<meta content="text/html; charset=utf-8" http-equiv="content-type"/>') 
+        '<meta content="text/html; charset=utf-8" http-equiv="content-type"/>'|'<!DOCTYPE html>'*) 
                (( num_new_unconv_pages++ )) ;;
         *)     (( num_classic_unconv_pages++ )) ;;
     esac
