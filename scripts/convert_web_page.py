@@ -440,6 +440,11 @@ if content is not None:
         href = addr.get('src')
         # Regularise the URL to be relative to the documents base
         if href is None: continue
+        if href == 'javascript:void(0);':
+            if args.verbose:
+                args.log.write(f"IMG tag to be deleted: {str(addr)}\n")
+            tags_to_be_deleted.append(addr)
+            continue
         if args.verbose:
             args.log.write(f'IMG SRC Before: {str(href)}\n')
         new_url_path = normalise_url(href)
