@@ -261,7 +261,7 @@ def normalise_url(href):
     assert href is not None, "href parameter expected"
     assert type(href) == str, "expected href to be passed as a string"
 
-    href = href.replace('%3F','?').replace('/12-ocm/','/12c-ocm/')
+    href = href.replace('%3F','?').replace('/12-ocm/','/12c-ocm/').replace('%20',' ')
     url_parts = urlparse(href)
     if args.verbose:
         args.log.write(f'URL_parts: {str(url_parts)}\n')
@@ -342,7 +342,10 @@ def normalise_url(href):
     elif '#' in normalised_url:
         return normalised_url
     else:
-        full_name_path = doc_base + os.path.sep + normalised_url
+        if normalised_url.startswith(os.path.sep):
+            full_name_path = doc_base + normalised_url
+        else:
+            full_name_path = doc_base + os.path.sep + normalised_url
         if os.path.isfile(full_name_path):
             if args.verbose:
                 args.log.write(f"URL: file '{normalised_url}' exists\n")
@@ -437,6 +440,11 @@ if content is not None:
         href = addr.get('src')
         # Regularise the URL to be relative to the documents base
         if href is None: continue
+        if href == 'javascript:void(0);':
+            if args.verbose:
+                args.log.write(f"IMG tag to be deleted: {str(addr)}\n")
+            tags_to_be_deleted.append(addr)
+            continue
         if args.verbose:
             args.log.write(f'IMG SRC Before: {str(href)}\n')
         new_url_path = normalise_url(href)
@@ -630,7 +638,7 @@ def extract_sub_menu_level( sub_page_menu, level ):
         if menu.name == 'li':
             entry = menu.a
             result += f"{indent}- title: '{entry.string.strip()}'\n"
-            menu_url = normalise_url(entry['href'])
+            menu_url = entry['href']
             if args.verbose:
                 args.log.write(f"Sub-pages url is '{entry['href']}'\n")
                 args.log.write(f"Sub-pages url normalised to '{menu_url}'\n")
@@ -682,7 +690,10 @@ if content is not None:
         if tag.img is None:
             print(f"No <IMG> child found for <A> tag with imageanchor attribute", file=sys.stderr)
             exit(1)
-        old_file_name = doc_base + os.path.sep + tag['href'].replace('%3F','?')
+        if tag['href'].startswith(os.path.sep):
+            old_file_name = doc_base + tag['href'].replace('%3F','?').replace('%20',' ')
+        else:
+            old_file_name = doc_base + os.path.sep + tag['href'].replace('%3F','?').replace('%20',' ')
         if old_file_name.endswith('?attredirects=0'):
             new_file_name = old_file_name.replace('?attredirects=0','')
             if os.path.isfile(old_file_name):
@@ -709,7 +720,10 @@ if content is not None:
                 exit(1)
         else:
             new_file_name = old_file_name
-        image_src = doc_base + os.path.sep + tag.img['src']
+        if tag.img['src'].startswith(os.path.sep):
+            image_src = doc_base + tag.img['src']
+        else:
+            image_src = doc_base + os.path.sep + tag.img['src']
         if args.verbose:
             args.log.write(f"href='{old_file_name}'\nnew_file_name='{new_file_name}'\nimg_src='{image_src}'\n")
             args.log.write(f"image_src matched old_file_name='{old_file_name == image_src}'\n")
@@ -740,7 +754,10 @@ if content is not None:
         if href is None: continue
         if args.verbose:
             args.log.write(f"IMG SRC After: {str(href)}\n")
-        local_image_path = doc_base + os.path.sep + href
+        if href.startswith(os.path.sep):
+            local_image_path = doc_base + href
+        else:
+            local_image_path = doc_base + os.path.sep + href
         if need_to_remove_url(href) and addr not in tags_to_be_deleted:
             tags_to_be_deleted.append(addr)
         elif local_image_path is not None and not os.path.exists(local_image_path):
@@ -775,7 +792,10 @@ for tag in tags_to_be_deleted:
     if tag.name == "a":
         href = tag.get('href')
         if href is not None:
-            file_name = doc_base + os.path.sep + href.replace('%3F','?')
+            if href.startswith(os.path.sep):
+                file_name = doc_base + href.replace('%3F','?').replace('%20',' ')
+            else:
+                file_name = doc_base + os.path.sep + href.replace('%3F','?').replace('%20',' ')
             if file_name not in git_removals:
                 if os.path.exists(file_name):
                     git_removals.append(file_name)
@@ -793,7 +813,10 @@ for tag in tags_to_be_deleted:
     elif tag.name == "img":
         src = tag.get('src')
         if src is not None:
-            file_name = doc_base + os.path.sep + src.replace('%3F','?')
+            if src.startswith(os.path.sep):
+                file_name = doc_base + src.replace('%3F','?').replace('%20',' ')
+            else:
+                file_name = doc_base + os.path.sep + src.replace('%3F','?').replace('%20',' ')
             if file_name not in git_removals:
                 if os.path.exists(file_name):
                     git_removals.append(file_name)
@@ -971,8 +994,11 @@ if uploaded_files_widget is not None:
         add_file_menu_toc = True
         download_file_tag = uploaded_files_widget.find('a', {'aria-label': "Download " + uploaded_file_name})
         if download_file_tag is not None:
-            download_file_name = download_file_tag['href'].strip().replace('%3F','?').replace('/12-ocm/','/12c-ocm/')
-            full_download_file_name = curr_dir + os.path.sep + download_file_name
+            download_file_name = download_file_tag['href'].strip().replace('%3F','?').replace('/12-ocm/','/12c-ocm/').replace('%20',' ')
+            if download_file_name.startswith(os.path.sep):
+                full_download_file_name = curr_dir + download_file_name
+            else:
+                full_download_file_name = curr_dir + os.path.sep + download_file_name
             if args.verbose:
                 args.log.write(f'Download file tag: {str(download_file_tag)}\n')
                 args.log.write(f'Download file name: {download_file_name}\n')

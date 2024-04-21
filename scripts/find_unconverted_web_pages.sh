@@ -10,10 +10,13 @@ docs_path="$(dirname $(dirname $(realpath $0)))/docs"
 while read file_name
 do 
     [[ "${file_name}" =~ /_site/ ]] && continue
-    [[ "${file_name}" =~ /_layout/ ]] && continue
+    [[ "${file_name}" =~ /_includes/ ]] && continue
+    [[ "${file_name}" =~ /_layouts/ ]] && continue
+    [[ "${file_name}" =~ /google ]] && continue
+    [[ "${file_name}" =~ /ASH_report_ ]] && continue
+    [[ "${file_name}" =~ /workload_report_ ]] && continue
     case "$(head -n 1 ""${file_name}"")" in
         '---') ;;
-        '<meta content="text/html; charset=utf-8" http-equiv="content-type"/>') ;;
         *)     printf "%s\n" "${file_name}" ;;
     esac
 done < <(find "${docs_path}" -name "*.html" -type f)
