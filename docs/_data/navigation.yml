@@ -2,7 +2,7 @@
   url: announcements.html
   title: Announcements
 - name: home
-  url: home.html
+  url: index.html
   title: Yet Another OCM
   sub_pages:
   - name: 10g-ocm
