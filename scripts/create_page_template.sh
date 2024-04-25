@@ -44,6 +44,7 @@ right_link_fn=''
 matched_fn=0
 for file_name in $(dirname $1)/*
 do
+    [[ -d "${file_name}" ]] && continue
     if [[ "${file_name}" == "$1" ]]
     then
         matched_fn=1

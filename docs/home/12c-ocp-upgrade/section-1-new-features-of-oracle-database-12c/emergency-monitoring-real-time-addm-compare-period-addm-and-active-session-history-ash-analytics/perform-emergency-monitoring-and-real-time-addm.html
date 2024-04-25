@@ -36,7 +36,7 @@ breadcrumbs:
 </ul>
 <h2 id="TOC-procedure">Procedure</h2>
 <h3 id="TOC-generate-a-real-time-addm-report-using-sql-plus">Generate a Real Time ADDM Report Using SQL*Plus</h3>
-<p>I used the following SQL*Plus commands to generate a Real Time ADDM report using the REAL_TIME_ADDM_REPORT Function. The report is attached as report.xml:</p>
+<p>I used the following SQL*Plus commands to generate a Real Time ADDM report using the REAL_TIME_ADDM_REPORT Function. The report was supposed to be attached as <span class="file-name">report.xml</span>, but was lost during web-site conversion:</p>
 <pre class="sql-cmd">SET LONG 9999
 SET PAGESIZE 100
 SET LINESIZE 180
@@ -46,10 +46,10 @@ SELECT
   FROM
     dual;</pre> 
 <h3 id="TOC-simulate-performance-problem">Simulate Performance Problem</h3>
-<p>I will simulate the performance problem by running the <a href="https://github.com/dfhawthorne/sql-ocm12c/blob/master/Data%20and%20performance%20management/Configure%20the%20Resource%20Manager/stress_test.sh" style="font-family: monospace;">stress_test.sh</a> on PADSTOW. (For further details, please refer to "<a href="https://yaocm.wordpress.com/2019/12/17/high-cpu-usage-with-a-cdb-resource-plan/">High CPU Usage with a CDB Resource Plan</a>".)</p>
+<p>I will simulate the performance problem by running the <a href="https://github.com/dfhawthorne/sql-ocm12c/blob/master/Data%20and%20performance%20management/Configure%20the%20Resource%20Manager/stress_test.sh" class="file-name">stress_test.sh</a> on PADSTOW. (For further details, please refer to "<a href="https://yaocm.wordpress.com/2019/12/17/high-cpu-usage-with-a-cdb-resource-plan/">High CPU Usage with a CDB Resource Plan</a>".)</p>
 <h3 id="TOC-perform-emergency-monitoring">Perform Emergency Monitoring</h3>
 <h4 id="TOC-access-emergency-monitoring-through-oem">Access Emergency Monitoring Through OEM</h4>
-<p>Access <i>Emergency Monitoring</i> through the database home page under OEM as shown below:</p>
+<p>Access <span class="menu-text">Emergency Monitoring</span> through the database home page under OEM as shown below:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Access-Emergency-Monitoring-through-OEM.png" alt="Access Emergency Monitoring through OEM" />
 <h4 id="TOC-enter-credentials-for-emergency-monitoring">Enter Credentials for Emergency Monitoring</h4>
 <p>Enter the required credentials on the following page:</p>
@@ -59,7 +59,7 @@ SELECT
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Emergency-Monitoring-landing-page.png" alt="Emergency Monitoring landing page" />
 <h3 id="TOC-perform-real-time-addm">Perform Real Time ADDM</h3>
 <h4 id="TOC-access-real-time-addm-through-oem">Access Real Time ADDM Through OEM</h4>
-<p>Access <i>Real Time ADDM</i> through the database home page under OEM as shown below:</p>
+<p>Access <span class="menu-text">Real Time ADDM</span> through the database home page under OEM as shown below:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Access-Real-Time-ADDM-through-OEM.png" alt="Access Real Time ADDM through OEM" />
 <h4 id="TOC-enter-credentials-for-real-time-addm">Enter Credentials for Real Time ADDM</h4>
 <p>Enter the required credentials on the following page:</p>
@@ -67,24 +67,24 @@ SELECT
 <h4 id=TOC-real-time-addm-landing-page">Real Time ADDM Landing Page</h4>
 <p>The following page then appears:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Real-Time-ADDM-landing-page.png" alt="Real Time ADDM landing page" />
-<p>Press the <i>Start</i> button to begin the analysis.</p>
+<p>Press the <span class="button-text">Start</span> button to begin the analysis.</p>
 <h4 id="TOC-real-time-addm-analysis-completed">Real Time ADDM Analysis Completed</h4>
-<p>Once the <i>Real Time ADDM</i> analysis analysis has completed, the following screen appears:</p>
+<p>Once the <span class="menu-text">Real Time ADDM Analysis</span> has completed, the following screen appears:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Real-Time-ADDM-analysis-done.png" alt="Real Time ADDM analysis done" />
 <h4 id="TOC-display-real-time-addm-findings">Display Real Time ADDM Findings</h4>
-<p>Pressing the <i>Findings</i> button shows the following screen:</p>
+<p>Pressing the <span class="button-text">Findings</span> button shows the following screen:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Display-Real-Time-ADDM-findings.png" alt="Display Real Time ADDM findings" />
 <p>Highlighting a finding will give more details. These were not captured by me.</p>
 <h4 id="TOC-display-hardware-resources">Display Hardware Resources</h4>
-<p>Pressing the <i>Hardware Resources</i> button shows the following screen:</p>
+<p>Pressing the <span class="button-text">Hardware Resources</span> button shows the following screen:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Real-Time-ADDM-hardware-resources.png" alt="Real Time ADDM hardware resources" />
 <h4 id="TOC-display-activity">Display Activity</h4>
-<p>Pressing the <i>Activity</i> button shows the following screen:</p>
+<p>Pressing the <span class="button-text">Activity</span> button shows the following screen:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Real-Time-ADDM-activity.png" alt="Real Time ADDM activity" />
 <h4 id="TOC-display-hang-data">Display Hang Data</h4>
-<p>Pressing the <i>Hang Data</i> button shows the following screen:</p>
+<p>Pressing the <span class="button-text">Hang Data</span> button shows the following screen:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Real-Time-ADDM-hang-data.png" alt="Real Time ADDM hang data" />
 <h4 id="TOC-real-time-addm-statistics">Real Time ADDM Statistics</h4>
-<p>When the <i>Statistics</i> button is pressed, the following page appears:</p>
+<p>When the <span class="button-text">Statistics</span> button is pressed, the following page appears:</p>
 <img src="home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm/Real-Time-ADDM-statistics-for-the-database.png" alt="Real Time ADDM statistics for the database" />
 <p>This shows the database statistics. Statistics for instance and host were not captured by me.</p>
