@@ -4,7 +4,7 @@ title: 'Data Guard'
 base-url: home/12c-ocm/data-guard.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCM'
   url: home/12c-ocm.html
 - title: 'Data Guard'
@@ -16,44 +16,48 @@ table-of-contents:
   toc-text: 'Previous Attempts'
 - toc-url: 'Systems-Used'
   toc-text: 'Systems Used'
+sub-pages-title: 'Exam Subtopics'
+sub-pages:
+- url: home/12c-ocm/data-guard/administer-a-data-guard-environment.html
+  title: 'Administer a Data Guard environment'
+- url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing.html
+  title: 'Configure a standby database for testing'
+  sub-pages:
+  - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-dgmgrl-to-convert-to-snapshot-standby.html
+    title: 'Use DGMGRL to convert to Snapshot Standby'
+  - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-oem-to-convert-to-snapshot.html
+    title: 'Use OEM to convert to Snapshot Standby'
+  - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-sql-plus-to-convert-to-snapshot-standby.html
+    title: 'Use SQL*Plus to Convert to Snapshot Standby'
+- url: home/12c-ocm/data-guard/configure-a-standby-database-to-apply-redo.html
+  title: 'Configure a standby database to apply redo'
+- url: home/12c-ocm/data-guard/configure-a-standby-database-to-use-for-reporting.html
+  title: 'Configure a standby database to use for reporting'
+- url: home/12c-ocm/data-guard/configure-fast-start-failover.html
+  title: 'Configure fast start failover'
+- url: home/12c-ocm/data-guard/create-a-physical-standby-database.html
+  title: 'Create a physical standby database'
+- url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function.html
+  title: 'Restore the standby database to its normal function'
+  sub-pages:
+  - url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby.html
+    title: 'Use OEM to Convert to Physical Standby'
+  - url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-sql-plus-to-convert-to-physical-standby.html
+    title: 'Use SQL*Plus to Convert to Physical Standby'
+sub-pages-postlude:
+- '<h2><a name="TOC-Previous-Attempts"></a>Previous Attempts</h2>'
+- '<p>This topic, <cite>Create a physical standby database</cite>, was tested in the OCM 10G and OCM 11G Upgrade exams.</p>'
+- '<p>For OCM 10G, my diary of attempts are posted at <a href="home/10g-ocm/10g-data-guard.html">10G Data Guard</a>. There, I used two (2) configurations:</p>'
+- '<ol>'
+- '<li><span class="host-name">PADSTOW</span> (Primary) to <span class="host-name">BOTANY</span> (Standby). These were RAC clusters.</li>'
+- '<li><span class="host-name">RMANCAT</span> (Primary) to <span class="host-name">RMANDOG</span> (Standby). These were single servers.</li>'
+- '</ol>'
+- '<p>For the OCM 11G Upgrade exam, I have three (3) blank pages, all under <a href="home/11g-ocm/11g-ocm-data-guard.html">11G OCM Data Guard</a>.</p>'
+- '<h2><a name="TOC-Systems-Used"></a>Systems Used</h2>'
+- '<p>I have repurposed the following systems for this study of Data Guard:</p>'
+- '<ul>'
+- '<li><a href="home/12c-ocm/12c-ocm-system-builds/botany.html" class="host-name">BOTANY</a></li>'
+- '<li><a href="home/12c-ocm/12c-ocm-system-builds/padstow.html" class="host-name">PADSTOW</a></li>'
+- '<li><a href="home/system-builds/clifton.html" class="host-name">CLIFTON</a></li>'
+- '</ul>'
 ---
-
-<!-- {% raw %} -->
-<div dir="ltr">
-
-<h2><a name="TOC-Exam-Subtopics"></a>Exam Subtopics</h2>
-<ul>
-<li><a href="home/12c-ocm/data-guard/administer-a-data-guard-environment.html">Administer a Data Guard environment</a></li>
-<li><a href="home/12c-ocm/data-guard/configure-a-standby-database-for-testing.html">Configure a standby database for testing</a></li>
-<ul>
-<li><a href="home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-dgmgrl-to-convert-to-snapshot-standby.html">Use DGMGRL to convert to Snapshot Standby</a></li>
-<li><a href="home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-oem-to-convert-to-snapshot.html">Use OEM to convert to Snapshot Standby</a></li>
-<li><a href="home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-sql-plus-to-convert-to-snapshot-standby.html">Use SQL*Plus to Convert to Snapshot Standby</a></li>
-</ul>
-<li><a href="home/12c-ocm/data-guard/configure-a-standby-database-to-apply-redo.html">Configure a standby database to apply redo</a></li>
-<li><a href="home/12c-ocm/data-guard/configure-a-standby-database-to-use-for-reporting.html">Configure a standby database to use for reporting</a></li>
-<li><a href="home/12c-ocm/data-guard/configure-fast-start-failover.html">Configure fast start failover</a></li>
-<li><a href="home/12c-ocm/data-guard/create-a-physical-standby-database.html">Create a physical standby database</a></li>
-<li><a href="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function.html">Restore the standby database to its normal function</a></li>
-<ul>
-<li><a href="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-stanby.html">Use OEM to Convert to Physical Standby</a></li>
-<li><a href="home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-sql-plus-to-convert-to-physical-stanby.html">Use SQL*Plus to Convert to Physical Stanby</a></li>
-</ul>
-</ul>
-<h2><a name="TOC-Previous-Attempts"></a>Previous Attempts</h2>
-<p>This topic, <cite>Create a physical standby database</cite>, was tested in the OCM 10G and OCM 11G Upgrade exams.</p>
-<p>For OCM 10G, my diary of attempts are posted at <a href="home/10g-ocm/10g-data-guard.html">10G Data Guard</a>. There, I used two (2) configurations:</p>
-<ol>
-<li><span style="font-family:monospace;background-color:#f2f2f2;font-size:large">PADSTOW</span> (Primary) to <span style="font-family:monospace;background-color:#f2f2f2;font-size:large">BOTANY</span> (Standby). These were RAC clusters.</li>
-<li><span style="font-family:monospace;background-color:#f2f2f2;font-size:large">RMANCAT</span> (Primary) to <span style="font-family:monospace;background-color:#f2f2f2;font-size:large">RMANDOG</span> (Standby). These were single servers.</li>
-</ol>
-<p>For the OCM 11G Upgrade exam, I have three (3) blank pages, all under <a href="home/11g-ocm/11g-ocm-data-guard.html">11G OCM Data Guard</a>.</p>
-<h2><a name="TOC-Systems-Used"></a>Systems Used</h2>
-<p>I have repurposed the following systems for this study of Data Guard:</p>
-<ul>
-<li><a href="home/12c-ocm/12c-ocm-system-builds/botany.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large">BOTANY</a></li>
-<li><a href="home/12c-ocm/12c-ocm-system-builds/padstow.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large">PADSTOW</a></li>
-<li><a href="home/system-builds/clifton.html" style="font-family:monospace;background-color:#f2f2f2;font-size:large">CLIFTON</a></li>
-</ul>
-</div>
-<!-- {% endraw %} -->
