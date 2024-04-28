@@ -33,3 +33,4 @@ V2R5 | 15 May 2024 | 20 April 2024 | Conversion of System Builds Wiki pages to J
 V2R6 | 31 May 2024 | 22 April 2024 | Conversion of remaining Classic Google Site Wiki pages to Jekyll format.
 V2R7 | 30 June 2024 | 28 April 2024 | Conversion of New Google Sites Wiki pages to Jekyll format.
 V2R8 | 30 July 2024 |  | Add enhancements to Wiki pages in Jekyll format.
+V2R9 | 31 August 2024 |  | Add keywords to Wiki pages.
