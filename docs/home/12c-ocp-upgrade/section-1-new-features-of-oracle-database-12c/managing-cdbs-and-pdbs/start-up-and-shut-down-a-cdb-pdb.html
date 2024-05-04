@@ -200,7 +200,7 @@ table-of-contents:
   </a>
   " lists the following examples:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">ALTER PLUGGABLE DATABASE salespdb, hrpdb OPEN READ WRITE;
+ <pre class="sql-cmd">ALTER PLUGGABLE DATABASE salespdb, hrpdb OPEN READ WRITE;
 ALTER PLUGGABLE DATABASE salespdb OPEN READ ONLY RESTRICTED;
 ALTER PLUGGABLE DATABASE salespdb OPEN UPGRADE;
 ALTER PLUGGABLE DATABASE ALL OPEN READ WRITE;
@@ -214,7 +214,7 @@ ALTER PLUGGABLE DATABASE ALL EXCEPT salespdb, hrpdb CLOSE IMMEDIATE;
   </a>
   " lists the following examples:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">STARTUP PLUGGABLE DATABASE hrpdb OPEN
+ <pre class="sql-cmd">STARTUP PLUGGABLE DATABASE hrpdb OPEN
 STARTUP PLUGGABLE DATABASE hrpdb RESTRICT
 STARTUP PLUGGABLE DATABASE hrpdb OPEN READ ONLY RESTRICT
 STARTUP PLUGGABLE DATABASE hrpdb OPEN READ ONLY
@@ -244,7 +244,7 @@ STARTUP PLUGGABLE DATABASE hrpdb FORCE
  <p>
   Run the following SQL query to get the initial state of all PDBs:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     open_mode,
     restricted
@@ -255,7 +255,7 @@ STARTUP PLUGGABLE DATABASE hrpdb FORCE
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE  RES
+ <pre class="text">NAME                           OPEN_MODE  RES
 ------------------------------ ---------- ---
 CDB$ROOT                       READ WRITE NO
 JAM                            READ WRITE NO
@@ -279,11 +279,11 @@ VEGEMITER                      READ WRITE NO
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=plum;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=plum;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Session altered.</pre>
+ <pre class="text">Session altered.</pre>
  <h3>
   <a name="TOC-Shut-Down-PLUM-PDB">
   </a>
@@ -292,11 +292,11 @@ VEGEMITER                      READ WRITE NO
  <p>
   Run the following SQL command:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database closed.</pre>
+ <pre class="text">Pluggable Database closed.</pre>
  <h3>
   <a name="TOC-Get-Current-State-of-PLUM-PDB">
   </a>
@@ -309,7 +309,7 @@ VEGEMITER                      READ WRITE NO
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     open_mode,
     restricted
@@ -320,7 +320,7 @@ VEGEMITER                      READ WRITE NO
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE  RES
+ <pre class="text">NAME                           OPEN_MODE  RES
 ------------------------------ ---------- ---
 PLUM                           MOUNTED</pre>
  <h3>
@@ -335,11 +335,11 @@ PLUM                           MOUNTED</pre>
   </span>
   PDB in read/write mode:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a> open</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a> open</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database opened.</pre>
+ <pre class="text">Pluggable Database opened.</pre>
  <h3>
   <a name="TOC-Get-Current-State-of-PLUM-PDB1">
   </a>
@@ -352,7 +352,7 @@ PLUM                           MOUNTED</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     open_mode,
     restricted
@@ -363,7 +363,7 @@ PLUM                           MOUNTED</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE  RES
+ <pre class="text">NAME                           OPEN_MODE  RES
 ------------------------------ ---------- ---
 PLUM                           READ WRITE NO</pre>
  <h3>
@@ -378,11 +378,11 @@ PLUM                           READ WRITE NO</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> plum close;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> plum close;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database altered.</pre>
+ <pre class="text">Pluggable database altered.</pre>
  <h3>
   <a name="TOC-Get-Current-State-of-PLUM-PDB2">
   </a>
@@ -395,7 +395,7 @@ PLUM                           READ WRITE NO</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     open_mode,
     restricted
@@ -406,7 +406,7 @@ PLUM                           READ WRITE NO</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE  RES
+ <pre class="text">NAME                           OPEN_MODE  RES
 ------------------------------ ---------- ---
 PLUM                           MOUNTED</pre>
  <h3>
@@ -421,11 +421,11 @@ PLUM                           MOUNTED</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> plum open;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> plum open;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database altered.</pre>
+ <pre class="text">Pluggable database altered.</pre>
  <h3>
   <a name="TOC-Get-Current-State-of-PLUM-PDB3">
   </a>
@@ -438,7 +438,7 @@ PLUM                           MOUNTED</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     open_mode,
     restricted
@@ -449,7 +449,7 @@ PLUM                           MOUNTED</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE  RES
+ <pre class="text">NAME                           OPEN_MODE  RES
 ------------------------------ ---------- ---
 PLUM                           READ WRITE NO</pre>
  <h3>
@@ -464,11 +464,11 @@ PLUM                           READ WRITE NO</pre>
   </span>
   PDB while connected to it:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database closed.</pre>
+ <pre class="text">Pluggable Database closed.</pre>
  <h3>
   <a name="TOC-Connect-to-Root-Container">
   </a>
@@ -477,11 +477,11 @@ PLUM                           READ WRITE NO</pre>
  <p>
   Run the following SQL command to connect to the ROOT container:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=cdb$root;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=cdb$root;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Session altered.</pre>
+ <pre class="text">Session altered.</pre>
  <h3>
   <a name="TOC-Start-Up-PLUM-PDB-While-Connected-to-ROOT-Container">
   </a>
@@ -494,11 +494,11 @@ PLUM                           READ WRITE NO</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a> pluggable database plum</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a> pluggable database plum</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database opened.</pre>
+ <pre class="text">Pluggable Database opened.</pre>
  <h3>
   <a name="TOC-Get-Current-State-of-All-PDBs">
   </a>
@@ -507,7 +507,7 @@ PLUM                           READ WRITE NO</pre>
  <p>
   Run the following SQL query to get the current state of all PDBs:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     open_mode,
     restricted
@@ -518,7 +518,7 @@ PLUM                           READ WRITE NO</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE  RES
+ <pre class="text">NAME                           OPEN_MODE  RES
 ------------------------------ ---------- ---
 CDB$ROOT                       READ WRITE NO
 JAM                            READ WRITE NO

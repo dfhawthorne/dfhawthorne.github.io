@@ -112,7 +112,7 @@ table-of-contents:
 <p>
                     The start-up of the OMA fails with the following message:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+<pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 Starting agent .............failed.
 Consult emctl.log and emagent.nohup in: /opt/app/oracle/agent12c/agent_inst/sysman/log
@@ -129,7 +129,7 @@ Consult emctl.log and emagent.nohup in: /opt/app/oracle/agent12c/agent_inst/sysm
                     </span>
                     , shows the following message:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">OMS decided to shutdown the agent because of the following reason sent from OMS:  AGENT_TZ_MISMATCH
+<pre class="text">OMS decided to shutdown the agent because of the following reason sent from OMS:  AGENT_TZ_MISMATCH
 </pre>
 <h3>
 <a name="TOC-Check-OMA-Time-Zone">
@@ -139,12 +139,12 @@ Consult emctl.log and emagent.nohup in: /opt/app/oracle/agent12c/agent_inst/sysm
 <p>
                     I used the following command to check the time-zone used by the agent (OMA):
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/agent12c/agent_inst/bin/emctl config agent getTZ
+<pre class="bash-cmd">/opt/app/oracle/agent12c/agent_inst/bin/emctl config agent getTZ
 </pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+<pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 Australia/ACT
 </pre>
@@ -165,7 +165,7 @@ Australia/ACT
                     </span>
                     . In that file, I found the following time zone:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Australia/Sydney
+<pre class="text">Australia/Sydney
 </pre>
 <h3>
 <a name="TOC-Update-OMA-Configuration">
@@ -179,7 +179,7 @@ Australia/ACT
                     </span>
                     was updated with:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">agentTZRegion=Australia/Sydney
+<pre class="text">agentTZRegion=Australia/Sydney
 </pre>
 <h3>
 <a name="TOC-Configure-OMA-with-New-Time-Zone">
@@ -189,13 +189,13 @@ Australia/ACT
 <p>
                     I used the following commands to update the OMA with the following commands:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export TZ=Australia/Sydney
+<pre class="bash-cmd">export TZ=Australia/Sydney
 /opt/app/oracle/agent12c/agent_inst/bin/emctl resetTZ agent
 </pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+<pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 Updating /opt/app/oracle/agent12c/agent_inst/sysman/config/emd.properties...
 Successfully updated /opt/app/oracle/agent12c/agent_inst/sysman/config/emd.properties.
@@ -218,7 +218,7 @@ SQL&gt; commit
                     </span>
                     , the following SQL*Plus commands were run:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">exec mgmt_target.set_agent_tzrgn('gordon.yaocm.id.au:3872','Australia/Sydney')
+<pre class="text">exec mgmt_target.set_agent_tzrgn('gordon.yaocm.id.au:3872','Australia/Sydney')
 commit;
 </pre>
 <h2>
@@ -234,12 +234,12 @@ commit;
 <p>
                     Started OMA with the following command:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/agent12c/agent_inst/bin/emctl start agent
+<pre class="bash-cmd">/opt/app/oracle/agent12c/agent_inst/bin/emctl start agent
 </pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+<pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 Starting agent ........ started.
 </pre>
@@ -251,12 +251,12 @@ Starting agent ........ started.
 <p>
                     Added internal targets to the OMA with the following command:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/agent12c/agent_inst/bin/emctl config agent addinternaltargets
+<pre class="bash-cmd">/opt/app/oracle/agent12c/agent_inst/bin/emctl config agent addinternaltargets
 </pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+<pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 </pre>
 <h3>
@@ -267,12 +267,12 @@ Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 <p>
                     Ran the OMA root script with the following command:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/oracle/agent12c/core/12.1.0.4.0/root.sh
+<pre class="bash-cmd">sudo /opt/app/oracle/agent12c/core/12.1.0.4.0/root.sh
 </pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Finished product-specific root actions.
+<pre class="text">Finished product-specific root actions.
 /etc exist
 
 Creating /etc/oragchomelist file...

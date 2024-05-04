@@ -196,12 +196,12 @@ table-of-contents:
   </span>
   database instance
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta027.htm#GUID-2BAB704C-A3C9-4F76-8D96-4BD961FBEF2E" rel="nofollow">list</a> failure;
+ <pre class="rman-cmd"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta027.htm#GUID-2BAB704C-A3C9-4F76-8D96-4BD961FBEF2E" rel="nofollow">list</a> failure;
 </pre>
  <p>
   The known failures were:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Database Role: PRIMARY
+ <pre class="text">Database Role: PRIMARY
 
 List of Database Failures
 =========================
@@ -224,12 +224,12 @@ Failure ID Priority Status    Time Detected       Summary
   </span>
   database instance
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta003.htm#GUID-40985161-61A8-4C0A-9BEF-1DEECBCDF49C" rel="nofollow">advise failure</a>;
+ <pre class="rman-cmd"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta003.htm#GUID-40985161-61A8-4C0A-9BEF-1DEECBCDF49C" rel="nofollow">advise failure</a>;
 </pre>
  <p>
   The known failures were:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Database Role: PRIMARY
+ <pre class="text">Database Role: PRIMARY
 
 List of Database Failures
 =========================
@@ -278,12 +278,12 @@ Option Repair Description
   </span>
   database instance
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta2004.htm#GUID-8BF5A460-940A-41D0-9A8B-C14A303DEA98" rel="nofollow">repair failure</a>;
+ <pre class="rman-cmd"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta2004.htm#GUID-8BF5A460-940A-41D0-9A8B-C14A303DEA98" rel="nofollow">repair failure</a>;
 </pre>
  <p>
   The failures were repaired as follows by RMAN:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Strategy: The repair includes complete media recovery with no data loss
+ <pre class="text">Strategy: The repair includes complete media recovery with no data loss
 Repair script: /opt/app/oracle/diag/rdbms/jar/jar/hm/reco_3230405272.hm
 
 contents of repair script:
@@ -314,12 +314,12 @@ repair failure complete
   </span>
   database instance:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta027.htm#GUID-2BAB704C-A3C9-4F76-8D96-4BD961FBEF2E" rel="nofollow">list failure</a>;
+ <pre class="rman-cmd"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta027.htm#GUID-2BAB704C-A3C9-4F76-8D96-4BD961FBEF2E" rel="nofollow">list failure</a>;
 </pre>
  <p>
   The failures were:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Database Role: PRIMARY
+ <pre class="text">Database Role: PRIMARY
 
 List of Database Failures
 =========================
@@ -340,12 +340,12 @@ Failure ID Priority Status    Time Detected       Summary
   </span>
   database instance:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta003.htm#GUID-40985161-61A8-4C0A-9BEF-1DEECBCDF49C" rel="nofollow">advise failure</a>;
+ <pre class="rman-cmd"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta003.htm#GUID-40985161-61A8-4C0A-9BEF-1DEECBCDF49C" rel="nofollow">advise failure</a>;
 </pre>
  <p>
   The failures were:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Database Role: PRIMARY
+ <pre class="text">Database Role: PRIMARY
 
 List of Database Failures
 =========================
@@ -387,12 +387,12 @@ no automatic repair options available
   </span>
   database instance:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">report schema;
+ <pre class="rman-cmd">report schema;
 </pre>
  <p>
   The result is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Report of database schema for database with db_unique_name JAR
+ <pre class="text">Report of database schema for database with db_unique_name JAR
 
 List of Permanent Datafiles
 ===========================
@@ -425,7 +425,7 @@ File Size(MB) Tablespace           Maxsize(MB) Tempfile Name
  <p>
   Scanning through the output, the relevant line is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">18   0        PLUM:DEMO            NO      /opt/app/oracle/oradata/transport/o1_mf_demo_fg8ssf96_.dbf
+ <pre class="text">18   0        PLUM:DEMO            NO      /opt/app/oracle/oradata/transport/o1_mf_demo_fg8ssf96_.dbf
 </pre>
  <p>
   Thus, the
@@ -450,7 +450,7 @@ File Size(MB) Tablespace           Maxsize(MB) Tempfile Name
   </span>
   pluggable database:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; alter pluggable database plum open;
+ <pre class="text">SQL&gt; alter pluggable database plum open;
 
 Pluggable database altered.
 
@@ -466,12 +466,12 @@ Tablespace dropped.
  <p>
   Used the following RMAN command to check for any further RMAN issues:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta027.htm#GUID-2BAB704C-A3C9-4F76-8D96-4BD961FBEF2E" rel="nofollow">list failure</a>;
+ <pre class="rman-cmd"><a href="https://docs.oracle.com/database/121/RCMRF/rcmsynta027.htm#GUID-2BAB704C-A3C9-4F76-8D96-4BD961FBEF2E" rel="nofollow">list failure</a>;
 </pre>
  <p>
   The result is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Database Role: PRIMARY
+ <pre class="text">Database Role: PRIMARY
 
 no failures found that match specification
 </pre>

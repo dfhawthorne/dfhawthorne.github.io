@@ -33,7 +33,14 @@ pre.bash-cmd {
     padding:          2px;
     background-color: lightgreen;
     }
-        
+
+pre.rman-cmd {
+    border:           5px groove black;
+    margin-left:      10px;
+    padding:          2px;
+    background-color: palegoldenrod;
+    }
+            
 pre.sql-cmd {
     border:           5px groove black;
     margin-left:      10px;

@@ -227,7 +227,7 @@ table-of-contents:
   </span>
   (in the root container):
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     name,
     description
 FROM
@@ -240,7 +240,7 @@ ORDER BY
  <p>
   The output was:
  </p>
- <table style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">
+ <table class="text">
   <thead>
    <tr>
     <th>
@@ -1721,7 +1721,7 @@ ORDER BY
  <p>
   I ran the following query (in the root container) to find all changed PDB-modifiable parameters:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
 
     c.name          AS container_name,
     p.name          AS parameter_name,
@@ -1739,7 +1739,7 @@ ORDER BY
  <p>
   The result is:
  </p>
- <table style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">
+ <table class="text">
   <thead>
    <tr>
     <th>
@@ -1883,11 +1883,11 @@ ORDER BY
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=plum;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=plum;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Session altered.</pre>
+ <pre class="text">Session altered.</pre>
  <h3>
   <a name="TOC-Change-System-Parameter-in-Memory-Only">
   </a>
@@ -1896,19 +1896,19 @@ ORDER BY
  <p>
   Run the following SQL command to set the system parameter in memory:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#SQLRF00902" rel="nofollow">alter system</a> set DDL_LOCK_TIMEOUT=90 scope=memory;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#SQLRF00902" rel="nofollow">alter system</a> set DDL_LOCK_TIMEOUT=90 scope=memory;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">System altered.</pre>
+ <pre class="text">System altered.</pre>
  <p>
   Confirm that the parameter has been set:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                                 TYPE        VALUE
+ <pre class="text">NAME                                 TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 ddl_lock_timeout                     integer     90</pre>
  <h3>
@@ -1923,11 +1923,11 @@ ddl_lock_timeout                     integer     90</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database closed.</pre>
+ <pre class="text">Pluggable Database closed.</pre>
  <p>
   Run the following SQL command to start up the
   <span style="font-family:monospace;font-size:large;background-color:#e6e6e6">
@@ -1935,11 +1935,11 @@ ddl_lock_timeout                     integer     90</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a></pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a></pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database opened.</pre>
+ <pre class="text">Pluggable Database opened.</pre>
  <h3>
   <a name="TOC-Verify-Parameter-Is-Now-Default">
   </a>
@@ -1948,11 +1948,11 @@ ddl_lock_timeout                     integer     90</pre>
  <p>
   Run the following SQL command to show that the parameter was reset to the default:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                                 TYPE        VALUE
+ <pre class="text">NAME                                 TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 ddl_lock_timeout                     integer     0</pre>
  <h3>
@@ -1963,19 +1963,19 @@ ddl_lock_timeout                     integer     0</pre>
  <p>
   Run the following SQL command to set the parameter in memory and in the SPFILE:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#SQLRF00902" rel="nofollow">alter system</a> set DDL_LOCK_TIMEOUT=90 scope=both;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2017.htm#SQLRF00902" rel="nofollow">alter system</a> set DDL_LOCK_TIMEOUT=90 scope=both;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">System altered.</pre>
+ <pre class="text">System altered.</pre>
  <p>
   Verify that the parameter was set correctly:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                                 TYPE        VALUE
+ <pre class="text">NAME                                 TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 ddl_lock_timeout                     integer     90</pre>
  <h3>
@@ -1990,11 +1990,11 @@ ddl_lock_timeout                     integer     90</pre>
   </span>
   PDB::
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve042.htm#SQPUG125" rel="nofollow">shutdown</a> immediate</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database closed.</pre>
+ <pre class="text">Pluggable Database closed.</pre>
  <p>
   Run the following SQL command to start the
   <span style="font-family:monospace;font-size:large;background-color:#e6e6e6">
@@ -2002,11 +2002,11 @@ ddl_lock_timeout                     integer     90</pre>
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a></pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a></pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable Database opened.</pre>
+ <pre class="text">Pluggable Database opened.</pre>
  <h3>
   <a name="TOC-Verify-Correct-Setting-of-Parameter">
   </a>
@@ -2015,11 +2015,11 @@ ddl_lock_timeout                     integer     90</pre>
  <p>
   Run the following SQL command to verify the correct setting of the parameter after the restart of the PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve041.htm#SQPUG124" rel="nofollow">show</a> parameter DDL_LOCK_TIMEOUT</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                                 TYPE        VALUE
+ <pre class="text">NAME                                 TYPE        VALUE
 ------------------------------------ ----------- ------------------------------
 ddl_lock_timeout                     integer     90</pre>
 </div>

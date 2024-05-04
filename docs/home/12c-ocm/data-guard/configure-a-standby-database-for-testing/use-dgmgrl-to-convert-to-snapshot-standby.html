@@ -120,12 +120,12 @@ table-of-contents:
   </a>
   command to connect to the local Data Guard Manager as follows:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">dgmgrl sys/**********
+ <pre class="bash-cmd">dgmgrl sys/**********
 </pre>
  <p>
   Sample output is:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
+ <pre class="text">DGMGRL for Linux: Version 12.1.0.2.0 - 64bit Production
 
 Copyright (c) 2000, 2013, Oracle. All rights reserved.
 
@@ -161,12 +161,12 @@ Connected as SYSDG.
    There are no warnings or errors
   </li>
  </ul>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">show configuration
+ <pre class="bash-cmd">show configuration
 </pre>
  <p>
   The expected output is similar:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">Configuration - ocm12.yaocm.id.au
+ <pre class="text">Configuration - ocm12.yaocm.id.au
 
   Protection Mode: <span style="font-weight:bold">MaxPerformance</span>
   Members:
@@ -186,12 +186,12 @@ Configuration Status:
  <p>
   Use the following command to convert the physical standby database into a snapshot standby:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">convert database ocm12_botany to snapshot standby;
+ <pre class="bash-cmd">convert database ocm12_botany to snapshot standby;
 </pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">Converting database "ocm12_botany" to a Snapshot Standby database, please wait...
+ <pre class="text">Converting database "ocm12_botany" to a Snapshot Standby database, please wait...
 Database "ocm12_botany" converted successfully
 </pre>
  <div style="background-color:lightblue;margin-left:20px;border-left:15px solid blue;display:block;padding:5px">
@@ -200,7 +200,7 @@ Database "ocm12_botany" converted successfully
   </span>
   <br/>
   If the password provided for connection is incorrect, the following messages will appear:
-  <pre style="background-color:lightgrey;border:5px groove black;margin-left:10px;padding:2px">Converting database "ocm12_botany" to a Physical Standby database, please wait...
+  <pre class="text">Converting database "ocm12_botany" to a Physical Standby database, please wait...
 Operation requires shut down of instance "ocm12" on database "ocm12_botany"
 Shutting down instance "ocm12"...
 ORA-01017: invalid username/password; logon denied
@@ -219,12 +219,12 @@ Please complete the following steps and reissue the CONVERT command:
  <p>
   Use the following command to verify
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">show configuration
+ <pre class="bash-cmd">show configuration
 </pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">Configuration - ocm12.yaocm.id.au
+ <pre class="text">Configuration - ocm12.yaocm.id.au
 
   Protection Mode: MaxPerformance
   Members:
