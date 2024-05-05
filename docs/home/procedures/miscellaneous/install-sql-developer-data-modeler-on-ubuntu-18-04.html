@@ -134,11 +134,11 @@ table-of-contents:
 <p>
                     I ran the following command to check the installed Java version:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">java --version</pre>
+<pre class="bash-cmd">java --version</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">openjdk 11.0.4 2019-07-16
+<pre class="text">openjdk 11.0.4 2019-07-16
 OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)
 OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode, sharing)
 </pre>
@@ -165,11 +165,11 @@ OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mod
 <p>
                     I installed alien as follows in order to convert the downloaded RPM into a Debian package for installation under Ubuntu:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/bionic/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/bionic/man8/apt.8.html" rel="nofollow">apt</a> install -y alien</pre>
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/bionic/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/bionic/man8/apt.8.html" rel="nofollow">apt</a> install -y alien</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<pre class="text">[sudo] password for douglas: 
 Reading package lists... Done
 Building dependency tree       
 Reading state information... Done
@@ -240,11 +240,11 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
 <p>
                     I ran the following command to convert the downloaded RPM into a Debian package:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/bionic/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/bionic/man1/alien.1p.html" rel="nofollow">alien</a> datamodeler-19.2.0.182.1216-noarch.rpm --scripts</pre>
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/bionic/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/bionic/man1/alien.1p.html" rel="nofollow">alien</a> datamodeler-19.2.0.182.1216-noarch.rpm --scripts</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">datamodeler_19.2.0.182.1216-2_all.deb generated
+<pre class="text">datamodeler_19.2.0.182.1216-2_all.deb generated
 </pre>
 <h3>
 <a name="TOC-Install-Debian-Package">
@@ -258,11 +258,11 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
                     </span>
                     :
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/bionic/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/bionic/man1/dpkg.1.html" rel="nofollow">dpkg</a> -i datamodeler_19.2.0.182.1216-2_all.deb</pre>
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/bionic/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/bionic/man1/dpkg.1.html" rel="nofollow">dpkg</a> -i datamodeler_19.2.0.182.1216-2_all.deb</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Selecting previously unselected package datamodeler.
+<pre class="text">Selecting previously unselected package datamodeler.
 (Reading database ... 207511 files and directories currently installed.)
 Preparing to unpack datamodeler_19.2.0.182.1216-2_all.deb ...
 Unpacking datamodeler (19.2.0.182.1216-2) ...
@@ -282,11 +282,11 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
                     </a>
                     utility to find the true locations of the Java execuatbles as follows:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/bionic/man1/realpath.1.html" rel="nofollow">realpath</a> /usr/bin/javac /usr/bin/java</pre>
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/bionic/man1/realpath.1.html" rel="nofollow">realpath</a> /usr/bin/javac /usr/bin/java</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">/usr/lib/jvm/java-11-openjdk-amd64/bin/javac
+<pre class="text">/usr/lib/jvm/java-11-openjdk-amd64/bin/javac
 /usr/lib/jvm/java-11-openjdk-amd64/bin/java</pre>
 <p>
                     This would indicate that the Java home should be set as
@@ -307,11 +307,11 @@ Processing triggers for libc-bin (2.27-3ubuntu1) ...
                     </span>
                     :
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">datamodeler</pre>
+<pre class="bash-cmd">datamodeler</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"> Oracle SQL Developer Data Modeler
+<pre class="text"> Oracle SQL Developer Data Modeler
  Copyright (c) 2008, 2019, Oracle and/or its affiliates. All rights reserved.
 
 /opt/datamodeler/datamodeler/bin/../../ide/bin/launcher.sh: line 954: [: : integer expression expected
@@ -339,7 +339,7 @@ Type the full pathname of a JDK installation (or Ctrl-C to quit), the path will 
                     </cite>
                     to continue. The following log message also appeared:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Warning: Nashorn engine is planned to be removed from a future JDK release
+<pre class="text">Warning: Nashorn engine is planned to be removed from a future JDK release
 </pre>
 <h3>
 <a name="TOC-Confirm-Import-Preferences">
@@ -361,7 +361,7 @@ Type the full pathname of a JDK installation (or Ctrl-C to quit), the path will 
                     </cite>
                     to continue. The following log message also appeared:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Gtk-<font color="#8AE234"><b>Message</b></font>: <font color="#3465A4">20:50:58.600</font>: Failed to load module "canberra-gtk-module"
+<pre class="text">Gtk-<font color="#8AE234"><b>Message</b></font>: <font color="#3465A4">20:50:58.600</font>: Failed to load module "canberra-gtk-module"
 </pre>
 <h3>
 <a name="TOC-Successful-Startup">
@@ -391,7 +391,7 @@ Type the full pathname of a JDK installation (or Ctrl-C to quit), the path will 
 <p>
                     I get the following messages, at various times:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[xcb] Unknown sequence number while processing queue
+<pre class="text">[xcb] Unknown sequence number while processing queue
 [xcb] Most likely this is a multi-threaded client and XInitThreads has not been called
 [xcb] Aborting, sorry about that.
 java: ../../src/xcb_io.c:259: poll_for_event: Assertion `!xcb_xlib_threads_sequence_lost' failed.

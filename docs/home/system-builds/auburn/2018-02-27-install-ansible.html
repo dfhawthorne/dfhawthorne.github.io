@@ -179,12 +179,12 @@ table-of-contents:
 <p>
   The package index files were resynchronised with their sources as follows:
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo apt-get -y update
+<pre class="bash-cmd">sudo apt-get -y update
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Get:1 http://au.archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+<pre class="text">Get:1 http://au.archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
 Get:2 http://au.archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]
 Hit:3 http://security.ubuntu.com/ubuntu xenial-security InRelease
 Get:4 http://au.archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB]
@@ -237,12 +237,12 @@ Reading package lists... Done
   </a>
   . It was installed as follows:
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo apt-get -y install software-properties-common
+<pre class="bash-cmd">sudo apt-get -y install software-properties-common
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Reading package lists... Done
+<pre class="text">Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 software-properties-common is already the newest version (0.96.20.7).
@@ -256,12 +256,12 @@ software-properties-common is already the newest version (0.96.20.7).
 <p>
   Added the ansible package repository to the list of package sources as follows:
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo apt-add-repository -y ppa:ansible/ansible
+<pre class="bash-cmd">sudo apt-add-repository -y ppa:ansible/ansible
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">gpg: keyring `/tmp/tmppk95hlzm/secring.gpg' created
+<pre class="text">gpg: keyring `/tmp/tmppk95hlzm/secring.gpg' created
 gpg: keyring `/tmp/tmppk95hlzm/pubring.gpg' created
 gpg: requesting key 7BB9C367 from hkp server keyserver.ubuntu.com
 gpg: /tmp/tmppk95hlzm/trustdb.gpg: trustdb created
@@ -278,12 +278,12 @@ OK
 <p>
   The package index files were resynchronised with their sources as follows:
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo apt-get -y update
+<pre class="bash-cmd">sudo apt-get -y update
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Hit:1 http://au.archive.ubuntu.com/ubuntu xenial InRelease
+<pre class="text">Hit:1 http://au.archive.ubuntu.com/ubuntu xenial InRelease
 Hit:2 http://au.archive.ubuntu.com/ubuntu xenial-updates InRelease
 Hit:3 http://au.archive.ubuntu.com/ubuntu xenial-backports InRelease
 Hit:4 http://security.ubuntu.com/ubuntu xenial-security InRelease
@@ -302,12 +302,12 @@ Reading package lists... Done
 <p>
   Ansible was installed as follows:
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo apt-get -y install ansible
+<pre class="bash-cmd">sudo apt-get -y install ansible
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Reading package lists... Done
+<pre class="text">Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 The following additional packages will be installed:
@@ -481,12 +481,12 @@ Processing triggers for libc-bin (2.23-0ubuntu9) ...
   </span>
   :
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ssh-keygen
+<pre class="bash-cmd">ssh-keygen
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Generating public/private rsa key pair.
+<pre class="text">Generating public/private rsa key pair.
 Enter file in which to save the key (/home/douglas/.ssh/id_rsa):
 Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
@@ -523,12 +523,12 @@ The key's randomart image is:
   </span>
   :
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ssh-copy-id penrith.yaocm.id.au
+<pre class="bash-cmd">ssh-copy-id penrith.yaocm.id.au
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/douglas/.ssh/id_rsa.pub"
+<pre class="text">/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/douglas/.ssh/id_rsa.pub"
 The authenticity of host 'penrith.yaocm.id.au (192.168.1.249)' can't be established.
 ECDSA key fingerprint is SHA256:bjjW/BAGqhn1meKlFTMV2JKsDLfHv3Mm6YbKGVmhfsI.
 Are you sure you want to continue connecting (yes/no)? yes
@@ -558,12 +558,12 @@ and check to make sure that only the key(s) you wanted were added.
   </span>
   :
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ssh penrith.yaocm.id.au
+<pre class="bash-cmd">ssh penrith.yaocm.id.au
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-83-generic i686)
+<pre class="text">Welcome to Ubuntu 16.04.4 LTS (GNU/Linux 4.4.0-83-generic i686)
 
  * Documentation:  https://help.ubuntu.com
  * Management:     https://landscape.canonical.com
@@ -603,7 +603,7 @@ douglas@penrith:~$
   </span>
   was set to contain the following:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px"># Client machines
+<pre class="text"># Client machines
 
 [clients]
 penrith.yaocm.id.au
@@ -622,12 +622,12 @@ redfern2.yaocm.id.au
 <p>
   To test Ansible connectivity to the hosts, the following command was used:
  </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ansible all -m ping
+<pre class="bash-cmd">ansible all -m ping
 </pre>
 <p>
   The output was:
  </p>
-<pre style="border:5px groove black;margin-left:10px"><span style="color:green">redfern1.yaocm.id.au | SUCCESS =&gt; {
+<pre class="text"><span style="color:green">redfern1.yaocm.id.au | SUCCESS =&gt; {
     "changed": false, 
     "ping": "pong"
 }
