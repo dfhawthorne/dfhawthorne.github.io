@@ -122,7 +122,7 @@ table-of-contents:
   </span>
   , is constructed, as follows, to contain the name, version, release, and architecture of the required packages:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">cat &lt;&lt;DONE | sed -e 's/\\t/\t/g' | sort &gt;required_pkg.dat
+ <pre class="bash-cmd">cat &lt;&lt;DONE | sed -e 's/\\t/\t/g' | sort &gt;required_pkg.dat
 make\t3.81\t?\t?
 binutils\t2.20.51.0.2\t5.11\t?
 gcc\t4.4.4\t?\t?
@@ -148,12 +148,12 @@ DONE
   </span>
   , as follows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">sed -ne 's/\([^\t]*\).*/\/\^\1\\t\/p/p' required_pkg.dat | sort -u &gt;packages.sed
+ <pre class="bash-cmd">sed -ne 's/\([^\t]*\).*/\/\^\1\\t\/p/p' required_pkg.dat | sort -u &gt;packages.sed
 </pre>
  <p>
   The contents of this file are:
  </p>
- <pre style="background-color:green;border:5px groove black;margin-left:10px;background-color:rgb(106,168,79);color:black">/^binutils\t/p
+ <pre class="text">/^binutils\t/p
 /^gcc\t/p
 /^glibc-common\t/p
 /^glibc-devel\t/p
@@ -170,7 +170,7 @@ DONE
   </code>
   output to see what packages have been installed:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">rpm -qa --queryformat "%{NAME}\t%{VERSION}\t%{RELEASE}\t%{ARCH}\n" | \
+ <pre class="bash-cmd">rpm -qa --queryformat "%{NAME}\t%{VERSION}\t%{RELEASE}\t%{ARCH}\n" | \
   sed -nf packages.sed | \
   sort &gt;found_pkg.dat
 </pre>
@@ -181,7 +181,7 @@ DONE
   </span>
   are:
  </p>
- <pre style="background-color:green;border:5px groove black;margin-left:10px;background-color:rgb(106,168,79);color:black">binutils	2.20.51.0.2	5.36.el6	x86_64
+ <pre class="text">binutils	2.20.51.0.2	5.36.el6	x86_64
 gcc	4.4.7	4.el6	x86_64
 glibc-common	2.12	1.132.el6	x86_64
 glibc-devel	2.12	1.132.el6	x86_64
@@ -481,7 +481,7 @@ sysstat	9.0.4	22.el6	x86_64
   </a>
   command to install this missing package:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">sudo yum install glibc-devel.i686
+ <pre class="bash-cmd">sudo yum install glibc-devel.i686
 </pre>
  <p>
   This was successfully done. The log is attached as

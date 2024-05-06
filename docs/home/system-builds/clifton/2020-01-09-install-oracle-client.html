@@ -64,12 +64,12 @@ table-of-contents:
   </span>
   , I ran the following command:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook -K <a href="https://github.com/dfhawthorne/ansible-ocm12c/blob/version_2/clifton.yml" rel="nofollow">clifton.yml</a>
+ <pre class="bash-cmd">ansible-playbook -K <a href="https://github.com/dfhawthorne/ansible-ocm12c/blob/version_2/clifton.yml" rel="nofollow">clifton.yml</a>
 </pre>
  <p>
   The relevant part of the output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">TASK [oracle_client : output from Install Oracle Client 12.1.0.2 Software Only in Silent Mode] *************************************************************************************************************
+ <pre class="text">TASK [oracle_client : output from Install Oracle Client 12.1.0.2 Software Only in Silent Mode] *************************************************************************************************************
 ok: [clifton.yaocm.id.au] =&gt; {
     "client_sw_install_result.stdout_lines": [
         "Starting Oracle Universal Installer...",
@@ -132,7 +132,7 @@ ok: [clifton.yaocm.id.au] =&gt; {
    CLIFTON:
   </span>
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">/opt/app/oracle/product/12.1.0.2/client/cfgtoollogs/configToolAllCommands
+ <pre class="bash-cmd">/opt/app/oracle/product/12.1.0.2/client/cfgtoollogs/configToolAllCommands
 </pre>
  <p>
   I did not code up a response file because I did not consider any client tools to need passwords.
@@ -144,7 +144,7 @@ ok: [clifton.yaocm.id.au] =&gt; {
   </span>
   ) showed:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">###################################################
+ <pre class="text">###################################################
 The action configuration is performing
 The action configuration has successfully completed
 ###################################################

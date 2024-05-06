@@ -86,7 +86,7 @@ table-of-contents:
   </span>
   failed to return any output:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;padding:2px">nmcli -g ip4.address connection show eth1
+ <pre class="bash-cmd">nmcli -g ip4.address connection show eth1
 </pre>
  <h3>
   <a name="TOC-Current-Status-of-ETH0">
@@ -100,12 +100,12 @@ table-of-contents:
   </span>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;padding:2px">nmcli -g ip4.address connection show eth0
+ <pre class="bash-cmd">nmcli -g ip4.address connection show eth0
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;padding:2px">192.168.1.141/24
+ <pre class="text">192.168.1.141/24
 </pre>
  <h3>
   <a name="TOC-Show-All-Connections">
@@ -119,12 +119,12 @@ table-of-contents:
   </span>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;padding:2px">nmcli connection show
+ <pre class="bash-cmd">nmcli connection show
 </pre>
  <p>
   The output was
  </p>
- <pre style="background-color:aqua;border:5px groove black;padding:2px">NAME  UUID                                      TYPE                DEVICE
+ <pre class="text">NAME  UUID                                      TYPE                DEVICE
 eth0  e744cfd2-9a87-46c7-892d-1701af065ba4  802-3-ethernet  eth0   
 eth1  ce12c49f-9a00-4a1c-a1c5-67fa822243a6  802-3-ethernet  --         
 </pre>
@@ -140,12 +140,12 @@ eth1  ce12c49f-9a00-4a1c-a1c5-67fa822243a6  802-3-ethernet  --
   </span>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;padding:2px">sudo nmcli connection add con-name eth1 ifname eth1 type ethernet ip4 192.168.2.141/24
+ <pre class="bash-cmd">sudo nmcli connection add con-name eth1 ifname eth1 type ethernet ip4 192.168.2.141/24
 </pre>
  <p>
   The output was
  </p>
- <pre style="background-color:aqua;border:5px groove black;padding:2px">[sudo] password for douglas:
+ <pre class="text">[sudo] password for douglas:
 Connection 'eth1' (97f2c8fb-1f7f-45d9-80c5-9321080a3bf1) successfully added.
 </pre>
  <h3>
@@ -160,7 +160,7 @@ Connection 'eth1' (97f2c8fb-1f7f-45d9-80c5-9321080a3bf1) successfully added.
   </span>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;padding:2px">nmcli -p con show eth1
+ <pre class="bash-cmd">nmcli -p con show eth1
 </pre>
  The output has been uploaded as
  <span style="background-color:#f2f2f2;font-family:monospace;font-size:large">
@@ -178,12 +178,12 @@ Connection 'eth1' (97f2c8fb-1f7f-45d9-80c5-9321080a3bf1) successfully added.
   REDFERN2
  </span>
  :
- <pre style="background-color:lawngreen;border:5px groove black;padding:2px">nmcli -g ip4.address connection show eth1
+ <pre class="bash-cmd">nmcli -g ip4.address connection show eth1
 </pre>
  <p>
   The output was (notice the first line is blank):
  </p>
- <pre style="background-color:aqua;border:5px groove black;padding:2px">192.168.2.141/24
+ <pre class="text">192.168.2.141/24
 </pre>
  <div class="file_downloads">
   <h2 id="TOC-File-Downloads">

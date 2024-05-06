@@ -369,7 +369,7 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 - name: "Oracle 12.1.0.2 GI ASM installation"
   hosts: redfern1.yaocm.id.au
   become: true
@@ -426,12 +426,12 @@ table-of-contents:
 <p>
                     I ran the playbook as follows:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass gi_asm.yml 
+<pre class="bash-cmd">ansible-playbook --ask-become-pass gi_asm.yml 
 </pre>
 <p>
                     The output was:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="text">SUDO password: 
 
 PLAY [Oracle 12.1.0.2 GI ASM installation] *************************************
 
@@ -466,12 +466,12 @@ PLAY RECAP *********************************************************************
                     </a>
                     , I discovered a better way of installing RPM modules directly from the Internet. I used the following command to test this method out:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible -K -m yum -a "name=http://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el7.x86_64.rpm" redfern1.yaocm.id.au
+<pre class="bash-cmd">ansible -K -m yum -a "name=http://download.oracle.com/otn_software/asmlib/oracleasmlib-2.0.12-1.el7.x86_64.rpm" redfern1.yaocm.id.au
 </pre>
 <p>
                     The output was:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="text">SUDO password: 
 <span style="color:green">redfern1.yaocm.id.au | SUCCESS =&gt; {
     "changed": false, 
     "msg": "", 
@@ -481,19 +481,9 @@ PLAY RECAP *********************************************************************
     ]
 }</span>
 </pre>
-<h3>
-<a name="TOC-Improved-Playbook">
-</a>
-                    Improved Playbook
-                   </h3>
-<p>
-                    Based on the above test, I updated
-                    <span style="font-family:monospace">
-                     gi_asm.yml
-                    </span>
-                    as follows:
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<h3 id="TOC-Improved-Playbook">Improved Playbook</h3>
+<p>Based on the above test, I updated <span style="font-family:monospace">gi_asm.yml</span> as follows:</p>
+<pre class="text">---
 - name: "Oracle 12.1.0.2 GI ASM installation"
   hosts: redfern1.yaocm.id.au
   become: true
@@ -511,20 +501,11 @@ PLAY RECAP *********************************************************************
 
 ...
 </pre>
-<h3>
-<a name="TOC-Test-Improved-Playbook">
-</a>
-                    Test Improved Playbook
-                   </h3>
-<p>
-                    I tested the improved playbook as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass gi_asm.yml 
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<h3 id="TOC-Test-Improved-Playbook">Test Improved Playbook</h3>
+<p>I tested the improved playbook as follows:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass gi_asm.yml</pre>
+<p>The output was:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Oracle 12.1.0.2 GI ASM installation] *************************************
 

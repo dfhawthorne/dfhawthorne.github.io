@@ -133,7 +133,7 @@ table-of-contents:
   </span>
   shows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">2016-05-14_19-40-34:INFO:===VALIDATION===:Checking Password Validity on target nodes
+ <pre class="text">2016-05-14_19-40-34:INFO:===VALIDATION===:Checking Password Validity on target nodes
 2016-05-14_19-40-34:INFO:NODES=gordon.yaocm.id.au Retry Count 5
 2016-05-14_19-40-34:INFO:retry count : 1
 2016-05-14_19-40-34:INFO:Running cmd /bin/true on node gordon.yaocm.id.au
@@ -189,12 +189,12 @@ Caused by: oracle.sysman.core.agentpush.ui.exception.JschValidationException
   </span>
   , I run the following command to get logging messages from SSH:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ssh -v gordon.yaocm.id.au
+ <pre class="bash-cmd">ssh -v gordon.yaocm.id.au
 </pre>
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OpenSSH_5.3p1, OpenSSL 1.0.1e-fips 11 Feb 2013
+ <pre class="text">OpenSSH_5.3p1, OpenSSL 1.0.1e-fips 11 Feb 2013
 debug1: Reading configuration data /etc/ssh/ssh_config
 debug1: Applying options for *
 debug1: <span style="font-weight:bold">Connecting to gordon.yaocm.id.au [192.168.1.107] port 22.</span>
@@ -239,7 +239,7 @@ Read from socket failed: Connection reset by peer
  <p>
   The key point is that both ends of the SSH connection used Jumbo packets (MTU=9000). This can be confirmed by using ping as follows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">[oracle@cronulla ~]$ ping -c 1 gordon
+ <pre class="text">[oracle@cronulla ~]$ ping -c 1 gordon
 PING gordon.yaocm.id.au (192.168.1.107) 56(84) bytes of data.
 64 bytes from gordon.yaocm.id.au (192.168.1.107): icmp_seq=1 ttl=64 time=0.661 ms
 
@@ -267,7 +267,7 @@ PING gordon.yaocm.id.au (192.168.1.107) 8972(9000) bytes of data.
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo ip link set dev enp0s3 mtu 1500
+ <pre class="bash-cmd">sudo ip link set dev enp0s3 mtu 1500
 </pre>
  <p>
   And now SSH works.

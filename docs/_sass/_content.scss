@@ -31,7 +31,7 @@ pre.bash-cmd {
     border:           5px groove black;
     margin-left:      10px;
     padding:          2px;
-    background-color: lightgreen;
+    background-color: rgba(144, 238, 144, 0.516);
     }
 
 pre.rman-cmd {
@@ -40,19 +40,26 @@ pre.rman-cmd {
     padding:          2px;
     background-color: palegoldenrod;
     }
+
+pre.sample-error-msg {
+    color:red;
+    border:5px groove black;
+    margin-left:10px;
+    padding:2px;
+}
             
 pre.sql-cmd {
     border:           5px groove black;
     margin-left:      10px;
     padding:          2px;
-    background-color: #def87c;
+    background-color: #ddf87c89;
     }
         
 pre.text {
     border:      5px groove black;
     margin-left: 10px;
     padding:     2px;
-    background-color: #7ccdf8;
+    background-color: #cbe7f67c;
     }
 
 span.file-name {

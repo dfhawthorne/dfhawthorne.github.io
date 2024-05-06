@@ -108,7 +108,7 @@ table-of-contents:
   </span>
   working with legible text. The errors were:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">** (firewall-config:8373): WARNING **: Couldn't connect to accessibility bus: Failed to connect to socket /tmp/dbus-wkFdUchAdk: Connection refused
+ <pre class="text">** (firewall-config:8373): WARNING **: Couldn't connect to accessibility bus: Failed to connect to socket /tmp/dbus-wkFdUchAdk: Connection refused
 
 (firewall-config:8373): Pango-WARNING **: failed to choose a font, expect ugly output. engine-type='PangoRenderFc', script='common'
 
@@ -130,12 +130,12 @@ GLib-GIO-Message: Using the 'memory' GSettings backend.  Your settings will not 
   </span>
   , the firewall daemon is disabled:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/systemctl.1.html" rel="nofollow"><span style="font-family:monospace">systemctl</span></a> disable firewalld
+ <pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man1/systemctl.1.html" rel="nofollow"><span style="font-family:monospace">systemctl</span></a> disable firewalld
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+ <pre class="text">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
 Removed symlink /etc/systemd/system/basic.target.wants/firewalld.service.
 </pre>
  <h3>
@@ -150,13 +150,13 @@ Removed symlink /etc/systemd/system/basic.target.wants/firewalld.service.
   </span>
   , the firewall daemon is stopped and the status is onfirmed:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/systemctl.1.html" rel="nofollow"><span style="font-family:monospace">systemctl</span></a> stop firewalld
+ <pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man1/systemctl.1.html" rel="nofollow"><span style="font-family:monospace">systemctl</span></a> stop firewalld
 <a href="http://man7.org/linux/man-pages/man1/systemctl.1.html" rel="nofollow"><span style="font-family:monospace">systemctl</span></a> status firewalld
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">• firewalld.service - firewalld - dynamic firewall daemon
+ <pre class="text">• firewalld.service - firewalld - dynamic firewall daemon
    Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled; vendor preset: enabled)
    Active: inactive (dead)
 
@@ -184,7 +184,7 @@ Sep 09 20:23:04 gordon.yaocm.id.au systemd[1]: Stopped firewalld - dynamic firew
  <p>
   Then I removed the agent home as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/agent/12.1.0.4/agent_inst/bin/emctl stop agent
+ <pre class="bash-cmd">/opt/app/oracle/agent/12.1.0.4/agent_inst/bin/emctl stop agent
 rm -fR /opt/app/oracle/agent/12.1.0.4
 </pre>
  <p>

@@ -135,11 +135,11 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-list</pre>
+<pre class="bash-cmd">xl cpupool-list</pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Name               CPUs   Sched     Active   Domain count
+<pre class="text">Name               CPUs   Sched     Active   Domain count
 Pool-0               8    credit       y          1</pre>
 <h3>
 <a name="TOC-Split-into-NUMA-Pools">
@@ -149,15 +149,15 @@ Pool-0               8    credit       y          1</pre>
 <p>
                     I used the following command to allocate automatically the CPUs between NUMA nodes:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-numa-split</pre>
+<pre class="bash-cmd">xl cpupool-numa-split</pre>
 <p>
                     I used the following command to see the result:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-list -c</pre>
+<pre class="bash-cmd">xl cpupool-list -c</pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Name               CPU list
+<pre class="text">Name               CPU list
 Pool-node0         0,1,2,3,4,5,6,7</pre>
 <p>
                     It would appear that NUMA is not used on
@@ -268,7 +268,7 @@ Pool-node0         0,1,2,3,4,5,6,7</pre>
 <p>
                     I ran the following series of commands to create these new CPU pools:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[root@victoria ~]# xl cpupool-create name=\"RAC1\"
+<pre class="text">[root@victoria ~]# xl cpupool-create name=\"RAC1\"
 Using config file "command line"
 cpupool name:   RAC1
 scheduler:      credit
@@ -291,11 +291,11 @@ number of cpus: 0</pre>
 <p>
                     I checked the creation of these pools with the following command:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-list</pre>
+<pre class="bash-cmd">xl cpupool-list</pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Name               CPUs   Sched     Active   Domain count
+<pre class="text">Name               CPUs   Sched     Active   Domain count
 Pool-node0           8    credit       y          1
 RAC1                 0    credit       y          0
 RAC2                 0    credit       y          0
@@ -314,7 +314,7 @@ Client               0    credit       y          0
                     </span>
                     CPU pool. This was done with the following commands:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-cpu-remove Pool-node0 1
+<pre class="bash-cmd">xl cpupool-cpu-remove Pool-node0 1
 xl cpupool-cpu-remove Pool-node0 2
 xl cpupool-cpu-remove Pool-node0 3
 xl cpupool-cpu-remove Pool-node0 4
@@ -329,7 +329,7 @@ xl cpupool-cpu-remove Pool-node0 7</pre>
 <p>
                     I used the following commands to add the CPUs to the correct pools:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-cpu-add RAC1 1
+<pre class="bash-cmd">xl cpupool-cpu-add RAC1 1
 xl cpupool-cpu-add RAC1 2
 xl cpupool-cpu-add RAC2 3
 xl cpupool-cpu-add RAC2 4
@@ -339,11 +339,11 @@ xl cpupool-cpu-add Client 7</pre>
 <p>
                     I used the following command to verify the correct allocation of CPUs to pools:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl cpupool-list -c</pre>
+<pre class="bash-cmd">xl cpupool-list -c</pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Name               CPU list
+<pre class="text">Name               CPU list
 Pool-node0         0
 RAC1               1,2
 RAC2               3,4
@@ -361,7 +361,7 @@ Client             7</pre>
                     </code>
                     option:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">/OVS/running_pool/PADSTOW/padstow.cfg 
+<pre class="text">/OVS/running_pool/PADSTOW/padstow.cfg 
 /OVS/running_pool/CRONULLA/cronulla.hvm
 /OVS/running_pool/BOTANY/botany.cfg
 /OVS/running_pool/AUBURN/auburn.cfg</pre>
@@ -373,11 +373,11 @@ Client             7</pre>
 <p>
                     After starting these domains, I used the following command to verify that each domain was running on the properly allocated CPU:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">xl vcpu-list</pre>
+<pre class="bash-cmd">xl vcpu-list</pre>
 <p>
                     The result was:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Name                                ID  VCPU   CPU State   Time(s) CPU Affinity
+<pre class="text">Name                                ID  VCPU   CPU State   Time(s) CPU Affinity
 Domain-0                             0     0    0   ---      67.8  all
 Domain-0                             0     1    0   ---      40.1  all
 Domain-0                             0     2    0   r--      67.7  all

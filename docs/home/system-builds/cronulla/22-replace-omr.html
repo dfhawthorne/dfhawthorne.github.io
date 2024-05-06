@@ -113,20 +113,18 @@ table-of-contents:
   </span>
   :
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>drop user sysman cascade;
+<pre class="sql-cmd">drop user sysman cascade;
 drop user SYSMAN_BIPLATFORM cascade;
 drop user SYSMAN_MDS cascade;
 drop user SYSMAN_OPSS cascade;
 drop user SYSMAN_APM cascade;
-drop user SYSMAN_RO cascade;</code></div>
-</pre>
+drop user SYSMAN_RO cascade;</pre>
 <p>
   Tablespaces were then dropped
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>drop tablespace MGMT_ECM_DEPOT_TS including contents;
+<pre class="sql-cmd">drop tablespace MGMT_ECM_DEPOT_TS including contents;
 drop tablespace MGMT_TABLESPACE including contents;
-drop tablespace MGMT_AD4J_TS including contents;</code></div>
-</pre>
+drop tablespace MGMT_AD4J_TS including contents;</pre>
 <h3>
 <a name="TOC-Start-Installation-of-New-OMR">
 </a>
@@ -139,9 +137,8 @@ drop tablespace MGMT_AD4J_TS including contents;</code></div>
   </span>
   with an XTerm session, and started the OUI to configure the OMS:
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>ssh -Y oracle@cronulla
-/opt/app/oracle/middleware/oms/sysman/install/ConfigureGC.sh</code></div> 
-</pre>
+<pre class="bash-cmd">ssh -Y oracle@cronulla
+/opt/app/oracle/middleware/oms/sysman/install/ConfigureGC.sh</pre>
 <h3>
 <a name="TOC-Step-1:-Installation-Types">
 </a>
@@ -244,7 +241,7 @@ drop tablespace MGMT_AD4J_TS including contents;</code></div>
   </span>
   has these two (2) snippets:
  </p>
-<pre style="margin-left:40px">Executing Output Action
+<pre class="text">Executing Output Action
 -----------------------------
 Sep 3, 2015 6:14:33 PM oracle.sysman.emdrep.emprereqkit.logger.EMPrereqKitLogger logDebug
 FINE: executing Action: select SYNONYM_NAME,table_owner from dba_synonyms where table_owner in ('SYSMAN','SYSMAN_MDS','MGMT_VIEW','SYSMAN_BIP','SYSMAN_APM','SYSMAN_OPSS','SYSMAN_RO')
@@ -256,12 +253,10 @@ FINE: Result=
 <p>
   And:
  </p>
-<pre style="margin-left:40px">Executing Output Action
+<pre class="text">Executing Output Action
 -----------------------------
 Sep 3, 2015 6:14:34 PM oracle.sysman.emdrep.emprereqkit.logger.EMPrereqKitLogger logDebug
-FINE: executing Action: select comp_name,owner from SCHEMA_VERSION_REGISTRY where (comp_name,owner) in (('Authoriza
-tion Policy Manager','SYSMAN_APM'),('Metadata Services','SYSMAN_MDS'),('Oracle Platform Security Services','SYSMAN_
-OPSS'))
+FINE: executing Action: select comp_name,owner from SCHEMA_VERSION_REGISTRY where (comp_name,owner) in (('Authorization Policy Manager','SYSMAN_APM'),('Metadata Services','SYSMAN_MDS'),('OraclePlatform Security Services','SYSMAN_OPSS'))
 Sep 3, 2015 6:14:34 PM oracle.sysman.emdrep.emprereqkit.logger.EMPrereqKitLogger log
 INFO: Using an existing DB connection...
 Sep 3, 2015 6:14:34 PM oracle.sysman.emdrep.emprereqkit.logger.EMPrereqKitLogger logDebug
@@ -282,20 +277,18 @@ Oracle Platform Security Services SYSMAN_OPSS
   </span>
   to determine the user names involved with the errant synonyms:
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>select distinct owner       
+<pre class="sql-cmd">select distinct owner       
   from dba_synonyms
   where table_owner in ('SYSMAN','SYSMAN_MDS','MGMT_VIEW','SYSMAN_BIP','SYSMAN_APM','SYSMAN_OPSS','SYSMAN_RO')
-/</code></div>
-</pre>
+/</pre>
 <p>
   The result was:
  </p>
-<pre style="margin-left:40px">OWNER
+<pre class="text">OWNER
 ------------------------------
 PUBLIC
 MGMT_VIEW
-DBSNMP
-</pre>
+DBSNMP</pre>
 <p>
   Used the following command on
   <span style="font-family:monospace">
@@ -307,8 +300,7 @@ DBSNMP
   </span>
   user:
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>drop user mgmt_view cascade;</code></div>
-</pre>
+<pre class="sql-cmd">drop user mgmt_view cascade;</pre>
 <p>
   For the other synonyms, I used the following anonymous PL/SQL block on
   <span style="font-family:monospace">
@@ -316,7 +308,7 @@ DBSNMP
   </span>
   :
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>DECLARE
+<pre class="sql-cmd">DECLARE
   CURSOR csr_syn IS
     SELECT
         owner,
@@ -334,8 +326,7 @@ BEGIN
     END IF;
   END LOOP;
 END;
-/</code></div>
-</pre>
+/</pre>
 <h4>
 <a name="TOC-Clean-Up-SCHEMA_VERSION_REGISTRY">
 </a>
@@ -352,7 +343,7 @@ END;
   </span>
   :
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>DELETE
+<pre class="sql-cmd">DELETE
   FROM
     SCHEMA_VERSION_REGISTRY
   WHERE
@@ -361,8 +352,7 @@ END;
       ('Metadata Services','SYSMAN_MDS'),
       ('Oracle Platform Security Services','SYSMAN_OPSS')
     );
-COMMIT;</code></div>
-</pre>
+COMMIT;</pre>
 <h4>
 <a name="TOC-Repeat-Step-4">
 </a>
@@ -504,9 +494,8 @@ COMMIT;</code></div>
   </a>
   , I just turned off the firewall as follows:
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>service iptables stop
-chkconfig iptables off</code></div>
-</pre>
+<pre class="bash-cmd">service iptables stop
+chkconfig iptables off</pre>
 <h3>
 <a name="TOC-Clean-up-Agent-on-GRIDCTRL">
 </a>
@@ -519,8 +508,7 @@ chkconfig iptables off</code></div>
   </span>
   as follows:
  </p>
-<pre><div class="sites-codeblock sites-codesnippet-block"><code>rm -fR /opt/oracle/app/agent</code></div>
-</pre>
+<pre class="bash-cmd">rm -fR /opt/oracle/app/agent</pre>
 <p>
   The installation of the OEM agent presented no problems.
  </p>

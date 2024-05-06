@@ -40,16 +40,6 @@ scroll-bar:
 ---
 <div dir="ltr">
 
-<br/>
-<div>
-<div class="sites-embed-align-left-wrapping-off">
-<div class="sites-embed-border-off sites-embed sites-embed-full-width" style="width:100%;">
-<div class="sites-embed-content sites-embed-type-toc">
-</div>
-</div>
-</div>
-</div>
-<br/>
 <h2>
 <a name="TOC-Overview">
 </a>
@@ -94,11 +84,11 @@ scroll-bar:
   </a>
   ” is very simple:
  </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 install ansible</pre>
+<pre class="bash-cmd">pip3 install ansible</pre>
 <p>
   The command failed with:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Command 'pip3' not found, but can be installed with:
+<pre class="text">Command 'pip3' not found, but can be installed with:
 
 sudo apt install python3-pip
 </pre>
@@ -110,7 +100,7 @@ sudo apt install python3-pip
 <p>
   As suggested by the error messages above, I ran the following command:
  </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo apt install python3-pip</pre>
+<pre class="bash-cmd">sudo apt install python3-pip</pre>
 <p>
   The command succeeded (the log is attached as install_pip3.log)
  </p>
@@ -126,11 +116,11 @@ sudo apt install python3-pip
   </a>
   ”:
  </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 install ansible</pre>
+<pre class="bash-cmd">pip3 install ansible</pre>
 <p>
   The command succeeded as shown below:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Collecting ansible
+<pre class="text">Collecting ansible
   Downloading https://files.pythonhosted.org/packages/f3/0d/ee54843308769f2c78be849d9e9f65dc8d63781941dc880f68507aae33ba/ansible-2.9.2.tar.gz (14.2MB)
     100% |████████████████████████████████| 14.2MB 99kB/s 
 Collecting PyYAML (from ansible)
@@ -171,11 +161,11 @@ Successfully installed MarkupSafe-1.1.1 PyYAML-5.2 ansible-2.9.2 cffi-1.13.2 cry
 <p>
   I used the following procedure to verify the installation of the Python3 version of Ansible:
  </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">ansible --version</pre>
+<pre class="bash-cmd">ansible --version</pre>
 <p>
   The Python2 version was still active as shown below:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">ansible 2.6.3
+<pre class="text">ansible 2.6.3
   config file = /etc/ansible/ansible-ocm12c/ansible.cfg
   configured module search path = [u'/home/douglas/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python2.7/dist-packages/ansible
@@ -194,7 +184,7 @@ Successfully installed MarkupSafe-1.1.1 PyYAML-5.2 ansible-2.9.2 cffi-1.13.2 cry
   </span>
   ) to install Ansible:
  </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">pip3 uninstall ansible
+<pre class="bash-cmd">pip3 uninstall ansible
 sudo pip3 install ansible
 </pre>
 <p>
@@ -208,12 +198,12 @@ sudo pip3 install ansible
 <p>
   The verification tests said that I was still finding the Python2 version of Ansible. I used the following command to find all versions of the Ansible executable:
  </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo find / -name ansible -executable -type f 2&gt;/dev/null
+<pre class="bash-cmd">sudo find / -name ansible -executable -type f 2&gt;/dev/null
 </pre>
 <p>
   The following three (3) versions were returned:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">/usr/local/lib/python3.6/dist-packages/ansible_test/_data/injector/ansible
+<pre class="text">/usr/local/lib/python3.6/dist-packages/ansible_test/_data/injector/ansible
 /usr/local/bin/ansible
 /usr/bin/ansible
 </pre>
@@ -223,7 +213,7 @@ sudo pip3 install ansible
 <p>
   The second result is the Python2 as shown below:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/bin/ansible --version
+<pre class="text"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/bin/ansible --version
 ansible 2.6.3
   config file = /etc/ansible/ansible-ocm12c/ansible.cfg
   configured module search path = [u'/home/douglas/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
@@ -234,7 +224,7 @@ ansible 2.6.3
 <p>
   The third result is the Python3 version as shown below:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/local/bin/ansible --version
+<pre class="text"><b>douglas@auburn</b>:<b>/etc/ansible/ansible-ocm12c</b>$ /usr/local/bin/ansible --version
 ansible 2.9.2
   config file = /etc/ansible/ansible-ocm12c/ansible.cfg
   configured module search path = ['/home/douglas/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
@@ -250,7 +240,7 @@ ansible 2.9.2
 <p>
   I got the new version of Ansible after I logged off and back on to Auburn:
  </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><b>douglas@auburn</b>:<b>~</b>$ which ansible
+<pre class="text"><b>douglas@auburn</b>:<b>~</b>$ which ansible
 /usr/local/bin/ansible
 <b>douglas@auburn</b>:<b>~</b>$ ansible --version
 ansible 2.9.2
