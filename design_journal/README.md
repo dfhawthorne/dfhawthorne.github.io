@@ -60,3 +60,4 @@ Table of Contents
 * [2024-04-25](2024_04_25.md) Conversion of Wiki to Jekyll - Duplication of HOME and INDEX Web Pages
 * [2024-04-26](2024_04_26.md) Conversion of Wiki to Jekyll - Embedded Sub-Pages Menu
 * [2024-04-30](2024_04_30.md) Conversion of Wiki to Jekyll - Cronulla Build Journal
+* [2024-05-07](2024_05_07.md) Conversion of Wiki to Jekyll - Consolidation of Styles for Preformatted Text
