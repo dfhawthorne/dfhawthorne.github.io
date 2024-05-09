@@ -1,0 +1,12 @@
+{%- if page contains "file-download" -%}
+    <div class="file-download">
+        <p>File Downloads</p>
+        {%- if page contains "file-download-dir" -%}
+            <ul>
+                {%- for item in page.file-download %}
+                    <li><a href="{{ file-download-dir }}/{{ item }}">{{ item }}</a></li>
+                {%- endfor -%}
+            </ul>
+        {%- endif -%}
+    </div>
+{%- endif -%}

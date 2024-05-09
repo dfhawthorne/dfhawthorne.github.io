@@ -3,25 +3,33 @@
   <head>
     {% include head.html %}
     {%- if page contains "title" -%}
-    <title>{{ page.title }}</title>
+      <title>{{ page.title }}</title>
     {%- endif -%}
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
   </head>
   <body>
     <div class="two-col-grid-container">
-      {% include banner.html %} <!-- R1 -->
-      {% include navigation.html %} <!-- R2 -->
-      {% include breadcrumbs.html %} <!-- R2 -->
-      {%- if page contains "title" -%}
-      <h1 class="page-title">{{ page.title }}</h1> <!-- R3 -->
-      {%- endif -%}
-      {% include search_box.html %} <!-- R4 -->
-      <div class="top_scroll_bar">{% include scroll_bar.html %}</div> <!-- R5 -->
-      {% include table_of_contents.html %} <!-- R6 -->
-      <div class="content">{{ content }}</div> <!-- R7 -->
-      {% include sub_pages.html %} <!-- R8 -->
-      <div class="bottom_scroll_bar">{% include scroll_bar.html %}</div> <!-- R9 -->
-      {% include footer.html %} <!-- R10 -->
+      {% include banner.html %}                                            <!--  R1 -->
+      {% include navigation.html %}                                        <!--  R2 -->
+      <header>
+        {% include breadcrumbs.html %}                                     <!--  R2 -->
+        {%- if page contains "title" -%}
+          <h1 class="page-title">{{ page.title }}</h1>                     <!--  R3 -->
+        {%- endif -%}
+        {% include search_box.html %}                                      <!--  R4 -->
+        <div class="top_scroll_bar">{% include scroll_bar.html %}</div>    <!--  R5 -->
+        {% include table_of_contents.html %}                               <!--  R6 -->
+      </header>
+      <main>
+        <div class="content">{{ content }}</div>
+      </main>                                                              <!--  R7 -->
+      <footer>
+        {% include sub_pages.html %}                                       <!--  R8 -->
+        {% include file_download.html %}                                   <!--  R9 -->
+        <div class="bottom_scroll_bar">{% include scroll_bar.html %}</div> <!-- R10 -->
+        {% include footer.html %}                                          <!-- R11 -->
+        <!-- Spare                                                              R12 -->
+      </footer>
     </div>
   </body>
 </html>
