@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}" />
   </head>
   <body>
-    <div class="two-col-grid-container">
+    <div class="grid-two-column">
       {% include banner.html %}                                            <!--  R1 -->
       {% include navigation.html %}                                        <!--  R2 -->
       <header>
@@ -20,9 +20,7 @@
         <div class="top_scroll_bar">{% include scroll_bar.html %}</div>    <!--  R5 -->
         {% include table_of_contents.html %}                               <!--  R6 -->
       </header>
-      <main>
-        <div class="content">{{ content }}</div>
-      </main>                                                              <!--  R7 -->
+      <main>{{ content }}</main>                                           <!--  R7 -->
       <footer>
         {% include sub_pages.html %}                                       <!--  R8 -->
         {% include file_download.html %}                                   <!--  R9 -->
