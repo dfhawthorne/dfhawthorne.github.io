@@ -4,8 +4,8 @@
 # ------------------------------------------------------------------------------
 
 import argparse
-from bs4 import BeautifulSoup
-import subprocess
+import os
+import sys
 
 # ------------------------------------------------------------------------------
 # Parse arguments
@@ -15,191 +15,322 @@ parser = argparse.ArgumentParser(
         description='Build navigation hierarchy based on a hierarchy of web pages'
         )
 parser.add_argument('-v','--verbose',action='store_true',help='Verbose output')
-parser.add_argument('-s','--side-nav',help='Name of file for side navigation bar')
-parser.add_argument('-t','--top-nav',help='Name of file for top navigation bar')
-parser.add_argument('-d','--max-depth',help='Maximum depth to descend',type=int,default=2)
 parser.add_argument(
-    'html_dir',
-    nargs=1,
-    type=str,
-    help='Root of directory tree containing HTML files'
-    )
+    '-s',
+    '--side-nav',
+    default=sys.stdout,
+    type=argparse.FileType('w'),
+    help='Name of file for side navigation bar')
+parser.add_argument(
+    '-l',
+    '--log',
+    default=sys.stdout,
+    type=argparse.FileType('w'),
+    help='the file where the verbose logging should be written')
 args = parser.parse_args()
+
+# ------------------------------------------------------------------------------
+# Find location of root directory for HTML documents based on the location of
+# this program. The assumption is that the document root and
+# script directories are siblings.
+# ------------------------------------------------------------------------------
+
+script_name = os.path.realpath(__file__)
+script_dir  = os.path.dirname(script_name)
+common_dir  = os.path.dirname(script_dir)
+html_dir    = os.path.join(common_dir,'docs')
+
 if args.verbose:
-    print(f"""Passed arguments:
-    side-nav={args.side_nav}
-    top-nav={args.top_nav}
-    max-depth={str(args.max_depth)}""")
+    args.log.write(f"""Constructing directories:
+script_name = '{script_name}'
+script_dir  = '{script_dir}'
+common_dir  = '{common_dir}'
+html_dir    = '{html_dir}'
+""")
+
+if not os.path.isdir(html_dir):
+    error_msg = f"*** '{html_dir}' is not a directory ***"
+    if args.verbose:
+        args.log.write(error_msg + '\n')
+    print(error_msg, file=sys.stderr)
+    exit(1)
 
 # ------------------------------------------------------------------------------
-# Build a dictionary of web files and extract title and heading #1
+# Auxiliary function to convert a dictionary to a string
 # ------------------------------------------------------------------------------
 
-web_titles = dict()
-file_name_pref_len  = len(args.html_dir[0]) + 1
+def dict_to_str(in_dict, in_depth):
+    """
+    Converts a dictionary object to a string
 
-html_dir = subprocess.run(
-        [
-            'find',
-            args.html_dir[0],
-            '-maxdepth',
-            str(args.max_depth+1),
-            '-name',
-            '*.html',
-            '-type',
-            'f'
-        ],
-        capture_output=True,
-        check=True)
+    Parameters:
+    1. in_dict is a dictionary
+    2. in_depth is how deep we are in the top-level dictionary
 
-for input_file in str(html_dir.stdout)[2:-3].split('\\n'):
-    if args.verbose: print(f"input_file='{input_file}'")
-    rel_path_name = input_file[file_name_pref_len:]
-    if args.verbose: print(f"rel_path_name='{rel_path_name}'")
-    # Don't process Jekyll and Google Site files
-    if rel_path_name.startswith('system'):        continue
-    if rel_path_name.startswith('_site'):         continue
-    if rel_path_name.startswith('_sass'):         continue
-    if rel_path_name.startswith('_includes'):     continue
-    if rel_path_name.startswith('_layouts'):      continue
-    if rel_path_name.startswith('.jekyll-cache'): continue
+    Returns:
+       a string
+    """
 
-    with open(input_file, 'r') as f:
-        b = f.read()
-    soup = BeautifulSoup(b, 'html.parser')
-
-    titles = soup.find_all('title')
-    if titles is not None and len(titles) > 0:
-        title = titles[0].text.strip()
-    else:
-        headers = soup.find_all('h1')
-        if headers is not None and len(headers) > 0:
-            title = headers[0].text.strip()
-        else:
-            span_titles = soup.find_all('span', id="sites-page-title")
-            if span_titles is not None and len(span_titles) > 0:
-                title = span_titles[0].text.strip()
+    assert  in_dict is not None   and \
+            type(in_dict) == dict and \
+            len(in_dict) > 0,         \
+        "in_dict must be a non-empty dictionary"
+    assert  in_depth is not None  and \
+            type(in_depth) == int and \
+            in_depth >= 0,            \
+        "in_depth must a non-negative integer"
+    
+    indent = ''.rjust(2*(in_depth+1))
+    result = indent + "{\n"
+    keys   = list(in_dict.keys())
+    keys.sort()
+    for key in keys:
+        value   = in_dict[key]
+        result += indent + key + ":"
+        if type(value) == dict:
+            if len(value) > 0:
+                result += "\n" + dict_to_str(value,in_depth+1)
             else:
-                title = None
-
-    if title is not None:
-        title = title.replace(' - Yet Another OCM','')
-    if args.verbose: print(f"title='{title}'")
-
-    web_titles[rel_path_name] = title
-
-if args.verbose: print(web_titles)
-
-# ------------------------------------------------------------------------------
-# Build directory tree of web pages
-# ------------------------------------------------------------------------------
-
-web_tree              = dict()
-web_tree['title']     = 'Root'
-web_tree['url']       = '/'
-web_tree['sub_pages'] = dict()
-web_keys = list(web_titles.keys())
-web_keys.sort()
-
-for page in web_keys:
-    if args.verbose: print(f"page='{page}'")
-    dir_path = page.split('/')
-    if args.verbose: print(f"dir_path={dir_path}")
-    if len(dir_path) < 2: continue
-    partial_path = ''
-    dir_level    = web_tree
-    for dir_entry in dir_path[:-1]:
-        if partial_path == '':
-            partial_path = dir_entry
+                result += "{},\n"
         else:
-            partial_path = partial_path + '/' + dir_entry
-        if dir_level['sub_pages'].get(dir_entry) is None:
-            new_entry                         = dict()
-            new_entry['title']                = web_titles.get(partial_path+'.html')
-            new_entry['sub_pages']            = dict()
-            new_entry['url']                  = partial_path
-            dir_level['sub_pages'][dir_entry] = new_entry
-            dir_level                         = new_entry
+            result += " " + str(value) + ",\n"
+        
+    result += indent + "}\n"
+    
+    assert  result is not None  and \
+            type(result) == str and \
+            len(result) > 0,        \
+        "result must be a non-empty string"
+    return result
+
+# ------------------------------------------------------------------------------
+# Build a dictionary of web files and extract title
+# ------------------------------------------------------------------------------
+
+def get_page_title(web_page_name):
+    """
+    Extract page title
+
+    Parameters:
+    1. web_page_name
+
+    Returns:
+        result is the page title
+    """
+    assert  web_page_name is not None       and \
+            type(web_page_name) == str      and \
+            len(web_page_name.strip()) > 0,     \
+            "web_page_name must a non-empty string"
+    
+    result = os.path.basename(web_page_name).removesuffix('.html').replace('-',' ').title()
+
+    if args.verbose:
+        args.log.write(f"get_page_title('{web_page_name}') called\n")
+        args.log.write(f"    default result='{result}'\n")
+
+    if os.path.isfile(web_page_name):
+        with open(web_page_name,'r') as f:
+            for line in f:
+                if line.startswith('title: '):
+                    result = line[len('title: '):-1]
+                    break
+    else:
+        warn_msg = f">>> Missing anchor page, '{web_page_name}'"
+        if args.verbose:
+            args.log.write(warn_msg + '\n')
+        print(warn_msg, file=sys.stderr)
+
+    if args.verbose:
+        args.log.write(f"get_page_title('{web_page_name}') returned\n")
+        args.log.write(f"    result='{result}'\n")
+    
+    assert  result is not None             and \
+            type(result) == str            and \
+            len(result.strip()) > 0,           \
+            "result must be a non-empty string"
+
+    return result
+
+web_tree          = dict()
+
+for sub_pages_dir_name, sub_pages_sub_dirs, sub_pages_file_names in \
+    os.walk(html_dir):
+    if args.verbose:
+        args.log.write(f"sub_pages_dir_name={str(sub_pages_dir_name)}\n")
+        args.log.write(f"sub_pages_sub_dirs={str(sub_pages_sub_dirs)}\n")
+        args.log.write(f"sub_pages_file_names={str(sub_pages_file_names)}\n")
+    rel_dir_name = os.path.relpath(sub_pages_dir_name, html_dir)
+    # Don't process Jekyll and Google Site files
+    if rel_dir_name.startswith('.jekyll-cache') or \
+       rel_dir_name.startswith('_data')         or \
+       rel_dir_name.startswith('_drafts')       or \
+       rel_dir_name.startswith('_includes')     or \
+       rel_dir_name.startswith('_layouts')      or \
+       rel_dir_name.startswith('_posts')        or \
+       rel_dir_name.startswith('_sass')         or \
+       rel_dir_name.startswith('_site')         or \
+       rel_dir_name.startswith('assets')        or \
+       rel_dir_name.startswith('system'):
+        continue
+    sub_pages_with_content = [pfn
+        for pfn in sub_pages_file_names
+        if pfn.endswith('.html') and 
+            not (
+                pfn.startswith('AWR_report_') or
+                pfn.startswith('ASH_report_') or
+                pfn.startswith('workload_report_') or
+                pfn.startswith('google')
+                ) and
+            pfn.removesuffix('.html') not in sub_pages_sub_dirs
+    ]
+    if args.verbose:
+        args.log.write(f"sub_pages_with_content={str(sub_pages_with_content)}\n")
+    if len(sub_pages_with_content) + len(sub_pages_sub_dirs) == 0: continue
+    if args.verbose:
+        args.log.write(f"Sub-anchor directory found '{rel_dir_name}'\n")
+    if rel_dir_name != '.':
+        dir_levels = rel_dir_name.split('/')
+        if args.verbose:
+            args.log.write(f"DIR Levels={str(dir_levels)}\n")
+        if web_tree.get(dir_levels[0]) is None:
+            error_msg = f'*** Tree node for {dir_levels[0]} is not allocated'
             if args.verbose:
-                print(f"dir_level[{dir_entry}]={new_entry}")
-        else:
-            dir_level    = dir_level['sub_pages'][dir_entry]
+                args.log.write(error_msg + '\n')
+            print(error_msg, file=sys.stderr)
+            exit(1)
+        sub_pages = web_tree[dir_levels[0]].get('sub-pages')
+        if sub_pages is None:
+            error_msg = f'*** Sub-pages node for {dir_levels[0]} is not allocated'
+            if args.verbose:
+                args.log.write(error_msg + '\n')
+            print(error_msg, file=sys.stderr)
+            exit(1)
+        page_entry = web_tree[dir_levels[0]]
+        for dir_entry in dir_levels[1:]:
+            page_entry = sub_pages[dir_entry]
+            if sub_pages.get(dir_entry) is None:
+                error_msg = f"*** Missing dir_entry, '{dir_entry}' ***"
+                if args.verbose:
+                    args.log.write(error_msg + '\n')
+                print(error_msg, file=sys.stderr)
+                exit(1)
+            sub_pages = sub_pages[dir_entry]['sub-pages']
+        page_entry['url'] = rel_dir_name + '.html'
+        for sub_dir in sub_pages_sub_dirs:
+            sub_pages[sub_dir]              = dict()
+            sub_pages[sub_dir]['sub-pages'] = dict()
+            web_page_name = os.path.join(sub_pages_dir_name,sub_dir) + '.html'
+            if args.verbose:
+                args.log.write(f"Anchor page name='{web_page_name}'\n")
+            sub_pages[sub_dir]['title'] = get_page_title(web_page_name)
+            sub_pages[sub_dir]['url']   = os.path.relpath(web_page_name,start=html_dir)
+        for page_name in sub_pages_with_content:
+            sub_pages[page_name] = dict()
+            web_page_name = os.path.join(sub_pages_dir_name,page_name)
+            if args.verbose:
+                args.log.write(f"Sub-page name='{web_page_name}'\n")
+            sub_pages[page_name]['title'] = get_page_title(web_page_name)
+            sub_pages[page_name]['url']   = os.path.relpath(web_page_name,start=html_dir)
+    else:
+        for sub_dir in sub_pages_sub_dirs:
+            if sub_dir in [
+                    '.jekyll-cache', '_data', '_drafts', '_includes',
+                    '_layouts', '_posts', '_sass', '_site', 'system',
+                    'assets'
+                ]: continue
+            if sub_dir == 'home':
+                web_tree[sub_dir]              = dict()
+                web_tree[sub_dir]['sub-pages'] = dict()
+                web_page_name                  = os.path.join(html_dir,'index.html')
+                web_tree[sub_dir]['url']       = 'index.html'
+            else:
+                web_tree[sub_dir]              = dict()
+                web_tree[sub_dir]['sub-pages'] = dict()
+                web_page_name                  = os.path.join(html_dir,sub_dir) + '.html'
+                web_tree[sub_dir]['url']       = sub_dir + '.html'
+            if args.verbose:
+                args.log.write(f"Anchor page name='{web_page_name}'\n")
+            web_tree[sub_dir]['title'] = get_page_title(web_page_name)
+            if args.verbose:
+                args.log.write(f"web_tree['{sub_dir}'] = {str(web_tree[sub_dir])}\n")
+        for page_name in sub_pages_with_content:
+            if page_name == 'index.html': continue
+            web_tree[page_name] = dict()
+            web_page_name = os.path.join(html_dir,page_name)
+            if args.verbose:
+                args.log.write(f"Sub-page name='{web_page_name}'\n")
+            web_tree[page_name]['title'] = get_page_title(web_page_name)
+            web_tree[page_name]['url']   = os.path.relpath(web_page_name,start=html_dir)
 
 if args.verbose:
-    print(f"web_tree={web_tree}")
+    args.log.write(f'web_tree={dict_to_str(web_tree,0)}\n')
 
 # ------------------------------------------------------------------------------
-# Produce navigation bars as YAML
+# Construct a navigation YAML structure from a dictionary
 # ------------------------------------------------------------------------------
 
-def get_side_nav_level(web_dict, indent=0):
+def dict_to_nav(in_dict, in_depth):
     """
-    get_side_nav_level(web_dict, indent)
-      web_dict is a dictionary
-      indent
+    Converts a dictionary object to a navigation YAML structure
+
+    Parameters:
+    1. in_dict is a dictionary
+    2. in_depth is how deep we are in the top-level dictionary
+
+    Returns:
+       a string
     """
-    assert type(web_dict) == dict and len(web_dict) > 0, \
-        "<web_dict> must be a non-empty dictionary"
-    assert type(indent) == int and indent >= 0, \
-        "<indent> must be an non-negative integer"
 
-    if args.verbose: print(f"web_dict={web_dict}")
-    web_keys = list(web_dict.keys())
-    web_keys.sort()
-    if args.verbose: print(f"web_keys={web_keys}")
-    result   = ''
-
-    for page in web_keys:
-        result += ''.ljust(indent)+'- name: '+page+'\n'
-        item = web_dict[page]
-        if item.get('url') is None or item.get('title') is None:
-            continue
-        for key in ['url','title']:
-            result += ''.ljust(indent)+'  '+key+': '+item[key]+'\n'
-        sub_pages = item.get('sub_pages')
-        if sub_pages is None or len(sub_pages) == 0: continue
-        result += ''.ljust(indent)+'  sub_pages:'+'\n'
-        result += get_side_nav_level(sub_pages,indent+2)
+    assert  in_dict is not None   and \
+            type(in_dict) == dict and \
+            len(in_dict) > 0,         \
+        "in_dict must be a non-empty dictionary"
+    assert  in_depth is not None  and \
+            type(in_depth) == int and \
+            in_depth >= 0,            \
+        "in_depth must a non-negative integer"
     
+    if args.verbose:
+        args.log.write('Call to dict_to_nav:\n')
+        args.log.write(f"keys={str(in_dict.keys())}\n")
+        args.log.write(f"\nin_depth={in_depth}\n")
+    
+    indent    = ''.rjust(2*in_depth)
+    keys      = list(in_dict.keys())
+    keys.sort()
+    result    = ''
+    for key in keys:
+        value     = in_dict[key]
+        if args.verbose:
+            args.log.write(f"in_dict['{key}'] = {str(value)}\n")
+        if key == 'home':
+            result   += indent + "- url: home.html\n"
+            result   += indent + "  title: 'Home'\n"
+        else:
+            result   += indent + "- url: " + value.get('url','**** missing url ****') + "\n"
+            title     = value.get('title','**** missing title ****')
+            if title.startswith("'"):
+                result   += indent + "  title: " + value.get('title',"'**** missing title ****'") + "\n"
+            else:
+                result   += indent + "  title: '" + value.get('title','**** missing title ****') + "'\n"
+        sub_pages = value.get('sub-pages',{})
+        if args.verbose:
+            args.log.write(f"sub_pages={str(sub_pages)}\n")
+        if len(sub_pages) > 0:
+            result += indent + "  sub-pages:\n"
+            result += dict_to_nav(sub_pages,in_depth+1)
+    
+    assert  result is not None  and \
+            type(result) == str and \
+            len(result) > 0,        \
+        "result must be a non-empty string"
     return result
 
-def get_top_nav_level(web_dict, stack=[]):
-    """
-    get_top_nav_level(web_dict, indent)
-      web_dict is a dictionary
-      indent
-    """
-    assert type(web_dict) == dict and len(web_dict) > 0, \
-        "<web_dict> must be a non-empty dictionary"
-    assert type(stack) == list, \
-        "<stack> must be a list"
+nav_data = dict_to_nav(web_tree, 0)
 
-    web_keys = list(web_dict.keys())
-    web_keys.sort()
-    result   = ''
+if args.verbose:
+    args.log.write('============== NAV Data (START) ====================\n')
+    args.log.write(nav_data)
+    args.log.write('=============== NAV Data (END) =====================\n')
 
-    for page in web_keys:
-        page_entry          = dict()
-        item                = web_dict[page]
-        page_entry['url']   = item['url']
-        page_entry['title'] = item.get('title','UKNOWN')
-        stack.append(page_entry)
-        sub_pages           = item.get('sub_pages')
-        if sub_pages is not None and len(sub_pages) > 0:
-            result += get_top_nav_level(sub_pages,stack)
-        nav_bar = ''
-        for page_entry in stack:
-            if nav_bar != '': nav_bar += ' &gt; '
-            nav_bar += f'<a href="{page_entry["url"]}">{page_entry["title"]}</a>'
-        page_entry = stack.pop()
-        result    += f"- url: {page_entry['url']}\n  nav_bar: '{nav_bar}'\n"
-    
-    return result
-
-if args.side_nav is not None:
-    with open(args.side_nav,'w') as f:
-        f.write(get_side_nav_level(web_tree['sub_pages']))
-
-if args.top_nav is not None:
-    with open(args.top_nav,'w') as f:
-        f.write(get_top_nav_level(web_tree['sub_pages']))
+args.side_nav.write(nav_data)

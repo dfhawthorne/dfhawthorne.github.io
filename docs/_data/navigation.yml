@@ -1,46 +1,1439 @@
-- name: announcements
-  url: announcements.html
-  title: Announcements
-- name: home
-  url: index.html
-  title: Yet Another OCM
-  sub_pages:
-  - name: 10g-ocm
-    url: home/10g-ocm.html
-    title: 10G OCM
-  - name: 11g-oce-rac
-    url: home/11g-oce-rac.html
-    title: 11G OCE RAC
-  - name: 11g-ocm
-    url: home/11g-ocm.html
-    title: 11G OCM
-  - name: 12c-ocm
-    url: home/12c-ocm.html
-    title: 12C OCM
-  - name: 12c-ocp-upgrade
-    url: home/12c-ocp-upgrade.html
-    title: 12C OCP Upgrade
-  - name: database-designs
-    url: home/database-designs.html
-    title: Database Designs
-  - name: issues
-    url: home/issues.html
-    title: Issues
-  - name: knowledge
-    url: home/knowledge.html
-    title: Knowledge
-  - name: procedures
-    url: home/procedures.html
-    title: Procedures
-  - name: projects
-    url: home/projects.html
-    title: Projects
-  - name: reading-notes
-    url: home/reading-notes.html
-    title: Reading Notes
-  - name: resource-allocations
-    url: home/resource-allocations.html
-    title: Resource Allocations
-  - name: system-builds
-    url: home/system-builds.html
-    title: System Builds
+- url: announcements.html
+  title: 'Announcements'
+  sub-pages:
+  - url: announcements/2012-03-12.html
+    title: '12 March 2012'
+  - url: announcements/2012-03-27.html
+    title: '27 March 2012'
+  - url: announcements/2012-04-12.html
+    title: '12 April 2012'
+- url: book-reviews.html
+  title: 'Book Reviews'
+- url: home.html
+  title: 'Home'
+  sub-pages:
+  - url: home/10g-ocm.html
+    title: '10G OCM'
+    sub-pages:
+    - url: home/10g-ocm/10g-data-guard.html
+      title: '10G Data Guard'
+      sub-pages:
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-01.html
+        title: '10G Data Guard (01)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-02.html
+        title: '10G Data Guard (02)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-03.html
+        title: '10G Data Guard (03)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-04.html
+        title: '10G Data Guard (04)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-05.html
+        title: '10G Data Guard (05)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-06.html
+        title: '10G Data Guard (06)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-07.html
+        title: '10G Data Guard (07)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-08.html
+        title: '10G Data Guard (08)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-09.html
+        title: '10G Data Guard (09)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-10.html
+        title: '10G Data Guard (10)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-11.html
+        title: '10G Data Guard (11)'
+      - url: home/10g-ocm/10g-data-guard/10g-data-guard-12.html
+        title: '10G Data Guard (12)'
+    - url: home/10g-ocm/10g-ocm-planning.html
+      title: '10G OCM Planning'
+    - url: home/10g-ocm/10g-services.html
+      title: '10G Services'
+      sub-pages:
+      - url: home/10g-ocm/10g-services/grid-control.html
+        title: 'Grid Control'
+        sub-pages:
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-01.html
+          title: 'Grid Control (01)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-02.html
+          title: 'Grid Control (02)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-03.html
+          title: 'Grid Control (03)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-04.html
+          title: 'Grid Control (04)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-05.html
+          title: 'Grid Control (05)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-06.html
+          title: 'Grid Control (06)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-07.html
+          title: 'Grid Control (07)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-08.html
+          title: 'Grid Control (08)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-09.html
+          title: 'Grid Control (09)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-10.html
+          title: 'Grid Control (10)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-11.html
+          title: 'Grid Control (11)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-12.html
+          title: 'Grid Control (12)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-13.html
+          title: 'Grid Control (13)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-14.html
+          title: 'Grid Control (14)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-15.html
+          title: 'Grid Control (15)'
+        - url: home/10g-ocm/10g-services/grid-control/grid-control-16.html
+          title: 'Grid Control (16)'
+      - url: home/10g-ocm/10g-services/ntp.html
+        title: 'NTP'
+        sub-pages:
+        - url: home/10g-ocm/10g-services/ntp/ntp-01.html
+          title: 'NTP (01)'
+        - url: home/10g-ocm/10g-services/ntp/ntp-02.html
+          title: 'NTP (02)'
+        - url: home/10g-ocm/10g-services/ntp/ntp-03.html
+          title: 'NTP (03)'
+        - url: home/10g-ocm/10g-services/ntp/ntp-04.html
+          title: 'NTP (04)'
+        - url: home/10g-ocm/10g-services/ntp/ntp-05.html
+          title: 'NTP (05)'
+        - url: home/10g-ocm/10g-services/ntp/ntp-06.html
+          title: 'NTP (06)'
+    - url: home/10g-ocm/10g-system-builds.html
+      title: '10G System Builds'
+      sub-pages:
+      - url: home/10g-ocm/10g-system-builds/botany.html
+        title: 'Botany'
+        sub-pages:
+        - url: home/10g-ocm/10g-system-builds/botany/botany-01.html
+          title: 'Botany (01)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-02.html
+          title: 'Botany (02)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-03.html
+          title: 'Botany (03)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-04.html
+          title: 'Botany (04)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-05.html
+          title: 'Botany (05)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-06.html
+          title: 'Botany (06)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-07.html
+          title: 'Botany (07)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-08.html
+          title: 'Botany (08)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-09.html
+          title: 'Botany (09)'
+        - url: home/10g-ocm/10g-system-builds/botany/botany-10.html
+          title: 'Botany (10)'
+      - url: home/10g-ocm/10g-system-builds/miscellaneous.html
+        title: 'Miscellaneous'
+        sub-pages:
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/10-2-0-2-upgrade.html
+          title: '10.2.0.2 Upgrade'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/cluvfy-crsinst.html
+          title: 'CLUVFY CRSINST'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/first-vm-created.html
+          title: 'First VM Created'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/going-in-circles.html
+          title: 'Going in Circles'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/linux-cds-downloaded.html
+          title: 'Linux CDs Downloaded'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/newer-network-design.html
+          title: 'Newer Network Design'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/spfile-on-raw.html
+          title: 'SPFILE on raw'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1.html
+          title: 'VIP Problem on Richmond1'
+          sub-pages:
+          - url: home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-01.html
+            title: 'VIP Problem on Richmond1 (01)'
+          - url: home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-02.html
+            title: 'VIP Problem on Richmond1 (02)'
+          - url: home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-03.html
+            title: 'VIP Problem on Richmond1 (03)'
+          - url: home/10g-ocm/10g-system-builds/miscellaneous/vip-problem-on-richmond1/vip-problem-on-richmond1-04.html
+            title: 'VIP Problem on Richmond1 (04)'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/vmware-clustering-problem.html
+          title: 'VMWare Clustering Problem'
+        - url: home/10g-ocm/10g-system-builds/miscellaneous/vmware-problems.html
+          title: 'VMWare Problems'
+      - url: home/10g-ocm/10g-system-builds/padstow.html
+        title: 'Padstow'
+        sub-pages:
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-01.html
+          title: 'Padstow (01)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-02.html
+          title: 'Padstow (02)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-03.html
+          title: 'Padstow (03)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-04.html
+          title: 'Padstow (04)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-05.html
+          title: 'Padstow (05)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-06.html
+          title: 'Padstow (06)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-07.html
+          title: 'Padstow (07)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-08.html
+          title: 'Padstow (08)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-09.html
+          title: 'Padstow (09)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-10.html
+          title: 'Padstow (10)'
+        - url: home/10g-ocm/10g-system-builds/padstow/padstow-11.html
+          title: 'Padstow (11)'
+      - url: home/10g-ocm/10g-system-builds/richmond-cluster.html
+        title: 'Richmond Cluster'
+        sub-pages:
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-01.html
+          title: 'Richmond Cluster (01)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-02.html
+          title: 'Richmond Cluster (02)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-03.html
+          title: 'Richmond Cluster (03)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-04.html
+          title: 'Richmond Cluster (04)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-05.html
+          title: 'Richmond Cluster (05)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-06.html
+          title: 'Richmond Cluster (06)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-07.html
+          title: 'Richmond Cluster (07)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-08.html
+          title: 'Richmond Cluster (08)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-09.html
+          title: 'Richmond Cluster (09)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-10.html
+          title: 'Richmond Cluster (10)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-11.html
+          title: 'Richmond Cluster (11)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-12.html
+          title: 'Richmond Cluster (12)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-13.html
+          title: 'Richmond Cluster (13)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-14.html
+          title: 'Richmond Cluster (14)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-15.html
+          title: 'Richmond Cluster (15)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-16.html
+          title: 'Richmond Cluster (16)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-17.html
+          title: 'Richmond Cluster (17)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-18.html
+          title: 'Richmond Cluster (18)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-19.html
+          title: 'Richmond Cluster (19)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-20.html
+          title: 'Richmond Cluster (20)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-21.html
+          title: 'Richmond Cluster (21)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-22.html
+          title: 'Richmond Cluster (22)'
+        - url: home/10g-ocm/10g-system-builds/richmond-cluster/richmond-cluster-23.html
+          title: 'Richmond Cluster (23)'
+      - url: home/10g-ocm/10g-system-builds/richmond-database.html
+        title: 'Richmond Database'
+        sub-pages:
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-01.html
+          title: 'Richmond Database (01)'
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-02.html
+          title: 'Richmond Database (02)'
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-03.html
+          title: 'Richmond Database (03)'
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-04.html
+          title: 'Richmond Database (04)'
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-05.html
+          title: 'Richmond Database (05)'
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-06.html
+          title: 'Richmond Database (06)'
+        - url: home/10g-ocm/10g-system-builds/richmond-database/richmond-database-07.html
+          title: 'Richmond Database (07)'
+      - url: home/10g-ocm/10g-system-builds/rmancat.html
+        title: 'RMANCAT'
+        sub-pages:
+        - url: home/10g-ocm/10g-system-builds/rmancat/rmancat-01.html
+          title: 'RMANCAT (01)'
+        - url: home/10g-ocm/10g-system-builds/rmancat/rmancat-02.html
+          title: 'RMANCAT (02)'
+        - url: home/10g-ocm/10g-system-builds/rmancat/rmancat-03.html
+          title: 'RMANCAT (03)'
+        - url: home/10g-ocm/10g-system-builds/rmancat/rmancat-04.html
+          title: 'RMANCAT (04)'
+        - url: home/10g-ocm/10g-system-builds/rmancat/rmancat-05.html
+          title: 'RMANCAT (05)'
+    - url: home/10g-ocm/missing-bigblog-links.html
+      title: 'Missing BigBlog Links'
+  - url: home/11g-oce-rac.html
+    title: '11G OCE RAC'
+    sub-pages:
+    - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm.html
+      title: 'Section 1 - Grid Infrastructure: Clusterware and ASM'
+      sub-pages:
+      - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware.html
+        title: 'Administering Oracle Clusterware'
+        sub-pages:
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware/demonstrate-ocr-backup-and-recovery-techniques.html
+          title: 'Demonstrate OCR backup and recovery techniques'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware/display-clusterware-management-proficiency.html
+          title: 'Display Clusterware management proficiency'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/administering-oracle-clusterware/managing-network-settings.html
+          title: 'Managing Network Settings'
+      - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation.html
+        title: 'Grid Infrastructure Installation'
+        sub-pages:
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation/install-grid-infrastructure.html
+          title: 'Install Grid Infrastructure'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation/perform-pre-install-tasks-for-grid-infrastructure.html
+          title: 'Perform pre-install tasks for Grid Infrastructure'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/grid-infrastructure-installation/verify-the-installation.html
+          title: 'Verify the installation'
+      - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware.html
+        title: 'Making Applications Highly Available With Oracle Clusterware'
+        sub-pages:
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware/contrast-policy-managed-and-administration-managed-databases.html
+          title: 'Contrast Policy-Managed and Administration Managed databases'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware/describe-the-functionality-of-server-pools.html
+          title: 'Describe the functionality of server pools'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/making-applications-highly-available-with-oracle-clusterware/describe-the-high-availability-components-of-oracle-clusterware.html
+          title: 'Describe the High Availability Components of Oracle Clusterware'
+      - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware.html
+        title: 'Managing Clusterware'
+        sub-pages:
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware/perform-prerequisite-steps-for-extending-a-cluster.html
+          title: 'Perform prerequisite steps for extending a cluster'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware/use-oracle-universal-installer-oui-to-add-a-node-to-an-oracle-clusterware-home.html
+          title: 'Use Oracle Universal Installer (OUI) to add a node to an Oracle Clusterware home'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/managing-clusterware/use-oui-to-remove-a-node-from-an-oracle-clusterware-home.html
+          title: 'Use OUI to remove a node from an Oracle Clusterware home'
+      - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure.html
+        title: 'Oracle Grid Infrastructure'
+        sub-pages:
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/describe-cluster-hardware-best-practices.html
+          title: 'Describe Cluster hardware best practices'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/describe-how-grid-plug-and-play-affects-clusterware.html
+          title: 'Describe how Grid Plug and Play affects Clusterware'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/explain-the-principles-and-purposes-of-clusters.html
+          title: 'Explain the principles and purposes of clusters'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/oracle-grid-infrastructure/understand-oracle-clusterware-architecture.html
+          title: 'Understand Oracle Clusterware Architecture'
+      - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware.html
+        title: 'Troubleshooting Oracle Clusterware'
+        sub-pages:
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/enable-component-level-debugging.html
+          title: 'Enable component-level debugging'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/enable-resource-debugging.html
+          title: 'Enable resource debugging'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/enable-tracing-for-java-based-tools.html
+          title: 'Enable tracing for Java-based tools'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/gather-all-log-files-using-diagcollection-pl.html
+          title: 'Gather all log files using diagcollection.pl'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/locate-oracle-clusterware-log-files.html
+          title: 'Locate Oracle Clusterware log files'
+        - url: home/11g-oce-rac/section-1---grid-infrastructure-clusterware-and-asm/troubleshooting-oracle-clusterware/troubleshoot-the-oracle-cluster-registry-ocr-file.html
+          title: 'Troubleshoot the Oracle Cluster Registry (OCR) file'
+    - url: home/11g-oce-rac/system-builds.html
+      title: 'System Builds'
+      sub-pages:
+      - url: home/11g-oce-rac/system-builds/panania1.html
+        title: 'Panania1'
+        sub-pages:
+        - url: home/11g-oce-rac/system-builds/panania1/00-create-vmware-image.html
+          title: '00 Create VMWare Image'
+      - url: home/11g-oce-rac/system-builds/victoria.html
+        title: 'VICTORIA'
+        sub-pages:
+        - url: home/11g-oce-rac/system-builds/victoria/01-install-vm-server.html
+          title: '01 Install VM Server'
+        - url: home/11g-oce-rac/system-builds/victoria/02-problem-installing-vm-manager.html
+          title: '02 Problem Installing VM Manager'
+        - url: home/11g-oce-rac/system-builds/victoria/03-patch-gridctrl.html
+          title: '03 Patch GRIDCTRL'
+        - url: home/11g-oce-rac/system-builds/victoria/04-finish-oem-virtualisation-intallation.html
+          title: '04 Finish OEM Virtualisation Intallation'
+        - url: home/11g-oce-rac/system-builds/victoria/05-diagnose-vm-agent-problem.html
+          title: '05 Diagnose VM Agent Problem'
+        - url: home/11g-oce-rac/system-builds/victoria/06-build-vm-server-manually.html
+          title: '06 Build VM Server Manually'
+        - url: home/11g-oce-rac/system-builds/victoria/07-response-from-oracle-support.html
+          title: '07 Response From Oracle Support'
+        - url: home/11g-oce-rac/system-builds/victoria/08-upgrade-to-oem-12c.html
+          title: '08 Upgrade to OEM 12C'
+  - url: home/11g-ocm.html
+    title: '11G OCM'
+    sub-pages:
+    - url: home/11g-ocm/11g-ocm-data-and-data-warehouse-management.html
+      title: '11G OCM Data and Data Warehouse Management'
+      sub-pages:
+      - url: home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-configure-a-schema-to-support-a-star-transformation-query.html
+        title: '11G OCM Configure a schema to support a star transformation query'
+      - url: home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-configure-and-use-parallel-execution-for-queries.html
+        title: '11G OCM Configure and use parallel execution for queries'
+      - url: home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-configure-flashback-data-archive.html
+        title: '11G OCM Configure Flashback Data Archive'
+      - url: home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-create-partitioned-tables.html
+        title: '11G OCM Create partitioned tables'
+      - url: home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-troubleshoot-fast-materialized-views-to-fast-refresh-and-query-rewrite.html
+        title: '11G OCM Troubleshoot fast materialized views to fast refresh and query rewrite'
+    - url: home/11g-ocm/11g-ocm-data-guard.html
+      title: '11G OCM Data Guard'
+      sub-pages:
+      - url: home/11g-ocm/11g-ocm-data-guard/11g-ocm-configure-archivelog-deletion-policy-for-the-dataguard-configuration.html
+        title: '11G OCM Configure archivelog deletion policy for the dataguard configuration'
+      - url: home/11g-ocm/11g-ocm-data-guard/11g-ocm-configure-the-data-guard-environment-to-reduce-overheads-of-fast-incremental-backups-on-the-primary-database.html
+        title: '11G OCM Configure the data guard environment to reduce overheads of fast incremental backups on the primary database'
+    - url: home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration.html
+      title: '11G OCM Database, RMAN, EM and Network Configuration'
+      sub-pages:
+      - url: home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-an-archival-backup.html
+        title: '11G OCM Create an Archival Backup'
+      - url: home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-and-manage-a-tablespace-that-uses-nfs-mounted-file-system-file.html
+        title: '11G OCM Create and Manage a tablespace that uses NFS mounted file system file'
+      - url: home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-and-manage-encrypted-tablespaces.html
+        title: '11G OCM Create and Manage encrypted tablespaces'
+      - url: home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-create-base-recovery-catalog.html
+        title: '11G OCM Create Base Recovery Catalog'
+      - url: home/11g-ocm/11g-ocm-database-rman-em-and-network-configuration/11g-ocm-install-and-configure-em-agent.html
+        title: '11G OCM Install and configure EM Agent'
+    - url: home/11g-ocm/11g-ocm-performance-management.html
+      title: '11G OCM Performance Management'
+      sub-pages:
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-configure-baseline-templates.html
+        title: '11G OCM Configure baseline templates'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-gather-statistics-on-a-specific-table-without-invalidating-cursors.html
+        title: '11G OCM Gather statistics on a specific table without invalidating cursors'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-replay-a-captured-workload.html
+        title: '11G OCM Replay a captured workload'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-set-up-and-configure-resource-manager.html
+        title: '11G OCM Set up and configure Resource Manager'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-multi-column-statistics.html
+        title: '11G OCM Use multi column statistics'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-partitioned-indexes.html
+        title: '11G OCM Use partitioned indexes'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-result-cache.html
+        title: '11G OCM Use Result Cache'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-sql-access-advisor.html
+        title: '11G OCM Use SQL Access Advisor'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-sql-plan-management-feature.html
+        title: '11G OCM Use SQL Plan Management feature'
+      - url: home/11g-ocm/11g-ocm-performance-management/11g-ocm-use-sql-tuning-advisor.html
+        title: '11G OCM Use SQL Tuning Advisor'
+    - url: home/11g-ocm/11g-ocm-system-builds.html
+      title: '11G OCM System Builds'
+      sub-pages:
+      - url: home/11g-ocm/11g-ocm-system-builds/bankstown.html
+        title: 'BANKSTOWN'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/01-creation-with-asm-storage.html
+          title: '01 Creation with ASM Storage'
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/02-deploy-em-agent-on-bankstown.html
+          title: '02 Deploy EM Agent on BANKSTOWN'
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/03-upgrade-to-em-agent-10-2-0-5-0.html
+          title: '03 Upgrade to EM Agent 10.2.0.5.0'
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/04-startup-problems-for-bankstown.html
+          title: '04 Startup Problems for Bankstown'
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/05-some-start-up-fixed.html
+          title: '05 Some Start Up Problems Fixed'
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/06-em-agent-does-not-start-after-server-is-on-new-subnet.html
+          title: '06 EM Agent Does Not Start After Server is on New Subnet'
+        - url: home/11g-ocm/11g-ocm-system-builds/bankstown/07-adjusted-memory_target-for-ocm11g-database.html
+          title: '07 Adjusted MEMORY_TARGET for OCM11G Database'
+      - url: home/11g-ocm/11g-ocm-system-builds/data-guard.html
+        title: 'Data Guard'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/data-guard/01-copy-wallet-to-padstow.html
+          title: '01 Copy Wallet to PADSTOW'
+      - url: home/11g-ocm/11g-ocm-system-builds/design-overview.html
+        title: 'Design Overview'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/design-overview/00-original-design.html
+          title: '00 Original Design'
+        - url: home/11g-ocm/11g-ocm-system-builds/design-overview/01-cut-down-design.html
+          title: '01 Cut Down Design'
+        - url: home/11g-ocm/11g-ocm-system-builds/design-overview/02-newer-design.html
+          title: '02 Newer Design'
+      - url: home/11g-ocm/11g-ocm-system-builds/freenas.html
+        title: 'FREENAS'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/freenas/01-create-vm-image.html
+          title: '01 Create VM Image'
+        - url: home/11g-ocm/11g-ocm-system-builds/freenas/02-create-os-image.html
+          title: '02 Create OS Image'
+        - url: home/11g-ocm/11g-ocm-system-builds/freenas/03-create-nfs-volumes.html
+          title: '03 Create NFS Volumes'
+      - url: home/11g-ocm/11g-ocm-system-builds/gridctrl.html
+        title: 'GRIDCTRL'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/gridctrl/dns.html
+          title: 'DNS'
+        - url: home/11g-ocm/11g-ocm-system-builds/gridctrl/oem-online-patching-set-up.html
+          title: 'OEM Online Patching Set Up'
+        - url: home/11g-ocm/11g-ocm-system-builds/gridctrl/oms-does-not-start-after-server-is-on-new-subnet.html
+          title: 'OMS Does Not Start After Server is on New Subnet'
+        - url: home/11g-ocm/11g-ocm-system-builds/gridctrl/reset-agent-timezone.html
+          title: 'Reset Agent TimeZone'
+        - url: home/11g-ocm/11g-ocm-system-builds/gridctrl/set-up-agent-deploy-application.html
+          title: 'Set Up Agent Deploy Application'
+      - url: home/11g-ocm/11g-ocm-system-builds/padstow.html
+        title: 'PADSTOW'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/padstow/01-create-padstow-system.html
+          title: '01 Create PADSTOW System'
+      - url: home/11g-ocm/11g-ocm-system-builds/penrith1.html
+        title: 'PENRITH1'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/01-build-penrith1-vm-image.html
+          title: '01 Build PENRITH1 VM Image'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/02-install-penrith1-os.html
+          title: '02 Install PENRITH1 OS Image'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/03-install-oracle-validated-rpm.html
+          title: '03 Install Oracle Validated RPM'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/04-oracle-clusterware-preinstallation-tasks.html
+          title: '04 Oracle Clusterware Preinstallation Tasks'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/05-set-up-shared-disk-storage.html
+          title: '05 Set Up Shared Disk Storage'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/06-installing-oracle-clusterware.html
+          title: '06 Installing Oracle Clusterware'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/07-oracle-clusterware-postinstallation-procedures.html
+          title: '07 Oracle Clusterware Postinstallation Procedures'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/08-install-asm-software.html
+          title: '08 Install ASM Software'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/09-install-oracle-database-software.html
+          title: '09 Install Oracle Database Software'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/10-configure-asm-storage.html
+          title: '10 Configure ASM Storage'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/11-create-database-failed.html
+          title: '11 Create Database Failed'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/12-remove-directnfs-in-asm.html
+          title: '12 Remove DirectNFS in ASM'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/13-create-database-successful.html
+          title: '13 Create Database Successful'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/14-set-up-directnfs-for-example-database.html
+          title: '14 Set Up DirectNFS for Example Database'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/15-deploy-em-agent-on-penrith-cluster.html
+          title: '15 Deploy EM Agent on PENRITH Cluster'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/16-set-up-rman-on-example.html
+          title: '16 Set Up RMAN on EXAMPLE'
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith1/17-voting-disk-problems-on-penrith1.html
+          title: '17 Voting Disk Problems on PENRITH1'
+      - url: home/11g-ocm/11g-ocm-system-builds/penrith2.html
+        title: 'PENRITH2'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/penrith2/01-problem-with-penrith2.html
+          title: '01 Problem with PENRITH2'
+      - url: home/11g-ocm/11g-ocm-system-builds/redfern.html
+        title: 'REDFERN'
+        sub-pages:
+        - url: home/11g-ocm/11g-ocm-system-builds/redfern/01-create-oracle-client.html
+          title: '01 Create Oracle Client'
+  - url: home/12c-ocm.html
+    title: '12C OCM'
+    sub-pages:
+    - url: home/12c-ocm/12c-ocm-system-builds.html
+      title: '12C OCM System Builds'
+      sub-pages:
+      - url: home/12c-ocm/12c-ocm-system-builds/botany.html
+        title: 'BOTANY'
+        sub-pages:
+        - url: home/12c-ocm/12c-ocm-system-builds/botany/2018-05-10-initial-build.html
+          title: '2018-05-10 Initial Build'
+      - url: home/12c-ocm/12c-ocm-system-builds/padstow.html
+        title: 'PADSTOW'
+        sub-pages:
+        - url: home/12c-ocm/12c-ocm-system-builds/padstow/2018-05-09-initial-build.html
+          title: '2018-05-09 Initial Build'
+    - url: home/12c-ocm/data-and-performance-management.html
+      title: 'Data and Performance Management'
+      sub-pages:
+      - url: home/12c-ocm/data-and-performance-management/configure-the-database-to-retrieve-all-previous-versions-of-the-table-rows.html
+        title: 'Configure the database to retrieve all previous versions of the table rows'
+      - url: home/12c-ocm/data-and-performance-management/configure-the-oracle-database-resource-manager.html
+        title: 'Configure the Oracle Database Resource Manager'
+      - url: home/12c-ocm/data-and-performance-management/create-a-plugged-in-tablespace-by-using-the-transportable-tablespace-feature.html
+        title: 'Create a plugged-in tablespace by using the transportable tablespace feature'
+      - url: home/12c-ocm/data-and-performance-management/create-partitioned-tables.html
+        title: 'Create partitioned tables'
+      - url: home/12c-ocm/data-and-performance-management/create-sql-plan-baselines.html
+        title: 'Create SQL Plan baselines'
+      - url: home/12c-ocm/data-and-performance-management/modify-materialized-views.html
+        title: 'Administer materialized views'
+      - url: home/12c-ocm/data-and-performance-management/perform-real-application-testing.html
+        title: 'Perform real application testing'
+      - url: home/12c-ocm/data-and-performance-management/tune-sql-statements.html
+        title: 'Tune SQL statements'
+    - url: home/12c-ocm/data-guard.html
+      title: 'Data Guard'
+      sub-pages:
+      - url: home/12c-ocm/data-guard/administer-a-data-guard-environment.html
+        title: 'Administer a Data Guard environment'
+      - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing.html
+        title: 'Configure a standby database for testing'
+        sub-pages:
+        - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-dgmgrl-to-convert-to-snapshot-standby.html
+          title: 'Use DGMGRL to convert to Snapshot Standby'
+        - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-oem-to-convert-to-snapshot.html
+          title: 'Use OEM to convert to Snapshot Standby'
+        - url: home/12c-ocm/data-guard/configure-a-standby-database-for-testing/use-sql-plus-to-convert-to-snapshot-standby.html
+          title: 'Use SQL*Plus to Convert to Snapshot Standby'
+      - url: home/12c-ocm/data-guard/configure-a-standby-database-to-apply-redo.html
+        title: 'Configure a standby database to apply redo'
+      - url: home/12c-ocm/data-guard/configure-a-standby-database-to-use-for-reporting.html
+        title: 'Configure a standby database to use for reporting'
+      - url: home/12c-ocm/data-guard/configure-fast-start-failover.html
+        title: 'Configure fast start failover'
+      - url: home/12c-ocm/data-guard/create-a-physical-standby-database.html
+        title: 'Create a physical standby database'
+      - url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function.html
+        title: 'Restore the standby database to its normal function'
+        sub-pages:
+        - url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-oem-to-convert-to-physical-standby.html
+          title: 'Use OEM to Convert to Physical Standby'
+        - url: home/12c-ocm/data-guard/restore-the-standby-database-to-its-normal-function/use-sql-plus-to-convert-to-physical-standby.html
+          title: 'Use SQL*Plus to Convert to Physical Standby'
+    - url: home/12c-ocm/design-journal.html
+      title: 'Design Journal'
+    - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy.html
+      title: 'General Database and Network Administration, and Backup Strategy'
+      sub-pages:
+      - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/configure-the-network-environment-to-allow-connections-to-multiple-databases.html
+        title: 'Configure the network environment to allow connections to multiple databases'
+      - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-database-configuration-files.html
+        title: 'Create and manage database configuration files'
+      - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases.html
+        title: 'Create and manage pluggable databases'
+        sub-pages:
+        - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/clone-pdb-from-unplugged-pdb.html
+          title: 'Clone PDB from Unplugged PDB'
+        - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/create-pdb-using-dbca-simple.html
+          title: 'Create PDB using DBCA (Simple)'
+        - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/create-snapshot-copy-clone.html
+          title: 'Create Snapshot Copy Clone'
+      - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-users-roles-and-privileges.html
+        title: 'Create and manage users, roles, and privileges'
+      - url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/protect-the-database-from-data-loss-due-to-failure.html
+        title: 'Protect the database from data loss due to failures'
+    - url: home/12c-ocm/grid-infrastructure-and-rac.html
+      title: 'Grid Infrastructure and RAC'
+      sub-pages:
+      - url: home/12c-ocm/grid-infrastructure-and-rac/administer-oracle-clusterware.html
+        title: 'Administer Oracle Clusterware'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/configure-database-services.html
+        title: 'Configure Database Services'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/create-a-real-application-clusters-rac-database.html
+        title: 'Create a Real Application Clusters (RAC) database'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/create-and-manage-asm-instances.html
+        title: 'Create and manage ASM instances'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/create-asm-cloud-file-system-acfs.html
+        title: 'Create ASM Cloud File System (ACFS)'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/create-asm-disk-groups.html
+        title: 'Create ASM disk groups'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/install-oracle-database-12c-software.html
+        title: 'Install Oracle Database 12c software'
+      - url: home/12c-ocm/grid-infrastructure-and-rac/install-oracle-grid-infrastructure.html
+        title: 'Install Oracle Grid Infrastructure'
+  - url: home/12c-ocp-upgrade.html
+    title: '12C OCP Upgrade'
+    sub-pages:
+    - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c.html
+      title: 'Section 1: New Features of Oracle Database 12c'
+      sub-pages:
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/adr-and-network-enhancements.html
+        title: 'ADR and Network Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/adr-and-network-enhancements/explain-adr-enhancements.html
+          title: 'Explain ADR Enhancements'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/adr-and-network-enhancements/network-enhancements.html
+          title: 'Network Enhancements'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing.html
+        title: 'Auditing'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/create-and-enable-audit-policies.html
+          title: 'Create and enable audit policies'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-and-configure-unified-audit-data-trail.html
+          title: 'Enable and configure Unified Audit Data Trail'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-unified-auditing.html
+          title: 'Enable Unified Auditing'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/backup-recovery-and-flashback-for-a-cdb-pdb.html
+        title: 'Backup, Recovery and Flashback for a CDB/PDB'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/backup-recovery-and-flashback-for-a-cdb-pdb/perform-backup-of-cdb-and-pdb.html
+          title: 'Perform backup of CDB and PDB'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/backup-recovery-and-flashback-for-a-cdb-pdb/perform-recovery-of-cdb-and-pdb.html
+          title: 'Perform recovery of CDB and PDB'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/basics-of-multitenant-container-database-cdb.html
+        title: 'Basics of Multitenant Container Database (CDB)'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/basics-of-multitenant-container-database-cdb/explain-root-and-multitenant-architecture.html
+          title: 'Explain root and multitenant architecture'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/basics-of-multitenant-container-database-cdb/identify-the-benefits-of-the-multitenant-container-database.html
+          title: 'Identify the benefits of the multitenant container database'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/configuring-and-creating-cdbs-and-pdbs.html
+        title: 'Configuring and Creating CDBs and PDBs'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/configuring-and-creating-cdbs-and-pdbs/create-and-configure-a-cdb.html
+          title: 'Create and configure a CDB'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/configuring-and-creating-cdbs-and-pdbs/create-and-configure-a-pdb.html
+          title: 'Create and configure a PDB'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/configuring-and-creating-cdbs-and-pdbs/migrate-a-non-cdb-to-a-pdb-database.html
+          title: 'Migrate a non-CDB to a PDB database'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics.html
+        title: 'Emergency Monitoring, Real-Time ADDM, Compare Period ADDM, and Active Session History (ASH) Analytics'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/diagnose-performance-issues-using-ash-enhancements.html
+          title: 'Diagnose performance issues using ASH enhancements'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/generate-addm-compare-period.html
+          title: 'Generate ADDM Compare Period'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/emergency-monitoring-real-time-addm-compare-period-addm-and-active-session-history-ash-analytics/perform-emergency-monitoring-and-real-time-addm.html
+          title: 'Perform emergency monitoring and real-time ADDM'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/enterprise-manager-and-other-tools.html
+        title: 'Enterprise Manager and Other Tools'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/enterprise-manager-and-other-tools/use-em-express.html
+          title: 'Use EM Express'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/enterprise-manager-and-other-tools/use-oui-dbca-for-installation-and-configuration.html
+          title: 'Use OUI, DBCA for installation and configuration'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/in-database-archiving-and-valid-time-temporal.html
+        title: 'In-Database Archiving and Valid-Time Temporal'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/in-database-archiving-and-valid-time-temporal/differentiate-between-ilm-and-valid-time-temporal.html
+          title: 'Differentiate between ILM and Valid-Time Temporal'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/in-database-archiving-and-valid-time-temporal/set-and-use-valid-time-temporal.html
+          title: 'Set and use Valid Time Temporal'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/in-database-archiving-and-valid-time-temporal/use-in-database-archiving.html
+          title: 'Use In-Database archiving'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/index-and-table-enhancements.html
+        title: 'Index and Table Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/index-and-table-enhancements/use-index-enhancements.html
+          title: 'Use Index enhancements'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/index-and-table-enhancements/use-online-operation-enhancements.html
+          title: 'Use Online operation enhancements'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/index-and-table-enhancements/use-table-enhancements.html
+          title: 'Use Table enhancements'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/information-lifecycle-management-and-storage-enhancements.html
+        title: 'Information Lifecycle Management and Storage Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/information-lifecycle-management-and-storage-enhancements/move-a-data-file-online.html
+          title: 'Move a data file online'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/information-lifecycle-management-and-storage-enhancements/perform-tracking-and-automated-data-placement.html
+          title: 'Perform tracking and automated data placement'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/information-lifecycle-management-and-storage-enhancements/use-ilm-features.html
+          title: 'Use ILM features'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-cdbs-and-pdbs.html
+        title: 'Managing CDBs and PDBs'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-cdbs-and-pdbs/change-instance-parameters-for-a-cdb-pdb.html
+          title: 'Change instance parameters for a CDB/PDB'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-cdbs-and-pdbs/establish-connection-to-a-cdb-pdb.html
+          title: 'Establish connection to a CDB/PDB'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-cdbs-and-pdbs/start-up-and-shut-down-a-cdb-pdb.html
+          title: 'Start up and shut down a CDB/PDB'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-tablespaces-common-and-local-users-privileges-and-roles.html
+        title: 'Managing Tablespaces, Common and Local Users, Privileges and Roles'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-tablespaces-common-and-local-users-privileges-and-roles/manage-tablespaces-in-a-cdb-pdb.html
+          title: 'Manage tablespaces in a CDB/PDB'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/managing-tablespaces-common-and-local-users-privileges-and-roles/manage-users-and-privileges-for-cdb-pdb.html
+          title: 'Manage users and privileges for CDB/PDB'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/oracle-data-pump-sql-loader-external-tables-and-online-operations-enhancements.html
+        title: 'Oracle Data Pump, SQL*Loader, External Tables and Online Operations Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/oracle-data-pump-sql-loader-external-tables-and-online-operations-enhancements/use-oracle-data-pump-enhancements.html
+          title: 'Use Oracle Data Pump enhancements'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/oracle-data-pump-sql-loader-external-tables-and-online-operations-enhancements/use-sql-loader-and-external-table-enhancements.html
+          title: 'Use SQL*Loader and External table enhancements'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/oracle-data-redaction.html
+        title: 'Oracle Data Redaction'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/partitioning-enhancements.html
+        title: 'Partitioning Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/partitioning-enhancements/explain-index-enhancements-for-partitioned-tables.html
+          title: 'Explain Index enhancements for partitioned tables'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/partitioning-enhancements/explain-partitioning-enhancements.html
+          title: 'Explain Partitioning enhancements'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/privileges.html
+        title: 'Privileges'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/privileges/create-enable-and-use-privilege-analysis.html
+          title: 'Create, enable and use privilege analysis'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/privileges/use-administrative-privileges.html
+          title: 'Use administrative privileges'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/real-time-database-operation-monitoring.html
+        title: 'Real-Time Database Operation Monitoring'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/resource-manager-and-other-performance-enhancements.html
+        title: 'Resource Manager and Other Performance Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/resource-manager-and-other-performance-enhancements/explain-multi-process-multi-threaded-oracle-architecture.html
+          title: 'Explain Multi-process Multi-threaded Oracle architecture'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/resource-manager-and-other-performance-enhancements/use-flash-cache.html
+          title: 'Use Flash Cache'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/resource-manager-and-other-performance-enhancements/use-resource-manager-for-a-cdb-and-pdb.html
+          title: 'Use Resource Manager for a CDB and PDB'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/rman-and-flashback-data-archive.html
+        title: 'RMAN and Flashback Data Archive'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/rman-and-flashback-data-archive/implement-the-new-features-in-flashback-data-archive.html
+          title: 'Implement the new features in Flashback Data Archive'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/rman-and-flashback-data-archive/use-rman-enhancements.html
+          title: 'Use RMAN enhancements'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-enhancements.html
+        title: 'SQL Enhancements'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-enhancements/configure-extended-datatypes.html
+          title: 'Configure extended datatypes'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-enhancements/use-oracle-database-migration-assistant-for-unicode.html
+          title: 'Use Oracle Database Migration Assistant for Unicode'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-enhancements/use-row-limiting-clause-and-secure-file-lobs-enhancements.html
+          title: 'Use Row limiting clause, and secure file LOBs enhancements'
+      - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-tuning.html
+        title: 'SQL Tuning'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-tuning/use-adaptive-execution-plans.html
+          title: 'Use Adaptive Execution Plans'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-tuning/use-adaptive-sql-plan-management.html
+          title: 'Use Adaptive SQL Plan Management'
+        - url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/sql-tuning/use-enhanced-features-of-statistics-gathering.html
+          title: 'Use enhanced features of statistics gathering'
+    - url: home/12c-ocp-upgrade/section-2-key-dba-skills.html
+      title: 'Section 2: Key DBA Skills'
+      sub-pages:
+      - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration.html
+        title: 'Core Administration'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/apply-and-review-patches.html
+          title: 'Apply and review patches'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/back-up-and-recover-the-database.html
+          title: 'Back up and recover the database'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/configure-server-and-client-network-for-a-database.html
+          title: 'Configure server and client network for a database'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/detect-and-repair-data-failures-with-data-recovery-advisor.html
+          title: 'Detect and repair data failures with Data Recovery Advisor'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/explain-the-fundamentals-of-db-architecture.html
+          title: 'Explain the fundamentals of DB architecture'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/implement-flashback-technology.html
+          title: 'Implement Flashback Technology'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/install-and-configure-a-database.html
+          title: 'Install and configure a database'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/load-and-unload-data.html
+          title: 'Load and Unload Data'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/monitor-database-alerts.html
+          title: 'Monitor database alerts'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/perform-daily-administration-tasks.html
+          title: 'Perform daily administration tasks'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/troubleshoot-network-and-database-issues.html
+          title: 'Troubleshoot network and database issues'
+      - url: home/12c-ocp-upgrade/section-2-key-dba-skills/miscellaneous.html
+        title: 'Miscellaneous'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/miscellaneous/create-a-default-permanent-tablespace.html
+          title: 'Create a default permanent tablespace'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/miscellaneous/relocate-sysaux-occupants.html
+          title: 'Relocate SYSAUX occupants'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/miscellaneous/use-direct-nfs.html
+          title: 'Use Direct NFS'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/miscellaneous/use-secure-file-lobs.html
+          title: 'Use Secure File LOBs'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/miscellaneous/use-the-redo-logfile-size-advisor.html
+          title: 'Use the Redo Logfile Size Advisor'
+      - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management.html
+        title: 'Performance Management'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/analyze-and-identify-performance-issues.html
+          title: 'Analyze and identify performance issues'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/design-the-database-layout-for-optimal-performance.html
+          title: 'Design the database layout for optimal performance'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/implement-application-tuning.html
+          title: 'Implement Application Tuning'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/manage-memory.html
+          title: 'Manage memory'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/monitor-performance.html
+          title: 'Monitor performance'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/perform-real-application-testing.html
+          title: 'Perform real application testing'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/performance-management/use-resource-manager-to-manage-resources.html
+          title: 'Use Resource Manager to manage resources'
+      - url: home/12c-ocp-upgrade/section-2-key-dba-skills/security.html
+        title: 'Security'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/security/configure-and-manage-auditing.html
+          title: 'Configure and manage auditing'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/security/create-the-password-file.html
+          title: 'Create the password file'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/security/develop-and-implement-a-security-policy.html
+          title: 'Develop and implement a security policy'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/security/implement-column-and-tablespace-encryption.html
+          title: 'Implement column and tablespace encryption'
+      - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage.html
+        title: 'Storage'
+        sub-pages:
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage/administer-asm.html
+          title: 'Administer ASM'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage/implement-space-management.html
+          title: 'Implement Space Management'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage/manage-asm-disks-and-diskgroups.html
+          title: 'Manage ASM disks and diskgroups'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage/manage-asm-instance.html
+          title: 'Manage ASM instance'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage/manage-database-structures.html
+          title: 'Manage database structures'
+        - url: home/12c-ocp-upgrade/section-2-key-dba-skills/storage/manage-vldb.html
+          title: 'Manage VLDB'
+  - url: home/database-designs.html
+    title: 'Database Designs'
+    sub-pages:
+    - url: home/database-designs/much-ado-about-nothing.html
+      title: 'Much Ado About Nothing'
+      sub-pages:
+      - url: home/database-designs/much-ado-about-nothing/logical-design.html
+        title: 'Logical Design'
+  - url: home/issues.html
+    title: 'Issues'
+    sub-pages:
+    - url: home/issues/cloud-control-issues.html
+      title: 'Cloud Control Issues'
+      sub-pages:
+      - url: home/issues/cloud-control-issues/cloud-control-not-starting-automatically-in-ovm_em12r2.html
+        title: 'Cloud Control Not Starting Automatically in OVM_EM12R2'
+      - url: home/issues/cloud-control-issues/installation-of-oma-fails-with-time-zone-issue.html
+        title: 'Installation of OMA Fails with Time Zone Issue'
+      - url: home/issues/cloud-control-issues/unable-to-connect-to-oms-on-cronulla.html
+        title: 'Unable to Connect to OMS on CRONULLA'
+      - url: home/issues/cloud-control-issues/unable-to-startup-oms-on-cronulla.html
+        title: 'Unable to Startup OMS on CRONULLA'
+    - url: home/issues/linux-issues.html
+      title: 'Linux Issues'
+      sub-pages:
+      - url: home/issues/linux-issues/root-password-is-unknown.html
+        title: 'Root Password is Unknown'
+      - url: home/issues/linux-issues/unable-to-unzip-files-bigger-than-2gb.html
+        title: 'Unable to Unzip Files Bigger than 2GB'
+      - url: home/issues/linux-issues/unable-to-use-nfs-under-virtualbox.html
+        title: 'Unable to Use NFS Under VirtualBox'
+    - url: home/issues/oracle-enterprise-edition-issues.html
+      title: 'Oracle Enterprise Edition Issues'
+      sub-pages:
+      - url: home/issues/oracle-enterprise-edition-issues/drop-administrative-user.html
+        title: 'Drop Administrative User'
+    - url: home/issues/oracle-patching-issues.html
+      title: 'Oracle Patching Issues'
+      sub-pages:
+      - url: home/issues/oracle-patching-issues/opatch-apply-of-gi-psu-12-1-0-2-161018-fails.html
+        title: 'OPatch Apply of GI PSU 12.1.0.2.161018 fails'
+    - url: home/issues/oracle-personal-edition-issues.html
+      title: 'Oracle Personal Edition Issues'
+      sub-pages:
+      - url: home/issues/oracle-personal-edition-issues/got-ora-01031-when-logging-on-remotely-using-sys-as-sysdba.html
+        title: 'Got ORA-01031 when logging on remotely using SYS AS SYSDBA'
+      - url: home/issues/oracle-personal-edition-issues/oeri-kql_tab_diana-while-running-noncdb_to_pdb.html
+        title: 'OERI kql_tab_diana While Running noncdb_to_pdb'
+      - url: home/issues/oracle-personal-edition-issues/unable-to-set-up-unified-auditing-under-12-1-0-1.html
+        title: 'Unable to Set up Unified Auditing under 12.1.0.1'
+    - url: home/issues/ovm-issues.html
+      title: 'OVM Issues'
+      sub-pages:
+      - url: home/issues/ovm-issues/eth0-has-wrong-mac-address-after-upgrade-to-ovms-3-2-6.html
+        title: 'ETH0 has wrong MAC Address after Upgrade to OVMS 3.2.6'
+      - url: home/issues/ovm-issues/ovmm-fails-to-enable-tcps-connections.html
+        title: 'OVMM Fails to Enable TCPS Connections'
+      - url: home/issues/ovm-issues/sudo-is-missing-in-ovm_em12r2.html
+        title: 'sudo is Missing in OVM_EM12R2'
+    - url: home/issues/postgresql-issues.html
+      title: 'PostgreSQL Issues'
+      sub-pages:
+      - url: home/issues/postgresql-issues/move-default-tablespace-is-different-from-normal-tablespace.html
+        title: 'Move Default Tablespace is Different from Normal Tablespace'
+  - url: home/knowledge.html
+    title: 'Knowledge'
+    sub-pages:
+    - url: home/knowledge/demonstrations.html
+      title: 'Demonstrations'
+      sub-pages:
+      - url: home/knowledge/demonstrations/analysis-of-effect-of-o_sync.html
+        title: 'Analysis of Effect of O_SYNC'
+    - url: home/knowledge/help-pages.html
+      title: 'Help Pages'
+      sub-pages:
+      - url: home/knowledge/help-pages/runinstaller.html
+        title: 'runInstaller'
+    - url: home/knowledge/oracle-utilities.html
+      title: 'Oracle Utilities'
+      sub-pages:
+      - url: home/knowledge/oracle-utilities/adrci-show-alert-reference.html
+        title: 'ADRCI SHOW ALERT Reference'
+    - url: home/knowledge/technical-notes.html
+      title: 'Technical Notes'
+  - url: home/procedures.html
+    title: 'Procedures'
+    sub-pages:
+    - url: home/procedures/create-oracle-database.html
+      title: 'Create Oracle Database'
+      sub-pages:
+      - url: home/procedures/create-oracle-database/create-12-1-container-database-no-omf.html
+        title: 'Create 12.1 Container Database No OMF'
+      - url: home/procedures/create-oracle-database/create-12c-container-database-using-omf.html
+        title: 'Create 12c Container Database Using OMF'
+      - url: home/procedures/create-oracle-database/create-12c-non-cdb-database-using-omf.html
+        title: 'Create 12C Non-CDB Database Using OMF'
+      - url: home/procedures/create-oracle-database/create-12c-non-cdb-database-without-omf.html
+        title: 'Create 12C Non-CDB Database Without OMF'
+    - url: home/procedures/deinstall-oracle-rdbms.html
+      title: 'Deinstall Oracle RDBMS'
+      sub-pages:
+      - url: home/procedures/deinstall-oracle-rdbms/deinstall-oracle-rdbms-112010.html
+        title: 'Deinstall Oracle RDBMS 11.2.0.1.0'
+      - url: home/procedures/deinstall-oracle-rdbms/deinstall-oracle-rdbms-12-1-0-2.html
+        title: 'Deinstall Oracle RDBMS 12.1.0.2'
+      - url: home/procedures/deinstall-oracle-rdbms/deinstall-rdbms-11-2-0-3-non-grid.html
+        title: 'Deinstall RDBMS 11.2.0.3 (Non Grid)'
+    - url: home/procedures/git-procedures.html
+      title: 'GIT Procedures'
+    - url: home/procedures/install-grid-infrastructure.html
+      title: 'Install Grid Infrastructure'
+      sub-pages:
+      - url: home/procedures/install-grid-infrastructure/install-12-1-0-2-gi-standalone.html
+        title: 'Install 12.1.0.2 GI Standalone'
+      - url: home/procedures/install-grid-infrastructure/install-grid-infrastructure-11-2-0-3-3-on-gridctrl.html
+        title: 'Install Grid Infrastructure 11.2.0.3.3 on GRIDCTRL'
+    - url: home/procedures/install-linux.html
+      title: 'Install Linux'
+      sub-pages:
+      - url: home/procedures/install-linux/install-oel-7-4.html
+        title: 'Install Oracle Enterprise Linux 7.4'
+      - url: home/procedures/install-linux/install-oracle-enterprise-linux-7-2.html
+        title: 'Install Oracle Enterprise Linux 7.2'
+      - url: home/procedures/install-linux/install-ubuntu16-04-lts-server.html
+        title: 'Install Ubuntu 16.04 LTS Server'
+    - url: home/procedures/install-oracle-rdbms.html
+      title: 'Install Oracle RDBMS'
+      sub-pages:
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-11-2-0-1-0-with-grid-infrastructure.html
+        title: 'Install Oracle RDBMS 11.2.0.1.0 with Grid Infrastructure'
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-11-2-0-3-0-without-grid-infrastructure-on-windows-xp.html
+        title: 'Install Oracle RDBMS 11.2.0.3.0 Without Grid Infrastructure on Windows XP'
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-11-2-0-3-0-without-grid-infrastructure.html
+        title: 'Install Oracle RDBMS 11.2.0.3.0 without Grid Infrastructure'
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-112030-with-grid-infrastructure.html
+        title: 'Install Oracle RDBMS 11.2.0.3.0 with Grid Infrastructure'
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-12-1-0-2-4-without-grid-infrastructure.html
+        title: 'Install Oracle RDBMS 12.1.0.2.4 Without Grid Infrastructure'
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-12-1-0-2-with-grid-infrastructure.html
+        title: 'Install Oracle RDBMS 12.1.0.2 With Grid Infrastructure'
+      - url: home/procedures/install-oracle-rdbms/install-oracle-rdbms-19-5-1-0-2001--without-grid-infrastructure14.html
+        title: 'Install Oracle RDBMS 19.5.1.0.200114 without Grid Infrastructure'
+    - url: home/procedures/miscellaneous.html
+      title: 'Miscellaneous'
+      sub-pages:
+      - url: home/procedures/miscellaneous/convert-xen-hvm-to-pv.html
+        title: 'Convert XEN HVM to PV'
+      - url: home/procedures/miscellaneous/create-new-asm-disk-group-using-asmca.html
+        title: 'Create New ASM Disk Group Using ASMCA'
+      - url: home/procedures/miscellaneous/create-vnc-server-under-oel8.html
+        title: 'Create VNC Server under OEL8'
+      - url: home/procedures/miscellaneous/disable-firewalld.html
+        title: 'Disable FIREWALLD'
+      - url: home/procedures/miscellaneous/enable-directnfs-for-oracle-rdbms-12-1-0-2.html
+        title: 'Enable DIRECTNFS for Oracle RDBMS 12.1.0.2'
+      - url: home/procedures/miscellaneous/install-sql-developer-data-modeler-on-ubuntu-18-04.html
+        title: 'Install SQL Developer Data Modeler on Ubuntu 18.04'
+      - url: home/procedures/miscellaneous/install-unixodbc-packages-under-rhel-5-4.html
+        title: 'Install unixODBC Packages Under RHEL 5.4'
+      - url: home/procedures/miscellaneous/manually-create-cloud-control-vm-from-appliance.html
+        title: 'Manually Create Cloud Control VM from Appliance'
+      - url: home/procedures/miscellaneous/relocate-datafile-under-11-2-0-4.html
+        title: 'Relocate Datafile under 11.2.0.4'
+      - url: home/procedures/miscellaneous/setting-up-x-windows-to-a-remote-server.html
+        title: 'Setting Up X-windows to a Remote Server'
+      - url: home/procedures/miscellaneous/starting-xterm-with-white-background.html
+        title: 'Starting XTERM with White Background'
+      - url: home/procedures/miscellaneous/use-nfs-for-oracle-software.html
+        title: 'Use NFS for Oracle Software'
+      - url: home/procedures/miscellaneous/use-pre-installation-rpm.html
+        title: 'Use Pre-Installation RPM'
+    - url: home/procedures/patch-oracle-database.html
+      title: 'Patch Oracle Database'
+      sub-pages:
+      - url: home/procedures/patch-oracle-database/apply-oracle-rdbms-11-2-0-3-3-patchset-incomplete.html
+        title: 'Apply Oracle RDBMS 11.2.0.3.3 Patchset (Incomplete)'
+      - url: home/procedures/patch-oracle-database/apply-oracle-rdbms-112034-patchset.html
+        title: 'Apply Oracle RDBMS 11.2.0.3.4 Patchset'
+      - url: home/procedures/patch-oracle-database/apply-oracle-rdbms-12-1-0-2-190416-patchset.html
+        title: 'Apply Oracle RDBMS 12.1.0.2.190416 Patchset'
+      - url: home/procedures/patch-oracle-database/finding-the-11-2-0-3-3-psu.html
+        title: 'Finding the 11.2.0.3.3 PSU'
+    - url: home/procedures/postgresql.html
+      title: 'PostgreSQL Procedures'
+      sub-pages:
+      - url: home/procedures/postgresql/backup_postgresql_db.html
+        title: 'Backup PostgreSQL DB'
+      - url: home/procedures/postgresql/install-postgresql-16.html
+        title: 'Install PostgreSQL 16'
+      - url: home/procedures/postgresql/move-default-tablespace.html
+        title: 'Move Default Tablespace'
+      - url: home/procedures/postgresql/move-non-default-tablespace.html
+        title: 'Move Non-Default Tablespace'
+      - url: home/procedures/postgresql/upgrade-postgresql-14-to-16.html
+        title: 'Upgrade PostgreSQL 14 to 16'
+    - url: home/procedures/upgrade-oracle-database.html
+      title: 'Upgrade Oracle Database'
+      sub-pages:
+      - url: home/procedures/upgrade-oracle-database/upgrade-prodsrvr-on-penrith-from-11-2-0-1-to-11-2-0-3-on-windows-xp.html
+        title: 'Upgrade PRODSRVR on PENRITH from 11.2.0.1 to 11.2.0.3 on Windows XP'
+      - url: home/procedures/upgrade-oracle-database/upgrade-repos-to-11-2-0-3-3-from-11-1-0-7-0-on-gridctrl.html
+        title: 'Upgrade REPOS to 11.2.0.3.3 from 11.1.0.7.0 on GRIDCTRL'
+  - url: home/projects.html
+    title: 'Projects'
+    sub-pages:
+    - url: home/projects/github-projects.html
+      title: 'GitHub Projects'
+    - url: home/projects/setting-up-a-private-cloud.html
+      title: 'Setting Up a Private Cloud'
+      sub-pages:
+      - url: home/projects/setting-up-a-private-cloud/00-design.html
+        title: '00 Design'
+      - url: home/projects/setting-up-a-private-cloud/01-setting-up-the-cloud-management-infrastructure.html
+        title: '01 Setting Up the Cloud Management Infrastructure'
+      - url: home/projects/setting-up-a-private-cloud/02-setting-cloud-for-iaas.html
+        title: '02 Setting Cloud for IaaS'
+      - url: home/projects/setting-up-a-private-cloud/03-setting-cloud-for-iaas-2.html
+        title: '03 Setting Cloud for IaaS 2'
+      - url: home/projects/setting-up-a-private-cloud/04-setting-cloud-for-iaas-3.html
+        title: '04 Setting Cloud for IaaS 3'
+  - url: home/reading-notes.html
+    title: 'Reading Notes'
+    sub-pages:
+    - url: home/reading-notes/oracle-vm-implementation-and-administration-guide.html
+      title: 'Oracle VM Implementation and Administration Guide'
+    - url: home/reading-notes/pro-oracle-database-12c-administration.html
+      title: 'Pro Oracle Database 12c Administration'
+  - url: home/resource-allocations.html
+    title: 'Resource Allocations'
+    sub-pages:
+    - url: home/resource-allocations/ip-addresses.html
+      title: 'IP Addresses'
+    - url: home/resource-allocations/victoria-vm-resources.html
+      title: 'Victoria VM Resources'
+  - url: home/system-builds.html
+    title: 'System Builds'
+    sub-pages:
+    - url: home/system-builds/allawah.html
+      title: 'ALLAWAH'
+      sub-pages:
+      - url: home/system-builds/allawah/2021-02-02-planning-and-build-vm.html
+        title: '2021-02-02 Planning and Build VM'
+    - url: home/system-builds/auburn.html
+      title: 'AUBURN'
+      sub-pages:
+      - url: home/system-builds/auburn/2018-02-21-planning.html
+        title: '2018-02-21 Planning'
+      - url: home/system-builds/auburn/2018-02-22-create-vm.html
+        title: '2018-02-22 Create VM'
+      - url: home/system-builds/auburn/2018-02-26-finish-server-installation.html
+        title: '2018-02-26 Finish Server Installation'
+      - url: home/system-builds/auburn/2018-02-27-install-ansible.html
+        title: '2018-02-27 Install Ansible'
+      - url: home/system-builds/auburn/2018-03-25-install-extra-python-modules.html
+        title: '2018-03-25 Install Extra Python Modules'
+      - url: home/system-builds/auburn/2018-03-27-create-git-repository.html
+        title: '2018-03-27 Create GIT Repository'
+      - url: home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html
+        title: '2018-03-29 Add Extra Disk Drive'
+      - url: home/system-builds/auburn/2020-01-02-upgrade-to-python3-for-ansible.html
+        title: '2020-01-02 Upgrade to Python3 for Ansible'
+      - url: home/system-builds/auburn/2020-09-23-upgrade-to-ansible-2-10-1.html
+        title: '2020-09-23 Upgrade to Ansible 2.10.1'
+      - url: home/system-builds/auburn/2020-10-15-upgrade-to-ubuntu-20-04.html
+        title: '2020-10-15 Upgrade to Ubuntu 20.04'
+    - url: home/system-builds/clifton.html
+      title: 'CLIFTON'
+      sub-pages:
+      - url: home/system-builds/clifton/2016-09-07-0-planning.html
+        title: '2016-09-07 0 Planning'
+      - url: home/system-builds/clifton/2016-09-07-1-build-vm.html
+        title: '2016-09-07 1 Build VM'
+      - url: home/system-builds/clifton/2017-08-01-convert-to-xen.html
+        title: '2017-08-01 Convert to XEN'
+      - url: home/system-builds/clifton/2020-01-09-install-oracle-client.html
+        title: '2020-01-09 Install Oracle Client'
+    - url: home/system-builds/cloudctl.html
+      title: 'CLOUDCTL'
+      sub-pages:
+      - url: home/system-builds/cloudctl/00-download-em12cr3-template-to-victoria.html
+        title: '00 Download EM12CR3 Template to VICTORIA'
+      - url: home/system-builds/cloudctl/01-extract-template-into-seed-pool.html
+        title: '01 Extract Template into Seed Pool'
+      - url: home/system-builds/cloudctl/02-deploy-em12cr3-template-into-running-pool.html
+        title: '02 Deploy EM12CR3 Template into Running Pool'
+      - url: home/system-builds/cloudctl/03-fix-networking-issues.html
+        title: '03 Fix Networking Issues'
+      - url: home/system-builds/cloudctl/04-clean-up-seed-pool.html
+        title: '04 Clean Up Seed Pool'
+      - url: home/system-builds/cloudctl/05-save-vm-uuid-in-configuration-file.html
+        title: '05 Save VM UUID in Configuration File'
+    - url: home/system-builds/cronulla.html
+      title: 'CRONULLA'
+      sub-pages:
+      - url: home/system-builds/cronulla/00-design.html
+        title: '00 Design'
+      - url: home/system-builds/cronulla/01-create-vm.html
+        title: '01 Create VM'
+      - url: home/system-builds/cronulla/02-fix-os-install-issues.html
+        title: '02 Fix OS Install Issues'
+      - url: home/system-builds/cronulla/03-prepare-to-install-oms-12-1-0-3-1.html
+        title: '03 Prepare to Install OMS 12.1.0.3.1'
+      - url: home/system-builds/cronulla/04-install-oms-12-1-0-3-1.html
+        title: '04 Install OMS 12.1.0.3.1'
+      - url: home/system-builds/cronulla/05-add-extra-disk-space.html
+        title: '05 Add Extra Disk Space'
+      - url: home/system-builds/cronulla/06-install-oms-12-1-0-3-1-again.html
+        title: '06 Install OMS 12.1.0.3.1 Again'
+      - url: home/system-builds/cronulla/07-complete-oms-12-1-0-3-1-installation.html
+        title: '07 Complete OMS 12.1.0.3.1 Installation'
+      - url: home/system-builds/cronulla/08-configure-firewall-rules.html
+        title: '08 Configure Firewall Rules'
+      - url: home/system-builds/cronulla/09-additional-configuration-tasks.html
+        title: '09 Additional Configuration Tasks'
+      - url: home/system-builds/cronulla/10-apply-wls-patches.html
+        title: '10 Apply WLS Patches'
+      - url: home/system-builds/cronulla/11-install-guest-additions.html
+        title: '11 Install Guest Additions'
+      - url: home/system-builds/cronulla/12-install-rda-and-emdiag-tools.html
+        title: '12 Install RDA and EMDIAG Tools'
+      - url: home/system-builds/cronulla/13-patch-oms-to-12-1-0-3-2.html
+        title: '13 Patch OMS to 12.1.0.3.2'
+      - url: home/system-builds/cronulla/14-apply-wls-patches.html
+        title: '14 Apply WLS Patches'
+      - url: home/system-builds/cronulla/15-integrate-bi-publisher-into-oem.html
+        title: '15 Integrate BI Publisher into OEM'
+      - url: home/system-builds/cronulla/16-upgrade-oms-12-1-0-4-0.html
+        title: '16 Upgrade OMS 12.1.0.4.0'
+      - url: home/system-builds/cronulla/17-upgrade-bip.html
+        title: '17 Upgrade BIP'
+      - url: home/system-builds/cronulla/18-patch-wls-after-oms-12-1-0-4.html
+        title: '18 Patch WLS After OMS 12.1.0.4'
+      - url: home/system-builds/cronulla/19-re-install-as-vm-on-victoria.html
+        title: '19 Re-install as VM on Victoria'
+      - url: home/system-builds/cronulla/20-install-packages.html
+        title: '20 Install Packages'
+      - url: home/system-builds/cronulla/21-install-oms-12-1-0-4.html
+        title: '21 Install OMS 12.1.0.4'
+      - url: home/system-builds/cronulla/22-replace-omr.html
+        title: '22 Replace OMR'
+      - url: home/system-builds/cronulla/23-updated-bashrc-for-oms-and-opmn.html
+        title: '23 Updated .bashrc for OMS and OPMN'
+    - url: home/system-builds/goldengate.html
+      title: 'GOLDENGATE'
+      sub-pages:
+      - url: home/system-builds/goldengate/2014-12-03-planning.html
+        title: '2014-12-03 Planning'
+      - url: home/system-builds/goldengate/2014-12-03-set-up-goldengate1.html
+        title: '2014-12-03 Set Up goldengate1'
+      - url: home/system-builds/goldengate/2021-02-04-create-xen-vm-images.html
+        title: '2021-02-04 Create XEN VM Images'
+      - url: home/system-builds/goldengate/2021-02-05-start-installation.html
+        title: '2021-02-05 Start Installation'
+    - url: home/system-builds/gordon.html
+      title: 'GORDON'
+      sub-pages:
+      - url: home/system-builds/gordon/00-setup.html
+        title: '00 Setup'
+      - url: home/system-builds/gordon/01-patch-gi-and-db-with-psu-12-1-0-2-5.html
+        title: '01 Patch GI and DB with PSU 12.1.0.2.5'
+      - url: home/system-builds/gordon/02-create-emrepos-database-using-dbca.html
+        title: '02 Create EMREPOS Database Using DBCA'
+      - url: home/system-builds/gordon/03-fix-up-12-1-0-2-5-and-recreate-emrepos.html
+        title: '03 Fix Up 12.1.0.2.5 and Recreate EMREPOS'
+      - url: home/system-builds/gordon/04-install-oem-agent.html
+        title: '04 Install OEM Agent'
+      - url: home/system-builds/gordon/05-disable-firewall.html
+        title: '05 Disable Firewall'
+      - url: home/system-builds/gordon/06-move-omr.html
+        title: '06 Move OMR'
+      - url: home/system-builds/gordon/07-move-omr---second-attempt.html
+        title: '07 Move OMR - Second Attempt'
+      - url: home/system-builds/gordon/08-move-omr---third-attempt.html
+        title: '08 Move OMR - Third Attempt'
+      - url: home/system-builds/gordon/09-move-omr---fourth-attempt.html
+        title: '09 Move OMR - Fourth Attempt'
+      - url: home/system-builds/gordon/10-move-gordon-to-victoria.html
+        title: '10 Move GORDON to VICTORIA'
+      - url: home/system-builds/gordon/11-correct-gordon-network-interface.html
+        title: '11 Correct GORDON Network Interface'
+      - url: home/system-builds/gordon/12-patch-gi-with-psu-12-1-0-2-161018.html
+        title: '12 Patch GI with PSU 12.1.0.2.161018'
+      - url: home/system-builds/gordon/13-downgrade-gordon-to-oel6u5.html
+        title: '13 Downgrade GORDON to OEL6U5'
+    - url: home/system-builds/gridctrl.html
+      title: 'GRIDCTRL'
+      sub-pages:
+      - url: home/system-builds/gridctrl/00-update-dns-for-revesby-cluster.html
+        title: '00 Update DNS for REVESBY Cluster'
+      - url: home/system-builds/gridctrl/01-upgrade-em12cr3p1-1.html
+        title: '01 Upgrade EM12CR3p1 (1)'
+      - url: home/system-builds/gridctrl/02-upgrade-em12cr3p1-2.html
+        title: '02 Upgrade EM12CR3p1 (2)'
+      - url: home/system-builds/gridctrl/03-deinstall-em12cr1-and-others.html
+        title: '03 Deinstall EM12CR1 and Others'
+      - url: home/system-builds/gridctrl/04-install-db-psu-11-2-0-4-0.html
+        title: '04 Install DB PSU 11.2.0.4.0'
+      - url: home/system-builds/gridctrl/05-install-em12cr3p1.html
+        title: '05 Install EM12CR3p1'
+      - url: home/system-builds/gridctrl/06-set-up-xdcmp.html
+        title: '06 Set up XDCMP'
+      - url: home/system-builds/gridctrl/07-set-login-timeout-and-login-profile.html
+        title: '07 Set Login Timeout and Login Profile'
+      - url: home/system-builds/gridctrl/08-performance-problems.html
+        title: '08 Performance Problems'
+      - url: home/system-builds/gridctrl/09-deinstall-em12103p1.html
+        title: '09 Deinstall EM12103P1'
+      - url: home/system-builds/gridctrl/10-automate-repos-start-up.html
+        title: '10 Automate REPOS Start Up'
+      - url: home/system-builds/gridctrl/11-fix-repos-for-oms-install.html
+        title: '11 Fix REPOS For OMS Install'
+      - url: home/system-builds/gridctrl/12-apply-psu-11-2-0-4-2-to-repos.html
+        title: '12 Apply PSU 11.2.0.4.2 to REPOS'
+      - url: home/system-builds/gridctrl/13-install-repvfy.html
+        title: '13 Install REPVFY'
+      - url: home/system-builds/gridctrl/14-change-db-parameters-for-oem-12-1-0-4.html
+        title: '14 Change DB Parameters for OEM 12.1.0.4'
+      - url: home/system-builds/gridctrl/15-apply-psu-11-2-0-4-3-to-repos.html
+        title: '15 Apply PSU 11.2.0.4.3 to REPOS'
+      - url: home/system-builds/gridctrl/16-apply-psu-11-2-0-4-5-to-repos.html
+        title: '16 Apply PSU 11.2.0.4.5 to REPOS'
+      - url: home/system-builds/gridctrl/17-apply-psu-11-2-0-4-6-to-repos.html
+        title: '17 Apply PSU 11.2.0.4.6 to REPOS'
+      - url: home/system-builds/gridctrl/18-apply-patch-17583185.html
+        title: '18 Apply Patch 17583185'
+    - url: home/system-builds/melbourne.html
+      title: 'MELBOURNE'
+      sub-pages:
+      - url: home/system-builds/melbourne/00-design.html
+        title: '00 Design'
+      - url: home/system-builds/melbourne/01-create-vm.html
+        title: '01 Create VM'
+      - url: home/system-builds/melbourne/02-install-ovmm-3-2-6.html
+        title: '02 Install OVMM 3.2.6'
+      - url: home/system-builds/melbourne/03-enabling-remote-log-ins.html
+        title: '03 Enabling Remote Log Ins'
+      - url: home/system-builds/melbourne/04-install-tightvnc.html
+        title: '04 Install TightVNC'
+    - url: home/system-builds/oatley.html
+      title: 'OATLEY'
+      sub-pages:
+      - url: home/system-builds/oatley/2020-04-13-planning-and-initial-build.html
+        title: '2020-04-13 Planning and Initial Build'
+    - url: home/system-builds/personal.html
+      title: 'PERSONAL'
+      sub-pages:
+      - url: home/system-builds/personal/2020-03-09-upgrade-to-19c.html
+        title: '2020-03-09 Upgrade to 19C'
+    - url: home/system-builds/randwick.html
+      title: 'RANDWICK'
+      sub-pages:
+      - url: home/system-builds/randwick/2020-03-14-planning.html
+        title: '2020-03-14 Planning'
+    - url: home/system-builds/redfern.html
+      title: 'REDFERN'
+      sub-pages:
+      - url: home/system-builds/redfern/2014-12-23-planning.html
+        title: '2014-12-23 Planning'
+      - url: home/system-builds/redfern/2014-12-29-set-up-redfern1.html
+        title: '2014-12-29 Set Up redfern1'
+      - url: home/system-builds/redfern/2015-01-01-set-up-dns-and-iscsi.html
+        title: '2015-01-01 Set Up DNS and iSCSI'
+      - url: home/system-builds/redfern/2015-04-04-create-redfern1-with-oel7.html
+        title: '2015-04-04 Create REDFERN1 with OEL7'
+      - url: home/system-builds/redfern/2015-04-06-build-redfern1-on-victoria.html
+        title: '2015-04-06 Build REDFERN1 on Victoria'
+      - url: home/system-builds/redfern/2015-04-06-build-redfern2-on-victoria.html
+        title: '2015-04-06 Build REDFERN2 on Victoria'
+      - url: home/system-builds/redfern/2016-04-23-install-gi-12-1-0-2.html
+        title: '2016-04-23 Install GI 12.1.0.2'
+      - url: home/system-builds/redfern/2017-11-19-correct-udev-settings.html
+        title: '2017-11-19 Correct UDEV Settings'
+      - url: home/system-builds/redfern/2017-11-25-asm-fails-to-start.html
+        title: '2017-11-25 ASM Fails to Start'
+      - url: home/system-builds/redfern/2017-11-28-recreate-redfern-cluster-on-victoria.html
+        title: '2017-11-28 Recreate REDFERN Cluster on VICTORIA'
+      - url: home/system-builds/redfern/2017-11-30-de-install-gi.html
+        title: '2017-11-30 De-Install GI'
+      - url: home/system-builds/redfern/2017-12-02-gi-installation-attempt-3.html
+        title: '2017-12-02 GI Installation Attempt #3'
+      - url: home/system-builds/redfern/2018-02-01-revised-planning.html
+        title: '2018-02-01 Revised Planning'
+      - url: home/system-builds/redfern/2018-02-02-install-oel-7-4.html
+        title: '2018-02-02 Install OEL 7.4'
+      - url: home/system-builds/redfern/2018-02-28-ansible-playbook-for-gi-12-1-0-2-install.html
+        title: '2018-02-28 Ansible Playbook for GI 12.1.0.2 Install'
+      - url: home/system-builds/redfern/2018-03-01-ansible-playbook-for-oracle-directories.html
+        title: '2018-03-01 Ansible Playbook for Oracle Directories'
+      - url: home/system-builds/redfern/2018-03-02-ansible-playbook-for-oracle-user.html
+        title: '2018-03-02 Ansible Playbook for Oracle User'
+      - url: home/system-builds/redfern/2018-03-06-ansible-playbook-for-gi-network.html
+        title: '2018-03-06 Ansible Playbook for GI Network'
+      - url: home/system-builds/redfern/2018-03-07-ansible-playbook-for-gi-storage.html
+        title: '2018-03-07 Ansible Playbook for GI Storage'
+      - url: home/system-builds/redfern/2018-03-11-ansible-playbook-for-asmlib-setup.html
+        title: '2018-03-11 Ansible Playbook for ASMLIB Setup'
+      - url: home/system-builds/redfern/2018-03-14-ansible-playbook-for-software-nfs.html
+        title: '2018-03-14 Ansible Playbook for Software NFS'
+      - url: home/system-builds/redfern/2018-03-15-ansible-roles.html
+        title: '2018-03-15 Ansible Roles'
+      - url: home/system-builds/redfern/2018-03-17-ansible-playbook-to-install-gi-software.html
+        title: '2018-03-17 Ansible Playbook to Install GI Software'
+      - url: home/system-builds/redfern/2018-03-20-ansible-playbook-for-install-gi-software-2.html
+        title: '2018-03-20 Ansible Playbook for Install GI Software (2)'
+      - url: home/system-builds/redfern/2018-03-24-ansible-rearrange-variables.html
+        title: '2018-03-24 Ansible Rearrange Variables'
+      - url: home/system-builds/redfern/2018-03-27-manage-ansible-playbook-in-git.html
+        title: '2018-03-27 Manage Ansible Playbook in GIT'
+      - url: home/system-builds/redfern/2018-05-22-use-iscsi.html
+        title: '2018-05-22 Use iSCSI'
+      - url: home/system-builds/redfern/2018-06-17-nmcli-commands.html
+        title: '2018-06-17 NMCLI Commands'
+    - url: home/system-builds/revesby.html
+      title: 'Revesby'
+      sub-pages:
+      - url: home/system-builds/revesby/00-download-ovm-template-for-db-to-victoria.html
+        title: '00 Download OVM Template for DB to VICTORIA'
+      - url: home/system-builds/revesby/01-extract-template-into-seed-pool.html
+        title: '01 Extract Template into Seed Pool'
+      - url: home/system-builds/revesby/02-set-up-networking-for-rac.html
+        title: '02 Set Up Networking for RAC'
+      - url: home/system-builds/revesby/03-set-up-shared-disks-for-rac.html
+        title: '03 Set Up Shared Disks for RAC'
+      - url: home/system-builds/revesby/04-deploy-rac-nodes.html
+        title: '04 Deploy RAC Nodes'
+      - url: home/system-builds/revesby/05-start-up-fails.html
+        title: '05 Start Up Fails'
+    - url: home/system-builds/victoria.html
+      title: 'Victoria'
+      sub-pages:
+      - url: home/system-builds/victoria/2013-12-24-0-install-ovms-3-2-6.html
+        title: '2013-12-24 0 Install OVMS 3.2.6'
+      - url: home/system-builds/victoria/2013-12-24-1-add-bridge.html
+        title: '2013-12-24 1 Add Bridge'
+      - url: home/system-builds/victoria/2013-12-24-2-create-repository.html
+        title: '2013-12-24 2 Create Repository'
+      - url: home/system-builds/victoria/2013-12-25-fix-networking-issues.html
+        title: '2013-12-25 Fix Networking Issues'
+      - url: home/system-builds/victoria/2014-04-26-rebuild-victoria.html
+        title: '2014-04-26 Rebuild Victoria'
+      - url: home/system-builds/victoria/2015-03-29-install-ovms-3-3-1.html
+        title: '2015-03-29 Install OVMS 3.3.1'
+      - url: home/system-builds/victoria/2015-04-01-set-up-ovs-file-system.html
+        title: '2015-04-01 Set Up OVS File System'
+      - url: home/system-builds/victoria/2015-04-04-set-up-xen-network.html
+        title: '2015-04-04 Set Up XEN Network'
+      - url: home/system-builds/victoria/2015-04-26-rebuild-victoria-again.html
+        title: '2015-04-26 Rebuild Victoria Again'
+      - url: home/system-builds/victoria/2018-01-16-upgrade-to-ovms-3-4-4.html
+        title: '2018-01-16 Upgrade to OVMS 3.4.4'
+      - url: home/system-builds/victoria/2018-02-01-upgrade-to-ovms-3-3-4---attempt-2.html
+        title: '2018-02-01 Upgrade to OVMS 3.3.4 - Attempt #2'
+      - url: home/system-builds/victoria/2019-11-19-set-jumbo-frames-on-bridges-1.html
+        title: '2019-11-19 Set Jumbo Frames on Bridges (1)'
+      - url: home/system-builds/victoria/2019-12-28-create-cpu-pools.html
+        title: '2019-12-28 Create CPU Pools'
+      - url: home/system-builds/victoria/2020-02-17-mount-iso-images.html
+        title: '2020-02-17 Mount ISO Images'
+      - url: home/system-builds/victoria/2021-03-28-rebuild-as-3-4-6-server.html
+        title: '2021-03-28 Rebuild as 3.4.6 Server'
+- url: ocm-questions-and-answers.html
+  title: 'OCM Questions and Answers'

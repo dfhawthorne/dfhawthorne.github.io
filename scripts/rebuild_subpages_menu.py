@@ -14,7 +14,7 @@ import sys
 
 parser = argparse.ArgumentParser(description='Rebuild Sub-Pages menu page')
 parser.add_argument('file_name', nargs=1, type=str,
-    help='an integer to be summed')
+    help='name of anchor file')
 parser.add_argument(
     '-l',
     '--log',
