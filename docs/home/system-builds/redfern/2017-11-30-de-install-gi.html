@@ -85,12 +85,12 @@ table-of-contents:
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/grid_infra/12.1.0/grid/perl/bin/perl /opt/app/grid_infra/12.1.0/grid/crs/install/rootcrs.pl -deconfig -force -verbose
+ <pre class="bash-cmd">sudo /opt/app/grid_infra/12.1.0/grid/perl/bin/perl /opt/app/grid_infra/12.1.0/grid/crs/install/rootcrs.pl -deconfig -force -verbose
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Using configuration parameter file: /opt/app/grid_infra/12.1.0/grid/crs/install/crsconfig_params
+ <pre class="text">Using configuration parameter file: /opt/app/grid_infra/12.1.0/grid/crs/install/crsconfig_params
 Usage: srvctl &lt;command&gt; &lt;object&gt; [&lt;options&gt;]
     commands: enable|disable|start|stop|status|add|remove|modify|update|getenv|setenv|unsetenv|config|upgrade|downgrade
     objects: database|service|asm|diskgroup|listener|home|ons
@@ -131,12 +131,12 @@ Failure in execution (rc=-1, 256, 2) for command /etc/init.d/ohasd deinstall
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/grid_infra/12.1.0/grid/perl/bin/perl /opt/app/grid_infra/12.1.0/grid/crs/install/rootcrs.pl -deconfig -force -verbose -lastnode
+ <pre class="bash-cmd">sudo /opt/app/grid_infra/12.1.0/grid/perl/bin/perl /opt/app/grid_infra/12.1.0/grid/crs/install/rootcrs.pl -deconfig -force -verbose -lastnode
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Using configuration parameter file: /opt/app/grid_infra/12.1.0/grid/crs/install/crsconfig_params
+ <pre class="text">Using configuration parameter file: /opt/app/grid_infra/12.1.0/grid/crs/install/crsconfig_params
 PRCR-1070 : Failed to check if resource ora.cvu is registered
 CRS-0184 : Cannot communicate with the CRS daemon.
 2017/11/30 13:09:58 CLSRSC-180: An error occurred while executing the command 'srvctl stop cvu -f' (error code 0)
@@ -240,7 +240,7 @@ CRS-4133: Oracle High Availability Services has been stopped.
  <p>
   Ran the following command on both nodes:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo rm -fR /opt/app/grid_infra
+ <pre class="bash-cmd">sudo rm -fR /opt/app/grid_infra
 </pre>
  <h3>
   <a name="TOC-Reformat-Voting-Disk">
@@ -250,24 +250,24 @@ CRS-4133: Oracle High Availability Services has been stopped.
  <p>
   Ran the following commands to see if the voting disk had been formatted:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">dd if=/dev/xvdh of=/tmp/xvdh.dmp bs=8K count=128
+ <pre class="bash-cmd">dd if=/dev/xvdh of=/tmp/xvdh.dmp bs=8K count=128
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">128+0 records in
+ <pre class="text">128+0 records in
 128+0 records out
 1048576 bytes (1.0 MB) copied, 0.0257255 s, 40.8 MB/s
 </pre>
  <p>
   Ran the following command to examine the header:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">hexdump -C /tmp/xvdh.dmp|head
+ <pre class="bash-cmd">hexdump -C /tmp/xvdh.dmp|head
 </pre>
  <p>
   The output confirmed that the voting disk had been formatted:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">00000000  01 82 01 01 00 00 00 00  00 00 00 80 20 af 32 ed  |............ .2.|
+ <pre class="text">00000000  01 82 01 01 00 00 00 00  00 00 00 80 20 af 32 ed  |............ .2.|
 00000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00000020  4f 52 43 4c 44 49 53 4b  00 00 00 00 00 00 00 00  |ORCLDISK........|
 00000030  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
@@ -285,12 +285,12 @@ CRS-4133: Oracle High Availability Services has been stopped.
   </span>
   ):
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">dd if=/dev/zero of=/dev/xvdh bs=8K count=128
+ <pre class="bash-cmd">dd if=/dev/zero of=/dev/xvdh bs=8K count=128
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">128+0 records in
+ <pre class="text">128+0 records in
 128+0 records out
 1048576 bytes (1.0 MB) copied, 0.004428 s, 237 MB/s
 </pre>

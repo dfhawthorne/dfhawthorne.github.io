@@ -259,13 +259,13 @@ table-of-contents:
   </a>
   , I ran the following commands:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/share/Software/grid/linuxamd64_12102/grid
+ <pre class="bash-cmd">cd /opt/share/Software/grid/linuxamd64_12102/grid
 ./runcluvfy.sh comp nodecon -i eth0 -n redfern1,redfern2 -verbose
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Verifying node connectivity 
+ <pre class="text">Verifying node connectivity 
 
 Checking node connectivity...
 
@@ -345,13 +345,13 @@ Verification of node connectivity was unsuccessful on all the specified nodes.
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo systemctl stop firewalld
+ <pre class="bash-cmd">sudo systemctl stop firewalld
 sudo systemctl disable firewalld
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+ <pre class="text">Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
 Removed symlink /etc/systemd/system/basic.target.wants/firewalld.service.
 </pre>
  <h3>
@@ -366,13 +366,13 @@ Removed symlink /etc/systemd/system/basic.target.wants/firewalld.service.
   </a>
   , I ran the following commands:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/share/Software/grid/linuxamd64_12102/grid
+ <pre class="bash-cmd">cd /opt/share/Software/grid/linuxamd64_12102/grid
 ./runcluvfy.sh comp nodecon -i eth0 -n redfern1,redfern2 -verbose
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Verifying node connectivity 
+ <pre class="text">Verifying node connectivity 
 
 Checking node connectivity...
 
@@ -446,7 +446,7 @@ Verification of node connectivity was successful.
   </a>
   failed with:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Cause - Installer has failed to execute the specified script on one or more nodes. This might be because of exception occurred while executing the script on nodes.
+ <pre class="text">Cause - Installer has failed to execute the specified script on one or more nodes. This might be because of exception occurred while executing the script on nodes.
 Action - Review the log files '/opt/app/oraInventory/logs/installActions2017-11-28_08-10-33PM.log' and '/opt/app/grid_infra/12.1.0/grid/cfgtoollogs/crsconfig/rootcrs_&lt;nodename&gt;_&lt;timestamp&gt;.log' for further details.
 More Details
 Execution of GI Install script is failed on nodes : [redfern1]  Exception details 

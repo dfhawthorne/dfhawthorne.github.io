@@ -1,52 +1,43 @@
-<nav class="navigation">
+<nav>
   <ul>
-    <li><a href="/index.html">Home</a></li>
-    <ul>
-      {%- for page in site.data.navigation -%}
-        {%- if page contains "name" and page contains "sub_pages" and page.name == "home" -%}
-          {%- for item in page.sub_pages -%}
-            {%- if item contains "url" and item contains "title" %}
-              <li><a href="{{ item.url }}" {%- if page.url == item.url -%}style="background-color: #dbdbdb; color: #333;"{%- endif -%}>
-                {{ item.title }} 
-              </a></li>
-              {%- if item contains "sub_pages" -%}
-                <ul>
-                {%- for sub_item in item.sub_pages -%}
-                  <li><a href="{{ sub_item.url }}" {%- if page.url == sub_item.url -%}style="color: red;"{%- endif -%}>
-                    {{ sub_item.title }} 
-                  </a></li>
-                {%- endfor -%}
-                </ul>
-              {%- endif -%}
-            {%- endif -%}
-          {%- endfor -%}
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
-    <li><a href="/announcements">Announcements</a></li>
-    <ul>
-      {%- for page in site.data.navigation -%}
-        {%- if page contains "name" and page contains "sub_pages" and page.name == "announcements" -%}
-          {%- for item in page.sub_pages -%}
-            {%- if item contains "url" and item contains "title" %}
-              <li><a href="{{ item.url }}" {%- if page.url == item.url -%}style="background-color: #dbdbdb; color: #333;"{%- endif -%}>
-                {{ item.title }} 
-              </a></li>
-              {%- if item contains "sub_pages" -%}
-                <ul>
-                {%- for sub_item in item.sub_pages -%}
-                  <li><a href="{{ sub_item.url }}" {%- if page.url == sub_item.url -%}style="color: red;"{%- endif -%}>
-                    {{ sub_item.title }} 
-                  </a></li>
-                {%- endfor -%}
-                </ul>
-              {%- endif -%}
-            {%- endif -%}
-          {%- endfor -%}
-        {%- endif -%}
-      {%- endfor -%}
-    </ul>
-    <li><a href="/book-reviews">Book Reviews</a></li>
-    <li><a href="/ocm-questions-and-answers">OCM Questions and Answers</a></li>
+    {%- for nav-page-lev01 in site.data.navigation -%}
+      {%- if nav-page-lev01.url == "home.html" %}
+        <li><details><summary><a href="{{ nav-page-lev01.url }}">{{ nav-page-lev01.title }}</a></summary><ul>
+        {%- for nav-page-lev02 in nav-page-lev01.sub-pages -%}
+          {%- if nav-page-lev02 contains "sub-pages" -%}
+            <li><details><summary><a href="{{ nav-page-lev02.url }}">{{ nav-page-lev02.title }}</a></summary><ul>
+            {%- for nav-page-lev03 in nav-page-lev02.sub-pages -%}
+              {%- if nav-page-lev03 contains "sub-pages" -%}
+                <li><details><summary><a href="{{ nav-page-lev03.url }}">{{ nav-page-lev03.title }}</a></summary><ul>
+                {%- for nav-page-lev04 in nav-page-lev03.sub-pages -%}
+                  <li class="nav-leaf"><a href="{{ nav-page-lev04.url }}">{{ nav-page-lev04.title }}</a></li>
+                {% endfor %}
+                </ul></details></li>
+              {%- else -%}
+                <li class="nav-leaf"><a href="{{ nav-page-lev03.url }}">{{ nav-page-lev03.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+            </ul></details></li>
+          {%- else -%}
+            <li class="nav-leaf"><a href="{{ nav-page-lev02.url }}">{{ nav-page-lev02.title }}</a></li>
+          {% endif %}
+        {% endfor %}
+        </ul></details></li>
+      {% endif %}
+    {%- endfor -%}
+    {%- for nav-page-lev01 in site.data.navigation -%}
+      {%- if nav-page-lev01.url == "announcements.html" %}
+        <li><details><summary><a href="{{ nav-page-lev01.url }}">{{ nav-page-lev01.title }}</a></summary><ul>
+          {%- for nav-page-lev02 in nav-page-lev01.sub-pages -%}
+            <li class="nav-leaf"><a href="{{ nav-page-lev02.url }}">{{ nav-page-lev02.title }}</a></li>
+          {% endfor %}
+        </ul></details></li>
+      {% endif %}
+    {%- endfor -%}
+    {% for nav-page-lev01 in site.data.navigation %}
+      {%- unless nav-page-lev01 contains "sub-pages" -%}
+        <li class="nav-leaf"><a href="{{ nav-page-lev01.url }}">{{ nav-page-lev01.title }}</a></li>
+      {% endunless %}
+    {%- endfor -%}
   </ul>
 </nav>

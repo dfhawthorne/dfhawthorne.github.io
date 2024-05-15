@@ -38,9 +38,9 @@ table-of-contents:
 <li>VNC console port: 23</li>
 <li>O/S: Ubuntu 16.04</li>
 </ul>
-<p>The <a href="home/resource-allocations/ip-addresses">IP resources</a> and <a href="home/resource-allocations/victoria-vm-resources">VM resources</a> pages have been updated to reflect this.</p>
+<p>The <a href="home/resource-allocations/ip-addresses.html">IP resources</a> and <a href="home/resource-allocations/victoria-vm-resources.html">VM resources</a> pages have been updated to reflect this.</p>
 <h2 id="TOC-vm-configuration-file">VM Configuration File</h2>
-<p>The configuration file, <span style="font-family: monospace;">allawah.cfg</span>, is created in the <span style="font-family: monospace;">/OVS/runningpool/ALLAWAH</span> directory on <span style="font-family: monospace;">VICTORIA</span>.</p>
+<p>The configuration file, <span style="file-name">allawah.cfg</span>, is created in the <span style="file-name">/OVS/runningpool/ALLAWAH</span> directory on <span class="host-name">VICTORIA</span>.</p>
 <pre class="text"># =====================================================================
 # Guest configuration for ALLAWAH
 # Minimal CLI server for Ubuntu
@@ -107,7 +107,7 @@ tsc_mode="default"
 <h2 id="TOC-edit-network-settings">Edit Network Settings</h2>
 <p>The default setting for the main NIC (eth0) is to use DHCP. I need a static IP address because this is a server.</p>
 <h3 id="TOC-update-configuration-file">Update Configuration File</h3>
-<p>The network configuration file, <span style="font-family: monospace;">/etc/network/interfaces</span>, had the following changes made:</p>
+<p>The network configuration file, <span class"file-name;">/etc/network/interfaces</span>, had the following changes made:</p>
 <pre class="text"># The primary network interface
 auto eth0
 #iface eth0 inet dhcp
@@ -126,8 +126,9 @@ dns-search yaocm.id.au
 sudo ifup eth0</pre>
 <h3 id="TOC-validate-network-settings">Validate Network Settings</h3>
 <p>The network settings were validated as follows:</p>
-<pre class="text">root@allawah:~# ip addr show eth0
-2: eth0: &lt;broadcast,multicast,up,lower_up&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+<pre class="bash-cmd">ip addr show eth0</pre>
+<p>The output was:</p>
+<pre class="text">2: eth0: &lt;broadcast,multicast,up,lower_up&gt; mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether 00:16:3e:00:00:14 brd ff:ff:ff:ff:ff:ff
     inet 192.168.1.123/24 brd 192.168.1.255 scope global eth0
        valid_lft forever preferred_lft forever
@@ -148,8 +149,10 @@ sudo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt -y install ansible
 </pre>
 <h2 id="TOC-verify-ansible-version">Verify Ansible Version</h2>
-<pre class="text">root@allawah:~# ansible --version
-ansible 2.9.17
+<p>I ran the following command as <span class="user-name">root</span>:</p>
+<pre class="bash-cmd">ansible --version</pre>
+<p>The output was:</p>
+<pre class="text">ansible 2.9.17
   config file = /etc/ansible/ansible.cfg
   configured module search path = [u'/root/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python2.7/dist-packages/ansible

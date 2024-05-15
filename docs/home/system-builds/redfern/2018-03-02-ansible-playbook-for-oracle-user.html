@@ -305,7 +305,7 @@ table-of-contents:
                     </span>
                     ) with the following contents:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 - name: Prepare REDFERN Cluster for Oracle GI 12.1 installation (Oracle Groups)
   hosts: redfern1.yaocm.id.au
   become: true
@@ -360,12 +360,12 @@ table-of-contents:
                     </span>
                     ) as follows:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook -K user_groups.yml 
+<pre class="bash-cmd">ansible-playbook -K user_groups.yml 
 </pre>
 <p>
                     The output was:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Oracle Groups)] ***
 
@@ -384,45 +384,15 @@ TASK [Set groups and password for Oracle user] *********************************
 PLAY RECAP *********************************************************************
 <span style="color:orange">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=3</span>    <span style="color:orange">changed=2</span>    unreachable=0    failed=0  
 </pre>
-<h3>
-<a name="TOC-Verification">
-</a>
-                    Verification
-                   </h3>
-<p>
-                    Used the following command (on
-                    <span style="font-family:monospace">
-                     REDFERN1
-                    </span>
-                    ) to verify that the correct groups are set:
-                   </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">id oracle
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(oper),54327(asmdba),54328(asmoper),54329(asmadmin)
-</pre>
-<h3>
-<a name="TOC-Expand-Playbook-to-Include-All-Groups">
-</a>
-                    Expand Playbook to Include All Groups
-                   </h3>
-<p>
-                    The above playbook only adds the extra groups that were not created through the Oracle Pre-installation RPM.
-                   </p>
-<p>
-                    For completeness, the RPM-supplied groups are added to the playbook (
-                    <span style="font-family:monospace">
-                     user_groups.yml
-                    </span>
-                    ) as follows (changes are in
-                    <span style="font-weight:bold">
-                     bold
-                    </span>
-                    :
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<h3 id="TOC-Verification">Verification</h3>
+<p>Used the following command (on <span style="font-family:monospace">REDFERN1</span>) to verify that the correct groups are set:</p>
+<pre class="bash-cmd">id oracle</pre>
+<p>The output was:</p>
+<pre class="text">uid=54321(oracle) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54323(oper),54327(asmdba),54328(asmoper),54329(asmadmin)</pre>
+<h3 id="TOC-Expand-Playbook-to-Include-All-Groups">Expand Playbook to Include All Groups</h3>
+<p>The above playbook only adds the extra groups that were not created through the Oracle Pre-installation RPM.</p>
+<p>For completeness, the RPM-supplied groups are added to the playbook (<span style="font-family:monospace">user_groups.yml</span>) as follows (changes are in <span style="font-weight:bold">bold</span>:</p>
+<pre class="text">---
 - name: Prepare REDFERN Cluster for Oracle GI 12.1 installation (Oracle Groups)
   hosts: redfern1.yaocm.id.au
   become: true
@@ -452,43 +422,13 @@ PLAY RECAP *********************************************************************
       groups:   oinstall,dba,oper,asmdba,asmoper,asmadmin
 </pre>
 <div style="display:block;margin-left:1cm;border-left-style:double;border-width:5px;border-color:black">
-<p>
-<span style="font-weight:bold;font-family:arial,sans-serif;margin-left:5px">
-                      Note:
-                     </span>
-                     The password value was copied out of
-                     <span style="font-family:monospace">
-                      /etc/shadow
-                     </span>
-                     . The password is obscured because tools exists to decrypt such values.
-                    </p>
+<p><span style="font-weight:bold;font-family:arial,sans-serif;margin-left:5px">Note:</span> The password value was copied out of <span style="font-family:monospace">/etc/shadow</span>. The password is obscured because tools exists to decrypt such values.</p>
 </div>
-<h3>
-<a name="TOC-Confirm-User-Settings-for-the-Oracle-User">
-</a>
-                    Confirm User Settings for the Oracle User
-                   </h3>
-<p>
-                    On
-                    <span style="font-family:monospace">
-                     AUBURN
-                    </span>
-                    , I executed the Ansible playbook (
-                    <span style="font-family:monospace">
-                     user_groups.yml
-                    </span>
-                    ) to confirm the correct settings for the
-                    <span style="font-family:monospace">
-                     oracle
-                    </span>
-                    user:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook -K user_groups.yml 
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<h3 id="TOC-Confirm-User-Settings-for-the-Oracle-User">Confirm User Settings for the Oracle User</h3>
+<p>On <span style="font-family:monospace">AUBURN</span>, I executed the Ansible playbook (<span style="font-family:monospace">user_groups.yml</span>) to confirm the correct settings for the <span style="font-family:monospace">oracle</span> user:</p>
+<pre class="bash-cmd">ansible-playbook -K user_groups.yml</pre>
+<p>The output was:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Oracle Groups)] ***
 
@@ -510,13 +450,6 @@ PLAY RECAP *********************************************************************
 <span style="color:green">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=3</span>    changed=0    unreachable=0    failed=0   
 
 </pre>
-<p>
-                    The settings for the
-                    <span style="font-family:monospace">
-                     oracle
-                    </span>
-                    user are now documented in the playbook.
-                   </p>
-
+<p>The settings for the <span style="font-family:monospace">oracle</span> user are now documented in the playbook.</p>
 </div>
 <!-- {% endraw %} -->

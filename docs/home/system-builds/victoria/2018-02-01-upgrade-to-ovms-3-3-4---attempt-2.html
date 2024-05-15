@@ -148,7 +148,7 @@ table-of-contents:
                     </span>
                     ):
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">install
+<pre class="text">install
 cdrom
 lang en_US.UTF-8
 keyboard us
@@ -202,7 +202,7 @@ bootloader --location=mbr --driveorder=sda --append="rhgb quiet"
                     </a>
                     , I ran the following commands to create the four (4) bridges that support the networks used by the VM images:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">cd /etc/sysconfig/network-scripts
+<pre class="bash-cmd">cd /etc/sysconfig/network-scripts
 for bridge in 0 1 2 3
 do
 nw=$(((bridge + 1)))
@@ -250,7 +250,7 @@ done
                     </span>
                     NIC as follows:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">cd /etc/sysconfig/network-scripts
+<pre class="bash-cmd">cd /etc/sysconfig/network-scripts
 cat &gt;&gt;ifcfg-eth0 &lt;&lt;DONE
 # Bridge
 BRIDGE="xenbr0"
@@ -268,7 +268,7 @@ DONE
                     </span>
                     NIC and attach the last three (3) bridges to each of them:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">cd /etc/sysconfig/network-scripts
+<pre class="bash-cmd">cd /etc/sysconfig/network-scripts
 for subif in 1 2 3
 do
 bridge=${subif}
@@ -303,7 +303,7 @@ done
 <p>
                     The VMs that were saved from VICTORIA, were restored using the following commands:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">cd /
+<pre class="bash-cmd">cd /
 <a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> -xvzf running_pool.tgz
 <a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> -xvzf iso_pool.tgz
 </pre>

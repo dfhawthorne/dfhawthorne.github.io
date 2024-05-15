@@ -92,7 +92,7 @@ table-of-contents:
 <p>
                     Disable HVM mode by removing the following line from the Xen configuration file:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">builder="hvm"
+<pre class="text">builder="hvm"
 </pre>
 <h3>
 <a name="TOC-Enable-PV-Mode">
@@ -102,7 +102,7 @@ table-of-contents:
 <p>
                     Enable PV mode by adding the following lines to the Xen configuration file:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">type="pv"
+<pre class="text">type="pv"
 bootloader="pygrub"
 </pre>
 <h3>
@@ -113,12 +113,12 @@ bootloader="pygrub"
 <p>
                     After the Xen image has been started, run the following command:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px">dmesg|grep -i paravirtual
+<pre class="bash-cmd">dmesg|grep -i paravirtual
 </pre>
 <p>
                     The output should be similar to the following:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">[    0.000000] Booting <span style="font-weight:bold;color:red">paravirtual</span>ized kernel on Xen
+<pre class="text">[    0.000000] Booting <span style="font-weight:bold;color:red">paravirtual</span>ized kernel on Xen
 </pre>
 </div>
 <!-- {% endraw %} -->

@@ -102,7 +102,7 @@ table-of-contents:
    JAR
   </span>
   database on
-  <a href="home/12-ocm/12c-ocm-system-builds/padstow.html">
+  <a href="home/12c-ocm/12c-ocm-system-builds/padstow.html">
    PADSTOW
   </a>
   .
@@ -127,7 +127,7 @@ table-of-contents:
   </span>
   database:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">grant sysbackup to c##user;
+ <pre class="sql-cmd">grant sysbackup to c##user;
 alter user c##user identified by password1;
 </pre>
  <h3>
@@ -142,12 +142,12 @@ alter user c##user identified by password1;
   </span>
   database:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select * from <a href="https://docs.oracle.com/database/121/REFRN/GUID-C8D29599-13BD-493A-BE23-0F16BDDA7725.htm#REFRN30189" rel="nofollow">v$pwfile_users</a>;
+ <pre class="sql-cmd">select * from <a href="https://docs.oracle.com/database/121/REFRN/GUID-C8D29599-13BD-493A-BE23-0F16BDDA7725.htm#REFRN30189" rel="nofollow">v$pwfile_users</a>;
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">USERNAME                       SYSDB SYSOP SYSAS SYSBA SYSDG SYSKM     CON_ID
+ <pre class="text">USERNAME                       SYSDB SYSOP SYSAS SYSBA SYSDG SYSKM     CON_ID
 ------------------------------ ----- ----- ----- ----- ----- ----- ----------
 SYS                            TRUE  TRUE  FALSE FALSE FALSE FALSE          0
 C##USER                        FALSE FALSE FALSE TRUE  FALSE FALSE          1
@@ -164,7 +164,7 @@ C##USER                        FALSE FALSE FALSE TRUE  FALSE FALSE          1
   </span>
   database without using SQL*Net:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect c##user/password1 as sysbackup
+ <pre class="text">SQL&gt; connect c##user/password1 as sysbackup
 Connected.
 SQL&gt; show user
 USER is "SYSBACKUP"
@@ -179,7 +179,7 @@ USER is "PUBLIC"
  <p>
   I checked the TNS alias for the root container as follows:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; !tnsping jar_padstow
+ <pre class="text">SQL&gt; !tnsping jar_padstow
 
 TNS Ping Utility for Linux: Version 12.1.0.2.0 - Production on 02-APR-2020 20:33:37
 
@@ -199,7 +199,7 @@ OK (10 msec)
   </span>
   database using SQL*Net:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect c##user/password1@jar_padstow as sysbackup
+ <pre class="text">SQL&gt; connect c##user/password1@jar_padstow as sysbackup
 Connected.
 SQL&gt; show user
 USER is "SYSBACKUP"

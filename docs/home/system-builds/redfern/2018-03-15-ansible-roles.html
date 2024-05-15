@@ -262,7 +262,7 @@ table-of-contents:
                     </a>
                     :
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/roles
+<pre class="bash-cmd">cd /etc/ansible/roles
 <a href="http://docs.ansible.com/ansible/latest/ansible-galaxy.html" rel="nofollow">ansible-galaxy</a> init common
 <a href="http://docs.ansible.com/ansible/latest/ansible-galaxy.html" rel="nofollow">ansible-galaxy</a> init oracle_user
 <a href="http://docs.ansible.com/ansible/latest/ansible-galaxy.html" rel="nofollow">ansible-galaxy</a> init oracle_gi
@@ -270,7 +270,7 @@ table-of-contents:
 <p>
                     The output is:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">douglas@auburn:/etc/ansible/roles$ ansible-galaxy init common
+<pre class="text">douglas@auburn:/etc/ansible/roles$ ansible-galaxy init common
 - common was created successfully
 douglas@auburn:/etc/ansible/roles$ ansible-galaxy init oracle_user
 - oracle_user was created successfully
@@ -293,7 +293,7 @@ douglas@auburn:/etc/ansible/roles$ ansible-galaxy init oracle_gi
                     </span>
                     with the following code:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # tasks file for oracle_user
 # =============================================================================
 # (1) Creates the Oracle User through the Oracle pre-installation RPM
@@ -312,8 +312,7 @@ douglas@auburn:/etc/ansible/roles$ ansible-galaxy init oracle_gi
   become_user:      root
 ...
 </pre>
-<p>
-                    Here I use the
+<p>Here I use the
                     <a href="http://docs.ansible.com/ansible/latest/playbooks_blocks.html" rel="nofollow">
                      block
                     </a>
@@ -327,23 +326,9 @@ douglas@auburn:/etc/ansible/roles$ ansible-galaxy init oracle_gi
                     </a>
                     tasks.
                    </p>
-<h3>
-<a name="TOC-Playbook-for-Oracle-GI-Role">
-</a>
-                    Playbook for Oracle GI Role
-                   </h3>
-<p>
-                    I created the main playbook for the
-                    <span style="font-family:monospace">
-                     oracle_gi
-                    </span>
-                    role in
-                    <span style="font-family:monospace">
-                     /etc/ansible/roles/oracle_gi/tasks/main.yml
-                    </span>
-                    with the following code:
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<h3 id="TOC-Playbook-for-Oracle-GI-Role">Playbook for Oracle GI Role</h3>
+<p>I created the main playbook for the <span style="font-family:monospace">oracle_gi</span> role in <span style="font-family:monospace">/etc/ansible/roles/oracle_gi/tasks/main.yml</span> with the following code:</p>
+<pre class="text">---
 # tasks file for oracle_gi
 # =============================================================================
 # (1) Install Oracle ASMLib Driver
@@ -358,73 +343,22 @@ douglas@auburn:/etc/ansible/roles$ ansible-galaxy init oracle_gi
   become_user:      root
 ...
 </pre>
-<p>
-                    Here I use the
-                    <a href="http://docs.ansible.com/ansible/latest/playbooks_blocks.html" rel="nofollow">
-                     block
-                    </a>
-                    to apply the
-                    <a href="http://docs.ansible.com/ansible/latest/become.html" rel="nofollow">
-                     privilege escalation
-                    </a>
-                    to all of the
-                    <a href="http://docs.ansible.com/ansible/latest/import_tasks_module.html" rel="nofollow">
-                     imported
-                    </a>
-                    tasks.
-                   </p>
-<h3>
-<a name="TOC-Main-Playbook">
-</a>
-                    Main Playbook
-                   </h3>
-<p>
-                    I created the main playbook for the
-                    <span style="font-family:monospace">
-                     oracle_user
-                    </span>
-                    role in
-                    <span style="font-family:monospace">
-                     /etc/ansible/sites.yml
-                    </span>
-                    with the following code:
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<p>Here I use the <a href="http://docs.ansible.com/ansible/latest/playbooks_blocks.html" rel="nofollow">block</a> to apply the <a href="http://docs.ansible.com/ansible/latest/become.html" rel="nofollow">privilege escalation</a> to all of the <a href="http://docs.ansible.com/ansible/latest/import_tasks_module.html" rel="nofollow">imported</a> tasks.</p>
+<h3 id="TOC-Main-Playbook">Main Playbook</h3>
+<p>I created the main playbook for the <span style="font-family:monospace">oracle_user</span> role in <span style="font-family:monospace">/etc/ansible/sites.yml</span> with the following code:</p>
+<pre class="text">---
 - hosts:	redfern1.yaocm.id.au
   roles:
     - oracle_user
     - oracle_gi
 ...
 </pre>
-<p>
-                    I did not include
-                    <a href="http://docs.ansible.com/ansible/latest/become.html" rel="nofollow">
-                     privilege escalation
-                    </a>
-                    here because some future tasks will have to run as the
-                    <span style="font-family:monospace">
-                     oracle
-                    </span>
-                    user.
-                   </p>
-<h3>
-<a name="TOC-Execute-Main-Playbook">
-</a>
-                    Execute Main Playbook
-                   </h3>
-<p>
-                    The complete playbook,
-                    <span style="font-family:monospace">
-                     sites.yml
-                    </span>
-                    , was executed as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass sites.yml
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<p>I did not include <a href="http://docs.ansible.com/ansible/latest/become.html" rel="nofollow">privilege escalation</a> here because some future tasks will have to run as the <span style="font-family:monospace">oracle</span> user.</p>
+<h3 id="TOC-Execute-Main-Playbook">Execute Main Playbook</h3>
+<p>The complete playbook, <span style="font-family:monospace">sites.yml</span>, was executed as follows:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass sites.yml</pre>
+<p>The output was:</p>
+<pre class="text">SUDO password: 
 
 PLAY [redfern1.yaocm.id.au] ****************************************************
 

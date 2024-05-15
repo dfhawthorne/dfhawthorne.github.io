@@ -59,3 +59,8 @@ Table of Contents
 * [2024-04-23](2024_04_23.md) Conversion of Wiki to Jekyll - Several Pages Converted Manually
 * [2024-04-25](2024_04_25.md) Conversion of Wiki to Jekyll - Duplication of HOME and INDEX Web Pages
 * [2024-04-26](2024_04_26.md) Conversion of Wiki to Jekyll - Embedded Sub-Pages Menu
+* [2024-04-30](2024_04_30.md) Conversion of Wiki to Jekyll - Cronulla Build Journal
+* [2024-05-07](2024_05_07.md) Conversion of Wiki to Jekyll - Consolidation of Styles for Preformatted Text
+* [2024-05-09](2024_05_09.md) Conversion of Wiki to Jekyll - Redesign of File Download Widget
+* [2024-05-10](2024_05_10.md) Conversion of Wiki to Jekyll - Conversion of File Download Widget
+* [2024-05-15](2024_05_15.md) # 2024-05-10: Conversion of Wiki to Jekyll - Expandable Navigation Bar

@@ -139,7 +139,7 @@ table-of-contents:
                     </span>
                     with the following entries:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 - name: Prepare REDFERN Cluster for Oracle GI 12.1 installation (Installation Directories)
   hosts: redfern1.yaocm.id.au
   become: true
@@ -166,12 +166,9 @@ table-of-contents:
                     </span>
                     , I executed the playbook as follows:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook -K install-dir.yml 
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="bash-cmd">ansible-playbook -K install-dir.yml</pre>
+<p>The output was:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Installation Directories)] ***
 
@@ -194,12 +191,12 @@ redfern1.yaocm.id.au       : <span style="color:green">ok=2</span>    <span styl
                     </span>
                     :
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ls -lR /opt/app
+<pre class="bash-cmd">ls -lR /opt/app
 </pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">/opt/app:
+<pre class="text">/opt/app:
 total 0
 drwxr-xr-x. 3 oracle oinstall 18 Mar  1 23:11 12.1.0
 drwxr-xr-x. 2 oracle oinstall  6 Mar  1 23:11 grid

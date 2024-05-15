@@ -32,21 +32,21 @@ table-of-contents:
 </ul>
 <h2 id="TOC-issue">Issue</h2>
 <p>I tried to drop the PERFSTAT user as follows:</p>
-<pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">drop user perfstat;
+<pre class="sql-cmd">drop user perfstat;
 </pre>
 <p>The output was:</p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">drop user perfstat
+<pre class="text">drop user perfstat
 *
 ERROR at line 1:
 ORA-28014: cannot drop administrative users
 </pre>
 <h2 id="TOC-solution">Solution</h2>
 <p>Following the advice in <a href="https://support.oracle.com/epmos/faces/DocContentDisplay?id=1566042.1">ORA-28014: Cannot Drop Administrative Users (Doc ID 1566042.1)</a>, I ran the following command:</p>
-<pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">alter session set "_oracle_script"=true;
+<pre class="sql-cmd">alter session set "_oracle_script"=true;
 </pre>
 <p>I reran the following SQL command:</p>
-<pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">drop user perfstat cascade;
+<pre class="sql-cmd">drop user perfstat cascade;
 </pre>
 <p>This worked.</p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">User dropped.
+<pre class="text">User dropped.
 </pre>

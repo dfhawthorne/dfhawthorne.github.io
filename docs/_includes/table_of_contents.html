@@ -25,6 +25,9 @@
             {%- endif -%}
             {%- assign toc1 = toc1 | plus: 1 -%}
         {%- endfor -%}
+        {%- if page contains "file-download" -%}
+            <li><strong>{{ toc1 }}</strong> <a href="{{ page.base-url }}#TOC-File-Downloads">File Downloads</a></li>
+        {%- endif -%}
     </ol>
 </div>
 {%- endif -%}

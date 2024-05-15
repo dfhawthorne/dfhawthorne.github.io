@@ -41,8 +41,9 @@ table-of-contents:
     toc-text: 'Load DEMO Tablespace into PLUM Using IMPDP'
   - toc-url: 'Validate-Transport-Tablespace-Move'
     toc-text: 'Validate Transport Tablespace Move'
-- toc-url: 'File-Downloads'
-  toc-text: 'File Downloads'
+file-download-dir: 'home/12c-ocm/data-and-performance-management/create-a-plugged-in-tablespace-by-using-the-transportable-tablespace-feature'
+file-download:
+- 'transport_demo.log'
 ---
 <div dir="ltr">
  <br/>
@@ -436,12 +437,12 @@ table-of-contents:
   </span>
   database:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">execute dbms_tts.<a href="https://docs.oracle.com/database/121/ARPLS/d_tts.htm#BEIBHJBJ" rel="nofollow">transport_set_check</a>('DEMO', TRUE)
+ <pre class="sql-cmd">execute dbms_tts.<a href="https://docs.oracle.com/database/121/ARPLS/d_tts.htm#BEIBHJBJ" rel="nofollow">transport_set_check</a>('DEMO', TRUE)
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <p>
   To see if there were any violations, I ran the following query on the
@@ -450,12 +451,12 @@ table-of-contents:
   </span>
   database:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">select * from transport_set_violations;
+ <pre class="sql-cmd">select * from transport_set_violations;
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">no rows selected
+ <pre class="text">no rows selected
 </pre>
  <p>
   Thus, the
@@ -480,7 +481,7 @@ table-of-contents:
   </a>
   , and used the following RMAN commands:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">TRANSPORT TABLESPACE demo
+ <pre class="sql-cmd">TRANSPORT TABLESPACE demo
   TABLESPACE DESTINATION '/opt/app/oracle/oradata/transport'
   AUXILIARY DESTINATION '/opt/app/oracle/oradata/auxdata';
 </pre>
@@ -522,12 +523,12 @@ table-of-contents:
  <p>
   There is a warning:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
+ <pre class="text">RMAN-05026: WARNING: presuming following set of tablespaces applies to specified Point-in-Time
 </pre>
  <p>
   However, the following error appears at the end of the log:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Could not delete auxiliary instance file dmpfile.dmp
+ <pre class="text">Could not delete auxiliary instance file dmpfile.dmp
 ORACLE error from target database: 
 <span style="font-weight:bold">ORA-29280: invalid directory path</span>
 
@@ -541,7 +542,7 @@ Recovery Manager complete.
   </span>
   ):
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">-rw-r-----. 1 oracle oinstall 180K May  1 10:51 dmpfile.dmp
+ <pre class="text">-rw-r-----. 1 oracle oinstall 180K May  1 10:51 dmpfile.dmp
 -rw-r--r--. 1 oracle oinstall 1.7K May  1 10:51 impscrpt.sql
 -rw-r-----. 1 oracle oinstall 101M May  1 10:51 o1_mf_demo_fghgcry5_.dbf
 </pre>
@@ -574,13 +575,13 @@ Recovery Manager complete.
   </span>
   PDB:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SUTIL/GUID-D11E340E-14C6-43B8-AB09-6335F0C1F71B.htm" rel="nofollow">impdp</a> system@plum directory=transport_dir dumpfile=dmpfile.dmp \
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SUTIL/GUID-D11E340E-14C6-43B8-AB09-6335F0C1F71B.htm" rel="nofollow">impdp</a> system@plum directory=transport_dir dumpfile=dmpfile.dmp \
     transport_datafiles=/opt/app/oracle/oradata/transport/o1_mf_demo_fghgcry5_.dbf
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Import: Release 12.1.0.2.0 - Production on Tue May 1 10:52:54 2018
+ <pre class="text">Import: Release 12.1.0.2.0 - Production on Tue May 1 10:52:54 2018
 
 Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
 
@@ -630,7 +631,7 @@ Job "SYSTEM"."SYS_IMPORT_TRANSPORTABLE_02" successfully completed at Tue May 1 1
   </span>
   database, the results were (extra blank lines have been removed):
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Current database name is PERSONAL.
+ <pre class="text">Current database name is PERSONAL.
 DEMO tablespace exists in PERSONAL database.
 Find the owner(s) of all segments in the DEMO tablespace
 
@@ -663,7 +664,7 @@ COPY_TAB          DEMO
   </span>
   PDB, the results were (extra blank lines have been removed):
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Current database name is JAR.
+ <pre class="text">Current database name is JAR.
 DEMO tablespace exists in JAR database.
 Find the owner(s) of all segments in the DEMO tablespace
 
@@ -694,16 +695,4 @@ COMP_TAB          DEMO
   </span>
   user.
  </p>
- <div class="file_downloads">
-  <h2 id="TOC-File-Downloads">
-   File Downloads
-  </h2>
-  <ol>
-   <li>
-    <a href="home/12c-ocm/data-and-performance-management/create-a-plugged-in-tablespace-by-using-the-transportable-tablespace-feature/transport_demo.log">
-     transport_demo.log
-    </a>
-   </li>
-  </ol>
- </div>
 </div>

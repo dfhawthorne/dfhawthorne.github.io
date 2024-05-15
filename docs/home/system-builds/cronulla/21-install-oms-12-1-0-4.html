@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '2015-09-07 Install OMS 12.1.0.4'
+title: '21 Install OMS 12.1.0.4'
 base-url: home/system-builds/cronulla/21-install-oms-12-1-0-4.html
 breadcrumbs:
 - title: 'Home'
@@ -9,15 +9,13 @@ breadcrumbs:
   url: home/system-builds.html
 - title: 'CRONULLA'
   url: home/system-builds/cronulla.html
-- title: '2015-09-07 Install OMS 12.1.0.4'
-  url: home/system-builds/cronulla/21-install-oms-12-1-0-4.html
 scroll-bar:
   left-link:
     url: home/system-builds/cronulla/20-install-packages.html
     title: '20 Install Packages'
   right-link:
     url: home/system-builds/cronulla/22-replace-omr.html
-    title: '2015-10-10 Replace OMR'
+    title: '22 Replace OMR'
 table-of-contents:
 - toc-url: 'Overview'
   toc-text: 'Overview'
@@ -159,7 +157,7 @@ table-of-contents:
 </a>
   :
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">sudo su -
+<pre class="bash-cmd">sudo su -
 cat &gt;&gt;/etc/sysctl.conf &lt;&lt;DONE
 net.ipv4.ip_local_port_range = 11000 65500
 kernel.shmmax = 4294967295
@@ -211,7 +209,7 @@ oracle           hard    nproc           13312
   </span>
   user, I used the following commands to start the installation process:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">cd /opt/app/oracle/software/12.1.0.4
+<pre class="bash-cmd">cd /opt/app/oracle/software/12.1.0.4
 ./runInstaller
 </pre>
 <p>
@@ -415,7 +413,7 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2015-06-23_04
   </span>
   :
  </p>
-<pre>[oracle@cronulla 12.1.0.4]$ sudo su -
+<pre class="text">[oracle@cronulla 12.1.0.4]$ sudo su -
 [root@cronulla ~]# /opt/app/oracle/oraInventory/orainstRoot.sh 
 Changing permissions of /opt/app/oracle/oraInventory
 Adding read,write permissions for group,Removing read,write,execute permissions for world.

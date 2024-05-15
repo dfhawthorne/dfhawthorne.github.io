@@ -103,7 +103,7 @@ table-of-contents:
   </code>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
+ <pre class="bash-cmd">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PERL5LIB=${ORACLE_HOME}/perl/lib
 export PATH=${ORACLE_HOME}/bin:${ORACLE_HOME}/perl/bin:${PATH}
 </pre>
@@ -118,7 +118,7 @@ export PATH=${ORACLE_HOME}/bin:${ORACLE_HOME}/perl/bin:${PATH}
   </code>
   was invoked as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">dbca
+ <pre class="bash-cmd">dbca
 </pre>
  <h3>
   <a name="TOC-Step-1:-Database-Operation">
@@ -331,7 +331,7 @@ export PATH=${ORACLE_HOME}/bin:${ORACLE_HOME}/perl/bin:${PATH}
   </span>
   shows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Wed Dec 30 08:52:01 2015
+ <pre class="text">Wed Dec 30 08:52:01 2015
 <span style="font-weight:bold">alter pluggable database  open
 ORA-65000 signalled during: alter pluggable database  open...</span>
 Wed Dec 30 08:54:08 2015
@@ -371,7 +371,7 @@ Instance shutdown complete
   </span>
   as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;/etc/oratab &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;&gt;/etc/oratab &lt;&lt;DONE
 emrepos:/opt/app/oracle/product/12.1.0/dbhome_1:N       # line added by Douglas 2015/12/31
 DONE
 </pre>
@@ -414,7 +414,7 @@ DONE
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">srvctl add database                                           \
+ <pre class="bash-cmd">srvctl add database                                           \
   -db emrepos                                                 \
   -oraclehome /opt/app/oracle/product/12.1.0/dbhome_1         \
   -domain yaocm.id.au                                         \
@@ -442,12 +442,12 @@ DONE
   </span>
   database as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">orapwd file="+DATA" dbuniquename=EMREPOS sysbackup=y sysdg=y syskm=y
+ <pre class="bash-cmd">orapwd file="+DATA" dbuniquename=EMREPOS sysbackup=y sysdg=y syskm=y
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Enter password for SYS: 
+ <pre class="text">Enter password for SYS: 
 
 Enter password for SYSBACKUP: 
 
@@ -485,12 +485,12 @@ Enter password for SYSKM:
   </span>
   database:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">srvctl config database -db emrepos -all
+ <pre class="bash-cmd">srvctl config database -db emrepos -all
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Database unique name: emrepos
+ <pre class="text">Database unique name: emrepos
 Database name: 
 Oracle home: /opt/app/oracle/product/12.1.0/dbhome_1
 Oracle user: oracle
@@ -520,7 +520,7 @@ Database instance: emrepos
   </span>
   database instance:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">srvctl start database -db emrepos
+ <pre class="bash-cmd">srvctl start database -db emrepos
 </pre>
  <p>
   No error messages were produced, nor were there any in the alert log.
@@ -530,12 +530,12 @@ Database instance: emrepos
   </a>
   Verify Status of PDB
  </h3>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">select pdb_id,pdb_name,status from cdb_pdbs;
+ <pre class="bash-cmd">select pdb_id,pdb_name,status from cdb_pdbs;
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">    PDB_ID PDB_NAME		STATUS
+ <pre class="text">    PDB_ID PDB_NAME		STATUS
 ---------- -------------------- ---------
 	 2 PDB$SEED		NORMAL
 </pre>

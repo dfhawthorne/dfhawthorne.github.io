@@ -87,12 +87,12 @@ table-of-contents:
                     </a>
                     ):
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/product/12.1.0/grid/OPatch/opatch lsinventory -invPtrLoc /opt/app/oracle/product/12.1.0/grid/oraInst.loc -oh /opt/app/oracle/product/12.1.0/grid
+<pre class="bash-cmd">/opt/app/oracle/product/12.1.0/grid/OPatch/opatch lsinventory -invPtrLoc /opt/app/oracle/product/12.1.0/grid/oraInst.loc -oh /opt/app/oracle/product/12.1.0/grid
 </pre>
 <p>
                     I got the following messages:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Execution of [OracleHomeLSInventoryGrepAction] patch action failed, check log for more details. Failures:
+<pre class="text">Execution of [OracleHomeLSInventoryGrepAction] patch action failed, check log for more details. Failures:
 Patch Target : gordon-&gt;/opt/app/oracle/product/12.1.0/grid Type[siha]
 Details: [
 ---------------------------Patching Failed---------------------------------
@@ -126,7 +126,7 @@ opatchauto failed with error code 42
                     </span>
                     showed the following messages:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Home : /opt/app/oracle/product/12.1.0/grid
+<pre class="text">Oracle Home : /opt/app/oracle/product/12.1.0/grid
 Central Inventory : /opt/app/oraInventory
 from : /opt/app/oracle/product/12.1.0/grid/oraInst.loc
 OPatch version : 12.2.0.1.8
@@ -180,7 +180,7 @@ at oracle.opatch.OPatch.main(OPatch.java:858)
                     </code>
                     , I had to use:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">$ORACLE_HOME/OPatch/opatch lsinventory -jre $ORACLE_HOME/OPatch/jre
+<pre class="bash-cmd">$ORACLE_HOME/OPatch/opatch lsinventory -jre $ORACLE_HOME/OPatch/jre
 </pre>
 <p>
                     This showed that the PSU was successfully applied.

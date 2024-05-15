@@ -112,24 +112,10 @@ table-of-contents:
    </ul>
   </ul>
  </ul>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
-  Procedure
- </h2>
- <h3>
-  <a name="TOC-Create-Playbook">
-  </a>
-  Create Playbook
- </h3>
- <p>
-  The playbook,
-  <span style="font-family:monospace">
-   oracle_software_src.yml
-  </span>
-  , is created with the following:
- </p>
- <pre style="background-color:aqua;border:2px groove black;margin-left:10px;padding:2px">---
+ <h2 id="TOC-Procedure">Procedure</h2>
+ <h3 id="TOC-Create-Playbook">Create Playbook</h3>
+ <p>The playbook, <span style="font-family:monospace">oracle_software_src.yml</span>, is created with the following:</p>
+ <pre class="text">---
 - name:         Mount NFS for Oracle Installation Software
   hosts:        redfern1.yaocm.id.au
   become:       yes
@@ -155,28 +141,11 @@ table-of-contents:
 
 ...
 </pre>
- <h3>
-  <a name="TOC-Execute-Playbook">
-  </a>
-  Execute Playbook
- </h3>
- <p>
-  The playbook,
-  <span style="font-family:monospace">
-   oracle_software_src.yml
-  </span>
-  , is executed as follows (on
-  <span style="font-family:monospace">
-   AUBURN
-  </span>
-  ):
- </p>
- <pre style="background-color:lawngreen;border:2px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass oracle_software_src.yml
-</pre>
- <p>
-  The output is:
- </p>
- <pre style="border:2px groove black;margin-left:10px;padding:2px">SUDO password: 
+<h3 id="TOC-Execute-Playbook">Execute Playbook</h3>
+ <p>The playbook, <span style="font-family:monospace">oracle_software_src.yml</span>, is executed as follows (on <span style="font-family:monospace">AUBURN</span>):</p>
+ <pre class="bash-cmd">ansible-playbook --ask-become-pass oracle_software_src.yml</pre>
+ <p>The output is:</p>
+ <pre class="text">SUDO password: 
 
 PLAY [Mount NFS for Oracle Installation Software] ******************************
 
@@ -195,24 +164,11 @@ TASK [Mount NFS Share for Oracle Installation Software] ************************
 PLAY RECAP *********************************************************************
 <span style="color:green">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=4</span>    <span style="color:orange">changed=2</span>    unreachable=0    failed=0   
 </pre>
- <h3>
-  <a name="TOC-Verify-Mount-Point">
-  </a>
-  Verify Mount Point
- </h3>
- <p>
-  On
-  <span style="font-family:monospace">
-   REDFERN1
-  </span>
-  , I used the following command to see if the software directory was mounted correctly:
- </p>
- <pre style="background-color:lawngreen;border:2px groove black;margin-left:10px;padding:2px">ls -l /opt/share/Software
-</pre>
- <p>
-  The output is:
- </p>
- <pre style="background-color:aqua;border:2px groove black;margin-left:10px;padding:2px">total 8754100
+ <h3 id="TOC-Verify-Mount-Point">Verify Mount Point</h3>
+ <p>On <span style="font-family:monospace">REDFERN1</span>, I used the following command to see if the software directory was mounted correctly:</p>
+ <pre class="bash-cmd">ls -l /opt/share/Software</pre>
+ <p>The output is:</p>
+ <pre class="text">total 8754100
 drwxrwxrwx. 1 douglas douglas        320 Dec 28  2016 database
 drwxrwxrwx. 1 douglas douglas        148 Dec 28  2016 grid
 drwxrwxrwx. 1      98      98         66 Dec 31  2015 OEM
@@ -222,28 +178,11 @@ drwxrwxrwx. 1      98      98        128 Dec 28  2016 OPatch
 -rw-rw-r--. 1 douglas douglas  364154996 Oct 18 19:38 sqldeveloper-17.3.1.279.0537-1.noarch.rpm
 -rw-rw-rw-. 1      98      98 3885117440 Jan  3  2014 V41362-01.iso
 </pre>
- <h3>
-  <a name="TOC-Verify-Playbook-is-Idempotent">
-  </a>
-  Verify Playbook is Idempotent
- </h3>
- <p>
-  The playbook,
-  <span style="font-family:monospace">
-   oracle_software_src.yml
-  </span>
-  , is executed as follows (on
-  <span style="font-family:monospace">
-   AUBURN
-  </span>
-  ):
- </p>
- <pre style="background-color:lawngreen;border:2px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass oracle_software_src.yml
-</pre>
- <p>
-  The output is:
- </p>
- <pre style="border:2px groove black;margin-left:10px;padding:2px">SUDO password: 
+ <h3 id="TOC-Verify-Playbook-is-Idempotent">Verify Playbook is Idempotent</h3>
+ <p>The playbook, <span style="font-family:monospace">oracle_software_src.yml</span>, is executed as follows (on <span style="font-family:monospace">AUBURN</span>):</p>
+ <pre class="bash-cmd">ansible-playbook --ask-become-pass oracle_software_src.yml</pre>
+ <p>The output is:</p>
+ <pre class="text">SUDO password: 
 
 PLAY [Mount NFS for Oracle Installation Software] ******************************
 

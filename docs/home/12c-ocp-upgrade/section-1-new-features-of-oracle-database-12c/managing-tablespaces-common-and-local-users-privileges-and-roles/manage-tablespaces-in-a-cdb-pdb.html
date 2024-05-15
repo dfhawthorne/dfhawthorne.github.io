@@ -133,14 +133,14 @@ table-of-contents:
   </span>
   ) for the CDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve040.htm#i2678481" rel="nofollow">set linesize</a> 180
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve040.htm#i2678481" rel="nofollow">set linesize</a> 180
 <a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve040.htm#i2699247" rel="nofollow">set pagesize</a> 100
 <a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve013.htm#i2697128" rel="nofollow">column</a> pdb_name format a15
 select pdb_name, tablespace_name from cdb_tablespaces inner join cdb_pdbs using (con_id) order by pdb_name, tablespace_name;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">PDB_NAME        TABLESPACE_NAME
+ <pre class="text">PDB_NAME        TABLESPACE_NAME
 --------------- ------------------------------
 JAM             SYSAUX
 JAM             SYSTEM
@@ -194,11 +194,11 @@ VEGEMITER       USERS
   </span>
   ) for the CDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select c.name as pdb_name, t.name as tablespace_name from <a href="https://docs.oracle.com/database/121/REFRN/GUID-E6BF227D-CFAA-43EB-A7C9-F0AF293FDEC0.htm" rel="nofollow">V$TABLESPACE</a> t inner join <a href="https://docs.oracle.com/database/121/REFRN/GUID-8865FE4F-C22F-4B04-BC21-A28FFFC92072.htm#REFRN30708" rel="nofollow">V$CONTAINERS</a> c using (con_id) order by pdb_name, tablespace_name;</pre>
+ <pre class="sql-cmd">select c.name as pdb_name, t.name as tablespace_name from <a href="https://docs.oracle.com/database/121/REFRN/GUID-E6BF227D-CFAA-43EB-A7C9-F0AF293FDEC0.htm" rel="nofollow">V$TABLESPACE</a> t inner join <a href="https://docs.oracle.com/database/121/REFRN/GUID-8865FE4F-C22F-4B04-BC21-A28FFFC92072.htm#REFRN30708" rel="nofollow">V$CONTAINERS</a> c using (con_id) order by pdb_name, tablespace_name;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">PDB_NAME        TABLESPACE_NAME
+ <pre class="text">PDB_NAME        TABLESPACE_NAME
 --------------- ------------------------------
 CDB$ROOT        SYSAUX
 CDB$ROOT        SYSTEM
@@ -271,11 +271,11 @@ VEGEMITER       USERS
   </span>
   PDB with the following SQL command:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=plum;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">alter session</a> set container=plum;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Session altered.</pre>
+ <pre class="text">Session altered.</pre>
  <h3>
   <a name="TOC-PDB-Tablespaces-From-Fixed-Views">
   </a>
@@ -288,11 +288,11 @@ VEGEMITER       USERS
   </span>
   ) for this PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select pdb_name, tablespace_name from cdb_tablespaces inner join cdb_pdbs using (con_id) order by pdb_name, tablespace_name;</pre>
+ <pre class="sql-cmd">select pdb_name, tablespace_name from cdb_tablespaces inner join cdb_pdbs using (con_id) order by pdb_name, tablespace_name;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">PDB_NAME        TABLESPACE_NAME
+ <pre class="text">PDB_NAME        TABLESPACE_NAME
 --------------- ------------------------------
 PLUM            SYSAUX
 PLUM            SYSTEM
@@ -313,11 +313,11 @@ PLUM            USERS</pre>
   </span>
   ) for this PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select c.name as pdb_name, t.name as tablespace_name from <a href="https://docs.oracle.com/database/121/REFRN/GUID-E6BF227D-CFAA-43EB-A7C9-F0AF293FDEC0.htm" rel="nofollow">V$TABLESPACE</a> t inner join <a href="https://docs.oracle.com/database/121/REFRN/GUID-8865FE4F-C22F-4B04-BC21-A28FFFC92072.htm#REFRN30708" rel="nofollow">V$CONTAINERS</a> c using (con_id) order by pdb_name, tablespace_name;</pre>
+ <pre class="sql-cmd">select c.name as pdb_name, t.name as tablespace_name from <a href="https://docs.oracle.com/database/121/REFRN/GUID-E6BF227D-CFAA-43EB-A7C9-F0AF293FDEC0.htm" rel="nofollow">V$TABLESPACE</a> t inner join <a href="https://docs.oracle.com/database/121/REFRN/GUID-8865FE4F-C22F-4B04-BC21-A28FFFC92072.htm#REFRN30708" rel="nofollow">V$CONTAINERS</a> c using (con_id) order by pdb_name, tablespace_name;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">PDB_NAME        TABLESPACE_NAME
+ <pre class="text">PDB_NAME        TABLESPACE_NAME
 --------------- ------------------------------
 PLUM            SYSAUX
 PLUM            SYSTEM

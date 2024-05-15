@@ -118,12 +118,12 @@ table-of-contents:
   </code>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/product/12.1.0/grid/OPatch/opatch version
+ <pre class="bash-cmd">/opt/app/oracle/product/12.1.0/grid/OPatch/opatch version
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Version: 12.1.0.1.3
+ <pre class="text">OPatch Version: 12.1.0.1.3
 
 OPatch succeeded.
 </pre>
@@ -165,13 +165,13 @@ OPatch succeeded.
  <p>
   OPatch was updated as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">unzip -o /opt/share/Software/OPatch/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/grid
+ <pre class="bash-cmd">unzip -o /opt/share/Software/OPatch/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/grid
 unzip -o /opt/share/Software/OPatch/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/dbhome_1
 </pre>
  <p>
   The OPatch version is now correct:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Version: 12.2.0.1.8
+ <pre class="text">OPatch Version: 12.2.0.1.8
 
 OPatch succeeded.
 </pre>
@@ -194,7 +194,7 @@ OPatch succeeded.
  <p>
   Unzipped the patch as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">mkdir -p /opt/share/Software/grid/p24412235_121020_Linux-x86-64
+ <pre class="bash-cmd">mkdir -p /opt/share/Software/grid/p24412235_121020_Linux-x86-64
 unzip -q /tmp/p24412235_121020_Linux-x86-64.zip -d /opt/share/Software/grid/p24412235_121020_Linux-x86-64
 </pre>
  <h3>
@@ -230,12 +230,12 @@ unzip -q /tmp/p24412235_121020_Linux-x86-64.zip -d /opt/share/Software/grid/p244
  <p>
   Ran the following command to detect any patch conflicts:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/oracle/product/12.1.0/grid/OPatch/opatchauto apply /opt/share/Software/grid/p24412235_121020_Linux-x86-64/24412235 -analyze -oh /opt/app/oracle/product/12.1.0/grid
+ <pre class="bash-cmd">sudo /opt/app/oracle/product/12.1.0/grid/OPatch/opatchauto apply /opt/share/Software/grid/p24412235_121020_Linux-x86-64/24412235 -analyze -oh /opt/app/oracle/product/12.1.0/grid
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatchauto session is initiated at Tue Jan  3 20:08:39 2017
+ <pre class="text">OPatchauto session is initiated at Tue Jan  3 20:08:39 2017
 
 System initialization log file is /opt/app/oracle/product/12.1.0/grid/cfgtoollogs/opatchautodb/systemconfig2017-01-03_08-08-43PM.log.
 
@@ -271,7 +271,7 @@ Time taken to complete the session 0 minute, 17 seconds
  <p>
   The log file,  shows the following error:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">/opt/share/Software/grid/p24412235_121020_Linux-x86-64/24412235/24006101/etc/config/actions.xml (No such file or directory)
+ <pre class="text">/opt/share/Software/grid/p24412235_121020_Linux-x86-64/24412235/24006101/etc/config/actions.xml (No such file or directory)
 
 ERROR: Unable to register this patch /opt/share/Software/grid/p24412235_121020_Linux-x86-64/24412235
 OPatchAutoBinary hit Binary Exception: oracle.opatchauto.core.binary.BinarySessionException: ERROR: Unable to register this patch /opt/share/Software/grid/p24412235_121020_Linux-x86-64/24412235. Selected Patch is not valid.

@@ -84,7 +84,7 @@ table-of-contents:
   </span>
   , a new directory is created as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">CONNECT / AS SYSDBA
+ <pre class="sql-cmd">CONNECT / AS SYSDBA
 ALTER SESSION set container = emreposp;
 CREATE DIRECTORY local_dp_dir AS '/opt/app/oracle/admin/emreposp/dpdump';
 </pre>
@@ -104,7 +104,7 @@ CREATE DIRECTORY local_dp_dir AS '/opt/app/oracle/admin/emreposp/dpdump';
   </code>
   utility was updated as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;move_omr.par &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;move_omr.par &lt;&lt;DONE
 FULL=Y
 DUMPFILE=move_omr.dmp 
 DIRECTORY=local_dp_dir 
@@ -133,12 +133,12 @@ DONE
   </code>
   utility was invoked as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">impdp system@emreposp parfile=move_omr.par
+ <pre class="bash-cmd">impdp system@emreposp parfile=move_omr.par
 </pre>
  <p>
   This failed with:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Import: Release 12.1.0.2.0 - Production on Mon Sep 19 16:55:28 2016
+ <pre class="text">Import: Release 12.1.0.2.0 - Production on Mon Sep 19 16:55:28 2016
 
 Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
 Password: 
@@ -163,7 +163,7 @@ Job "SYSTEM"."SYS_IMPORT_FULL_01" stopped due to fatal error at Mon Sep 19 16:59
  <p>
   The alert log shows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Tartget db char set AL32UTF8 is not a superset of WE8MSWIN1252.
+ <pre class="text">Tartget db char set AL32UTF8 is not a superset of WE8MSWIN1252.
 Failed to plug in a tablespace due to incompatible
   database character set"AL32UTF8" and
   transportable set database character set "WE8MSWIN1252"

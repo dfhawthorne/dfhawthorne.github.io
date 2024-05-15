@@ -239,12 +239,12 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> -u oracle /opt/share/Software/grid/linuxamd64_12102/grid/runcluvfy.sh stage -pre crsinst -n redfern1
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> -u oracle /opt/share/Software/grid/linuxamd64_12102/grid/runcluvfy.sh stage -pre crsinst -n redfern1
 </pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Performing pre-checks for cluster services setup 
+<pre class="text">Performing pre-checks for cluster services setup 
 
 Checking node reachability...
 Node reachability check passed from node "redfern1"
@@ -301,7 +301,7 @@ Pre-check for cluster services setup was unsuccessful on all the nodes.
                     </a>
                     to:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # vars file for oracle_user
 # ------------------------------------------------------------------------------
 # Attributes for the ORACLE user on Linux
@@ -377,7 +377,7 @@ Pre-check for cluster services setup was unsuccessful on all the nodes.
                     </a>
                     to:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # vars file for oracle_gi
 "oracle_gi":
   "inventory_location": "/opt/app/oraInventory"
@@ -404,7 +404,7 @@ Pre-check for cluster services setup was unsuccessful on all the nodes.
                     </a>
                     with the following lines:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">#-------------------------------------------------------------------------------
+<pre class="text">#-------------------------------------------------------------------------------
 # The DBA_GROUP is the OS group which is to be granted OSDBA privileges.
 #-------------------------------------------------------------------------------
 oracle.install.asm.OSDBA={{ oracle_user.asm_groups.OSDBA.name }}
@@ -449,7 +449,7 @@ oracle.install.asm.OSASM={{ oracle_user.asm_groups.OSASM.name }}
                     </a>
                     to:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px"># --------------------- Add Linux Groups
+<pre class="text"># --------------------- Add Linux Groups
 
 - name:                 "Add Oracle Installation Group"
   <a href="http://docs.ansible.com/ansible/latest/group_module.html" rel="nofollow">group</a>: 
@@ -512,7 +512,7 @@ oracle.install.asm.OSASM={{ oracle_user.asm_groups.OSASM.name }}
                     </span>
 <br/>
                     I tried used a JSON query to construct a list of group names, But the query failed with the following message appears:
-                    <pre style="color:red">fatal: [redfern1.yaocm.id.au]: FAILED! =&gt; {"msg": "You need to install \"jmespath\" prior to running json_query filter"}</pre>
+                    <pre class="sample-error-msg">fatal: [redfern1.yaocm.id.au]: FAILED! =&gt; {"msg": "You need to install \"jmespath\" prior to running json_query filter"}</pre>
                     Unfortunately, there is an open bug report on this issue:
                     <a href="https://github.com/ansible/ansible-container/issues/749" rel="nofollow">
                      AnsibleError: You need to install \"jmespath\" prior to running json_query filter" #749
