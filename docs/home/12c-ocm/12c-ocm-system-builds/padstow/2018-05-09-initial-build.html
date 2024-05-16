@@ -4,7 +4,7 @@ title: '2018-05-09 Initial Build'
 base-url: home/12c-ocm/12c-ocm-system-builds/padstow/2018-05-09-initial-build.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCM'
   url: home/12c-ocm.html
 - title: '12C OCM System Builds'
@@ -42,179 +42,49 @@ table-of-contents:
     toc-text: 'Reconfigure NIC'
 ---
 <div dir="ltr">
- <br/>
- <h2>
-  <a name="TOC-Summary">
-  </a>
-  Summary
- </h2>
- <p>
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  has been rebuilt as the primary site for the data guard environment.
- </p>
- <h2>
-  <a name="TOC-References">
-  </a>
-  References
- </h2>
- <h3>
-  <a name="TOC-Oracle-Manuals">
-  </a>
-  Oracle Manuals
- </h3>
- <ul>
-  <li>
-   <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/index.html" rel="nofollow">
-    Oracle
-    <sup>
-     ®
-    </sup>
-    Linux Administrator's Guide for Release 6
-   </a>
-  </li>
+<h2 id="TOC-Summary">Summary</h2>
+<p><span class="host-name">PADSTOW</span> has been rebuilt as the primary site for the data guard environment.</p>
+<h2 id="TOC-References">References</h2>
+<h3 id="TOC-Oracle-Manuals">Oracle Manuals</h3>
+<ul>
+  <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/index.html" rel="nofollow">Oracle<sup>®</sup> Linux Administrator's Guide for Release 6</a></li>
   <ul>
-   <li>
-    <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_part2_adm.html" rel="nofollow">
-     Part II Networking and Network Services
-    </a>
-   </li>
+   <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_part2_adm.html" rel="nofollow">Part II Networking and Network Services</a></li>
    <ul>
-    <li>
-     <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_netconf.html" rel="nofollow">
-      Chapter 11 Network Configuration
-     </a>
-    </li>
+    <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_netconf.html" rel="nofollow">Chapter 11 Network Configuration</a></li>
     <ul>
-     <li>
-      <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02.html" rel="nofollow">
-       11.2 About Network Configuration Files
-      </a>
-     </li>
+     <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02.html" rel="nofollow">11.2 About Network Configuration Files</a></li>
      <ul>
-      <li>
-       <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s01.html" rel="nofollow">
-        11.2.1 /etc/hosts
-       </a>
-      </li>
-      <li>
-       <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s04.html" rel="nofollow">
-        11.2.4 /etc/sysconfig/network
-       </a>
-      </li>
+      <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s01.html" rel="nofollow">11.2.1 /etc/hosts</a></li>
+      <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s04.html" rel="nofollow">11.2.4 /etc/sysconfig/network</a></li>
      </ul>
-     <li>
-      <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s03.html" rel="nofollow">
-       11.3 Command-line Network Configuration Interfaces
-      </a>
-     </li>
+     <li><a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s03.html" rel="nofollow">11.3 Command-line Network Configuration Interfaces</a></li>
     </ul>
    </ul>
   </ul>
  </ul>
- <h2>
-  <a name="TOC-Procedure">
-  </a>
-  Procedure
- </h2>
- <h3>
-  <a name="TOC-Create-OVMS-Directory">
-  </a>
-  Create OVMS Directory
- </h3>
- <p>
-  On
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   VICTORIA
-  </span>
-  , I created the directory for
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  :
- </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">mkdir -p /OVS/running_pool/PADSTOW
-</pre>
- <h3>
-  <a name="TOC-Duplicate-PERSONAL-VM">
-  </a>
-  Duplicate PERSONAL VM
- </h3>
- <p>
-  On
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   VICTORIA
-  </span>
-  , I duplicated the VM image for
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PERSONAL
-  </span>
-  :
- </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cp /OVS/running_pool/PERSONAL/root_disk /OVS/running_pool/PADSTOW/
-</pre>
- <h3>
-  <a name="TOC-Allocate-VM-Resources">
-  </a>
-  Allocate VM Resources
- </h3>
- <p>
-  The following resources were updated:
- </p>
+ <h2 id="TOC-Procedure">Procedure</h2>
+ <h3 id="TOC-Create-OVMS-Directory">Create OVMS Directory</h3>
+ <p>On <span class="host-name">VICTORIA</span>, I created the directory for <span class="host-name">PADSTOW</span>:</p>
+ <pre class="bash-cmd">mkdir -p /OVS/running_pool/PADSTOW</pre>
+ <h3 id="TOC-Duplicate-PERSONAL-VM">Duplicate PERSONAL VM</h3>
+ <p>On <span class="host-name">VICTORIA</span>, I duplicated the VM image for <span class="host-name">PERSONAL</span>:</p>
+ <pre class="bash-cmd">cp /OVS/running_pool/PERSONAL/root_disk /OVS/running_pool/PADSTOW/</pre>
+ <h3 id="TOC-Allocate-VM-Resources">Allocate VM Resources</h3>
+ <p>The following resources were updated:</p>
  <ul>
-  <li>
-   <a href="home/resource-allocations/ip-addresses.html">
-    IP Addresses
-   </a>
-  </li>
-  <li>
-   <a href="home/resource-allocations/victoria-vm-resources.html">
-    Victoria VM Resources
-   </a>
-  </li>
+  <li><a href="home/resource-allocations/ip-addresses.html">IP Addresses</a></li>
+  <li><a href="home/resource-allocations/victoria-vm-resources.html">Victoria VM Resources</a></li>
  </ul>
- <h3>
-  <a name="TOC-Update-DNS">
-  </a>
-  Update DNS
- </h3>
- <p>
-  The DNS entries on
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   GRIDCTRL
-  </span>
-  were updated for:
- </p>
+ <h3 id="TOC-Update-DNS">Update DNS</h3>
+ <p>The DNS entries on <span class="host-name">GRIDCTRL</span> were updated for:</p>
  <ul>
-  <li>
-   <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-    PADSTOW
-   </span>
-  </li>
-  <li>
-   <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-    BOTANY
-   </span>
-  </li>
+  <li><span class="host-name">PADSTOW</span></li>
+  <li><span class="host-name">BOTANY</span></li>
  </ul>
- <h3>
-  <a name="TOC-Create-XEN-Configuration-File">
-  </a>
-  Create XEN Configuration File
- </h3>
- <p>
-  On
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   VICTORIA
-  </span>
-  , I created the XEN configuration file for
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  as follows:
- </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cat &gt;/OVS/running_pool/PADSTOW/padstow.cfg &lt;&lt;DONE
+ <h3 id="TOC-Create-XEN-Configuration-File">Create XEN Configuration File</h3>
+ <p>On <span class="host-name">VICTORIA</span>, I created the XEN configuration file for <span class="host-name">PADSTOW</span> as follows:</p>
+ <pre class="bash-cmd">cat &gt;/OVS/running_pool/PADSTOW/padstow.cfg &lt;&lt;DONE
 # =====================================================================
 # HVM guest configuration for PADSTOW
 # Generated $(date --rfc-3339=seconds)
@@ -260,94 +130,26 @@ vnclisten  = "0.0.0.0"
 vncdisplay = 1
 DONE
 </pre>
- <h3>
-  <a name="TOC-Start-VM">
-  </a>
-  Start VM
- </h3>
- <p>
-  On
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   VICTORIA
-  </span>
-  , I started the VM for
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  as follows:
- </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">xl create /OVS/running_pool/PADSTOW/padstow.cfg
-</pre>
- <h3>
-  <a name="TOC-Change-Hostname">
-  </a>
-  Change Hostname
- </h3>
- <p>
-  Following the procedure in “
-  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s04.html" rel="nofollow">
-   11.2.4 /etc/sysconfig/network
-  </a>
-  ”, I changed the hostname in
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   /etc/sysconfig/network
-  </span>
-  on
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  as follows (changes in
-  <span style="font-weight:bold">
-   bold
-  </span>
-  ):
- </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">NETWORKING=yes
+ <h3 id="TOC-Start-VM">Start VM</h3>
+ <p>On <span class="host-name">VICTORIA</span>, I started the VM for <span class="host-name">PADSTOW</span> as follows:</p>
+ <pre class="bash-cmd">xl create /OVS/running_pool/PADSTOW/padstow.cfg</pre>
+ <h3 id="TOC-Change-Hostname">Change Hostname</h3>
+ <p>Following the procedure in “<a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s04.html" rel="nofollow">11.2.4 /etc/sysconfig/network</a>”, I changed the hostname in
+  <span class="host-name">/etc/sysconfig/network</span> on <span class="host-name">PADSTOW</span> as follows (changes in <span style="font-weight:bold">bold</span>):</p>
+ <pre class="text">NETWORKING=yes
 <span style="font-weight:bold">HOSTNAME=padstow.yaocm.id.au</span>
 GATEWAY=192.168.1.1
 # oracle-rdbms-server-12cR1-preinstall : Add NOZEROCONF=yes
 NOZEROCONF=yes
 </pre>
- <p>
-  Following the procedure in “
-  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s01.html" rel="nofollow">
-   11.2.1 /etc/hosts
-  </a>
-  ”, I changed the hostname in
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   /etc/hosts
-  </span>
-  on
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  as follows (changes in
-  <span style="font-weight:bold">
-   bold
-  </span>
-  ):
- </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+ <p>Following the procedure in “<a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s02s01.html" rel="nofollow">11.2.1 /etc/hosts</a>”, I changed the hostname in <span class="host-name">/etc/hosts</span> on <span class="host-name">PADSTOW</span> as follows (changes in <span style="font-weight:bold">bold</span>):</p>
+ <pre class="text">127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
 <span style="font-weight:bold">192.168.1.110 padstow padstow.yaocm.id.au</span>
 </pre>
- <h3>
-  <a name="TOC-Reconfigure-NIC">
-  </a>
-  Reconfigure NIC
- </h3>
- <p>
-  Following the procedure in “
-  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s03.html" rel="nofollow">
-   11.3 Command-line Network Configuration Interfaces
-  </a>
-  ”, I changed the NIC configuration on
-  <span style="font-family:monospace;font-size:large;background-color:#f2f2f2">
-   PADSTOW
-  </span>
-  as follows:
- </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cat &gt;/etc/sysconfig/network-scripts/ifcfg-eth0 &lt;&lt;DONE
+ <h3 id="TOC-Reconfigure-NIC">Reconfigure NIC</h3>
+ <p>Following the procedure in “<a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch11s03.html" rel="nofollow">11.3 Command-line Network Configuration Interfaces</a>”, I changed the NIC configuration on <span class="host-name">PADSTOW</span> as follows:</p>
+ <pre class="text">cat &gt;/etc/sysconfig/network-scripts/ifcfg-eth0 &lt;&lt;DONE
 DEVICE=eth0
 TYPE=Ethernet
 UUID=$(uuidgen)

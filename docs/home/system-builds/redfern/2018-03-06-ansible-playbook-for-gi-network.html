@@ -4,7 +4,7 @@ title: '2018-03-06 Ansible Playbook for GI Network'
 base-url: home/system-builds/redfern/2018-03-06-ansible-playbook-for-gi-network.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -182,7 +182,7 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 - name: Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)
   hosts: redfern1.yaocm.id.au
   become: true
@@ -212,15 +212,10 @@ table-of-contents:
 </a>
                     Execute Playbook - First Attempt
                    </h3>
-<p>
-                    I tried to run the playbook as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass networks.yml 
-</pre>
-<p>
-                    The error messages were:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<p>I tried to run the playbook as follows:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass networks.yml</pre>
+<p>The error messages were:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)] ****
 
@@ -235,30 +230,10 @@ PLAY RECAP *********************************************************************
 <span style="color:red">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=1</span>    changed=0    unreachable=0    <span style="color:red">failed=1</span>   
 
 </pre>
-<h3>
-<a name="TOC-Amend-Playbook">
-</a>
-                    Amend Playbook
-                   </h3>
-<p>
-                    One of the exmaples given in
-                    <a href="http://docs.ansible.com/ansible/latest/nmcli_module.html" rel="nofollow">
-                     nmcli - Manage Networking
-                    </a>
-                    had a possible solution.
-                   </p>
-<p>
-                    The playbook,
-                    <span style="font-family:monospace">
-                     networks.yml
-                    </span>
-                    . was amended to (changes are in
-                    <span style="font-weight:bold">
-                     bold
-                    </span>
-                    ):
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<h3 id="TOC-Amend-Playbook">Amend Playbook</h3>
+<p>One of the exmaples given in <a href="http://docs.ansible.com/ansible/latest/nmcli_module.html" rel="nofollow">nmcli - Manage Networking</a> had a possible solution.</p>
+<p>The playbook, <span style="font-family:monospace">networks.yml</span>, was amended to (changes are in <span style="font-weight:bold">bold</span>):</p>
+<pre class="text">---
 - name: Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)
   hosts: redfern1.yaocm.id.au
   become: true
@@ -294,20 +269,11 @@ PLAY RECAP *********************************************************************
       
 ...
 </pre>
-<h3>
-<a name="TOC-Execute-Playbook---Second-Attempt">
-</a>
-                    Execute Playbook - Second Attempt
-                   </h3>
-<p>
-                    I tried to run the playbook as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass networks.yml 
-</pre>
-<p>
-                    The error messages were:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<h3 id="TOC-Execute-Playbook---Second-Attempt">Execute Playbook - Second Attempt</h3>
+<p>I tried to run the playbook as follows:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass networks.yml</pre>
+<p>The error messages were:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)] ****
 
@@ -322,46 +288,16 @@ PLAY RECAP *********************************************************************
 <span style="color:red">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=1</span>    changed=0    unreachable=0   <span style="color:red"> failed=1</span>   
 
 </pre>
-<h3>
-<a name="TOC-Investigation">
-</a>
-                    Investigation
-                   </h3>
-<p>
-                    The error message from the second attempt said that package, 'libnm-qt-devel.x86_64', could not be found.
-                   </p>
-<p>
-                    According to
-                    <a href="https://stackoverflow.com/questions/36318896/ansible-to-create-nic-bonding/36319063#36319063" rel="nofollow">
-                     Ansible to create NIC bonding
-                    </a>
-                    , I should install the following packages:
-                   </p>
+<h3 id="TOC-Investigation">Investigation</h3>
+<p>The error message from the second attempt said that package, 'libnm-qt-devel.x86_64', could not be found.</p>
+<p>According to <a href="https://stackoverflow.com/questions/36318896/ansible-to-create-nic-bonding/36319063#36319063" rel="nofollow">Ansible to create NIC bonding</a>, I should install the following packages:</p>
 <ol>
-<li style="font-family:monospace">
-                     NetworkManager-glib
-                    </li>
-<li style="font-family:monospace">
-                     pygobject2
-                    </li>
+   <li style="font-family:monospace">NetworkManager-glib</li>
+   <li style="font-family:monospace">pygobject2</li>
 </ol>
-<h3>
-<a name="TOC-Update-Package-List-in-Playbook">
-</a>
-                    Update Package List in Playbook
-                   </h3>
-<p>
-                    Instead of installing both of these packages, I decided to take one (1) at a time, starting with
-                    <span style="font-family:monospace">
-                     NetworkManager-glib
-                    </span>
-                    . The playbook,
-                    <span style="font-family:monospace">
-                     networks.yml
-                    </span>
-                    . was amended to :
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<h3 id="TOC-Update-Package-List-in-Playbook">Update Package List in Playbook</h3>
+<p>Instead of installing both of these packages, I decided to take one (1) at a time, starting with <span style="font-family:monospace">NetworkManager-glib</span>. The playbook, <span style="font-family:monospace">networks.yml</span>. was amended to :</p>
+<pre class="text">---
 - name: Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)
   hosts: redfern1.yaocm.id.au
   become: true
@@ -393,20 +329,11 @@ PLAY RECAP *********************************************************************
       
 ...
 </pre>
-<h3>
-<a name="TOC-Execute-Playbook---Third-Attempt">
-</a>
-                    Execute Playbook - Third Attempt
-                   </h3>
-<p>
-                    I tried to run the playbook as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass networks.yml 
-</pre>
-<p>
-                    The error messages were:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<h3 id="TOC-Execute-Playbook---Third-Attempt">Execute Playbook - Third Attempt</h3>
+<p>I tried to run the playbook as follows:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass networks.yml</pre>
+<p>The error messages were:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)] ****
 
@@ -427,20 +354,14 @@ PLAY RECAP *********************************************************************
 <span style="color:red">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=3</span>    <span style="color:orange">changed=2</span>    unreachable=0    <span style="color:red">failed=1</span>   
 
 </pre>
-<h3>
-<a name="TOC-Execute-Playbook---Fourth-Attempt">
-</a>
-                    Execute Playbook - Fourth Attempt
-                   </h3>
-<p>
-                    I tried to run the playbook as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass networks.yml 
+<h3 id="TOC-Execute-Playbook---Fourth-Attempt">Execute Playbook - Fourth Attempt</h3>
+<p>I tried to run the playbook as follows:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass networks.yml 
 </pre>
 <p>
                     The error messages were:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Networking)] ****
 
@@ -461,21 +382,9 @@ PLAY RECAP *********************************************************************
 <span style="color:red">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=3</span>    <span style="color:orange">changed=1</span>    unreachable=0    <span style="color:red">failed=1</span>   
 
 </pre>
-<h2>
-<a name="TOC-Conclusion">
-</a>
-                    Conclusion
-                   </h2>
-<p>
-                    I do not understand enough about the
-                    <a href="http://docs.ansible.com/ansible/latest/nmcli_module.html" rel="nofollow">
-                     nmcli - Manage Networking
-                    </a>
-                    Ansible module to know what is going on.
-                   </p>
-<p>
-                    I will have to configure the network interfaces by hand.
-                   </p>
+<h2 id="TOC-Conclusion">Conclusion</h2>
+<p>I do not understand enough about the <a href="http://docs.ansible.com/ansible/latest/nmcli_module.html" rel="nofollow">nmcli - Manage Networking</a> Ansible module to know what is going on.</p>
+<p>I will have to configure the network interfaces by hand.</p>
 
 </div>
 <!-- {% endraw %} -->

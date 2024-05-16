@@ -4,7 +4,7 @@ title: 'Clone PDB from Unplugged PDB'
 base-url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/clone-pdb-from-unplugged-pdb.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCM'
   url: home/12c-ocm.html
 - title: 'General Database and Network Administration, and Backup Strategy'
@@ -199,11 +199,11 @@ table-of-contents:
  <p>
   Set the database environment to the JAM instance as follows:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">. oraenv</pre>
+ <pre class="bash-cmd">. oraenv</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">ORACLE_SID = [ocm12c] ? jar
+ <pre class="text">ORACLE_SID = [ocm12c] ? jar
 The Oracle base remains unchanged with value /opt/app/oracle</pre>
  <h3>
   <a name="TOC-Start-SQL-Plus-Session">
@@ -213,11 +213,11 @@ The Oracle base remains unchanged with value /opt/app/oracle</pre>
  <p>
   Start a SQL*Plus session as follows:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sqlplus / as sysdba</pre>
+ <pre class="bash-cmd">sqlplus / as sysdba</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">SQL*Plus: Release 12.1.0.2.0 Production on Wed Oct 23 13:36:21 2019
+ <pre class="text">SQL*Plus: Release 12.1.0.2.0 Production on Wed Oct 23 13:36:21 2019
 
 Copyright (c) 1982, 2014, Oracle.  All rights reserved.
 
@@ -230,11 +230,11 @@ Connected to an idle instance.</pre>
  <p>
   Run the following SQL command to start the JAM instance:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a></pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQPUG/ch_twelve045.htm#SQPUG128" rel="nofollow">startup</a></pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">ORACLE instance started.
+ <pre class="text">ORACLE instance started.
 
 Total System Global Area 1543503872 bytes
 Fixed Size                  2924736 bytes
@@ -251,11 +251,11 @@ Database opened.</pre>
  <p>
   Run the following SQL query to what the state of all the PDBs are:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select name, open_mode from <a href="https://docs.oracle.com/database/121/REFRN/GUID-A399F608-36C8-4DF0-9A13-CEE25637653E.htm#REFRN30652" rel="nofollow">V$PDBS</a>;</pre>
+ <pre class="sql-cmd">select name, open_mode from <a href="https://docs.oracle.com/database/121/REFRN/GUID-A399F608-36C8-4DF0-9A13-CEE25637653E.htm#REFRN30652" rel="nofollow">V$PDBS</a>;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE
+ <pre class="text">NAME                           OPEN_MODE
 ------------------------------ ----------
 PDB$SEED                       READ ONLY
 PLUM                           READ WRITE
@@ -277,11 +277,11 @@ VEGEMITER                      READ WRITE</pre>
  <p>
   Run the following SQL command to unplug the JAM PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam unplug into 'jam.xml';</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam unplug into 'jam.xml';</pre>
  <p>
   The command failed with the following errors:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">alter pluggable database jam unplug into 'jam.xml'
+ <pre class="text">alter pluggable database jam unplug into 'jam.xml'
 *
 ERROR at line 1:
 <a href="https://docs.oracle.com/database/121/ERRMG/ORA-60001.htm#GUID-9B78A028-D760-4810-9CFC-9013FBD1FCC9__GUID-0AA303A6-2499-47D7-8F11-AAD00A18B230" rel="nofollow">ORA-65025</a>: Pluggable database JAM is not closed on all instances.
@@ -297,11 +297,11 @@ ERROR at line 1:
  <p>
   Run the following SQL command to close the JAM PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam close;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam close;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database altered.</pre>
+ <pre class="text">Pluggable database altered.</pre>
  <h3>
   <a name="TOC-Unplug-JAM-PDB">
   </a>
@@ -310,11 +310,11 @@ ERROR at line 1:
  <p>
   Run the following SQL command to unplug the JAM PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam unplug into 'jam.xml';</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam unplug into 'jam.xml';</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database altered.</pre>
+ <pre class="text">Pluggable database altered.</pre>
  <h3>
   <a name="TOC-Attempt-to-Plug-JAM-PDB-back-In">
   </a>
@@ -323,11 +323,11 @@ ERROR at line 1:
  <p>
   Run the following SQL command to plug the JAM PDB back in as a clone:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6010.htm#SQLRF55686" rel="nofollow">create pluggable database</a> jam as clone using 'jam.xml';</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6010.htm#SQLRF55686" rel="nofollow">create pluggable database</a> jam as clone using 'jam.xml';</pre>
  <p>
   The command failed with the following errors:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">create pluggable database jam as clone using 'jam.xml'
+ <pre class="text">create pluggable database jam as clone using 'jam.xml'
 *
 ERROR at line 1:
 <a href="https://docs.oracle.com/database/121/ERRMG/ORA-60001.htm#GUID-9B78A028-D760-4810-9CFC-9013FBD1FCC9__GUID-57176DA6-6098-4970-B614-B7729FF7D841" rel="nofollow">ORA-65012</a>: Pluggable database JAM already exists.
@@ -343,11 +343,11 @@ ERROR at line 1:
  <p>
   Run the following SQL command to drop the JAM PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_8028.htm#SQLRF55699" rel="nofollow">drop pluggable database</a> jam;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_8028.htm#SQLRF55699" rel="nofollow">drop pluggable database</a> jam;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database dropped.</pre>
+ <pre class="text">Pluggable database dropped.</pre>
  <h3>
   <a name="TOC-See-Current-State-of-PDBs1">
   </a>
@@ -356,11 +356,11 @@ ERROR at line 1:
  <p>
   Run the following SQL query to what the state of all the PDBs are:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select name, open_mode from <a href="https://docs.oracle.com/database/121/REFRN/GUID-A399F608-36C8-4DF0-9A13-CEE25637653E.htm#REFRN30652" rel="nofollow">V$PDBS</a>s</pre>
+ <pre class="sql-cmd">select name, open_mode from <a href="https://docs.oracle.com/database/121/REFRN/GUID-A399F608-36C8-4DF0-9A13-CEE25637653E.htm#REFRN30652" rel="nofollow">V$PDBS</a>s</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE
+ <pre class="text">NAME                           OPEN_MODE
 ------------------------------ ----------
 PDB$SEED                       READ ONLY
 PLUM                           READ WRITE
@@ -378,11 +378,11 @@ VEGEMITER                      READ WRITE
  <p>
   Run the following SQL query to confirm JAM PDB has been removed:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select pdb_name,status from <a href="https://docs.oracle.com/database/121/REFRN/GUID-439126EA-A6B6-45B8-AAFA-37EE4356BBEF.htm" rel="nofollow">DBA_PDBS</a>;</pre>
+ <pre class="sql-cmd">select pdb_name,status from <a href="https://docs.oracle.com/database/121/REFRN/GUID-439126EA-A6B6-45B8-AAFA-37EE4356BBEF.htm" rel="nofollow">DBA_PDBS</a>;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">PDB_NAME  STATUS
+ <pre class="text">PDB_NAME  STATUS
 --------- ------
 PDB$SEED  NORMAL
 PLUM      NORMAL
@@ -397,11 +397,11 @@ VEGEMITER NORMAL
  <p>
   Run the following SQL command to plug the unplugged JAM PDB back in as clone called JAM0:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6010.htm#SQLRF55686" rel="nofollow">create pluggable database</a> jam0 as clone using 'jam.xml';</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6010.htm#SQLRF55686" rel="nofollow">create pluggable database</a> jam0 as clone using 'jam.xml';</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database created.</pre>
+ <pre class="text">Pluggable database created.</pre>
  <h3>
   <a name="TOC-Clone-Unplugged-JAM-PDB-as-JAM1">
   </a>
@@ -410,11 +410,11 @@ VEGEMITER NORMAL
  <p>
   Run the following SQL command to plug the unplugged JAM PDB back in as clone called JAM1:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6010.htm#SQLRF55686" rel="nofollow">create pluggable database</a> jam1 as clone using 'jam.xml'</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_6010.htm#SQLRF55686" rel="nofollow">create pluggable database</a> jam1 as clone using 'jam.xml'</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database created.</pre>
+ <pre class="text">Pluggable database created.</pre>
  <h3>
   <a name="TOC-Opem-Cloned-PDBs-As-Read-Write">
   </a>
@@ -423,11 +423,11 @@ VEGEMITER NORMAL
  <p>
   Run the following SQL command to opem cloned PDBs as read/write:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam0, jam1 open;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam0, jam1 open;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database altered.</pre>
+ <pre class="text">Pluggable database altered.</pre>
  <h3>
   <a name="TOC-See-Current-State-of-PDBs2">
   </a>
@@ -436,11 +436,11 @@ VEGEMITER NORMAL
  <p>
   Run the following SQL query to what the state of all the PDBs are:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select name, open_mode from <a href="https://docs.oracle.com/database/121/REFRN/GUID-A399F608-36C8-4DF0-9A13-CEE25637653E.htm#REFRN30652" rel="nofollow">V$PDBS</a>;</pre>
+ <pre class="sql-cmd">select name, open_mode from <a href="https://docs.oracle.com/database/121/REFRN/GUID-A399F608-36C8-4DF0-9A13-CEE25637653E.htm#REFRN30652" rel="nofollow">V$PDBS</a>;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">NAME                           OPEN_MODE
+ <pre class="text">NAME                           OPEN_MODE
 ------------------------------ ----------
 PDB$SEED                       READ ONLY
 PLUM                           READ WRITE
@@ -458,9 +458,9 @@ JAM1                           READ WRITE
  <p>
   Run the following SQL command to save the current open mode of these new PDBs (JAM0 and JAM1):
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam0, jam1 save state;</pre>
+ <pre class="sql-cmd"><a href="https://docs.oracle.com/database/121/SQLRF/statements_2008.htm#SQLRF55667" rel="nofollow">alter pluggable database</a> jam0, jam1 save state;</pre>
  <p>
   The expected output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Pluggable database altered.</pre>
+ <pre class="text">Pluggable database altered.</pre>
 </div>

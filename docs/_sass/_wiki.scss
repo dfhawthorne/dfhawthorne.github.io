@@ -1,0 +1,301 @@
+/* -------------------------------------------------------------------------- *
+ * Page layout is:
+ * BODY is a 5 x 2 grid layout:
+ *   DIV.banner
+ *   NAV | HEADER
+ *   NAV | MAIN
+ *   NAV | FOOTER
+ *   NAV | (empty)
+ * -------------------------------------------------------------------------- */
+
+/* -------------------------------------------------------------------------- *
+ * Page body sets defaults for all elements
+ * -------------------------------------------------------------------------- */
+
+body {
+    color:                 #333;
+    direction:               ltr;
+    font-family:             Arial, Verdana, sans-serif;
+    font-size:               10pt;
+    font-weight:             normal;
+    margin-left:             5px;
+    margin-right:            5px;
+    overflow:                scroll;
+}
+
+/* -------------------------------------------------------------------------- *
+ * Major components of the page
+ * -------------------------------------------------------------------------- */
+
+.grid-two-column {
+    display:                 grid;
+    grid-template-columns:   200px auto;
+}
+
+.banner {
+    background-color:      deepskyblue;
+    font-size:               40px;
+    font-weight:             bolder;
+    grid-column:             1 / span 2;
+    grid-row:                1;
+    height:                  48px;
+    margin:                  auto;
+    padding:                 8px;
+    width:                   100%;
+}
+
+nav {
+    grid-column:             1;
+    grid-row:                2 / span 4;
+}
+
+header {
+    display: inline-grid;
+    grid-column:             2;
+    grid-row:                2;
+    grid-template-columns:   auto;
+    width:                   100%;
+}
+
+main {
+    grid-column:             2;
+    grid-row:                3;
+    overflow:                scroll;
+}
+
+footer {
+    grid-column:             2;
+    grid-row:                4;
+}
+
+/* -------------------------------------------------------------------------- *
+ * Specialist CSS for Naigation bar.
+ * -------------------------------------------------------------------------- */
+
+.nav-leaf {
+    padding-left:            12px;
+}
+
+ nav ul {
+    list-style-type:         none;
+    margin-left:             10px;
+    padding-left:            0;
+}
+
+/* -------------------------------------------------------------------------- *
+ * Components of the HEADER
+ * -------------------------------------------------------------------------- */
+
+h1 {
+    font-size:               20px;
+    font-weight:             bolder;
+    margin:                  auto;
+    min-height:              24px;
+    padding:                 8px;
+    text-align:              center;
+}
+
+.top_scroll_bar {
+    color:                   #336699;
+    display:                 block;
+}
+
+.left_scroll_link {
+    color:                   #336699;
+    display:                 block;
+    float:                   left;
+    text-align:              left;
+    width:                   50%;
+}
+
+.right_scroll_link {
+    color:                   #336699;
+    display:                 block;
+    float:                   right;
+    text-align:              right;
+    width:                   50%;
+}
+
+search {
+    color:                   #336699;
+    display:                 block;
+    float:                   right;
+    padding-bottom:          10px;
+    padding-right:           10px;
+    padding-top:             10px;
+    text-align:              right;
+    width:                   100%;
+}
+
+.table-of-contents {
+    background:              none;
+    border:                  1px solid #ccc;
+    font-size:               12px;
+    line-height:             1.5em;
+    margin-bottom:           5px;
+    text-align:              left;
+    width:                   100%;
+
+    p {
+        font-weight:         bold;
+        margin:              0;
+        padding:             4px 5px 0;
+    }
+
+    ol {
+        list-style-type:     none;
+        margin-left:         10px;
+        padding-left:        0;
+    }
+}
+
+/* -------------------------------------------------------------------------- *
+ * Specialist classes for MAIN content
+ * -------------------------------------------------------------------------- */
+
+code {
+    color:                   #006000;
+}
+
+div.goog-toc p {
+    font-weight:             bold;
+    margin:                  0;
+    padding:                 4px 5px 0;
+}
+
+div.goog-toc {
+    background:              none;
+    border:                  1px solid #ccc;
+}
+
+pre.bash-cmd {
+    border:                  5px groove black;
+    margin-left:             10px;
+    padding:                 2px;
+    background-color:      rgba(144, 238, 144, 0.516);
+}
+
+pre.rman-cmd {
+    border:                  5px groove black;
+    margin-left:             10px;
+    padding:                 2px;
+    background-color:      palegoldenrod;
+}
+
+pre.sample-error-msg {
+    color:                 red;
+    border:                  5px groove black;
+    margin-left:             10px;
+    padding:                 2px;
+}
+
+pre.sample-text {
+    background-color:      lightgrey;
+    border:                  5px groove black;
+    margin-left:             10px;
+    padding:                 2px;
+}
+            
+pre.sql-cmd {
+    background-color:      #ddf87c89;
+    border:                  5px groove black;
+    margin-left:             10px;
+    padding:                 2px;
+}
+        
+pre.text {
+    background-color:      #cbe7f67c;
+    border:                  5px groove black;
+    margin-left:             10px;
+    padding:                 2px;
+}
+
+span.file-name {
+    font-family:             monospace;
+}
+
+span.menu-text {
+    background-color:      honeydew;
+    font-weight:             bold;
+}
+
+span.button-text {
+    font-style:              italic;
+    background-color:      honeydew;
+}
+
+.host-name {
+    background-color:      #f2f2f2;
+    font-family:             monospace;
+    font-size:               large;
+}
+
+.user-name {
+    background-color:      #f2f2f2;
+    font-family:             monospace;
+    font-size:               large;
+}
+
+a.file-name {
+    font-family:             monospace;
+}
+
+/* -------------------------------------------------------------------------- *
+ * Components of the FOOTER
+ * -------------------------------------------------------------------------- */
+
+div.file-download {
+    display:                 block;
+}
+
+.page-footer {
+    font-size:               small;
+    text-decoration:         none;
+}
+
+.bottom_scroll_bar {
+    display:                 block;
+    color:                 #336699;
+}
+
+.sub-pages {
+    display:                 block;
+    font-size:               12px;
+}
+
+.sub-pages-menu {
+    border:                  4px double #ccc;
+
+    div {
+        margin:              5px auto 5px 5px;
+        overflow:            hidden;
+        padding-bottom:      0;
+        width:               auto;
+    }
+
+    li {
+        border:              0 none white;
+        color:             #336699;
+        overflow:            hidden;
+        text-decoration:     none;
+        text-overflow:       ellipsis;
+    }
+
+    ul {
+        border:              0 none white;
+        color:             #333;
+        line-height:         1.5em;
+        list-style-type:     none;
+        margin-left:         10px;
+        overflow:            hidden;
+        padding-left:        0;
+    }
+
+    p {
+        border:              0 none white;
+        color:             #383838;
+        font-weight:         bold;
+        margin:              0;
+        padding:             3px 5px;
+    }
+}

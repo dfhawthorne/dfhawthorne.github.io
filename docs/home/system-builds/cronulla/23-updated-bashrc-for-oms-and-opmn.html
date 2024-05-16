@@ -1,0 +1,62 @@
+---
+layout: default
+title: '23 Updated .bashrc for OMS and OPMN'
+base-url: home/system-builds/cronulla/2020-01-28-updated-bashrc-for-oms-and-opmn.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'System Builds'
+  url: home/system-builds.html
+- title: 'CRONULLA'
+  url: home/system-builds/cronulla.html
+scroll-bar:
+  left-link:
+    url: home/system-builds/cronulla/22-replace-omr.html
+    title: '22 Replace OMR'
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+---
+<div dir="ltr">
+<h2>
+<a name="TOC-Overview">
+</a>
+  Overview
+ </h2>
+<p>
+  In order to my experience as the
+  <span style="font-family:monospace;background-color:#e6e6e6">
+   oracle
+  </span>
+  user, I have updated
+  <span style="font-family:monospace;background-color:#e6e6e6">
+   .bashrc
+  </span>
+  with the appropriate configuration settings.
+ </p>
+<h2>
+<a name="TOC-Procedure">
+</a>
+  Procedure
+ </h2>
+<p>
+  Ran the following command as the
+  <span style="font-family:monospace;background-color:#e6e6e6">
+   oracle
+  </span>
+  user:
+ </p>
+<pre class="bash-cmd">cat &gt;&gt;.bashrc &lt;&lt;DONE
+# Set up environment for Oracle products
+export ORACLE_BASE=/opt/app/oracle
+# Set up environment for OMS
+export ORACLE_HOME=${ORACLE_BASE}/middleware/oms
+export PATH=${PATH}:${ORACLE_HOME}/bin
+# Set up environment for OPMN
+export ORACLE_INSTANCE=${ORACLE_BASE}/gc_inst/WebTierIH1
+export PATH=${PATH}:${ORACLE_INSTANCE}/bin
+DONE</pre>
+<br/>
+</div>

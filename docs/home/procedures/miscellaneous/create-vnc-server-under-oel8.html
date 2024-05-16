@@ -4,7 +4,7 @@ title: 'Create VNC Server under OEL8'
 base-url: home/procedures/miscellaneous/create-vnc-server-under-oel8.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'Procedures'
   url: home/procedures.html
 - title: 'Miscellaneous'
@@ -90,11 +90,11 @@ table-of-contents:
 <p>
                     Run the following command to ensure that the right packages have been installed for the GUI environment:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo dnf groupinstall "Server with GUI" -y</pre>
+<pre class="bash-cmd">sudo dnf groupinstall "Server with GUI" -y</pre>
 <p>
                     If the correct packages for a GUI environment have been installed already, the output should be similar to the following:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<pre class="text">[sudo] password for douglas: 
 Oracle Linux 8 BaseOS Latest (x86_64)           9.5 kB/s | 2.7 kB     00:00    
 Oracle Linux 8 Application Stream (x86_64)       20 kB/s | 2.9 kB     00:00    
 Latest Unbreakable Enterprise Kernel Release 6   17 kB/s | 2.5 kB     00:00    
@@ -141,12 +141,12 @@ Complete!</pre>
 <p>
                     Run the following command to ensure that the server boots into graphical mode:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo systemctl set-default graphical
+<pre class="bash-cmd">sudo systemctl set-default graphical
 </pre>
 <p>
                     The expected output is:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<pre class="text">[sudo] password for douglas: 
 Removed /etc/systemd/system/default.target.
 Created symlink /etc/systemd/system/default.target → /usr/lib/systemd/system/graphical.target.</pre>
 <h3>
@@ -157,7 +157,7 @@ Created symlink /etc/systemd/system/default.target → /usr/lib/systemd/system/g
 <p>
                     Run the following command to boot the server do that it is now in graphical mode:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo reboot
+<pre class="bash-cmd">sudo reboot
 </pre>
 <h3>
 <a name="TOC-Install-the-VNC-Packages">
@@ -167,11 +167,11 @@ Created symlink /etc/systemd/system/default.target → /usr/lib/systemd/system/g
 <p>
                     Run the following command to install the VNC server packages:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo dnf install -y tigervnc-server tigervnc-server-module</pre>
+<pre class="bash-cmd">sudo dnf install -y tigervnc-server tigervnc-server-module</pre>
 <p>
                     The output should be similar to the following:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<pre class="text">[sudo] password for douglas: 
 Oracle Linux 8 BaseOS Latest (x86_64)            16 kB/s | 2.7 kB     00:00    
 Oracle Linux 8 Application Stream (x86_64)       22 kB/s | 2.9 kB     00:00    
 Latest Unbreakable Enterprise Kernel Release 6   18 kB/s | 2.5 kB     00:00    
@@ -220,11 +220,11 @@ Complete!
 <p>
                     Run the following command to set the VNC password for the user running the command:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">vncpasswd</pre>
+<pre class="bash-cmd">vncpasswd</pre>
 <p>
                     The output should be similar to the following:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Password:
+<pre class="text">Password:
 Verify:
 Would you like to enter a view-only password (y/n)? n
 A view-only password is not used</pre>
@@ -240,7 +240,7 @@ A view-only password is not used</pre>
                     </span>
                     :
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo bash
+<pre class="bash-cmd">sudo bash
 cat &gt;/etc/systemd/system/vncserver@.service &lt;&lt;DONE
 [Unit]
 Description=Remote Desktop VNC Service
@@ -264,19 +264,19 @@ DONE
 <p>
                     Reload Systemd as follows:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo systemctl daemon-reload</pre>
+<pre class="bash-cmd">sudo systemctl daemon-reload</pre>
 <p>
                     Enable and start the VNC server by using X Server display 1:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo systemctl enable --now vncserver@:1.service</pre>
+<pre class="bash-cmd">sudo systemctl enable --now vncserver@:1.service</pre>
 <p>
                     If the command works, the following output should be seen:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Created symlink /etc/systemd/system/multi-user.target.wants/vncserver@:1.service → /etc/systemd/system/vncserver@.service.</pre>
+<pre class="text">Created symlink /etc/systemd/system/multi-user.target.wants/vncserver@:1.service → /etc/systemd/system/vncserver@.service.</pre>
 <p>
                     However if the command fails, the following output may be seen:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Created symlink /etc/systemd/system/multi-user.target.wants/vncserver@:1.service → /etc/systemd/system/vncserver@.service.
+<pre class="text">Created symlink /etc/systemd/system/multi-user.target.wants/vncserver@:1.service → /etc/systemd/system/vncserver@.service.
 Job for vncserver@:1.service failed because the control process exited with error code.
 See "systemctl status vncserver@:1.service" and "journalctl -xe" for details.
 </pre>
@@ -287,7 +287,7 @@ See "systemctl status vncserver@:1.service" and "journalctl -xe" for details.
                     </code>
                     showed:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px"><font color="#EF2929"><b>●</b></font> vncserver@:1.service - Remote Desktop VNC Service
+<pre class="text"><font color="#EF2929"><b>●</b></font> vncserver@:1.service - Remote Desktop VNC Service
    Loaded: loaded (/etc/systemd/system/vncserver@.service; enabled; vendor preset: disabled)
    Active: <font color="#EF2929"><b>failed</b></font> (Result: exit-code) since Wed 2020-04-08 06:40:29 EDT; 1min 15s ago
   Process: 6874 ExecStart=/usr/bin/vncserver -autokill :1 <font color="#EF2929"><b>(code=exited, status=1/FAILURE)</b></font>
@@ -310,7 +310,7 @@ Apr 08 06:40:29 airds.yaocm.id.au systemd[1]: <font color="#EF2929"><b>Failed to
 <p>
                     The remedy was:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">vncpasswd
+<pre class="bash-cmd">vncpasswd
 sudo systemctl start vncserver@:1.service</pre>
 <h3>
 <a name="TOC-Configure-Firewall-Rules">
@@ -330,12 +330,12 @@ sudo systemctl start vncserver@:1.service</pre>
 <p>
                     Enable the firewall port for the VNC service and reload the default firewall service as follows:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sudo firewall-cmd --zone=public --add-service=vnc-server --permanent
+<pre class="bash-cmd">sudo firewall-cmd --zone=public --add-service=vnc-server --permanent
 sudo firewall-cmd --reload
 </pre>
 <p>
                     Both of these commands should return:
                    </p>
-<pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">success</pre>
+<pre class="text">success</pre>
 </div>
 <!-- {% endraw %} -->

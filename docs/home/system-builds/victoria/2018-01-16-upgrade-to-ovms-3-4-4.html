@@ -4,7 +4,7 @@ title: '2018-01-16 Upgrade to OVMS 3.4.4'
 base-url: home/system-builds/victoria/2018-01-16-upgrade-to-ovms-3-4-4.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'Victoria'
@@ -297,7 +297,7 @@ table-of-contents:
 <p>
                     These were backed up, along with the ISO images, using the following commands:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> -cvzf running_pool.tgz /OVS/running_pool
+<pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> -cvzf running_pool.tgz /OVS/running_pool
 <a href="http://man7.org/linux/man-pages/man1/tar.1.html" rel="nofollow">tar</a> -cvzf iso_pool.tgz /OVS/iso_pool
 </pre>
 <p>
@@ -380,11 +380,11 @@ table-of-contents:
                     </span>
                     file-system. First, are there any available partitions?
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man8/parted.8.html" rel="nofollow">parted</a> /dev/sda</pre>
+<pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man8/parted.8.html" rel="nofollow">parted</a> /dev/sda</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">GNU Parted 2.1
+<pre class="text">GNU Parted 2.1
 Using /dev/sda
 Welcome to GNU Parted! Type 'help' to view a list of commands.
 (parted) print                                                            
@@ -427,11 +427,11 @@ Number  Start   End     Size    Type     File system     Flags
 <p>
                     Are these two (2) file-systems in use? That is, are they already mounted?
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man8/mount.8.html" rel="nofollow">mount</a> -l | <a href="http://man7.org/linux/man-pages/man1/grep.1.html" rel="nofollow">grep</a> "/dev/sda"</pre>
+<pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man8/mount.8.html" rel="nofollow">mount</a> -l | <a href="http://man7.org/linux/man-pages/man1/grep.1.html" rel="nofollow">grep</a> "/dev/sda"</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">/dev/sda2 on / type ext4 (rw)
+<pre class="text">/dev/sda2 on / type ext4 (rw)
 /dev/sda1 on /boot type ext4 (rw)
 </pre>
 <p>
@@ -453,11 +453,11 @@ Number  Start   End     Size    Type     File system     Flags
                     </span>
                     is available, I attempted to initialise that partition for use as follows:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man8/mkfs.8.html" rel="nofollow">mkfs</a>  -t ext4 /dev/sda4</pre>
+<pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man8/mkfs.8.html" rel="nofollow">mkfs</a>  -t ext4 /dev/sda4</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">mke2fs 1.43-WIP (20-Jun-2013)
+<pre class="text">mke2fs 1.43-WIP (20-Jun-2013)
 /dev/sda4 is apparently in use by the system; will not make a filesystem here!</pre>
 <h3>
 <a name="TOC-Investigation-of-Error-Message">
@@ -471,11 +471,11 @@ Number  Start   End     Size    Type     File system     Flags
                     </a>
                     , I ran the following command:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man8/fdisk.8.html" rel="nofollow">fdisk</a> -l</pre>
+<pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man8/fdisk.8.html" rel="nofollow">fdisk</a> -l</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">Disk /dev/sda: 1000.2 GB, 1000204886016 bytes
+<pre class="text">Disk /dev/sda: 1000.2 GB, 1000204886016 bytes
 255 heads, 63 sectors/track, 121601 cylinders
 Units = cylinders of 16065 * 512 = 8225280 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -499,11 +499,11 @@ Disk identifier: 0x00000000
 <p>
                     The second disk mentioned looks like a likely candidate:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">ls -l /dev/mapper/OVM_SYS_REPO_PART_35000c50040068cd3</pre>
+<pre class="bash-cmd">ls -l /dev/mapper/OVM_SYS_REPO_PART_35000c50040068cd3</pre>
 <p>
                     The output was:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">lrwxrwxrwx 1 root root 7 Jan  5 08:14 /dev/mapper/OVM_SYS_REPO_PART_35000c50040068cd3 -&gt; ../dm-0
+<pre class="text">lrwxrwxrwx 1 root root 7 Jan  5 08:14 /dev/mapper/OVM_SYS_REPO_PART_35000c50040068cd3 -&gt; ../dm-0
 </pre>
 <p>
                     So, I have a multipath device set up.

@@ -4,7 +4,7 @@ title: 'Use EM Express'
 base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/enterprise-manager-and-other-tools/use-em-express.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 1: New Features of Oracle Database 12c'
@@ -121,7 +121,7 @@ table-of-contents:
   </span>
   to see if EM Express was configured:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     dbms_xdb_config.gethttpsport,
     dbms_xdb_config.gethttpport
 FROM
@@ -130,7 +130,7 @@ FROM
  <p>
   The result was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">GETHTTPSPORT GETHTTPPORT
+ <pre class="text">GETHTTPSPORT GETHTTPPORT
 ------------ -----------
            0           0
 </pre>
@@ -153,12 +153,12 @@ FROM
   </span>
   to configure EM Express:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">EXEC dbms_xdb_config.sethttpsport(5500)
+ <pre class="sql-cmd">EXEC dbms_xdb_config.sethttpsport(5500)
 </pre>
  <p>
   The result was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <h2>
   <a name="TOC-Verify-EM-Express-Configuration">
@@ -176,7 +176,7 @@ FROM
   </span>
   to see if EM Express was configured correctly:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; SELECT
+ <pre class="sql-cmd">SQL&gt; SELECT
     dbms_xdb_config.gethttpsport,
     dbms_xdb_config.gethttpport
 FROM
@@ -185,7 +185,7 @@ FROM
  <p>
   The result was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">GETHTTPSPORT GETHTTPPORT
+ <pre class="text">GETHTTPSPORT GETHTTPPORT
 ------------ -----------
         5500           0
 </pre>
@@ -241,7 +241,7 @@ FROM
    , enough privileges to connect to the PDB and to access EM Express in read-only mode.
   </li>
  </ol>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; ALTER SESSION SET container = jam0;
+ <pre class="text">SQL&gt; ALTER SESSION SET container = jam0;
 
 Session altered.
 

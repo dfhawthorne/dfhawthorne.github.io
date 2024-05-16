@@ -16,7 +16,7 @@ A fuller description of this Wiki can be found [here](https://dfhawthorne.github
 
 This Wiki is a replacement for Google Sites hosting of [Yet Another OCM Wiki](https://sites.google.com/view/yetanotherocm/home).
 
-I am currently converting this Wiki to Jekyll format.
+This Wiki has been converted to Jekyll format as of 15 May 2024.
 
 Progress can be viewed [here](https://github.com/users/dfhawthorne/projects/5/views/1).
 
@@ -31,5 +31,6 @@ V2R3 | 15 April 2024 | 24 March 2024 | Conversion of 12C OCP Upgrade Wiki pages 
 V2R4 | 30 April 2024 | 7 April 2024 | Conversion of 12C OCM Wiki pages to Jekyll format.
 V2R5 | 15 May 2024 | 20 April 2024 | Conversion of System Builds Wiki pages to Jekyll format.
 V2R6 | 31 May 2024 | 22 April 2024 | Conversion of remaining Classic Google Site Wiki pages to Jekyll format.
-V2R7 | 30 June 2024 |  | Conversion of New Google Sites Wiki pages to Jekyll format.
-V2R8 | 30 July 2024 |  | Add enhancements to Wiki pages in Jekyll format.
+V2R7 | 30 June 2024 | 28 April 2024 | Conversion of New Google Sites Wiki pages to Jekyll format.
+V2R8 | 30 July 2024 | 15 May 2024 | Add enhancements to Wiki pages in Jekyll format.
+V2R9 | 31 August 2024 | N/A | Add keywords to Wiki pages. (__Removed from project scope__)

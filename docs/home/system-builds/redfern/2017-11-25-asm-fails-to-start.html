@@ -4,7 +4,7 @@ title: '2017-11-25 ASM Fails to Start'
 base-url: home/system-builds/redfern/2017-11-25-asm-fails-to-start.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -84,7 +84,7 @@ table-of-contents:
  <p>
   When I found ASM not to be running, I attempted to start ASM manually:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">[oracle@redfern1 ~]$ sqlplus / as sysdba
+ <pre class="text">[oracle@redfern1 ~]$ sqlplus / as sysdba
 
 SQL*Plus: Release 12.1.0.2.0 Production on Sat Nov 18 17:42:22 2017
 
@@ -111,7 +111,7 @@ ORA-01078: failure in processing system parameters
   </span>
   ) shows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">2017-11-18 17:27:03.996000 +11:00
+ <pre class="text">2017-11-18 17:27:03.996000 +11:00
 2017-11-18 17:27:03.991 [OHASD(2307)]CRS-8500: Oracle Clusterware OHASD process is starting with operating system process ID 2307
 2017-11-18 17:27:03.995 [OHASD(2307)]CRS-0714: Oracle Clusterware Release 12.1.0.2.0.
 2017-11-18 17:27:04.032 [OHASD(2307)]CRS-2112: The OLR service started on node redfern1.
@@ -154,7 +154,7 @@ ORA-01078: failure in processing system parameters
   </span>
   ) was examined and it shows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">2017-11-18 17:27:19.365144 :    CSSD:1471755904: (TLM) Starting CSS daemon, version 12.1.0.2.0 with uniqueness value 1510986439
+ <pre class="text">2017-11-18 17:27:19.365144 :    CSSD:1471755904: (TLM) Starting CSS daemon, version 12.1.0.2.0 with uniqueness value 1510986439
 2017-11-18 17:27:19.365197 :    CSSD:1471755904: clsu_load_ENV_levels: Module = CSSD, LogLevel = 2, TraceLevel = 0
 2017-11-18 17:27:19.365228 :    CSSD:1471755904: clsu_load_ENV_levels: Module = CSSDNMC, LogLevel = 2, TraceLevel = 0
 2017-11-18 17:27:19.365252 :    CSSD:1471755904: clsu_load_ENV_levels: Module = CSSDGMPC, LogLevel = 2, TraceLevel = 0

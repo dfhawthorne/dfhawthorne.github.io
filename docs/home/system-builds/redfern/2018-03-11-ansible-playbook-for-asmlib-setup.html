@@ -4,7 +4,7 @@ title: '2018-03-11 Ansible Playbook for ASMLIB Setup'
 base-url: home/system-builds/redfern/2018-03-11-ansible-playbook-for-asmlib-setup.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -303,7 +303,7 @@ table-of-contents:
                     </span>
                     , are:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 - name: Configure ORACLE ASMLib Driver
   hosts: redfern1.yaocm.id.au
   become: yes
@@ -388,7 +388,7 @@ table-of-contents:
                      </a>
                      tasks that just get information, the following parameters are recommended:
                     </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">register:     &lt;variable&gt; # Put command output into this variable
+<pre class="text">register:     &lt;variable&gt; # Put command output into this variable
 changed_when: false      # Always set the task status to <span style="color:green">ok</span>, otherwise the status will be <span style="color:orange">changed</span> because the command executed successfully
 failed_when:  false      # Ignore non-zero return codes, and set the task status to <span style="color:green">ok</span>, otherwise the status will be <span style="color:red">failed</span>
 no_log:       true       # Do not dump any messages even if command fails because of non-zero return codes (even though failed_when is false)</pre>
@@ -423,7 +423,7 @@ no_log:       true       # Do not dump any messages even if command fails becaus
                      </a>
                      module as follows:
                     </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">- debug:
+<pre class="text">- debug:
     var:         &lt;variable&gt; # command output gotten via the register parameter to the command module
     verbosity:   1          # minimum number of -v parameters needed to activate module (2 = -vv, 3 = -vvv, etc)</pre>
 <p>
@@ -494,7 +494,7 @@ no_log:       true       # Do not dump any messages even if command fails becaus
                     </span>
                     , has the following contents:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px"># ==============================================================================
+<pre class="text"># ==============================================================================
 # Initialise a disk device only if it is not already an ASM disk
 # ==============================================================================
 - name:         Query status of disk "{{ oasm_disk.dev }}1"
@@ -523,43 +523,18 @@ no_log:       true       # Do not dump any messages even if command fails becaus
   when:         oasm_disk_status.stdout_lines[0] | match("Device .* is not marked as an ASM disk")
 </pre>
 <div style="display:block;margin-left:1cm;border-left:10px double black;padding-left:5px">
-<p style="font-size:x-large;font-family:arial,sans-serif;font-weight:bold">
-                     Note:
-                    </p>
-<p>
-                     This is not a complete YAML file because the header and footer are missing.
-                    </p>
+<p style="font-size:x-large;font-family:arial,sans-serif;font-weight:bold">Note:</p>
+<p>This is not a complete YAML file because the header and footer are missing.</p>
 </div>
 <div style="display:block;margin-left:1cm;border-left:10px double black;padding-left:5px">
-<p style="font-size:x-large;font-family:arial,sans-serif;font-weight:bold">
-                     Note:
-                    </p>
-<p>
-                     See
-                     <a href="http://docs.ansible.com/ansible/latest/playbooks_tests.html" rel="nofollow">
-                      Tests
-                     </a>
-                     for a description of the
-                     <code>
-                      | match
-                     </code>
-                     construct.
-                    </p>
+<p style="font-size:x-large;font-family:arial,sans-serif;font-weight:bold">Note:</p>
+<p>See <a href="http://docs.ansible.com/ansible/latest/playbooks_tests.html" rel="nofollow">Tests</a> for a description of the <code>| match</code> construct.</p>
 </div>
-<h3>
-<a name="TOC-Sample-Run">
-</a>
-                    Sample Run
-                   </h3>
-<p>
-                    Using the following command, a complete run of setting up of ORACLE ASMLib driver can be done:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass oracleasm.yml
-</pre>
-<p>
-                    The output would look like the following:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<h3 id="TOC-Sample-Run">Sample Run</h3>
+<p>Using the following command, a complete run of setting up of ORACLE ASMLib driver can be done:</p>
+<pre class="bash-cmd">ansible-playbook --ask-become-pass oracleasm.yml</pre>
+<p>The output would look like the following:</p>
+<pre class="text">SUDO password: 
 
 PLAY [Configure ORACLE ASMLib Driver] ******************************************
 
@@ -664,15 +639,9 @@ PLAY RECAP *********************************************************************
 <span style="color:green">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=9</span>   <span style="color:orange">changed=14</span>    unreachable=0    failed=0   
 
 </pre>
-<h3>
-<a name="TOC-Verify-Idempotency-of-Playbook">
-</a>
-                    Verify Idempotency of Playbook
-                   </h3>
-<p>
-                    The playbook is idempotent as demonstrated by the following output:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">ansible-playbook --ask-become-pass oracleasm.yml
+<h3 id="TOC-Verify-Idempotency-of-Playbook">Verify Idempotency of Playbook</h3>
+<p>The playbook is idempotent as demonstrated by the following output:</p>
+<pre class="text">ansible-playbook --ask-become-pass oracleasm.yml
 SUDO password: 
 
 PLAY [Configure ORACLE ASMLib Driver] ******************************************

@@ -4,7 +4,7 @@ title: '2017-11-19 Correct UDEV Settings'
 base-url: home/system-builds/redfern/2017-11-19-correct-udev-settings.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -107,12 +107,12 @@ table-of-contents:
   </code>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">udevadm info /dev/xvdh
+ <pre class="bash-cmd">udevadm info /dev/xvdh
 </pre>
  <p>
   The result is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">P: /devices/vbd-51824/block/xvdh
+ <pre class="text">P: /devices/vbd-51824/block/xvdh
 N: xvdh
 E: DEVNAME=/dev/xvdh
 E: DEVPATH=/devices/vbd-51824/block/xvdh
@@ -141,7 +141,7 @@ E: USEC_INITIALIZED=52512
   </span>
   ):
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;/etc/udev/rules.d/10-local.rules &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;/etc/udev/rules.d/10-local.rules &lt;&lt;DONE
 KERNEL=="xvdh", ACTION=="ADD", OWNER:="oracle", GROUP:="dba", MODE:="0660"
 DONE
 </pre>
@@ -171,12 +171,12 @@ DONE
   </a>
   , I ran the following command against the device path discovered above:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">udevadm test /devices/vbd-51824/block/xvdh
+ <pre class="bash-cmd">udevadm test /devices/vbd-51824/block/xvdh
 </pre>
  <p>
   And the output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">calling: test
+ <pre class="text">calling: test
 version 208
 This program is for debugging only, it does not run any program
 specified by a RUN key. It may show incorrect results, because
@@ -278,7 +278,7 @@ unload module index
   </span>
   ):
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;/etc/udev/rules.d/10-local.rules &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;/etc/udev/rules.d/10-local.rules &lt;&lt;DONE
 KERNEL=="xvdh", ACTION=="<span style="font-weight:bold">add</span>", OWNER:="oracle", GROUP:="dba", MODE:="0660"
 DONE
 </pre>
@@ -299,7 +299,7 @@ DONE
  <p>
   And the UDEV simulation shows the correct output:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">…
+ <pre class="text">…
 probe /dev/xvdh raid offset=0
 handling device node '/dev/xvdh', devnum=b202:112, mode=0660, uid=54321, gid=54322
 <span style="font-weight:bold">preserve permissions /dev/xvdh, 060660, uid=54321, gid=54322</span>

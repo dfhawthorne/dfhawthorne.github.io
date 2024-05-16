@@ -4,7 +4,7 @@ title: 'Deinstall Oracle RDBMS 12.1.0.2'
 base-url: home/procedures/deinstall-oracle-rdbms/deinstall-oracle-rdbms-12-1-0-2.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'Procedures'
   url: home/procedures.html
 - title: 'Deinstall Oracle RDBMS'
@@ -25,8 +25,9 @@ table-of-contents:
     toc-text: 'Run Deinstall Command'
   - toc-url: 'Clean-Up-Remaining-Directories'
     toc-text: 'Clean Up Remaining Directories'
-- toc-url: 'File-Downloads'
-  toc-text: 'File Downloads'
+file-download-dir: 'home/procedures/deinstall-oracle-rdbms/deinstall-oracle-rdbms-12-1-0-2'
+file-download:
+- 'deinstall.log'
 ---
 
 <!-- {% raw %} -->
@@ -96,7 +97,7 @@ table-of-contents:
                     </span>
                     user to deinstall the Oracle RDBMS home:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/app/oracle/product/12.1.0/dbhome_1/deinstall
+<pre class="bash-cmd">cd /opt/app/oracle/product/12.1.0/dbhome_1/deinstall
 ./deinstall
 </pre>
 <p>
@@ -118,7 +119,6 @@ table-of-contents:
                     </span>
                     . Ran the following command to remove these files and associated directories:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo rm -fR /opt/app/oracle/product/12.1.0/dbhome_1
+<pre class="bash-cmd">sudo rm -fR /opt/app/oracle/product/12.1.0/dbhome_1
 </pre>
-<div class="file_downloads"><h2 id="TOC-File-Downloads">File Downloads</h2><ol><li><a href="home/procedures/deinstall-oracle-rdbms/deinstall-oracle-rdbms-12-1-0-2/deinstall.log">deinstall.log</a></li></ol></div></div>
 <!-- {% endraw %} -->

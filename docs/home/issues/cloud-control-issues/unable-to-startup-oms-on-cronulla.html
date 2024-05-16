@@ -4,7 +4,7 @@ title: 'Unable to Startup OMS on CRONULLA'
 base-url: home/issues/cloud-control-issues/unable-to-startup-oms-on-cronulla.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'Issues'
   url: home/issues.html
 - title: 'Cloud Control Issues'
@@ -82,7 +82,7 @@ table-of-contents:
                     </span>
                     fails to start with the following messages:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Management Server Could Not Be Started
+<pre class="text">Oracle Management Server Could Not Be Started
 </pre>
 <h2>
 <a name="TOC-Status">
@@ -164,7 +164,7 @@ table-of-contents:
                     </span>
                     fails to start with the following messages:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+<pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 Starting Oracle Management Server...
 Starting WebTier...
@@ -180,7 +180,7 @@ Oracle Management Server is Down
                     </span>
                     ) does not appear to contain any useful information:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">oracle.jdbc.thinLogonCapability not set
+<pre class="text">oracle.jdbc.thinLogonCapability not set
 Successfully read all properties from repos.
 securePort = 4903
 &lt;ConfigManager.getOMSSecureStatus&gt; isOMSSecure = 1 isOMSSecureLocked = 1
@@ -207,14 +207,14 @@ Fetched repository credentials from Credential Store
                     </span>
                     tool as follows:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/app/oracle/middleware/oms
+<pre class="bash-cmd">cd /opt/app/oracle/middleware/oms
 mkdir emdiag
 unzip -q /tmp/omsvfy12.zip -d /opt/app/oracle/middleware/oms/emdiag
 </pre>
 <p>
                     The tool was verified as follows:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export ORACLE_HOME=/opt/app/oracle/middleware/oms
+<pre class="bash-cmd">export ORACLE_HOME=/opt/app/oracle/middleware/oms
 export EMDIAG_HOME=${ORACLE_HOME}/emdiag
 cd ${EMDIAG_HOME}/bin
 ./omsvfy version
@@ -222,7 +222,7 @@ cd ${EMDIAG_HOME}/bin
 <p>
                     The result was:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">Component            Version                  
+<pre class="text">Component            Version                  
 -------------------- -------------------------
 OMSVFY                               2016.0627
 Linux                       EL6.7 3.8.13 (XEN)
@@ -277,13 +277,13 @@ WebLogic JRE DST                   tzdata2012i
                     </a>
                     ,
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd ${EMDIAG_HOME}/bin
+<pre class="bash-cmd">cd ${EMDIAG_HOME}/bin
 ./omsvfy verify all -level 2 -details
 </pre>
 <p>
                     Four (4) violations were found:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">-- --------------------------------------------------------------------- --
+<pre class="text">-- --------------------------------------------------------------------- --
 -- OMSVFY: 2016.0627         OMS: 12.1.0.4.0        25-Dec-2016 11:41:03 --
 -- --------------------------------------------------------------------- --
 verifyAdminServer
@@ -322,7 +322,7 @@ verifyWebLogic
 <p>
                     Used the following commands to update the operating system software:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo apt-get update
+<pre class="bash-cmd">sudo apt-get update
 </pre>
 <p>
                     This did not fix the time-zone problem.
@@ -373,7 +373,7 @@ verifyWebLogic
 <p>
                     Remove the identified lock and PID files as follows:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">rm -f /opt/app/oracle/gc_inst/user_projects/domains/GCDomain/servers/EMGC_OMS1/tmp/EMGC_OMS1.lok
+<pre class="bash-cmd">rm -f /opt/app/oracle/gc_inst/user_projects/domains/GCDomain/servers/EMGC_OMS1/tmp/EMGC_OMS1.lok
 rm -f /opt/app/oracle/gc_inst/user_projects/domains/GCDomain/servers/EMGC_OMS1/data/nodemanager/EMGC_OMS1.pid
 </pre>
 <h3>
@@ -413,13 +413,13 @@ rm -f /opt/app/oracle/gc_inst/user_projects/domains/GCDomain/servers/EMGC_OMS1/d
                     </span>
                     database:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">set pages 62 lines 204
+<pre class="sql-cmd">set pages 62 lines 204
 select tablespace_name, status from dba_tablespaces;
 </pre>
 <p>
                     The results were:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">TABLESPACE_NAME            STATUS
+<pre class="text">TABLESPACE_NAME            STATUS
 -------------------------- ---------
 SYSTEM                     ONLINE
 SYSAUX                     ONLINE
@@ -436,7 +436,7 @@ RMAN_CATALOG               READ ONLY
 <p>
                     I used the following SQL statements to make these tablespaces Read-Write:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">alter tablespace users read write;
+<pre class="sql-cmd">alter tablespace users read write;
 alter tablespace MGMT_ECM_DEPOT_TS read write;
 alter tablespace MGMT_TABLESPACE read write;
 alter tablespace MGMT_AD4J_TS read write;
@@ -465,7 +465,7 @@ alter tablespace RMAN_CATALOG read write;
                     </span>
                     :
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">unzip -qo /home/oracle/repvfy12_2016.0909.zip -d /opt/oracle/app/OracleHomes/db11g/emdiag
+<pre class="bash-cmd">unzip -qo /home/oracle/repvfy12_2016.0909.zip -d /opt/oracle/app/OracleHomes/db11g/emdiag
 chmod u+x /opt/oracle/app/OracleHomes/db11g/emdiag/bin/repvfy
 cd /opt/oracle/app/OracleHomes/db11g/emdiag/bin
 ./repvfy install
@@ -473,7 +473,7 @@ cd /opt/oracle/app/OracleHomes/db11g/emdiag/bin
 <p>
                     The following summary is produced:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">COMPONENT            INFO
+<pre class="text">COMPONENT            INFO
 -------------------- --------------------
 EMDIAG Version       2016.0909
 EMDIAG Edition       2
@@ -495,13 +495,13 @@ Deployment           SMALL
 <p>
                     I ran the following command to verify the repository:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/oracle/app/OracleHomes/db11g/emdiag/bin
+<pre class="bash-cmd">cd /opt/oracle/app/OracleHomes/db11g/emdiag/bin
 ./repvfy -level 2 -detail
 </pre>
 <p>
                     The following summary is produced:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">verifyAGENTS
+<pre class="text">verifyAGENTS
 ======================================================================
 1005. Active Agents with clock-skew problems
 =--------- ---------- ---------- ---------- ---------- ---------- ---------=
@@ -556,7 +556,7 @@ MAX_PTIME
                     </span>
                     as follows:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">[oracle@gridctrl bin]$ sqlplus sysman
+<pre class="text">[oracle@gridctrl bin]$ sqlplus sysman
 
 SQL*Plus: Release 11.2.0.4.0 Production on Sun Dec 25 18:54:42 2016
 
@@ -604,7 +604,7 @@ With the Partitioning option
                     </span>
                     :
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">unzip -qo /home/oracle/repvfy12_2016.0909.zip -d /opt/app/oracle/middleware/oms/emdiag/
+<pre class="bash-cmd">unzip -qo /home/oracle/repvfy12_2016.0909.zip -d /opt/app/oracle/middleware/oms/emdiag/
 </pre>
 <h4>
 <a name="TOC-Create-TNSNAMES-Alias-for-OMR">
@@ -622,7 +622,7 @@ With the Partitioning option
                     </span>
                     :
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;/opt/app/oracle/middleware/oms/network/admin/tnsnames.ora &lt;&lt;DONE
+<pre class="bash-cmd">cat &gt;&gt;/opt/app/oracle/middleware/oms/network/admin/tnsnames.ora &lt;&lt;DONE
 # -----------------------------------------------------------------------------
 # TNS Names entries
 # -----------------------------------------------------------------------------
@@ -649,14 +649,14 @@ DONE
                     </span>
                     :
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;/etc/oratab &lt;&lt;DONE
+<pre class="bash-cmd">cat &gt;&gt;/etc/oratab &lt;&lt;DONE
 oms:/opt/app/oracle/middleware/oms:N
 DONE
 </pre>
 <p>
                     This allows me to crudely set up the Oracle environment for OMS as follows:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">[oracle@cronulla admin]$ . oraenv
+<pre class="text">[oracle@cronulla admin]$ . oraenv
 ORACLE_SID = [oracle] ? oms
 /opt/app/oracle/middleware/oms/bin/orabase: error while loading shared libraries: libgcc_s.so.1: cannot open shared object file: No such file or directory
 The Oracle base for ORACLE_HOME=/opt/app/oracle/middleware/oms is 
@@ -669,7 +669,7 @@ The Oracle base for ORACLE_HOME=/opt/app/oracle/middleware/oms is
 <p>
                     The REPVFY configuration file was created as follows:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/app/oracle/middleware/oms/emdiag/cfg/
+<pre class="bash-cmd">cd /opt/app/oracle/middleware/oms/emdiag/cfg/
 cp repvfy.cfg.template repvfy.cfg
 vi repvfy.cfg
 </pre>
@@ -680,7 +680,7 @@ vi repvfy.cfg
                     </span>
                     :
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">ora_tns=repos
+<pre class="text">ora_tns=repos
 </pre>
 <h4>
 <a name="TOC-Review-Test-Results">
@@ -694,13 +694,13 @@ vi repvfy.cfg
                     </span>
                     :
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/app/oracle/middleware/oms/emdiag/bin
+<pre class="bash-cmd">cd /opt/app/oracle/middleware/oms/emdiag/bin
 ./repvfy -level 2 -detail
 </pre>
 <p>
                     The test results were:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">-- --------------------------------------------------------------------- --
+<pre class="text">-- --------------------------------------------------------------------- --
 -- REPVFY: 2016.0909     Repository: 12.1.0.4.0     25-Dec-2016 21:20:56 --
 ---------------------------------------------------------------------------
 -- Module: all                                       Test:   0, Level: 2 --
@@ -743,7 +743,7 @@ verifyUSERS
                     </span>
                     , I ran the following command:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ssh root@victoria date --utc $(date --utc +"%m%D%H%M%Y.%S")
+<pre class="bash-cmd">ssh root@victoria date --utc $(date --utc +"%m%D%H%M%Y.%S")
 </pre>
 <p>
                     I then rebooted

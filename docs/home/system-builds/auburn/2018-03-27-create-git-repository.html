@@ -4,7 +4,7 @@ title: '2018-03-27 Create GIT Repository'
 base-url: home/system-builds/auburn/2018-03-27-create-git-repository.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'AUBURN'
@@ -172,12 +172,12 @@ table-of-contents:
   </a>
   , the installation of GIT was verified as follows:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">which git
+<pre class="bash-cmd">which git
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">/usr/bin/git
+<pre class="text">/usr/bin/git
 </pre>
 <p>
   This means that the GIT command is available.
@@ -213,13 +213,13 @@ table-of-contents:
   </a>
   , I ran the following commands:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/
+<pre class="bash-cmd">cd /etc/ansible/
 <a href="https://git-scm.com/docs/git-init" rel="nofollow">git init</a>
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:5px">Initialized empty Git repository in /etc/ansible/.git/
+<pre class="text">Initialized empty Git repository in /etc/ansible/.git/
 </pre>
 <h3>
 <a name="TOC-Cloned-Empty-Repository">
@@ -233,12 +233,12 @@ table-of-contents:
   </a>
   , I ran the following commands:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://git-scm.com/docs/git-clone" rel="nofollow">git clone</a> https://github.com/dfhawthorne/ansible-ocm12c.git
+<pre class="bash-cmd"><a href="https://git-scm.com/docs/git-clone" rel="nofollow">git clone</a> https://github.com/dfhawthorne/ansible-ocm12c.git
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:5px">Cloning into 'ansible-ocm12c'...
+<pre class="text">Cloning into 'ansible-ocm12c'...
 remote: Counting objects: 3, done.
 remote: Compressing objects: 100% (2/2), done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
@@ -253,7 +253,7 @@ Checking connectivity... done.
 <p>
   Ran the following commands to move the files to the cloned repository:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible
+<pre class="bash-cmd">cd /etc/ansible
 mv roles ansible-ocm12c/
 mv sites.yml ansible-ocm12c/
 </pre>
@@ -276,13 +276,13 @@ mv sites.yml ansible-ocm12c/
 <p>
   Ran the following commands to check the status of the cloned repository:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/ansible-ocm12c
+<pre class="bash-cmd">cd /etc/ansible/ansible-ocm12c
 <a href="https://git-scm.com/docs/git-status" rel="nofollow">git status</a>
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:5px">On branch master
+<pre class="text">On branch master
 Your branch is up-to-date with 'origin/master'.
 Untracked files:
   (use "git add &lt;file&gt;..." to include in what will be committed)
@@ -301,7 +301,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>
   Ran the following commands to add files to the cloned repository:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/ansible-ocm12c
+<pre class="bash-cmd">cd /etc/ansible/ansible-ocm12c
 <a href="https://git-scm.com/docs/git-add" rel="nofollow">git add</a> sites.yml
 <a href="https://git-scm.com/docs/git-add" rel="nofollow">git add</a> roles/
 </pre>
@@ -313,13 +313,13 @@ nothing added to commit but untracked files present (use "git add" to track)
 <p>
   Ran the following commands to check the status of the cloned repository:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/ansible-ocm12c
+<pre class="bash-cmd">cd /etc/ansible/ansible-ocm12c
 <a href="https://git-scm.com/docs/git-status" rel="nofollow">git status</a>
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:5px">On branch master
+<pre class="text">On branch master
 Your branch is up-to-date with 'origin/master'.
 Changes to be committed:
   (use "git reset HEAD &lt;file&gt;..." to unstage)
@@ -381,7 +381,7 @@ Untracked files:
 <p>
   Ran the following commands to unstage the Oracle password file from the cloned repository:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/ansible-ocm12c
+<pre class="bash-cmd">cd /etc/ansible/ansible-ocm12c
 <a href="https://git-scm.com/docs/git-reset" rel="nofollow">git reset</a> HEAD roles/oracle_user/vars/oracle_pw.yml
 </pre>
 <h3>
@@ -392,13 +392,13 @@ Untracked files:
 <p>
   Ran the following commands to commit the initial build:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">cd /etc/ansible/ansible-ocm12c
+<pre class="bash-cmd">cd /etc/ansible/ansible-ocm12c
 <a href="https://git-scm.com/docs/git-commit" rel="nofollow">git commit</a>
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:5px">[master 5b207e0] Initial push of Ansible playbooks with one (1) unresolved issue: (1) pexpect is not installed on REDFERN1
+<pre class="text">[master 5b207e0] Initial push of Ansible playbooks with one (1) unresolved issue: (1) pexpect is not installed on REDFERN1
  Committer: douglas &lt;douglas@auburn.yaocm.id.au&gt;
 Your name and email address were configured automatically based
 on your username and hostname. Please check that they are accurate.
@@ -457,12 +457,12 @@ After doing this, you may fix the identity used for this commit with:
 <p>
   Ran the following commands to push the initial build to the main repository:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="https://git-scm.com/docs/git-push" rel="nofollow">git push</a> --all
+<pre class="bash-cmd"><a href="https://git-scm.com/docs/git-push" rel="nofollow">git push</a> --all
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:5px">Username for 'https://github.com': *********************************
+<pre class="text">Username for 'https://github.com': *********************************
 Password for 'https://*********************************@github.com': 
 Counting objects: 52, done.
 Compressing objects: 100% (31/31), done.

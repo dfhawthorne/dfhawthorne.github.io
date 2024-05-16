@@ -4,7 +4,7 @@ title: '06 Move OMR'
 base-url: home/system-builds/gordon/06-move-omr.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -218,12 +218,12 @@ table-of-contents:
   </span>
   database is determined as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">SELECT platform_name FROM v$database;
+ <pre class="sql-cmd">SELECT platform_name FROM v$database;
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">PLATFORM_NAME
+ <pre class="text">PLATFORM_NAME
 ----------------
 Linux x86 64-bit
 </pre>
@@ -247,12 +247,12 @@ Linux x86 64-bit
   </span>
   is checked for database transport compatibility as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">SELECT platform_name FROM v$db_transportable_platform WHERE platform_name = 'Linux x86 64-bit';
+ <pre class="sql-cmd">SELECT platform_name FROM v$db_transportable_platform WHERE platform_name = 'Linux x86 64-bit';
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">PLATFORM_NAME
+ <pre class="text">PLATFORM_NAME
 ----------------
 Linux x86 64-bit
 </pre>
@@ -297,7 +297,7 @@ Linux x86 64-bit
   </a>
   function is called as follows to find what external dependencies there are for this database as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">set serveroutput on
+ <pre class="sql-cmd">set serveroutput on
 declare x boolean;
 begin
   x := dbms_tdb.<a href="https://docs.oracle.com/cd/E11882_01/appdev.112/e40758/d_tdb.htm#ARPLS68864" rel="nofollow">check_external</a>;
@@ -307,7 +307,7 @@ end;
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">The following directories exist in the database:
+ <pre class="text">The following directories exist in the database:
 SYS.XMLDIR, SYS.ORACLE_OCM_CONFIG_DIR2, SYS.ORACLE_OCM_CONFIG_DIR,
 SYS.DATA_PUMP_DIR
 
@@ -346,7 +346,7 @@ PL/SQL procedure successfully completed.
   </a>
   function is called as follows to find if this database can be transported to a Linux x86 64-bit platform as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">SET SERVEROUTPUT ON
+ <pre class="sql-cmd">SET SERVEROUTPUT ON
 DECLARE
   retcode BOOLEAN;
 BEGIN
@@ -357,7 +357,7 @@ END;
  <p>
   The following output indicates that there were no errors.
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <h2>
   <a name="TOC-Procedure">
@@ -383,12 +383,12 @@ END;
   </span>
   , the OEM Management Server (OMS) is stopped:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/middleware/oms/bin/emctl stop oms
+ <pre class="sql-cmd">/opt/app/oracle/middleware/oms/bin/emctl stop oms
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Enterprise Manager Cloud Control 12c Release 4  
+ <pre class="text">Oracle Enterprise Manager Cloud Control 12c Release 4  
 Copyright (c) 1996, 2014 Oracle Corporation.  All rights reserved.
 Stopping WebTier...
 WebTier Successfully Stopped
@@ -436,24 +436,24 @@ Oracle Management Server is Down
   </span>
   as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">create pluggable database emreposp
+ <pre class="sql-cmd">create pluggable database emreposp
   admin user oem_admin identified by oem_admin
 /
 </pre>
  <p>
   The result was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Pluggable database created.
+ <pre class="text">Pluggable database created.
 </pre>
  <p>
   Open the PDB as read-write:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">alter pluggable database emreposp open read write;
+ <pre class="sql-cmd">alter pluggable database emreposp open read write;
 </pre>
  <p>
   The result was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Pluggable database altered.
+ <pre class="text">Pluggable database altered.
 </pre>
  <h4>
   <a name="TOC-Make-Tablespaces-Read-Only">
@@ -471,7 +471,7 @@ Oracle Management Server is Down
   </span>
   , the non-administrative tablespaces should be in READ-ONLY mode. This is accomplished by the following SQL statements:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ALTER TABLESPACE USERS READ ONLY;
+ <pre class="sql-cmd">ALTER TABLESPACE USERS READ ONLY;
 ALTER TABLESPACE MGMT_ECM_DEPOT_TS READ ONLY;
 ALTER TABLESPACE MGMT_TABLESPACE READ ONLY;
 ALTER TABLESPACE MGMT_AD4J_TS READ ONLY;
@@ -493,12 +493,12 @@ ALTER TABLESPACE RMAN_CATALOG READ ONLY;
   </span>
   , the following export data-pump command was run to create a export dump file for transporting the database:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">expdp system full=y dumpfile=move_omr.dmp directory=data_pump_dir transportable=always version=12 logfile=move_omr.log
+ <pre class="sql-cmd">expdp system full=y dumpfile=move_omr.dmp directory=data_pump_dir transportable=always version=12 logfile=move_omr.log
 </pre>
  <p>
   Unfortunately, this failed with the following error messages:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">. . exported "SYSTEM"."SQLPLUS_PRODUCT_PROFILE"              0 KB       0 rows
+ <pre class="text">. . exported "SYSTEM"."SQLPLUS_PRODUCT_PROFILE"              0 KB       0 rows
 ORA-39097: Data Pump job encountered unexpected error -920
 ORA-39065: unexpected master process exception in DISPATCH
 ORA-00920: invalid relational operator

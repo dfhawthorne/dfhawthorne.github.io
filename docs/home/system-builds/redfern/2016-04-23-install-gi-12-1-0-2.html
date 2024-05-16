@@ -4,7 +4,7 @@ title: '2016-04-23 Install GI 12.1.0.2'
 base-url: home/system-builds/redfern/2016-04-23-install-gi-12-1-0-2.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -189,7 +189,7 @@ table-of-contents:
   </span>
   (assuming what is valid for OEL6 is also valid for OEL7):
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px"><a href="http://man7.org/linux/man-pages/man8/yum.8.html" rel="nofollow">yum</a> install oracle-rdbms-server-12cR1-preinstall
+ <pre class="bash-cmd"><a href="http://man7.org/linux/man-pages/man8/yum.8.html" rel="nofollow">yum</a> install oracle-rdbms-server-12cR1-preinstall
 </pre>
  <p>
   There was a large amount of output which I did not capture, but the installation appeared to be successful.
@@ -240,7 +240,7 @@ table-of-contents:
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;/etc/sysctl.conf &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;&gt;/etc/sysctl.conf &lt;&lt;DONE
 kernel.hostname = redfern1.yaocm.id.au
 DONE
 reboot
@@ -261,7 +261,7 @@ reboot
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo mkdir /opt/app/grid_infra
+ <pre class="bash-cmd">sudo mkdir /opt/app/grid_infra
 sudo chown oracle:oinstall /opt/app/grid_infra
 </pre>
  <h3>
@@ -296,17 +296,17 @@ sudo chown oracle:oinstall /opt/app/grid_infra
  <p>
   Ran the following command to change the ownership of the shared disks so that they can be discovered by ASM:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo chown oracle:dba /dev/xvd[d-h]
+ <pre class="bash-cmd">sudo chown oracle:dba /dev/xvd[d-h]
 </pre>
  <p>
   The ownership of these shared disks was verified as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ls -l /dev/xvd[d-h]
+ <pre class="bash-cmd">ls -l /dev/xvd[d-h]
 </pre>
  <p>
   And the ouput is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">brw-rw----. 1 oracle dba 202,  48 Jan  1 20:48 /dev/xvdd
+ <pre class="text">brw-rw----. 1 oracle dba 202,  48 Jan  1 20:48 /dev/xvdd
 brw-rw----. 1 oracle dba 202,  64 Jan  1 20:48 /dev/xvde
 brw-rw----. 1 oracle dba 202,  80 Jan  1 20:48 /dev/xvdf
 brw-rw----. 1 oracle dba 202,  96 Jan  1 20:48 /dev/xvdg
@@ -336,7 +336,7 @@ brw-rw----. 1 oracle dba 202, 112 Jan  1 20:48 /dev/xvdh
   </span>
   , I ran the following commands in an XTerm session:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">xhost + 192.168.1.140
+ <pre class="bash-cmd">xhost + 192.168.1.140
 ssh -Y oracle@192.168.1.140
 </pre>
  <p>
@@ -346,7 +346,7 @@ ssh -Y oracle@192.168.1.140
   </span>
   , I ran the following commands:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/share/Software/grid/linuxamd64_12102/grid
+ <pre class="bash-cmd">cd /opt/share/Software/grid/linuxamd64_12102/grid
 ./runInstaller
 </pre>
  <h2>
@@ -744,7 +744,7 @@ ssh -Y oracle@192.168.1.140
   </span>
   disk as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /OVS/running_pool/REDFERN/shared
+ <pre class="bash-cmd">cd /OVS/running_pool/REDFERN/shared
 dd if=/dev/zero of=VOTE_01 bs=1G count=6
 </pre>
  <h3>
@@ -767,7 +767,7 @@ dd if=/dev/zero of=VOTE_01 bs=1G count=6
  <p>
   Once the cluster was running, I had to change the ownership of the shared disks again:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo chown oracle:dba /dev/xvd[d-h]
+ <pre class="bash-cmd">sudo chown oracle:dba /dev/xvd[d-h]
 </pre>
  <h2>
   <a name="TOC-Installation-Attempt-2">
@@ -1057,7 +1057,7 @@ dd if=/dev/zero of=VOTE_01 bs=1G count=6
   </span>
   :
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">2016/01/02 21:01:27 CLSRSC-12: The ASM resource ora.asm did not start
+ <pre class="text">2016/01/02 21:01:27 CLSRSC-12: The ASM resource ora.asm did not start
 2016/01/02 21:01:27 CLSRSC-258: Failed to configure and start ASM
 Died at /opt/app/grid_infra/12.1.0/grid/crs/install/crsinstall.pm line 2017.
 The command '/opt/app/grid_infra/12.1.0/grid/perl/bin/perl -I/opt/app/grid_infra/12.1.0/grid/perl/lib -I/opt/app/grid_infra/12.1.0/grid/crs/install /opt/app/grid_infra/12.1.0/grid/crs
@@ -1070,7 +1070,7 @@ The command '/opt/app/grid_infra/12.1.0/grid/perl/bin/perl -I/opt/app/grid_infra
   </span>
   :
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">2016-01-02 21:01:21: Executing cmd: /opt/app/grid_infra/12.1.0/grid/bin/crsctl status resource ora.asm -init
+ <pre class="text">2016-01-02 21:01:21: Executing cmd: /opt/app/grid_infra/12.1.0/grid/bin/crsctl status resource ora.asm -init
 2016-01-02 21:01:22: Checking the status of ora.asm
 2016-01-02 21:01:27: Executing cmd: /opt/app/grid_infra/12.1.0/grid/bin/clsecho -p has -f clsrsc -m 12
 2016-01-02 21:01:27: Command output:

@@ -4,7 +4,7 @@ title: '01 Patch GI and DB with PSU 12.1.0.2.5'
 base-url: home/system-builds/gordon/01-patch-gi-and-db-with-psu-12-1-0-2-5.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -194,12 +194,12 @@ table-of-contents:
   </code>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/oracle/product/12.1.0/grid/OPatch/opatch version
+ <pre class="bash-cmd">/opt/app/oracle/product/12.1.0/grid/OPatch/opatch version
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Version: 12.1.0.1.3
+ <pre class="text">OPatch Version: 12.1.0.1.3
 
 OPatch succeeded.
 </pre>
@@ -241,13 +241,13 @@ OPatch succeeded.
  <p>
   OPatch was updated as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">unzip -o /tmp/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/grid
+ <pre class="bash-cmd">unzip -o /tmp/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/grid
 unzip -o /tmp/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/dbhome_1
 </pre>
  <p>
   The OPatch version is now correct:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Version: 12.1.0.1.10
+ <pre class="text">OPatch Version: 12.1.0.1.10
 
 OPatch succeeded.
 </pre>
@@ -281,13 +281,13 @@ OPatch succeeded.
   </a>
   , I ran the following commands for Option #1:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/grid
+ <pre class="bash-cmd">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/grid
 ${ORACLE_HOME}/OPatch/ocm/bin/emocmrsp -no_banner -output /opt/app/oracle/software/ocm.rsp
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Provide your email address to be informed of security issues, install and
+ <pre class="text">Provide your email address to be informed of security issues, install and
 initiate Oracle Configuration Manager. Easier for you if you use your My
 Oracle Support Email address/User Name.
 Visit http://www.oracle.com/support/policies.html for details.
@@ -316,7 +316,7 @@ The OCM configuration response file (/opt/app/oracle/software/ocm.rsp) was succe
  <p>
   Unzipped the patch as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /tmp
+ <pre class="bash-cmd">cd /tmp
 unzip -q p21523260_121020_Linux-x86-64.zip -d .
 </pre>
  <h2>
@@ -332,12 +332,12 @@ unzip -q p21523260_121020_Linux-x86-64.zip -d .
  <p>
   Ran the following command to detect any patch conflicts:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/oracle/product/12.1.0/grid/OPatch/opatchauto apply /tmp/21523260 -analyze -ocmrf /opt/app/oracle/software/ocm.rsp
+ <pre class="bash-cmd">sudo /opt/app/oracle/product/12.1.0/grid/OPatch/opatchauto apply /tmp/21523260 -analyze -ocmrf /opt/app/oracle/software/ocm.rsp
 </pre>
  <p>
   The result was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Automation Tool
+ <pre class="text">OPatch Automation Tool
 Copyright (c)2014, Oracle Corporation. All rights reserved.
 
 OPatchauto Version : 12.1.0.1.10
@@ -384,12 +384,12 @@ opatchauto succeeded.
  <p>
   Run the following commands to apply the GI patch:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/oracle/product/12.1.0/grid/OPatch/opatchauto apply /tmp/21523260 -ocmrf /opt/app/oracle/software/ocm.rsp
+ <pre class="bash-cmd">sudo /opt/app/oracle/product/12.1.0/grid/OPatch/opatchauto apply /tmp/21523260 -ocmrf /opt/app/oracle/software/ocm.rsp
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Automation Tool
+ <pre class="text">OPatch Automation Tool
 Copyright (c)2014, Oracle Corporation. All rights reserved.
 
 OPatchauto Version : 12.1.0.1.10
@@ -440,7 +440,7 @@ opatchauto succeeded.
  <p>
   Since the RDBMS home is not a RAC home, the PSU has to be applied separately. The following commands are used to set up the environment:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo su --login
+ <pre class="bash-cmd">sudo su --login
 export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PATH=${ORACLE_HOME}/OPatch:${PATH}
 </pre>
@@ -452,12 +452,12 @@ export PATH=${ORACLE_HOME}/OPatch:${PATH}
  <p>
   Make sure the patch is valid:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatchauto apply /tmp/21523260 -oh ${ORACLE_HOME} -ocmrf /opt/app/oracle/software/ocm.rsp -analyze
+ <pre class="bash-cmd">opatchauto apply /tmp/21523260 -oh ${ORACLE_HOME} -ocmrf /opt/app/oracle/software/ocm.rsp -analyze
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Automation Tool
+ <pre class="text">OPatch Automation Tool
 Copyright (c)2014, Oracle Corporation. All rights reserved.
 
 OPatchauto Version : 12.1.0.1.10
@@ -505,7 +505,7 @@ opatchauto succeeded.
  <p>
   Apply the patch as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo su --login
+ <pre class="bash-cmd">sudo su --login
 export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PATH=${ORACLE_HOME}/OPatch:${PATH}
 opatchauto apply /tmp/21523260 -oh ${ORACLE_HOME} -ocmrf /opt/app/oracle/software/ocm.rsp
@@ -513,7 +513,7 @@ opatchauto apply /tmp/21523260 -oh ${ORACLE_HOME} -ocmrf /opt/app/oracle/softwar
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Automation Tool
+ <pre class="text">OPatch Automation Tool
 Copyright (c)2014, Oracle Corporation. All rights reserved.
 
 OPatchauto Version : 12.1.0.1.10
@@ -571,7 +571,7 @@ opatchauto failed with error code 2.
  <p>
   The solution is to set up the environment as follows, and reapply the PSU:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo su --login
+ <pre class="bash-cmd">sudo su --login
 export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PATH=${ORACLE_HOME}/OPatch:${PATH}
 export PERL5LIB=${ORACLE_HOME}/perl/lib # MOS Doc ID 2002334.1
@@ -580,7 +580,7 @@ opatchauto apply /tmp/21523260 -oh ${ORACLE_HOME} -ocmrf /opt/app/oracle/softwar
  <p>
   This also failed:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Automation Tool
+ <pre class="text">OPatch Automation Tool
 Copyright (c)2014, Oracle Corporation. All rights reserved.
 
 OPatchauto Version : 12.1.0.1.10
@@ -686,7 +686,7 @@ opatchauto failed with error code 2.
   </span>
   , and move the patches there:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">mkdir -p /opt/app/oracle/software/patches/P21523260
+ <pre class="bash-cmd">mkdir -p /opt/app/oracle/software/patches/P21523260
 mv /tmp/21523260 /opt/app/oracle/software/patches/P21523260
 mv /tmp/PatchSearch.xml /opt/app/oracle/software/patches/P21523260
 mkdir -p /opt/app/oracle/software/patches/P21359755 /opt/app/oracle/software/patches/P21555660
@@ -698,7 +698,7 @@ mkdir -p /opt/app/oracle/software/patches/P21359755 /opt/app/oracle/software/pat
   </span>
   , and then unpacked into the appropriate patch directory as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">unzip -q /tmp/p21359755_121020_Linux-x86-64.zip -d /opt/app/oracle/software/patches/P21359755
+ <pre class="bash-cmd">unzip -q /tmp/p21359755_121020_Linux-x86-64.zip -d /opt/app/oracle/software/patches/P21359755
 unzip -q /tmp/p21555660_121020_Linux-x86-64.zip -d /opt/app/oracle/software/patches/P21555660
 </pre>
  <h2>
@@ -725,12 +725,12 @@ unzip -q /tmp/p21555660_121020_Linux-x86-64.zip -d /opt/app/oracle/software/patc
   </span>
   user in order to detect any patch conflicts:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch prereq CheckConflictAgainstOHWithDetail -ph /opt/app/oracle/software/patches/P21359755/21359755/
+ <pre class="bash-cmd">opatch prereq CheckConflictAgainstOHWithDetail -ph /opt/app/oracle/software/patches/P21359755/21359755/
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 12.1.0.1.10
+ <pre class="text">Oracle Interim Patch Installer version 12.1.0.1.10
 Copyright (c) 2015, Oracle Corporation.  All rights reserved.
 
 PREREQ session
@@ -760,12 +760,12 @@ OPatch succeeded.
   </span>
   user to apply the DB PSU:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp /opt/app/oracle/software/patches/P21359755/21359755/
+ <pre class="bash-cmd">opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp /opt/app/oracle/software/patches/P21359755/21359755/
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 12.1.0.1.10
+ <pre class="text">Oracle Interim Patch Installer version 12.1.0.1.10
 Copyright (c) 2015, Oracle Corporation.  All rights reserved.
 
 
@@ -890,12 +890,12 @@ OPatch succeeded.
   </span>
   user in order to detect any patch conflicts:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch prereq CheckConflictAgainstOHWithDetail -ph /opt/app/oracle/software/patches/P21555660/21555660/
+ <pre class="bash-cmd">opatch prereq CheckConflictAgainstOHWithDetail -ph /opt/app/oracle/software/patches/P21555660/21555660/
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 12.1.0.1.10
+ <pre class="text">Oracle Interim Patch Installer version 12.1.0.1.10
 Copyright (c) 2015, Oracle Corporation.  All rights reserved.
 
 PREREQ session
@@ -925,12 +925,12 @@ OPatch succeeded.
   </span>
   user in order to apply the OJVM PSU:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp -silent /opt/app/oracle/software/patches/P21555660/21555660/
+ <pre class="bash-cmd">opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp -silent /opt/app/oracle/software/patches/P21555660/21555660/
 </pre>
  <p>
   This failed as can be seen in the following output:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 12.1.0.1.10
+ <pre class="text">Oracle Interim Patch Installer version 12.1.0.1.10
 Copyright (c) 2015, Oracle Corporation.  All rights reserved.
 
 
@@ -1028,13 +1028,13 @@ OPatch failed with error code 73
  <p>
   As instructed by the previous output, I ran the following commands:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/app/oracle/product/12.1.0/dbhome_1/.patch_storage/NApply/2015-12-29_20-33-44PM
+ <pre class="bash-cmd">cd /opt/app/oracle/product/12.1.0/dbhome_1/.patch_storage/NApply/2015-12-29_20-33-44PM
 ./restore.sh
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">This script is going to restore the Oracle Home to the previous state.
+ <pre class="text">This script is going to restore the Oracle Home to the previous state.
 It does not perform any of the following:
 - Running init/pre/post scripts
 - Oracle binary re-link
@@ -1049,14 +1049,14 @@ Restore script completed.
  <p>
   After some trial and error, I successfully used the following commands to re-link the Oracle kernel:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export PERL5LIB=${ORACLE_HOME}/perl/lib
+ <pre class="bash-cmd">export PERL5LIB=${ORACLE_HOME}/perl/lib
 export PATH=${ORACLE_HOME}/perl/bin:${PATH}
 sh make.txt 
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">perl /opt/app/oracle/product/12.1.0/dbhome_1/javavm/install/update_javavm_binaries.pl -refresh
+ <pre class="text">perl /opt/app/oracle/product/12.1.0/dbhome_1/javavm/install/update_javavm_binaries.pl -refresh
 chmod 755 /opt/app/oracle/product/12.1.0/dbhome_1/bin
 
  - Linking Oracle 
@@ -1079,7 +1079,7 @@ chmod 6751 /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle
   </span>
   user in order to apply the OJVM PSU:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
+ <pre class="bash-cmd">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PERL5LIB=${ORACLE_HOME}/perl/lib
 export PATH=${ORACLE_HOME}/perl/bin:${PATH}
 opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp -silent /opt/app/oracle/software/patches/P21555660/21555660/
@@ -1087,7 +1087,7 @@ opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp -silent /opt/app/oracle/sof
  <p>
   This succeeded as can be seen in the following output:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 12.1.0.1.10
+ <pre class="text">Oracle Interim Patch Installer version 12.1.0.1.10
 Copyright (c) 2015, Oracle Corporation.  All rights reserved.
 
 

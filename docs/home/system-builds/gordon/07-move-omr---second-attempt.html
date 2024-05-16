@@ -4,7 +4,7 @@ title: '07 Move OMR - Second Attempt'
 base-url: home/system-builds/gordon/07-move-omr---second-attempt.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -165,12 +165,12 @@ table-of-contents:
   </span>
   , the non-administrative tablespaces should be in READ-ONLY mode. This is confimred as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">select tablespace_name, status from dba_tablespaces order by 1;
+ <pre class="sql-cmd">select tablespace_name, status from dba_tablespaces order by 1;
 </pre>
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">TABLESPACE_NAME 	       STATUS
+ <pre class="text">TABLESPACE_NAME 	       STATUS
 ------------------------------ ---------
 MGMT_AD4J_TS		       READ ONLY
 MGMT_ECM_DEPOT_TS	       READ ONLY
@@ -203,12 +203,12 @@ USERS			       READ ONLY
   </span>
   , the following export data-pump command was run to create a export dump file for transporting the database:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">expdp system full=y dumpfile=move_omr.dmp directory=data_pump_dir transportable=always version=12 logfile=move_omr.log
+ <pre class="sql-cmd">expdp system full=y dumpfile=move_omr.dmp directory=data_pump_dir transportable=always version=12 logfile=move_omr.log
 </pre>
  <p>
   This was successful as shown by the following messages:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">******************************************************************************
+ <pre class="text">******************************************************************************
 Dump file set for SYSTEM.SYS_EXPORT_FULL_01 is:
   /opt/oracle/app/admin/repos/dpdump/move_omr.dmp
 ******************************************************************************
@@ -244,12 +244,12 @@ Job "SYSTEM"."SYS_EXPORT_FULL_01" successfully completed at Sun Sep 18 12:52:38 
   </span>
   , was created based on the location of the data files given above:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">create or replace directory data_files as '/opt/oracle/app/oradata/repos/';
+ <pre class="sql-cmd">create or replace directory data_files as '/opt/oracle/app/oradata/repos/';
 </pre>
  <p>
   This was successful as shown by the following message:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Directory created.
+ <pre class="text">Directory created.
 </pre>
  <h3>
   <a name="TOC-Create-Directory-for-Data-Files-on-EMREPOSP">
@@ -267,13 +267,13 @@ Job "SYSTEM"."SYS_EXPORT_FULL_01" successfully completed at Sun Sep 18 12:52:38 
   </span>
   , the directory where the data files are stored was found as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">ALTER SESSION set container = emreposp;
+ <pre class="sql-cmd">ALTER SESSION set container = emreposp;
 SELECT name FROM v$datafile;
 </pre>
  <p>
   The result was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">NAME
+ <pre class="text">NAME
 --------------------------------------------------------------------------------
 +DATA/EMREPOS/DATAFILE/undotbs1.265.900006519
 +DATA/EMREPOS/3CB2554A25C20D21E0536B01A8C0F6BF/DATAFILE/system.273.922824823
@@ -286,14 +286,14 @@ SELECT name FROM v$datafile;
   </span>
   , was created based on the location of the data files given above:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">connect / as sysdba
+ <pre class="sql-cmd">connect / as sysdba
 ALTER SESSION set container = emreposp;
 create or replace directory data_files as '+DATA/EMREPOS/3CB2554A25C20D21E0536B01A8C0F6BF/DATAFILE/';
 </pre>
  <p>
   This was successful as shown by the following message:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Directory created.
+ <pre class="text">Directory created.
 </pre>
  <h3>
   <a name="TOC-Set-Up-TNSNAMES-for-Remote-Database-on-GRIDCTRL">
@@ -307,7 +307,7 @@ create or replace directory data_files as '+DATA/EMREPOS/3CB2554A25C20D21E0536B0
   </span>
   , the contents of the TNSNAMES file was set as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;/opt/oracle/app/OracleHomes/db11g/network/admin/tnsnames.ora &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;&gt;/opt/oracle/app/OracleHomes/db11g/network/admin/tnsnames.ora &lt;&lt;DONE
 # -----------------------------------------------------------------------------
 # TNS Names entries
 # -----------------------------------------------------------------------------
@@ -343,7 +343,7 @@ DONE
   </span>
   user, the following database link was created:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">CONNECT SYSTEM
+ <pre class="sql-cmd">CONNECT SYSTEM
 create database link emreposp
   connect to system identified by "&amp;pw_system."
   using 'EMREPOSP'
@@ -352,17 +352,17 @@ create database link emreposp
  <p>
   This was successful as shown by the following message:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Database link created.
+ <pre class="text">Database link created.
 </pre>
  <p>
   And the following SQL statement shows that the connection was successful:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">select host_name from v$instance@emreposp;
+ <pre class="sql-cmd">select host_name from v$instance@emreposp;
 </pre>
  <p>
   This was successful as shown by the following message:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">HOST_NAME
+ <pre class="text">HOST_NAME
 ----------------------------------------------------------------
 gordon.yaocm.id.au
 </pre>
@@ -394,7 +394,7 @@ gordon.yaocm.id.au
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">SET SERVEROUTPUT ON
+ <pre class="sql-cmd">SET SERVEROUTPUT ON
 DECLARE
   l_src_dir
     VARCHAR2(32) := 'DATA_FILES';
@@ -446,7 +446,7 @@ END;
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <h3>
   <a name="TOC-Verify-Transferred-Files">
@@ -460,12 +460,12 @@ END;
   </span>
   , the contents of the destination directory were displayed using the following command:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">asmcmd ls -ls +DATA/EMREPOS/3CB2554A25C20D21E0536B01A8C0F6BF/DATAFILE
+ <pre class="bash-cmd">asmcmd ls -ls +DATA/EMREPOS/3CB2554A25C20D21E0536B01A8C0F6BF/DATAFILE
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Type      Redund  Striped  Time             Sys  Block_Size  Blocks       Bytes       Space  Name
+ <pre class="text">Type      Redund  Striped  Time             Sys  Block_Size  Blocks       Bytes       Space  Name
 DATAFILE  UNPROT  COARSE   SEP 18 16:00:00  Y          8192   25601   209723392   211812352  FILE_TRANSFER.276.922897989
 DATAFILE  UNPROT  COARSE   SEP 18 16:00:00  Y          8192   25601   209723392   211812352  FILE_TRANSFER.277.922898001
 DATAFILE  UNPROT  COARSE   SEP 18 16:00:00  Y          8192  787201  6448750592  6450839552  FILE_TRANSFER.278.922898013
@@ -491,7 +491,7 @@ DATAFILE  UNPROT  COARSE   SEP 18 16:00:00  N          8192     641     5251072 
   </span>
   , the directory was created as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">mkdir -p /opt/app/oracle/admin/emreposp/dpdump
+ <pre class="bash-cmd">mkdir -p /opt/app/oracle/admin/emreposp/dpdump
 </pre>
  <p>
   In the
@@ -504,7 +504,7 @@ DATAFILE  UNPROT  COARSE   SEP 18 16:00:00  N          8192     641     5251072 
   </span>
   , the data pump directory was created as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">connect / as sysdba
+ <pre class="sql-cmd">connect / as sysdba
 ALTER SESSION set container = CDB$ROOT;
 CREATE OR REPLACE DIRECTORY data_pump_dir AS '/opt/app/oracle/admin/emreposp/dpdump';
 </pre>
@@ -524,12 +524,12 @@ CREATE OR REPLACE DIRECTORY data_pump_dir AS '/opt/app/oracle/admin/emreposp/dpd
   </span>
   as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">scp /opt/oracle/app/admin/repos/dpdump/move_omr.dmp gordon:/opt/app/oracle/admin/emreposp/dpdump
+ <pre class="bash-cmd">scp /opt/oracle/app/admin/repos/dpdump/move_omr.dmp gordon:/opt/app/oracle/admin/emreposp/dpdump
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">The authenticity of host 'gordon (192.168.1.107)' can't be established.
+ <pre class="text">The authenticity of host 'gordon (192.168.1.107)' can't be established.
 RSA key fingerprint is 6c:ac:10:f8:33:ae:ce:58:1a:79:64:4d:a6:7a:bb:7f.
 Are you sure you want to continue connecting (yes/no)? yes
 Warning: Permanently added 'gordon' (RSA) to the list of known hosts.
@@ -548,7 +548,7 @@ move_omr.dmp                                                                100%
   </span>
   , the contents of the TNSNAMES file was set as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;//opt/app/oracle/product/12.1.0/dbhome_1/network/admin/tnsnames.ora &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;&gt;//opt/app/oracle/product/12.1.0/dbhome_1/network/admin/tnsnames.ora &lt;&lt;DONE
 # -----------------------------------------------------------------------------
 # TNS Names entries
 # -----------------------------------------------------------------------------
@@ -580,7 +580,7 @@ DONE
   </code>
   utility was created as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;move_omr.par &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;move_omr.par &lt;&lt;DONE
 FULL=Y
 DUMPFILE=move_omr.dmp 
 DIRECTORY=data_pump_dir 
@@ -609,12 +609,12 @@ DONE
   </code>
   utility was invoked to import the transferred database:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">impdp system@emreposp parfile=move_omr.par
+ <pre class="bash-cmd">impdp system@emreposp parfile=move_omr.par
 </pre>
  <p>
   This failed with the following error messages:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Import: Release 12.1.0.2.0 - Production on Sun Sep 18 19:25:13 2016
+ <pre class="text">Import: Release 12.1.0.2.0 - Production on Sun Sep 18 19:25:13 2016
 
 Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.
 Password: 

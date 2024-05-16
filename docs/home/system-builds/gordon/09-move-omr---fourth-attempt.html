@@ -4,7 +4,7 @@ title: '09 Move OMR - Fourth Attempt'
 base-url: home/system-builds/gordon/09-move-omr---fourth-attempt.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -204,12 +204,12 @@ table-of-contents:
   </code>
   command to drop the database as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">srvctl remove database -db emrepos -verbose
+ <pre class="bash-cmd">srvctl remove database -db emrepos -verbose
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Remove the database emrepos? (y/[n]) y
+ <pre class="text">Remove the database emrepos? (y/[n]) y
 Successfully removed database and its dependent services.
 </pre>
  <h3>
@@ -247,7 +247,7 @@ Successfully removed database and its dependent services.
  <p>
   I used the following SQL*Plus commands to change the default tablespace:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">create tablespace default_user_ts;
+ <pre class="sql-cmd">create tablespace default_user_ts;
 alter database default tablespace default_user_ts;
 drop tablespace users;
 </pre>
@@ -278,7 +278,7 @@ drop tablespace users;
  <p>
   The database directory is created as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">CREATE OR REPLACE DIRECTORY transfer AS '+DATA/GORDONC/3DB8402EC7AF38A5E0536B01A8C0A97C/DATAFILE';
+ <pre class="sql-cmd">CREATE OR REPLACE DIRECTORY transfer AS '+DATA/GORDONC/3DB8402EC7AF38A5E0536B01A8C0A97C/DATAFILE';
 </pre>
  <h3>
   <a name="TOC-Create-Database-Link-to-EMREPOS">
@@ -300,7 +300,7 @@ drop tablespace users;
   </span>
   user, the following database link was created:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">CONNECT SYSTEM
+ <pre class="sql-cmd">CONNECT SYSTEM
 DROP DATABASE LINK emreposp;
 CREATE DATABASE LINK emrepos
   connect to system identified by "&amp;pw_system."
@@ -310,18 +310,18 @@ CREATE DATABASE LINK emrepos
  <p>
   This was successful as shown by the following message:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Database link dropped.
+ <pre class="text">Database link dropped.
 Database link created.
 </pre>
  <p>
   And the following SQL statement shows that the connection was successful:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">select host_name from v$instance@emrepos;
+ <pre class="sql-cmd">select host_name from v$instance@emrepos;
 </pre>
  <p>
   This was successful as shown by the following message:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">HOST_NAME
+ <pre class="text">HOST_NAME
 ----------------------------------------------------------------
 gordon.yaocm.id.au
 </pre>
@@ -345,7 +345,7 @@ gordon.yaocm.id.au
   </span>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">SET SERVEROUTPUT ON
+ <pre class="sql-cmd">SET SERVEROUTPUT ON
 DECLARE
   TYPE t_file_names IS TABLE OF VARCHAR2(256);
   l_file_names
@@ -384,7 +384,7 @@ END;
   </span>
   , the files are listed as follows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">[oracle@gordon ~]$ asmcmd ls -ls +DATA/GORDONC/3DB8402EC7AF38A5E0536B01A8C0A97C/DATAFILE
+ <pre class="text">[oracle@gordon ~]$ asmcmd ls -ls +DATA/GORDONC/3DB8402EC7AF38A5E0536B01A8C0A97C/DATAFILE
 Type      Redund  Striped  Time             Sys  Block_Size  Blocks       Bytes       Space  Name
 DATAFILE  UNPROT  COARSE   OCT 03 09:00:00  Y          8192   12801   104865792   106954752  DEFAULT_USER_TS.279.924127417
 DATAFILE  UNPROT  COARSE   OCT 03 09:00:00  Y          8192     641     5251072     6291456  FILE_TRANSFER.274.924255919
@@ -416,7 +416,7 @@ DATAFILE  UNPROT  COARSE   OCT 03 09:00:00  N          8192     641     5251072 
   </span>
   , a new database directory is created as follows for an existing host directory:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">CONNECT / AS SYSDBA
+ <pre class="sql-cmd">CONNECT / AS SYSDBA
 ALTER SESSION set container = emrepos;
 CREATE DIRECTORY local_dp_dir AS '/opt/app/oracle/admin/emrepos/dpdump';
 </pre>
@@ -436,7 +436,7 @@ CREATE DIRECTORY local_dp_dir AS '/opt/app/oracle/admin/emrepos/dpdump';
   </code>
   utility was updated as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;move_omr.par &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;move_omr.par &lt;&lt;DONE
 FULL=Y
 DUMPFILE=move_omr.dmp 
 DIRECTORY=local_dp_dir 
@@ -465,7 +465,7 @@ DONE
   </span>
   as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">scp /opt/oracle/app/admin/repos/dpdump/move_omr.dmp gordon:/opt/app/oracle/admin/emrepos/dpdump/
+ <pre class="bash-cmd">scp /opt/oracle/app/admin/repos/dpdump/move_omr.dmp gordon:/opt/app/oracle/admin/emrepos/dpdump/
 </pre>
  <h3>
   <a name="TOC-Import-Tranferred-Metadata-into-EMREPOSP">
@@ -483,7 +483,7 @@ DONE
   </code>
   utility was invoked as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">impdp system@emrepos parfile=move_omr.par
+ <pre class="bash-cmd">impdp system@emrepos parfile=move_omr.par
 </pre>
  <p>
   This failes. On
@@ -492,7 +492,7 @@ DONE
   </span>
   , the import data-pump log shows:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">;;; 
+ <pre class="text">;;; 
 Import: Release 12.1.0.2.0 - Production on Mon Oct 3 12:07:37 2016
 
 Copyright (c) 1982, 2014, Oracle and/or its affiliates.  All rights reserved.

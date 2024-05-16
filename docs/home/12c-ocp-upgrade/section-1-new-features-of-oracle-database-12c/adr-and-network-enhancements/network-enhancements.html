@@ -4,7 +4,7 @@ title: 'Network Enhancements'
 base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/adr-and-network-enhancements/network-enhancements.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 1: New Features of Oracle Database 12c'
@@ -130,7 +130,7 @@ breadcrumbs:
  <p>
   Without compression, I ran the following tests:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; set arraysize 1000
+ <pre class="text">SQL&gt; set arraysize 1000
 SQL&gt; set timing on autotrace traceonly statistics
 SQL&gt; select * from dba_objects;
 
@@ -199,14 +199,14 @@ Statistics
   </span>
   , the following lines were added:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">sqlnet.compression=on
+ <pre class="text">sqlnet.compression=on
 SQLNET.COMPRESSION_LEVELS=(low)
 SQLNET.COMPRESSION_THRESHOLD=1024
 </pre>
  <p>
   Repeating the same test again, I get similar results:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect sys@plum as sysdba
+ <pre class="text">SQL&gt; connect sys@plum as sysdba
 Enter password: 
 Connected.
 SQL&gt; set arraysize 1000

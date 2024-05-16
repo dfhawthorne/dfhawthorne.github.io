@@ -4,7 +4,7 @@ title: 'Create SQL Plan baselines'
 base-url: home/12c-ocm/data-and-performance-management/create-sql-plan-baselines.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCM'
   url: home/12c-ocm.html
 - title: 'Data and Performance Management'
@@ -205,11 +205,11 @@ table-of-contents:
  <p>
   Used the following SQL*Plus command to show the relevant parameter settings for SQL Plan Baselines:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">show parameter sql_plan_baselines</pre>
+ <pre class="sql-cmd">show parameter sql_plan_baselines</pre>
  <p>
   The result was:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">NAME                    TYPE    VALUE
+ <pre class="text">NAME                    TYPE    VALUE
 ------------------------------------ ----------- ------------------------------
 <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">optimizer_capture_sql_plan_baselines</a> boolean     FALSE
 <a href="https://docs.oracle.com/database/121/REFRN/GUID-6218A4B0-B8B9-416E-ADB6-3FFA70F412DA.htm#REFRN10293" rel="nofollow">optimizer_use_sql_plan_baselines</a>     boolean     TRUE
@@ -222,7 +222,7 @@ table-of-contents:
  <p>
   Used the following SQL*Plus command to capture all SQL Plan Baselines:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">alter system set <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">optimizer_capture_sql_plan_baselines</a>=true</pre>
+ <pre class="sql-cmd">alter system set <a href="https://docs.oracle.com/database/121/REFRN/GUID-A562069E-BD44-4ABB-A987-0A13078F4E90.htm#REFRN10292" rel="nofollow">optimizer_capture_sql_plan_baselines</a>=true</pre>
  <h3>
   <a name="TOC-Generate-Some-Test-Plans">
   </a>
@@ -231,13 +231,13 @@ table-of-contents:
  <p>
   Used the following SQL*Plus command to run SQL in the SH schema of the EXAMPLES PDB:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">alter session set container=examples;
+ <pre class="sql-cmd">alter session set container=examples;
 alter session set current_schema=sh;
 </pre>
  <p>
   Used the following SQL as the sample:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SELECT /* q1_group_by */ prod_name, sum(quantity_sold)
+ <pre class="sql-cmd">SELECT /* q1_group_by */ prod_name, sum(quantity_sold)
   FROM   products p, sales s
   WHERE  p.prod_id = s.prod_id
   AND    p.prod_category_id =203
@@ -251,7 +251,7 @@ alter session set current_schema=sh;
  <p>
   Used the following SQL to confirm that no SQL plans were captured after just one (1) execution of the above sample SQL:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SELECT SQL_HANDLE, SQL_TEXT, PLAN_NAME, ORIGIN, ENABLED, 
+ <pre class="sql-cmd">SELECT SQL_HANDLE, SQL_TEXT, PLAN_NAME, ORIGIN, ENABLED, 
        ACCEPTED, FIXED, AUTOPURGE
 FROM   <a href="https://docs.oracle.com/database/121/REFRN/GUID-101D8477-5600-4659-9A3C-9528391E500D.htm#REFRN23714" rel="nofollow">DBA_SQL_PLAN_BASELINES</a>
 WHERE  SQL_TEXT LIKE '%q1_group%';
@@ -259,7 +259,7 @@ WHERE  SQL_TEXT LIKE '%q1_group%';
  <p>
   The expected result is:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">no rows selected
+ <pre class="text">no rows selected
 </pre>
  <h3>
   <a name="TOC-After-Second-Sample-SQL-Execution">
@@ -272,7 +272,7 @@ WHERE  SQL_TEXT LIKE '%q1_group%';
  <p>
   Used the following SQL*Plus commands to discover that the SQL plan was captured after the second execution of the above sample SQL:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">SET PAGES 10000 LINES 140
+ <pre class="sql-cmd">SET PAGES 10000 LINES 140
 SET SERVEROUTPUT ON
 COL SQL_TEXT FORMAT A20
 COL SQL_HANDLE FORMAT A20
@@ -289,7 +289,7 @@ WHERE  SQL_TEXT LIKE '%q1_group%';
  <p>
   The result is:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10pxdetermine Current Parameter Settings;padding:2px">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
+ <pre class="text">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
 -------------------- -------------------- ------------------------------ ------------ --- --- ---
 SQL_07f16c76ff893342 SELECT /* q1_group_b SQL_PLAN_0gwbcfvzskcu242949306 AUTO-CAPTURE YES YES NO
                      y */ prod_name, sum(
@@ -307,7 +307,7 @@ SQL_07f16c76ff893342 SELECT /* q1_group_b SQL_PLAN_0gwbcfvzskcu242949306 AUTO-CA
   </a>
   Create Index to Improve SQL Plan
  </h3>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">CREATE INDEX ind_prod_cat_name 
+ <pre class="sql-cmd">CREATE INDEX ind_prod_cat_name 
   ON products(prod_category_id, prod_name, prod_id);<cite>SQL Plan Control</cite> page
 CREATE INDEX ind_sales_prod_qty_sold 
   ON sales(prod_id, quantity_sold);
@@ -315,7 +315,7 @@ CREATE INDEX ind_sales_prod_qty_sold
  <p>
   The SQL Plans now include the following entries for the sample query:
  </p>
- <pre style="background-color:lightblue;border:5px groove black;margin-left:10px;padding:2px">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
+ <pre class="text">SQL_HANDLE           SQL_TEXT             PLAN_NAME                      ORIGIN       ENA ACC FIX
 -------------------- -------------------- ------------------------------ ------------ --- --- ---
 SQL_07f16c76ff893342 SELECT /* q1_group_b SQL_PLAN_0gwbcfvzskcu242949306 AUTO-CAPTURE YES YES NO
                      y */ prod_name, sum(

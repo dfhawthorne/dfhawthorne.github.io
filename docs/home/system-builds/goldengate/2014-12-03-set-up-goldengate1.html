@@ -1,0 +1,530 @@
+---
+layout: default
+title: '2014-12-03 Set Up goldengate1'
+base-url: home/system-builds/goldengate/2014-12-03-set-up-goldengate1.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'System Builds'
+  url: home/system-builds.html
+- title: 'GOLDENGATE'
+  url: home/system-builds/goldengate.html
+scroll-bar:
+  left-link:
+    url: home/system-builds/goldengate/2014-12-03-planning.html
+    title: '2014-12-03 Planning'
+  right-link:
+    url: home/system-builds/goldengate/2021-02-04-create-xen-vm-images.html
+    title: '2021-02-04 Create XEN VM Images'
+table-of-contents:
+- toc-url: 'Overview'
+  toc-text: 'Overview'
+- toc-url: 'References'
+  toc-text: 'References'
+- toc-url: 'Procedure'
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: 'Clone-VM-Image'
+    toc-text: 'Clone VM Image'
+  - toc-url: 'Modify-VM-Image'
+    toc-text: 'Modify VM Image'
+  - toc-url: 'Initial-Changes-to-GOLDENGATE1'
+    toc-text: 'Initial Changes to GOLDENGATE1'
+    toc-menu:
+    - toc-url: 'Update-SUDOERS'
+      toc-text: 'Update SUDOERS'
+    - toc-url: 'Update-Host-Name'
+      toc-text: 'Update Host Name'
+    - toc-url: 'Update-ETH1'
+      toc-text: 'Update ETH1'
+    - toc-url: 'Update-HOSTS'
+      toc-text: 'Update HOSTS'
+  - toc-url: 'Add-Additional-Storage'
+    toc-text: 'Add Additional Storage'
+    toc-menu:
+    - toc-url: 'Initialize-Physical-Volume'
+      toc-text: 'Initialize Physical Volume'
+    - toc-url: 'Extend-Volume-Group'
+      toc-text: 'Extend Volume Group'
+    - toc-url: 'Create-Logical-Volume'
+      toc-text: 'Create Logical Volume'
+  - toc-url: 'Create-Mount-Point-for-Oracle-Products'
+    toc-text: 'Create Mount Point for Oracle Products'
+    toc-menu:
+    - toc-url: 'Create-File-System'
+      toc-text: 'Create File System'
+    - toc-url: 'Mount-File-System'
+      toc-text: 'Mount File System'
+---
+<div dir="ltr">
+ <br/>
+ <h2>
+  <a name="TOC-Overview">
+  </a>
+  Overview
+ </h2>
+ <p>
+  Setting up the first system (
+  <span style="font-family:monospace">
+   goldengate1
+  </span>
+  ) to investigate
+  <a href="https://docs.oracle.com/en/middleware/goldengate/index.html">
+   Oracle GoldenGate
+  </a>
+  .
+ </p>
+ <h2>
+  <a name="TOC-References">
+  </a>
+  References
+ </h2>
+ <ul>
+  <li>
+   <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/index.html" rel="nofollow">
+    Oracle® Linux Administrator's Guide for Release 6
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_part3_adm.html" rel="nofollow">
+     III Storage and File Systems
+    </a>
+   </li>
+   <ul>
+    <li>
+     <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_storage.html" rel="nofollow">
+      17 Storage Management
+     </a>
+    </li>
+    <ul>
+     <li>
+      <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html" rel="nofollow">
+       17.3 About Logical Volume Manager
+      </a>
+     </li>
+     <ul>
+      <li>
+       <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html#idm140093860963968" rel="nofollow">
+        17.3.1 Initializing and Managing Physical Volumes
+       </a>
+      </li>
+      <li>
+       <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html#idm140093860943040" rel="nofollow">
+        17.3.2 Creating and Managing Volume Groups
+       </a>
+      </li>
+      <li>
+       <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html#idm140093860904272" rel="nofollow">
+        17.3.3 Creating and Managing Logical Volumes
+       </a>
+      </li>
+     </ul>
+    </ul>
+    <li>
+     <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_fsadmin.html" rel="nofollow">
+      18 File System Administration
+     </a>
+    </li>
+    <ul>
+     <li>
+      <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_about_fs.html" rel="nofollow">
+       18.1 Making File Systems
+      </a>
+     </li>
+     <li>
+      <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch18s02.html" rel="nofollow">
+       18.2 Mounting File Systems
+      </a>
+     </li>
+    </ul>
+   </ul>
+  </ul>
+  <li>
+   <a href="http://man7.org/index.html" rel="nofollow">
+    Michael Kerrisk - man7.org
+   </a>
+  </li>
+  <ul>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man1/df.1.html" rel="nofollow">
+     <span style="font-family:monospace">
+      df
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/lvcreate.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      lvcreate
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/lvdisplay.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      lvdisplay
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" rel="nofollow">
+     <span style="font-family:monospace">
+      mkdir
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/mkfs.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      mkfs
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/mount.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      mount
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/pvcreate.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      pvcreate
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/vgdisplay.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      vgdisplay
+     </span>
+    </a>
+   </li>
+   <li>
+    <a href="http://man7.org/linux/man-pages/man8/vgextend.8.html" rel="nofollow">
+     <span style="font-family:monospace">
+      vgextend
+     </span>
+    </a>
+   </li>
+  </ul>
+ </ul>
+ <h2>
+  <a name="TOC-Procedure">
+  </a>
+  Procedure
+ </h2>
+ <h3>
+  <a name="TOC-Clone-VM-Image">
+  </a>
+  Clone VM Image
+ </h3>
+ <p>
+  I cloned
+  <span style="font-style:italic">
+   OEL6u3 Base
+  </span>
+  as
+  <span style="font-style:italic">
+   Goldengate1
+  </span>
+  . This was a full clone.
+ </p>
+ <h3>
+  <a name="TOC-Modify-VM-Image">
+  </a>
+  Modify VM Image
+ </h3>
+ <p>
+  I made the following changes to the
+  <span style="font-style:italic">
+   Goldengate1
+  </span>
+  VM image:
+ </p>
+ <ol>
+  <li>
+   Increase RAM to 2GB
+  </li>
+  <li>
+   Add a 20GB disk. This will be mounted as
+   <span style="font-family:monospace">
+    /u01
+   </span>
+  </li>
+  <li>
+   Add a shared folder pointing to
+   <span style="font-family:monospace">
+    Downloads
+   </span>
+   .
+  </li>
+  <li>
+   Change the
+   <span style="font-style:italic">
+    Promiscuous Mode
+   </span>
+   on Network
+   <span style="font-style:italic">
+    Adapter 1
+   </span>
+   to
+   <span style="font-style:italic">
+    Allow All
+   </span>
+   .
+  </li>
+ </ol>
+ <h3>
+  <a name="TOC-Initial-Changes-to-GOLDENGATE1">
+  </a>
+  Initial Changes to GOLDENGATE1
+ </h3>
+ <h4>
+  <a name="TOC-Update-SUDOERS">
+  </a>
+  Update SUDOERS
+ </h4>
+ <p>
+  The
+  <span style="font-style:italic">
+   /etc/sudoers
+  </span>
+  was updated using
+  <span style="font-style:italic">
+   visudo
+  </span>
+  as
+  <span style="font-style:italic">
+   root
+  </span>
+  to include the following line:
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   %wheel  ALL=(ALL)   NOPASSWD: ALL
+  </p>
+ </blockquote>
+ <h4>
+  <a name="TOC-Update-Host-Name">
+  </a>
+  Update Host Name
+ </h4>
+ <p>
+  The
+  <span style="font-family:monospace">
+   /etc/sysconfig/network
+  </span>
+  was updated to change:
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   HOSTNAME=randwick.yaocm.id.au
+  </p>
+ </blockquote>
+ <p>
+  to
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   HOSTNAME=goldengate1.yaocm.id.au
+  </p>
+ </blockquote>
+ <h4>
+  <a name="TOC-Update-ETH1">
+  </a>
+  Update ETH1
+ </h4>
+ <p>
+  The interface
+  <span style="font-family:monospace">
+   eth1
+  </span>
+  is updated to have:
+ </p>
+ <ol>
+  <li>
+   a static IP address of
+   <span style="font-family:monospace">
+    192.168.1.150
+   </span>
+  </li>
+  <li>
+   default route of
+   <span style="font-family:monospace">
+    192.168.1.1
+   </span>
+  </li>
+  <li>
+   DNS Servers are
+   <span style="font-family:monospace">
+    192.168.1.252,10.1.1.1
+   </span>
+  </li>
+  <li>
+   domain name of
+   <span style="font-family:monospace">
+    yaocm.id.au
+   </span>
+  </li>
+ </ol>
+ <h4>
+  <a name="TOC-Update-HOSTS">
+  </a>
+  Update HOSTS
+ </h4>
+ <p>
+  Appended the following lines to
+  <span style="font-family:monospace">
+   /etc/hosts
+  </span>
+  :
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   # GoldenGate Trial
+   <br/>
+   192.168.1.150	goldengate1 goldengate1.yaocm.id.au
+   <br/>
+   192.168.1.151	goldengate2 goldengate2.yaocm.id.au
+  </p>
+ </blockquote>
+ <h3>
+  <a name="TOC-Add-Additional-Storage">
+  </a>
+  Add Additional Storage
+ </h3>
+ <h4>
+  <a name="TOC-Initialize-Physical-Volume">
+  </a>
+  Initialize Physical Volume
+ </h4>
+ <p>
+  Following the procedure in
+  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html#idm140093860963968" rel="nofollow">
+   17.3.1 Initializing and Managing Physical Volumes
+  </a>
+  , I initialized the new disk drive as follows:
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   <a href="http://man7.org/linux/man-pages/man8/pvcreate.8.html" rel="nofollow">
+    pvcreate
+   </a>
+   /dev/sdb
+  </p>
+ </blockquote>
+ <h4>
+  <a name="TOC-Extend-Volume-Group">
+  </a>
+  Extend Volume Group
+ </h4>
+ <p>
+  Used
+  <a href="http://man7.org/linux/man-pages/man8/vgdisplay.8.html" rel="nofollow">
+   <span style="font-family:monospace">
+    vgdisplay
+   </span>
+  </a>
+  without any parameters to find the name(s) of the current volume groups. There was only one (1):
+  <span style="font-family:monospace">
+   vg_randwick
+  </span>
+  .
+ </p>
+ <p>
+  Following the procedure in
+  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html#idm140093860943040" rel="nofollow">
+   17.3.2 Creating and Managing Volume Groups
+  </a>
+  , I extended the existing volume group (
+  <span style="font-family:monospace">
+   vg_randwick
+  </span>
+  ) to include the new physical volume:
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   <a href="http://man7.org/linux/man-pages/man8/vgextend.8.html" rel="nofollow">
+    vgextend
+   </a>
+   vg_randwick /dev/sdb
+  </p>
+ </blockquote>
+ <h4>
+  <a name="TOC-Create-Logical-Volume">
+  </a>
+  Create Logical Volume
+ </h4>
+ <p>
+  Following the procedure in
+  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch17s03.html#idm140093860904272" rel="nofollow">
+   17.3.3 Creating and Managing Logical Volumes
+  </a>
+  , I created a new logical volume of size 12GB:
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   <a href="http://man7.org/linux/man-pages/man8/lvcreate.8.html" rel="nofollow">
+    lvcreate
+   </a>
+   -v --size 12g --name lv_u01 vg_randwick
+  </p>
+ </blockquote>
+ <h3>
+  <a name="TOC-Create-Mount-Point-for-Oracle-Products">
+  </a>
+  Create Mount Point for Oracle Products
+ </h3>
+ <h4>
+  <a name="TOC-Create-File-System">
+  </a>
+  Create File System
+ </h4>
+ <p>
+  Following the procedure in
+  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ol_about_fs.html" rel="nofollow">
+   18.1 Making File Systems
+  </a>
+  , I formatted the new logical volume
+  <span style="font-family:monospace">
+   lv_u01
+  </span>
+  as follows:
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   <a href="http://man7.org/linux/man-pages/man8/mkfs.8.html" rel="nofollow">
+    mkfs
+   </a>
+   -t ext4 -L oracle /dev/mapper/vg_randwick-lv_u01
+  </p>
+ </blockquote>
+ <h4>
+  <a name="TOC-Mount-File-System">
+  </a>
+  Mount File System
+ </h4>
+ <p>
+  Following the procedure in
+  <a href="https://docs.oracle.com/cd/E37670_01/E41138/html/ch18s02.html" rel="nofollow">
+   18.2 Mounting File Systems
+  </a>
+  ,
+ </p>
+ <blockquote style="font-family:monospace">
+  <p>
+   <a href="http://man7.org/linux/man-pages/man1/mkdir.1.html" rel="nofollow">
+    mkdir
+   </a>
+   /u01
+   <br/>
+   <a href="http://man7.org/linux/man-pages/man8/mount.8.html" rel="nofollow">
+    mount
+   </a>
+   -t ext4 /dev/mapper/vg_randwick-lv_u01 /u01
+  </p>
+ </blockquote>
+</div>

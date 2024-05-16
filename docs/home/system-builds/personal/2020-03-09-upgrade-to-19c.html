@@ -4,7 +4,7 @@ title: '2020-03-09 Upgrade to 19C'
 base-url: home/system-builds/personal/2020-03-09-upgrade-to-19c.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'PERSONAL'
@@ -77,7 +77,7 @@ table-of-contents:
   </span>
   is a non-cdb as shown by the following snippet of SQL:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2p">SQL&gt; select cdb from v$database;
+ <pre class="text">SQL&gt; select cdb from v$database;
 
 CDB
 ---
@@ -121,7 +121,7 @@ To do this, I have the following plan:
   </span>
   database:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">*._fix_control='17376322:0','6660162:0'</pre>
+ <pre class="text">*._fix_control='17376322:0','6660162:0'</pre>
  <p>
   Fix control, 17376322, is set in response to "
   <a href="https://support.oracle.com/epmos/faces/DocContentDisplay?id=26894777.8" rel="nofollow">
@@ -164,26 +164,26 @@ To do this, I have the following plan:
  <p>
   I ran the following commands to validate SQL*Plus accessibility:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
+ <pre class="bash-cmd">export ORACLE_HOME=/opt/oracle/product/19c/dbhome_1
 export PATH=${ORACLE_HOME}/bin:${PATH}
 sqlplus /nolog
 </pre>
  <p>
   The errors were:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">sqlplus: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /opt/oracle/product/19c/dbhome_1/lib/libclntsh.so.19.1)
+ <pre class="text">sqlplus: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /opt/oracle/product/19c/dbhome_1/lib/libclntsh.so.19.1)
 sqlplus: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /opt/oracle/product/19c/dbhome_1/lib/libclntshcore.so.19.1)
 sqlplus: /lib64/libc.so.6: version `GLIBC_2.14' not found (required by /opt/oracle/product/19c/dbhome_1/lib/libnnz19.so)
 </pre>
  <p>
   I ran the following commands to find whether GLIBC was installed or not:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">yum search glibc
+ <pre class="bash-cmd">yum search glibc
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Loaded plugins: security
+ <pre class="text">Loaded plugins: security
 Could not get metalink https://mirrors.fedoraproject.org/metalink?repo=epel-6&amp;arch=x86_64 error was
 14: problem making ssl connection
 ol6_UEKR3_latest                                                                                                                                                                     | 2.5 kB     00:00     
@@ -216,11 +216,11 @@ nss-mdns.x86_64 : <font color="#A40000"><b>glibc</b></font> plugin for .local na
  <p>
   I ran the following commands to find the version of GLIBC that was installed:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">yum info glibc-common.x86_64</pre>
+ <pre class="bash-cmd">yum info glibc-common.x86_64</pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Loaded plugins: security
+ <pre class="text">Loaded plugins: security
 Installed Packages
 Name        : <font color="#A40000"><b>glibc-common</b></font>
 Arch        : x86_64

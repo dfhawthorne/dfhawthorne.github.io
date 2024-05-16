@@ -4,7 +4,7 @@ title: '11 Correct GORDON Network Interface'
 base-url: home/system-builds/gordon/11-correct-gordon-network-interface.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -151,7 +151,7 @@ table-of-contents:
  <p>
   Because the disks are named differnently under OVM, the following commands were used to change ownership of the disks marked to be used by ASM:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo chown oracle:dba /dev/xvd[de]
+ <pre class="bash-cmd">sudo chown oracle:dba /dev/xvd[de]
 </pre>
  <h3>
   <a name="TOC-Set-Up-UDEV-Permissions">
@@ -169,7 +169,7 @@ table-of-contents:
   </a>
   :
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;&gt;/etc/udev/rules.d/10-local.rules &lt;&lt;DONE
 KERNEL=="xvd[d-e]", ACTION=="add", OWNER:="oracle", GROUP:="dba", MODE:="0660"
 DONE
 </pre>

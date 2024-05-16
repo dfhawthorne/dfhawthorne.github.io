@@ -4,7 +4,7 @@ title: '2018-03-20 Ansible Playbook for Install GI Software (2)'
 base-url: home/system-builds/redfern/2018-03-20-ansible-playbook-for-install-gi-software-2.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -309,7 +309,7 @@ table-of-contents:
                     </a>
                     output:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">53c53
+<pre class="text">53c53
 &lt;<span style="font-weight:bold"> ORACLE_HOSTNAME={{ ansible_nodename }}</span>
 ---
 &gt; ORACLE_HOSTNAME=
@@ -383,7 +383,7 @@ table-of-contents:
                     </span>
                     ):
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # vars file for oracle_gi
 "oracle_gi":
   "inventory_location": "/opt/app/oraInventory"
@@ -421,7 +421,7 @@ table-of-contents:
                     </span>
                     ):
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # =============================================================================
 # Install Oracle GI 12.1.0.2 Software Only:
 # (1) Create response file for silent installation
@@ -538,12 +538,9 @@ table-of-contents:
                     </a>
                     to run the install GI portion of the main playbook:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass <a href="http://docs.ansible.com/ansible/latest/playbooks_tags.html" rel="nofollow">--tags</a> "install_gi_sw" /etc/ansible/sites.yml
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="bash-cmd"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass <a href="http://docs.ansible.com/ansible/latest/playbooks_tags.html" rel="nofollow">--tags</a> "install_gi_sw" /etc/ansible/sites.yml</pre>
+<p>The output was:</p>
+<pre class="text">SUDO password: 
 
 PLAY [redfern1.yaocm.id.au] ****************************************************
 
@@ -616,27 +613,12 @@ TASK [oracle_gi : debug] *******************************************************
 }</span>
 
 PLAY RECAP *********************************************************************
-<span style="color:orange">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=10</span>   <span style="color:orange">changed=4</span>    unreachable=0    failed=0   
-
-</pre>
-<h3>
-<a name="TOC-Verify-Idempotency">
-</a>
-                    Verify Idempotency
-                   </h3>
-<p>
-                    On
-                    <a href="home/system-builds/auburn.html" style="font-family:monospace">
-                     AUBURN
-                    </a>
-                    . the idempotency of this playbook was verified as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass <a href="http://docs.ansible.com/ansible/latest/playbooks_tags.html" rel="nofollow">--tags</a> "install_gi_sw" /etc/ansible/sites.yml
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<span style="color:orange">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=10</span>   <span style="color:orange">changed=4</span>    unreachable=0    failed=0</pre>
+<h3 id="TOC-Verify-Idempotency">Verify Idempotency</h3>
+<p>On <a href="home/system-builds/auburn.html" style="font-family:monospace">AUBURN</a>, the idempotency of this playbook was verified as follows:</p>
+<pre class="bash-cmd"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass <a href="http://docs.ansible.com/ansible/latest/playbooks_tags.html" rel="nofollow">--tags</a> "install_gi_sw" /etc/ansible/sites.yml</pre>
+<p>The output was:</p>
+<pre class="text">SUDO password: 
 
 PLAY [redfern1.yaocm.id.au] ****************************************************
 
@@ -675,8 +657,7 @@ TASK [oracle_gi : debug] *******************************************************
 <span style="color:#47c5e8">skipping: [redfern1.yaocm.id.au]</span>
 
 PLAY RECAP *********************************************************************
-<span style="color:green">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=5</span>    changed=0    unreachable=0    failed=0   
-</pre>
+<span style="color:green">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=5</span>    changed=0    unreachable=0    failed=0</pre>
 
 </div>
 <!-- {% endraw %} -->

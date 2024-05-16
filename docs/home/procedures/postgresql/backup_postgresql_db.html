@@ -4,7 +4,7 @@ title: 'Backup PostgreSQL DB'
 base-url: home/procedures/postgresql/backup_postgresql_db.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'Procedures'
   url: home/procedures.html
 - title: 'PostgreSQL'
@@ -36,8 +36,10 @@ table-of-contents:
   toc-text: 'Outline of Server Restoration'
 - toc-url: 'References'
   toc-text: 'References'
-- toc-url: 'File-Downloads'
-  toc-text: 'File Downloads'
+file-download-dir: 'home/procedures/postgresql/backup_postgresql_db'
+file-download:
+- 'full_backup_all_14_db.log'
+- 'full_backup_files.lst'
 ---
 <h2 id="TOC-Overview">
  Overview
@@ -386,19 +388,4 @@ postgres@coogee:/etc/postgresql/14/main$ tar czvf ~/backup/settings.tgz .</pre>
    </ul>
   </ul>
  </ul>
-</ul>
-<h2 id="TOC-File-Downloads">
- File Downloads
-</h2>
-<ul>
- <li>
-  <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_all_14_db.log">
-   full_backup_all_14_db.log
-  </a>
- </li>
- <li>
-  <a href="home/procedures/postgresql/backup_postgresql_db/full_backup_files.lst">
-   full_backup_files.lst
-  </a>
- </li>
 </ul>

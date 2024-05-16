@@ -4,7 +4,7 @@ title: 'Apply and review patches'
 base-url: home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/apply-and-review-patches.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 2: Key DBA Skills'
@@ -47,8 +47,10 @@ table-of-contents:
     toc-text: 'Patch Installation'
   - toc-url: 'Patch-Post-Installation'
     toc-text: 'Patch Post-Installation'
-- toc-url: 'File-Downloads'
-  toc-text: 'File Downloads'
+file-download-dir: 'home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/apply-and-review-patches'
+file-download:
+- 'apply_psu_201904_botany.log'
+- 'apply_psu_201904_padstow.log'
 ---
 <div dir="ltr">
  <br/>
@@ -169,11 +171,11 @@ table-of-contents:
   </span>
   , I ran the following command to get the current version of OPatch:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">${ORACLE_HOME}/OPatch/opatch version</pre>
+ <pre class="bash-cmd">${ORACLE_HOME}/OPatch/opatch version</pre>
  <p>
   The output was
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">OPatch Version: 12.1.0.1.3
+ <pre class="text">OPatch Version: 12.1.0.1.3
 
 OPatch succeeded.
 </pre>
@@ -184,7 +186,7 @@ OPatch succeeded.
   </span>
   was different:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">OPatch Version: 12.1.0.1.8
+ <pre class="text">OPatch Version: 12.1.0.1.8
 
 OPatch succeeded.
 </pre>
@@ -222,7 +224,7 @@ OPatch succeeded.
   </span>
   , I saved the old version of OPatch as follows:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">cd ${ORACLE_HOME}
+ <pre class="bash-cmd">cd ${ORACLE_HOME}
 mv OPatch OPatch_12_1_0_1_3
 </pre>
  <p>
@@ -232,7 +234,7 @@ mv OPatch OPatch_12_1_0_1_3
   </span>
   :
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">cd ${ORACLE_HOME}
+ <pre class="bash-cmd">cd ${ORACLE_HOME}
 mv OPatch OPatch_12_1_0_1_8
 </pre>
  <h3>
@@ -251,7 +253,7 @@ mv OPatch OPatch_12_1_0_1_8
   </span>
   :
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">cd ${ORACLE_HOME}
+ <pre class="bash-cmd">cd ${ORACLE_HOME}
 unzip -q /opt/share/Software/OPatch/p6880880_122010_Linux-x86-64.zip
 </pre>
  <h3>
@@ -270,11 +272,11 @@ unzip -q /opt/share/Software/OPatch/p6880880_122010_Linux-x86-64.zip
   </span>
   , I ran the following command to get the current version of OPatch:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">${ORACLE_HOME}/OPatch/opatch version</pre>
+ <pre class="bash-cmd">${ORACLE_HOME}/OPatch/opatch version</pre>
  <p>
   The output was
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">OPatch Version: 12.2.0.1.19
+ <pre class="text">OPatch Version: 12.2.0.1.19
 
 OPatch succeeded.
 </pre>
@@ -294,12 +296,12 @@ OPatch succeeded.
   </span>
   , I ran the following command to validate the correct executables are in the path:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">which make ar ld nm
+ <pre class="bash-cmd">which make ar ld nm
 </pre>
  <p>
   The output was the same on both systems:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">/usr/bin/make
+ <pre class="text">/usr/bin/make
 /usr/bin/ar
 /usr/bin/ld
 /usr/bin/nm
@@ -320,7 +322,7 @@ OPatch succeeded.
   </span>
   , I ran the following commands to unzip the PSU:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">mkdir /tmp/P29141015 
+ <pre class="bash-cmd">mkdir /tmp/P29141015 
 unzip -q /opt/share/Software/Patches/p29141015_121020_Linux-x86-64.zip -d /tmp/P29141015
 </pre>
  <h3>
@@ -339,13 +341,13 @@ unzip -q /opt/share/Software/Patches/p29141015_121020_Linux-x86-64.zip -d /tmp/P
   </span>
   , I ran the following commands to unzip the PSU:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">cd /tmp/P29141015/29141015
+ <pre class="bash-cmd">cd /tmp/P29141015/29141015
 ${ORACLE_HOME}/OPatch/opatch prereq CheckConflictAgainstOHWithDetail -ph ./
 </pre>
  <p>
   The output was similar on both systems:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Oracle Interim Patch Installer version 12.2.0.1.19
+ <pre class="text">Oracle Interim Patch Installer version 12.2.0.1.19
 Copyright (c) 2020, Oracle Corporation.  All rights reserved.
 
 PREREQ session
@@ -379,12 +381,12 @@ OPatch succeeded.
   </span>
   , I ran the following command to stop the Oracle listener:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">lsnrctl stop
+ <pre class="bash-cmd">lsnrctl stop
 </pre>
  <p>
   The output was similar on both systems:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 24-FEB-2020 14:07:02
+ <pre class="text">LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 24-FEB-2020 14:07:02
 
 Copyright (c) 1991, 2014, Oracle.  All rights reserved.
 
@@ -402,7 +404,7 @@ The command completed successfully
   </span>
   ), I ran the following series of commands to stop the running Oracle database instances:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[oracle@padstow 29141015]$ ps -ef|grep pmon
+ <pre class="text">[oracle@padstow 29141015]$ ps -ef|grep pmon
 oracle     2555      1  0 08:58 ?        00:00:01 ora_pmon_jar
 oracle    15619  11703  0 14:07 pts/1    00:00:00 grep pmon
 [oracle@padstow 29141015]$ sqlplus / as sysdba
@@ -436,13 +438,13 @@ With the Partitioning, OLAP, Advanced Analytics and Real Application Testing opt
   </span>
   only, I ran the following command to patch the Oracle database home:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">cd /tmp/P29141015/29141015
+ <pre class="text">cd /tmp/P29141015/29141015
 ${ORACLE_HOME}/OPatch/opatch apply
 </pre>
  <p>
   The output was too long to include here. It is attached as apply_psu_201904_padstow.log. However, it contained the following warning:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">OPatch found the word "error" in the stderr of the make command.
+ <pre class="text">OPatch found the word "error" in the stderr of the make command.
 Please look at this stderr. You can re-run this make command.
 Stderr output:
 chmod: changing permissions of `/opt/app/oracle/product/12.1.0/dbhome_1/bin/extjobO': Operation not permitted
@@ -476,7 +478,7 @@ make: [iextjob] Error 1 (ignored)
   </span>
   database:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">[oracle@padstow 29141015]$ . oraenv
+ <pre class="text">[oracle@padstow 29141015]$ . oraenv
 ORACLE_SID = [jar] ? 
 The Oracle base remains unchanged with value /opt/app/oracle
 [oracle@padstow 29141015]$ sqlplus / as sysdba
@@ -529,21 +531,4 @@ SQL Patching tool complete on Mon Feb 24 16:02:38 2020
  <p>
   There is no need to apply the data patch on the physical standby.
  </p>
- <div class="file_downloads">
-  <h2 id="TOC-File-Downloads">
-   File Downloads
-  </h2>
-  <ol>
-   <li>
-    <a href="home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/apply-and-review-patches/apply_psu_201904_botany.log">
-     apply_psu_201904_botany.log
-    </a>
-   </li>
-   <li>
-    <a href="home/12c-ocp-upgrade/section-2-key-dba-skills/core-administration/apply-and-review-patches/apply_psu_201904_padstow.log">
-     apply_psu_201904_padstow.log
-    </a>
-   </li>
-  </ol>
- </div>
 </div>

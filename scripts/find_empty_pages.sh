@@ -56,4 +56,6 @@ printf   "============================================\n\n"
 find_converted_web_pages.sh | \
     xargs --max-args=1 \
         grep --files-with-matches \
-             --file="${empty_page_addr_fn}"
+             --file="${empty_page_addr_fn}" | \
+    sed --regexp-extended \
+        --expression "s!${base_dir}/!!" \

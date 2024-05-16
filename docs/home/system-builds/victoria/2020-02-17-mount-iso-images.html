@@ -4,7 +4,7 @@ title: '2020-02-17 Mount ISO Images'
 base-url: home/system-builds/victoria/2020-02-17-mount-iso-images.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'Victoria'
@@ -15,6 +15,9 @@ scroll-bar:
   left-link:
     url: home/system-builds/victoria/2019-12-28-create-cpu-pools.html
     title: '2019-12-28 Create CPU Pools'
+  right-link:
+    url: 'home/system-builds/victoria/2021-03-28-rebuild-as-3-4-6-server.html'
+    title: '2021-03-28 Rebuild as 3.4.6 Server'
 table-of-contents:
 - toc-url: 'Overview'
   toc-text: 'Overview'
@@ -63,7 +66,7 @@ table-of-contents:
 <p>
                     Create the following mount points for each OEL ISO image as follows:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">mkdir /mnt/OEL_6_5_server_x86_64
+<pre class="bash-cmd">mkdir /mnt/OEL_6_5_server_x86_64
 mkdir /mnt/OEL_7_0_server_x86_64
 mkdir /mnt/OEL_7_2_server_x86_64
 mkdir /mnt/OEL_7_3_server_x86_64
@@ -81,7 +84,7 @@ mkdir /mnt/OEL_7_4_server_x86_64
                     </span>
                     as follows:
                    </p>
-<pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">cat &gt;&gt;/etc/fstab &lt;&lt;DONE
+<pre class="bash-cmd">cat &gt;&gt;/etc/fstab &lt;&lt;DONE
 # -------------------------------------------------------------------------------
 # ISO disks mounts
 # -------------------------------------------------------------------------------

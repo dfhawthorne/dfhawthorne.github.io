@@ -4,7 +4,7 @@ title: '2018-02-28 Ansible Playbook for GI 12.1.0.2 Install'
 base-url: home/system-builds/redfern/2018-02-28-ansible-playbook-for-gi-12-1-0-2-install.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -137,7 +137,7 @@ table-of-contents:
                     </a>
                     , I should use the following command to install the Oracle pre-installation RPM:
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px;padding:2px">yum install oracle-rdbms-server-12cR1-preinstall
+<pre class="bash-cmd">yum install oracle-rdbms-server-12cR1-preinstall
 </pre>
 <h4>
 <a name="TOC-Create-Playbook">
@@ -147,7 +147,7 @@ table-of-contents:
 <p>
                     The equivalent Ansible playbook entries are:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 - name: Install Oracle 12.1 pre-installation RPM on REDFERN Cluster
   hosts: redfern1.yaocm.id.au
   become: true
@@ -181,12 +181,12 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px;padding:2px">ansible-playbook -K preinstall.yml
-</pre>
+<pre class="bash-cmd">ansible-playbook -K preinstall.yml
+</pre class="text">
 <p>
                     The output is:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="bash-cmd">SUDO password: 
 
 PLAY [Install Oracle 12.1 pre-installation RPM on REDFERN Cluster] *************
 
@@ -211,7 +211,7 @@ PLAY RECAP *********************************************************************
                      </span>
                      option is not used, then an error message similar to the following is produced:
                     </p>
-<pre style="color:red;border:5px groove black;margin-left:10px;padding:2px">fatal: [redfern1.yaocm.id.au]: FAILED! =&gt; {"changed": false, "module_stderr": "Shared connection to redfern1.yaocm.id.au closed.\r\n", "module_stdout": "sudo: a password is required\r\n", "msg": "MODULE FAILURE", "rc": 1}</pre>
+<pre class="sample-error-msg">fatal: [redfern1.yaocm.id.au]: FAILED! =&gt; {"changed": false, "module_stderr": "Shared connection to redfern1.yaocm.id.au closed.\r\n", "module_stdout": "sudo: a password is required\r\n", "msg": "MODULE FAILURE", "rc": 1}</pre>
 </div>
 <h4>
 <a name="TOC-Confirm-Installation-of-RPM">
@@ -221,7 +221,7 @@ PLAY RECAP *********************************************************************
 <p>
                     When I run the same command again, I get the following output:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="text">SUDO password: 
 
 PLAY [Install Oracle 12.1 pre-installation RPM on REDFERN Cluster] *************
 

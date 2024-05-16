@@ -4,7 +4,7 @@ title: 'Enable and configure Unified Audit Data Trail'
 base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/enable-and-configure-unified-audit-data-trail.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 1: New Features of Oracle Database 12c'
@@ -388,7 +388,7 @@ table-of-contents:
  <p>
   This procedure does not exist in Oracle RDBMS 12.1:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt;c DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS
+ <pre class="text">SQL&gt;exec DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS
 BEGIN DBMS_AUDIT_MGMT.TRANSFER_UNIFIED_AUDIT_RECORDS; END;
 
                       *
@@ -431,211 +431,122 @@ PL/SQL: Statement ignored
   </a>
   :
  </p>
- <blockquote style="font-family:monospace;background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">
-  [oracle@personal ~]$ lsnrctl stop
-  <br/>
-  <br/>
-  LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 15-APR-2018 21:30:19
-  <br/>
-  <br/>
-  Copyright (c) 1991, 2014, Oracle.  All rights reserved.
-  <br/>
-  <br/>
-  Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))
-  <br/>
-  The command completed successfully
-  <br/>
-  [oracle@personal ~]$ . oraenv
-  <br/>
-  ORACLE_SID = [personal] ? jar
-  <br/>
-  The Oracle base remains unchanged with value /opt/app/oracle
-  <br/>
-  [oracle@personal ~]$ sqlplus / as sysdba
-  <br/>
-  <br/>
-  SQL*Plus: Release 12.1.0.2.0 Production on Sun Apr 15 21:31:07 2018
-  <br/>
-  <br/>
-  Copyright (c) 1982, 2014, Oracle.  All rights reserved.
-  <br/>
-  <br/>
-  Connected to an idle instance.
-  <br/>
-  <br/>
-  SQL&gt; startup
-  <br/>
-  ORACLE instance started.
-  <br/>
-  <br/>
-  Total System Global Area 1543503872 bytes
-  <br/>
-  Fixed Size          2924736 bytes
-  <br/>
-  Variable Size         939528000 bytes
-  <br/>
-  Database Buffers      587202560 bytes
-  <br/>
-  Redo Buffers           13848576 bytes
-  <br/>
-  Database mounted.
-  <br/>
-  Database opened.
-  <br/>
-  SQL&gt; SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';
-  <br/>
-  <br/>
-  VALUE
-  <br/>
-  ----------------------------------------------------------------
-  <br/>
-  FALSE
-  <br/>
-  <br/>
-  SQL&gt; shutdown immediate
-  <br/>
-  Database closed.
-  <br/>
-  Database dismounted.
-  <br/>
-  ORACLE instance shut down.
-  <br/>
-  SQL&gt; Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
-  <br/>
-  With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
-  <br/>
-  <span style="font-weight:bold">
-   [oracle@personal ~]$ cd ${ORACLE_HOME}/rdbms/lib
-   <br/>
-   [oracle@personal lib]$ make -f ins_rdbms.mk uniaud_on ioracle ORACLE_HOME=$ORACLE_HOME
-   <br/>
-  </span>
-  /usr/bin/ar d /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a kzanang.o
-  <br/>
-  /usr/bin/ar cr /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/kzaiang.o
-  <br/>
-  chmod 755 /opt/app/oracle/product/12.1.0/dbhome_1/bin
-  <br/>
-  <br/>
-  - Linking Oracle
-  <br/>
-  rm -f /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle
-  <br/>
-  /opt/app/oracle/product/12.1.0/dbhome_1/bin/orald  -o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle -m64 -z noexecstack -Wl,--disable-new-dtags -L/opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ -L/opt/app/oracle/product/12.1.0/dbhome_1/lib/ -L/opt/app/oracle/product/12.1.0/dbhome_1/lib/stubs/   -Wl,-E /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/opimai.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ssoraed.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ttcsoi.o -Wl,--whole-archive -lperfsrv12 -Wl,--no-whole-archive /opt/app/oracle/product/12.1.0/dbhome_1/lib/nautab.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naeet.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naect.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naedhs.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/config.o  -lserver12 -lodm12 -lcell12 -lnnet12 -lskgxp12 -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lclient12  -lvsn12 -lcommon12 -lgeneric12 -lknlopt `if /usr/bin/ar tv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a | grep xsyeolap.o &gt; /dev/null 2&gt;&amp;1 ; then echo "-loraolap12" ; fi` -lskjcx12 -lslax12 -lpls12  -lrt -lplp12 -lserver12 -lclient12  -lvsn12 -lcommon12 -lgeneric12 `if [ -f /opt/app/oracle/product/12.1.0/dbhome_1/lib/libavserver12.a ] ; then echo "-lavserver12" ; else echo "-lavstub12"; fi` `if [ -f /opt/app/oracle/product/12.1.0/dbhome_1/lib/libavclient12.a ] ; then echo "-lavclient12" ; fi` -lknlopt -lslax12 -lpls12  -lrt -lplp12 -ljavavm12 -lserver12  -lwwg  `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnro12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnnzst12 -lzt12 -lztkg12 -lmm -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lztkg12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnro12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnnzst12 -lzt12 -lztkg12   -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 `if /usr/bin/ar tv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a | grep "kxmnsd.o" &gt; /dev/null 2&gt;&amp;1 ; then echo " " ; else echo "-lordsdo12 -lserver12"; fi` -L/opt/app/oracle/product/12.1.0/dbhome_1/ctx/lib/ -lctxc12 -lctx12 -lzx12 -lgx12 -lctx12 -lzx12 -lgx12 -lordimt12 -lclsra12 -ldbcfg12 -lhasgen12 -lskgxn2 -lnnzst12 -lzt12 -lxml12 -locr12 -locrb12 -locrutl12 -lhasgen12 -lskgxn2 -lnnzst12 -lzt12 -lxml12  -lgeneric12 -loraz -llzopro -lorabz2 -lipp_z -lipp_bz2 -lippdcemerged -lippsemerged -lippdcmerged  -lippsmerged -lippcore  -lippcpemerged -lippcpmerged  -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lsnls12 -lunls12  -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lasmclnt12 -lcommon12 -lcore12  -laio -lons    `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/sysliblist` -Wl,-rpath,/opt/app/oracle/product/12.1.0/dbhome_1/lib -lm    `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/sysliblist` -ldl -lm   -L/opt/app/oracle/product/12.1.0/dbhome_1/lib
-  <br/>
-  test ! -f /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle ||\
-  <br/>
-  mv -f /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracleO
-  <br/>
-  mv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle
-  <br/>
-  chmod 6751 /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle
-  <br/>
-  [oracle@personal lib]$ lsnrctl start
-  <br/>
-  <br/>
-  LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 15-APR-2018 21:40:51
-  <br/>
-  <br/>
-  Copyright (c) 1991, 2014, Oracle.  All rights reserved.
-  <br/>
-  <br/>
-  Starting /opt/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
-  <br/>
-  <br/>
-  TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-  <br/>
-  System parameter file is /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora
-  <br/>
-  Log messages written to /opt/app/oracle/diag/tnslsnr/personal/listener/alert/log.xml
-  <br/>
-  Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))
-  <br/>
-  Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=personal)(PORT=1521)))
-  <br/>
-  Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-  <br/>
-  <br/>
-  Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))
-  <br/>
-  STATUS of the LISTENER
-  <br/>
-  ------------------------
-  <br/>
-  Alias                     LISTENER
-  <br/>
-  Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
-  <br/>
-  Start Date                15-APR-2018 21:40:52
-  <br/>
-  Uptime                    0 days 0 hr. 0 min. 0 sec
-  <br/>
-  Trace Level               off
-  <br/>
-  Security                  ON: Local OS Authentication
-  <br/>
-  SNMP                      OFF
-  <br/>
-  Listener Parameter File   /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora
-  <br/>
-  Listener Log File         /opt/app/oracle/diag/tnslsnr/personal/listener/alert/log.xml
-  <br/>
-  Listening Endpoints Summary...
-  <br/>
-  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))
-  <br/>
-  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=personal)(PORT=1521)))
-  <br/>
-  (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
-  <br/>
-  The listener supports no services
-  <br/>
-  The command completed successfully
-  <br/>
-  [oracle@personal lib]$ sqlplus / as sysdba
-  <br/>
-  <br/>
-  SQL*Plus: Release 12.1.0.2.0 Production on Sun Apr 15 21:41:02 2018
-  <br/>
-  <br/>
-  Copyright (c) 1982, 2014, Oracle.  All rights reserved.
-  <br/>
-  <br/>
-  Connected to an idle instance.
-  <br/>
-  <br/>
-  SQL&gt; startup
-  <br/>
-  ORACLE instance started.
-  <br/>
-  <br/>
-  Total System Global Area 1543503872 bytes
-  <br/>
-  Fixed Size          2924736 bytes
-  <br/>
-  Variable Size         939528000 bytes
-  <br/>
-  Database Buffers      587202560 bytes
-  <br/>
-  Redo Buffers           13848576 bytes
-  <br/>
-  Database mounted.
-  <br/>
-  Database opened.
-  <br/>
-  SQL&gt; SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';
-  <br/>
-  <br/>
-  VALUE
-  <br/>
-  ----------------------------------------------------------------
-  <br/>
-  TRUE
-  <br/>
-  <br/>
-  SQL&gt;
-  <br/>
- </blockquote>
+<pre class="text">
+[oracle@personal ~]$ lsnrctl stop
+
+LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 15-APR-2018 21:30:19
+
+Copyright (c) 1991, 2014, Oracle.  All rights reserved.
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))
+The command completed successfully
+[oracle@personal ~]$ . oraenv
+ORACLE_SID = [personal] ? jar
+The Oracle base remains unchanged with value /opt/app/oracle
+[oracle@personal ~]$ sqlplus / as sysdba
+
+SQL*Plus: Release 12.1.0.2.0 Production on Sun Apr 15 21:31:07 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+
+SQL&gt; startup
+ORACLE instance started.
+
+Total System Global Area 1543503872 bytes
+Fixed Size          2924736 bytes
+Variable Size         939528000 bytes
+Database Buffers      587202560 bytes
+Redo Buffers           13848576 bytes
+Database mounted.
+Database opened.
+SQL&gt; SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';
+
+VALUE
+----------------------------------------------------------------
+FALSE
+
+SQL&gt; shutdown immediate
+Database closed.
+Database dismounted.
+ORACLE instance shut down.
+SQL&gt; Disconnected from Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+<span style="font-weight:bold">
+[oracle@personal ~]$ cd ${ORACLE_HOME}/rdbms/lib
+[oracle@personal lib]$ make -f ins_rdbms.mk uniaud_on ioracle ORACLE_HOME=$ORACLE_HOME
+</span>
+/usr/bin/ar d /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a kzanang.o
+/usr/bin/ar cr /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/kzaiang.o
+chmod 755 /opt/app/oracle/product/12.1.0/dbhome_1/bin
+
+- Linking Oracle
+rm -f /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle
+/opt/app/oracle/product/12.1.0/dbhome_1/bin/orald  -o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle -m64 -z noexecstack -Wl,--disable-new-dtags -L/opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ -L/opt/app/oracle/product/12.1.0/dbhome_1/lib/ -L/opt/app/oracle/product/12.1.0/dbhome_1/lib/stubs/   -Wl,-E /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/opimai.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ssoraed.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/ttcsoi.o -Wl,--whole-archive -lperfsrv12 -Wl,--no-whole-archive /opt/app/oracle/product/12.1.0/dbhome_1/lib/nautab.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naeet.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naect.o /opt/app/oracle/product/12.1.0/dbhome_1/lib/naedhs.o /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/config.o  -lserver12 -lodm12 -lcell12 -lnnet12 -lskgxp12 -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lclient12  -lvsn12 -lcommon12 -lgeneric12 -lknlopt `if /usr/bin/ar tv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a | grep xsyeolap.o &gt; /dev/null 2&gt;&amp;1 ; then echo "-loraolap12" ; fi` -lskjcx12 -lslax12 -lpls12  -lrt -lplp12 -lserver12 -lclient12  -lvsn12 -lcommon12 -lgeneric12 `if [ -f /opt/app/oracle/product/12.1.0/dbhome_1/lib/libavserver12.a ] ; then echo "-lavserver12" ; else echo "-lavstub12"; fi` `if [ -f /opt/app/oracle/product/12.1.0/dbhome_1/lib/libavclient12.a ] ; then echo "-lavclient12" ; fi` -lknlopt -lslax12 -lpls12  -lrt -lplp12 -ljavavm12 -lserver12  -lwwg  `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnro12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnnzst12 -lzt12 -lztkg12 -lmm -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lztkg12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnro12 `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/ldflags`    -lncrypt12 -lnsgr12 -lnzjs12 -ln12 -lnl12 -lnnzst12 -lzt12 -lztkg12   -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 `if /usr/bin/ar tv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/libknlopt.a | grep "kxmnsd.o" &gt; /dev/null 2&gt;&amp;1 ; then echo " " ; else echo "-lordsdo12 -lserver12"; fi` -L/opt/app/oracle/product/12.1.0/dbhome_1/ctx/lib/ -lctxc12 -lctx12 -lzx12 -lgx12 -lctx12 -lzx12 -lgx12 -lordimt12 -lclsra12 -ldbcfg12 -lhasgen12 -lskgxn2 -lnnzst12 -lzt12 -lxml12 -locr12 -locrb12 -locrutl12 -lhasgen12 -lskgxn2 -lnnzst12 -lzt12 -lxml12  -lgeneric12 -loraz -llzopro -lorabz2 -lipp_z -lipp_bz2 -lippdcemerged -lippsemerged -lippdcmerged  -lippsmerged -lippcore  -lippcpemerged -lippcpmerged  -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lsnls12 -lunls12  -lsnls12 -lnls12  -lcore12 -lsnls12 -lnls12 -lcore12 -lsnls12 -lnls12 -lxml12 -lcore12 -lunls12 -lsnls12 -lnls12 -lcore12 -lnls12 -lasmclnt12 -lcommon12 -lcore12  -laio -lons    `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/sysliblist` -Wl,-rpath,/opt/app/oracle/product/12.1.0/dbhome_1/lib -lm    `cat /opt/app/oracle/product/12.1.0/dbhome_1/lib/sysliblist` -ldl -lm   -L/opt/app/oracle/product/12.1.0/dbhome_1/lib
+test ! -f /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle ||\
+mv -f /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracleO
+mv /opt/app/oracle/product/12.1.0/dbhome_1/rdbms/lib/oracle /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle
+chmod 6751 /opt/app/oracle/product/12.1.0/dbhome_1/bin/oracle
+[oracle@personal lib]$ lsnrctl start
+
+LSNRCTL for Linux: Version 12.1.0.2.0 - Production on 15-APR-2018 21:40:51
+
+Copyright (c) 1991, 2014, Oracle.  All rights reserved.
+
+Starting /opt/app/oracle/product/12.1.0/dbhome_1/bin/tnslsnr: please wait...
+
+TNSLSNR for Linux: Version 12.1.0.2.0 - Production
+System parameter file is /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora
+Log messages written to /opt/app/oracle/diag/tnslsnr/personal/listener/alert/log.xml
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=personal)(PORT=1521)))
+Listening on: (DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
+
+Connecting to (DESCRIPTION=(ADDRESS=(PROTOCOL=IPC)(KEY=LISTENER)))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 12.1.0.2.0 - Production
+Start Date                15-APR-2018 21:40:52
+Uptime                    0 days 0 hr. 0 min. 0 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Parameter File   /opt/app/oracle/product/12.1.0/dbhome_1/network/admin/listener.ora
+Listener Log File         /opt/app/oracle/diag/tnslsnr/personal/listener/alert/log.xml
+Listening Endpoints Summary...
+(DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=LISTENER)))
+(DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=personal)(PORT=1521)))
+(DESCRIPTION=(ADDRESS=(PROTOCOL=ipc)(KEY=EXTPROC1521)))
+The listener supports no services
+The command completed successfully
+[oracle@personal lib]$ sqlplus / as sysdba
+
+SQL*Plus: Release 12.1.0.2.0 Production on Sun Apr 15 21:41:02 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Connected to an idle instance.
+
+SQL&gt; startup
+ORACLE instance started.
+
+Total System Global Area 1543503872 bytes
+Fixed Size          2924736 bytes
+Variable Size         939528000 bytes
+Database Buffers      587202560 bytes
+Redo Buffers           13848576 bytes
+Database mounted.
+Database opened.
+SQL&gt; SELECT VALUE FROM V$OPTION WHERE PARAMETER = 'Unified Auditing';
+
+VALUE
+----------------------------------------------------------------
+TRUE
+
+SQL&gt;
+</pre>
  <p>
   Summary:
  </p>
@@ -679,7 +590,7 @@ PL/SQL: Statement ignored
  <p>
   First, I open the database as read-only:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">[oracle@personal ~]$ sqlplus / as sysdba
+ <pre class="text">[oracle@personal ~]$ sqlplus / as sysdba
 
 SQL*Plus: Release 12.1.0.2.0 Production on Thu Apr 19 12:23:38 2018
 
@@ -719,7 +630,7 @@ READ ONLY
  <p>
   Next, I generate some audit records:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect system
+ <pre class="text">SQL&gt; connect system
 Enter password: 
 ERROR:
 ORA-28032: Your password has expired and the database is set to read-only
@@ -735,7 +646,7 @@ Connected.
  <p>
   Next, I check for the generation of OS Audit records:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; !ls -lth /opt/app/oracle/audit/personal/
+ <pre class="text">SQL&gt; !ls -lth /opt/app/oracle/audit/personal/
 total 104K
 -rw-r-----. 1 oracle oinstall  10K Apr 19 12:24 ora_audit_11.bin
 -rw-r-----. 1 oracle oinstall 6.0K Apr 19 12:24 ora_audit_00.bin
@@ -765,7 +676,7 @@ SQL&gt; !file /opt/app/oracle/audit/personal/ora_audit_11.bin
  <p>
   Next, open the database as read-write:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; connect / as sysdba
+ <pre class="text">SQL&gt; connect / as sysdba
 Connected.
 SQL&gt; shutdown immediate
 Database closed.
@@ -802,7 +713,7 @@ READ WRITE
   </span>
   procedure:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; select count(*) from unified_audit_trail;
+ <pre class="text">SQL&gt; select count(*) from unified_audit_trail;
 
   COUNT(*)
 ----------
@@ -829,7 +740,7 @@ total 0
  <p>
   I ran the following SQL to get the audit entries for the above scenario:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">SELECT event_timestamp,
+ <pre class="sql-cmd">SELECT event_timestamp,
   dbusername,
   audit_type,
   action_name,
@@ -2115,7 +2026,7 @@ ORDER BY event_timestamp
   </cite>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+ <pre class="sql-cmd">COLUMN parameter_name  FORMAT A30
 COLUMN parameter_value FORMAT A30
 SELECT parameter_name, parameter_value
   FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
@@ -2126,7 +2037,7 @@ SELECT parameter_name, parameter_value
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+ <pre class="text">PARAMETER_NAME                 PARAMETER_VALUE
 ------------------------------ ------------------------------
 AUDIT WRITE MODE               QUEUED WRITE MODE
 </pre>
@@ -2142,12 +2053,12 @@ AUDIT WRITE MODE               QUEUED WRITE MODE
   </a>
   procedure is called to manually flush the audit records to disk:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">EXEC <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBFBHG" rel="nofollow">DBMS_AUDIT_MGMT.FLUSH_UNIFIED_AUDIT_TRAIL</a>;
+ <pre class="sql-cmd">EXEC <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBFBHG" rel="nofollow">DBMS_AUDIT_MGMT.FLUSH_UNIFIED_AUDIT_TRAIL</a>;
 </pre>
  <p>
   The output is simply:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <h3>
   <a name="TOC-Change-Audit-Write-Mode">
@@ -2170,7 +2081,7 @@ AUDIT WRITE MODE               QUEUED WRITE MODE
   </cite>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+ <pre class="sql-cmd">COLUMN parameter_name  FORMAT A30
 COLUMN parameter_value FORMAT A30
 SELECT parameter_name, parameter_value
   FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
@@ -2181,7 +2092,7 @@ SELECT parameter_name, parameter_value
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+ <pre class="text">PARAMETER_NAME                 PARAMETER_VALUE
 ------------------------------ ------------------------------
 AUDIT WRITE MODE               QUEUED WRITE MODE
 </pre>
@@ -2205,7 +2116,7 @@ AUDIT WRITE MODE               QUEUED WRITE MODE
   </cite>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">BEGIN
+ <pre class="sql-cmd">BEGIN
  <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" rel="nofollow">DBMS_AUDIT_MGMT.SET_AUDIT_TRAIL_PROPERTY</a>(
   DBMS_AUDIT_MGMT.AUDIT_TRAIL_UNIFIED,
   DBMS_AUDIT_MGMT.AUDIT_TRAIL_WRITE_MODE, 
@@ -2216,7 +2127,7 @@ END;
  <p>
   The output is simply:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <h4>
   <a name="TOC-Check-Audit-Write-Mode2">
@@ -2234,7 +2145,7 @@ END;
   </cite>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+ <pre class="sql-cmd">COLUMN parameter_name  FORMAT A30
 COLUMN parameter_value FORMAT A30
 SELECT parameter_name, parameter_value
   FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
@@ -2245,7 +2156,7 @@ SELECT parameter_name, parameter_value
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+ <pre class="text">PARAMETER_NAME                 PARAMETER_VALUE
 ------------------------------ ------------------------------
 AUDIT WRITE MODE               IMMEDIATE WRITE MODE
 </pre>
@@ -2269,7 +2180,7 @@ AUDIT WRITE MODE               IMMEDIATE WRITE MODE
   </cite>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">BEGIN
+ <pre class="sql-cmd">BEGIN
  <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABBBBJE" rel="nofollow">DBMS_AUDIT_MGMT.SET_AUDIT_TRAIL_PROPERTY</a>(
   DBMS_AUDIT_MGMT.AUDIT_TRAIL_UNIFIED, 
   DBMS_AUDIT_MGMT.AUDIT_TRAIL_WRITE_MODE, 
@@ -2280,7 +2191,7 @@ END;
  <p>
   The output is simply:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 </pre>
  <h4>
   <a name="TOC-Check-Audit-Write-Mode3">
@@ -2298,7 +2209,7 @@ END;
   </cite>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">COLUMN parameter_name  FORMAT A30
+ <pre class="sql-cmd">COLUMN parameter_name  FORMAT A30
 COLUMN parameter_value FORMAT A30
 SELECT parameter_name, parameter_value
   FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-C74389A0-13A6-41A7-A0FA-D2D1B528ACAD.htm" rel="nofollow">DBA_AUDIT_MGMT_CONFIG_PARAMS</a>
@@ -2309,7 +2220,7 @@ SELECT parameter_name, parameter_value
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PARAMETER_NAME                 PARAMETER_VALUE
+ <pre class="text">PARAMETER_NAME                 PARAMETER_VALUE
 ------------------------------ ------------------------------
 AUDIT WRITE MODE               QUEUED WRITE MODE
 </pre>
@@ -2329,7 +2240,7 @@ AUDIT WRITE MODE               QUEUED WRITE MODE
   </a>
   :
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">VARIABLE write_mode NUMBER
+ <pre class="sql-cmd">VARIABLE write_mode NUMBER
 BEGIN
   :write_mode
     := <a href="https://docs.oracle.com/database/121/ARPLS/d_audit_mgmt.htm#BABHEHDC" rel="nofollow">dbms_audit_mgmt.get_audit_trail_property_value</a>(
@@ -2343,7 +2254,7 @@ PRINT write_mode
  <p>
   The output is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">PL/SQL procedure successfully completed.
+ <pre class="text">PL/SQL procedure successfully completed.
 
 WRITE_MODE
 ----------
@@ -2352,7 +2263,7 @@ WRITE_MODE
  <p>
   These values are not in the online documentation. However, by examining the package definition, one finds the following snippet of code:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">  --
+ <pre class="text">  --
   -- NG Audit Trail write mode configuration
   AUDIT_TRAIL_WRITE_MODE        CONSTANT NUMBER := 33;
   -- Values for Write mode

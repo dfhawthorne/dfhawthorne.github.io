@@ -4,7 +4,7 @@ title: 'Real-Time Database Operation Monitoring'
 base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/real-time-database-operation-monitoring.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 1: New Features of Oracle Database 12c'
@@ -169,7 +169,7 @@ table-of-contents:
   </span>
   hint is added to the SQL statement as shown in the example below to enable Real Time monitoring:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT /*+ MONITOR */
+ <pre class="sql-cmd">SELECT /*+ MONITOR */
     SUM(dbms_random.value())
 FROM
     dual
@@ -195,7 +195,7 @@ CONNECT BY
   </a>
   :
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SET LINESIZE 180
+ <pre class="sql-cmd">SET LINESIZE 180
 SET PAGESIZE 1000
 COLUMN report FORMAT A180
 
@@ -204,7 +204,7 @@ select dbms_sql_monitor.report_sql_monitor() as report from dual;
  <p>
   The sample output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">REPORT
+ <pre class="text">REPORT
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 SQL Monitoring Report
 
@@ -263,7 +263,7 @@ SQL Plan Monitoring Details (Plan Hash Value=968211682)
   </a>
   to monitor several SQL statements as a single operation:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">VARIABLE l_op_name    VARCHAR2(50)
+ <pre class="sql-cmd">VARIABLE l_op_name    VARCHAR2(50)
 VARIABLE l_dbop_eid   NUMBER
 
 BEGIN
@@ -308,7 +308,7 @@ EXEC dbms_sql_monitor.end_operation(:l_op_name, :l_dbop_eid);
   </span>
   , the following SQL is used to capture a snapshot of various statistics:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     n.display_name,
     s."VALUE"
 FROM
@@ -836,7 +836,7 @@ WHERE
   </span>
   , the following SQL is used to capture a snapshot of various statistics:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     dbop_name,
     dbop_exec_id,
     status
@@ -892,7 +892,7 @@ WHERE
   </a>
   , but it failed as follows:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">SQL&gt; select dbms_sql_monitor.report_sql_monitor(dbop_name =&gt; 
+ <pre class="text">SQL&gt; select dbms_sql_monitor.report_sql_monitor(dbop_name =&gt; 
   2  'CPU Load Test') from dual;
 
 Error starting at line : 1 in command -

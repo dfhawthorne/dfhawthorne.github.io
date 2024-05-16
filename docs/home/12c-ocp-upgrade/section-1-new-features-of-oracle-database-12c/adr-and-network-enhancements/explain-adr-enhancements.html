@@ -4,7 +4,7 @@ title: 'Explain ADR Enhancements'
 base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/adr-and-network-enhancements/explain-adr-enhancements.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 1: New Features of Oracle Database 12c'
@@ -649,7 +649,7 @@ table-of-contents:
  <p>
   A simple demonstration script is:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">sqlplus / as sysdba &lt;&lt;DONE
+ <pre class="bash-cmd">sqlplus / as sysdba &lt;&lt;DONE
 REM ============================================================================
 REM Connect to PLUM PDB
 REM ============================================================================
@@ -695,7 +695,7 @@ DONE
  <p>
   The output from DDL log is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">ADR Home = /opt/app/oracle/diag/rdbms/jar/jar:
+ <pre class="text">ADR Home = /opt/app/oracle/diag/rdbms/jar/jar:
 *************************************************************************
 2018-04-13 20:11:46.483000 +10:00
 CREATE TABLE new_product2
@@ -841,7 +841,7 @@ DROP USER oe_demo CASCADE
   </a>
   . Sample session is:
  </p>
- <pre style="background-color:lightgreen;border:5px groove black;margin-left:10px;padding:2px">adrci&gt; set home jar
+ <pre class="bash-cmd">adrci&gt; set home jar
 adrci&gt; show log -l ddl -term
 
 ADR Home = /opt/app/oracle/diag/rdbms/jar/jar:

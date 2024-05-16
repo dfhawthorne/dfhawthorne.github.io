@@ -4,7 +4,7 @@ title: '03 Fix Up 12.1.0.2.5 and Recreate EMREPOS'
 base-url: home/system-builds/gordon/03-fix-up-12-1-0-2-5-and-recreate-emrepos.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -198,7 +198,7 @@ table-of-contents:
   </code>
   as the OUI installed an obsolete version:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">unzip -o /tmp/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/dbhome_1
+ <pre class="bash-cmd">unzip -o /tmp/p6880880_121010_Linux-x86-64.zip -d /opt/app/oracle/product/12.1.0/dbhome_1
 </pre>
  <h3>
   <a name="TOC-Set-Up-Patching-Environment">
@@ -216,7 +216,7 @@ table-of-contents:
   </code>
   , I need to set up the patching environment as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
+ <pre class="bash-cmd">export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PATH=${ORACLE_HOME}/OPatch:${ORACLE_HOME}/perl:${PATH}
 export PERL5LIB=${ORACLE_HOME}/perl/lib
 </pre>
@@ -252,7 +252,7 @@ export PERL5LIB=${ORACLE_HOME}/perl/lib
  <p>
   In brief, the commands wer:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp /opt/app/oracle/software/patches/P21359755/21359755/ -silent
+ <pre class="bash-cmd">opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp /opt/app/oracle/software/patches/P21359755/21359755/ -silent
 opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp -silent /opt/app/oracle/software/patches/P21555660/21555660/
 </pre>
  <p>
@@ -284,7 +284,7 @@ opatch apply -ocmrf /opt/app/oracle/software/ocm.rsp -silent /opt/app/oracle/sof
  <p>
   Created a temporary parameter file based on the value found in the alert log:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cat &gt;/tmp/initrepos.ora &lt;&lt;DONE
+ <pre class="bash-cmd">cat &gt;/tmp/initrepos.ora &lt;&lt;DONE
 spfile='+DATA/EMREPOS/PARAMETERFILE/spfile.258.900009511'
 DONE
 </pre>
@@ -295,7 +295,7 @@ DONE
   </a>
   , I set up the environment as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">export ORACLE_SID=emrepos
+ <pre class="bash-cmd">export ORACLE_SID=emrepos
 export ORACLE_HOME=/opt/app/oracle/product/12.1.0/dbhome_1
 export PATH=${ORACLE_HOME}/bin:${ORACLE_HOME}/OPatch:${PATH}
 sqlplus / as sysdba
@@ -303,19 +303,19 @@ sqlplus / as sysdba
  <p>
   Then I ran the following SQL*Plus commands:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">startup upgrade pfile='/tmp/initrepos.ora'
+ <pre class="bash-cmd">startup upgrade pfile='/tmp/initrepos.ora'
 alter pluggable database all open upgrade;
 quit
 </pre>
  <p>
   The data patching was invoked through:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">datapatch -verbose
+ <pre class="bash-cmd">datapatch -verbose
 </pre>
  <p>
   The log was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">SQL Patching tool version 12.1.0.2.0 on Fri Jan  1 19:32:44 2016
+ <pre class="text">SQL Patching tool version 12.1.0.2.0 on Fri Jan  1 19:32:44 2016
 Copyright (c) 2015, Oracle.  All rights reserved.
 
 Log file for this invocation: /opt/app/oracle/cfgtoollogs/sqlpatch/sqlpatch_25545_2016_01_01_19_32_45/sqlpatch_invocation.log

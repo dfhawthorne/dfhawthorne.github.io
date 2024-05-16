@@ -4,7 +4,7 @@ title: '13 Downgrade GORDON to OEL6U5'
 base-url: home/system-builds/gordon/13-downgrade-gordon-to-oel6u5.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GORDON'
@@ -95,7 +95,7 @@ table-of-contents:
   </span>
   , I reinitialised the root disk as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /OVS/running_pool/GORDON
+ <pre class="bash-cmd">cd /OVS/running_pool/GORDON
 dd bs=1G count=50 if=/dev/zero of=root_disk
 </pre>
  <h3>
@@ -118,7 +118,7 @@ dd bs=1G count=50 if=/dev/zero of=root_disk
   </a>
   :
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">    '/OVS/iso_pool/V41362-01.iso,raw,xvdc,ro,cdrom',
+ <pre class="text">    '/OVS/iso_pool/V41362-01.iso,raw,xvdc,ro,cdrom',
 </pre>
  <h3>
   <a name="TOC-Start-Software-Installation">
@@ -132,7 +132,7 @@ dd bs=1G count=50 if=/dev/zero of=root_disk
   </span>
   , I started the software installation as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /OVS/running_pool/GORDON
+ <pre class="bash-cmd">cd /OVS/running_pool/GORDON
 xl create gordon.hvm
 </pre>
  <p>
@@ -159,7 +159,7 @@ xl create gordon.hvm
   </span>
   , I upgraded the software installation as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">yum upgrade -y -q
+ <pre class="bash-cmd">yum upgrade -y -q
 </pre>
  <h3>
   <a name="TOC-Use-Pre-Installation-RPM">
@@ -238,7 +238,7 @@ xl create gordon.hvm
   </a>
   . However, the modified key generation was used instead:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">mkdir ~/.ssh
+ <pre class="bash-cmd">mkdir ~/.ssh
 cd ~/.ssh
 ssh-keygen -q -N "" -f id_rsa
 cp id_rsa.pub authorized_keys

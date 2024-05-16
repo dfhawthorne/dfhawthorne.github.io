@@ -4,7 +4,7 @@ title: 'Upgrade PostgreSQL 14 to 16'
 base-url: home/procedures/postgresql/upgrade-postgresql-14-to-16.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'Procedures'
   url: home/procedures.html
 - title: 'PostgreSQL'
@@ -29,8 +29,9 @@ table-of-contents:
     toc-text: 'Do Upgrade'
 - toc-url: References
   toc-text: 'References'
-- toc-url: 'File-Downloads'
-  toc-text: 'File Downloads'
+file-download-dir: 'home/procedures/postgresql/upgrade-postgresql-14-to-16'
+file-download:
+- 'upgrade.log'
 ---
 
 <h2 id="TOC-Overview">Overview</h2>
@@ -126,7 +127,7 @@ command -v pg_upgrade
 <h3 id="TOC-Do-Upgrade">Do Upgrade</h3>
 <p>I ran the following command as the <code>postgres</code> user:</p>
 <pre class="bash-cmd">pg_upgrade --jobs 6</pre>
-<p>The output is captured in <a href="home/procedures/postgresql/upgrade-postgresl-14-to-16/upgrade.log">upgrade.log</a>.</p>
+<p>The output is captured in <a href="home/procedures/postgresql/upgrade-postgresql-14-to-16/upgrade.log">upgrade.log</a>.</p>
 <p>The following warning was issued:</p>
 <pre class="text">WARNING:  user-defined tablespace locations should not be inside the data directory, i.e. /var/lib/postgresql/14/main</pre>
 <p>And the following post-installation steps were recommended:</p>
@@ -142,8 +143,4 @@ be deleted manually.</pre>
 <h2 id="TOC-References">References</h2>
 <ul>
 <li><a href="https://www.postgresql.org/docs/current/pgupgrade.html">pg_upgrade</a></li>
-</ul>
-<h2 id="TOC-File-Downloads">File Downloads</h2>
-<ul>
-<li><a href="home/procedures/postgresql/upgrade-postgresl-14-to-16/upgrade.log">upgrade.log</a></li>
 </ul>

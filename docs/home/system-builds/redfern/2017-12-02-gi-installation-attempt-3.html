@@ -4,7 +4,7 @@ title: '2017-12-02 GI Installation Attempt #3'
 base-url: home/system-builds/redfern/2017-12-02-gi-installation-attempt-3.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -132,12 +132,12 @@ table-of-contents:
   </span>
   was installed:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo yum list installed cvuqdisk*
+ <pre class="bash-cmd">sudo yum list installed cvuqdisk*
 </pre>
  <p>
   The following output confirmed that the package has been installed:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Loaded plugins: ulninfo
+ <pre class="text">Loaded plugins: ulninfo
 Installed Packages
 <span style="font-weight:bold">cvuqdisk.x86_64                        1.0.9-1                         installed</span>
 </pre>
@@ -149,12 +149,12 @@ Installed Packages
  <p>
   I used the following command to verify that the avahi-daemon was active:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo systemctl status avahi-daemon
+ <pre class="bash-cmd">sudo systemctl status avahi-daemon
 </pre>
  <p>
   The following output confirmed that the daemon is running:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">• avahi-daemon.service - Avahi mDNS/DNS-SD Stack
+ <pre class="text">• avahi-daemon.service - Avahi mDNS/DNS-SD Stack
    Loaded: loaded (/usr/lib/systemd/system/avahi-daemon.service; enabled; vendor preset: enabled)
    Active: active (running) since Sat 2017-12-02 13:46:01 AEDT; 5h 25min ago
  Main PID: 651 (avahi-daemon)
@@ -184,12 +184,12 @@ Dec 02 13:46:22 redfern1.yaocm.id.au avahi-daemon[651]: Registering new address 
  <p>
   I fixed this by running the following command:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo systemctl stop avahi-daemon
+ <pre class="bash-cmd">sudo systemctl stop avahi-daemon
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Warning: Stopping avahi-daemon.service, but it can still be activated by:
+ <pre class="text">Warning: Stopping avahi-daemon.service, but it can still be activated by:
   avahi-daemon.socket
 </pre>
  <p>
@@ -207,12 +207,12 @@ Dec 02 13:46:22 redfern1.yaocm.id.au avahi-daemon[651]: Registering new address 
   </a>
   , I decided to run the root script manually as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sudo /opt/app/grid_infra/12.1.0/grid/root.sh
+ <pre class="bash-cmd">sudo /opt/app/grid_infra/12.1.0/grid/root.sh
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Performing root user operation.
+ <pre class="text">Performing root user operation.
 
 The following environment variables are set as:
     ORACLE_OWNER= oracle
@@ -299,12 +299,12 @@ The command '/opt/app/grid_infra/12.1.0/grid/perl/bin/perl -I/opt/app/grid_infra
  <p>
   Since the output of the root script said that ASM was started successfully, I checked the status of ASM by using the following command:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">/opt/app/grid_infra/12.1.0/grid/bin/srvctl status asm
+ <pre class="bash-cmd">/opt/app/grid_infra/12.1.0/grid/bin/srvctl status asm
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">PRCR-1070 : Failed to check if resource ora.asm is registered
+ <pre class="text">PRCR-1070 : Failed to check if resource ora.asm is registered
 <span style="font-weight:bold">CRS-0184 : Cannot communicate with the CRS daemon.</span>
 </pre>
  <p>

@@ -4,7 +4,7 @@ title: '18 Apply Patch 17583185'
 base-url: home/system-builds/gridctrl/18-apply-patch-17583185.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'GRIDCTRL'
@@ -37,8 +37,9 @@ table-of-contents:
   toc-text: 'Installation'
 - toc-url: 'Post-Installation'
   toc-text: 'Post-Installation'
-- toc-url: 'File-Downloads'
-  toc-text: 'File Downloads'
+file-download-dir: 'home/system-builds/gridctrl/18-apply-patch-17583185'
+file-download:
+  - '18 lsinventory_pre.log'
 ---
 <div dir="ltr">
  <br/>
@@ -102,12 +103,12 @@ table-of-contents:
   </a>
   says to check that the required programs are in the execution path. This is done as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">which opatch make ar ld nm
+ <pre class="bash-cmd">which opatch make ar ld nm
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">/opt/oracle/app/OracleHomes/db11g/OPatch/opatch
+ <pre class="text">/opt/oracle/app/OracleHomes/db11g/OPatch/opatch
 /usr/bin/make
 /usr/bin/ar
 /usr/bin/ld
@@ -128,12 +129,12 @@ table-of-contents:
   </a>
   says that OPatch should be at least 11.2.0.3.0. This is checked as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch version
+ <pre class="bash-cmd">opatch version
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">OPatch Version: 11.2.0.3.6
+ <pre class="text">OPatch Version: 11.2.0.3.6
 
 OPatch succeeded.
 </pre>
@@ -152,7 +153,7 @@ OPatch succeeded.
   </a>
   says that Oracle inventory should be intact. This is checked as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">opatch lsinventory
+ <pre class="bash-cmd">opatch lsinventory
 </pre>
  <p>
   The output is attached as
@@ -163,7 +164,7 @@ OPatch succeeded.
   </span>
   . Critical parts of the output are:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Installed Top-level Products (1): 
+ <pre class="text">Installed Top-level Products (1): 
 
 Oracle Database 11g                                                  11.2.0.4.0
 There are 1 product(s) installed in this Oracle Home.
@@ -191,7 +192,7 @@ Patch description:  "Database Patch Set Update : 11.2.0.4.7 (20760982)"
   </a>
   says to extract the patch to some location. This is done as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">mkdir -p /opt/oracle/software/P17583185
+ <pre class="bash-cmd">mkdir -p /opt/oracle/software/P17583185
 unzip -q /tmp/p17583185_112040_Generic.zip -d /opt/oracle/software/P17583185
 </pre>
  <p>
@@ -209,13 +210,13 @@ unzip -q /tmp/p17583185_112040_Generic.zip -d /opt/oracle/software/P17583185
   </a>
   says to check for patch conflicts. This is done as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/oracle/software/P17583185/17583185/
+ <pre class="bash-cmd">cd /opt/oracle/software/P17583185/17583185/
 opatch prereq CheckConflictAgainstOHWithDetail -ph ./
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 11.2.0.3.6
+ <pre class="text">Oracle Interim Patch Installer version 11.2.0.3.6
 Copyright (c) 2013, Oracle Corporation.  All rights reserved.
 
 PREREQ session
@@ -244,13 +245,13 @@ OPatch succeeded.
  <p>
   The patch was applied as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">cd /opt/oracle/software/P17583185/17583185/
+ <pre class="bash-cmd">cd /opt/oracle/software/P17583185/17583185/
 opatch apply
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Oracle Interim Patch Installer version 11.2.0.3.6
+ <pre class="text">Oracle Interim Patch Installer version 11.2.0.3.6
 Copyright (c) 2013, Oracle Corporation.  All rights reserved.
 
 
@@ -296,13 +297,13 @@ OPatch succeeded.
   </a>
   says to run a SQL file to complete the patch. This was done as follows:
  </p>
- <pre style="background-color:Lawngreen;border:5px groove black;margin-left:10px">sqlplus / as sysdba
+ <pre class="bash-cmd">sqlplus / as sysdba
 @?/sqlpatch/17583185/postinstall.sql
 </pre>
  <p>
   The output was:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">Calling rdbms/admin/prvtbpm.plb on 18-SEP-16 08.59.54.654771 AM +10:00
+ <pre class="text">Calling rdbms/admin/prvtbpm.plb on 18-SEP-16 08.59.54.654771 AM +10:00
 
 
 Package body created.
@@ -310,16 +311,4 @@ Package body created.
  <p>
   There were no obvious errors.
  </p>
- <div class="file_downloads">
-  <h2 id="TOC-File-Downloads">
-   File Downloads
-  </h2>
-  <ol>
-   <li>
-    <a href="home/system-builds/gridctrl/18-apply-patch-17583185/18 lsinventory_pre.log">
-     18 lsinventory_pre.log
-    </a>
-   </li>
-  </ol>
- </div>
 </div>

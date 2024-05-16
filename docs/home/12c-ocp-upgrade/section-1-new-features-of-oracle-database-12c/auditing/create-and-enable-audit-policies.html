@@ -4,7 +4,7 @@ title: 'Create and enable audit policies'
 base-url: home/12c-ocp-upgrade/section-1-new-features-of-oracle-database-12c/auditing/create-and-enable-audit-policies.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCP Upgrade'
   url: home/12c-ocp-upgrade.html
 - title: 'Section 1: New Features of Oracle Database 12c'
@@ -189,19 +189,19 @@ table-of-contents:
  <p>
   One way to verify that Unified Auditing is active is review the banner at the start of a SQL*Plus session:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+ <pre class="text">Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
 With the Partitioning, OLAP, Advanced Analytics, Real Application Testing
 and <span style="font-weight:bold">Unified Auditing</span> options
 </pre>
  <p>
   Another way to verify is to use the following SQL query:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">select value from <a href="https://docs.oracle.com/database/121/REFRN/GUID-5F3F4476-E245-4EDA-93AA-E09975DA77EC.htm#REFRN30167" rel="nofollow">v$option</a> where parameter='Unified Auditing';
+ <pre class="sql-cmd">select value from <a href="https://docs.oracle.com/database/121/REFRN/GUID-5F3F4476-E245-4EDA-93AA-E09975DA77EC.htm#REFRN30167" rel="nofollow">v$option</a> where parameter='Unified Auditing';
 </pre>
  <p>
   The expected result is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">VALUE
+ <pre class="text">VALUE
 ----------------------------------------------------------------
 TRUE
 </pre>
@@ -213,7 +213,7 @@ TRUE
  <p>
   To see what the initial set of audit policies is, use the following SQL query:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SET PAGESIZE 150
+ <pre class="sql-cmd">SET PAGESIZE 150
 SET LINESIZE 132
 COLUMN POLICY_NAME  FORMAT A30
 COLUMN AUDIT_OPTION FORMAT A40
@@ -227,7 +227,7 @@ SELECT
  <p>
   The expected result is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">POLICY_NAME                    AUDIT_OPTION                             CONDITION
+ <pre class="text">POLICY_NAME                    AUDIT_OPTION                             CONDITION
 ------------------------------ ---------------------------------------- ---------
 ORA_SECURECONFIG               LOGMINING                                NONE
 ORA_SECURECONFIG               TRANSLATE ANY SQL                        NONE
@@ -372,12 +372,12 @@ ORA_SECURECONFIG               EXECUTE                                  NONE
  <p>
   To see what the initial set of enabled audit policies is, use the following SQL query:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT policy_name FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-31A07468-11E0-43AD-9A5D-71B5A5AA03C3.htm#REFRN29158" rel="nofollow">audit_unified_enabled_policies</a>;
+ <pre class="sql-cmd">SELECT policy_name FROM <a href="https://docs.oracle.com/database/121/REFRN/GUID-31A07468-11E0-43AD-9A5D-71B5A5AA03C3.htm#REFRN29158" rel="nofollow">audit_unified_enabled_policies</a>;
 </pre>
  <p>
   The expected result is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">POLICY_NAME
+ <pre class="text">POLICY_NAME
 --------------------------------------------------------------------------------
 ORA_SECURECONFIG
 ORA_LOGON_FAILURES</pre>
@@ -409,7 +409,7 @@ ORA_LOGON_FAILURES</pre>
   </span>
   common user which can connect to all containers, and select from any table as well as the data dictionary:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">prompt Connect to Root Container
+ <pre class="sql-cmd">prompt Connect to Root Container
 
 <a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">ALTER SESSION</a> SET container = cdb$root;
 
@@ -442,7 +442,7 @@ TO c##user CONTAINER = ALL;
   </span>
   which monitors users use system privileges to select from any user table or from the data dictionary:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">prompt Connect to Root Container
+ <pre class="sql-cmd">prompt Connect to Root Container
 
 <a href="https://docs.oracle.com/database/121/SQLRF/statements_2015.htm#SQLRF00901" rel="nofollow">ALTER SESSION</a> SET container = cdb$root;
 
@@ -470,7 +470,7 @@ prompt Enable Common Audit Policy
   </span>
   container:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">ALTER SESSION SET container = cdb$root;
+ <pre class="sql-cmd">ALTER SESSION SET container = cdb$root;
 
 SELECT
     policy_name
@@ -480,7 +480,7 @@ FROM
  <p>
   The output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">POLICY_NAME                                                                                                                     
+ <pre class="text">POLICY_NAME                                                                                                                     
 -------------------------
 ORA_SECURECONFIG
 ORA_LOGON_FAILURES
@@ -505,7 +505,7 @@ OCP12C_GLOBAL_SELECT_ANY
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">ALTER SESSION SET container = plum;
+ <pre class="sql-cmd">ALTER SESSION SET container = plum;
 
 SELECT
     policy_name
@@ -515,7 +515,7 @@ FROM
  <p>
   The output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">POLICY_NAME                                                                                                                     
+ <pre class="text">POLICY_NAME                                                                                                                     
 ------------------
 ORA_SECURECONFIG
 ORA_LOGON_FAILURES
@@ -543,7 +543,7 @@ ORA_LOGON_FAILURES
   </span>
   PDB:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">SELECT
+ <pre class="sql-cmd">SELECT
     COUNT(*)
   FROM
     dba_objects;
@@ -556,7 +556,7 @@ ORA_LOGON_FAILURES
  <p>
   I used the following SQL to show the captured audit log entries from the root container for the common audit policy that we created:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">COLUMN audit_type             FORMAT A8
+ <pre class="sql-cmd">COLUMN audit_type             FORMAT A8
 COLUMN action_name            FORMAT A11
 COLUMN sql_text               FORMAT A40 TRUNC
 COLUMN unified_audit_policies FORMAT A25
@@ -585,7 +585,7 @@ ORDER BY
  <p>
   The output was:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">EVENT_TIMESTAMP                 AUDIT_TY ACTION_NAME SQL_TEXT                                 SYSTEM_PRIVILEGE_USED     UNIFIED_AUDIT_POLICIES   
+ <pre class="text">EVENT_TIMESTAMP                 AUDIT_TY ACTION_NAME SQL_TEXT                                 SYSTEM_PRIVILEGE_USED     UNIFIED_AUDIT_POLICIES   
 ------------------------------- -------- ----------- ---------------------------------------- ------------------------- -------------------------
 19/MAR/20 09:26:02.312340000 PM Standard SELECT                                               SELECT ANY DICTIONARY     OCP12C_GLOBAL_SELECT_ANY 
                                                                              select inst_cou                                                     
@@ -623,7 +623,7 @@ ORDER BY
   </span>
   PDB for the common audit policy that we created:
  </p>
- <pre style="background-color:#def87c;border:5px groove black;margin-left:10px;padding:2px">COLUMN audit_type             FORMAT A8
+ <pre class="sql-cmd">COLUMN audit_type             FORMAT A8
 COLUMN action_name            FORMAT A11
 COLUMN sql_text               FORMAT A40 TRUNC
 COLUMN unified_audit_policies FORMAT A25
@@ -652,7 +652,7 @@ ORDER BY
  <p>
   The output is:
  </p>
- <pre style="background-color:#7ccdf8;border:5px groove black;margin-left:10px;padding:2px">EVENT_TIMESTAMP                 AUDIT_TY ACTION_NAME SQL_TEXT                                 SYSTEM_PRIVILEGE_USED     UNIFIED_AUDIT_POLICIES   
+ <pre class="text">EVENT_TIMESTAMP                 AUDIT_TY ACTION_NAME SQL_TEXT                                 SYSTEM_PRIVILEGE_USED     UNIFIED_AUDIT_POLICIES   
 ------------------------------- -------- ----------- ---------------------------------------- ------------------------- -------------------------
 19/MAR/20 09:26:26.337470000 PM Standard SELECT                                               SELECT ANY DICTIONARY     OCP12C_GLOBAL_SELECT_ANY 
                                                                              select inst_cou                                                     

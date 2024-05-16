@@ -1,20 +1,21 @@
 ---
 layout: default
-title: '2015-06-15 Re-install as VM on Victoria'
+title: '19 Re-install as VM on Victoria'
 base-url: home/system-builds/cronulla/19-re-install-as-vm-on-victoria.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'CRONULLA'
   url: home/system-builds/cronulla.html
-- title: '2015-06-15 Re-install as VM on Victoria'
-  url: home/system-builds/cronulla/19-re-install-as-vm-on-victoria.html
 scroll-bar:
   left-link:
     url: home/system-builds/cronulla/18-patch-wls-after-oms-12-1-0-4.html
     title: '18 Patch WLS After OMS 12.1.0.4'
+  right-link:
+    url: home/system-builds/cronulla/20-install-packages.html
+    title: '20 Install Packages'
 table-of-contents:
 - toc-url: 'Overview'
   toc-text: 'Overview'
@@ -103,7 +104,7 @@ table-of-contents:
   </span>
   , I created the following directory:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">mkdir -p /OVS/running_pool/CRONULLA
+ <pre class="bash-cmd">mkdir -p /OVS/running_pool/CRONULLA
 </pre>
  <p>
   I am planning to do a simple installation with BI Publisher, and reuse the repository in
@@ -123,7 +124,7 @@ table-of-contents:
   </a>
   , I created a disk as follows with an extra 32GB of disk space because I found that 18GB was insufficient:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">cd /OVS/running_pool/CRONULLA
+ <pre class="bash-cmd">cd /OVS/running_pool/CRONULLA
 dd if=/dev/zero of=root_disk bs=1G count=50
 </pre>
  <p>
@@ -133,7 +134,7 @@ dd if=/dev/zero of=root_disk bs=1G count=50
   </span>
   :
  </p>
- <pre style="background-color:green;border:5px groove black;margin-left:10px;background-color:rgb(106,168,79);color:black"># =====================================================================
+ <pre class="text"># =====================================================================
 # HVM guest configuration for CRONULLA
 # Generated 2015-05-31 16:00:00
 # =====================================================================
@@ -247,7 +248,7 @@ vncdisplay = "6"
   </a>
   , I ran the following commands:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">/usr/sbin/groupadd oinstall
+ <pre class="bash-cmd">/usr/sbin/groupadd oinstall
 /usr/sbin/useradd -g oinstall -G wheel oracle
 passwd oracle
 </pre>
@@ -281,7 +282,7 @@ passwd oracle
   </span>
   , I ran the following commands to create the installation directories:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">mkdir -p /opt/app/oracle/Middleware/12.1.0.4
+ <pre class="bash-cmd">mkdir -p /opt/app/oracle/Middleware/12.1.0.4
 chown -R oracle:oinstall /opt/app/oracle
 </pre>
  <p>
@@ -291,7 +292,7 @@ chown -R oracle:oinstall /opt/app/oracle
   </span>
   , I ran the following commands to create the installation directories:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">mkdir -p /opt/app/oracle/software/12.1.0.4
+ <pre class="bash-cmd">mkdir -p /opt/app/oracle/software/12.1.0.4
 </pre>
  <h3>
   <a name="TOC-Unpack-Software">
@@ -305,7 +306,7 @@ chown -R oracle:oinstall /opt/app/oracle
   </span>
   , I ran the following commands to create the installation directories:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px">unzip -qo /tmp/em12104_linux64_disk1.zip -d /opt/app/oracle/software/12.1.0.4
+ <pre class="bash-cmd">unzip -qo /tmp/em12104_linux64_disk1.zip -d /opt/app/oracle/software/12.1.0.4
 unzip -qo /tmp/em12104_linux64_disk2.zip -d /opt/app/oracle/software/12.1.0.4
 unzip -qo /tmp/em12104_linux64_disk3.zip -d /opt/app/oracle/software/12.1.0.4
 unzip -qo /tmp/p20188140_121040_Generic.zip -d /opt/app/oracle/software

@@ -4,7 +4,7 @@ title: '2015-04-26 Rebuild Victoria Again'
 base-url: home/system-builds/victoria/2015-04-26-rebuild-victoria-again.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'Victoria'
@@ -182,12 +182,12 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">blkid
+<pre class="bash-cmd">blkid
 </pre>
 <p>
                     The output is:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">/dev/sda1: UUID="91f3ebbe-4269-432a-bff0-b767eab8691a" TYPE="ext4" 
+<pre class="text">/dev/sda1: UUID="91f3ebbe-4269-432a-bff0-b767eab8691a" TYPE="ext4" 
 /dev/sda2: UUID="e705f867-4704-4e60-bf54-2d9d1c5a8138" TYPE="ext4" 
 /dev/sda3: UUID="34e2fd88-fe58-4a07-a637-c65570ef2c22" TYPE="swap" 
 /dev/sda4: UUID="a4e22e19-befa-445f-8066-785fbe069d4c" TYPE="ext4" 
@@ -203,7 +203,7 @@ table-of-contents:
                      /OVS:
                     </span>
 </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">cat &gt;&gt;/etc/fstab &lt;&lt;DONE
+<pre class="bash-cmd">cat &gt;&gt;/etc/fstab &lt;&lt;DONE
 UUID=a4e22e19-befa-445f-8066-785fbe069d4c /OVS                    ext4     defaults        1 2
 DONE
 mount -a
@@ -218,7 +218,7 @@ df -hl
 </a>
                     command confirms that the file-system was mounted successfully:
                    </p>
-<pre style="background-color:lime;border:5px groove black;margin-left:10px">Filesystem                                       Size  Used Avail Use% Mounted on
+<pre class="text">Filesystem                                       Size  Used Avail Use% Mounted on
 /dev/sda2                                         50G  1.2G   46G   3% /
 tmpfs                                            502M     0  502M   0% /dev/shm
 /dev/sda1                                        477M   47M  401M  11% /boot
@@ -233,7 +233,7 @@ none                                             502M   40K  502M   1% /var/lib/
 <p>
                     I created the standard OVS sub-directories as follows:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px">mkdir /OVS/running_pool /OVS/seed_pool /OVS/iso_pool
+<pre class="bash-cmd">mkdir /OVS/running_pool /OVS/seed_pool /OVS/iso_pool
 </pre>
 <h3>
 <a name="TOC-Set-Up-XEN-Network">

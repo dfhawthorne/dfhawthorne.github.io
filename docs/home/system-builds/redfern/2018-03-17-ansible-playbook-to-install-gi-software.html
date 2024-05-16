@@ -4,7 +4,7 @@ title: '2018-03-17 Ansible Playbook to Install GI Software'
 base-url: home/system-builds/redfern/2018-03-17-ansible-playbook-to-install-gi-software.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -271,7 +271,7 @@ table-of-contents:
                     </a>
                     .
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/scp.1.html" rel="nofollow">scp</a> redfern1:/opt/share/Software/grid/linuxamd64_12102/grid/response/grid_install.rsp /etc/ansible/roles/oracle_gi/templates
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/scp.1.html" rel="nofollow">scp</a> redfern1:/opt/share/Software/grid/linuxamd64_12102/grid/response/grid_install.rsp /etc/ansible/roles/oracle_gi/templates
 </pre>
 <h3>
 <a name="TOC-Update-Template-File">
@@ -289,7 +289,7 @@ table-of-contents:
                     </span>
                     . I used the following command to confirm the changes:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/diff.1.html" rel="nofollow">diff</a> grid_install_original.rsp  grid_install.rsp
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/diff.1.html" rel="nofollow">diff</a> grid_install_original.rsp  grid_install.rsp
 </pre>
 <p>
                     The differences are in
@@ -301,7 +301,7 @@ table-of-contents:
                      bold
                     </span>
 </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">54c54
+<pre class="text">54c54
 &lt; ORACLE_HOSTNAME=
 ---
 &gt;<span style="font-weight:bold"> ORACLE_HOSTNAME={{ ansible_nodename }}</span>
@@ -338,7 +338,7 @@ table-of-contents:
                     </span>
                     are set to:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # vars file for oracle_gi
 "oracle_gi":
   "inventory_location": "/opt/app"
@@ -358,7 +358,7 @@ table-of-contents:
                     </span>
                     :
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # =============================================================================
 # Install Oracle GI 12.1.0.2 Software Only:
 # (1) Create response file for silent installation
@@ -389,7 +389,7 @@ table-of-contents:
                     </span>
                     ):
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # tasks file for oracle_gi
 # =============================================================================
 # (1) Install Oracle ASMLib Driver
@@ -457,12 +457,12 @@ table-of-contents:
                     </span>
                     , as follows:
                    </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass --tags "install_gi_sw" /etc/ansible/sites.yml
+<pre class="bash-cmd"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass --tags "install_gi_sw" /etc/ansible/sites.yml
 </pre>
 <p>
                     The output was:
                    </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px">SUDO password: 
+<pre class="text">SUDO password: 
 
 PLAY [redfern1.yaocm.id.au] ****************************************************
 
@@ -482,7 +482,7 @@ PLAY RECAP *********************************************************************
                     </a>
                     to compare between the template and the generated response file, the following differences were found:
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">54c54
+<pre class="text">54c54
 &lt; ORACLE_HOSTNAME={{ ansible_nodename }}
 ---
 &gt; ORACLE_HOSTNAME=redfern1.yaocm.id.au
@@ -522,7 +522,7 @@ PLAY RECAP *********************************************************************
                     </span>
                     ):
                    </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">---
+<pre class="text">---
 # =============================================================================
 # Install Oracle GI 12.1 Software Only:
 # (1) Create response file for silent installation
@@ -595,35 +595,12 @@ PLAY RECAP *********************************************************************
                     </span>
                     argument.
                    </p>
-<p>
-                    If the installer made changes and ran successfully, then the two (2) root scripts are executed as the
-                    <span style="font-family:monospace">
-                     root
-                    </span>
-                    user.
-                   </p>
-<h3>
-<a name="TOC-Run-Main-Playbook-2-">
-</a>
-                    Run Main Playbook (2)
-                   </h3>
-<p>
-                    I ran the main playbook,
-                    <span style="font-family:monospace">
-                     /etc/ansible/sites.yml
-                    </span>
-                    , as follows (with some debugging output enabled through the
-                    <span style="font-family:monospace">
-                     -v
-                    </span>
-                    option):
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass --tags "install_gi_sw" /etc/ansible/sites.yml -v
-</pre>
-<p>
-                    The output is:
-                   </p>
-<pre style="border:5px groove black;margin-left:10px;padding:2px"><span style="color:light-blue">Using /etc/ansible/ansible.cfg as config file</span>
+<p>If the installer made changes and ran successfully, then the two (2) root scripts are executed as the <span style="font-family:monospace">root</span> user.</p>
+<h3 id="TOC-Run-Main-Playbook-2-">Run Main Playbook (2)</h3>
+<p>I ran the main playbook, <span style="font-family:monospace">/etc/ansible/sites.yml</span>, as follows (with some debugging output enabled through the <span style="font-family:monospace">-v</span> option):</p>
+<pre class="bash-cmd"><a href="http://docs.ansible.com/ansible/latest/ansible-playbook.html" rel="nofollow">ansible-playbook</a> --ask-become-pass --tags "install_gi_sw" /etc/ansible/sites.yml -v</pre>
+<p>The output is:</p>
+<pre class="text"><span style="color:light-blue">Using /etc/ansible/ansible.cfg as config file</span>
 SUDO password: 
 
 PLAY [redfern1.yaocm.id.au] ****************************************************
@@ -674,30 +651,13 @@ TASK [oracle_gi : Run orainstRoot.sh after Oracle GI 12.1 Software Installation]
 	to retry, use: --limit @/etc/ansible/sites.retry
 
 PLAY RECAP *********************************************************************
-<span style="color:red">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=5</span>    <span style="color:orange">changed=1</span>    unreachable=0    <span style="color:red">failed=1</span>   
-
-</pre>
-<p>
-                    This is unexpected.
-                   </p>
-<h3>
-<a name="TOC-Run-Installer-Manually">
-</a>
-                    Run Installer Manually
-                   </h3>
-<p>
-                    On
-                    <span style="font-family:monospace">
-                     REDFERN1
-                    </span>
-                    , I executed the installer manually as follows:
-                   </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">sudo -u oracle /opt/share/Software/grid/linuxamd64_12102/grid/runInstaller -silent -noconfig -responseFile /opt/app/grid/grid_install.rsp
-</pre>
-<p>
-                    The output was:
-                   </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<span style="color:red">redfern1.yaocm.id.au</span>       : <span style="color:green">ok=5</span>    <span style="color:orange">changed=1</span>    unreachable=0    <span style="color:red">failed=1</span></pre>
+<p>This is unexpected.</p>
+<h3 id="TOC-Run-Installer-Manually">Run Installer Manually</h3>
+<p>On <span style="font-family:monospace">REDFERN1</span>, I executed the installer manually as follows:</p>
+<pre class="bash-cmd">sudo -u oracle /opt/share/Software/grid/linuxamd64_12102/grid/runInstaller -silent -noconfig -responseFile /opt/app/grid/grid_install.rsp</pre>
+<p>The output was:</p>
+<pre class="text">[sudo] password for douglas: 
 Starting Oracle Universal Installer...
 
 Checking Temp space: must be greater than 415 MB.   Actual 43625 MB    Passed
@@ -708,12 +668,7 @@ Preparing to launch Oracle Universal Installer from /tmp/OraInstall2018-03-17_11
    SUMMARY:
        - cvc-complex-type.2.4.a: Invalid content was found starting with element 'cat'. One of '{oracle.install.option, INVENTORY_LOCATION, UNIX_GROUP_NAME, ORACLE_HOME, oracle.install.IsBuiltInAccount, oracle.install.OracleHomeUserName, oracle.install.OracleHomeUserPassword, oracle.install.crs.config.ClusterType, oracle.install.crs.config.autoConfigureClusterNodeVIP, oracle.install.bigcluster.config.TargetHubSize, oracle.install.crs.config.clusterNodes, oracle.install.crs.managementdb.configure, oracle.install.crs.config.sharedFileSystemStorage.ocrLocations, oracle.install.crs.config.gpnp.configureGNS, oracle.install.crs.config.assignNodeTypeAsAuto, oracle.install.crs.config.gpnp.scanPort, oracle.install.crs.config.useIPMI, oracle.install.asm.OSDBA, oracle.install.crs.nodeListenerUser, oracle.install.asm.diskGroup.redundancy, oracle.install.asm.diskGroup.AUSize, oracle.install.asm.monitorPassword, oracle.install.asm.ClientDataFile, oracle.install.config.managementOption, oracle.install.config.omsPort, oracle.installer.autoupdates.option, oracle.installer.autoupdates.downloadUpdatesLoc, AUTOUPDATES_MYORACLESUPPORT_USERNAME, AUTOUPDATES_MYORACLESUPPORT_PASSWORD, PROXY_HOST, PROXY_PORT, PROXY_USER, PROXY_PWD, PROXY_REALM, ConfigWizard}' is expected.
 
-A log of this session is currently saved as: /tmp/OraInstall2018-03-17_11-55-11PM/installActions2018-03-17_11-55-11PM.log. Oracle recommends that if you want to keep this log, you should move it from the temporary location.
-</pre>
-<p>
-                    This needs further investigation.
-                   </p>
-<br/>
-
+A log of this session is currently saved as: /tmp/OraInstall2018-03-17_11-55-11PM/installActions2018-03-17_11-55-11PM.log. Oracle recommends that if you want to keep this log, you should move it from the temporary location.</pre>
+<p>This needs further investigation.</p>
 </div>
 <!-- {% endraw %} -->

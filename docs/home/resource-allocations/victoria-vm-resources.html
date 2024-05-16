@@ -4,7 +4,7 @@ title: 'Victoria VM Resources'
 base-url: home/resource-allocations/victoria-vm-resources.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'Resource Allocations'
   url: home/resource-allocations.html
 - title: 'Victoria VM Resources'
@@ -278,7 +278,7 @@ table-of-contents:
 <p>
                     In the HVM file, the ISO image for OEL6U5 is mounted as follows:
                    </p>
-<pre style="background-color:green;border:5px groove black;margin-left:10px;background-color:rgb(106,168,79);color:black">disk = [
+<pre class="text">disk = [
     '/OVS/iso_pool/V41362-01.iso,raw,xvdc,ro,cdrom'
     ]
 </pre>
@@ -708,7 +708,7 @@ table-of-contents:
                     </span>
                     , the following entry would be added to the HVM file:
                    </p>
-<pre style="background-color:green;border:5px groove black;margin-left:10px;background-color:rgb(106,168,79);color:black">vif = [
+<pre class="text">vif = [
     'mac=00:16:3E:00:00:17,bridge=xenbr0'
     ]
 </pre>
@@ -923,7 +923,7 @@ table-of-contents:
                     </span>
                     , the following entry would be added to the HVM file:
                    </p>
-<pre style="background-color:green;border:5px groove black;margin-left:10px;background-color:rgb(106,168,79);color:black">vnc = 1
+<pre class="text">vnc = 1
 vnclisten = "0.0.0.0"
 vncdisplay = "6"
 </pre>

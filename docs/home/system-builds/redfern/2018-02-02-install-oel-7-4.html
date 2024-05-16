@@ -4,7 +4,7 @@ title: '2018-02-02 Install OEL 7.4'
 base-url: home/system-builds/redfern/2018-02-02-install-oel-7-4.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'REDFERN'
@@ -120,7 +120,7 @@ table-of-contents:
   </a>
   , I get the following error messages:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Parsing config from /OVS/running_pool/REDFERN/redfern1/redfern1.cfg
+ <pre class="text">Parsing config from /OVS/running_pool/REDFERN/redfern1/redfern1.cfg
 libxl: error: libxl_bootloader.c:628:bootloader_finished: bootloader failed - consult logfile /var/log/xen/bootloader.5.log
 libxl: error: libxl_exec.c:118:libxl_report_child_exitstatus: bootloader [-1] exited with error status 1
 libxl: error: libxl_create.c:1027:domcreate_rebuild_done: cannot (re-)build domain: -3
@@ -132,7 +132,7 @@ libxl: error: libxl_create.c:1027:domcreate_rebuild_done: cannot (re-)build doma
   </span>
   is:
  </p>
- <pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Traceback (most recent call last):
+ <pre class="text">Traceback (most recent call last):
   File "/usr/lib64/xen/bin/pygrub", line 931, in &lt;module&gt;
     raise RuntimeError, "Unable to find partition containing kernel"
 RuntimeError: Unable to find partition containing kernel

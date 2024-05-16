@@ -4,7 +4,7 @@ title: '2018-03-29 Add Extra Disk Drive'
 base-url: home/system-builds/auburn/2018-03-29-add-extra-disk-drive.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: 'System Builds'
   url: home/system-builds.html
 - title: 'AUBURN'
@@ -184,7 +184,7 @@ table-of-contents:
   </a>
   , ran the following command:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/systemctl.1.html" rel="nofollow">systemctl</a> poweroff
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/systemctl.1.html" rel="nofollow">systemctl</a> poweroff
 </pre>
 <h3>
 <a name="TOC-Create-New-Disk-Drive">
@@ -198,13 +198,13 @@ table-of-contents:
   </a>
   , ran the following commands:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/cd.1posix.html" rel="nofollow">cd</a> /OVS/running_pool/AUBURN
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/cd.1posix.html" rel="nofollow">cd</a> /OVS/running_pool/AUBURN
 <a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/dd.1posix.html" rel="nofollow">dd</a> if=/dev/zero of=user.dsk bs=1G count=10
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">10+0 records in
+<pre class="text">10+0 records in
 10+0 records out
 10737418240 bytes (11 GB) copied, 1111.49 s, 9.7 MB/s
 </pre>
@@ -224,12 +224,12 @@ table-of-contents:
   </span>
   as discovered by the following command:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/diff.1.html" rel="nofollow">diff</a> auburn.cfg auburn.cfg_20180329
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/diff.1.html" rel="nofollow">diff</a> auburn.cfg auburn.cfg_20180329
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">44,45c44
+<pre class="text">44,45c44
 &lt; #   ,'/OVS/iso_pool/ubuntu-16.04.3-server-amd64.iso,raw,xvdc,ro,cdrom'
 &lt;     ,'/OVS/running_pool/AUBURN/user.dsk,raw,xvdd,rw'
 ---
@@ -247,13 +247,13 @@ table-of-contents:
   </a>
   , ran the following commands:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/cd.1posix.html" rel="nofollow">cd</a> /OVS/running_pool/AUBURN
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/cd.1posix.html" rel="nofollow">cd</a> /OVS/running_pool/AUBURN
 <a href="http://xenbits.xen.org/docs/4.2-testing/man/xl.1.html" rel="nofollow">xl</a> create auburn.cfg
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Parsing config from auburn.cfg
+<pre class="text">Parsing config from auburn.cfg
 got a tsc mode string: "default"
 </pre>
 <h3>
@@ -275,12 +275,12 @@ got a tsc mode string: "default"
   </a>
   , ran the following command to detect existing LVM volumes:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lvdisplay.8.html" rel="nofollow">lvdisplay</a>
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lvdisplay.8.html" rel="nofollow">lvdisplay</a>
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<pre class="text">[sudo] password for douglas: 
   --- Logical volume ---
   LV Path                /dev/auburn-vg/root
   LV Name                root
@@ -360,12 +360,12 @@ got a tsc mode string: "default"
   </span>
   :
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/pvcreate.8.html" rel="nofollow">pvcreate</a> /dev/xvdd
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/pvcreate.8.html" rel="nofollow">pvcreate</a> /dev/xvdd
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">[sudo] password for douglas: 
+<pre class="text">[sudo] password for douglas: 
   Physical volume "/dev/xvdd" successfully created
 </pre>
 <h3>
@@ -395,12 +395,12 @@ got a tsc mode string: "default"
   </span>
   :
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/vgextend.8.html" rel="nofollow">vgextend</a> auburn-vg /dev/xvdd
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/vgextend.8.html" rel="nofollow">vgextend</a> auburn-vg /dev/xvdd
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">  Volume group "auburn-vg" successfully extended
+<pre class="text">  Volume group "auburn-vg" successfully extended
 </pre>
 <h3>
 <a name="TOC-First-Attempt-to-Resize-Root-Logical-Volume">
@@ -425,12 +425,12 @@ got a tsc mode string: "default"
   </span>
   , by 10GB:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lvresize.8.html" rel="nofollow">lvresize</a> --size +10G auburn-vg/root
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lvresize.8.html" rel="nofollow">lvresize</a> --size +10G auburn-vg/root
 </pre>
 <p>
   The command failed with the following output:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">  Insufficient free space: 2560 extents needed, but only 2559 available
+<pre class="text">  Insufficient free space: 2560 extents needed, but only 2559 available
 </pre>
 <h3>
 <a name="TOC-Second-Attempt-to-Resize-Root-Logical-Volume">
@@ -455,12 +455,12 @@ got a tsc mode string: "default"
   </span>
   , by 9GB:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lvresize.8.html" rel="nofollow">lvresize</a> --size +9G auburn-vg/root
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/lvresize.8.html" rel="nofollow">lvresize</a> --size +9G auburn-vg/root
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">  Size of logical volume auburn-vg/root changed from 2.40 GiB (614 extents) to 11.40 GiB (2918 extents).
+<pre class="text">  Size of logical volume auburn-vg/root changed from 2.40 GiB (614 extents) to 11.40 GiB (2918 extents).
   Logical volume root successfully resized.
 </pre>
 <h3>
@@ -486,12 +486,12 @@ got a tsc mode string: "default"
   </span>
   :
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/ls.1posix.html" rel="nofollow">ls</a> /dev/mapper
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/ls.1posix.html" rel="nofollow">ls</a> /dev/mapper
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">auburn--vg-root  auburn--vg-swap_1  control
+<pre class="text">auburn--vg-root  auburn--vg-swap_1  control
 </pre>
 <p>
   The obvious candidate is
@@ -523,12 +523,12 @@ got a tsc mode string: "default"
   </span>
   :
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fsadm.8.html" rel="nofollow">fsadm</a> resize /dev/mapper/auburn--vg-root
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/sudo.8.html" rel="nofollow">sudo</a> <a href="http://manpages.ubuntu.com/manpages/xenial/en/man8/fsadm.8.html" rel="nofollow">fsadm</a> resize /dev/mapper/auburn--vg-root
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">resize2fs 1.42.13 (17-May-2015)
+<pre class="text">resize2fs 1.42.13 (17-May-2015)
 Filesystem at /dev/mapper/auburn--vg-root is mounted on /; on-line resizing required
 old_desc_blocks = 1, new_desc_blocks = 1
 The filesystem on /dev/mapper/auburn--vg-root is now 2988032 (4k) blocks long.
@@ -552,12 +552,12 @@ The filesystem on /dev/mapper/auburn--vg-root is now 2988032 (4k) blocks long.
   </a>
   , ran the following command to verify the new size the root file system:
  </p>
-<pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/df.1posix.html" rel="nofollow">df</a> -hlP /
+<pre class="bash-cmd"><a href="http://manpages.ubuntu.com/manpages/xenial/en/man1/df.1posix.html" rel="nofollow">df</a> -hlP /
 </pre>
 <p>
   The output was:
  </p>
-<pre style="background-color:aqua;border:5px groove black;margin-left:10px;padding:2px">Filesystem                   Size  Used Avail Use% Mounted on
+<pre class="text">Filesystem                   Size  Used Avail Use% Mounted on
 /dev/mapper/auburn--vg-root   12G  2.2G  8.6G  21% /
 </pre>
 <br/>

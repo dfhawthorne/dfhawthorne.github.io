@@ -4,7 +4,7 @@ title: 'Create Snapshot Copy Clone'
 base-url: home/12c-ocm/general-database-and-network-administration-and-backup-strategy/create-and-manage-pluggable-databases/create-snapshot-copy-clone.html
 breadcrumbs:
 - title: 'Home'
-  url: home.html
+  url: index.html
 - title: '12C OCM'
   url: home/12c-ocm.html
 - title: 'General Database and Network Administration, and Backup Strategy'
@@ -237,7 +237,7 @@ table-of-contents:
   </span>
   state for this parameter to be changed. This is done through the following SQL*Plus commands:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">connect / as sysdba
+ <pre class="sql-cmd">connect / as sysdba
 startup nomount
 alter system set clonedb=true scope=spfile;
 startup force
@@ -250,7 +250,7 @@ startup force
  <p>
   While any clones exist, the source PDB has to be in READ ONLY mode. In this example, I am using the VEGEMITE PDB as the source PDB. I put this PDB in READ ONLY mode as follows:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">connect / as sysdba
+ <pre class="sql-cmd">connect / as sysdba
 alter pluggable database vegemite close;
 alter pluggable database vegemite open read only;
 </pre>
@@ -262,7 +262,7 @@ alter pluggable database vegemite open read only;
  <p>
   Now that the source PDB (VEGEMITE) is open in READ ONLY mode, I can create the clone PDB (VEGEMITER) as follows:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">connect / as sysdba
+ <pre class="sql-cmd">connect / as sysdba
 create pluggable database vegemiter from vegemite snapshot copy;
 alter pluggable database vegemiter open read write;
 </pre>
@@ -274,7 +274,7 @@ alter pluggable database vegemiter open read write;
  <p>
   To ensure the proper open states are kept across startups, I used the following commands:
  </p>
- <pre style="background-color:lawngreen;border:5px groove black;margin-left:10px;padding:2px">connect / as sysdba
+ <pre class="sql-cmd">connect / as sysdba
 alter pluggable database vegemite save state;
 alter pluggable database vegemiter save state;
 </pre>
