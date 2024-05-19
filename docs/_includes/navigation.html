@@ -2,7 +2,7 @@
   <ul>
     {%- for nav-page-lev01 in site.data.navigation -%}
       {%- if nav-page-lev01.url == "home.html" %}
-        <li><details><summary><a href="{{ nav-page-lev01.url }}">{{ nav-page-lev01.title }}</a></summary><ul>
+        <li><details><summary><a href="index.html">Home</a></summary><ul>
         {%- for nav-page-lev02 in nav-page-lev01.sub-pages -%}
           {%- if nav-page-lev02 contains "sub-pages" -%}
             <li><details><summary><a href="{{ nav-page-lev02.url }}">{{ nav-page-lev02.title }}</a></summary><ul>

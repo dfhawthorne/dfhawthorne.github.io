@@ -299,3 +299,50 @@ div.file-download {
         padding:             3px 5px;
     }
 }
+
+/* -------------------------------------------------------------------------- *
+ * Classes for exam ratings
+ * -------------------------------------------------------------------------- */
+
+.exam-objective {
+    background-color:      aliceblue;
+    font-size:               larger;
+    font-weight:             bold;
+}
+
+.exam-rating-1 {
+    background-color:      red;
+    color:                 black;
+    font-size:               bold;
+    text-align:              right;
+}
+
+.exam-rating-2 {
+    background-color:      orange;
+    color:                 black;
+    font-size:               bold;
+    text-align:              right;
+}
+
+.exam-rating-3 {
+    background-color:      yellow;
+    color:                 black;
+    font-size:               bold;
+    text-align:              right;
+}
+
+.exam-rating-4 {
+    background-color:      lightgreen;
+    color:                 black;
+    font-size:               bold;
+    text-align:              right;
+}
+
+.exam-rating-5 {
+    background-color:      lightblue;
+    color:                 black;
+    content:                 "5";
+    font-size:               bold;
+    text-align:              right;
+}
+
