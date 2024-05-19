@@ -44,13 +44,15 @@ args = parser.parse_args()
 # Read parameter file
 # ------------------------------------------------------------------------------
 
-exam_title   = ''
-exam_topics  = ''
-ext_exam_url = ''
-exam_home_url     = ''
+exam_title    = ''
+exam_topics   = ''
+ext_exam_url  = ''
+exam_home_url = ''
 
 exec(args.parm_file[0].read())
 args.parm_file[0].close()
+
+exam_title_quoted = exam_title.replace("'","''")
 
 if args.verbose:
     args.log.write("---------------- Input parameters (START) ----------------\n")
@@ -90,13 +92,13 @@ if args.verbose:
 # Build YAML Header for Exam home page
 # ------------------------------------------------------------------------------
 
-exam_home_page_content  =  "---\n"                       + \
-                           "layout: default\n"           + \
-                          f"title: '{exam_title}'\n"     + \
-                          f"base-url: {exam_home_url}\n" + \
-                           "breadcrumbs:\n"              + \
-                           "- title: Home\n"             + \
-                           "  url: index.html\n"         + \
+exam_home_page_content  =  "---\n"                          + \
+                           "layout: default\n"              + \
+                          f"title: '{exam_title_quoted}'\n" + \
+                          f"base-url: {exam_home_url}\n"    + \
+                           "breadcrumbs:\n"                 + \
+                           "- title: Home\n"                + \
+                           "  url: index.html\n"            + \
                            "---\n"
 
 if args.verbose:
@@ -123,15 +125,39 @@ exam_home_page_content += f"""
 # Create directory for exam objective anchor pages
 # ------------------------------------------------------------------------------
 
-if os.path.isfile(os.path.join(wiki_dir,exam_home_url)):
-    error_msg = f"Error: '{os.path.join(wiki_dir,exam_home_url)}' already exists."
+exam_home_page_full_path_name = os.path.join(
+                                    wiki_dir,
+                                    exam_home_url
+                                )
+exam_home_dir_full_path_name  = os.path.join(
+                                    wiki_dir,
+                                    exam_home_url.removesuffix('.html')
+                                )
+if os.path.isfile(exam_home_page_full_path_name):
+    error_msg = f"Error: Exam home page, '{exam_home_page_full_path_name}', already exists."
     if args.verbose:
         args.log.write(error_msg + '\n')
     print(error_msg, file=sys.stderr)
     exit(1)
+if os.path.isdir(exam_home_dir_full_path_name):
+    error_msg = f"Error: Exam home directory, '{exam_home_dir_full_path_name}', already exists."
+    if args.verbose:
+        args.log.write(error_msg + '\n')
+    print(error_msg, file=sys.stderr)
+    exit(1)
+else:
+    if args.dry_run:
+        dry_run_msg = f"DRY-RUN: Exam home directory, '{exam_home_dir_full_path_name}', will be created."
+        if args.verbose:
+            args.log.write(dry_run_msg + '\n')
+        print(dry_run_msg)
+    else:
+        if args.verbose:
+            args.log.write(f"Exam home directory, '{exam_home_dir_full_path_name}', created.\n")
+        os.mkdir(exam_home_dir_full_path_name)
 
 # ------------------------------------------------------------------------------
-# Populate table with exam topics
+# Populate table with exam objectives and topics
 # ------------------------------------------------------------------------------
 
 exam_obj_page_content = None
@@ -140,20 +166,61 @@ for line in exam_topics.split('\n'):
     if args.verbose:
         args.log.write(f"line='{line}'\n")
     if line.startswith(' '):
-        topic_text      = line.strip()
-        topic_page_name = topic_text.lower().translate(trans_table) + '.html'
-        topic_url       = os.path.join(exam_home_url,exam_obj_dir_name,topic_page_name)
+        exam_topic_text      = line.strip()
+        exam_topic_page_name = exam_topic_text.lower().translate(trans_table) + \
+                               '.html'
+        exam_topic_url       = os.path.join(
+                                    exam_home_url.removesuffix('.html'),
+                                    exam_obj_dir_name,
+                                    exam_topic_page_name
+                                    )
+        exam_topic_full_path_name = os.path.join(
+                                    exam_home_dir_full_path_name,
+                                    exam_obj_dir_name,
+                                    exam_topic_page_name
+                                    )
+        exam_topic_text_quoted    = exam_topic_text.replace("'","''")
         if args.verbose:
-            args.log.write(f"topic_text      = '{topic_text}'\n")
-            args.log.write(f"topic_page_name = '{topic_page_name}'\n")
-            args.log.write(f"topic_url       = '{topic_url}'\n")
-        exam_home_page_content +=  '<tr><td>'                         + \
-                                  f'<a href="{topic_url}">'           + \
-                                  f'{topic_text}</td>'                + \
-                                   '<td class="exam-rating-1">1</td>' + \
+            args.log.write(f"exam_topic_text           = '{exam_topic_text}'\n")
+            args.log.write(f"exam_topic_full_path_name = '{exam_topic_full_path_name}'\n")
+            args.log.write(f"exam_topic_page_name      = '{exam_topic_page_name}'\n")
+            args.log.write(f"exam_topic_url            = '{exam_topic_url}'\n")
+        exam_home_page_content +=  '<tr><td>'                              + \
+                                  f'<a href="{exam_topic_url}">'           + \
+                                  f'{exam_topic_text}</td>'                + \
+                                   '<td class="exam-rating-1">1</td>'      + \
                                    '<td></td></tr>\n'
-        exam_obj_page_content  += f"- title: '{topic_text}'\n"        + \
-                                  f"  url: {topic_url}\n"
+        exam_obj_page_content  += f"- title: '{exam_topic_text_quoted}'\n" + \
+                                  f"  url: {exam_topic_url}\n"
+        exam_topic_page_content =  "---\n" + \
+                                   "layout: default\n"                     + \
+                                  f"title: '{exam_topic_text_quoted}'\n"   + \
+                                  f"base-url: {exam_topic_url}\n"          + \
+                                   "breadcrumbs:\n"                        + \
+                                   "- title: Home\n"                       + \
+                                   "  url: index.html\n"                   + \
+                                  f"- title: '{exam_title_quoted}'\n"      + \
+                                  f"  url: {exam_home_url}\n"              + \
+                                  f"- title: '{exam_obj_text_quoted}'\n"   + \
+                                  f"  url: {exam_obj_url}\n"               + \
+                                   "---\n"
+        if os.path.isfile(exam_topic_full_path_name):
+            error_msg = f"ERROR: Exam topic page ('{exam_topic_full_path_name}') already exists."
+            if args.verbose:
+                args.log.write(error_msg + '\n')
+            print(error_msg, file=sys.stderr)
+            exit(1)
+        else:
+            if args.dry_run:
+                dry_run_msg = f"DRY-RUN: Exam topic content written to '{exam_topic_full_path_name}'"
+                if args.verbose:
+                    args.log.write(dry_run_msg + '\n')
+                print(dry_run_msg)
+            else:
+                if args.verbose:
+                    args.log.write(f"Exam topic content written to '{exam_topic_full_path_name}'\n")
+                with open(exam_topic_full_path_name, 'x') as f:
+                    f.write(exam_topic_page_content)
     else:
         if exam_obj_page_content is not None:
             exam_obj_page_content += '---\n'
@@ -162,44 +229,100 @@ for line in exam_topics.split('\n'):
                 args.log.write(exam_obj_page_content)
                 args.log.write("------------------- EXAM OBJ CONTENT (END) -----------------------\n")
             if args.dry_run:
-                dry_run_msg = f"DRY-RUN: Content written to '{os.path.join(wiki_dir,exam_obj_url)}'"
+                dry_run_msg = f"DRY-RUN: Exam objective content written to '{exam_obj_page_full_path_name}'"
                 if args.verbose:
                     args.log.write(dry_run_msg + '\n')
                 print(dry_run_msg)
             else:
-                pass # TODO
-        exam_obj_text      = line.strip()
-        exam_obj_dir_name  = exam_obj_text.lower().translate(trans_table)
-        exam_obj_page_name = exam_obj_dir_name + '.html'
-        exam_obj_url       = os.path.join(exam_home_url,exam_obj_page_name)
+                if args.verbose:
+                    args.log.write(f"Exam objective content written to '{exam_obj_page_full_path_name}'\n")
+                with open(exam_obj_page_full_path_name, 'x') as f:
+                    f.write(exam_obj_page_content)
+        exam_obj_text                = line.strip()
+        exam_obj_text_quoted         = exam_obj_text.replace("'","''")
+        exam_obj_dir_name            = exam_obj_text.lower().translate(trans_table)
+        exam_obj_page_name           = exam_obj_dir_name + '.html'
+        exam_obj_url                 = os.path.join(
+                                            exam_home_url.removesuffix('.html'),
+                                            exam_obj_page_name
+                                            )
+        exam_obj_page_full_path_name = os.path.join(wiki_dir,exam_obj_url)
+        exam_obj_dir_full_path_name  = os.path.join(exam_home_dir_full_path_name,exam_obj_dir_name)
         if args.verbose:
-            args.log.write(f"exam_obj_text      = '{exam_obj_text}'\n")
-            args.log.write(f"exam_obj_dir_name  = '{exam_obj_dir_name}'\n")
-            args.log.write(f"exam_obj_page_name = '{exam_obj_page_name}'\n")
-            args.log.write(f"exam_obj_url       = '{exam_obj_url}'\n")
-        if os.path.isfile(os.path.join(wiki_dir,exam_obj_url)):
-            error_msg = f"ERROR: Exam objective page ('{os.path.join(wiki_dir,exam_obj_url)}') already exists."
+            args.log.write(f"exam_obj_text                = '{exam_obj_text}'\n")
+            args.log.write(f"exam_obj_dir_name            = '{exam_obj_dir_name}'\n")
+            args.log.write(f"exam_obj_url                 = '{exam_obj_url}'\n")
+            args.log.write(f"exam_obj_page_name           = '{exam_obj_page_name}'\n")
+            args.log.write(f"exam_obj_page_full_path_name = '{exam_obj_page_full_path_name}'\n")
+            args.log.write(f"exam_obj_dir_full_path_name  = '{exam_obj_dir_full_path_name}'\n")
+        if os.path.isdir(exam_obj_dir_full_path_name):
+            error_msg = f"ERROR: Exam objective directory ('{exam_obj_dir_full_path_name}')"
             if args.verbose:
                 args.log.write(error_msg + '\n')
             print(error_msg, file=sys.stderr)
             exit(1)
+        else:
+            if args.dry_run:
+                dry_run_msg = f"DRY-RUN: Exam objective directory ('{exam_obj_dir_full_path_name}') created."
+                if args.verbose:
+                    args.log.write(dry_run_msg + '\n')
+                print(dry_run_msg)
+            else:
+                if args.verbose:
+                    args.log.write(f"Exam objective directory ('{exam_obj_dir_full_path_name}') created.\n")
+                os.mkdir(exam_obj_dir_full_path_name)
+        if os.path.isfile(exam_obj_page_full_path_name):
+            error_msg = f"ERROR: Exam objective page ('{exam_obj_page_full_path_name}') already exists."
+            if args.verbose:
+                args.log.write(error_msg + '\n')
+            print(error_msg, file=sys.stderr)
+            exit(1)
+        exam_obj_text_quoted  = exam_obj_text.replace("'","''")
         exam_obj_page_content =  "---\n"                               + \
                                  "layout: default\n"                   + \
-                                f"title: '{exam_obj_text}'\n"          + \
+                                f"title: '{exam_obj_text_quoted}'\n"   + \
                                 f"base-url: {exam_obj_url}\n"          + \
                                  "breadcrumbs:\n"                      + \
                                  "- title: Home\n"                     + \
                                  "  url: index.html\n"                 + \
-                                f"- title: '{exam_title}'\n"           + \
+                                f"- title: '{exam_title_quoted}'\n"    + \
                                 f"  url: {exam_home_url}\n"            + \
                                  "sub-pages-title: 'Exam Topics'\n"    + \
                                  "sub-pages:\n"
-        exam_home_page_content += f'<tr><td colspan="3"><a href="{exam_obj_url}">{exam_obj_text}</td></tr>\n'
+        exam_home_page_content += f'<tr><td colspan="3" class="exam-objective">'          + \
+                                  f'<a href="{exam_obj_url}">{exam_obj_text}</td></tr>\n'
+
+if exam_obj_page_content is not None:
+    exam_obj_page_content += '---\n'
+    if args.verbose:
+        args.log.write("------------------ EXAM OBJ CONTENT (START) ----------------------\n")
+        args.log.write(exam_obj_page_content)
+        args.log.write("------------------- EXAM OBJ CONTENT (END) -----------------------\n")
+    if args.dry_run:
+        dry_run_msg = f"DRY-RUN: Exam objective content written to '{exam_obj_page_full_path_name}'"
+        if args.verbose:
+            args.log.write(dry_run_msg + '\n')
+        print(dry_run_msg)
+    else:
+        if args.verbose:
+            args.log.write(f"Exam objective content written to '{exam_obj_page_full_path_name}'\n")
+        with open(exam_obj_page_full_path_name, 'x') as f:
+            f.write(exam_obj_page_content)
 
 exam_home_page_content += "</tbody></table>"
 
-
 if args.verbose:
-    args.log.write( "------------------- Content (START) --------------------\n")
+    args.log.write( "------------- Exam Home Page Content (START) ----------------\n")
     args.log.write(f"exam_home_page_content='{exam_home_page_content}'\n")
-    args.log.write( "-------------------- Content (END) ---------------------\n")
+    args.log.write( "-------------- Exam Home Page Content (END) -----------------\n")
+
+if args.dry_run:
+    dry_run_msg = f"DRY-RUN: Exam Home Page content written to '{exam_home_page_full_path_name}'"
+    if args.verbose:
+        args.log.write(dry_run_msg + '\n')
+    print(dry_run_msg)
+else:
+    if args.verbose:
+        args.log.write(f"Exam Home Page content written to '{exam_home_page_full_path_name}'\n")
+    with open(exam_home_page_full_path_name, 'x') as f:
+        f.write(exam_home_page_content)
