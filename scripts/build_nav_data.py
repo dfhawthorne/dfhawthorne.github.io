@@ -181,7 +181,8 @@ for sub_pages_dir_name, sub_pages_sub_dirs, sub_pages_file_names in \
                 pfn.startswith('workload_report_') or
                 pfn.startswith('google')
                 ) and
-            pfn.removesuffix('.html') not in sub_pages_sub_dirs
+            pfn.removesuffix('.html') not in sub_pages_sub_dirs or
+            pfn.endswith('.md')
     ]
     if args.verbose:
         args.log.write(f"sub_pages_with_content={str(sub_pages_with_content)}\n")
@@ -229,8 +230,16 @@ for sub_pages_dir_name, sub_pages_sub_dirs, sub_pages_file_names in \
             web_page_name = os.path.join(sub_pages_dir_name,page_name)
             if args.verbose:
                 args.log.write(f"Sub-page name='{web_page_name}'\n")
-            sub_pages[page_name]['title'] = get_page_title(web_page_name)
-            sub_pages[page_name]['url']   = os.path.relpath(web_page_name,start=html_dir)
+            if page_name.endswith('.md'):
+                conv_page_name = page_name.removesuffix('.md') + '.html'
+                sub_pages[page_name]['title'] = get_page_title(web_page_name)
+                sub_pages[page_name]['url']   = os.path.relpath(
+                                                    web_page_name.removesuffix('.md') + '.html',
+                                                    start=html_dir
+                                                )
+            else:
+                sub_pages[page_name]['title'] = get_page_title(web_page_name)
+                sub_pages[page_name]['url']   = os.path.relpath(web_page_name,start=html_dir)
     else:
         for sub_dir in sub_pages_sub_dirs:
             if sub_dir in [

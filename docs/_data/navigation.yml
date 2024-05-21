@@ -1069,6 +1069,9 @@
         title: 'Deinstall RDBMS 11.2.0.3 (Non Grid)'
     - url: home/procedures/git-procedures.html
       title: 'GIT Procedures'
+      sub-pages:
+      - url: home/procedures/git-procedures/set-up-wip-for-git.html
+        title: 'Set Up Work In Progress for GIT'
     - url: home/procedures/install-grid-infrastructure.html
       title: 'Install Grid Infrastructure'
       sub-pages:
