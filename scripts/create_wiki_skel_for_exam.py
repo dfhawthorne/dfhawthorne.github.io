@@ -187,7 +187,7 @@ for line in exam_topics.split('\n'):
             args.log.write(f"exam_topic_url            = '{exam_topic_url}'\n")
         exam_home_page_content +=  '<tr><td>'                              + \
                                   f'<a href="{exam_topic_url}">'           + \
-                                  f'{exam_topic_text}</td>'                + \
+                                  f'{exam_topic_text}</a></td>'            + \
                                    '<td class="exam-rating-1">1</td>'      + \
                                    '<td></td></tr>\n'
         exam_obj_page_content  += f"- title: '{exam_topic_text_quoted}'\n" + \
@@ -290,7 +290,7 @@ for line in exam_topics.split('\n'):
                                  "sub-pages-title: 'Exam Topics'\n"    + \
                                  "sub-pages:\n"
         exam_home_page_content += f'<tr><td colspan="3" class="exam-objective">'          + \
-                                  f'<a href="{exam_obj_url}">{exam_obj_text}</td></tr>\n'
+                                  f'<a href="{exam_obj_url}">{exam_obj_text}</a></td></tr>\n'
 
 if exam_obj_page_content is not None:
     exam_obj_page_content += '---\n'
