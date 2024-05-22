@@ -1,0 +1,54 @@
+---
+layout: default
+title: 'Create OCI Configuration File'
+base-url: home/procedures/oci-procedures/create-oci-config.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: references
+  toc-text: 'References'
+- toc-url: procedure
+  toc-text: 'Procedure'
+  toc-menu:
+  - toc-url: access-my-profile
+    toc-text: 'Access My Profile'
+  - toc-url: get-api-key
+    toc-text: 'Get API Key'
+  - toc-url: add-api-key
+    toc-text: 'Add API Key'
+  - toc-url: review-config-file
+    toc-text: 'Review Config File'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>If one generates an API signing key pair, a configuration file is generated and can be used.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm">Required Keys and OCIDs</a></li>
+</ul>
+<h2 id="TOC-procedure">Procedure</h2>
+<h3 id="TOC-access-my-profile">Access My Profile</h3>
+<p>Click on the profile icon on the right-hand side of the main OCI console to access the <span class="menu-text">Profile</span> menu:</p>
+<img src="home/procedures/oci-procedures/create-oci-config/access_profile.png" />
+<h3 id="TOC-get-api-key">Get API Key</h3>
+<p>Click on <span class="menu-text">My profile</span> to get the following screen:</p>
+<img src="home/procedures/oci-procedures/create-oci-config/access_api_keys.png" />
+<h3 id=""TOC-access-api-keys-tab">Access API Keys Tab</h3>
+<p>Click on <span class="menu-text">API keys</span> to get the following screen:</p>
+<img src="home/procedures/oci-procedures/create-oci-config/API_keys_menu.png" />
+<h3 id="TOC-add-api-key">Add API Key</h3>
+<p>From the <span class="menu-text">API Keys</span> tab, click on "<span class="button-text">Add API key</span>" button. Ensure that the "<span class="menu-text">Generate API key pair</span>" radio button is select as shown below:</p>
+<img src="home/procedures/oci-procedures/create-oci-config/add_api_key_post_dl.png" />
+<p>Click the "<span class="menu-text">Download private key</span>" into the <span class="file-name">~/.oci</span> folder.</p>
+<h3 id="TOC-review-config-file">Review Config File</h3>
+<p>After clicking "<span class="menu-text">Add</span>" key on the previous screen, the following screen appears:</p>
+<img src="home/procedures/oci-procedures/create-oci-config/config_file_preview.png" />
+<p>The contents are copied into "<span class="file-name">~/.oci/config</span> and update the <span style="font-family: 'Courier New', Courier, monospace;">key_file</span> parameter to the downloaded private key file.</p>
+

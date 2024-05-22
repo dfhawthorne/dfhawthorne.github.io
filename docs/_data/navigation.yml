@@ -1134,6 +1134,11 @@
         title: 'Use NFS for Oracle Software'
       - url: home/procedures/miscellaneous/use-pre-installation-rpm.html
         title: 'Use Pre-Installation RPM'
+    - url: home/procedures/oci-procedures.html
+      title: 'OCI Procedures'
+      sub-pages:
+      - url: home/procedures/oci-procedures/create-oci-config.html
+        title: 'Create OCI Configuration File'
     - url: home/procedures/patch-oracle-database.html
       title: 'Patch Oracle Database'
       sub-pages:
