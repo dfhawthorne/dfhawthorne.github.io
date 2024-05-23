@@ -122,7 +122,11 @@ def get_page_title(web_page_name):
             len(web_page_name.strip()) > 0,     \
             "web_page_name must a non-empty string"
     
-    result = os.path.basename(web_page_name).removesuffix('.html').replace('-',' ').title()
+    result = os.path.basename(web_page_name) \
+                .removesuffix('.html')       \
+                .removesuffix('.md')         \
+                .replace('-',' ')            \
+                .title()
 
     if args.verbose:
         args.log.write(f"get_page_title('{web_page_name}') called\n")
@@ -182,7 +186,8 @@ for sub_pages_dir_name, sub_pages_sub_dirs, sub_pages_file_names in \
                 pfn.startswith('google')
                 ) and
             pfn.removesuffix('.html') not in sub_pages_sub_dirs or
-            pfn.endswith('.md')
+            pfn.endswith('.md') and
+            pfn.removesuffix('.md') not in sub_pages_sub_dirs 
     ]
     if args.verbose:
         args.log.write(f"sub_pages_with_content={str(sub_pages_with_content)}\n")
@@ -221,9 +226,19 @@ for sub_pages_dir_name, sub_pages_sub_dirs, sub_pages_file_names in \
             sub_pages[sub_dir]              = dict()
             sub_pages[sub_dir]['sub-pages'] = dict()
             web_page_name = os.path.join(sub_pages_dir_name,sub_dir) + '.html'
+            if os.path.exists(web_page_name):
+                web_page_name_for_title = web_page_name
+            else:
+                web_page_name_for_title = os.path.join(sub_pages_dir_name,sub_dir) + '.md'
+                if not os.path.exists(web_page_name_for_title):
+                    error_msg = f"*** ERROR *** Anchor page for '{os.path.join(sub_pages_dir_name,sub_dir)}' does not exist"
+                    if args.verbose:
+                        args.log.verbose(error_msg + '\n')
+                    print(error_msg, file=sys.stderr)
+                    exit(1)
             if args.verbose:
-                args.log.write(f"Anchor page name='{web_page_name}'\n")
-            sub_pages[sub_dir]['title'] = get_page_title(web_page_name)
+                args.log.write(f"Anchor page name='{web_page_name_for_title}'\n")
+            sub_pages[sub_dir]['title'] = get_page_title(web_page_name_for_title)
             sub_pages[sub_dir]['url']   = os.path.relpath(web_page_name,start=html_dir)
         for page_name in sub_pages_with_content:
             sub_pages[page_name] = dict()

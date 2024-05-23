@@ -1139,6 +1139,8 @@
       sub-pages:
       - url: home/procedures/oci-procedures/create-oci-config.html
         title: 'Create OCI Configuration File'
+      - url: home/procedures/oci-procedures/install-oci-cli.html
+        title: 'Install OCI CLI'
     - url: home/procedures/patch-oracle-database.html
       title: 'Patch Oracle Database'
       sub-pages:

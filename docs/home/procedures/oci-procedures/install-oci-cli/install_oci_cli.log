@@ -1,0 +1,181 @@
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 16926  100 16926    0     0  37452      0 --:--:-- --:--:-- --:--:-- 37446
+
+    ******************************************************************************
+    You have started the OCI CLI Installer in interactive mode. If you do not wish
+    to run this in interactive mode, please include the --accept-all-defaults option.
+    If you have the script locally and would like to know more about
+    input options for this script, then you can run:
+    ./install.sh -h
+    If you would like to know more about input options for this script, refer to:
+    https://github.com/oracle/oci-cli/blob/master/scripts/install/README.rst
+    ******************************************************************************
+Downloading Oracle Cloud Infrastructure CLI install script from https://raw.githubusercontent.com/oracle/oci-cli/v3.2.1/scripts/install/install.py to /tmp/oci_cli_install_tmp_wEif.
+#################################################################################################### 100.0%
+Running install script.
+python3 /tmp/oci_cli_install_tmp_wEif 
+-- Verifying Python version.
+-- Python version 3.10.12 okay.
+
+===> In what directory would you like to place the install? (leave blank to use '/home/douglas/lib/oracle-cli'): 
+-- Creating directory '/home/douglas/lib/oracle-cli'.
+-- We will install at '/home/douglas/lib/oracle-cli'.
+
+===> In what directory would you like to place the 'oci' executable? (leave blank to use '/home/douglas/bin'): 
+-- The executable will be in '/home/douglas/bin'.
+
+===> In what directory would you like to place the OCI scripts? (leave blank to use '/home/douglas/bin/oci-cli-scripts'): 
+-- Creating directory '/home/douglas/bin/oci-cli-scripts'.
+-- The scripts will be in '/home/douglas/bin/oci-cli-scripts'.
+
+===> Currently supported optional packages are: ['db (will install cx_Oracle)']
+What optional CLI packages would you like to be installed (comma separated names; press enter if you don't need any optional packages)?: db
+-- The optional packages installed will be 'db'.
+-- Executing: ['sudo', 'apt-get', 'update']
+[sudo] password for douglas: 
+Hit:2 https://cli.github.com/packages stable InRelease                                                    
+Ign:3 https://pkg.jenkins.io/debian-stable binary/ InRelease                                              
+Hit:4 https://apt.releases.hashicorp.com jammy InRelease                                                  
+Hit:5 https://pkg.jenkins.io/debian-stable binary/ Release                                                
+Get:7 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]                                 
+Get:1 https://packages.microsoft.com/repos/code stable InRelease [3,590 B]                                
+Get:8 https://esm.ubuntu.com/apps/ubuntu jammy-apps-security InRelease [7,553 B]                          
+Ign:9 https://download.webmin.com/download/newkey/repository stable InRelease                             
+Hit:10 https://ppa.launchpadcontent.net/sunderme/texstudio/ubuntu jammy InRelease                         
+Hit:11 https://download.webmin.com/download/newkey/repository stable Release                              
+Get:13 https://esm.ubuntu.com/apps/ubuntu jammy-apps-updates InRelease [7,456 B]                          
+Get:14 http://apt.postgresql.org/pub/repos/apt jammy-pgdg InRelease [123 kB]                              
+Get:15 https://esm.ubuntu.com/infra/ubuntu jammy-infra-security InRelease [7,450 B]                       
+Get:16 https://esm.ubuntu.com/infra/ubuntu jammy-infra-updates InRelease [7,449 B]                        
+Hit:17 http://au.archive.ubuntu.com/ubuntu jammy InRelease                                                
+Get:18 http://au.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB] 
+Hit:19 http://au.archive.ubuntu.com/ubuntu jammy-backports InRelease    
+Get:20 http://au.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [632 kB]
+Get:21 http://au.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1,683 kB]
+Get:22 https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/ InRelease [3,626 B]               
+Fetched 2,704 kB in 5s (521 kB/s)                                                                   
+Reading package lists... Done
+-- Installing python3-venv.
+-- Executing: ['sudo', 'apt-get', 'install', 'python3-venv', '-y']
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+python3-venv is already the newest version (3.10.6-1~22.04).
+0 to upgrade, 0 to newly install, 0 to remove and 2 not to upgrade.
+-- Trying to use python3 venv.
+-- Executing: ['/home/douglas/lib/oci-ansible-collection/bin/python3', '-m', 'venv', '/home/douglas/lib/oracle-cli']
+-- Executing: ['/home/douglas/lib/oracle-cli/bin/pip', 'install', '--upgrade', 'pip']
+Requirement already satisfied: pip in ./lib/oracle-cli/lib/python3.10/site-packages (22.0.2)
+Collecting pip
+  Using cached pip-24.0-py3-none-any.whl (2.1 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 22.0.2
+    Uninstalling pip-22.0.2:
+      Successfully uninstalled pip-22.0.2
+Successfully installed pip-24.0
+-- Executing: ['/home/douglas/lib/oracle-cli/bin/pip', 'install', '--cache-dir', '/tmp/tmpybtbn3t_', 'wheel', '--upgrade']
+Collecting wheel
+  Downloading wheel-0.43.0-py3-none-any.whl.metadata (2.2 kB)
+Downloading wheel-0.43.0-py3-none-any.whl (65 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 65.8/65.8 kB 1.0 MB/s eta 0:00:00
+Installing collected packages: wheel
+Successfully installed wheel-0.43.0
+-- Executing: ['/home/douglas/lib/oracle-cli/bin/pip', 'install', '--cache-dir', '/tmp/tmpybtbn3t_', 'oci_cli[db]', '--upgrade']
+Collecting oci_cli[db]
+  Downloading oci_cli-3.41.0-py3-none-any.whl.metadata (7.0 kB)
+Collecting oci==2.126.4 (from oci_cli[db])
+  Downloading oci-2.126.4-py3-none-any.whl.metadata (5.2 kB)
+Collecting arrow>=1.0.0 (from oci_cli[db])
+  Downloading arrow-1.3.0-py3-none-any.whl.metadata (7.5 kB)
+Collecting certifi (from oci_cli[db])
+  Downloading certifi-2024.2.2-py3-none-any.whl.metadata (2.2 kB)
+Collecting click==8.0.4 (from oci_cli[db])
+  Downloading click-8.0.4-py3-none-any.whl.metadata (3.2 kB)
+Collecting cryptography<43.0.0,>=3.2.1 (from oci_cli[db])
+  Downloading cryptography-42.0.7-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Collecting jmespath==0.10.0 (from oci_cli[db])
+  Downloading jmespath-0.10.0-py2.py3-none-any.whl.metadata (8.0 kB)
+Collecting python-dateutil<3.0.0,>=2.5.3 (from oci_cli[db])
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2016.10 (from oci_cli[db])
+  Downloading pytz-2024.1-py2.py3-none-any.whl.metadata (22 kB)
+Collecting six>=1.15.0 (from oci_cli[db])
+  Downloading six-1.16.0-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting terminaltables==3.1.10 (from oci_cli[db])
+  Downloading terminaltables-3.1.10-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting pyOpenSSL<25.0.0,>=17.5.0 (from oci_cli[db])
+  Downloading pyOpenSSL-24.1.0-py3-none-any.whl.metadata (12 kB)
+Collecting PyYAML<=6.0.1,>=5.4 (from oci_cli[db])
+  Downloading PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting prompt-toolkit<=3.0.43,>=3.0.38 (from oci_cli[db])
+  Downloading prompt_toolkit-3.0.43-py3-none-any.whl.metadata (6.5 kB)
+Collecting cx-Oracle==8.3 (from oci_cli[db])
+  Downloading cx_Oracle-8.3.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl.metadata (3.3 kB)
+Collecting circuitbreaker<2.0.0,>=1.3.1 (from oci==2.126.4->oci_cli[db])
+  Downloading circuitbreaker-1.4.0.tar.gz (9.7 kB)
+  Preparing metadata (setup.py) ... done
+Collecting types-python-dateutil>=2.8.10 (from arrow>=1.0.0->oci_cli[db])
+  Downloading types_python_dateutil-2.9.0.20240316-py3-none-any.whl.metadata (1.8 kB)
+Collecting cffi>=1.12 (from cryptography<43.0.0,>=3.2.1->oci_cli[db])
+  Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting wcwidth (from prompt-toolkit<=3.0.43,>=3.0.38->oci_cli[db])
+  Downloading wcwidth-0.2.13-py2.py3-none-any.whl.metadata (14 kB)
+Collecting pycparser (from cffi>=1.12->cryptography<43.0.0,>=3.2.1->oci_cli[db])
+  Downloading pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Downloading click-8.0.4-py3-none-any.whl (97 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.5/97.5 kB 936.9 kB/s eta 0:00:00
+Downloading cx_Oracle-8.3.0-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl (892 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 892.6/892.6 kB 1.6 MB/s eta 0:00:00
+Downloading jmespath-0.10.0-py2.py3-none-any.whl (24 kB)
+Downloading oci-2.126.4-py3-none-any.whl (26.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 26.5/26.5 MB 4.7 MB/s eta 0:00:00
+Downloading terminaltables-3.1.10-py2.py3-none-any.whl (15 kB)
+Downloading arrow-1.3.0-py3-none-any.whl (66 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.4/66.4 kB 1.1 MB/s eta 0:00:00
+Downloading cryptography-42.0.7-cp39-abi3-manylinux_2_28_x86_64.whl (3.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.8/3.8 MB 4.1 MB/s eta 0:00:00
+Downloading prompt_toolkit-3.0.43-py3-none-any.whl (386 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 386.1/386.1 kB 3.0 MB/s eta 0:00:00
+Downloading pyOpenSSL-24.1.0-py3-none-any.whl (56 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 56.9/56.9 kB 1.1 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 3.1 MB/s eta 0:00:00
+Downloading pytz-2024.1-py2.py3-none-any.whl (505 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 505.5/505.5 kB 3.8 MB/s eta 0:00:00
+Downloading PyYAML-6.0.1-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (705 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 705.5/705.5 kB 2.7 MB/s eta 0:00:00
+Downloading six-1.16.0-py2.py3-none-any.whl (11 kB)
+Downloading certifi-2024.2.2-py3-none-any.whl (163 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 163.8/163.8 kB 2.8 MB/s eta 0:00:00
+Downloading oci_cli-3.41.0-py3-none-any.whl (48.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 MB 3.9 MB/s eta 0:00:00
+Downloading cffi-1.16.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (443 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 443.9/443.9 kB 3.9 MB/s eta 0:00:00
+Downloading types_python_dateutil-2.9.0.20240316-py3-none-any.whl (9.7 kB)
+Downloading wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+Downloading pycparser-2.22-py3-none-any.whl (117 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.6/117.6 kB 2.9 MB/s eta 0:00:00
+Building wheels for collected packages: circuitbreaker
+  Building wheel for circuitbreaker (setup.py) ... done
+  Created wheel for circuitbreaker: filename=circuitbreaker-1.4.0-py3-none-any.whl size=7522 sha256=3db27666fa08bba2c8f5ac7e19f2d2ebf0adddd087e1f123790937d2027d1a76
+  Stored in directory: /tmp/tmpybtbn3t_/wheels/3c/be/64/266b6ce2ef1130de5e419f04805acbb2df5a4ab1b91348f25b
+Successfully built circuitbreaker
+Installing collected packages: wcwidth, pytz, cx-Oracle, circuitbreaker, types-python-dateutil, terminaltables, six, PyYAML, pycparser, prompt-toolkit, jmespath, click, certifi, python-dateutil, cffi, cryptography, arrow, pyOpenSSL, oci, oci_cli
+Successfully installed PyYAML-6.0.1 arrow-1.3.0 certifi-2024.2.2 cffi-1.16.0 circuitbreaker-1.4.0 click-8.0.4 cryptography-42.0.7 cx-Oracle-8.3.0 jmespath-0.10.0 oci-2.126.4 oci_cli-3.41.0 prompt-toolkit-3.0.43 pyOpenSSL-24.1.0 pycparser-2.22 python-dateutil-2.9.0.post0 pytz-2024.1 six-1.16.0 terminaltables-3.1.10 types-python-dateutil-2.9.0.20240316 wcwidth-0.2.13
+<string>:1: DeprecationWarning: The distutils package is deprecated and slated for removal in Python 3.12. Use setuptools or check PEP 632 for potential alternatives
+<string>:1: DeprecationWarning: The distutils.sysconfig module is deprecated, use sysconfig instead
+
+===> Modify profile to update your $PATH and enable shell/tab completion now? (Y/n): 
+
+===> Enter a path to an rc file to update (file will be created if it does not exist) (leave blank to use '/home/douglas/.bash_profile'): 
+-- Backed up '/home/douglas/.bash_profile' to '/home/douglas/.bash_profile.backup'
+-- Tab completion set up complete.
+-- If tab completion is not activated, verify that '/home/douglas/.bash_profile' is sourced by your shell.
+-- 
+-- ** Run `exec -l $SHELL` to restart your shell. **
+-- 
+-- Installation successful.
+-- Run the CLI with /home/douglas/bin/oci --help
+
