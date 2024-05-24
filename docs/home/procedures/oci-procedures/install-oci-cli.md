@@ -25,6 +25,11 @@ I installed the OCI CLI manually.
 * [Command Line Interface (CLI)](https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cliconcepts.htm)
   * [Quickstart](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm)
     * [Linux and Unix](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm#InstallingCLI__linux_and_unix)
+  * [Token-based Authentication for the CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clitoken.htm)
+    * [Creating a CLI Session without a Browser](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clitoken.htm#clitoken_topic-Starting_a_Tokenbased_CLI_Session_No_Browser)
+  * [Configuring the CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm)
+    * [CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm#CLIconfigfile)
+    * [Specifying a Default Profile](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm#Specifying_a_Default_Profile)
 
 ## Procedure
 
@@ -64,12 +69,39 @@ I ran the suggested command:
 oci setup repair-file-permissions --file /home/douglas/.oci/tenancy_admin_private.pem
 ```
 
-### Create an OCI Session
+### Create OCI CLI Configuration File
 
-Run the following command to create an OCI session:
+Following the procedure in "[CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm#CLIconfigfile)", I ran the following command to create the OCI CLI configuration file (`~/.oci/oci_cli_rc`):
 
 ```bash
-oci session authenticate --no-browser --profile-name DEFAULT --region ap-sydney-1
+oci setup oci-cli-rc --file ~/.oci/oci_cli_rc
+```
+
+The expected output is:
+
+```text
+Predefined queries written under section OCI_CLI_CANNED_QUERIES
+Command aliases written under section OCI_CLI_COMMAND_ALIASES
+Parameter aliases written under section OCI_CLI_PARAM_ALIASES
+```
+
+### Set OCI CLI Default Profile
+
+In order to have the OCI CLI co-exist with Ansible, the OCI CLI has to use a different profile, `OCI`.
+
+Following the procedure in "[Specifying a Default Profile](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm#Specifying_a_Default_Profile)", the following two (2) lines are added to the OCI CLI configuration file, `~/.oci/oci_cli_rc`:
+
+```text
+[OCI_CLI_SETTINGS]
+default_profile=OCI
+```
+
+### Create an OCI Session
+
+Following the procedure in "[Creating a CLI Session without a Browser](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clitoken.htm#clitoken_topic-Starting_a_Tokenbased_CLI_Session_No_Browser)", run the following command to create an OCI session:
+
+```bash
+oci session authenticate --no-browser --profile-name OCI --region ap-sydney-1
 ```
 
 ### Validate OCI Session
@@ -85,4 +117,3 @@ A sample response is:
 ```text
 Session is valid until 2024-05-24 03:53:42
 ```
-
