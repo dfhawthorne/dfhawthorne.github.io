@@ -1,0 +1,115 @@
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [Get VCN data for Mastadon example] ***************************************
+ok: [localhost]
+
+TASK [Display Virtual Cloud Networks] ******************************************
+ok: [localhost] => {
+    "vcn.vcns": [
+        {
+            "byoipv6_cidr_blocks": null,
+            "cidr_block": "10.1.0.0/16",
+            "cidr_blocks": [
+                "10.1.0.0/16"
+            ],
+            "compartment_id": "ocid1.compartment.oc1..aaaaaaaax4nkky4yov3bahtf3cg226ya2ngsaru7vxkv6pavdjwzz5udsojq",
+            "default_dhcp_options_id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaay66526fgoziqacn26jaz2ji3x762k32vg3aakctaddjowow4nnka",
+            "default_route_table_id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaao5xuihfu7m23l6bhh6kul6g2bxrvdfwb2hsoty6x5cg4ppnif5xa",
+            "default_security_list_id": "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaa5tkyymrc5wgxkecardz2xzlla2w6nhrsmb4cgqilltoajywyr4za",
+            "defined_tags": {
+                "Oracle-Tags": {
+                    "CreatedBy": "default/tenancy_admin",
+                    "CreatedOn": "2024-01-12T07:45:11.830Z"
+                }
+            },
+            "display_name": "Mastadon_Network",
+            "dns_label": "mastadon",
+            "freeform_tags": {},
+            "id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jya75cfieoatbehnc3rn4q6abdcjmwxa5pdqddhic464n4q",
+            "ipv6_cidr_blocks": null,
+            "ipv6_private_cidr_blocks": null,
+            "lifecycle_state": "AVAILABLE",
+            "time_created": "2024-01-12T07:45:11.906000+00:00",
+            "vcn_domain_name": "mastadon.oraclevcn.com"
+        }
+    ]
+}
+
+TASK [Fetches details about one or multiple Subnet resources in Mastadon example] ***
+ok: [localhost]
+
+TASK [Display SubNets] *********************************************************
+ok: [localhost] => {
+    "subnet.subnets": [
+        {
+            "availability_domain": null,
+            "cidr_block": "10.1.1.0/24",
+            "compartment_id": "ocid1.compartment.oc1..aaaaaaaax4nkky4yov3bahtf3cg226ya2ngsaru7vxkv6pavdjwzz5udsojq",
+            "defined_tags": {
+                "Oracle-Tags": {
+                    "CreatedBy": "default/tenancy_admin",
+                    "CreatedOn": "2024-01-12T07:45:58.747Z"
+                }
+            },
+            "dhcp_options_id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaay66526fgoziqacn26jaz2ji3x762k32vg3aakctaddjowow4nnka",
+            "display_name": "Mastadon DB Server Sub-Network",
+            "dns_label": null,
+            "freeform_tags": {},
+            "id": "ocid1.subnet.oc1.ap-sydney-1.aaaaaaaazjblkfk54cu4gpm2d2axvzvvoj4rpimbm2qyusqop7l6lv2fnefq",
+            "ipv6_cidr_block": null,
+            "ipv6_cidr_blocks": null,
+            "ipv6_virtual_router_ip": null,
+            "lifecycle_state": "AVAILABLE",
+            "prohibit_internet_ingress": false,
+            "prohibit_public_ip_on_vnic": false,
+            "route_table_id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaao5xuihfu7m23l6bhh6kul6g2bxrvdfwb2hsoty6x5cg4ppnif5xa",
+            "security_list_ids": [
+                "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaa5tkyymrc5wgxkecardz2xzlla2w6nhrsmb4cgqilltoajywyr4za"
+            ],
+            "subnet_domain_name": null,
+            "time_created": "2024-01-12T07:45:58.829000+00:00",
+            "vcn_id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jya75cfieoatbehnc3rn4q6abdcjmwxa5pdqddhic464n4q",
+            "virtual_router_ip": "10.1.1.1",
+            "virtual_router_mac": "00:00:17:82:B4:21"
+        },
+        {
+            "availability_domain": null,
+            "cidr_block": "10.1.0.0/24",
+            "compartment_id": "ocid1.compartment.oc1..aaaaaaaax4nkky4yov3bahtf3cg226ya2ngsaru7vxkv6pavdjwzz5udsojq",
+            "defined_tags": {
+                "Oracle-Tags": {
+                    "CreatedBy": "default/tenancy_admin",
+                    "CreatedOn": "2024-01-12T07:45:12.390Z"
+                }
+            },
+            "dhcp_options_id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaay66526fgoziqacn26jaz2ji3x762k32vg3aakctaddjowow4nnka",
+            "display_name": "Mastadon Web Server Sub-Network",
+            "dns_label": null,
+            "freeform_tags": {},
+            "id": "ocid1.subnet.oc1.ap-sydney-1.aaaaaaaax563awlub2dog3iqfpaal7n5ilgzl7bnsydnuvdtfrb3mrfhwlha",
+            "ipv6_cidr_block": null,
+            "ipv6_cidr_blocks": null,
+            "ipv6_virtual_router_ip": null,
+            "lifecycle_state": "AVAILABLE",
+            "prohibit_internet_ingress": false,
+            "prohibit_public_ip_on_vnic": false,
+            "route_table_id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaao5xuihfu7m23l6bhh6kul6g2bxrvdfwb2hsoty6x5cg4ppnif5xa",
+            "security_list_ids": [
+                "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaa5tkyymrc5wgxkecardz2xzlla2w6nhrsmb4cgqilltoajywyr4za"
+            ],
+            "subnet_domain_name": null,
+            "time_created": "2024-01-12T07:45:12.427000+00:00",
+            "vcn_id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jya75cfieoatbehnc3rn4q6abdcjmwxa5pdqddhic464n4q",
+            "virtual_router_ip": "10.1.0.1",
+            "virtual_router_mac": "00:00:17:82:B4:21"
+        }
+    ]
+}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
