@@ -12,8 +12,13 @@ import sys
 # Parse arguments
 # ------------------------------------------------------------------------------
 
-parser = argparse.ArgumentParser(description='Rebuild Sub-Pages menu page')
-parser.add_argument('file_name', nargs=1, type=str,
+parser = argparse.ArgumentParser(
+    description='Rebuild Sub-Pages menu page using navigation data'
+    )
+parser.add_argument(
+    'file_name',
+    nargs=1,
+    type=str,
     help='name of anchor file')
 parser.add_argument(
     '-l',
@@ -21,6 +26,11 @@ parser.add_argument(
     default=sys.stdout,
     type=argparse.FileType('w'),
     help='the file where the verbose logging should be written')
+parser.add_argument(
+    '-n',
+    '--nav-data',
+    type=str,
+    help='the file containing the navigation data')
 parser.add_argument(
     '-v',
     '--verbose',
@@ -54,25 +64,22 @@ if not os.path.isfile(input_anchor_page_path):
 #  Locate sub-pages within directory pointed to by input file name
 # ------------------------------------------------------------------------------
 
-scripts_dir = os.path.dirname(os.path.realpath(__file__))
-abs_anchor_page_path = os.path.abspath(input_anchor_page_path)
-docs_dir = os.path.dirname(scripts_dir) + os.path.sep + 'docs'
+scripts_dir           = os.path.dirname(os.path.realpath(__file__))
+abs_anchor_page_path  = os.path.abspath(input_anchor_page_path)
+docs_dir              = os.path.join(os.path.dirname(scripts_dir),'docs')
+rel_anchor_page_path  = os.path.relpath(abs_anchor_page_path, start=docs_dir)
+
+if args.nav_data is not None:
+    nav_data_path     = args.nav_data
+else:
+    nav_data_path     = os.path.join(docs_dir, '_data', 'navigation.yml')
 if args.verbose:
     args.log.write(f"script_name={__file__}\n")
     args.log.write(f"scripts_dir={scripts_dir}\n")
     args.log.write(f"abs_anchor_page_path={abs_anchor_page_path}\n")
     args.log.write(f"docs_dir={docs_dir}\n")
-abs_anchor_dir = abs_anchor_page_path.removesuffix('.html')
-if not os.path.isdir(abs_anchor_dir):
-    error_message = f"'{abs_anchor_dir}' is not a directory"
-    if args.verbose:
-        args.log.write(error_message + '\nExiting.\n')
-    print(error_message,file=sys.stderr)
-    exit (1)
-rel_anchor_dir = os.path.relpath(abs_anchor_dir, start=docs_dir)
-if args.verbose:
-    args.log.write(f"abs_anchor_dir='{abs_anchor_dir}'\n")
-    args.log.write(f"rel_anchor_dir='{rel_anchor_dir}'\n")
+    args.log.write(f"nav_data_path={nav_data_path}\n")
+    args.log.write(f"rel_anchor_page_path='{rel_anchor_page_path}'\n")
 
 # ------------------------------------------------------------------------------
 # Split current content of the anchor page into several parts:
@@ -131,52 +138,29 @@ if args.verbose:
     args.log.write('old_post_page_header =============== (END) ==============\n')
 
 # ------------------------------------------------------------------------------
-# Find all of the sub pages
+# Construct the new sub-pages menu using navigation data
 # ------------------------------------------------------------------------------
 
-anchor_dirs_dict = dict()
-anchor_files_dict = dict()
-
-for sub_pages_dir_name, sub_pages_sub_dirs, sub_pages_file_names in \
-    os.walk(abs_anchor_dir):
-    if args.verbose:
-        args.log.write(f"sub_pages_dir_name={str(sub_pages_dir_name)}\n")
-        args.log.write(f"sub_pages_sub_dirs={str(sub_pages_sub_dirs)}\n")
-        args.log.write(f"sub_pages_file_names={str(sub_pages_file_names)}\n")
-    sub_pages_with_content = [f
-        for f in sub_pages_file_names
-        if f.endswith('.html') and 
-            not (
-                f.startswith('AWR_report_') or
-                f.startswith('ASH_report_') or
-                f.startswith('workload_report_')
-                )
-    ]
-    if args.verbose:
-        args.log.write(f"sub_pages_with_content={str(sub_pages_with_content)}\n")
-    if len(sub_pages_with_content) == 0: continue
-    if args.verbose:
-        args.log.write(f"Sub-anchor directory found\n")
-    anchor_dirs_dict[sub_pages_dir_name]  = sub_pages_sub_dirs
-    anchor_files_dict[sub_pages_dir_name] = sub_pages_with_content
-
-# ------------------------------------------------------------------------------
-# Construct new sub-pages menu
-# ------------------------------------------------------------------------------
-
-new_sub_pages_menu = 'sub-pages:\n'
-top_sub_pages_menu_pages = anchor_files_dict[abs_anchor_dir]
-top_sub_pages_menu_pages.sort()
-for page_name in top_sub_pages_menu_pages:
-    if args.verbose:
-        args.log.write(f"page_name: '{page_name}'\n")
-    with open(os.path.join(abs_anchor_dir,page_name),'r') as f:
-        in_buffer = f.read()
-    title_token = re.findall("\ntitle: +'(.*)'\n", in_buffer)
-    if args.verbose:
-        args.log.write(f"title_token={str(title_token)}\n")
-    new_sub_pages_menu += f"- url: {os.path.join(rel_anchor_dir, page_name)}\n"
-    new_sub_pages_menu += f"  title: '{title_token[0]}'\n"
+new_sub_pages_menu = ''
+copy_lines         = False
+search_str         = '---'
+with open(nav_data_path,'r') as f:
+    for line in f:
+        if args.verbose:
+            args.log.write(f"NAV DATA: {line}")
+        if line.find(rel_anchor_page_path) >= 0:
+            indent = line.find('-') + 2
+            search_str = ''.rjust(indent) + 'sub-pages:'
+            if args.verbose:
+                args.log.write(f"'{rel_anchor_page_path}' found in navigation data\n")
+                args.log.write(f"indent={indent}\n")
+                args.log.write(f"search_str='{search_str}'\n")
+            continue
+        if line.startswith(search_str):
+            copy_lines = True
+        if copy_lines:
+            if len(line[:indent].strip()) != 0: break
+            new_sub_pages_menu += line[indent:]
 
 sub_pages_menu_changed =  old_sub_pages_menu.strip() != new_sub_pages_menu.strip()
 if args.verbose:
@@ -200,13 +184,17 @@ if args.replace:
         print(warning_msg, file=sys.stderr)
         exit(0)
     out_buffer = old_pre_page_header + \
-        new_sub_pages_menu + \
-        old_post_page_header + \
+        '\n'                         + \
+        new_sub_pages_menu           + \
+        old_post_page_header         + \
+        '---\n'                      + \
         page_content
     if args.verbose:
         args.log.write('out_buffer =================== (BEGIN) ==================\n')
         args.log.write(out_buffer + '\n')
         args.log.write('out_buffer ===================== (END) ==================\n')
+    with open(input_anchor_page_path,'w') as f:
+        f.write(out_buffer)
 else:
     if sub_pages_menu_changed:
         warning_msg = 'Changes detected in sub-pages menu. Page is NOT replaced.'

@@ -68,3 +68,4 @@ Table of Contents
 * [2024-05-17](2024_05_17.md) Add EXAM Topics - Script Name
 * [2024-05-18](2024_05_18.md) Add EXAM Topics - Script Implementation
 * [2024-05-19](2024_05_19.md) Add EXAM Topics - Script Implementation (Completed)
+* [2024-05-26](2024_05_26.md) Implementation of Rebuilding of Subpages Menu
