@@ -10,3 +10,68 @@ breadcrumbs:
 - title: 'Design and Deploy OCI Virtual Cloud Networks (VCN)'
   url: home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn.html
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There appears to be three (3) types of endpoints:</p>
+<ol>
+  <li><a href="https://docs.oracle.com/en-us/iaas/api/">API</a></li>
+  <li>OCI standard</li>
+  <li>Private</li>
+</ol>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/iaas/">Oracle Cloud Infrastructure Documentation</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/home.htm">Resource Manager</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/private-endpoints.htm">Managing Private Endpoints</a></li>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/api/">API Reference and Endpoints</a></li>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm">Glossary</a></li>
+  </ul>
+</ul>
+<h2 id="TOC-glossary-entries">Glossary Entries</h2>
+<p>Searching the <a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm">Glossary</a> for "endpoint" returns the following entries:</p>
+<ul>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#glossary.Term70">mount target (File Storage)</a></p>
+    <p>A network file system (NFS) endpoint that allows a file system to be accessed by clients.</p>
+  </div></li>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#unique_2043702524">private endpoint (Resource Manager)</a></p>
+    <p>Network information for connecting to a nonpublic resource. Allows Resource Manager to remotely access cloud resources that are not available through the Internet.</p>
+  </div></li>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#unique_1344554896">Recovery Service Subnet</a></p>
+    <p>A recovery service subnet identifies the Recovery Service private endpoint on a dedicated subnet within a virtual cloud network (VCN) in your tenancy. The OCI Console provides an easy-to-use interface to configure recovery service subnets.</p>
+  </div></li>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#glossentry_registereddatabase">registered database</a></p>
+    <p>A resource that captures source and target credential information and enables networking between a service tenancy virtual cloud network (VCN) and your tenancy VCN using a private endpoint.</p>
+  </div></li>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#glossary.Term106">subscription (Notifications)</a></p>
+    <p>An endpoint for a topic, typically a URL or email address. Published messages are sent to each subscription for a topic.</p>
+  </div></li>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#glossary.Term212">virtual network interface card (VNIC)</a></p>
+    <p>Enables an instance to connect to a virtual cloud network (VCN) and determines how the instance connects with endpoints inside and outside the VCN. Each instance automatically comes with a primary VNIC, and you can add secondary ones. Other types of cloud resources, such as load balancers and DB systems, also automatically get a VNIC when they are created.</p>
+  </div></li>
+  <li><div>
+    <p style="font-family: Arial, Helvetica, sans-serif; font-size: large;"><a href="https://docs.oracle.com/en-us/iaas/Content/libraries/glossary/glossary-intro.htm#glossary.Term57">VNIC (virtual network interface card)</a></p>
+    <p>Enables an instance to connect to a virtual cloud network (VCN) and determines how the instance connects with endpoints inside and outside the VCN. Each instance automatically comes with a primary VNIC, and you can add secondary ones. Other types of cloud resources, such as load balancers and DB systems, also automatically get a VNIC when they are created.</p>
+  </div></li>
+</ul>
+<p>Based on the above Glossary entries, the standard OCI endpoints are:</p>
+<ul>
+  <li>Database</li>
+  <li>Mount (NFS)</li>
+  <li>Recovery Service Subnet</li>
+  <li>Subscription (notification)</li>
+  <li>VNIC</li>
+</ul>
+<h2 id="TOC-private-endpoints">Private Endpoints</h2>
+<p>"<a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/private-endpoints.htm">Managing Private Endpoints</a>" says:</p>
+<blockquote>
+  <p>With private endpoints, you can access nonpublic cloud resources in your tenancy from Resource Manager. For example, configure a private compute instance using Terraform's remote exec functionality and access Terraform configurations in a private GitHub server.</p>
+</blockquote>
