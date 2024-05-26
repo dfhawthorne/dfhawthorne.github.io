@@ -9,4 +9,49 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Design and Deploy OCI Virtual Cloud Networks (VCN)'
   url: home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references 
+  toc-text: References
+- toc-url: ipv6-addresses 
+  toc-text: 'IPv6 Addresses'
+  toc-menu:
+  - toc-url: ipv6-glossary
+    toc-text: 'IPv6 Glossary'
+  - toc-url: ipv6-notes
+    toc-text: 'IPv6 Notes'
+- toc-url: ipv4-notes
+  toc-text: 'IPv4 Notes'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/iaas/Content/home.htm">Oracle Cloud Infrastructure Documentation</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipaddressesanddns.htm">IP Management</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipv6.htm#IPv6_Addresses">IPv6 Addresses</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-ipv6-addresses">IPv6 Addresses</h2>
+<p>These notes are from "<a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipv6.htm#IPv6_Addresses">IPv6 Addresses</a>".</p>
+<h3 id="TOC-ipv6-glossary">IPv6 Glossary</h3>
+<ul>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">BYOIP</span>: <a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/BYOIP.htm#BYOIP">Bring Your Own IP</a>. IPv6 requires a prefix of /48 or larger.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">DRG</span>: dynamic routing gateway which is used to route private traffic between a VCN and an on-premise network.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">dual-stack</span>: support IPv4 and, optionally, IPv6.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">GUA</span>: global unicast address. OCI uses /56 prefix.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">LPG</span>: local peering gateway which is used to route traffic between VCNs.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">ULA</span>: unique local address. <cite>This prefix is internally routable within your OCI network, and is equivalent to IPv4 private addressing. With ULA, you can assign a /64 prefix or larger to a VCN.</cite> The prefix is /64 or larger.</li>
+</ul>
+<h3 id="TOC-ipv6-notes">IPv6 Notes</h3>
+<p>Each IPv6 address is 128 bits long and is written as hexadecimal digits in eight (8) blocks of four (4) digits separated by colons (':'). Consectitive blocks of zeroes can be replaced by two (2) colons ('::'). Only one (1) such abbreviation can be written in an address.</p>
+<h2 id="TOC-ipv4-notes">IPv4 Notes</h2>
+<p>Each IPv4 address is 32 bits long and is written as decimal digits in four (4) blocks separated by periods ('.'). Each block is a number between zero (0) and 255.</p>
