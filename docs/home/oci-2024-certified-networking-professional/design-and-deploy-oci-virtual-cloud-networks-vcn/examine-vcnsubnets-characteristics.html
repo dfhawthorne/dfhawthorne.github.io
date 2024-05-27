@@ -137,3 +137,7 @@ terraform init
 terraform plan
 </pre>
 <p>Sample output has been uploaded as <a href="home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics/terraform-examine-vcnsubnets-characteristics.log">terraform-examine-vcnsubnets-characteristics.log</a></p>
+<h2 id="TOC-notes">Notes</h2>
+<p>Region has one or more availability domain (AD) each of which has three (3) fault domains (FD).</p>
+<p>Public VCN uses Internet Gateway to access Internet and public endpoints. Private VCN uses NAT Gateway to access the Internet.</p>
+<p>VCN is region-specific.</p>
