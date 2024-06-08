@@ -98,12 +98,9 @@ default_profile=OCI
 
 [OCI]
 # for the OCI profile
-endpoint = https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443
 ```
 
-See the following screenshot for getting the endpoint from the Domain URL:
-
-![Get endpoint from Domain URL in the overview for the Default Domain](home/procedures/oci-procedures/install-oci-cli/get_domain_url.png))
+__NOTE:__ Do not add `endpoint` to the `[OCI]` profile as this uses this endpoint as default for all OCI calls.
 
 ### Create an OCI Session
 
