@@ -1,6 +1,12 @@
 - url: announcements.html
   title: 'Announcements'
   sub-pages:
+  - url: announcements/2006-11-24.html
+    title: '24 November 2006'
+  - url: announcements/2008-02-28.html
+    title: '28 February 2008'
+  - url: announcements/2008-11-08.html
+    title: '08 November 2008'
   - url: announcements/2012-03-12.html
     title: '12 March 2012'
   - url: announcements/2012-03-27.html
