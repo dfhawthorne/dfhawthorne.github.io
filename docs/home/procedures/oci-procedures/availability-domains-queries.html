@@ -1,0 +1,60 @@
+---
+layout: default
+title: 'Availability Domains Queries'
+base-url: home/procedures/oci-procedures/availability-domains-queries.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: find-all-availability-domains
+  toc-text: 'Find All Availability Domains'
+- toc-url: get-first-ad-ocid
+  toc-text: 'Get First AD OCID'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/availability-domain.html">availability-domain</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/availability-domain/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-find-all-availability-domains">Find All Availability Domains</h2>
+<p>To find all availability domains in your tenancy, run the following command:</p>
+<pre class="bash-cmd">
+oci iam availability-domain list                \
+    --query 'data[*].{"AD Name":name, OCID:id}' \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++-----------------------+--------------------------------------------------------------------------------------------+
+| AD Name               | OCID                                                                                       |
++-----------------------+--------------------------------------------------------------------------------------------+
+| bPBR:AP-SYDNEY-1-AD-1 | ocid1.availabilitydomain.oc1..aaaaaaaalhnzffyixz4hyhp7gtcdskahy22cekpcgndvwdjffrdv6d5iqi5a |
++-----------------------+--------------------------------------------------------------------------------------------+
+</pre>
+<h2 id="TOC-get-first-ad-ocid">Get First AD OCID</h2>
+<p>To get the OCID of the first available AD (Availability Domain), use the following command:</p>
+<pre class="bash-cmd">
+export OCI_AD_OCID=$(                \
+    oci iam availability-domain list \
+      --query 'data[0].id'           \
+      --raw-output                   \
+    )

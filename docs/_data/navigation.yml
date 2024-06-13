@@ -1149,6 +1149,8 @@
       sub-pages:
       - url: home/procedures/oci-procedures/autonomous-database-queries.html
         title: 'Autonomous Database Queries'
+      - url: home/procedures/oci-procedures/availability-domains-queries.html
+        title: 'Availability Domains Queries'
       - url: home/procedures/oci-procedures/compartment-queries.html
         title: 'Compartment Queries'
       - url: home/procedures/oci-procedures/create-oci-config.html
