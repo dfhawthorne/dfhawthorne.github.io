@@ -1,0 +1,128 @@
+---
+layout: default
+title: 'Compute Image Queries'
+base-url: home/procedures/oci-procedures/compute-image-queries.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: find-images
+  toc-text: 'Find Images'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>Before creating a compute instance, I need to know what subnets are available.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute.html">compute</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/image.html">image</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/image/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-find-images">Find Images</h2>
+<p></p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+export shape_name='VM.Standard.E2.1.Micro'
+oci compute image list                      \
+    --compartment-id    ${sandbox_ocid}     \
+    --lifecycle-state   AVAILABLE           \
+    --shape             "${shape_name}"     \
+    --query 'data[*].{"Image Name":"display-name",OCID:id,"Operating System":"operating-system","O/S Version":"operating-system-version"}' \
+    --all                                   \
+    --sort-by           DISPLAYNAME         \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++-----------------------------------------------+---------------+------------------------------------------------------------------------------------------+------------------------------+
+| Image Name                                    | O/S Version   | OCID                                                                                     | Operating System             |
++-----------------------------------------------+---------------+------------------------------------------------------------------------------------------+------------------------------+
+| Canonical-Ubuntu-20.04-2024.02.17-0           | 20.04         | ocid1.image.oc1.ap-sydney-1.aaaaaaaatqp65wahf7rj5xkjuv62jgvvzh2lm7rrtb3v5cat4pk2vcibbtaq | Canonical Ubuntu             |
+| Canonical-Ubuntu-20.04-2024.03.12-0           | 20.04         | ocid1.image.oc1.ap-sydney-1.aaaaaaaaro5dpbj6um77e3zrgnrjf7qc7wb376wjff37enjovkeqwnelz2jq | Canonical Ubuntu             |
+| Canonical-Ubuntu-20.04-2024.04.16-0           | 20.04         | ocid1.image.oc1.ap-sydney-1.aaaaaaaam3pvui5qih7wruqjnfjcjgnq2iiyirpg47rqjeyfarvse53t76ma | Canonical Ubuntu             |
+| Canonical-Ubuntu-20.04-Minimal-2023.09.28-0   | 20.04 Minimal | ocid1.image.oc1.ap-sydney-1.aaaaaaaa4iljnvtromfsq2xfshx4tocaev2cjus3t2be2okidv7xhrlmlckq | Canonical Ubuntu             |
+| Canonical-Ubuntu-20.04-Minimal-2023.10.16-0   | 20.04 Minimal | ocid1.image.oc1.ap-sydney-1.aaaaaaaauhxys5aphh7etk6kinzbyjsrimbrpnjg34suoueygardtsrvbd4q | Canonical Ubuntu             |
+| Canonical-Ubuntu-20.04-Minimal-2024.04.17-0   | 20.04 Minimal | ocid1.image.oc1.ap-sydney-1.aaaaaaaa23xwx73zwbx523csc47mmw5n23fh2tu3lqkkx7wsxryddylyi3cq | Canonical Ubuntu             |
+| Canonical-Ubuntu-22.04-2024.02.18-0           | 22.04         | ocid1.image.oc1.ap-sydney-1.aaaaaaaauwm5hbaqsjk324vkaikdpkcbdkmnjc5ri654ufzzp6klzpmkz2jq | Canonical Ubuntu             |
+| Canonical-Ubuntu-22.04-2024.03.15-0           | 22.04         | ocid1.image.oc1.ap-sydney-1.aaaaaaaac3e5nehimybq4lp6zjfbyrwd5eryf6she6dwsvtazuhrttde7l3q | Canonical Ubuntu             |
+| Canonical-Ubuntu-22.04-2024.04.16-1           | 22.04         | ocid1.image.oc1.ap-sydney-1.aaaaaaaaj7bsm27n53frmyopcuqv7hzkt7rnxllsbfnfkioiftwibf4jyr6q | Canonical Ubuntu             |
+| Canonical-Ubuntu-22.04-Minimal-2023.10.15-0   | 22.04 Minimal | ocid1.image.oc1.ap-sydney-1.aaaaaaaalnwwb6nxso6wn5fpjeee5jzty7scqdnjgqlvcootbvmbf4nuhamq | Canonical Ubuntu             |
+| Canonical-Ubuntu-22.04-Minimal-2024.03.18-0   | 22.04 Minimal | ocid1.image.oc1.ap-sydney-1.aaaaaaaaafd4q5vhb6ito55sxjufx3wwb7lul3ea6ykxb2mghy4qqj67pi5q | Canonical Ubuntu             |
+| Canonical-Ubuntu-22.04-Minimal-2024.04.16-0   | 22.04 Minimal | ocid1.image.oc1.ap-sydney-1.aaaaaaaaciskqd73dm367etnttptdxtalc4yubjfp3ubviclmio226vmg7hq | Canonical Ubuntu             |
+| CentOS-7-2024.02.22-0                         | 7             | ocid1.image.oc1.ap-sydney-1.aaaaaaaahx362m36tomozunh6urnwkixstjbivflj4hkrsjgoglgvcrlfgna | CentOS                       |
+| CentOS-7-2024.03.19-0                         | 7             | ocid1.image.oc1.ap-sydney-1.aaaaaaaaaedlgf3rzo4msclddrryl7t4nn2gt5sfcapo36ukofz2ozchdysq | CentOS                       |
+| CentOS-7-2024.04.25-0                         | 7             | ocid1.image.oc1.ap-sydney-1.aaaaaaaae5y3zaeq6iqmgdwxgww3euvshyp7k3go3qhe6zmy5bzvhx2requa | CentOS                       |
+| CentOS-8-Stream-2024.02.26-0                  | 8 Stream      | ocid1.image.oc1.ap-sydney-1.aaaaaaaarufxudlct6cxblzhtfdcmn25hseolevbtucwylust4ekvag65gxq | CentOS                       |
+| CentOS-8-Stream-2024.03.19-0                  | 8 Stream      | ocid1.image.oc1.ap-sydney-1.aaaaaaaalaosgbbaute5vt7d56ev3ponfljhlfjghpqbklluu7zsz6boyqga | CentOS                       |
+| CentOS-8-Stream-2024.04.25-0                  | 8 Stream      | ocid1.image.oc1.ap-sydney-1.aaaaaaaaul3ds7anoxbgr7b7jclvjetbo3nwueibpawh3fxo4u4jqjrxgefa | CentOS                       |
+| Oracle-Linux-6.10-2021.03.17-0                | 6.10          | ocid1.image.oc1.ap-sydney-1.aaaaaaaa5rcwolpg465aj35zt4bkgg4gcujcto7gvfz6wajk53fnpysbaxea | Oracle Linux                 |
+| Oracle-Linux-6.10-2022.02.13-1                | 6.10          | ocid1.image.oc1.ap-sydney-1.aaaaaaaa44uhbfkdvkircsw4owvbtyzgx3brdjclwzp4ucieoar2t4bydieq | Oracle Linux                 |
+| Oracle-Linux-7.9-2024.03.28-0                 | 7.9           | ocid1.image.oc1.ap-sydney-1.aaaaaaaaszaiu3jld6g4gmtuj6ir2eqknrhk6p5hvvwrzecpylhgo2ritsoa | Oracle Linux                 |
+| Oracle-Linux-7.9-2024.04.19-0                 | 7.9           | ocid1.image.oc1.ap-sydney-1.aaaaaaaaaaaacs6fzyzwd32cxxmeyda6vyogk2iubrxsg26xu2f4tdtvwbxq | Oracle Linux                 |
+| Oracle-Linux-7.9-2024.05.29-0                 | 7.9           | ocid1.image.oc1.ap-sydney-1.aaaaaaaanaljeygyy2hrfjs5vr4b7fwcxjlqe6z6nloqjw7oh6syiknjmo7q | Oracle Linux                 |
+| Oracle-Linux-8.9-2024.03.25-0                 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaaxfoqyncbdthszkxio4qybczhtroa6753aqtnwfpf3xmkre6lntya | Oracle Linux                 |
+| Oracle-Linux-8.9-2024.04.19-0                 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaaccfswiajsa4bbazsltodsmt5t3mmxlg7f3fkqi2dgog4acl7gs2q | Oracle Linux                 |
+| Oracle-Linux-8.9-2024.05.29-0                 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaabnxikcccwfimzid4xvtnrmbovpyujson2ybk4cq2quprenot4yva | Oracle Linux                 |
+| Oracle-Linux-9.1-Minimal-2023.07.07-0         | 9 Minimal     | ocid1.image.oc1.ap-sydney-1.aaaaaaaarcnezqumgwmi3t3uwjldyl3vhtvhjlazwbau4fmwgfbyqc7iww4q | Oracle Linux                 |
+| Oracle-Linux-9.2-Minimal-2023.09.30-1         | 9 Minimal     | ocid1.image.oc1.ap-sydney-1.aaaaaaaa2tjsiqg6lmzxczuykgwwpeuap5oe7j2fm6es5yiyyfo3iehxpeaa | Oracle Linux                 |
+| Oracle-Linux-9.3-2024.03.25-0                 | 9             | ocid1.image.oc1.ap-sydney-1.aaaaaaaatf66gc4bcbnuzppan6slrgwcdei3j24o55ywyhoisu2bf4y2fhaa | Oracle Linux                 |
+| Oracle-Linux-9.3-2024.04.22-0                 | 9             | ocid1.image.oc1.ap-sydney-1.aaaaaaaajioht5hlosejht7c45e7pnjhjonkmznv5zjg7dycsztxd5ivzxna | Oracle Linux                 |
+| Oracle-Linux-9.3-Minimal-2024.02.29-0         | 9 Minimal     | ocid1.image.oc1.ap-sydney-1.aaaaaaaapatb4qnbeyxmiz6ihh4oprpemcdesqtqd6y6kor25a2ou5hgp4ea | Oracle Linux                 |
+| Oracle-Linux-9.4-2024.05.29-0                 | 9             | ocid1.image.oc1.ap-sydney-1.aaaaaaaafu37xaq556gh3tiovlb4hgrm4davtukdpuz2bl6g4xgm4vczehba | Oracle Linux                 |
+| Oracle-Linux-Cloud-Developer-8.5-2022.05.22-0 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaaogu4pvw4zw2p7kjabyynczopoqipecr2gozdaolh5kem2mkdrloa | Oracle Linux Cloud Developer |
+| Oracle-Linux-Cloud-Developer-8.7-2023.04.28-1 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaauvqifoebxjexxkmaps26kzzjozhnwn6tbylauppi4utbo2vqzcgq | Oracle Linux Cloud Developer |
+| Oracle-Linux-Cloud-Developer-8.9-2024.02.29-0 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaabfdxebs6isqkqhyqgxcfeqf6sfiopgrfddyo5zpyrctcpiol32xa | Oracle Linux Cloud Developer |
++-----------------------------------------------+---------------+------------------------------------------------------------------------------------------+------------------------------+
+</pre>
+<h2 id="TOC-get-image-ocid">Get Image OCID</h2>
+<p></p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+export shape_name='VM.Standard.E2.1.Micro'
+export centos_os='CentOS'
+export centos_ver='8 Stream'
+export centos_8_image_ocid=$(                       \
+    oci compute image list                          \
+        --compartment-id            ${sandbox_ocid} \
+        --lifecycle-state           AVAILABLE       \
+        --operating-system          "${centos_os}"  \
+        --operating-system-version  "${centos_ver}" \
+        --shape                     "${shape_name}" \
+        --query                     'data[0].id'    \
+        --raw-output                                \
+    )
+</pre>
+{% endraw %}

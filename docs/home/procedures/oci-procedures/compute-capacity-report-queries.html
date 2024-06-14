@@ -1,0 +1,92 @@
+---
+layout: default
+title: 'Compute Capacity Report Queries'
+base-url: 'home/procedures/oci-procedures/compute-capacity-report-queries.html'
+breadcrumbs:
+  - title: 'Home'
+    url: index.html
+  - title: 'Procedures'
+    url: home/procedures.html
+  - title: 'OCI Procedures'
+    url: home/procedures/oci-procedures.html
+table-of-contents:
+  - toc-url: summary
+    toc-text: 'Summary'
+  - toc-url: references
+    toc-text: 'References'
+  - toc-url: find-available-capacity
+    toc-text: 'Find Available Capacity'
+file-download-dir: 'home/procedures/oci-procedures/compute-capacity-report-queries'
+file-download:
+  - 'shape-availabilities.json'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Before creating a compute instance, I need to know if there is sufficient capacity is available.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute.html">compute</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/compute-capacity-report.html">compute-capacity-report</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/compute-capacity-report/create.html">create</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/availability-domain.html">availability-domain</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/availability-domain/list.html">list</a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/fault-domain.html">fault-domain</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/fault-domain/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-find-available-capacity">Find Available Capacity</h2>
+<p>To find what available capacity is available for all fault domains in the Sandbox compartment, a JSON file containing the query needs to be constructed. A sample to download is called <span class="file-name">shape-availabilities.json</span>. To build your own query file, you will need the information from the queries:</p>
+<ul>
+  <li><a href="home/procedures/oci-procedures/compute-shape-queries.html#TOC-find-available-compute-shapes">Find Available Compute Shapes</a></li>
+  <li><a href="home/procedures/oci-procedures/fault-domains-queries.html#TOC-find-all-fault-domains-in-an-availability-domain">Find All Fault Domains in an Availability Domain</a></li>
+</ul>
+<p>Once the <span class="file-name">shape-availabilities.json</span> file has been downloaded or built, run the following commands:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(       \
+    oci iam compartment list \
+        --name 'Sandbox'     \
+        --query 'data[0].id' \
+        --raw-output         \
+    )
+export ad_name=$(                       \
+    oci iam availability-domain list    \
+        --compartment-id $sandbox_ocid  \
+        --query 'data[0].name'          \
+        --raw-output                    \
+    )
+oci compute compute-capacity-report create \
+    --compartment-id $sandbox_ocid         \
+    --availability-domain $ad_name         \
+    --shape-availabilities 'file://shape-availabilities.json' \
+    --query 'data."shape-availabilities"[*].{"FD Name":"fault-domain", "Availabilty Status":"availability-status", "Shape Name":"instance-shape"}' \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++--------------------+----------------+------------------------+
+| Availabilty Status | FD Name        | Shape Name             |
++--------------------+----------------+------------------------+
+| AVAILABLE          | FAULT-DOMAIN-1 | VM.Standard.E2.1.Micro |
+| AVAILABLE          | FAULT-DOMAIN-2 | VM.Standard.E2.1.Micro |
+| AVAILABLE          | FAULT-DOMAIN-3 | VM.Standard.E2.1.Micro |
++--------------------+----------------+------------------------+
+</pre>
+
+

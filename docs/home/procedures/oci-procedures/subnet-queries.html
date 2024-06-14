@@ -1,0 +1,68 @@
+---
+layout: default
+title: 'Subnet Queries'
+base-url: home/procedures/oci-procedures/subnet-queries.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: find-subnets
+  toc-text: 'Find Subnets'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>Before creating a compute instance, I need to know what subnets are available.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/network.html">network</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/network/subnet.html">subnet</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/network/subnet/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-find-subnets">Find Subnets</h2>
+<p>Run the following commands to find what subnets are available in the Sandbox compartment:</p>
+<pre class="bash-cmd">
+export sandbox_comp_id=$(   \
+  oci iam compartment list  \
+    --name 'Sandbox'        \
+    --query 'data[0].id'    \
+    --raw-output
+  )
+oci network subnet list                                                                     \
+      --compartment-id ${sandbox_comp_id}                                                   \
+      --query 'data[*].{OCID: id, "CIDR Block":"cidr-block", "Subnet Name":"display-name"}' \
+      --output table                                                                        \
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++-------------+-------------------------------------------------------------------------------------------+----------------------------+
+| CIDR Block  | OCID                                                                                      | Subnet Name                |
++-------------+-------------------------------------------------------------------------------------------+----------------------------+
+| 10.0.3.0/24 | ocid1.subnet.oc1.ap-sydney-1.aaaaaaaayzpr5xhc4uid5wagusokwaczibbvoftfe4fyj7evdnbk524g6hla | example_subnet             |
+| 10.0.1.0/24 | ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q | public subnet-sandbox-vcn  |
+| 10.0.2.0/24 | ocid1.subnet.oc1.ap-sydney-1.aaaaaaaa4khgvhu5dukjpsghgj2adw4pp23qnayfg272erjd33onwguvfr2q | private subnet-sandbox-vcn |
++-------------+-------------------------------------------------------------------------------------------+----------------------------+
+</pre>
+{% endraw %}

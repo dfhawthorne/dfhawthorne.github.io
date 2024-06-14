@@ -18,6 +18,8 @@ table-of-contents:
   toc-text: 'Find All Availability Domains'
 - toc-url: get-first-ad-ocid
   toc-text: 'Get First AD OCID'
+- toc-url: get-first-ad-name
+  toc-text: 'Get First AD Name'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
@@ -58,3 +60,13 @@ export OCI_AD_OCID=$(                \
       --query 'data[0].id'           \
       --raw-output                   \
     )
+</pre>
+<h2 id="TOC-get-first-ad-name">Get First AD Name</h2>
+<p>To get the name of the first available AD (Availability Domain), use the following command:</p>
+<pre class="bash-cmd">
+export OCI_AD_NAME=$(                \
+    oci iam availability-domain list \
+      --query 'data[0].name'         \
+      --raw-output                   \
+    )
+</pre>

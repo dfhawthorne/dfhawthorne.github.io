@@ -1,0 +1,69 @@
+---
+layout: default
+title: 'Compute Shape Queries'
+base-url: home/procedures/oci-procedures/compute-shape-queries.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: find-available-compute-shapes
+  toc-text: 'Find Available Compute Shapes'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>Before creating a compute instance, I need to know what compute shapes are available.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute.html">compute</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/shape.html">shape</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/shape/list.html">list</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-find-available-compute-shapes">Find Available Compute Shapes</h2>
+<p>To find what compute shapes are available in the Sandbox compartment, run the following commands:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(       \
+    oci iam compartment list \
+        --name 'Sandbox'     \
+        --query 'data[0].id' \
+        --raw-output         \
+    )
+oci compute shape list                                                                                      \
+    --compartment-id $sandbox_ocid                                                                          \
+    --query 'data[*].{"Billing Type":"billing-type","Shape Name":shape,"GB":"memory-in-gbs","OCPUs":ocpus}' \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++--------------+--------+-------+------------------------+
+| Billing Type | GB     | OCPUs | Shape Name             |
++--------------+--------+-------+------------------------+
+| PAID         | 1024.0 | 160.0 | BM.Standard.A1.160     |
+| LIMITED_FREE | 6.0    | 1.0   | VM.Standard.A1.Flex    |
+| ALWAYS_FREE  | 1.0    | 1.0   | VM.Standard.E2.1.Micro |
++--------------+--------+-------+------------------------+
+</pre>
+
+{% endraw %}

@@ -1,0 +1,102 @@
+---
+layout: default
+title: 'Launch Compute Instance'
+base-url: home/procedures/oci-procedures/launch-compute-instance.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: launch-compute-instance
+  toc-text: 'Launch Compute Instance'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>Before creating a compute instance, I need to know what subnets are available.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute.html">compute</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/instance.html">instance</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/instance/launch.html">launch</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/availability-domain.html">availability-domain</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/availability-domain/list.html">list</a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/network.html">network</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/network/subnet.html">subnet</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/network/subnet/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-launch-compute-instance">Launch Compute Instance</h2>
+<p>To find what compute shapes that are available, run the query in <a href="home/procedures/oci-procedures/compute-shape-queries.html#TOC-find-available-compute-shapes">Find Available Compute Shapes</a>, and select the appropriate one.</p>
+<p>Run the following commands to find what subnets are available:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+export ad_name=$(                         \
+    oci iam availability-domain list      \
+        --compartment-id  ${sandbox_ocid} \
+        --query           'data[0].name'  \
+        --raw-output                      \
+    )
+export public_subnet_ocid=$(                        \
+    oci network subnet list                         \
+      --compartment-id  ${sandbox_comp_id}          \
+      --display-name    'public subnet-sandbox-vcn' \
+      --query           'data[0].id'                \
+      --raw-output                                  \
+    )
+export shape_name='VM.Standard.E2.1.Micro'
+export centos_os='CentOS'
+export centos_ver='8 Stream'
+export centos_8_image_ocid=$(                       \
+    oci compute image list                          \
+        --compartment-id            ${sandbox_ocid} \
+        --lifecycle-state           AVAILABLE       \
+        --operating-system          "${centos_os}"  \
+        --operating-system-version  "${centos_ver}" \
+        --shape                     "${shape_name}" \
+        --query                     'data[0].id'    \
+        --raw-output                                \
+    )
+oci compute instance launch                       \
+    --availability-domain ${ad_name}              \
+    --compartment-id      ${sandbox_ocid}         \
+    --subnet-id           ${public_subnet_ocid}   \
+    --assign-public-ip    true                    \
+    --display-name        'Sandbox public VM'     \
+    --hostname-label      'vm01'                  \
+    --shape               ${shape_name}           \
+    --image-id            ${centos_8_image_ocid}  \
+    --wait-for-state      RUNNING
+</pre>
+{% endraw %}
