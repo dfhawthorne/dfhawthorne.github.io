@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Identity Domains Queries'
-base-url: docs/home/procedures/oci-procedures/identity-domains-queries.html
+base-url: home/procedures/oci-procedures/identity-domains-queries.html
 breadcrumbs:
 - title: 'Home'
   url: index.html
@@ -9,6 +9,9 @@ breadcrumbs:
   url: home/procedures.html
 - title: 'OCI Procedures'
   url: home/procedures/oci-procedures.html
+file-download-dir: home/procedures/oci-procedures/identity-domains-queries
+file-download:
+- 'users-list.json'
 ---
 
 # Identity Domains Queries
@@ -38,8 +41,8 @@ The following query shows the user name of the currently connected user:
 
 ```bash
 oci identity-domains me get \
-    --query 'data."user-name"' \
-    --endpoint https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443
+  --query 'data."user-name"' \
+  --endpoint https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443
 ```
 
 The sample output is:
@@ -97,3 +100,13 @@ The sample output is:
 +---------------------------------------------------------------------------------+-------------------+-----------------------+
 opc-total-items: 2
 ```
+
+To get all of the returned data, run the following query:
+
+```bash
+oci identity-domains users list \
+  --endpoint https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443 \
+  >users-list.json
+```
+
+The full output has been uploaded as [users-list.json](home/procedures/oci-procedures/identity-domains-queries/users-list.json).

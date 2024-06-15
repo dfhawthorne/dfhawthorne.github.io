@@ -16,6 +16,14 @@ table-of-contents:
   toc-text: References
 - toc-url: find-images
   toc-text: 'Find Images'
+  toc-menu:
+  - toc-url: create-table-of-all-images
+    toc-text: 'Create Table of All Images'
+  - toc-url: create-json-file-of-all-images
+    toc-text: 'Create JSON File of All Images'
+file-download-dir:  home/procedures/oci-procedures/compute-image-queries
+file-download:
+- 'available-images.json'
 ---
 
 {% raw %}
@@ -42,7 +50,9 @@ table-of-contents:
   </ul>
 </ul>
 <h2 id="TOC-find-images">Find Images</h2>
-<p></p>
+<p>The data returned by the <code>oci compute image list</code> command can be returned in either tabular or JSON format. The tabular format is easier to scan, while the JSON can return all fields:</p>
+<h3 id="TOC-create-table-of-all-images">Create Table of All Images</h3>
+<p>The shape name, <span class="file-name">'VM.Standard.E2.1.Micro'</span>, was chosen from those returned by "<a href="home/procedures/oci-procedures/compute-shape-queries.html#TOC-find-available-compute-shapes">Find Available Compute Shapes</a>". To find what compute images are available for this shape in the <span class="file-name">Sandbox</span> compartment, run the following commands to return a subset of fields in a tabular format:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(              \
     oci iam compartment list        \
@@ -102,8 +112,25 @@ oci compute image list                      \
 | Oracle-Linux-Cloud-Developer-8.9-2024.02.29-0 | 8             | ocid1.image.oc1.ap-sydney-1.aaaaaaaabfdxebs6isqkqhyqgxcfeqf6sfiopgrfddyo5zpyrctcpiol32xa | Oracle Linux Cloud Developer |
 +-----------------------------------------------+---------------+------------------------------------------------------------------------------------------+------------------------------+
 </pre>
+<h3 id="TOC-create-json-file-of-all-images">Create JSON File of All Images</h3>
+<p>To return all available data for available images for the shape, <span class="file-name">'VM.Standard.E2.1.Micro'</span>, in the <span class="file-name">Sandbox</span> compartment as JSON file, run the following commands:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+export shape_name='VM.Standard.E2.1.Micro'
+oci compute image list                      \
+    --compartment-id    ${sandbox_ocid}     \
+    --lifecycle-state   AVAILABLE           \
+    --shape             "${shape_name}"     \
+    &gt;available-images.json
+</pre>
+<p>The output has been uploaded as <a href="home/procedures/oci-procedures/compute-image-queries/available-images.json">available-images.json</a>.</p>
 <h2 id="TOC-get-image-ocid">Get Image OCID</h2>
-<p></p>
+<p>Run the following commands to get the OCID for a Centos 8 image that runs on the <span class="file-name">'VM.Standard.E2.1.Micro'</span> within the <span class="file-name">Sandbox</span> compartment:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(              \
     oci iam compartment list        \

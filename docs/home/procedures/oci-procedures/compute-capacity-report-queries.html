@@ -16,8 +16,14 @@ table-of-contents:
     toc-text: 'References'
   - toc-url: find-available-capacity
     toc-text: 'Find Available Capacity'
+    toc-menu:
+      - toc-url: create-table-of-available-shapes
+        toc-text: 'Create Table of Available Shapes'
+      - toc-url: create-json-file-of-available-shapes
+        toc-text: 'Create JSON File of Available Shapes'
 file-download-dir: 'home/procedures/oci-procedures/compute-capacity-report-queries'
 file-download:
+  - 'compute-capacity-report-result.json'
   - 'shape-availabilities.json'
 ---
 
@@ -57,7 +63,9 @@ file-download:
   <li><a href="home/procedures/oci-procedures/compute-shape-queries.html#TOC-find-available-compute-shapes">Find Available Compute Shapes</a></li>
   <li><a href="home/procedures/oci-procedures/fault-domains-queries.html#TOC-find-all-fault-domains-in-an-availability-domain">Find All Fault Domains in an Availability Domain</a></li>
 </ul>
-<p>Once the <span class="file-name">shape-availabilities.json</span> file has been downloaded or built, run the following commands:</p>
+<p>The data returned by the <code>compute compute-capacity-report create</code> command can be returned in either tabular or JSON format. The tabular format is easier to scan, while the JSON can return all fields:</p>
+<h3 id="TOC-create-table-of-available-shapes">Create Table of Available Shapes</h3>
+<p>Once the <span class="file-name">shape-availabilities.json</span> file has been downloaded or built, run the following commands to generate a table of available shapes:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(       \
     oci iam compartment list \
@@ -88,5 +96,25 @@ oci compute compute-capacity-report create \
 | AVAILABLE          | FAULT-DOMAIN-3 | VM.Standard.E2.1.Micro |
 +--------------------+----------------+------------------------+
 </pre>
-
-
+<h3 id="TOC-create-json-file-of-available-shapes">Create JSON File of Available Shapes</h3>
+<p>Once the <span class="file-name">shape-availabilities.json</span> file has been downloaded or built, run the following commands to create a JSON file of available shapes:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(       \
+    oci iam compartment list \
+        --name 'Sandbox'     \
+        --query 'data[0].id' \
+        --raw-output         \
+    )
+export ad_name=$(                       \
+    oci iam availability-domain list    \
+        --compartment-id $sandbox_ocid  \
+        --query 'data[0].name'          \
+        --raw-output                    \
+    )
+oci compute compute-capacity-report create                    \
+    --compartment-id $sandbox_ocid                            \
+    --availability-domain $ad_name                            \
+    --shape-availabilities 'file://shape-availabilities.json' \
+    &gt;compute-capacity-report-result.json
+</pre>
+<p>The JSON output is uploaded as <a href="home/procedures/oci-procedures/compute-capacity-report-queries/compute-capacity-report-result.json">compute-capacity-report-result.json</a></p>

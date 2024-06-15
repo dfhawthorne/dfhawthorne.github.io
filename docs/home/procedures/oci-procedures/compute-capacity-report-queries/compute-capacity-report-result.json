@@ -1,0 +1,42 @@
+{
+  "data": {
+    "availability-domain": "bPBR:AP-SYDNEY-1-AD-1",
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "shape-availabilities": [
+      {
+        "availability-status": "AVAILABLE",
+        "available-count": null,
+        "fault-domain": "FAULT-DOMAIN-1",
+        "instance-shape": "VM.Standard.E2.1.Micro",
+        "instance-shape-config": {
+          "memory-in-gbs": null,
+          "nvmes": null,
+          "ocpus": 1.0
+        }
+      },
+      {
+        "availability-status": "AVAILABLE",
+        "available-count": null,
+        "fault-domain": "FAULT-DOMAIN-2",
+        "instance-shape": "VM.Standard.E2.1.Micro",
+        "instance-shape-config": {
+          "memory-in-gbs": null,
+          "nvmes": null,
+          "ocpus": 1.0
+        }
+      },
+      {
+        "availability-status": "AVAILABLE",
+        "available-count": null,
+        "fault-domain": "FAULT-DOMAIN-3",
+        "instance-shape": "VM.Standard.E2.1.Micro",
+        "instance-shape-config": {
+          "memory-in-gbs": null,
+          "nvmes": null,
+          "ocpus": 1.0
+        }
+      }
+    ],
+    "time-created": "2024-06-15T19:45:41.412000+00:00"
+  }
+}

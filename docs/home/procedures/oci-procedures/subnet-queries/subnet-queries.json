@@ -1,0 +1,101 @@
+{
+  "data": [
+    {
+      "availability-domain": null,
+      "cidr-block": "10.0.3.0/24",
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "defined-tags": {
+        "Oracle-Tags": {
+          "CreatedBy": "default/dhawthorne@acm.org",
+          "CreatedOn": "2024-01-01T12:45:16.860Z"
+        }
+      },
+      "dhcp-options-id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaaevlsbxp5trrkem27rbs2cyns4rx7rufdnkp73w3sphx3xkyprwvq",
+      "display-name": "example_subnet",
+      "dns-label": null,
+      "freeform-tags": {},
+      "id": "ocid1.subnet.oc1.ap-sydney-1.aaaaaaaayzpr5xhc4uid5wagusokwaczibbvoftfe4fyj7evdnbk524g6hla",
+      "ipv6-cidr-block": null,
+      "ipv6-cidr-blocks": null,
+      "ipv6-virtual-router-ip": null,
+      "lifecycle-state": "AVAILABLE",
+      "prohibit-internet-ingress": false,
+      "prohibit-public-ip-on-vnic": false,
+      "route-table-id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaad7taqrgsf7fileqywnrmrhb7zmtj3pae3gmbeevedjk7ihcfl23a",
+      "security-list-ids": [
+        "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaa7s3ceyagnyvohdt5d3tqhgzycrs2narhrvvsxaw7duzxw52xmioa"
+      ],
+      "subnet-domain-name": null,
+      "time-created": "2024-01-01T12:45:16.902000+00:00",
+      "vcn-id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jyaxs7lsdt2jqb5szggxu2mcm2yqr2zufmi5pqh6jwzfqlq",
+      "virtual-router-ip": "10.0.3.1",
+      "virtual-router-mac": "00:00:17:70:DA:C1"
+    },
+    {
+      "availability-domain": null,
+      "cidr-block": "10.0.1.0/24",
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "defined-tags": {
+        "Oracle-Tags": {
+          "CreatedBy": "default/dhawthorne@acm.org",
+          "CreatedOn": "2023-12-24T08:19:13.981Z"
+        }
+      },
+      "dhcp-options-id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaaevlsbxp5trrkem27rbs2cyns4rx7rufdnkp73w3sphx3xkyprwvq",
+      "display-name": "public subnet-sandbox-vcn",
+      "dns-label": null,
+      "freeform-tags": {
+        "VCN": "VCN-2023-12-24T08:16:37"
+      },
+      "id": "ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q",
+      "ipv6-cidr-block": null,
+      "ipv6-cidr-blocks": null,
+      "ipv6-virtual-router-ip": null,
+      "lifecycle-state": "AVAILABLE",
+      "prohibit-internet-ingress": false,
+      "prohibit-public-ip-on-vnic": false,
+      "route-table-id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaad7taqrgsf7fileqywnrmrhb7zmtj3pae3gmbeevedjk7ihcfl23a",
+      "security-list-ids": [
+        "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaa7s3ceyagnyvohdt5d3tqhgzycrs2narhrvvsxaw7duzxw52xmioa"
+      ],
+      "subnet-domain-name": null,
+      "time-created": "2023-12-24T08:19:14.272000+00:00",
+      "vcn-id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jyaxs7lsdt2jqb5szggxu2mcm2yqr2zufmi5pqh6jwzfqlq",
+      "virtual-router-ip": "10.0.1.1",
+      "virtual-router-mac": "00:00:17:70:DA:C1"
+    },
+    {
+      "availability-domain": null,
+      "cidr-block": "10.0.2.0/24",
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "defined-tags": {
+        "Oracle-Tags": {
+          "CreatedBy": "default/dhawthorne@acm.org",
+          "CreatedOn": "2023-12-24T08:19:13.976Z"
+        }
+      },
+      "dhcp-options-id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaaevlsbxp5trrkem27rbs2cyns4rx7rufdnkp73w3sphx3xkyprwvq",
+      "display-name": "private subnet-sandbox-vcn",
+      "dns-label": null,
+      "freeform-tags": {
+        "VCN": "VCN-2023-12-24T08:16:37"
+      },
+      "id": "ocid1.subnet.oc1.ap-sydney-1.aaaaaaaa4khgvhu5dukjpsghgj2adw4pp23qnayfg272erjd33onwguvfr2q",
+      "ipv6-cidr-block": null,
+      "ipv6-cidr-blocks": null,
+      "ipv6-virtual-router-ip": null,
+      "lifecycle-state": "AVAILABLE",
+      "prohibit-internet-ingress": true,
+      "prohibit-public-ip-on-vnic": true,
+      "route-table-id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaa3qtrjlk4qh2ijibcypv3w4v6k3himwtvbug5hxktoaslp4llbmza",
+      "security-list-ids": [
+        "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaa3rtfcyyns7heahdcwta6qkn5gke7tjspnpw2xxudedul3gcxpt2a"
+      ],
+      "subnet-domain-name": null,
+      "time-created": "2023-12-24T08:19:14.017000+00:00",
+      "vcn-id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jyaxs7lsdt2jqb5szggxu2mcm2yqr2zufmi5pqh6jwzfqlq",
+      "virtual-router-ip": "10.0.2.1",
+      "virtual-router-mac": "00:00:17:70:DA:C1"
+    }
+  ]
+}

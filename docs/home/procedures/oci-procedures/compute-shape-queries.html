@@ -16,6 +16,9 @@ table-of-contents:
   toc-text: References
 - toc-url: find-available-compute-shapes
   toc-text: 'Find Available Compute Shapes'
+file-download-dir: home/procedures/oci-procedures/compute-shape-queries
+file-download:
+- 'compute-shape-list-sandbox.json'
 ---
 
 {% raw %}
@@ -65,5 +68,17 @@ oci compute shape list                                                          
 | ALWAYS_FREE  | 1.0    | 1.0   | VM.Standard.E2.1.Micro |
 +--------------+--------+-------+------------------------+
 </pre>
-
+<p>To return all data about compute shapes that are available in the Sandbox compartment, run the following commands:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(       \
+    oci iam compartment list \
+        --name 'Sandbox'     \
+        --query 'data[0].id' \
+        --raw-output         \
+    )
+oci compute shape list                \
+    --compartment-id $sandbox_ocid    \
+    >compute-shape-list-sandbox.json
+</pre>
+<p>Full output has been uploaded as <a href="home/procedures/oci-procedures/compute-shape-queries/compute-shape-list-sandbox.json">compute-shape-list-sandbox.json</a>.</p>
 {% endraw %}
