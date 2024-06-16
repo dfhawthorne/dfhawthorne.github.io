@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "id": "ocid1.coreservicesworkrequest.oc1.ap-sydney-1.abzxsljr6gdvuhkk43qfcrvqdvpoi45wppi262tyspkgfibnvkemv67oip2q",
+      "operation-type": "LaunchInstance",
+      "percent-complete": 5.0,
+      "status": "FAILED",
+      "time-accepted": "2024-06-15T20:37:48.894000+00:00",
+      "time-finished": "2024-06-15T20:38:02.073000+00:00",
+      "time-started": "2024-06-15T20:37:52.428000+00:00"
+    },
+    {
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "id": "ocid1.coreservicesworkrequest.oc1.ap-sydney-1.abzxsljrhdnxkaajlngvv4ywpa2q5owep4bvkuby5muxgli5onesfygtgu5a",
+      "operation-type": "Delete Autonomous Database",
+      "percent-complete": 100.0,
+      "status": "SUCCEEDED",
+      "time-accepted": "2024-06-08T18:28:23.919000+00:00",
+      "time-finished": "2024-06-08T18:29:39.992000+00:00",
+      "time-started": "2024-06-08T18:28:27.140000+00:00"
+    },
+    {
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "id": "ocid1.coreservicesworkrequest.oc1.ap-sydney-1.abzxsljripp2ojmpp3jfuttxvlhpnmnxgzcyzgcrutsy5pjwbd46fvqsrtsq",
+      "operation-type": "Delete Autonomous Database",
+      "percent-complete": 100.0,
+      "status": "SUCCEEDED",
+      "time-accepted": "2024-06-08T18:10:12.830000+00:00",
+      "time-finished": "2024-06-08T18:11:33.030000+00:00",
+      "time-started": "2024-06-08T18:10:20.800000+00:00"
+    },
+    {
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "id": "ocid1.coreservicesworkrequest.oc1.ap-sydney-1.abzxsljrqtxwpagt2paebu6x4vq6ztzgjn5j52dtxkfmhbjugpymduhj4c6a",
+      "operation-type": "Create Autonomous Database",
+      "percent-complete": 100.0,
+      "status": "SUCCEEDED",
+      "time-accepted": "2024-06-02T23:40:44.902000+00:00",
+      "time-finished": "2024-06-02T23:42:22.860000+00:00",
+      "time-started": "2024-06-02T23:40:52.364000+00:00"
+    },
+    {
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "id": "ocid1.coreservicesworkrequest.oc1.ap-sydney-1.abzxsljr6i7hxrwk35plz32quewghpanvycdmnkry5ndj2fpcre7ixt6hrxa",
+      "operation-type": "Create Autonomous Database",
+      "percent-complete": 100.0,
+      "status": "SUCCEEDED",
+      "time-accepted": "2024-06-02T16:36:41.293000+00:00",
+      "time-finished": "2024-06-02T16:37:30.793000+00:00",
+      "time-started": "2024-06-02T16:36:44.946000+00:00"
+    }
+  ]
+}

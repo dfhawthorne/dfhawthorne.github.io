@@ -1,0 +1,157 @@
+---
+layout: default
+title: 'Work Requests Queries'
+base-url: home/procedures/oci-procedures/work-requests-queries.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: list-work-requests
+  toc-text: 'List Work Requests'
+  toc-menu:
+  - toc-url: create-table-of-work-requests
+    toc-text: 'Create Table of Work Requests'
+  - toc-url: create-json-file-of-work-requests
+    toc-text: 'Create JSON File of Work Requests'
+- toc-url: get-work-request-error
+  toc-text: 'Get Work Request Error'
+  toc-menu:
+    - toc-url: create-table-of-work-request-errors
+      toc-text: 'Create Table of Work Request Errors'
+    - toc-url: create-json-file-of-work-request-errors
+      toc-text: 'Create JSON File of Work Request Errors'
+file-download-dir:  home/procedures/oci-procedures/work-requests-queries
+file-download:
+- 'all-work-requests.json'
+- 'failed_work_req_err.json'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>After attempting to launch a compute instance, I need to know why the launch failed.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/work-requests.html">work-requests</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/work-requests/work-request/list.html">work-request</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/work-requests/work-request/list.html">list</a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/work-requests/work-request-error.html">work-request-error</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/work-requests/work-request-error/list.html">list</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-list-work-requests">List Work Requests</h2>
+<p>The <code>oci work-requests work-request list</code> command can return either tabular or JSON output. The tabular output can be easier to scan, while the JSON format displays all fields.</p>
+<h3 id="TOC-create-table-of-work-requests">Create Table of Work Requests</h3>
+<p>To create a table with selected fields, run the following commands:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+oci work-requests work-request list     \
+    --compartment-id ${sandbox_ocid}    \
+    --query 'data[*].{"Operation":"operation-type","Status":status,"Time Finished":"time-finished","% Complete":"percent-complete"}' \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++------------+----------------------------+-----------+----------------------------------+
+| % Complete | Operation                  | Status    | Time Finished                    |
++------------+----------------------------+-----------+----------------------------------+
+| 5.0        | LaunchInstance             | FAILED    | 2024-06-15T20:38:02.073000+00:00 |
+| 100.0      | Delete Autonomous Database | SUCCEEDED | 2024-06-08T18:29:39.992000+00:00 |
+| 100.0      | Delete Autonomous Database | SUCCEEDED | 2024-06-08T18:11:33.030000+00:00 |
+| 100.0      | Create Autonomous Database | SUCCEEDED | 2024-06-02T23:42:22.860000+00:00 |
+| 100.0      | Create Autonomous Database | SUCCEEDED | 2024-06-02T16:37:30.793000+00:00 |
++------------+----------------------------+-----------+----------------------------------+
+</pre>
+<p><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Note:</span> Failed work requests are deleted after some time by OCI.</p>
+<h3 id="TOC-create-json-file-of-work-requests">Create JSON File of Work Requests</h3>
+<p>To create a JSON file with all fields, run the following commands:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+oci work-requests work-request list     \
+    --compartment-id ${sandbox_ocid}    \
+    &gt;all-work-requests.json
+</pre>
+<p>The output file has been uploaded as <a href="home/procedures/oci-procedures/work-requests-queries/all-work-requests.json">all-work-requests.json</a>.</p>
+<h2 id="TOC-get-work-request-error">Get Work Request Error</h2>
+<h3 id="TOC-create-table-of-work-request-errors">Create Table of Work Request Errors</h3>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+export work_req_ocid=$(                     \
+    oci work-requests work-request list     \
+    --compartment-id ${sandbox_ocid}        \
+    --query 'data[0].id'                    \
+    --raw-output                            \
+    )
+oci work-requests work-request-error list                               \
+    --work-request-id ${work_req_ocid}                                  \
+    --all                                                               \
+    --query 'data[*].{code:code,message:message,timestamp:timestamp}'   \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
+| code      | message                                                                                                                                                                                                                                                                                        | timestamp                        |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
+| vcn-error | A problem occurred while preparing the instance's VNIC.  ((400, InvalidParameter, false) Cannot create a VNIC with hostnameLabel. Subnet ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q does not have DNS enabled (opc-request-id: dummyRequestId)) | 2024-06-15T20:37:54.813000+00:00 |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
+</pre>
+<h3 id="TOC-create-json-file-of-work-request-errors">Create JSON File of Work Request Errors</h3>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+export work_req_ocid=$( \
+    oci work-requests work-request list     \
+    --compartment-id ${sandbox_ocid}    \
+    --query 'data[0].id' \
+    --raw-output \
+    )
+oci work-requests work-request-error list   \
+    --work-request-id ${work_req_ocid}      \
+    >failed_work_req_err.json 
+</pre>
+<p>The file is uploaded as <a href="home/procedures/oci-procedures/work-requests-queries/failed_work_req_err.json">failed_work_req_err.json</a>.</p>
+
+
+{% endraw %}

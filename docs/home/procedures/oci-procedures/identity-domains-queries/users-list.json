@@ -16,7 +16,7 @@
             "primary": false,
             "secondary": false,
             "type": "recovery",
-            "value": "dhawthorne@acm.org",
+            "value": "****************************",
             "verified": true
           },
           {
@@ -24,7 +24,7 @@
             "primary": true,
             "secondary": false,
             "type": "work",
-            "value": "dhawthorne@acm.org",
+            "value": "****************************",
             "verified": true
           }
         ],
@@ -169,7 +169,7 @@
           "user-flow-controlled-by-external-client": null,
           "user-token": null
         },
-        "user-name": "dhawthorne@acm.org",
+        "user-name": "****************************",
         "user-type": null,
         "x509-certificates": null
       },
@@ -187,7 +187,7 @@
             "primary": false,
             "secondary": false,
             "type": "recovery",
-            "value": "dfhawthorne@computer.org",
+            "value": "****************************",
             "verified": true
           },
           {
@@ -195,7 +195,7 @@
             "primary": true,
             "secondary": false,
             "type": "work",
-            "value": "dfhawthorne@computer.org",
+            "value": "****************************",
             "verified": true
           }
         ],
@@ -292,7 +292,7 @@
             {
               "key": "CreatedBy",
               "namespace": "Oracle-Tags",
-              "value": "default/dhawthorne@acm.org"
+              "value": "default/****************************"
             },
             {
               "key": "CreatedOn",
