@@ -64,7 +64,7 @@ file-download:
 <h2 id="TOC-list-work-requests">List Work Requests</h2>
 <p>The <code>oci work-requests work-request list</code> command can return either tabular or JSON output. The tabular output can be easier to scan, while the JSON format displays all fields.</p>
 <h3 id="TOC-create-table-of-work-requests">Create Table of Work Requests</h3>
-<p>To create a table with selected fields, run the following commands:</p>
+<p>To create a table with selected fields of work requests in the Sandbox compartment, run the following commands:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(              \
     oci iam compartment list        \
@@ -89,9 +89,9 @@ oci work-requests work-request list     \
 | 100.0      | Create Autonomous Database | SUCCEEDED | 2024-06-02T16:37:30.793000+00:00 |
 +------------+----------------------------+-----------+----------------------------------+
 </pre>
-<p><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Note:</span> Failed work requests are deleted after some time by OCI.</p>
+<p><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Note:</span> FAILED work requests are deleted after some time by OCI (within 24 hours). SUCCEEDED work requests are retained.</p>
 <h3 id="TOC-create-json-file-of-work-requests">Create JSON File of Work Requests</h3>
-<p>To create a JSON file with all fields, run the following commands:</p>
+<p>To create a JSON file with all fields for all work requests in the Sandbox compartment, run the following commands:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(              \
     oci iam compartment list        \
@@ -105,7 +105,9 @@ oci work-requests work-request list     \
 </pre>
 <p>The output file has been uploaded as <a href="home/procedures/oci-procedures/work-requests-queries/all-work-requests.json">all-work-requests.json</a>.</p>
 <h2 id="TOC-get-work-request-error">Get Work Request Error</h2>
+<p>Once a FAILED work request has been identified (see above for an example), the <code>oci work-requests work-request-error list</code> command is used to return results as either a table or a JSON file.</p>
 <h3 id="TOC-create-table-of-work-request-errors">Create Table of Work Request Errors</h3>
+<p>To create a table of the errors from the latest work request in the Sandbox compartment, run the following commands:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(              \
     oci iam compartment list        \
@@ -134,6 +136,7 @@ oci work-requests work-request-error list                               \
 +-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
 </pre>
 <h3 id="TOC-create-json-file-of-work-request-errors">Create JSON File of Work Request Errors</h3>
+<p>To create a JSON file of the errors from the latest work request in the Sandbox compartment, run the following commands:</p>
 <pre class="bash-cmd">
 export sandbox_ocid=$(              \
     oci iam compartment list        \
@@ -149,7 +152,7 @@ export work_req_ocid=$( \
     )
 oci work-requests work-request-error list   \
     --work-request-id ${work_req_ocid}      \
-    >failed_work_req_err.json 
+    &gt;failed_work_req_err.json 
 </pre>
 <p>The file is uploaded as <a href="home/procedures/oci-procedures/work-requests-queries/failed_work_req_err.json">failed_work_req_err.json</a>.</p>
 

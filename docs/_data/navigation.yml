@@ -916,6 +916,11 @@
         title: 'Unable to Unzip Files Bigger than 2GB'
       - url: home/issues/linux-issues/unable-to-use-nfs-under-virtualbox.html
         title: 'Unable to Use NFS Under VirtualBox'
+    - url: home/issues/oci-issues.html
+      title: 'Oracle Cloud Infrastructure (OCI) Issues'
+      sub-pages:
+      - url: home/issues/oci-issues/unable-to-launch-image-wo-dns.html
+        title: 'Unable to launch image in a subnet without DNS enabled'
     - url: home/issues/oracle-enterprise-edition-issues.html
       title: 'Oracle Enterprise Edition Issues'
       sub-pages:

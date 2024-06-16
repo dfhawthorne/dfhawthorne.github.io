@@ -1,0 +1,74 @@
+---
+layout: default
+title: 'Unable to launch image in a subnet without DNS enabled'
+base-url: home/issues/oci-issues/unable-to-launch-image-wo-dns.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Issues'
+  url: home/issues.html
+- title: 'Oracle Cloud Infrastructure (OCI) Issues'
+  url: home/issues/oci-issues.html
+table-of-contents:
+- toc-url: overview
+  toc-text: Overview
+- toc-url: status
+  toc-text: Status
+- toc-url: workaround
+  toc-text: Workaround
+- toc-url: resolution
+  toc-text: Resolution
+- toc-url: diagnosis
+  toc-text: Diagnosis
+  toc-menu:
+  - toc-url: summary
+    toc-text: Summary
+  - toc-url: detailed-analysis
+    toc-text: 'Detailed Analysis'
+---
+
+{% raw %}
+<h2 id="TOC-overview">Overview</h2>
+<p>When I tried to launch a Centos 8 image (see <a href="home/procedures/oci-procedures/launch-compute-instance.html#TOC-launch-compute-instance">Launch Compute Instance</a>), I get a lifecycle state of TERMINATED.</p>
+<h2 id="TOC-status">Status</h2>
+<p style="font-weight:bold;font-family:sans-serif;color:orange;font-size:xx-large">UNRESOLVED</p>
+<h2 id="TOC-workaround">Workaround</h2>
+<p>None found</p>
+<h2 id="TOC-resolution">Resolution</h2>
+<p></p>
+<h2 id="TOC-diagnosis">Diagnosis</h2>
+<h3 id="TOC-summary">Summary</h3>
+<h3 id="TOC-detailed-analysis">Detailed Analysis</h3>
+<p>The <code>oci compute instance launch</code> command returns the following (in part):</p>
+<pre class="text">
+Action completed. Waiting until the resource has entered state: ('RUNNING', 'TERMINATED')
+{
+    "data": {
+    &hellip;
+    "lifecycle-state": "TERMINATED",
+    &hellip;
+    },
+    "etag": "04fa80d21b9967ef6c068ef87fa79d8c477f9090d46f383cb0c7e17402fd94e6"
+}
+</pre>
+<p>Using the procedure described in <a href="home/procedures/oci-procedures/work-requests-queries.html#TOC-get-work-request-error">Get Work Request Error</a>, I find the error message to be:</p>
+<blockquote style="font-family: 'Courier New', Courier, monospace;">
+<p>A problem occurred while preparing the instance's VNIC.  ((400, InvalidParameter, false) Cannot create a VNIC with hostnameLabel. <strong>Subnet</strong> ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q <strong>does not have DNS enabled</strong> (opc-request-id: dummyRequestId))</p>
+</blockquote>
+<pre class="bash-cmd">
+export subnet_ocid=ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q
+oci network subnet get \
+    --subnet-id ${subnet_ocid} \
+    --query 'data.{"Display Name":"display-name","DNS Label":"dns-label","Subnet Domain Name":"subnet-domain-name"}' \
+    --output table
+</pre>
+<p>The output is:</p>
+<pre class="text">
++-----------+---------------------------+--------------------+
+| DNS Label | Display Name              | Subnet Domain Name |
++-----------+---------------------------+--------------------+
+| None      | public subnet-sandbox-vcn | None               |
++-----------+---------------------------+--------------------+
+etag: 5f69be5e
+</pre>
+{% endraw %}
