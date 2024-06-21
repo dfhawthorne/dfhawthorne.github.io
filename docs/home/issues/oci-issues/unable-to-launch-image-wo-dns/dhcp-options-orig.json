@@ -1,0 +1,28 @@
+{
+  "data": {
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/*********************",
+        "CreatedOn": "2023-12-24T08:19:13.420Z"
+      }
+    },
+    "display-name": "Default DHCP Options for sandbox-vcn",
+    "domain-name-type": "CUSTOM_DOMAIN",
+    "freeform-tags": {
+      "VCN": "VCN-2023-12-24T08:16:37"
+    },
+    "id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaaevlsbxp5trrkem27rbs2cyns4rx7rufdnkp73w3sphx3xkyprwvq",
+    "lifecycle-state": "AVAILABLE",
+    "options": [
+      {
+        "custom-dns-servers": [],
+        "server-type": "VcnLocalPlusInternet",
+        "type": "DomainNameServer"
+      }
+    ],
+    "time-created": "2023-12-24T08:19:13.649000+00:00",
+    "vcn-id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jyaxs7lsdt2jqb5szggxu2mcm2yqr2zufmi5pqh6jwzfqlq"
+  },
+  "etag": "cb376f08"
+}

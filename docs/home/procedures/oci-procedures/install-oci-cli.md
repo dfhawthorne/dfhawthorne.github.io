@@ -11,7 +11,7 @@ breadcrumbs:
   url: home/procedures/oci-procedures.html
 file-download-dir: home/procedures/oci-procedures/install-oci-cli
 file-download:
-- install_oci_cli.log
+- 'install_oci_cli.log'
 ---
 
 # Install OCI CLI
@@ -30,6 +30,7 @@ I installed the OCI CLI manually.
   * [Configuring the CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm)
     * [CLI Configuration File](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm#CLIconfigfile)
     * [Specifying a Default Profile](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliconfigure.htm#Specifying_a_Default_Profile)
+  * [CLI Environment Variables](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clienvironmentvariables.htm)
 
 ## Procedure
 
@@ -94,7 +95,12 @@ Following the procedure in "[Specifying a Default Profile](https://docs.oracle.c
 ```text
 [OCI_CLI_SETTINGS]
 default_profile=OCI
+
+[OCI]
+# for the OCI profile
 ```
+
+__NOTE:__ Do not add `endpoint` to the `[OCI]` profile as this uses this endpoint as default for all OCI calls.
 
 ### Create an OCI Session
 
@@ -117,3 +123,15 @@ A sample response is:
 ```text
 Session is valid until 2024-05-24 03:53:42
 ```
+
+### Update .zshrc and .bashrc
+
+Update both `~/.zshrc` and `~/.bashrc` with the following lines:
+
+```text
+export OCI_CLI_TENANCY="ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na"
+export OCI_CLI_AUTH=security_token
+export OCI_CLI_REGION=ap-sydney-1
+```
+
+Other environment variables can be found at "[CLI Environment Variables](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/clienvironmentvariables.htm)".

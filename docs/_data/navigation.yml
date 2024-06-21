@@ -1,12 +1,26 @@
 - url: announcements.html
   title: 'Announcements'
   sub-pages:
+  - url: announcements/2006-11-24.html
+    title: '24 November 2006'
+  - url: announcements/2008-02-28.html
+    title: '28 February 2008'
+  - url: announcements/2008-11-08.html
+    title: '08 November 2008'
   - url: announcements/2012-03-12.html
     title: '12 March 2012'
   - url: announcements/2012-03-27.html
     title: '27 March 2012'
   - url: announcements/2012-04-12.html
     title: '12 April 2012'
+  - url: announcements/2020-01-20.html
+    title: '20 January 2020'
+  - url: announcements/2024-06-09.html
+    title: '09 June 2024'
+  - url: announcements/2024-06-12.html
+    title: '12 June 2024'
+  - url: announcements/2024-06-21.html
+    title: '21 June 2024'
 - url: book-reviews.html
   title: 'Book Reviews'
 - url: home.html
@@ -906,6 +920,11 @@
         title: 'Unable to Unzip Files Bigger than 2GB'
       - url: home/issues/linux-issues/unable-to-use-nfs-under-virtualbox.html
         title: 'Unable to Use NFS Under VirtualBox'
+    - url: home/issues/oci-issues.html
+      title: 'Oracle Cloud Infrastructure (OCI) Issues'
+      sub-pages:
+      - url: home/issues/oci-issues/unable-to-launch-image-wo-dns.html
+        title: 'Unable to launch image in a subnet without DNS enabled'
     - url: home/issues/oracle-enterprise-edition-issues.html
       title: 'Oracle Enterprise Edition Issues'
       sub-pages:
@@ -1137,10 +1156,32 @@
     - url: home/procedures/oci-procedures.html
       title: 'OCI Procedures'
       sub-pages:
+      - url: home/procedures/oci-procedures/autonomous-database-queries.html
+        title: 'Autonomous Database Queries'
+      - url: home/procedures/oci-procedures/availability-domains-queries.html
+        title: 'Availability Domains Queries'
+      - url: home/procedures/oci-procedures/compartment-queries.html
+        title: 'Compartment Queries'
+      - url: home/procedures/oci-procedures/compute-capacity-report-queries.html
+        title: 'Compute Capacity Report Queries'
+      - url: home/procedures/oci-procedures/compute-image-queries.html
+        title: 'Compute Image Queries'
+      - url: home/procedures/oci-procedures/compute-shape-queries.html
+        title: 'Compute Shape Queries'
       - url: home/procedures/oci-procedures/create-oci-config.html
         title: 'Create OCI Configuration File'
+      - url: home/procedures/oci-procedures/fault-domains-queries.html
+        title: 'Fault Domains Queries'
+      - url: home/procedures/oci-procedures/identity-domains-queries.html
+        title: 'Identity Domains Queries'
       - url: home/procedures/oci-procedures/install-oci-cli.html
         title: 'Install OCI CLI'
+      - url: home/procedures/oci-procedures/launch-compute-instance.html
+        title: 'Launch Compute Instance'
+      - url: home/procedures/oci-procedures/subnet-queries.html
+        title: 'Subnet Queries'
+      - url: home/procedures/oci-procedures/work-requests-queries.html
+        title: 'Work Requests Queries'
     - url: home/procedures/patch-oracle-database.html
       title: 'Patch Oracle Database'
       sub-pages:

@@ -10,3 +10,17 @@ breadcrumbs:
 - title: 'Design and Deploy OCI Virtual Cloud Networks (VCN)'
   url: home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn.html
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are at least five (5) VCN Gateway roles:</p>
+<ol>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">DRG</span>: Dynamic Routing Gateway is used to route between the private on-premise network.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Internet</span>: Internet Gateway is used to route between a VCN and the Internet.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">LPG</span>: Local Peering Gateway is used to route between VCNs in the same region.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">NAT</span>: <cite>An optional virtual router that you can add to your virtual cloud network (VCN) to perform Network Address Translation (NAT). A NAT gateway gives cloud resources without public IP addresses access to the internet without exposing those resources to incoming internet connections.</cite></li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Service</span>: <cite>An optional virtual router that you can add to your virtual cloud network (VCN). The gateway enables on-premises hosts or VCN hosts to privately access Oracle services (such as Object Storage and Autonomous Database) without exposing the resources to the public internet.</cite></li>
+</ol>
+<h2 id="TOC-example-gateway-config">Example Gateway Config</h2>
+<img src="home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/differentiate-the-vcn-gateways-roles/gateway_roles.png" />
+<h2 id="TOC-types-of-gateways">Types of Gateways</h2>
+<h3 id="TOC-internet-gateway">Internet Gateway</h3>

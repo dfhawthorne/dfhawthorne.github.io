@@ -1,0 +1,9 @@
+{
+  "data": [
+    {
+      "code": "vcn-error",
+      "message": "A problem occurred while preparing the instance's VNIC.  ((400, InvalidParameter, false) Cannot create a VNIC with hostnameLabel. Subnet ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q does not have DNS enabled (opc-request-id: dummyRequestId))",
+      "timestamp": "2024-06-15T20:37:54.813000+00:00"
+    }
+  ]
+}

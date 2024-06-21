@@ -111,8 +111,8 @@ file-download:
 <h3 id="TOC-display-subnet">Display Subnet</h3>
 <img src="home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics/display_db_server_sub_network.png" alt="Display Mastadon DB Server sub-network from OCI console" />
 <h2 id="TOC-use-ansible">Use Ansible</h2>
-<p>A sample Ansible playbook can be found at <a href="https://github.com/dfhawthorne/ansible-oci-scripts/blob/main/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics.yml">examine-vcnsubnets-characteristics.yml</a>. To run this playbook, type the following:</p>
-<pre class="bash-cmds">
+<p>A sample Ansible playbook can be found at <a href="https://github.com/dfhawthorne/OCI_CNP/blob/main/ansible/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics.yml">examine-vcnsubnets-characteristics.yml</a>. To run this playbook, type the following:</p>
+<pre class="bash-cmd">
 ansible-playbook examine-vcnsubnets-characteristics.yml
 </pre>
 <p>This playbook uses the following two (2) modules:</p>
@@ -123,17 +123,37 @@ ansible-playbook examine-vcnsubnets-characteristics.yml
 <p>Sample output has been uploaded as <a href="home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics/ansible-examine-vcnsubnets-characteristics.log">ansible-examine-vcnsubnets-characteristics.log</a>.</p>
 <h2 id="TOC-use-oci-cli">Use OCI CLI</h2>
 <p>OCI CLI can be used to get the required characteristics by running the following commands:</p>
-<pre class="bash-cmds">
+<pre class="bash-cmd">
 oci session authenticate --no-browser --profile-name OCI --region ap-sydney-1
 oci network vcn list --compartment-id "ocid1.compartment.oc1..aaaaaaaax4nkky4yov3bahtf3cg226ya2ngsaru7vxkv6pavdjwzz5udsojq" --auth security_token
 oci network subnet list --compartment-id "ocid1.compartment.oc1..aaaaaaaax4nkky4yov3bahtf3cg226ya2ngsaru7vxkv6pavdjwzz5udsojq" --auth security_token
 </pre>
+<p>I have also created a script called <a href="https://github.com/dfhawthorne/OCI_CNP/blob/main/oci_cli/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics.sh">examine-vcnsubnets-characteristics.sh</a>. Sample output is:</p>
+<pre class="text">
+VCN, 'Mastadon_Network', is defined in compartment, 'mastadon_compartment', with:
+    OCID=ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jya75cfieoatbehnc3rn4q6abdcjmwxa5pdqddhic464n4q
+    CIDR Block 10.1.0.0/16
+    Subnet 'Mastadon Web Server Sub-Network' has CIDR= 10.1.0.0/24
+    Subnet 'Mastadon DB Server Sub-Network' has CIDR= 10.1.1.0/24
+    DNS Label='mastadon'
+    DNS Domain='mastadon.oraclevcn.com'
+VCN, 'sandbox-vcn', is defined in compartment, 'Sandbox', with:
+    OCID=ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jyaxs7lsdt2jqb5szggxu2mcm2yqr2zufmi5pqh6jwzfqlq
+    CIDR Block 10.0.0.0/16
+    Subnet 'example_subnet' has CIDR= 10.0.3.0/24
+    Subnet 'private subnet-sandbox-vcn' has CIDR= 10.0.2.0/24
+    Subnet 'public subnet-sandbox-vcn' has CIDR= 10.0.1.0/24
+</pre>
 <p>Sample output has been uploaded as <a href="home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics/oci-examine-vcnsubnets-characteristics.log">oci-examine-vcnsubnets-characteristics.log</a></p>
 <h2 id="TOC-use-terraform">Use Terraform</h2>
-<p>Terraform can be used to retrieve the characteristics of a VCN and a subnet by specifying their IDs. A sample Terraform script can be found in <a href="https://github.com/dfhawthorne/terraform-oci-scripts/tree/main/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics">examine-vcnsubnets-characteristics</a>. A sample run is:</p>
-<pre class="bash-cmds">
+<p>Terraform can be used to retrieve the characteristics of a VCN and a subnet by specifying their IDs. A sample Terraform script can be found in <a href="https://github.com/dfhawthorne/OCI_CNP/blob/main/terraform/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics">examine-vcnsubnets-characteristics</a>. A sample run is:</p>
+<pre class="bash-cmd">
 cd oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics
 terraform init 
 terraform plan
 </pre>
 <p>Sample output has been uploaded as <a href="home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics/terraform-examine-vcnsubnets-characteristics.log">terraform-examine-vcnsubnets-characteristics.log</a></p>
+<h2 id="TOC-notes">Notes</h2>
+<p>Region has one or more availability domain (AD) each of which has three (3) fault domains (FD).</p>
+<p>Public VCN uses Internet Gateway to access Internet and public endpoints. Private VCN uses NAT Gateway to access the Internet.</p>
+<p>VCN is region-specific.</p>

@@ -1,0 +1,189 @@
+---
+layout: default
+title: 'Unable to launch image in a subnet without DNS enabled'
+base-url: home/issues/oci-issues/unable-to-launch-image-wo-dns.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Issues'
+  url: home/issues.html
+- title: 'Oracle Cloud Infrastructure (OCI) Issues'
+  url: home/issues/oci-issues.html
+table-of-contents:
+- toc-url: overview
+  toc-text: Overview
+- toc-url: status
+  toc-text: Status
+- toc-url: workaround
+  toc-text: Workaround
+- toc-url: resolution
+  toc-text: Resolution
+- toc-url: diagnosis
+  toc-text: Diagnosis
+  toc-menu:
+  - toc-url: summary
+    toc-text: Summary
+  - toc-url: get-error-message
+    toc-text: 'Get Error Message'
+  - toc-url: display-settings-dns-for-subnet
+    toc-text: 'Display DNS Settings for Subnet'
+  - toc-url: investigate-remedies
+    toc-text: 'Investigate Remedies'
+  - toc-url: investigate-remedies
+    toc-text: 'Investigate Remedies'
+  - toc-url: examine-dhcp-options
+    toc-text: 'Examine DHCP Options'
+  - toc-url: change-dhcp-options-to-use-vcn-dns
+    toc-text: 'Change DHCP Options to Use VCN DNS'
+  - toc-url: retry-compute-launch
+    toc-text: 'Retry Compute Launch'
+  - toc-url: examine-vcn-dns-fields
+    toc-text: 'Examine VCN DNS Fields'
+file-download-dir: home/issues/oci-issues/unable-to-launch-image-wo-dns
+file-download:
+- 'dhcp-options-orig.json'
+- 'subnet-orig.json'
+---
+
+{% raw %}
+<h2 id="TOC-overview">Overview</h2>
+<p>When I tried to launch a Centos 8 image (see <a href="home/procedures/oci-procedures/launch-compute-instance.html#TOC-launch-compute-instance">Launch Compute Instance</a>), I get a lifecycle state of TERMINATED.</p>
+<h2 id="TOC-status">Status</h2>
+<p style="font-weight:bold;font-family:sans-serif;color:green;font-size:xx-large">RESOLVED</p>
+<h2 id="TOC-workaround">Workaround</h2>
+<p>None found</p>
+<h2 id="TOC-resolution">Resolution</h2>
+<p>I will have to delete the VCN and associated resources before recreating the VCN as the <code>oci network vcn update</code> command does not update DNS fields.</p>
+<h2 id="TOC-diagnosis">Diagnosis</h2>
+<h3 id="TOC-summary">Summary</h3>
+<p>The Sandbox VCN was created without DNS being specified. To change the DNS settings, the VCN has to be recreated from scratch.</p>
+<h3 id="TOC-get-error-message">Get Error Message</h3>
+<p>The <code>oci compute instance launch</code> command returns the following (in part):</p>
+<pre class="text">
+Action completed. Waiting until the resource has entered state: ('RUNNING', 'TERMINATED')
+{
+    "data": {
+    &hellip;
+    "lifecycle-state": "TERMINATED",
+    &hellip;
+    },
+    "etag": "04fa80d21b9967ef6c068ef87fa79d8c477f9090d46f383cb0c7e17402fd94e6"
+}
+</pre>
+<p>Using the procedure described in <a href="home/procedures/oci-procedures/work-requests-queries.html#TOC-get-work-request-error">Get Work Request Error</a>, I find the error message to be:</p>
+<blockquote style="font-family: 'Courier New', Courier, monospace;">
+<p>A problem occurred while preparing the instance's VNIC.  ((400, InvalidParameter, false) Cannot create a VNIC with hostnameLabel. <strong>Subnet</strong> ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q <strong>does not have DNS enabled</strong> (opc-request-id: dummyRequestId))</p>
+</blockquote>
+<h3 id="TOC-display-settings-dns-for-subnet">Display DNS Settings for Subnet</h3>
+<p>There are two (2) fields in the Subnet definition that appear to be related to DNS. Run the following commands to get those fields.</p>
+<pre class="bash-cmd">
+export subnet_ocid=ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q
+oci network subnet get \
+    --subnet-id ${subnet_ocid} \
+    --query 'data.{"Display Name":"display-name","DNS Label":"dns-label","Subnet Domain Name":"subnet-domain-name"}' \
+    --output table
+</pre>
+<p>The output is:</p>
+<pre class="text">
++-----------+---------------------------+--------------------+
+| DNS Label | Display Name              | Subnet Domain Name |
++-----------+---------------------------+--------------------+
+| None      | public subnet-sandbox-vcn | None               |
++-----------+---------------------------+--------------------+
+etag: 5f69be5e
+</pre>
+<p>A full output is uploaded as <a href="home/issues/oci-issues/unable-to-launch-image-wo-dns/subnet-orig.json">subnet-orig.json</a></p>
+<h3 id="TOC-investigate-remedies">Investigate Remedies</h3>
+<p><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/compute-cloud-at-customer/topics/network/editing-a-subnet.htm">Editing a Subnet</a> says that the following attributes of a subnet can be changed:</p>
+<blockquote>
+  <ul>
+    <li>Name</li>
+    <li>Route Table</li>
+    <li>DHCP Options</li>
+    <li>Security Lists</li>
+    <li>Tags</li>
+  </ul>
+</blockquote>
+<p>There is no option to change the DNS options directly for a subnet.</p>
+<h3 id="TOC-examine-dhcp-options">Examine DHCP Options</h3>
+<p>There are fields within the DHCP Options document. Run the following commands to find the OCID for the DHCP Options associated with a subnet, and to dump the contents of the DHCP Options document:</p>
+<pre class="bash-cmd">
+export subnet_ocid=ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q
+export dhcp_ocid=$(                  \
+  oci network subnet get             \
+    --subnet-id ${subnet_ocid}       \
+    --query 'data."dhcp-options-id"' \
+    --raw-output                     \
+)
+oci network dhcp-options get \
+  --dhcp-id ${dhcp_ocid}     \
+  &gt;dhcp-options-orig.json
+</pre>
+<p>The output was (in part - the full output is uploaded as <a href="home/issues/oci-issues/unable-to-launch-image-wo-dns/dhcp-options-orig.json">dhcp-options-orig.json</a>):</p>
+<pre class="text">
+&hellip;
+"domain-name-type": "CUSTOM_DOMAIN",
+&hellip;
+"options": [
+  {
+    "custom-dns-servers": [],
+    "server-type": "VcnLocalPlusInternet",
+    "type": "DomainNameServer"
+  }
+],
+&hellip;
+</pre>
+<p>It looks like it is possible to update the DHCP Options to fix the DNS issue.</p>
+<h3 id="TOC-change-dhcp-options-to-use-vcn-dns">Change DHCP Options to Use VCN DNS</h3>
+<p>Run the following commands to change the Domain Name Type field to 'VCN_DOMAIN' from 'CUSTOM_DOMAIN' in the DHCP Options for the selected Subnet:</p>
+<pre class="bash-cmd">
+export subnet_ocid=ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q
+export dhcp_ocid=$(                  \
+    oci network subnet get             \
+      --subnet-id ${subnet_ocid}       \
+      --query 'data."dhcp-options-id"' \
+      --raw-output                     \
+  )
+oci network dhcp-options update     \
+  --dhcp-id ${dhcp_ocid}            \
+  --domain-name-type VCN_DOMAIN     \
+  --query 'data."domain-name-type"'
+</pre>
+<p>The output is:</p>
+<pre class="text">
+"VCN_DOMAIN"
+</pre>
+<h3 id="TOC-retry-compute-launch">Retry Compute Launch</h3>
+<p>Now that I have updated the DHCP Options for the subnet, I tried launch again using <a href="home/procedures/oci-procedures/launch-compute-instance.html#TOC-launch-compute-instance">Launch Compute Instance</a>. This failed with the same error:</p>
+<pre class="text">
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
+| code      | message                                                                                                                                                                                                                                                                                        | timestamp                        |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+
+| vcn-error | A problem occurred while preparing the instance's VNIC.  ((400, InvalidParameter, false) Cannot create a VNIC with hostnameLabel. Subnet ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q does not have DNS enabled (opc-request-id: dummyRequestId)) | 2024-06-17T20:00:55.491000+00:00 |
++-----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+  
+</pre>
+<h3 id="TOC-examine-vcn-dns-fields">Examine VCN DNS Fields</h3>
+<p>Run the following commands to get the DNS fields for the Sandbox VCN:</p>
+<pre class="bash-cmd">
+export subnet_ocid=ocid1.subnet.oc1.ap-sydney-1.aaaaaaaabfb6tyssv2t4dxci5mhymomqmrhwdq2nmagdtezfp4ifmbca7c5q
+export sandbox_ocid=$(               \
+  oci network subnet get             \
+    --subnet-id ${subnet_ocid}       \
+    --query 'data."vcn-id"'          \
+    --raw-output                     \
+)
+oci network vcn list \
+  --compartment-id ${sandbox_ocid} \
+  --query 'data[*].{"VCN Name":"display-name","DNS":"dns-label","VCN Domain Name":"vcn-domain-name"}' \
+  --output table
+</pre>
+<p>The output is:</p>
+<pre class="text">
++------+-----------------+-------------+
+| DNS  | VCN Domain Name | VCN Name    |
++------+-----------------+-------------+
+| None | None            | sandbox-vcn |
++------+-----------------+-------------+
+</pre>
+<p>The changes to the DHCP Options for the subnet are not propagated upwards to the VCN. I will have to delete the VCN and associated resources before recreating the VCN as the <code>oci network vcn update</code> command does not update DNS fields.</p>
+{% endraw %}

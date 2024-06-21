@@ -1,0 +1,371 @@
+{
+  "data": {
+    "items-per-page": 50,
+    "resources": [
+      {
+        "active": true,
+        "addresses": null,
+        "compartment-ocid": "ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+        "delete-in-progress": null,
+        "description": null,
+        "display-name": "Douglas Hawthorne",
+        "domain-ocid": "ocid1.domain.oc1..aaaaaaaa54i7di6mfdwkgfhham5flt24df7imfj4a2lwsubo3qzfcuscbmja",
+        "emails": [
+          {
+            "pending-verification-data": null,
+            "primary": false,
+            "secondary": false,
+            "type": "recovery",
+            "value": "****************************",
+            "verified": true
+          },
+          {
+            "pending-verification-data": null,
+            "primary": true,
+            "secondary": false,
+            "type": "work",
+            "value": "****************************",
+            "verified": true
+          }
+        ],
+        "entitlements": null,
+        "external-id": null,
+        "groups": null,
+        "id": "dde85d958d3e41ada9c40825e1c1449c",
+        "idcs-created-by": {
+          "display": "idcssm",
+          "ocid": null,
+          "ref": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Apps/84eb296d834b43b69442c70ba84a9229",
+          "type": "App",
+          "value": "84eb296d834b43b69442c70ba84a9229"
+        },
+        "idcs-last-modified-by": {
+          "display": "idcssso",
+          "ocid": null,
+          "ref": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Apps/f3f33b3218b343028209d3113ee86025",
+          "type": "App",
+          "value": "f3f33b3218b343028209d3113ee86025"
+        },
+        "idcs-last-upgraded-in-release": null,
+        "idcs-prevented-operations": null,
+        "ims": null,
+        "locale": null,
+        "meta": {
+          "created": "2023-12-22T05:32:49.882Z",
+          "last-modified": "2024-01-12T10:17:20.435Z",
+          "location": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Users/dde85d958d3e41ada9c40825e1c1449c",
+          "resource-type": "User",
+          "version": "ef070d37fd7543519d0387713c14dce8"
+        },
+        "name": {
+          "family-name": "Hawthorne",
+          "formatted": "Douglas Hawthorne",
+          "given-name": "Douglas",
+          "honorific-prefix": null,
+          "honorific-suffix": null,
+          "middle-name": null
+        },
+        "nick-name": "TAS_TENANT_ADMIN_USER",
+        "ocid": "ocid1.user.oc1..aaaaaaaa6yuj23zqvqkb7yaliua44thftztcgifgpcnylqzdqk4xcsf7owsa",
+        "password": null,
+        "phone-numbers": null,
+        "photos": null,
+        "preferred-language": null,
+        "profile-url": null,
+        "roles": null,
+        "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:userState:User",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:mfa:User",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User"
+        ],
+        "tags": null,
+        "tenancy-ocid": "ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+        "timezone": null,
+        "title": null,
+        "urn-ietf-params-scim-schemas-extension-enterprise2-0-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-adaptive-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-capabilities-user": {
+          "can-use-api-keys": true,
+          "can-use-auth-tokens": true,
+          "can-use-console": null,
+          "can-use-console-password": true,
+          "can-use-customer-secret-keys": true,
+          "can-use-db-credentials": true,
+          "can-use-o-auth2-client-credentials": true,
+          "can-use-smtp-credentials": true
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-db-credentials-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-db-user-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-kerberos-user-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-mfa-user": {
+          "bypass-codes": null,
+          "devices": null,
+          "login-attempts": null,
+          "mfa-enabled-on": null,
+          "mfa-ignored-apps": null,
+          "mfa-status": "ENROLLED",
+          "preferred-authentication-factor": "TOTP",
+          "preferred-authentication-method": null,
+          "preferred-device": {
+            "display": null,
+            "ref": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Devices/c739f35bfa964a8d87b1c2a98f373bbe",
+            "value": "c739f35bfa964a8d87b1c2a98f373bbe"
+          },
+          "preferred-third-party-vendor": null,
+          "trusted-user-agents": null
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-oci-tags": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-password-state-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-passwordless-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-posix-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-security-questions-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-self-change-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-self-registration-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-sff-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-social-account-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-terms-of-use-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-user-credentials-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-user-state-user": {
+          "last-failed-login-date": null,
+          "last-successful-login-date": null,
+          "locked": {
+            "expired": null,
+            "lock-date": null,
+            "on": false,
+            "reason": null
+          },
+          "login-attempts": null,
+          "max-concurrent-sessions": null,
+          "previous-successful-login-date": null,
+          "recovery-attempts": null,
+          "recovery-enroll-attempts": null,
+          "recovery-locked": null
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-user-user": {
+          "account-recovery-required": null,
+          "accounts": null,
+          "app-roles": null,
+          "applicable-authentication-target-app": null,
+          "bypass-notification": null,
+          "creation-mechanism": null,
+          "delegated-authentication-target-app": null,
+          "do-not-show-getting-started": null,
+          "grants": null,
+          "group-membership-last-modified": null,
+          "idcs-app-roles-limited-to-groups": null,
+          "is-account-recovery-enrolled": null,
+          "is-authentication-delegated": null,
+          "is-federated-user": false,
+          "is-group-membership-normalized": null,
+          "is-group-membership-synced-to-users-groups": null,
+          "notification-email-template-id": null,
+          "preferred-ui-landing-page": "OciConsole",
+          "provider": null,
+          "service-user": null,
+          "status": null,
+          "support-accounts": null,
+          "synced-from-app": null,
+          "user-flow-controlled-by-external-client": null,
+          "user-token": null
+        },
+        "user-name": "****************************",
+        "user-type": null,
+        "x509-certificates": null
+      },
+      {
+        "active": true,
+        "addresses": null,
+        "compartment-ocid": "ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+        "delete-in-progress": null,
+        "description": null,
+        "display-name": "Me",
+        "domain-ocid": "ocid1.domain.oc1..aaaaaaaa54i7di6mfdwkgfhham5flt24df7imfj4a2lwsubo3qzfcuscbmja",
+        "emails": [
+          {
+            "pending-verification-data": null,
+            "primary": false,
+            "secondary": false,
+            "type": "recovery",
+            "value": "****************************",
+            "verified": true
+          },
+          {
+            "pending-verification-data": null,
+            "primary": true,
+            "secondary": false,
+            "type": "work",
+            "value": "****************************",
+            "verified": true
+          }
+        ],
+        "entitlements": null,
+        "external-id": null,
+        "groups": null,
+        "id": "05af8ff6a8fe48739583e65e05fb4b3e",
+        "idcs-created-by": {
+          "display": "Douglas Hawthorne",
+          "ocid": "ocid1.user.oc1..aaaaaaaa6yuj23zqvqkb7yaliua44thftztcgifgpcnylqzdqk4xcsf7owsa",
+          "ref": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Users/dde85d958d3e41ada9c40825e1c1449c",
+          "type": "User",
+          "value": "dde85d958d3e41ada9c40825e1c1449c"
+        },
+        "idcs-last-modified-by": {
+          "display": "idcssso",
+          "ocid": "ocid1.domainapp.oc1.ap-sydney-1.amaaaaaav3wu5maaoi6bbgjroz4keu6d2t5egqqfnlyjvst73u2mmi25e3oa",
+          "ref": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Apps/f3f33b3218b343028209d3113ee86025",
+          "type": "App",
+          "value": "f3f33b3218b343028209d3113ee86025"
+        },
+        "idcs-last-upgraded-in-release": null,
+        "idcs-prevented-operations": null,
+        "ims": null,
+        "locale": null,
+        "meta": {
+          "created": "2024-01-11T12:45:09.157Z",
+          "last-modified": "2024-06-15T11:39:54.319Z",
+          "location": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Users/05af8ff6a8fe48739583e65e05fb4b3e",
+          "resource-type": "User",
+          "version": "59833056b9c94ff9b5592858d38855d1"
+        },
+        "name": {
+          "family-name": "Me",
+          "formatted": "Me",
+          "given-name": null,
+          "honorific-prefix": null,
+          "honorific-suffix": null,
+          "middle-name": null
+        },
+        "nick-name": null,
+        "ocid": "ocid1.user.oc1..aaaaaaaab6dmoec6utwsmvueyko32h6vvhmptr3yeaunitxj6733jpo6hsca",
+        "password": null,
+        "phone-numbers": null,
+        "photos": null,
+        "preferred-language": null,
+        "profile-url": null,
+        "roles": null,
+        "schemas": [
+          "urn:ietf:params:scim:schemas:core:2.0:User",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:userState:User",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:OCITags",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:mfa:User",
+          "urn:ietf:params:scim:schemas:oracle:idcs:extension:user:User"
+        ],
+        "tags": null,
+        "tenancy-ocid": "ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+        "timezone": null,
+        "title": null,
+        "urn-ietf-params-scim-schemas-extension-enterprise2-0-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-adaptive-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-capabilities-user": {
+          "can-use-api-keys": true,
+          "can-use-auth-tokens": true,
+          "can-use-console": null,
+          "can-use-console-password": true,
+          "can-use-customer-secret-keys": true,
+          "can-use-db-credentials": true,
+          "can-use-o-auth2-client-credentials": true,
+          "can-use-smtp-credentials": true
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-db-credentials-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-db-user-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-kerberos-user-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-mfa-user": {
+          "bypass-codes": null,
+          "devices": null,
+          "login-attempts": 0,
+          "mfa-enabled-on": null,
+          "mfa-ignored-apps": null,
+          "mfa-status": "ENROLLED",
+          "preferred-authentication-factor": "PUSH",
+          "preferred-authentication-method": null,
+          "preferred-device": {
+            "display": null,
+            "ref": "https://idcs-effc203d99de4fbf82836e80f9b26ea4.identity.oraclecloud.com:443/admin/v1/Devices/64636626248641a4add847c790c3e97e",
+            "value": "64636626248641a4add847c790c3e97e"
+          },
+          "preferred-third-party-vendor": null,
+          "trusted-user-agents": null
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-oci-tags": {
+          "defined-tags": [
+            {
+              "key": "CreatedBy",
+              "namespace": "Oracle-Tags",
+              "value": "default/****************************"
+            },
+            {
+              "key": "CreatedOn",
+              "namespace": "Oracle-Tags",
+              "value": "2024-01-11T12:45:09.125Z"
+            }
+          ],
+          "freeform-tags": null,
+          "tag-slug": null
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-password-state-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-passwordless-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-posix-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-security-questions-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-self-change-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-self-registration-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-sff-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-social-account-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-terms-of-use-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-user-credentials-user": null,
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-user-state-user": {
+          "last-failed-login-date": null,
+          "last-successful-login-date": null,
+          "locked": {
+            "expired": null,
+            "lock-date": null,
+            "on": false,
+            "reason": null
+          },
+          "login-attempts": null,
+          "max-concurrent-sessions": null,
+          "previous-successful-login-date": null,
+          "recovery-attempts": null,
+          "recovery-enroll-attempts": null,
+          "recovery-locked": null
+        },
+        "urn-ietf-params-scim-schemas-oracle-idcs-extension-user-user": {
+          "account-recovery-required": null,
+          "accounts": null,
+          "app-roles": null,
+          "applicable-authentication-target-app": null,
+          "bypass-notification": null,
+          "creation-mechanism": null,
+          "delegated-authentication-target-app": null,
+          "do-not-show-getting-started": null,
+          "grants": null,
+          "group-membership-last-modified": null,
+          "idcs-app-roles-limited-to-groups": null,
+          "is-account-recovery-enrolled": null,
+          "is-authentication-delegated": null,
+          "is-federated-user": false,
+          "is-group-membership-normalized": null,
+          "is-group-membership-synced-to-users-groups": null,
+          "notification-email-template-id": null,
+          "preferred-ui-landing-page": "OciConsole",
+          "provider": null,
+          "service-user": null,
+          "status": null,
+          "support-accounts": null,
+          "synced-from-app": null,
+          "user-flow-controlled-by-external-client": null,
+          "user-token": null
+        },
+        "user-name": "tenancy_admin",
+        "user-type": null,
+        "x509-certificates": null
+      }
+    ],
+    "schemas": [
+      "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+    ],
+    "start-index": 1,
+    "total-results": 2
+  },
+  "opc-total-items": "2"
+}

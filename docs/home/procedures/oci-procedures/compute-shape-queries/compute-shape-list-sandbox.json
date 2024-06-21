@@ -1,0 +1,130 @@
+{
+  "data": [
+    {
+      "baseline-ocpu-utilizations": null,
+      "billing-type": "PAID",
+      "gpu-description": null,
+      "gpus": 0,
+      "is-billed-for-stopped-instance": false,
+      "is-flexible": false,
+      "is-live-migration-supported": false,
+      "is-subcore": false,
+      "local-disk-description": null,
+      "local-disks": 0,
+      "local-disks-total-size-in-gbs": null,
+      "max-vnic-attachment-options": null,
+      "max-vnic-attachments": 256,
+      "memory-in-gbs": 1024.0,
+      "memory-options": null,
+      "min-total-baseline-ocpus-required": null,
+      "network-ports": 2,
+      "networking-bandwidth-in-gbps": 100.0,
+      "networking-bandwidth-options": null,
+      "ocpu-options": null,
+      "ocpus": 160.0,
+      "platform-config-options": null,
+      "processor-description": "3.0 GHz Ampere\u00ae Altra\u2122",
+      "quota-names": [
+        "standard-a1-memory-count",
+        "standard-a1-memory-regional-count",
+        "standard-a1-core-count",
+        "standard-a1-core-regional-count"
+      ],
+      "rdma-bandwidth-in-gbps": 0,
+      "rdma-ports": 0,
+      "recommended-alternatives": null,
+      "resize-compatible-shapes": null,
+      "shape": "BM.Standard.A1.160"
+    },
+    {
+      "baseline-ocpu-utilizations": null,
+      "billing-type": "LIMITED_FREE",
+      "gpu-description": null,
+      "gpus": 0,
+      "is-billed-for-stopped-instance": false,
+      "is-flexible": true,
+      "is-live-migration-supported": true,
+      "is-subcore": false,
+      "local-disk-description": null,
+      "local-disks": 0,
+      "local-disks-total-size-in-gbs": null,
+      "max-vnic-attachment-options": {
+        "default-per-ocpu": 1.0,
+        "max": 24.0,
+        "min": 2
+      },
+      "max-vnic-attachments": 2,
+      "memory-in-gbs": 6.0,
+      "memory-options": {
+        "default-per-ocpu-in-g-bs": 6.0,
+        "max-in-g-bs": 512.0,
+        "max-per-numa-node-in-gbs": 512.0,
+        "max-per-ocpu-in-gbs": 64.0,
+        "min-in-g-bs": 1.0,
+        "min-per-ocpu-in-gbs": 1.0
+      },
+      "min-total-baseline-ocpus-required": null,
+      "network-ports": 1,
+      "networking-bandwidth-in-gbps": 1.0,
+      "networking-bandwidth-options": {
+        "default-per-ocpu-in-gbps": 1.0,
+        "max-in-gbps": 40.0,
+        "min-in-gbps": 1.0
+      },
+      "ocpu-options": {
+        "max": 80.0,
+        "max-per-numa-node": 80.0,
+        "min": 1.0
+      },
+      "ocpus": 1.0,
+      "platform-config-options": null,
+      "processor-description": "3.0 GHz Ampere\u00ae Altra\u2122",
+      "quota-names": [
+        "standard-a1-memory-count",
+        "standard-a1-memory-regional-count",
+        "standard-a1-core-count",
+        "standard-a1-core-regional-count"
+      ],
+      "rdma-bandwidth-in-gbps": 0,
+      "rdma-ports": 0,
+      "recommended-alternatives": null,
+      "resize-compatible-shapes": [
+        "VM.Standard.A1.Flex"
+      ],
+      "shape": "VM.Standard.A1.Flex"
+    },
+    {
+      "baseline-ocpu-utilizations": null,
+      "billing-type": "ALWAYS_FREE",
+      "gpu-description": null,
+      "gpus": 0,
+      "is-billed-for-stopped-instance": false,
+      "is-flexible": false,
+      "is-live-migration-supported": true,
+      "is-subcore": false,
+      "local-disk-description": null,
+      "local-disks": 0,
+      "local-disks-total-size-in-gbs": null,
+      "max-vnic-attachment-options": null,
+      "max-vnic-attachments": 1,
+      "memory-in-gbs": 1.0,
+      "memory-options": null,
+      "min-total-baseline-ocpus-required": null,
+      "network-ports": 1,
+      "networking-bandwidth-in-gbps": 0.48,
+      "networking-bandwidth-options": null,
+      "ocpu-options": null,
+      "ocpus": 1.0,
+      "platform-config-options": null,
+      "processor-description": "2.0 GHz AMD EPYC\u2122 7551 (Naples)",
+      "quota-names": [
+        "standard-e2-micro-core-count"
+      ],
+      "rdma-bandwidth-in-gbps": 0,
+      "rdma-ports": 0,
+      "recommended-alternatives": null,
+      "resize-compatible-shapes": null,
+      "shape": "VM.Standard.E2.1.Micro"
+    }
+  ]
+}
