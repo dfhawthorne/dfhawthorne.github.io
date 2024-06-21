@@ -78,15 +78,15 @@ export public_subnet_ocid=$(                        \
 export shape_name='VM.Standard.E2.1.Micro'
 export centos_os='CentOS'
 export centos_ver='8 Stream'
-export centos_8_image_ocid=$(                       \
-    oci compute image list                          \
-        --compartment-id            ${sandbox_ocid} \
-        --lifecycle-state           AVAILABLE       \
-        --operating-system          "${centos_os}"  \
-        --operating-system-version  "${centos_ver}" \
-        --shape                     "${shape_name}" \
-        --query                     'data[0].id'    \
-        --raw-output                                \
+export centos_8_image_ocid=$(                           \
+    oci compute image list                              \
+        --compartment-id            ${sandbox_ocid}     \
+        --lifecycle-state           AVAILABLE           \
+        --operating-system          "${centos_os}"      \
+        --operating-system-version  "${centos_ver}"     \
+        --shape                     "${shape_name}"     \
+        --query                     'data[0].id'        \
+        --raw-output                                    \
     )
 oci compute instance launch                       \
     --availability-domain ${ad_name}              \
