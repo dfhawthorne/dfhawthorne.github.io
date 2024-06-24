@@ -978,6 +978,119 @@
         title: 'ADRCI SHOW ALERT Reference'
     - url: home/knowledge/technical-notes.html
       title: 'Technical Notes'
+  - url: home/oci-2024-architect-associate.html
+    title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+    sub-pages:
+    - url: home/oci-2024-architect-associate/compute.html
+      title: 'Compute'
+      sub-pages:
+      - url: home/oci-2024-architect-associate/compute/configure-autoscaling.html
+        title: 'Configure Autoscaling'
+      - url: home/oci-2024-architect-associate/compute/configure-compute-instances.html
+        title: 'Configure compute instances'
+      - url: home/oci-2024-architect-associate/compute/describe-and-configure-os-management.html
+        title: 'Describe and configure OS Management'
+      - url: home/oci-2024-architect-associate/compute/describe-oci-compute-image-options.html
+        title: 'Describe OCI compute image options'
+      - url: home/oci-2024-architect-associate/compute/explain-infrastructure-maintenance.html
+        title: 'Explain Infrastructure Maintenance'
+      - url: home/oci-2024-architect-associate/compute/select-appropriate-computing-choices.html
+        title: 'Select appropriate computing choices'
+    - url: home/oci-2024-architect-associate/identity-and-access-management.html
+      title: 'Identity and Access Management'
+      sub-pages:
+      - url: home/oci-2024-architect-associate/identity-and-access-management/configure-dynamic-groups-network-sources-and-tagbased-access-control.html
+        title: 'Configure Dynamic Groups, Network Sources, and Tag-Based Access Control'
+      - url: home/oci-2024-architect-associate/identity-and-access-management/create-and-manage-iam-domains-users-groups-and-compartments.html
+        title: 'Create and manage IAM domains, users, groups, and compartments'
+      - url: home/oci-2024-architect-associate/identity-and-access-management/explain-the-core-concepts-of-identity-and-access-management.html
+        title: 'Explain the core concepts of Identity and Access Management'
+      - url: home/oci-2024-architect-associate/identity-and-access-management/implement-iam-policies-to-control-access-to-resources.html
+        title: 'Implement IAM policies to control access to resources'
+    - url: home/oci-2024-architect-associate/networking.html
+      title: 'Networking'
+      sub-pages:
+      - url: home/oci-2024-architect-associate/networking/analyze-interregion-latency.html
+        title: 'Analyze Inter-Region Latency'
+      - url: home/oci-2024-architect-associate/networking/configure-dns-and-traffic-management.html
+        title: 'Configure DNS and Traffic Management'
+      - url: home/oci-2024-architect-associate/networking/configure-local-and-remote-peering.html
+        title: 'Configure Local and Remote Peering'
+      - url: home/oci-2024-architect-associate/networking/configure-security-lists-and-network-security-groups.html
+        title: 'Configure Security Lists and Network Security Groups'
+      - url: home/oci-2024-architect-associate/networking/configure-sitetosite-vpn.html
+        title: 'Configure Site-to-Site VPN'
+      - url: home/oci-2024-architect-associate/networking/configure-traffic-management-steering-policies.html
+        title: 'Configure Traffic Management Steering Policies'
+      - url: home/oci-2024-architect-associate/networking/configure-virtual-cloud-network-routing-and-gateways.html
+        title: 'Configure Virtual Cloud Network Routing and Gateways'
+      - url: home/oci-2024-architect-associate/networking/describe-and-configure-load-balancer-and-network-load-balancer.html
+        title: 'Describe and configure Load Balancer and Network Load Balancer'
+      - url: home/oci-2024-architect-associate/networking/describe-fastconnect.html
+        title: 'Describe FastConnect'
+      - url: home/oci-2024-architect-associate/networking/describe-public-and-private-dns-zones.html
+        title: 'Describe Public and Private DNS zones'
+      - url: home/oci-2024-architect-associate/networking/describe-public-and-private-ip-addresses-and-virtual-nics.html
+        title: 'Describe public and private IP addresses and virtual NICs'
+      - url: home/oci-2024-architect-associate/networking/describe-public-and-private-subnets.html
+        title: 'Describe public and private subnets'
+      - url: home/oci-2024-architect-associate/networking/evaluate-vcn-connectivity-options.html
+        title: 'Evaluate VCN connectivity options'
+      - url: home/oci-2024-architect-associate/networking/explain-load-balancer-concepts.html
+        title: 'Explain Load Balancer concepts'
+      - url: home/oci-2024-architect-associate/networking/implement-and-manage-vcn-connectivity.html
+        title: 'Implement and manage VCN connectivity'
+      - url: home/oci-2024-architect-associate/networking/implement-and-manage-virtual-cloud-networks.html
+        title: 'Implement and manage Virtual Cloud Networks'
+      - url: home/oci-2024-architect-associate/networking/implement-capture-filters-and-virtual-test-access-points.html
+        title: 'Implement Capture filters and Virtual test access points'
+      - url: home/oci-2024-architect-associate/networking/implement-network-command-center-services.html
+        title: 'Implement Network Command Center Services'
+      - url: home/oci-2024-architect-associate/networking/implement-network-visualizer.html
+        title: 'Implement Network Visualizer'
+      - url: home/oci-2024-architect-associate/networking/implement-transit-routing-scenarios.html
+        title: 'Implement transit routing scenarios'
+      - url: home/oci-2024-architect-associate/networking/implement-web-application-acceleration.html
+        title: 'Implement Web Application Acceleration'
+      - url: home/oci-2024-architect-associate/networking/troubleshoot-using-network-path-analyzer.html
+        title: 'Troubleshoot using Network Path Analyzer'
+    - url: home/oci-2024-architect-associate/storage.html
+      title: 'Storage'
+      sub-pages:
+      - url: home/oci-2024-architect-associate/storage/analyze-file-system-usage-and-metering.html
+        title: 'Analyze File System usage and metering'
+      - url: home/oci-2024-architect-associate/storage/configure-and-manage-object-storage.html
+        title: 'Configure and manage Object Storage'
+      - url: home/oci-2024-architect-associate/storage/configure-crossregion-replication.html
+        title: 'Configure cross-region replication'
+      - url: home/oci-2024-architect-associate/storage/configure-file-storage.html
+        title: 'Configure File Storage'
+      - url: home/oci-2024-architect-associate/storage/configure-file-system-snapshots-and-clone.html
+        title: 'Configure File System Snapshots and Clone'
+      - url: home/oci-2024-architect-associate/storage/configure-multipart-uploads.html
+        title: 'Configure Multipart uploads'
+      - url: home/oci-2024-architect-associate/storage/configure-object-storage-replication.html
+        title: 'Configure Object Storage replication'
+      - url: home/oci-2024-architect-associate/storage/configure-volume-groups-backups-clones.html
+        title: 'Configure Volume Groups, Backups, Clones'
+      - url: home/oci-2024-architect-associate/storage/deploy-and-manage-block-storage.html
+        title: 'Deploy and manage Block Storage'
+      - url: home/oci-2024-architect-associate/storage/deploy-block-and-boot-volumes.html
+        title: 'Deploy Block and Boot Volumes'
+      - url: home/oci-2024-architect-associate/storage/describe-file-storage-security.html
+        title: 'Describe File Storage Security'
+      - url: home/oci-2024-architect-associate/storage/describe-object-storage-security.html
+        title: 'Describe Object Storage Security'
+      - url: home/oci-2024-architect-associate/storage/explain-block-volume-performance-tiers.html
+        title: 'Explain Block Volume performance tiers'
+      - url: home/oci-2024-architect-associate/storage/explain-object-storage-tiers.html
+        title: 'Explain Object Storage tiers'
+      - url: home/oci-2024-architect-associate/storage/implement-and-manage-file-storage.html
+        title: 'Implement and manage File Storage'
+      - url: home/oci-2024-architect-associate/storage/implement-file-storage-replication.html
+        title: 'Implement File Storage replication'
+      - url: home/oci-2024-architect-associate/storage/implement-object-storage-versioning-life-cycle-management-and-retention-rules.html
+        title: 'Implement Object Storage versioning, life cycle management and retention rules'
   - url: home/oci-2024-certified-networking-professional.html
     title: 'Oracle Cloud Infrastructure 2024 Certified Networking Professional'
     sub-pages:
@@ -1063,6 +1176,106 @@
         title: 'Demonstrate logging expertise in OCI'
       - url: home/oci-2024-certified-networking-professional/troubleshoot-oci-networking-and-connectivity-issues/select-the-right-products-for-various-troubleshooting-and-design-scenarios.html
         title: 'Select the right products for various troubleshooting and design scenarios'
+  - url: home/oracle-autonomous-database-cloud-2024-professional.html
+    title: 'Oracle Autonomous Database Cloud 2024 Professional'
+    sub-pages:
+    - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated.html
+      title: 'Autonomous Database Dedicated'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/creating-oci-policies-for-autonomous-dedicated.html
+        title: 'Creating OCI Policies for Autonomous Dedicated'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/describe-adb-dedicated-and-adb-cloudcustomer-workflows-and-functionality.html
+        title: 'Describe ADB Dedicated and ADB Cloud@Customer workflows and functionality'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/manage-encryption-keys.html
+        title: 'Manage encryption keys'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/manage-maintenance-scheduling-patching.html
+        title: 'Manage maintenance scheduling (patching)'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/monitor-dedicated-infrastructure.html
+        title: 'Monitor Dedicated Infrastructure'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/provision-dedicated-resources.html
+        title: 'Provision Dedicated Resources'
+    - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared.html
+      title: 'Autonomous Database Shared'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/cloning.html
+        title: 'Cloning'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/create-autonomous-database-shared-instances--provisioning-scaling-ocpu-and-storage-start-and-stop.html
+        title: 'Create Autonomous Database Shared Instances - provisioning, scaling OCPU and storage, start and stop'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/database-consolidation-with-elastic-resource-pools.html
+        title: 'Database Consolidation with Elastic Resource Pools'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/describe-data-guard.html
+        title: 'Describe Data Guard'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/manage-autonomous-database-backups-and-restores.html
+        title: 'Manage Autonomous Database Backups and Restores'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/manage-users.html
+        title: 'Manage users'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/monitor-autonomous-database-instances--events-and-alarms.html
+        title: 'Monitor Autonomous Database instances - events and alarms'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/move-autonomous-database.html
+        title: 'Move Autonomous Database'
+    - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools.html
+      title: 'Autonomous Database Tools'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/apply-data-insights.html
+        title: 'Apply Data Insights'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/create-business-model.html
+        title: 'Create Business Model'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/describe-autonomous-database-tools.html
+        title: 'Describe Autonomous Database Tools'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/explain-data-analysis.html
+        title: 'Explain Data Analysis'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/explain-data-transforms.html
+        title: 'Explain Data Transforms'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/use-autonomous-database-with-oracle-machine-learning-apex-and-sql-developer-web-database-actions.html
+        title: 'Use Autonomous Database with Oracle Machine Learning, APEX and SQL Developer Web (Database actions)'
+    - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database.html
+      title: 'Developing on Autonomous Database'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/data-lake-analytics-with-autonomous-database.html
+        title: 'Data Lake Analytics with Autonomous Database'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/developing-new-and-extending-existing-applications-with-natural-language-queries-using-generative-ai.html
+        title: 'Developing New and Extending Existing Applications with Natural Language Queries using Generative AI'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/incorporate-locationbased-analysis-autonomous-spatial.html
+        title: 'Incorporate Location-based analysis (Autonomous Spatial)'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/integrate-object-storage-data.html
+        title: 'Integrate Object Storage data'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/use-autonomous-graph.html
+        title: 'Use Autonomous Graph'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/use-autonomous-json-database.html
+        title: 'Use Autonomous JSON Database'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/use-oracle-text.html
+        title: 'Use Oracle Text'
+    - url: home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database.html
+      title: 'Getting Started with Autonomous Database'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database/describe-autonomous-database-architecture-and-integration.html
+        title: 'Describe Autonomous Database architecture and integration'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database/describe-the-different-autonomous-database-offerings-and-license-types.html
+        title: 'Describe the Different Autonomous Database offerings and license types'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database/explain-autonomous-database-architectural-components-and-key-features.html
+        title: 'Explain Autonomous Database Architectural Components and Key Features'
+    - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database.html
+      title: 'Managing and Maintaining Autonomous Database'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/configure-disaster-recovery-data-guard.html
+        title: 'Configure Disaster Recovery (Data Guard)'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/manage-autonomous-database-instances-rest-apis-oci-cli-patching-and-upgrading.html
+        title: 'Manage Autonomous Database instances: REST APIs, OCI CLI, Patching and upgrading'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/monitor-adb-performance-and-set-up-service-notifications.html
+        title: 'Monitor ADB performance and set up service notifications'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/use-access-control-list-acl-and-private-end-points.html
+        title: 'Use Access Control List (ACL) and Private End Points'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/use-adb-connectivity-wallets-service-handles.html
+        title: 'Use ADB connectivity: Wallets, service handles'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/use-services-in-adb-auto-indexing-data-safe-compartment-quotas.html
+        title: 'Use services in ADB: auto indexing, data safe, compartment quotas'
+    - url: home/oracle-autonomous-database-cloud-2024-professional/migrating-to-autonomous-database.html
+      title: 'Migrating to Autonomous Database'
+      sub-pages:
+      - url: home/oracle-autonomous-database-cloud-2024-professional/migrating-to-autonomous-database/describe-the-options-and-considerations-for-migrating-to-autonomous-database.html
+        title: 'Describe the options and considerations for migrating to Autonomous Database'
+      - url: home/oracle-autonomous-database-cloud-2024-professional/migrating-to-autonomous-database/migrate-to-autonomous-database-using-data-pump.html
+        title: 'Migrate to Autonomous Database using Data Pump'
   - url: home/procedures.html
     title: 'Procedures'
     sub-pages:
