@@ -9,4 +9,238 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Identity and Access Management'
   url: home/oci-2024-architect-associate/identity-and-access-management.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'references'
+  toc-text: 'References'
+- toc-url: 'introduction'
+  toc-text: 'Introduction'
+- toc-url: 'identity-domains'
+  toc-text: 'Identity Domains'
+- toc-url: 'user-and-groups'
+  toc-text: 'User and Groups'
+  toc-menu:
+  - toc-url: 'users'
+    toc-text: 'Users'
+  - toc-url: 'groups'
+    toc-text: 'Groups'
+- toc-url: 'compartments'
+  toc-text: 'Compartments'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/iaas/Content/home.htm">Oracle Cloud Infrastructure Documentation</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/home.htm">IAM with Identity Domians</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a></li>
+        <ul>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#Componen">IAM Components</a></li>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/sku/overview.htm">IAM Identity Domian Types</a></li>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/usercred/usercredentials.htm">User Credentials</a></li>
+        </ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/resources/manage-iam-resources.htm">Working with Identity Domains</a></li>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/iam/manage-iam.htm">Managing IAM</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-introduction">Introduction</h2>
+<p></p>
+<h2 id="TOC-identity-domains">Identity Domains</h2>
+<p>"<a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#Componen">IAM Components</a>" defines <i>Identity Domain</i> as:</i></p>
+<blockquote>
+  <p>An identity domain is a container for managing users and roles, federating and provisioning of users, secure application integration through Oracle Single Sign-On (SSO) configuration, and OAuth administration. It represents a user population in Oracle Cloud Infrastructure and its associated configurations and security settings (such as MFA).</p>
+</blockquote>
+<p>To access the Domains in the OCI console, select <i>Identity &amp; Security</i> in the main hamburger menu (Top LHS). <i>Domains</i> is in the first group on the LHS under <i>Identity</i>.</p>
+<p>To create an <i>Identity Domain</i>,</p>
+<ol>
+  <li>Create an optional compartment (see below), else use the root compartment (i.e. tenancy).</li>
+  <li>Set display name, e.g. <code>Sandbox-Domain</code></li>
+  <li>Set description, e.g. <i>Identity domain for Sandbox</i></li>
+  <li>Select <i>Domain type</i> from one of the following:</li>
+  <ul>
+    <li>Free</li>
+    <li>Oracle Apps Premium</li>
+    <li>Premium</li>
+    <li>External User</li>
+  </ul>
+  <li>Create an optional <i>Domain administrator</i> with the following information:</li>
+  <ul>
+    <li>First and last name</li>
+    <li>E-mail address</li>
+    <li>Username if not using e-mail address as username</li>
+  </ul>
+  <li>Specify the compartment</li>
+</ol>
+<p>The equivalent OCI CLI commands are:</p>
+<pre class="bash-cmd">
+export sandbox_comp_ocid=$( \
+  oci iam compartment list  \
+    --name 'Sandbox'        \
+    --query 'data[0].id'    \
+    --raw-output            \
+)
+oci iam domain create                              \
+  --compartment-id   ${sandbox_comp_ocid}          \
+  --description      'Identity domain for Sandbox' \
+  --display-name     'Sandbox-Domain'              \
+  --home-region      ap-sydney-1                   \
+  --license-type     free                          \
+  --admin-email      admin@example.com             \
+  --admin-first-name 'Sandbox'                     \
+  --admin-last-name  'IAM Admin'                   \
+  --admin-user-name  'sandbox_admin'               \
+  --wait-for-state   SUCCEEDED                     \
+  --wait-for-state   FAILED
+</pre>
+<p>The equivalent Terraform snippet is:</p>
+<pre class="text">
+resource "oci_identity_domain" "sandbox_domain" {
+  compartment_id              = local.sandbox_comp_ocid
+  description                 = "Identity domain for Sandbox"
+  display_name                = "Sandbox-Domain"
+  home_region                 = var.region
+  license_type                = "free"
+  admin_email                 = var.sandbox_domain_admin_email
+  admin_first_name            = var.sandbox_domain_admin_first_name
+  admin_last_name             = var.sandbox_domain_admin_last_name
+  admin_user_name             = "sandbox_admin"
+  is_notification_bypassed    = false
+  is_primary_email_required   = false
+}
+</pre>
+<p>According to the help text for <code>oci iam domain</code>, the following commands are available to manage an <i>identity domain</i>:</p>
+<ul>
+  <li>activate</li>
+  <li>change-compartment</li>
+  <li>change-domain-license-type</li>
+  <li>deactivate</li>
+  <li>delete</li>
+  <li>enable-replication-to-region</li>
+  <li>update</li>
+</ul>
+<h2 id="TOC-user-and-groups">User and Groups</h2>
+<p><span style="font-weight: bold; font-family:Arial, Helvetica, sans-serif;">Note:</span> There are two (2) different groups of commands to create and manage users and groups:</p>
+<ol>
+  <li>the root compartment (tenancy)</li>
+  <li>individual compartments or other identity domains</li>
+</ol>
+<h3 id="TOC-users">Users</h3>
+<p>"<a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#Componen">IAM Components</a>" defines <i>User</i> as:</i></p>
+<blockquote>
+<p>An individual employee or system that needs to manage or use your company's Oracle Cloud Infrastructure resources. Users might need to launch instances, manage remote disks, work with your virtual cloud network, etc. End users of your application aren't typically IAM users. Users have one or more IAM credentials (see <a href="https://docs.oracle.com/en-us/iaas/Content/Identity/usercred/usercredentials.htm#user_credentials">User Credentials</a>). </p>
+</blockquote>
+<p>A user is created through the <i>Identity &amp; Security</i> menus.</p>
+<p>The following OCI CLI commands are used to create a user in the root compartment (default identity domain):</p>
+<pre class="bash-cmd">
+oci iam user create                             \
+  --description     'Common user for Sandbox'   \
+  --name            'sandbox-user'              \
+  --compartment-id  ${OCI_CLI_TENANCY}          \
+  --email           'sandbox_user@example.com'  \
+  --wait-for-state  CREATING
+</pre>
+<p>The equivalent Terraform snippet is:</p>
+<pre class="text">
+resource "oci_identity_user" "sandbox_user" {
+    compartment_id              = var.tenancy_ocid
+    description                 = "Common user for Sandbox"
+    name                        = "sandbox-user"
+    email                       = var.sandbox_user_email
+}
+</pre>
+<p>For other compartments, the following commands need to be used:</p>
+<ul>
+  <li><code>oci identity-domains user create</code></li>
+  <li><code>oci_identity_domains_user</code></li>
+</ul>
+<p>According to the help text for the <code>oci iam user</code> command, the following verbs are available to manage a user:</p>
+<ul>
+  <li><code>api-key</code></li>
+  <ul>
+    <li><code>delete</code></li>
+    <li><code>list</code></li>
+    <li><code>upload</code></li>
+  </ul>
+  <li><code>create</code></li>
+  <li><code>create-db-credential</code></li>
+  <li><code>delete</code></li>
+  <li><code>delete-db-credential</code></li>
+  <li><code>list-db-credentials</code></li>
+  <li><code>list-groups</code></li>
+  <li><code>oauth2-credential</code></li>
+  <ul>
+    <li><code>create</code></li>
+    <li><code>update</code></li>
+  </ul>
+  <li><code>swift-password</code></li>
+  <ul>
+    <li><code>create</code></li>
+    <li><code>delete</code></li>
+    <li><code>list</code></li>
+    <li><code>update</code></li>
+  </ul>
+  <li><code>ui-password</code></li>
+  <ul>
+    <li><code>create-or-reset</code></li>
+  </ul>
+  <li><code>update</code></li>
+  <li><code>update-user-capabilities</code></li>
+  <li><code>update-user-state</code></li>
+</ul>
+<h3 id="TOC-groups">Groups</h3>
+<p>"<a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#Componen">IAM Components</a>" defines <i>Group</i> as:</i></p>
+<blockquote>
+<p>A collection of users who share a similar set of access privileges. Administrators can grant access policies that authorize a group to consume or manage resources within a tenancy. All users in a group inherit the same set of privileges.</p>
+</blockquote>
+<p>The following OCI CLI commands are used to create a group within the root compartment:</p>
+<pre class="bash-cmd">
+oci iam group create                            \
+  --description     'Common group for Sandbox'  \
+  --name            'sandbox-common'            \
+  --compartment-id  ${OCI_CLI_TENANCY}          \
+  --wait-for-state  CREATING
+</pre>
+<p>The equivalent Terraform snippet is:</p>
+<pre class="text">
+resource "oci_identity_group" "sandbox_common_group" {
+    compartment_id              = var.tenancy_ocid
+    description                 = "Common group for Sandbox"
+    name                        = "sandbox-common"
+}
+</pre>
+<p>For other compartments, the following commands need to be used:</p>
+<ul>
+  <li><code>oci identity-domains group create</code></li>
+  <li><code>oci_identity_domains_group</code></li>
+</ul>
+<p>According to the help text for the <code>oci iam group</code> command, the following verbs are available to manage <i>groups</i>:</p>
+<ul>
+  <li><code>add-user</code></li>
+  <li><code>create</code></li>
+  <li><code>delete</code></li>
+  <li><code>remove-user</code></li>
+  <li><code>update</code></li>
+</ul>
+<h2 id="TOC-compartments">Compartments</h2>
+<p>"<a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#Componen">IAM Components</a>" defines <i>Compartment</i> as:</i></p>
+<blockquote>
+  <p>A collection of related resources. Compartments are a fundamental component of Oracle Cloud Infrastructure for organizing and isolating your cloud resources. You use them to clearly separate resources for the purposes of measuring usage and billing, access (through the use of policies), and isolation (separating the resources for one project or business unit from another). A common approach is to create a compartment for each major part of your organization. &hellip;</p>
+</blockquote>
+<p>According to the help text for <code>oci iam compartment</code>, the following verbs are available to manage compartments:</p>
+<ul>
+  <li><code>bulk-delete-resources</code></li>
+  <li><code>bulk-move-resources</code></li>
+  <li><code>create</code></li>
+  <li><code>delete</code></li>
+  <li><code>move</code></li>
+  <li><code>recover</code></li>
+  <li><code>update</code></li>
+</ul>
