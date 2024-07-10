@@ -1379,6 +1379,8 @@
         title: 'Compute Capacity Report Queries'
       - url: home/procedures/oci-procedures/compute-image-queries.html
         title: 'Compute Image Queries'
+      - url: home/procedures/oci-procedures/compute-instance-vnic-queries.html
+        title: 'Compute Instance Vnic Queries'
       - url: home/procedures/oci-procedures/compute-shape-queries.html
         title: 'Compute Shape Queries'
       - url: home/procedures/oci-procedures/create-oci-config.html

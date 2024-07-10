@@ -1,0 +1,29 @@
+{
+  "data": [
+    {
+      "availability-domain": "bPBR:AP-SYDNEY-1-AD-1",
+      "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+      "defined-tags": {
+        "Oracle-Tags": {
+          "CreatedBy": "default/tenancy_admin",
+          "CreatedOn": "2024-07-10T12:53:50.327Z"
+        }
+      },
+      "display-name": "Sandbox public VM",
+      "freeform-tags": {},
+      "hostname-label": "vm01",
+      "id": "ocid1.vnic.oc1.ap-sydney-1.abzxsljrmdbwvui6ojyck4je6tty3huincepn7sitgejznlf3ewjrv7mw4ra",
+      "ipv6-addresses": null,
+      "is-primary": true,
+      "lifecycle-state": "AVAILABLE",
+      "mac-address": "02:00:17:01:E4:B6",
+      "nsg-ids": [],
+      "private-ip": "10.0.1.179",
+      "public-ip": "152.67.125.254",
+      "skip-source-dest-check": false,
+      "subnet-id": "ocid1.subnet.oc1.ap-sydney-1.aaaaaaaaz2hr4au3ltwgo7clhwncxqoavgpenghvpwf3ey5c2wezw6kobnxa",
+      "time-created": "2024-07-10T12:53:54.380000+00:00",
+      "vlan-id": null
+    }
+  ]
+}
