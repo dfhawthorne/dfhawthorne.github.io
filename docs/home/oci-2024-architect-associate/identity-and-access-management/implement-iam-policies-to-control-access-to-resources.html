@@ -14,9 +14,26 @@ table-of-contents:
   toc-text: 'Summary'
 - toc-url: references
   toc-text: 'References'
+- toc-url: policy-definition
+  toc-text: 'Policy Definition'
+- toc-url: list-all-policies-in-tenancy
+  toc-text: 'List All Policies in Tenancy'
+- toc-url: list-all-policies-in-sandbox
+  toc-text: 'List All Policies in Sandbox'
+- toc-url: manage-policies
+  toc-text: 'Manage Policies'
+- toc-url: policy-statement-structure
+  toc-text: 'Policy Statement Structure'
+  toc-menu:
+  - toc-url: policy-subjects
+    toc-text: 'Policy Subjects'
+  - toc-url: policy-verbs
+    toc-text: 'Policy Verbs'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
+<p>The primary OCI CLI command is <code>oci iam policy</code> which has three (3) major subcommands: <code>create</code>; <code>update</code>; and <code>delete</code>. Policies are associated with a compartment. The policy statement is of the form <code>ALLOW &lt;principal&gt; TO &lt;access_level&gt; &lt;resource&gt; IN {TENANCY|COMPARTMENT &lt;compartment&gt;}</code> with an optional conditional clause, <code>WHERE &lt;condition&gt;</code>.</p>
+<p>There are four (4) levels of access: <i>inspect</i> (lowest); <i>read</i>; <i>use</i>; and <i>manage</i> (highest).</p>
 <h2 id="TOC-references">References</h2>
 <ul>
   <li><a href="https://docs.cloud.oracle.com/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a></li>
@@ -27,7 +44,7 @@ table-of-contents:
 <h2 id="TOC-policy-definition">Policy Definition</h2>
 <p>The help text for the <code>oci iam policy</code> command defines <i>Policy</i> as:</p>
 <blockquote>
-  <p>A document that specifies the type of access a group has to the resources in a compartment. For information about policies and other IAM Service components, see <a href="https://docs.cloud.oracle.com/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a>. If you’re new to policies, see G<a href="https://docs.cloud.oracle.com/Content/Identity/policiesgs/get-started-with-policies.htm">Get Started with Policies</a>.</p>
+  <p>A document that specifies the type of access a group has to the resources in a compartment. For information about policies and other IAM Service components, see <a href="https://docs.cloud.oracle.com/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a>. If you’re new to policies, see <a href="https://docs.cloud.oracle.com/Content/Identity/policiesgs/get-started-with-policies.htm">Get Started with Policies</a>.</p>
   <p>The word “policy” is used by people in different ways:</p>
   <ul>
     <li>An  individual  statement  written in the policy language</li>
@@ -140,5 +157,5 @@ oci iam policy list                                                           \
   <li><code>inspect</code>: <cite>Ability to list resources, without access to any confidential information or user-specified metadata that may be part of that resource.</cite></li>
   <li><code>read</code>: <cite>Includes <code>inspect</code> plus the ability to get user-specified metadata and the actual resource itself.</cite></li>
   <li><code>use</code>: Allows <code>inspect</code> and <code>read</code> as well as updating a resource unless the updating is equivalent to resource creation.</li>
-
+  <li><code>manage</code>: Allows all access to the resource, including creation and deletion.</li>
 </ul>
