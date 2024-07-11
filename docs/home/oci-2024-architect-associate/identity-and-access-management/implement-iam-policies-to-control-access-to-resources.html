@@ -9,4 +9,136 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Identity and Access Management'
   url: home/oci-2024-architect-associate/identity-and-access-management.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: references
+  toc-text: 'References'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.cloud.oracle.com/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a></li>
+  <li><a href="https://docs.cloud.oracle.com/Content/Identity/policiesgs/get-started-with-policies.htm">Get Started with Policies</a></li>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Concepts/policysyntax.htm">Policy Syntax</a></li>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm#Verbs">Verbs</a></li>
+</ul>
+<h2 id="TOC-policy-definition">Policy Definition</h2>
+<p>The help text for the <code>oci iam policy</code> command defines <i>Policy</i> as:</p>
+<blockquote>
+  <p>A document that specifies the type of access a group has to the resources in a compartment. For information about policies and other IAM Service components, see <a href="https://docs.cloud.oracle.com/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a>. If you’re new to policies, see G<a href="https://docs.cloud.oracle.com/Content/Identity/policiesgs/get-started-with-policies.htm">Get Started with Policies</a>.</p>
+  <p>The word “policy” is used by people in different ways:</p>
+  <ul>
+    <li>An  individual  statement  written in the policy language</li>
+    <li>A collection of statements in a single, named “policy” document (which has an Oracle Cloud ID (OCID) assigned to it)</li>
+    <li>The overall body of policies your organization uses to control access to resources</li>
+  </ul>
+</blockquote>
+<h2 id="TOC-list-all-policies-in-tenancy">List All Policies in Tenancy</h2>
+<p>Run the following commands to list all policies in the tenancy:</p>
+<pre class="bash-cmd">
+oci iam policy list                               \
+  --compartment-id ${OCI_CLI_TENANCY}             \
+  --query 'data[*].[description,name,statements]'
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
+[
+  [
+    "Temporary policy for /bootstrapDefaultDomain API's whitelisted services. Gives access to IAM work request APIs and ability to delete these policy when access is no longer needed.",
+    "BootstrapProvisioning",
+    [
+      "ALLOW SERVICE tenancylifecycleservice to {IAM_WORKREQUEST_READ, IAM_WORKREQUEST_INSPECT} IN TENANCY",
+      "ALLOW SERVICE tenancylifecycleservice to {POLICY_DELETE} IN TENANCY where target.policy.name='BootstrapProvisioning'"
+    ]
+  ],
+  [
+    "PSM managed compartment root policy",
+    "PSM-root-policy-compartments",
+    [
+      "allow service PSM to manage all-resources in compartment managedcompartmentforpaas",
+      "allow service OracleEnterpriseManager to manage all-resources in compartment managedcompartmentforpaas",
+      "allow service PSM to manage users in tenancy where target.user.name = /__PSM*/",
+      "allow any-user to manage all-resources in compartment managedcompartmentforpaas where request.user.name = /__PSM*/",
+      "allow any-user to manage all-resources in compartment managedcompartmentforpaas where request.instance.compartment.id = 'ocid1.compartment.oc1..aaaaaaaa6wcn7fgccosatmofyxgmgtrntfqd6wcitewbdyjlc2rbjptwq5oq'",
+      "allow service PSM to inspect tenant in tenancy",
+      "allow service PSM to inspect compartments in tenancy"
+    ]
+  ],
+  [
+    "Tenant Admin Policy",
+    "Tenant Admin Policy",
+    [
+      "ALLOW GROUP Administrators to manage all-resources IN TENANCY"
+    ]
+  ],
+  [
+    "VNPA-Exec-Policy description",
+    "VNPA-Tenancy-Policy",
+    [
+      "allow any-user to inspect compartments in tenancy where all { request.principal.type = 'vnpa-service' }",
+      "allow any-user to read instances in tenancy where all { request.principal.type = 'vnpa-service' }",
+      "allow any-user to read virtual-network-family in tenancy where all { request.principal.type = 'vnpa-service' }",
+      "allow any-user to read load-balancers in tenancy where all { request.principal.type = 'vnpa-service' }",
+      "allow any-user to read network-security-group in tenancy where all { request.principal.type = 'vnpa-service' }"
+    ]
+  ]
+]
+</pre>
+<h2 id="TOC-list-all-policies-in-sandbox">List All Policies in Sandbox</h2>
+<p>To list all policies in the <i>Sandbox</i> compartment, run the following commands:</p>
+<pre class="bash-cmd">
+sandbox_ocid=$(                         \
+  oci iam compartment list              \
+    --compartment-id ${OCI_CLI_TENANCY} \
+    --query 'data[0].id'                \
+    --name "Sandbox"                    \
+    --raw-output                        \
+  ) 
+oci iam policy list                                                           \
+  --compartment-id ${sandbox_ocid}                                            \
+  --query 'data[*].{name:name,description:description,statements:statements}' \
+  --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++-------------------------+-----------------+-----------------------------------------------------------------------------------------+
+| description             | name            | statements                                                                              |
++-------------------------+-----------------+-----------------------------------------------------------------------------------------+
+| Policies for oci admins | oci-admin-group | ["Allow group 'Test'/'oci-admin-group' to manage all-resources in compartment Sandbox"] |
++-------------------------+-----------------+-----------------------------------------------------------------------------------------+
+</pre>
+<h2 id="TOC-manage-policies">Manage Policies</h2>
+<p>According to the help text for the <code>oci iam policy</code> command, there are three (3) verbs to manage policies:</p>
+<ol>
+  <li>create</li>
+  <li>delete</li>
+  <li>update</li>
+</ol>
+<h2 id="TOC-policy-statement-structure">Policy Statement Structure</h2>
+<p>According to <a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Concepts/policysyntax.htm">Policy Syntax</a>, the structure of a policy statement is:</p>
+<pre class="text"><code>Allow <var>&lt;subject&gt;</var> to <var>&lt;verb&gt;</var> <var>&lt;resource-type&gt;</var> in <var>&lt;location&gt;</var> where <var>&lt;conditions&gt;</var></code></pre>
+<h3 id="TOC-policy-subjects">Policy Subjects</h3>
+<p><var>&lt;subject&gt;</var> is one of:</p>
+<ul>
+  <li><code>any-user</code> (avoid in favour of <code>any-group</code>)</li>
+  <li><code>any-group</code> (includes all groups and instance principals)</li>
+  <li><code>group</code> <var>&lt;group_name&gt;</var></li>
+  <li><code>group id</code> <var>&lt;group_ocid&gt;</var></li>
+  <li><code>dynamic-group</code> <var>&lt;dynamic_group_name&gt;</var></li>
+  <li><code>dynamic-group id</code> <var>&lt;dynamic_group_id&gt;</var></li>
+  <li><code>service</code> <var>&lt;service_name&gt;</var></li>
+  <li><code>service id</code> <var>&lt;service_ocid&gt;</var> (I assume this exists based on other variables)</li>
+  <li><var>&lt;user_name&gt;</var></li>
+  <li><code>id</code> <var>&lt;user_ocid&gt;</var> (I assume this exists based on other variables)</li>
+</ul>
+<p>Note that <code>service</code>, <code>service id</code>, and <code>id</code> are not mentioned in the OCI documentation.</p>
+<h3 id="TOC-policy-verbs">Policy Verbs</h3>
+<p>According to <a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/policyreference.htm#Verbs">Verbs</a>, <var>&lt;verb&gt;</var> is one of:</p>
+<ul>
+  <li><code>inspect</code>: <cite>Ability to list resources, without access to any confidential information or user-specified metadata that may be part of that resource.</cite></li>
+  <li><code>read</code>: <cite>Includes <code>inspect</code> plus the ability to get user-specified metadata and the actual resource itself.</cite></li>
+  <li><code>use</code>: Allows <code>inspect</code> and <code>read</code> as well as updating a resource unless the updating is equivalent to resource creation.</li>
+
+</ul>
