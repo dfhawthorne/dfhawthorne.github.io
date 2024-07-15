@@ -334,37 +334,13 @@ table-of-contents:
 </pre>
 <div style="display:block;margin-left:1cm;border-left-style:double;border-width:5px;border-color:black">
 <p>
-<span style="font-weight:bold;font-family:arial,sans-serif;margin-left:5px">
-                      Note:
-                     </span>
-                     The password value was copied out of
-                     <span style="font-family:monospace">
-                      /etc/shadow
-                     </span>
-                     . The password is obscured because tools exists to decrypt such values.
-                    </p>
+<span class="note" style="margin-left:5px">Note:</span> The password value was copied out of <span class="file-name">/etc/shadow</span>. The password is obscured because tools exists to decrypt such values.</p>
 </div>
-<h3>
-<a name="TOC-Modify-User-Settings-for-the-Oracle-User">
-</a>
-                    Modify User Settings for the Oracle User
-                   </h3>
-<p>
-                    On
-                    <span style="font-family:monospace">
-                     AUBURN
-                    </span>
-                    , I executed an Ansible playbook (
-                    <span style="font-family:monospace">
-                     user_groups.yml
-                    </span>
-                    ) as follows:
-                   </p>
+<h3 id="TOC-Modify-User-Settings-for-the-Oracle-User">Modify User Settings for the Oracle User</h3>
+<p>On <span class="host-name">AUBURN</span>, I executed an Ansible playbook (<span class="file-name">user_groups.yml</span>) as follows:</p>
 <pre class="bash-cmd">ansible-playbook -K user_groups.yml 
 </pre>
-<p>
-                    The output was:
-                   </p>
+<p>The output was:</p>
 <pre class="text">SUDO password: 
 
 PLAY [Prepare REDFERN Cluster for Oracle GI 12.1 installation (Oracle Groups)] ***
@@ -422,10 +398,10 @@ PLAY RECAP *********************************************************************
       groups:   oinstall,dba,oper,asmdba,asmoper,asmadmin
 </pre>
 <div style="display:block;margin-left:1cm;border-left-style:double;border-width:5px;border-color:black">
-<p><span style="font-weight:bold;font-family:arial,sans-serif;margin-left:5px">Note:</span> The password value was copied out of <span style="font-family:monospace">/etc/shadow</span>. The password is obscured because tools exists to decrypt such values.</p>
+<p><span class="note" style="margin-left:5px">Note:</span> The password value was copied out of <span class="file-name">/etc/shadow</span>. The password is obscured because tools exists to decrypt such values.</p>
 </div>
 <h3 id="TOC-Confirm-User-Settings-for-the-Oracle-User">Confirm User Settings for the Oracle User</h3>
-<p>On <span style="font-family:monospace">AUBURN</span>, I executed the Ansible playbook (<span style="font-family:monospace">user_groups.yml</span>) to confirm the correct settings for the <span style="font-family:monospace">oracle</span> user:</p>
+<p>On <span class="host-name">AUBURN</span>, I executed the Ansible playbook (<span style="font-family:monospace">user_groups.yml</span>) to confirm the correct settings for the <span style="font-family:monospace">oracle</span> user:</p>
 <pre class="bash-cmd">ansible-playbook -K user_groups.yml</pre>
 <p>The output was:</p>
 <pre class="text">SUDO password: 

@@ -105,7 +105,7 @@ oci compute instance launch                                    \
     --wait-for-state      RUNNING                              \
     --wait-for-state      TERMINATED
 </pre>
-<p><span style="font-family: Arial, Helvetica, sans-serif;font-weight: bold;">Note:</span> Even though the shape selected ('<span style="font-family: 'Courier New', Courier, monospace;">VM.Standard.E2.1.Micro</span>') has a fixed shape, a <code>--shape-config</code> parameter is still required with the fixed shape configuration. See <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm">Compute Shapes</a> for further details.</p>
+<p><span class="note">Note:</span> Even though the shape selected ('<span style="font-family: 'Courier New', Courier, monospace;">VM.Standard.E2.1.Micro</span>') has a fixed shape, a <code>--shape-config</code> parameter is still required with the fixed shape configuration. See <a href="https://docs.oracle.com/en-us/iaas/Content/Compute/References/computeshapes.htm">Compute Shapes</a> for further details.</p>
 <p>Sample output is upload as <a href="home/procedures/oci-procedures/launch-compute-instance/create-sandbox-vm01.log">create-sandbox-vm01.log</a>.</p>
 <p>If the lifecycle state was TERMINATED, then use the procedure in <a href="home/procedures/oci-procedures/work-requests-queries.html#TOC-get-work-request-error">Get Work Request Error</a> to find the error message.</p>
 {% endraw %}

@@ -14,6 +14,8 @@ table-of-contents:
   toc-text: 'Summary'
 - toc-url: 'references'
   toc-text: 'References'
+- toc-url: terms
+  toc-text: 'Terms'
 - toc-url: 'identity-domains'
   toc-text: 'Identity Domains'
 - toc-url: 'user-and-groups'
@@ -49,6 +51,17 @@ table-of-contents:
     </ul>
   </ul>
 </ul>
+<h2 id="TOC-terms">Terms</h2>
+<p>The terms defined in the Study Guide are:</p>
+<blockquote>
+  <ul>
+    <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Principal -</span> Identity of the caller trying to access/operate on a resource</li>
+    <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">User -</span> Represents a human in an organization</li>
+    <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Instance -</span> Represents a unique compute VM host in any OCI tenancy</li>
+    <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Service -</span> </li>
+    <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Resource -</span> A unit/instance of an entity exposed by a service - a database, a Load Balancer</li>
+  </ul>
+</blockquote>
 <h2 id="TOC-identity-domains">Identity Domains</h2>
 <p>"<a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm#Componen">IAM Components</a>" defines <i>Identity Domain</i> as:</i></p>
 <blockquote>
@@ -123,7 +136,7 @@ resource "oci_identity_domain" "sandbox_domain" {
   <li>update</li>
 </ul>
 <h2 id="TOC-user-and-groups">User and Groups</h2>
-<p><span style="font-weight: bold; font-family:Arial, Helvetica, sans-serif;">Note:</span> There are two (2) different groups of commands to create and manage users and groups:</p>
+<p><span class="note">Note:</span> There are two (2) different groups of commands to create and manage users and groups:</p>
 <ol>
   <li>the root compartment (tenancy)</li>
   <li>individual compartments or other identity domains</li>

@@ -9,10 +9,21 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Identity and Access Management'
   url: home/oci-2024-architect-associate/identity-and-access-management.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: dynamic-groups
+  toc-text: 'Dynamic Groups'
+- toc-url: network-sources
+  toc-text: 'Network Sources'
+- toc-url: tag-based-access-control
+  toc-text: 'Tag-Based Access Control'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
-<p></p>
+<p>Dynamic groups, network sources, and Tag-Based Access Control (TBAC) allow for a finer-grain of control over policies through tags and IP addresses more than provided by user, group, and compartment definitions.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
   <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
@@ -21,6 +32,7 @@ breadcrumbs:
       <ul>
           <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm">Managing Dynamic Groups</a></li>
           <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingnetworksources.htm">Managing Network Sources</a></li>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Tagging/home.htm">Tagging</a></li>
       </ul>
   </ul>
 </ul>
@@ -98,7 +110,7 @@ ServiceError:
     "troubleshooting_tips": "See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message."
 }
 </pre>
-<p><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">Note:</span> The <i>network sources</i> must be specified in a tenancy, not in any sub-compartment.</p>
+<p><span class="note">Note:</span> The <i>network sources</i> must be specified in a tenancy, not in any sub-compartment.</p>
 <h2 id="TOC-tag-based-access-control">Tag-Based Access Control</h2>
 <p>The study giude says:</p>
 <blockquote>
