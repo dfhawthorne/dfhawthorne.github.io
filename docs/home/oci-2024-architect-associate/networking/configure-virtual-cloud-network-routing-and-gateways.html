@@ -10,3 +10,41 @@ breadcrumbs:
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://www.oracle.com/au/cloud/networking/virtual-cloud-network/">Virtual Cloud Network (VCN)</a></li>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-route-table">Route Table</h2>
+<p>Run the following commands to display all route tables in the Sandbox compartment:</p>
+<pre class="bash-cmd">
+sandbox_comp_ocid=$(       \
+  oci iam compartment list \
+  --name 'Sandbox'         \
+  --query 'data[0].id'     \
+  --raw-output             \
+)
+oci network route-table list            \
+  --compartment-id ${sandbox_comp_ocid} \
+  --query 'data[*].{"Route Table Entry":"display-name","Route Rules":"route-rules"[*].{"Destination":destination,"OCID for Gateway":"network-entity-id"}}' \
+  --output table 
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+| Route Rules                                                                                                                                              | Route Table Entry                   |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+| [{'Destination': '0.0.0.0/0', 'OCID for Gateway': 'ocid1.internetgateway.oc1.ap-sydney-1.aaaaaaaarzchmunop752orok3sm2xmacrjajgcy6azpjzg74gqzri7f2eqxa'}] | Sandbox internet connectivity       |
+| []                                                                                                                                                       | Default Route Table for sandbox-vcn |
+| [{'Destination': '0.0.0.0/0', 'OCID for Gateway': 'ocid1.internetgateway.oc1.ap-sydney-1.aaaaaaaavi5strrtnofsl2l25vwbgrc5g3velvquvh2nhijydp5rioorktsa'}] | Sandbox internet connectivity       |
+| []                                                                                                                                                       | Default Route Table for sandbox-vcn |
++----------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
+</pre>

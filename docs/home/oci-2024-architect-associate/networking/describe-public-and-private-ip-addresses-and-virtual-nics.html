@@ -9,4 +9,60 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: references
+  toc-text: 'References'
+- toc-url: public-and-private-ip-addresses
+  toc-text: 'Public and Private IP Addresses'
+  toc-menu:
+  - toc-url: public-ip-address
+    toc-text: 'Public IP Address'
+  - toc-url: private-ip-address
+    toc-text: 'Private IP Address'
+- toc-url: virtual-nics
+  toc-text: 'Virtual NICs'
 ---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>There are two (2) types of subnets: private; and public. Both can have egress to the Internet. However, only the public subnet can have ingress from the Internet.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingIPaddresses.htm">IP Addresses</a></li>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingpublicIPs.htm#overview">Public IP Addresses</a></li>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingVNICs.htm">Virtual Network Interface Cards (VNICs)</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/api/#/">API Reference and Endpoints</a></li>
+  <ul>
+    <li><a href="https://docs.cloud.oracle.com/api/#/en/iaas/latest/PrivateIp/CreatePrivateIp">CreatePrivateIp</a></li>
+    <li><a href="https://docs.cloud.oracle.com/api/#/en/iaas/latest/Vlan">Vlan</a></li>
+  </ul>
+</ul>
+<h2 id="TOC-public-and-private-ip-addresses">Public and Private IP Addresses</h2>
+<p>A private IP address is always allocated. A public IP address can only exist in a public subnet.</p>
+<h3 id="TOC-public-ip-address">Public IP Address</h3>
+<p>A public IP address allows a resource, load balancer or instance, allows to be connected from the Internet.</p>
+<p>There are two (2) types of public IP addresses which can be allocated from OCI's IPv4 allocation:</p>
+<ol>
+  <li>Ephermal for the lifetime of the instance or load balancer</li>
+  <li>Reserved exists beyond the lifetime of the resource</li>
+</ol>
+<h3 id="TOC-private-ip-address">Private IP Address</h3>
+<p>A private IPv4 address is allocated from the subnet's CIDR.</p>
+<h2 id="TOC-virtual-nics">Virtual NICs</h2>
+<p>The help text for the <code>oci network vnic</code> command says:</p>
+<blockquote>
+  <p>A virtual network interface card. Each VNIC resides in a subnet in a VCN. An instance attaches to a VNIC to obtain a network connection into the VCN through that subnet. Each instance has a primary VNIC that is automatically created and attached during launch. You can add secondary VNICs to an instance after it’s launched. For more information, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingVNICs.htm">Virtual Network Interface Cards (VNICs)</a>.</p>
+  <p>Each VNIC has a primary private IP that is automatically assigned during launch. You can add secondary private IPs to a VNIC after it’s created. For more information, see <a href="https://docs.cloud.oracle.com/api/#/en/iaas/latest/PrivateIp/CreatePrivateIp">CreatePrivateIp</a> and <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingIPaddresses.htm">IP Addresses</a>.</p>
+  <blockquote>
+    <p>If you are an Oracle Cloud VMware Solution customer, you will have secondary VNICs that reside in a VLAN instead of a subnet. These VNICs have other differences, which are called out in the descriptions of the relevant attributes in the Vnic object. Also see <a href="https://docs.cloud.oracle.com/api/#/en/iaas/latest/Vlan">Vlan</a>.</p>
+  </blockquote>
+</blockquote>
+{% endraw %}
