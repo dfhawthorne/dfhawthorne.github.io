@@ -9,10 +9,17 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: route-table
+  toc-text: 'Route Table'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
-<p></p>
+<p>The route table provides rules for directing IP traffic to a specific gateway. The most specific rule is the one selected.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
   <li><a href="https://www.oracle.com/au/cloud/networking/virtual-cloud-network/">Virtual Cloud Network (VCN)</a></li>
@@ -20,10 +27,17 @@ breadcrumbs:
   <ul>
     <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
     <ul>
+      <li><a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingroutetables.htm">Route Tables</a></li>
     </ul>
   </ul>
 </ul>
 <h2 id="TOC-route-table">Route Table</h2>
+<p>The help text for the <code>oci network route-table create</code> says:</code></p>
+<blockquote>
+  <p>Creates a new route table for the specified VCN. In the request you must also include at least one route rule for the new route table. For information on the number of rules you can have in a route table, see <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/servicelimits.htm">Service Limits</a>. For general information about route tables in your VCN and the types of targets you can use in route rules, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingroutetables.htm">Route Tables</a>.</p>
+<p>For the purposes of access control, you must provide the <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm">OCID</a> of the compartment where you want the route table to reside. Notice that the route table doesn’t have to be in the same compartment as the VCN, subnets, or other Networking Service components. If you’re not sure which compartment to use, put the route table in the same compartment as the VCN. For more information about compartments and access control, see <a href="https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/overview.htm">Overview of the IAM Service</a>. For information about OCIDs, see <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm">Resource Identifiers</a>.</p>
+<p>You may optionally specify a display name for the route table, otherwise a default is provided. It does not have to be unique, and you can change it. Avoid entering confidential information.</p>
+</blockquote>
 <p>Run the following commands to display all route tables in the Sandbox compartment:</p>
 <pre class="bash-cmd">
 sandbox_comp_ocid=$(       \

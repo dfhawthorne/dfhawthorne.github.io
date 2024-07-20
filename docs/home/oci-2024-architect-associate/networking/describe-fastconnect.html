@@ -9,4 +9,43 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: fastconnect-overview
+  toc-text: 'FastConnect Overview'
+- toc-url: connectivity-models
+  toc-text: 'Connectivity Models'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>A FastConnect is a dedicated connection between customer premise and an OCI data centre.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/fastconnect.htm">FastConnect</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-fastconnect-overview">FastConnect Overview</h2>
+<p><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/fastconnectoverview.htm#FastConnect_Overview">FastConnect Overview</a> says:</p>
+<blockquote>
+  <p>Oracle Cloud Infrastructure FastConnect provides an easy way to create a dedicated, private connection between your data center and Oracle Cloud Infrastructure. FastConnect provides higher-bandwidth options, and a more reliable and consistent networking experience compared to internet-based connections.</p>
+</blockquote>
+<p>There are two (2) types of peering:</p>
+<ol>
+  <li><strong>Private</strong> extends on-premises network to OCI using a physical connection.</li>
+  <li><strong>Public</strong> allows access to public-facing resources in OCI without traffic passing the Internet.</li>
+</ol>
+<h2 id="TOC-connectivity-models">Connectivity Models</h2>
+<p>There are three (3) models for connecting to OCI using FastConnect:</p>
+<ol>
+  <li><strong>Oracle Partners</strong> have an existing relationship with Oracle that allows the partner to terminate network connections within OCI data centres.</li>
+  <li><strong>Third-Party Provider</strong> require an letter of authority (LOA) to enter the OCI data centre in order to terminate a network link there by placing network equipment and links.</li>
+  <li><strong>Colocation</strong> is where the customer provides their own equipment and link into an OCI data centre. A LOA is required for data center access. This works best if the customer already has a presence at the data centre.</li>
+</ol>

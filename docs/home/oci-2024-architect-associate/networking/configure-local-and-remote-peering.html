@@ -9,4 +9,37 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: local-vcn-peering
+  toc-text: 'Local VCN Peering'
+- toc-url: remote-vcn-peering
+  toc-text: 'Remote VCN Peering'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are four (4) types of peering between VCNs:</p>
+<ol>
+  <li>Local peering (within a region) using LPG (local peering gateways)</li>
+  <li>Remote peering (between different regions) using RPC (remote peering connections)</li>
+  <li>Local peering (within a region) using upgraded DRG (dynamic routing gateways)</li>
+  <li>Remote peering (between different regions) using upgraded DRG</li>
+</ol>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Tasks/VCNpeering.htm">Access to Other VCNs: Peering</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-local-vcn-peering">Local VCN Peering</h2>
+<p>VCNs cannot have overlapping CIDR blocks. Peering is achieved through either LPGs (Local Peering Gateways) or an upgraded DRG (Dynamic Routing Gateway).</p>
+<p>A LPG is attached to each VCN, while only a single DRG is needed to connect multiple VCNs.</p>
+<h2 id="TOC-remote-vcn-peering">Remote VCN Peering</h2>
+<p>VCNs cannot have overlapping CIDR blocks. Peering is achieved through either using Remote Peering Connections (RPCs) acting a connection point for each VCN on DRG, or by using upgraded DRGs directly using route tables.</p>
