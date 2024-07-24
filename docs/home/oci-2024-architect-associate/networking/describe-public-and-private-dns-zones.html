@@ -9,4 +9,26 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: public-dns-zone
+  toc-text: 'Public DNS Zone'
+- toc-url: private-dns-zone
+  toc-text: 'Private DNS Zone'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>OCI provides two (2) types of DNS zones: public and private. A public DNS zone manages domain names accessible over the Internet. A private DNS zone doesn't.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+    <li><a href="https://www.ateam-oracle.com/post/oci-private-dns---common-scenarios">OCI Private DNS - Common Scenarios</a></li>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/DNS/Concepts/dnszonemanagement.htm">DNS</a></li>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/DNS/Tasks/create-private-zone.htm">Creating a Private DNS Zone</a></li>
+</ul>
+<h2 id="TOC-public-dns-zone">Public DNS Zone</h2>
+<p>Public DNS resolver resolves DNS queries from the Internet.</p>
+<h2 id="TOC-private-dns-zone">Private DNS Zone</h2>
+<p>Private DNS resolvers resolves DNS queries at a subnet level. Resolvers can share views of private DNS records, or have differing DNS records.</p>

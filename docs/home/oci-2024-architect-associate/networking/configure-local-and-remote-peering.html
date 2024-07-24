@@ -41,5 +41,37 @@ table-of-contents:
 <h2 id="TOC-local-vcn-peering">Local VCN Peering</h2>
 <p>VCNs cannot have overlapping CIDR blocks. Peering is achieved through either LPGs (Local Peering Gateways) or an upgraded DRG (Dynamic Routing Gateway).</p>
 <p>A LPG is attached to each VCN, while only a single DRG is needed to connect multiple VCNs.</p>
+<p>This topic is covered in <i>Lab 4-1: Networking - Virtual Cloud Network: Configure Local VCN Peering</i>.</p>
+<blockquote>
+  <p><strong>Local VCN Peering</strong></p>
+  <p>Local VCN peering is the the process of connecting two VCNs in the same region so that their resources can communicate using private IP addresses.</p>
+  <p><strong>Local Peering Gateway</strong></p>
+  <p>A Local Peering Gateway is a component on a VCN for routing traffic to a locally peered VCN.</p>
+  <p><strong>Summary of Networking Components for Peering Using an LPG</strong></p>
+  <p>The Networking service components required for a local peering include:</p>
+  <ul>
+    <li>Two VCNs with <u>non-overlapping</u> CIDRs, in the same region</li>
+    <li>A local peering gateway (LPG) on each VCN in the peering relationship</li>
+    <li>A connection between those two LPGs</li>
+    <li>Supporting route rules to enable traffic to flow over the connection</li>
+    <li>Supporting security rules to control the types of traffic allowed to and from the instances in the subnets that need to communicate with the other VCN</li>
+  </ul>
+</blockquote>
 <h2 id="TOC-remote-vcn-peering">Remote VCN Peering</h2>
 <p>VCNs cannot have overlapping CIDR blocks. Peering is achieved through either using Remote Peering Connections (RPCs) acting a connection point for each VCN on DRG, or by using upgraded DRGs directly using route tables.</p>
+<p>This topic is covered in <i>Lab 4-2: Networking - Virtual Cloud Network: Configure Remote VCN Peering</i>:</p>
+<blockquote>
+  <p><strong>Remote VCN Peering</strong></p>
+  <p>Remote VCN peering is the process of connecting two VCNs, typically, but not required to be in different regions. Peering allows VCNs' resources to communicate using private IP addresses.</p>
+  <p><strong>Dynamic Routing Gateway</strong></p>
+  <p>A Dynamic Routing Gateway is a powerful virtual router that enables VCN connectinity to on-premises resources and to remote and local VCNs in the current tenancy and in other tenancies.</p>
+  <p><strong>Summary of Networking Components for Remote Peering</strong></p>
+  <p>The Networking service components required for a remote peering include:</p>
+  <ul>
+    <li>DRG attachment to each VCN in the peering relationship</li>
+    <li>A remote peering connection (RPC) on each DRG in the peering relationship</li>
+    <li>A connection between those two RPC</li>
+    <li>Supporting route rules to enable traffic to flow over the connection</li>
+    <p>Supporting security rules to control the types of traffic allowed to and from the instances in the subnets that need to communicated with the other VCN.</p>
+  </ul>
+</blockquote>

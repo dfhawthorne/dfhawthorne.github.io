@@ -22,6 +22,8 @@ table-of-contents:
   toc-text: 'Create VCN'
 - toc-url: manage-vcn
   toc-text: 'Manage VCN'
+- toc-url: lab
+  toc-text: 'Lab'
 ---
 
 {% raw %}
@@ -146,4 +148,20 @@ oci network vcn create                        \
   <li><code>remove-vcn-cidr</code></li>
   <li><code>update</code></li>
 </ul>
+<h2 id="TOC-lab">Lab</h2>
+<p>This topic is covered by <i>Lab 3-1: Networking - Virtual Cloud Network: Create and Configure a Virtual Cloud Network</i>.</p>
+<blockquote>
+  <p>A VCN is a software-defined network specific to OCI tenancy or a compartment in a specified region.</p>
+  <p>Upon creation, a VCN automatically includes route tables, security lists (with default security rules), and a set of DHCP options. The VCN also has access to a DNS resolver.</p>
+  <p>A VCN that is launched with the OCI VCN Wizard tool automatically creates the following:</p>
+  <ul>
+    <li>Public and Private subnets</li>
+    <li>Internet Gateway (IG)</li>
+    <li>NAT Gateway (NAT)</li>
+    <li>service Gateway (SG)</li>
+    <li>Two Route Tables (RT)</li>
+    <li>Two Security Lists (SL)</li>
+  </ul>
+</blockquote>
+
 {% endraw %}
