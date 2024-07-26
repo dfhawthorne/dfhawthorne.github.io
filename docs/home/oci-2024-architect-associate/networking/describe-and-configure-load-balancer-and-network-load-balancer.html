@@ -9,4 +9,47 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: lab
+  toc-text: 'Lab'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>The general procedure is:</p>
+<ol>
+  <li>Create a VCN with at least two (2) subnets</li>
+  <li>Create at least two (2) instances in the private subnet</li>
+  <li>Create a load balancer in the public subnet</li>
+  <li>Create a backend set that include the instances created above</li>
+  <li>Create a listener for the load balancer</li>
+</ol>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Balance/Concepts/balanceoverview.htm">Overview of Load Balancer</a></li>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/NetworkLoadBalancer/home.htm">Network Load Balancer</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-lab">Lab</h2>
+<p>This topic is covered in <i>Lab 5-1: Networking: OCI Load Balancer</i>:</p>
+<blockquote>
+  <p><strong>Load Balancer</strong></p>
+  <p>The OCI Load Balancer provides automated traffic distribution from one entry point to multiple back-end servers in your VCN. It operates at the connection level and balances incoming client connections to healthy back-end servers. The service offers a load balancer with your choice of a regional public or private IP address and provisioned bandwith.</p>
+  <p><strong>Summary of Components for OCI Load Balancer Used in This Lab</strong></p>
+  <ul>
+    <li><strong>Listener:</strong> A logical entity that checks for incoming traffic on the load balancer's IP address</li>
+    <li><strong>Back-end server:</strong> An application server responsible for generating content in reply to the incoming traffic</li>
+    <li><strong>Back-end set:</strong> A load-balancing ploicy tells the load balancer how to distribute incoming traffic to the back-end servers</li>
+    <li><strong>Health check:</strong> A test to confirm the availability of back-end servers</li>
+    <li><strong>Shape:</strong> The Bandwidth capacaity of the load balancer</li>
+  </ul>
+  <img src="home/oci-2024-architect-associate/networking/describe-and-configure-load-balancer-and-network-load-balancer/lab-5-1.png" alt="Layout for Lab 5-1" />
+</blockquote>
