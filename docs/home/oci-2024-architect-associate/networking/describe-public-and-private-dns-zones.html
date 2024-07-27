@@ -18,6 +18,9 @@ table-of-contents:
   toc-text: 'Public DNS Zone'
 - toc-url: private-dns-zone
   toc-text: 'Private DNS Zone'
+  toc-menu:
+  - toc-url: lab
+    toc-text: 'Lab'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
@@ -32,3 +35,12 @@ table-of-contents:
 <p>Public DNS resolver resolves DNS queries from the Internet.</p>
 <h2 id="TOC-private-dns-zone">Private DNS Zone</h2>
 <p>Private DNS resolvers resolves DNS queries at a subnet level. Resolvers can share views of private DNS records, or have differing DNS records.</p>
+<h3 id="TOC-lab">Lab</h3>
+<p>This topic is covered by <i>Lab 6-1: Networking - DNS Management: Create a Private DNS Zone</i></p>
+<blockquote>
+  <p><strong>Overview</strong></p>
+  <p>In this lab, you will configure a private DNS zone and create a DNS A record that corresponds to a private IP address. You will create two compute instances, one runnig Oracle Linux that will be used as a web server, and another running Microsoft windows, which will be used as a client.</p>
+  <p><strong>Private DNS Zones</strong></p>
+  <p>Private DNS zones contains DBS data that is accessible only from within a Virtual Cloud Network (VCN). a private DNS zone has capabilities similar to an Internet DNS zone but provides responses only for clients that can reach it through a private VCN. Each zone belongs to a single view.</p>
+  <img src="home/oci-2024-architect-associate/networking/describe-public-and-private-dns-zones/lab-6-1.png" alt="Layout for lab 6-1 showing a user connecting through an internet gateway to a Windows workstation within a public subnet. This workstation is then used as jump host to a web server in the private subnet." />
+</blockquote>
