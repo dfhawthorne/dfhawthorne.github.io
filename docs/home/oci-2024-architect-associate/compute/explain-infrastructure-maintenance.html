@@ -9,4 +9,41 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Compute'
   url: home/oci-2024-architect-associate/compute.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Compute/home.htm">Compute</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Compute/References/infrastructure-maintenance.htm">Infrastructure Maintenance</a></li>
+</ul>
+</ul>
+</ul>
+<h2 id="TOC-relocating-a-vm-instance">Relocating a VM Instance</h2>
+<ul>
+  <li>Live migration</li>
+  <ul>
+    <li>VM instance migrated with minimal disruption</li>
+    <li>Emits infrstructure maintenance event</li>
+    <li>Not all shapes supported</li>
+  </ul>
+  <li>Reboot migration</li>
+  <ul>
+    <li>Short downtime</li>
+    <li>Can proactively reboot before the maintenance due date</li>
+  </ul>
+  <li>Manual migration</li>
+  <ul>
+    <li>For instances without a date in the <strong>Reboot Maintenance Field</strong></li>
+    <li>The instance needs to be terminated (do not forget to preserve the boot volume) and recreated.</li>
+  </ul>
+</ul>
