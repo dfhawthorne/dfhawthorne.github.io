@@ -9,4 +9,37 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: block-volume-performance
+  toc-text: 'Block Volume Performance'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are four (4) performance levels for block volumes. The performance level of a block volume can be changed at any time.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Oracle Cloud Infrastructure</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/blockvolumeperformance.htm">Block Volume Performance</a></li>
+  </ul>
+</ul>
+<h2 id="TOC-block-volume-performance">Block Volume Performance</h2>
+<p>Virtual Performance Unit (VPU) is a measure of the I/O performance for a block volume that encompasses the following limits:</p>
+<ul>
+  <li>IOPS per GB</li>
+  <li>Max IOPS per Volume</li>
+  <li>Size for Max IOPS (GB)</li>
+  <li>KBPS per GB</li>
+  <li>Max MBPS per Volume</li>
+</ul>
+<p>Performance levels are:</p>
+<ul>
+  <li><strong>Ultra High Performance:</strong> Can purchase 30 -  120 VPUs per GB/month. Only available for block volumes.</li>
+  <li><strong>Higher Performance:</strong> Purchase 20 VPUs per GB/month</li>
+  <li><strong>Balanced:</strong> Default to 10 VPUs per GB/month</li>
+  <li><strong>Lower Cost:</strong> incurs only storage cost - no additional VPU cost. Only available for block volumes.</li>
+</ul>
