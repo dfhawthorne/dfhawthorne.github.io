@@ -10,3 +10,89 @@ breadcrumbs:
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
 ---
+
+<h2 id="TOC-create-volume-group">Create Volume Group</h2>
+<p>The sample procedure to create a volume group is:</p>
+<pre class="bash-cmd">
+sandbox_ocid=$(                   \
+  oci iam compartment list        \
+      --name        'Sandbox'     \
+      --query       'data[0].id'  \
+      --raw-output                \
+  )
+ad_name=$(                              \
+  oci iam availability-domain list      \
+      --compartment-id  ${sandbox_ocid} \
+      --query           'data[0].name'  \
+      --raw-output                      \
+  )
+bv1_id=$(                               \
+  oci bv volume create                  \
+  --availability-domain ${ad_name}      \
+  --compartment-id      ${sandbox_ocid} \
+  --display-name        "Sandbox BV 1"  \
+  --vpus-per-gb         0               \
+  --size-in-gbs         50              \
+  --query               'data.id'       \
+  --raw-output                          \
+  --wait-for-state      AVAILABLE       \
+  --wait-for-state      TERMINATING
+  )
+bv2_id=$(                               \
+  oci bv volume create                  \
+  --availability-domain ${ad_name}      \
+  --compartment-id      ${sandbox_ocid} \
+  --display-name        "Sandbox BV 2"  \
+  --vpus-per-gb         0               \
+  --size-in-gbs         50              \
+  --query               'data.id'       \
+  --raw-output                          \
+  --wait-for-state      AVAILABLE       \
+  --wait-for-state      TERMINATING
+  )
+printf -v source_info '{"type": "volumeIds", "volumeIds": ["%s","%s"]}' ${bv1_id} ${bv2_id}
+oci bv volume-group create                      \
+  --availability-domain ${ad_name}              \
+  --compartment-id      ${sandbox_ocid}         \
+  --source-details      "${source_info}"        \
+  --display-name        "Sandbox Volume Group"  \
+  --wait-for-state      AVAILABLE               \
+  --wait-for-state      TERMINATING
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
+Action completed. Waiting until the resource has entered state: ('AVAILABLE', 'TERMINATING')
+{
+  "data": {
+    "availability-domain": "bPBR:AP-SYDNEY-1-AD-1",
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-08-04T02:40:34.993Z"
+      }
+    },
+    "display-name": "Sandbox Volume Group",
+    "freeform-tags": {},
+    "id": "ocid1.volumegroup.oc1.ap-sydney-1.abzxsljr3gsw7wjgycy7tlmrcdwleld46cdveld6zjksk246iizyfmxuvpka",
+    "is-hydrated": null,
+    "lifecycle-state": "AVAILABLE",
+    "size-in-gbs": 100,
+    "size-in-mbs": 102400,
+    "source-details": {
+      "type": "volumeIds",
+      "volume-ids": [
+        "ocid1.volume.oc1.ap-sydney-1.abzxsljrwqx7fgldmg2hrqeqwjznizgnnurclq2qpcwbateplkifre364zpq",
+        "ocid1.volume.oc1.ap-sydney-1.abzxsljrpgqp6n3n4vz57t6vbwt3ki2bwitrxdvnhf23pposm6jn6r23qu2q"
+      ]
+    },
+    "time-created": "2024-08-04T02:40:35.038000+00:00",
+    "volume-group-replicas": null,
+    "volume-ids": [
+      "ocid1.volume.oc1.ap-sydney-1.abzxsljrpgqp6n3n4vz57t6vbwt3ki2bwitrxdvnhf23pposm6jn6r23qu2q",
+      "ocid1.volume.oc1.ap-sydney-1.abzxsljrwqx7fgldmg2hrqeqwjznizgnnurclq2qpcwbateplkifre364zpq"
+    ]
+  },
+  "etag": "fbbbcd5ef18b64e964d38463dcf3aa1a"
+}
+</pre>
