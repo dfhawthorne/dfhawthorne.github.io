@@ -11,6 +11,52 @@ breadcrumbs:
   url: home/oci-2024-architect-associate/storage.html
 ---
 
+<h2 id="TOC-summary">Summary</h2>
+<p>A volume group can be created from a list of volume IDs, another volume group (cloning), or a backup.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/home.htm">Block Volume</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/volumegroups.htm">Volume Groups</a></li>
+      <ul>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/create-volume-group.htm">Creating a Volume Group</a></li>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/clone-volume-group.htm">Cloning a Volume Group</a></li>
+      </ul>
+    </ul>
+  </ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv.html"><code>bv</code></a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume.html"><code>volume</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume/create.html"><code>create</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group.html"><code>volume-group</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group/create.html"><code>create</code></a></li>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group/list.html"><code>list</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group-backup.html"><code>volume-group-backup</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group-backup/create.html"><code>create</code></a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/availability-domain.html"><code>availability-domain</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/availability-domain/list.html"><code>list</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment.html"><code>compartment</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment/list.html"><code>list</code></a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
 <h2 id="TOC-create-volume-group">Create Volume Group</h2>
 <p>The sample procedure to create a volume group is:</p>
 <pre class="bash-cmd">
@@ -50,7 +96,10 @@ bv2_id=$(                               \
   --wait-for-state      AVAILABLE       \
   --wait-for-state      TERMINATING
   )
-printf -v source_info '{"type": "volumeIds", "volumeIds": ["%s","%s"]}' ${bv1_id} ${bv2_id}
+printf -v source_info                               \
+  '{"type": "volumeIds", "volumeIds": ["%s","%s"]}' \
+  ${bv1_id}                                         \
+  ${bv2_id}
 oci bv volume-group create                      \
   --availability-domain ${ad_name}              \
   --compartment-id      ${sandbox_ocid}         \
@@ -95,4 +144,131 @@ Action completed. Waiting until the resource has entered state: ('AVAILABLE', 'T
   },
   "etag": "fbbbcd5ef18b64e964d38463dcf3aa1a"
 }
+</pre>
+<h2 id="TOC-backup-volume-group">Backup Volume Group</h2>
+<p>Use the following commands to back up the volume group created above:</p>
+<pre class="bash-cmd">
+vg_id=ocid1.volumegroup.oc1.ap-sydney-1.abzxsljr3gsw7wjgycy7tlmrcdwleld46cdveld6zjksk246iizyfmxuvpka
+comp_id=ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da
+oci bv volume-group-backup create \
+  --volume-group-id ${vg_id}      \
+  --compartment-id ${comp_id}
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
+{
+  "data": {
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-08-04T02:40:34.993Z"
+      }
+    },
+    "display-name": "abzxsljruzx6uqrmaitln6vxbn5c5l36ytlft7c7jtjgvgamy4rwklqy7jga",
+    "expiration-time": null,
+    "freeform-tags": {},
+    "id": "ocid1.volumegroupbackup.oc1.ap-sydney-1.abzxsljruzx6uqrmaitln6vxbn5c5l36ytlft7c7jtjgvgamy4rwklqy7jga",
+    "lifecycle-state": "CREATING",
+    "size-in-gbs": 100,
+    "size-in-mbs": 102400,
+    "source-type": "MANUAL",
+    "source-volume-group-backup-id": null,
+    "time-created": null,
+    "time-request-received": "2024-08-05T16:50:15.792000+00:00",
+    "type": "INCREMENTAL",
+    "unique-size-in-gbs": 0,
+    "unique-size-in-mbs": 0,
+    "volume-backup-ids": [
+      "ocid1.volumebackup.oc1.ap-sydney-1.abzxsljr6snxkc2ij6rwfbv3wcihx5myxl42qgu2xdqhiowvi33ins4gnt4a",
+      "ocid1.volumebackup.oc1.ap-sydney-1.abzxsljrmvgad5qqmngts2gtcw2d6amqwka4q3fszkgzhvsctcppn3ybbroa"
+    ],
+    "volume-group-id": "ocid1.volumegroup.oc1.ap-sydney-1.abzxsljr3gsw7wjgycy7tlmrcdwleld46cdveld6zjksk246iizyfmxuvpka"
+  },
+  "etag": "1ac60cbdf0cf91c3d04a80dbb904fd1b"
+}
+</pre>
+<h2 id="TOC-clone-volume-group">Clone Volume Group</h2>
+<p>Use the following commands to clone the volume group created above:</p>
+<pre class="bash-cmd">
+old_vg_id=ocid1.volumegroup.oc1.ap-sydney-1.abzxsljr3gsw7wjgycy7tlmrcdwleld46cdveld6zjksk246iizyfmxuvpka
+sandbox_ocid=$(                   \
+  oci iam compartment list        \
+      --name        'Sandbox'     \
+      --query       'data[0].id'  \
+      --raw-output                \
+  )
+ad_name=$(                              \
+  oci iam availability-domain list      \
+      --compartment-id  ${sandbox_ocid} \
+      --query           'data[0].name'  \
+      --raw-output                      \
+  )
+printf -v source_details \
+  '{"type": "volumeGroupId", "volumeGroupId": "%s"}' \
+  ${old_vg_id}
+oci bv volume-group create                              \
+  --availability-domain ${ad_name}                      \
+  --compartment-id      ${sandbox_ocid}                 \
+  --source-details      "${source_details}"             \
+  --display-name        "Sandbox Volume Group Replica"  \
+  --wait-for-state      AVAILABLE                       \
+  --wait-for-state      TERMINATING
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
+Action completed. Waiting until the resource has entered state: ('AVAILABLE', 'TERMINATING')
+{
+  "data": {
+    "availability-domain": "bPBR:AP-SYDNEY-1-AD-1",
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-08-04T02:40:34.993Z"
+      }
+    },
+    "display-name": "Sandbox Volume Group Replica",
+    "freeform-tags": {},
+    "id": "ocid1.volumegroup.oc1.ap-sydney-1.abzxsljrju66fkdfg524bqnh4y3md62e6dme5xbrowgzx6izbihe4i5dpt6q",
+    "is-hydrated": null,
+    "lifecycle-state": "AVAILABLE",
+    "size-in-gbs": 100,
+    "size-in-mbs": 102400,
+    "source-details": {
+      "type": "volumeGroupId",
+      "volume-group-id": "ocid1.volumegroup.oc1.ap-sydney-1.abzxsljr3gsw7wjgycy7tlmrcdwleld46cdveld6zjksk246iizyfmxuvpka"
+    },
+    "time-created": "2024-08-05T16:10:45.769000+00:00",
+    "volume-group-replicas": null,
+    "volume-ids": [
+      "ocid1.volume.oc1.ap-sydney-1.abzxsljr7va4wfzmnrawgebxiwhtkw7bc45mp2bex7kz4k2kgi7g5ucobpdq",
+      "ocid1.volume.oc1.ap-sydney-1.abzxsljrliyrgjptmvii7i3yxvrzsha65m4d5pb6nflbhkvxeewp2o7ymr3q"
+    ]
+  },
+  "etag": "6ee4dd30f50eeab88759605253a84e99"
+}
+</pre>
+<h2 id="TOC-list-volume-groups">List Volume Groups</h2>
+<p>Use the following commands to list volume groups:</p>
+<pre class="bash-cmd">
+sandbox_ocid=$(                   \
+  oci iam compartment list        \
+      --name        'Sandbox'     \
+      --query       'data[0].id'  \
+      --raw-output                \
+  )
+oci bv volume-group list              \
+  --compartment-id ${sandbox_ocid}    \
+  --query 'data[*].{"Availability Domain":"availability-domain","Display Name":"display-name"}' \
+  --output table
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
++-----------------------+------------------------------+
+| Availability Domain   | Display Name                 |
++-----------------------+------------------------------+
+| bPBR:AP-SYDNEY-1-AD-1 | Sandbox Volume Group         |
+| bPBR:AP-SYDNEY-1-AD-1 | Sandbox Volume Group Replica |
++-----------------------+------------------------------+
 </pre>
