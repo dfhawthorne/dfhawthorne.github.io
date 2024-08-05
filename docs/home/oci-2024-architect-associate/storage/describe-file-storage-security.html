@@ -9,4 +9,81 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: lab
+  toc-text: 'Lab'
+- toc-url: security
+  toc-text: 'Security'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Multiple layers of security need to be navigated to specify the access requirements: IAM; Network Security; NFS Security (Unix or Kerberos); and NFS options.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/File/home.htm">File Storage</a></li>
+    <ul>
+      <li><a href="https://docs.cloud.oracle.com/iaas/Content/File/Concepts/filestorageoverview.htm">Overview of File Storage</a></li>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm">About File Storage Security</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-lab">Lab</h2>
+<p>This topic is covered by <i>Lab 15-1: File Storage: Configure NFS Export Options</i>:</p>
+<blockquote>
+  <p><strong>Overview</strong></p>
+  <p>NFS export options enable you to create more granular access control to limit VCN access. You can use NFS export options to specify access levels for IP addresses or CIDR blocks connecting to file systems through exports in a mount target. Doing this provides better security controls in multi-tenant environments.</p>
+  <p>Additionally, by using NFS export option access controls, you can limit the clients' ability to connect to the file system and view or write data.</p>
+  <p>In this lab, you'll learn how to allow read-only access to the file system from one instance and read/write access from the other instance.</p>
+  <p>In this lab, you'll:</p>
+  <ol>
+    <li>Create a Virtual Cloud Network and its components</li>
+    <li>Create two VM instances</li>
+    <li>Create a file system</li>
+    <li>Configure VCN Security Rules for file storage</li>
+    <li>Mount the file system from both the Instances</li>
+    <li>Perform testing</li>
+  </ol>
+  <img src="home/oci-2024-architect-associate/storage/describe-file-storage-security/lab-15-1A.png" />
+</blockquote>
+<h2 id="TOC-security">Security</h2>
+<p><i><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm">About File Storage Security</a></i> says:</p>
+<table summary="This table summarizes the three security layers in File Storage, and what methods are used to control actions. "><caption></caption><colgroup><col style="width:325px"><col><col></colgroup><thead>
+  <tr>
+  <th>This security layer...</th>
+  <th>Uses these...</th>
+  <th>To control actions like...</th>
+  </tr>
+  </thead><tbody>
+  <tr>
+  <th>
+  <a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm#About_Security__Identity"><span>Oracle Cloud Infrastructure Identity and Access Management</span></a></th>
+  <td>Users and policies</td>
+  <td>Creating instances and VCNs. Creating, listing, and associating file systems and mount targets. </td>
+  </tr>
+  <tr>
+  <th><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm#About_Security__Network">Network security</a></th>
+  <td>IP addresses, CIDR blocks, security lists</td>
+  <td>Connecting the client instance to the mount target. </td>
+  </tr>
+  <tr>
+  <th><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm#About_Security__NFS">NFS&nbsp;v.3 Unix security</a></th>
+  <td>UNIX users, file mode bits</td>
+  <td>Reading and writing files and directories.</td>
+  </tr>
+  <tr>
+  <th><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm#About_Security__kerberos">NFS&nbsp;v.3 Kerberos security</a></th>
+  <td>Kerberos principals mapped to UNIX users, file mode bits</td>
+  <td>Reading and writing files and directories.</td>
+  </tr>
+  <tr>
+  <th><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/securitylayers.htm#About_Security__Exports">NFS&nbsp;export options</a></th>
+  <td>File system exports, IP addresses, UNIX users</td>
+  <td>Privileged source port connection, reading and writing files, and limiting root user access on a per-export basis.</td>
+  </tr>
+  </tbody></table>
