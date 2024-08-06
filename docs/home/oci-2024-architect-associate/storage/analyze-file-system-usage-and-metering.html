@@ -9,4 +9,47 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: course-notes
+  toc-text: 'Course Notes'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Clones and snapshots are charged for differences from the primary file system. Clones have an extra overhead of metadata. df and du can report differing values. df reports the correct value for the metered usage.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/File/home.htm">File Storage</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/File/Concepts/FSutilization.htm">File System Usage and Metering</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-course-notes">Course Notes</h2>
+<p>Notes from the course:</p>
+<blockquote>
+  <p><strong>File System Usage and Metering</strong></p>
+  <ul>
+    <li>Reports metered file system utilization</li>
+    <li>Updates hourly</li>
+    <li>Can use df and du commands to see usage</li>
+    <li>Utilization size reported by du can be much larger than the meteredBytes value</li>
+    <li>df reports the same value as meteredBytes</li>
+  </ul>
+  <p><strong>Sanpshot Metered Utilization</strong></p>
+  <ul>
+    <li>Initially consume no additional usage</li>
+    <li>Reference the original data instead of duplicating it</li>
+    <li>Included in the reporting meteredBytes value of the file system</li>
+  </ul>
+  <p><strong>Clone Metered Utilization</strong></p>
+  <ul>
+    <li>Clone references the parent file system's data</li>
+    <li>Clone is metered for all its metadata and incremental changes made</li>
+  </ul>
+</blockquote>

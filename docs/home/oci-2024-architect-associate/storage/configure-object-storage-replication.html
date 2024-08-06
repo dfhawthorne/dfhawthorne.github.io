@@ -9,4 +9,72 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: create-replication-policy
+  toc-text: 'Create Replication Policy'
+- toc-url: create-destination-bucket
+  toc-text: 'Create Destination Bucket'
+- toc-url: create-replication-policy
+  toc-text: 'Create Replication Policy'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>The object services on both the source and destination regions have to be allowed to manage objects in the tenancy. The <code>oci os replication create-replication-policy</code> command is used to establish replication. Only objects created after establishment are replicated.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/home.htm">Object Storage</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Tasks/usingreplication.htm">Replication</a></li>
+      <ul>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Tasks/usingreplication_topic-To_create_a_replication_policy.htm">Creating an Object Storage Replication Policy</a></li>
+      </ul>
+    </ul>
+  </ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/policy.html"><code>policy</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/policy/create.html"><code>create</code></a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os.html"><code>os</code></a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/replication.html"><code>replication</code></a></li>
+      <ul>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/os/replication/create-replication-policy.html"><code>create-replication-policy</code></a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-create-replication-policy">Create Replication Policy</h2>
+<p>The object services at both the primary and replicated region have to allowed to manage objects in the tenancy in order for replication to work. Use the following commands to create such a policy for Sydney and Melbourne:</p>
+<pre class="bash-cmd">
+printf -v policy '["%s","%s"]' \
+  "Allow service objectstorage-ap-sydney-1 to manage object-family in tenancy" \
+  "Allow service objectstorage-ap-melbourne-1 to manage object-family in tenancy"
+oci iam policy create                 \
+  --compartment-id ${OCI_CLI_TENANCY} \
+  --name 'object-storage-service'     \
+  --statements "${policy}"            \
+  --description 'Allow Object Storage Service to manage objects in my tenancy'
+</pre>
+<h2 id="TOC-create-destination-bucket">Create Destination Bucket</h2>
+<p>Use the <code>oci os bucket create</code> command to create the buckets in both regions.</p>
+<h2 id="TOC-create-replication-policy">Create Replication Policy</h2>
+<p>On the source region (e.g. Sydney), use the following commands to create the replication policy:</p>
+<pre class="bash-cmd">
+oci os replication create-replication-policy    \
+  --bucket-name ${source_bucket_name}           \
+  --name "Replication from Sydney to Melbourne" \
+  --destination-region ap-melbourne-1           \
+  --destination-bucket ${destination_bucket_name}
+</pre>
+<p><span class="note">Note:</span> <cite>Objects uploaded to the source bucket after policy creation are asynchronously replicated to the destination bucket.</cite></p>

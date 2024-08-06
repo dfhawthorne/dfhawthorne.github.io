@@ -9,4 +9,215 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: enable-versioning
+  toc-text: 'Enable Versioning'
+- toc-url: create-lifecycle-policy
+  toc-text: 'Create Lifecycle Policy'
+- toc-url: create-retention-rule
+  toc-text: 'Create Retention Rule'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>An object storage bucket can either have versioning or retention rules, but not both. Life cycle rules are ARCHIVE, INFREQUENT_ACCESS, DELETE, and ABORT (for uncommitted multipart uploads).</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/api/#/en/objectstorage/20160918/datatypes/ObjectLifecycleRule">ObjectLifecycleRule Reference</a></li>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment.html"><code>compartment</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment/list.html"><code>list</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/policy.html"><code>policy</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/policy/create.html"><code>create</code></a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os.html"><code>os</code></a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket.html"><code>bucket</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket/create.html"><code>create</code></a></li>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket/update.html"><code>update</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/ns.html"><code>ns</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/ns/get.html"><code>get</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object-lifecycle-policy.html"><code>object-lifecycle-policy</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object-lifecycle-policy/put.html"><code>put</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/retention-rule.html"><code>retention-rule</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/retention-rule/create.html"><code>create</code></a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-enable-versioning">Enable Versioning</h2>
+<p>Use the following command to enable object versioning:</p>
+<pre class="bash-cmd">
+oci os bucket update \
+  --name FRA-AA-LAB11-1-BKT-01 \
+  --versioning Enabled
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
+{
+  "data": {
+    "approximate-count": null,
+    "approximate-size": null,
+    "auto-tiering": "Disabled",
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "created-by": "ocid1.user.oc1..aaaaaaaab6dmoec6utwsmvueyko32h6vvhmptr3yeaunitxj6733jpo6hsca",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-08-03T17:36:07.615Z"
+      }
+    },
+    "etag": "e6a6c4fb-2fe3-4f20-884e-8eed73562785",
+    "freeform-tags": {},
+    "id": "ocid1.bucket.oc1.ap-sydney-1.aaaaaaaaz4b7hgfkmiqk6ovgpbhvmr746j4xdw3nw2wyexn4rsyorc4m5pdq",
+    "is-read-only": false,
+    "kms-key-id": null,
+    "metadata": {},
+    "name": "FRA-AA-LAB11-1-BKT-01",
+    "namespace": "sdorfvwhnhvj",
+    "object-events-enabled": false,
+    "object-lifecycle-policy-etag": null,
+    "public-access-type": "NoPublicAccess",
+    "replication-enabled": false,
+    "storage-tier": "Standard",
+    "time-created": "2024-08-03T17:36:07.627000+00:00",
+    "versioning": "Enabled"
+  },
+  "etag": "e6a6c4fb-2fe3-4f20-884e-8eed73562785"
+}
+</pre>
+<h2 id="TOC-create-lifecycle-policy">Create Lifecycle Policy</h2>
+<p>Use the following commands to update security policy to allow Object Service to manage objects:</p>
+<pre class="bash-cmd">
+printf -v policy '["%s"]' \
+  "Allow service objectstorage-ap-sydney-1 to manage object-family in tenancy"
+oci iam policy create                 \
+  --compartment-id ${OCI_CLI_TENANCY} \
+  --description 'Allow Object Storage Service to manage objects in my tenancy' \
+  --name 'object-storage-service'     \
+  --statements "${policy}"
+</pre>
+<p>The output is:</p>
+<pre class="text">
+{
+  "data": {
+    "compartment-id": "ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-08-06T01:13:18.856Z"
+      }
+    },
+    "description": "Allow Object Storage Service to manage objects in my tenancy",
+    "freeform-tags": {},
+    "id": "ocid1.policy.oc1..aaaaaaaay25zezvxv6pfe3ioifi5laokyertwtt7ctdp3wbihbjo5ct4cvla",
+    "inactive-status": null,
+    "lifecycle-state": "ACTIVE",
+    "name": "object-storage-service",
+    "statements": [
+      "Allow service objectstorage-ap-sydney-1 to manage object-family in tenancy"
+    ],
+    "time-created": "2024-08-06T01:13:18.907000+00:00",
+    "version-date": null
+  },
+  "etag": "a52b622b9f6bf2a4c7db1b006fd9d1c436f19651"
+}
+</pre>
+<p>Use the following commands to create a lifecycle policy:</p>
+<pre class="bash-cmd">
+policy='[{"name":"ArchiveRule","action":"ARCHIVE","objectNameFilter":{"inclusionPrefixes":["/"]},"target":"objects","timeAmount":30,"timeUnit":"DAYS"}]'
+oci os object-lifecycle-policy put    \
+  --bucket-name FRA-AA-LAB11-1-BKT-01 \
+  --items "${policy}"                 \
+  --force
+</pre>
+<p>The output is:</p>
+<pre class="text">
+{
+  "data": {
+    "items": [
+      {
+        "action": "ARCHIVE",
+        "is-enabled": false,
+        "name": "ArchiveRule",
+        "object-name-filter": {
+          "exclusion-patterns": null,
+          "inclusion-patterns": null,
+          "inclusion-prefixes": [
+            "/"
+          ]
+        },
+        "target": "objects",
+        "time-amount": 30,
+        "time-unit": "DAYS"
+      }
+    ],
+    "time-created": "2024-08-06T01:17:57.264000+00:00"
+  },
+  "etag": "5c1791af-28c4-4553-9945-e6e7790b37d7"
+}
+</pre>
+<h2 id="TOC-create-retention-rule">Create Retention Rule</h2>
+<p>A new bucket is required as a retention rule cannot applied to an object that has versioning enabled.</p>
+<p>Use the following commands to create a retention rule:</p>
+<pre class="bash-cmd">
+bucket_name='FRA-AA-LAB11-1-BKT-02'
+name_space=$(       \
+  oci os ns get     \
+    --query 'data'  \
+    --raw-output    \
+  )
+comp_id=$(                  \
+  oci iam compartment list  \
+    --name 'Sandbox'        \
+    --query 'data[0].id'    \
+    --raw-output            \
+)
+oci os bucket create              \
+  --namespace ${name_space}       \
+  --name ${bucket_name}           \
+  --compartment-id ${comp_id}     \
+  --query 'data.id'               \
+  --raw-output
+oci os retention-rule create          \
+  --bucket-name ${bucket_name}        \
+  --display-name 'Retention Rule'     \
+  --time-amount 90                    \
+  --time-unit DAYS
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
+ocid1.bucket.oc1.ap-sydney-1.aaaaaaaa5q3ahqwv4ovmogvwqhpf5yjvgo3f535cry4e36gqx6xjsvn43gya
+{
+  "data": {
+    "display-name": "Retention Rule",
+    "duration": {
+      "time-amount": 90,
+      "time-unit": "DAYS"
+    },
+    "etag": "45144334-c254-4676-9e5c-92f718913dbd",
+    "id": "a268daf3-f29b-4f4e-9000-b223adb1bb3c",
+    "time-created": "2024-08-05T19:34:19.140000+00:00",
+    "time-modified": "2024-08-05T19:34:19.140000+00:00",
+    "time-rule-locked": null
+  },
+  "etag": "45144334-c254-4676-9e5c-92f718913dbd"
+}
+</pre>

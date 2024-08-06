@@ -9,4 +9,63 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: course-notes
+  toc-text: 'Course Notes'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Replication of a file system is achieved through regular propagation of delta changes to a snapshot.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/File/home.htm">File Storage</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/File/Tasks/FSreplication.htm">File System Replication</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-course-notes">Course Notes</h2>
+<p>Course notes:</p>
+<blockquote>
+  <p><strong>File System Replication</strong></p>
+  <ul>
+    <li>Asynchronous replication</li>
+    <li>Replication of source file system to target file system:</li>
+    <ul>
+      <li>With a region</li>
+      <li>Across regions</li>
+    </ul>
+    <li>Consistent file system replicas</li>
+    <li>Replication to multiple target regions</li>
+  </ul>
+  <p><strong>File System Replication Concepts</strong></p>
+  <ul>
+    <li>Source File System</li>
+    <li>Target File System</li>
+    <li>Replication Resource</li>
+    <li>Replication Target Resource</li>
+    <li>Replication Snapshot</li>
+    <li>Replication Interval</li>
+    <li>Base Copy</li>
+    <li>Delta Copy</li>
+  </ul>
+  <p><strong>Delta Cycle</strong></p>
+  <ul>
+    <li>Idle</li>
+    <li>Capturing</li>
+    <li>Transferring</li>
+    <li>Applying</li>
+  </ul>
+  <p><strong>File System Replication: Use Cases</strong></p>
+  <ul>
+    <li>Disater Recovery</li>
+    <li>Data Migration</li>
+    <li>Data Redundancy Compliance</li>
+  </ul>
+</blockquote>
