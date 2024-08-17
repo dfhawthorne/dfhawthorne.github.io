@@ -1,0 +1,81 @@
+---
+layout: default
+title: 'Configure File System Snapshots and Clone'
+base-url: home/oci-2024-architect-associate/storage/configure-file-system-snapshots-and-clone.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Storage'
+  url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: snapshot-types
+  toc-text: 'Snapshot Types'
+- toc-url: create-snapshot
+  toc-text: 'Create Snapshot'
+- toc-url: cloning-file-systems
+  toc-text: 'Cloning File Systems'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>File system snapshots can be created manually or a regular schedule. Snapshots can be used to clone a file system at a point in time.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/File/home.htm">File Storage</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/File/Tasks/managingsnapshots.htm">Managing Snapshots</a></li>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/File/Tasks/cloningFS.htm">Cloning File Systems</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs.html"><code>fs</code></a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs/file-system.html"><code>file-system</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs/file-system/create.html"><code>create</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs/filesystem-snapshot-policy.html"><code>filesystem-snapshot-policy</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs/filesystem-snapshot-policy/create.html"><code>create</code></a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs/snapshot.html"><code>snapshot</code></a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/fs/snapshot/create.html"><code>create</code></a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-snapshot-types">Snapshot Types</h2>
+<p>There are three (3) types of snapshots:</p>
+<ol>
+  <li>User-created</li>
+  <li>Policy-based</li>
+  <li>Replication</li>
+</ol>
+<h2 id="TOC-create-snapshot">Create Snapshot</h2>
+<p>Use the <code>oci fs snapshot create</code> command. The sample code creates a file system snapshot, called 'my_snapshot', that expires in 90 days:</p>
+<pre class="bash-cmd">
+oci fs snapshot create                  \
+  --file-system-id ${file_system_OCID}  \
+  --name "my_snapshot"                  \
+  --expiration-time $((( $(date +'%s') + 86400 * 90 )))
+</pre>
+<h2 id="TOC-cloning-file-systems">Cloning File Systems</h2>
+<p>A clone is a new file system that is based on a snapshot. Clones can be cloned.</p>
+<p>Use the following commands to clone a file system:</p>
+<pre class="bash-cmd">
+oci fs file-system create \
+  --availability-domain ${ad_name} \
+  --display-name "Clone of my file system" \
+  --clone-attach-status ATTACH \
+  --compartment-id ${sandbox_oci} \
+  --source-snapshot-id ${snapshot_OCID}
+</pre>

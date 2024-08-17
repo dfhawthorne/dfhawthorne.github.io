@@ -1,0 +1,167 @@
+---
+layout: default
+title: 'Implement and manage Virtual Cloud Networks'
+base-url: home/oci-2024-architect-associate/networking/implement-and-manage-virtual-cloud-networks.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: cidr-blocks
+  toc-text: 'CIDR Blocks'
+- toc-url: vcn
+  toc-text: 'VCN'
+- toc-url: create-vcn
+  toc-text: 'Create VCN'
+- toc-url: manage-vcn
+  toc-text: 'Manage VCN'
+- toc-url: lab
+  toc-text: 'Lab'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>A VCN is the basic building block for Oracle Cloud Infrastructure.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Tasks/VCNs.htm">VCNs and Subnets</a></li>
+      <ul>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Tasks/Overview_of_VCNs_and_Subnets.htm">Overview of VCNs and Subnets</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-cidr-blocks">CIDR Blocks</h2>
+<p>Minimum IPv4 CIDR prefix length is 16 which gives 65,533 host addresses. Maximum is 30 which gives one (1) host address. One (1) IP address each, in each subnet, is reserved for:</p>
+<ol>
+  <li>Subnetwork address</li>
+  <li>Subnet router</li>
+  <li>Broadcast address</li>
+</ol>
+<p>IPv6 address provided by OCI has a /56 prefix</p>
+<h2 id="TOC-vcn">VCN</h2>
+<p>Resides in a single region but can span multiple Availability Domians. Can have multiple CIDR blocks.</p>
+<p>Components of a VCN are:</p>
+<ul>
+  <li>Subnet (has a single CIDR block)</li>
+  <li>Route Table</li>
+  <li>DHCP Options (needed for DNS)</li>
+  <li>Gateways: Internet, NAT, Service, Local Peering, Dynamic Routing.</li>
+  <li>Network Security Group</li>
+  <li>Security List</li>
+</ul>
+<p>Run the following commands to list all VCNs in the Sandbox compartment:</p>
+<pre class="bash-cmd">
+sandbox_comp_ocid=$(       \
+  oci iam compartment list \
+  --name 'Sandbox'         \
+  --query 'data[0].id'     \
+  --raw-output             \
+)
+oci network vcn list                                                            \
+  --compartment-id ${sandbox_comp_ocid}                                         \
+  --query 'data[*].{"Display Name":"display-name","CIDR Blocks":"cidr-blocks"}' \
+  --output table   
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
++-----------------+--------------+
+| CIDR Blocks     | Display Name |
++-----------------+--------------+
+| ['10.0.0.0/16'] | sandbox-vcn  |
+| ['10.0.0.0/16'] | sandbox-vcn  |
++-----------------+--------------+
+</pre>
+<p><span class="note">Note:</span> The display name and CIDR Blocks are duplicates.</p>
+<h2 id="TOC-create-vcn">Create VCN</h2>
+<p>The easiest way to create a VCN is to the wizard under the Networking menu.</p>
+<p>The Terraform code to create a VCN is:</p>
+<pre class="text">
+resource "oci_core_vcn" "sandbox_vcn" {
+  compartment_id                = local.sandbox_comp_ocid
+  cidr_blocks                   = ["10.0.0.0/16"]
+  display_name                  = "sandbox-vcn"
+  dns_label                     = "sandbox"
+}
+</pre>
+<p>The equivalent OCI CLI command is:</p>
+<pre class="bash-cmd">
+oci network vcn create                        \
+  --compartment-id      ${sandbox_comp_ocid}  \
+  --cidr-blocks         '["10.0.0.0/16"]'     \
+  --display-name        "sandbox-vcn"         \
+  --dns-label           "sandbox"'
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
+{
+  "data": {
+    "byoipv6-cidr-blocks": null,
+    "cidr-block": "10.0.0.0/16",
+    "cidr-blocks": [
+      "10.0.0.0/16"
+    ],
+    "compartment-id": "ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da",
+    "default-dhcp-options-id": "ocid1.dhcpoptions.oc1.ap-sydney-1.aaaaaaaajs3e534mob23c33ccdbwerpj6bia2ue2tnrtb3xv7xgloc5dm7sa",
+    "default-route-table-id": "ocid1.routetable.oc1.ap-sydney-1.aaaaaaaaw2dcufmlxjnqsg6n6avg3ofgbjvhn7rq2h7o5d2kxtxraozw3yia",
+    "default-security-list-id": "ocid1.securitylist.oc1.ap-sydney-1.aaaaaaaaav2gpqwu22jggxg7is7oqpk3mv23ib3weefq6kzjh5n3dz63ukna",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-07-15T18:02:30.948Z"
+      }
+    },
+    "display-name": "sandbox-vcn",
+    "dns-label": "sandbox",
+    "freeform-tags": {},
+    "id": "ocid1.vcn.oc1.ap-sydney-1.amaaaaaa63mv4jyaj5mtika6dmntjldwgucszjglov34ko43itr6uusiw65q",
+    "ipv6-cidr-blocks": null,
+    "ipv6-private-cidr-blocks": null,
+    "lifecycle-state": "AVAILABLE",
+    "time-created": "2024-07-15T18:02:31.059000+00:00",
+    "vcn-domain-name": "sandbox.oraclevcn.com"
+  },
+  "etag": "9b6e3874"
+}
+</pre>
+<h2 id="TOC-manage-vcn">Manage VCN</h2>
+<p>According to the help text for the <code>oci network vcn</code> command, the following verbs are available to manage VCNs:</p>
+<ul>
+  <li><code>add-ipv6-vcn-cidr</code></li>
+  <li><code>add-vcn-cidr</code></li>
+  <li><code>change-compartment</code></li>
+  <li><code>create</code></li>
+  <li><code>delete</code></li>
+  <li><code>modify-vcn-cidr</code></li>
+  <li><code>remove-ipv6-vcn-cidr</code></li>
+  <li><code>remove-vcn-cidr</code></li>
+  <li><code>update</code></li>
+</ul>
+<h2 id="TOC-lab">Lab</h2>
+<p>This topic is covered by <i>Lab 3-1: Networking - Virtual Cloud Network: Create and Configure a Virtual Cloud Network</i>.</p>
+<blockquote>
+  <p>A VCN is a software-defined network specific to OCI tenancy or a compartment in a specified region.</p>
+  <p>Upon creation, a VCN automatically includes route tables, security lists (with default security rules), and a set of DHCP options. The VCN also has access to a DNS resolver.</p>
+  <p>A VCN that is launched with the OCI VCN Wizard tool automatically creates the following:</p>
+  <ul>
+    <li>Public and Private subnets</li>
+    <li>Internet Gateway (IG)</li>
+    <li>NAT Gateway (NAT)</li>
+    <li>service Gateway (SG)</li>
+    <li>Two Route Tables (RT)</li>
+    <li>Two Security Lists (SL)</li>
+  </ul>
+</blockquote>
+
+{% endraw %}

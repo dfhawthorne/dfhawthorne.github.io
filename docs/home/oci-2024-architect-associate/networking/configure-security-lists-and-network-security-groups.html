@@ -1,0 +1,49 @@
+---
+layout: default
+title: 'Configure Security Lists and Network Security Groups'
+base-url: home/oci-2024-architect-associate/networking/configure-security-lists-and-network-security-groups.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: security-list
+  toc-text: 'Security List'
+- toc-url: network-security-group
+  toc-text: 'Network Security Group'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Security lists are firewall rules that apply to all VNICs in a subnet. Network Security Groups are firewall rules for a group of VNICs.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm">Security Lists</a></li>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/networksecuritygroups.htm">Network Security Groups</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-security-list">Security List</h2>
+<p>The help text for the <code>oci network security-list create</code> says:</p>
+<blockquote>
+  <p>Creates a new security list for the specified VCN. For more information about security lists, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm">Security Lists</a>. For information on the number of rules you can have in a security list, see <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/servicelimits.htm">Service Limits</a>.</p>
+  <p>For the purposes of access control, you must provide the <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm">OCID</a> of the compartment where you want the security list to reside. Notice that the security list doesn’t have to be in the same compartment as the VCN, subnets, or other Networking Service components. If you’re not sure which compartment to use, put the security list in the same compartment as the VCN. For more information about compartments and access control, see <a href="https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/overview.htm">Overview of the IAM Service </a>. For information about OCIDs, see <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm">Resource Identifiers</a>.</p>
+  <p>You may optionally specify a display name for the security list, otherwise a default is provided. It does not have to be unique, and you can change it. Avoid entering confidential information.</p>
+</blockquote>
+<h2 id="TOC-network-security-group">Network Security Group</h2>
+<p>Network Security Groups (NSGs) consist of two (2) parts:</p>
+<ol>
+  <li>Set of VNICs</li>
+  <li>Security rules (both ingress and egress)</li>
+</ol>
+<p>A NSG can be specified as either as source or destination in a security rule thereby giving a finer-grain control than a security list. A NSG can expand with the launch of a compute instance.</p>

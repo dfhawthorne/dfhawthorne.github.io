@@ -1,0 +1,79 @@
+---
+layout: default
+title: 'Configure Local and Remote Peering'
+base-url: home/oci-2024-architect-associate/networking/configure-local-and-remote-peering.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: local-vcn-peering
+  toc-text: 'Local VCN Peering'
+- toc-url: remote-vcn-peering
+  toc-text: 'Remote VCN Peering'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are four (4) types of peering between VCNs:</p>
+<ol>
+  <li>Local peering (within a region) using LPG (local peering gateways)</li>
+  <li>Remote peering (between different regions) using RPC (remote peering connections)</li>
+  <li>Local peering (within a region) using upgraded DRG (dynamic routing gateways)</li>
+  <li>Remote peering (between different regions) using upgraded DRG</li>
+</ol>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Tasks/VCNpeering.htm">Access to Other VCNs: Peering</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-local-vcn-peering">Local VCN Peering</h2>
+<p>VCNs cannot have overlapping CIDR blocks. Peering is achieved through either LPGs (Local Peering Gateways) or an upgraded DRG (Dynamic Routing Gateway).</p>
+<p>A LPG is attached to each VCN, while only a single DRG is needed to connect multiple VCNs.</p>
+<p>This topic is covered in <i>Lab 4-1: Networking - Virtual Cloud Network: Configure Local VCN Peering</i>.</p>
+<blockquote>
+  <p><strong>Local VCN Peering</strong></p>
+  <p>Local VCN peering is the the process of connecting two VCNs in the same region so that their resources can communicate using private IP addresses.</p>
+  <p><strong>Local Peering Gateway</strong></p>
+  <p>A Local Peering Gateway is a component on a VCN for routing traffic to a locally peered VCN.</p>
+  <p><strong>Summary of Networking Components for Peering Using an LPG</strong></p>
+  <p>The Networking service components required for a local peering include:</p>
+  <ul>
+    <li>Two VCNs with <u>non-overlapping</u> CIDRs, in the same region</li>
+    <li>A local peering gateway (LPG) on each VCN in the peering relationship</li>
+    <li>A connection between those two LPGs</li>
+    <li>Supporting route rules to enable traffic to flow over the connection</li>
+    <li>Supporting security rules to control the types of traffic allowed to and from the instances in the subnets that need to communicate with the other VCN</li>
+  </ul>
+  <img src="home/oci-2024-architect-associate/networking/configure-local-and-remote-peering/lab-4-1.png" alt="Lab 4-1 setup with two local peering gateways" />
+</blockquote>
+<h2 id="TOC-remote-vcn-peering">Remote VCN Peering</h2>
+<p>VCNs cannot have overlapping CIDR blocks. Peering is achieved through either using Remote Peering Connections (RPCs) acting a connection point for each VCN on DRG, or by using upgraded DRGs directly using route tables.</p>
+<p>This topic is covered in <i>Lab 4-2: Networking - Virtual Cloud Network: Configure Remote VCN Peering</i>:</p>
+<blockquote>
+  <p><strong>Remote VCN Peering</strong></p>
+  <p>Remote VCN peering is the process of connecting two VCNs, typically, but not required to be in different regions. Peering allows VCNs' resources to communicate using private IP addresses.</p>
+  <p><strong>Dynamic Routing Gateway</strong></p>
+  <p>A Dynamic Routing Gateway is a powerful virtual router that enables VCN connectinity to on-premises resources and to remote and local VCNs in the current tenancy and in other tenancies.</p>
+  <p><strong>Summary of Networking Components for Remote Peering</strong></p>
+  <p>The Networking service components required for a remote peering include:</p>
+  <ul>
+    <li>DRG attachment to each VCN in the peering relationship</li>
+    <li>A remote peering connection (RPC) on each DRG in the peering relationship</li>
+    <li>A connection between those two RPC</li>
+    <li>Supporting route rules to enable traffic to flow over the connection</li>
+    <p>Supporting security rules to control the types of traffic allowed to and from the instances in the subnets that need to communicate with the other VCN.</p>
+  </ul>
+  <img src="home/oci-2024-architect-associate/networking/configure-local-and-remote-peering/lab-4-2.png" alt="Lab 4-2 setup with two dynamic routing gateways" />
+</blockquote>

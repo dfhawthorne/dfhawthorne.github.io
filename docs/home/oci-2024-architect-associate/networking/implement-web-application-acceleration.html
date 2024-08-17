@@ -1,0 +1,59 @@
+---
+layout: default
+title: 'Implement Web Application Acceleration'
+base-url: home/oci-2024-architect-associate/networking/implement-web-application-acceleration.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference 
+  toc-text: 'Reference'
+- toc-url: scenarios
+  toc-text: 'Scenarios'
+  toc-menu:
+  - toc-url: scenario-1
+    toc-text: 'Scenario 1'
+  - toc-url: scenario-2
+    toc-text: 'Scenario 2'
+- toc-url: web-application-acceleration
+  toc-text: 'Web Application Acceleration'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Load balancer has features (caching and compression) that enable web application acceleration (WAA).</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Balance/home.htm">Load Balancer</a></li>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/web-app-acceleration/home.htm">Web Application Acceleration</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/web-app-acceleration/acceleration-management.htm">Accelerations for Web Application Acceleration Policies</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-scenarios">Scenarios</h2>
+<h3 id="TOC-scenario-1">Scenario 1</h3>
+<p>Scenario 1: Improve application performance and decreases server load.</p>
+<p>Action: Leverage WAA caching</p>
+<h3 id="TOC-scenario-2">Scenario 2</h3>
+<p>Scenario 2: Decrease network load and further reduce latency</p>
+<p>Action: Utilize WAA compression</p>
+<h2 id="TOC-web-application-acceleration">Web Application Acceleration</h2>
+<ul>
+  <li>Works with Layer 7 http/https protocols only</li>
+  <li>Only HEAD and GET requests are cached</li>
+  <li>Only responses that return HTTP status code 200 are cached</li>
+  <li>Cached content might not stay current on the back-end servers until the cache expires or is purged.</li>
+  <li>Content is cached until it expires or is purged even if the file is removed from the back-end server</li>
+  <li>The maximum size of the cache is 100 MB</li>
+  <li>Responses that return the Set-Cookie header are not cached</li>
+  <li>Oracle recommends you do not cache dynamic pages because they can leak information</li>
+</ul>
+<img src="home/oci-2024-architect-associate/networking/implement-web-application-acceleration/dashboard.png" alt="OCI Load Balancer dashboard showing impact of enabling WAA compression and caching" />

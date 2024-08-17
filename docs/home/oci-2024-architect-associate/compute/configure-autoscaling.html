@@ -1,0 +1,67 @@
+---
+layout: default
+title: 'Configure Autoscaling'
+base-url: home/oci-2024-architect-associate/compute/configure-autoscaling.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Compute'
+  url: home/oci-2024-architect-associate/compute.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: lab-for-capacity-reservation
+  toc-text: 'Lab for Capacity Reservation'
+- toc-url: lab-for-metric-based-autoscaling
+  toc-text: 'Lab for Metric-Based Autoscaling'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Autoscaling can be done based on either a metric (usually CPU usage or memory usage), or a schedule.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Compute/home.htm">Compute</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Compute/Tasks/autoscalinginstancepools.htm">Autoscaling</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-lab-for-capacity-reservation">Lab for Capacity Reservation</h2>
+<p>This topic is covered by <i>Lab 8-1: Compute: Create a Capacity Reservation and Launch Instances</i>:</p>
+<blockquote>
+  <p><strong>Overview</strong></p>
+  <p>The capacity reservations allow you to reserve compute capacity in advance and use this capacity when you create instances against the reservation. There is no minimum time or size commitment. You can create, modify, and terminate your capacity reservation at any time.</p>
+  <p>In this lab, you will:</p>
+  <ul>
+    <li>Create a Virtual Cloud Network and a subnet</li>
+    <li>Create a capacity reservation</li>
+    <li>Add a capacity configuration</li>
+    <li>Create instances in a capacity reservation</li>
+    <li>Move an instance out of a capacity reservation</li>
+    <li>Add an instance to a capacity reservation</li>
+  </ul>
+  <img src="home/oci-2024-architect-associate/compute/configure-autoscaling/lab-8-1.png" alt="Two capacity configurations have one instance each." />
+</blockquote>
+<h2 id="TOC-lab-for-metric-based-autoscaling">Lab for Metric-Based Autoscaling</h2>
+<p>This topic is covered by <i>Lab 9-1: Compute: Configure Metric-Based Autoscaling</i>:</p>
+<blockquote>
+  <p><strong>Overview</strong></p>
+  <p>Autoscaling lets you automatically adjust the number or the lifecycle state of compute instances in an instance pool. This helps you provide consistent performance for your end users during periods of high demand, and reduce your costs during periods of low demand.</p>
+  <p>In this lab, you will:</p>
+  <ul>
+    <li>Create a Virtual Cloud Network and a subnet</li>
+    <li>Create a load balancer</li>
+    <li>Create a compute instance and a custom image</li>
+    <li>Create an instance configuration</li>
+    <li>Create an instance pool</li>
+    <li>Create a metric-based autoscaling configuration</li>
+    <li>Test autoscaling</li>
+  </ul>
+  <img src="home/oci-2024-architect-associate/compute/configure-autoscaling/lab-9-1.png" alt="Auto-scaling configuration." />
+</blockquote>

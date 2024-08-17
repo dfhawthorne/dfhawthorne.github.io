@@ -1,0 +1,93 @@
+---
+layout: default
+title: 'Explain Load Balancer concepts'
+base-url: home/oci-2024-architect-associate/networking/explain-load-balancer-concepts.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: key-concepts
+  toc-text: 'Key Concepts'
+  toc-menu:
+  - toc-url: backend-server
+    toc-text: 'Backend Server'
+  - toc-url: backend-set
+    toc-text: 'Backend Set'
+  - toc-url: certificates
+    toc-text: 'Certificates'
+  - toc-url: health-check
+    toc-text: 'Health Check'
+  - toc-url: listener
+    toc-text: 'Listener'
+  - toc-url: load-balancing-policy
+    toc-text: 'Load Balancing Policy'
+  - toc-url: path-route-set
+    toc-text: 'Path Route Set'
+  - toc-url: regions-and-availability-domains
+    toc-text: 'Regions and Availability Domains'
+  - toc-url: session-persistence
+    toc-text: 'Session Persistence'
+  - toc-url: shape
+    toc-text: 'Shape'
+- toc-url: types-of-load-balancers
+  toc-text: 'Types of Load Balancers'
+  toc-menu:
+  - toc-url: flexible-load-balancer
+    toc-text: 'Flexible Load Balancer'
+  - toc-url: network-load-balancer
+    toc-text: 'Network Load Balancer'
+  - toc-url: differences-between-layer-4-and-layer-7-load-balancing
+    toc-text: 'Differences Between Layer 4 and Layer 7 Load Balancing'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are two (2) types of load balancers: Application (Layer 7) and Network (layer 3 and 4). A load balancer can be private or public.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/Balance/Concepts/balanceoverview_topic-Load_Balancing_Concepts.htm">Load Balancer Concepts</a></li>
+  <li><a href="https://www.ateam-oracle.com/post/oci-network-load-balancer-types-use-cases-and-best-practice">OCI Network Load Balancer Types, Use Cases, and Best Practices</a></li>
+  <li><a href="https://www.ateam-oracle.com/post/load-balancing-ssl-traffic-in-oci">Load Balancing SSL Traffic in OCI</a></li>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Balance/Concepts/load_balancer_types.htm">Load Balancer Types</a></li>
+</ul>
+<h2 id="TOC-key-concepts">Key Concepts</h2>
+<p>Load balancing in Oracle Cloud Infrastructure (OCI) is a critical component for distributing incoming application traffic across multiple backend servers to ensure high availability, reliability, and scalability of applications. Here are the key concepts associated with load balancers in OCI:</p>
+<h3 id="TOC-backend-server">Backend Server</h3>
+<p>A backend server is an application server that generates responses to incoming TCP or HTTP traffic. Each backend server is identified by a unique combination of a private IPv4 address and port number (e.g., 10.10.10.1:8080).</p>
+<h3 id="TOC-backend-set">Backend Set</h3>
+<p>A backend set is a logical grouping of backend servers, defined by a load balancing policy and a health check policy. The backend set determines how traffic is directed to the backend servers. SSL configuration is optional.</p>
+<h3 id="TOC-certificates">Certificates</h3>
+<p>For HTTPS or SSL traffic, an SSL server certificate (X.509) must be associated with the load balancer. This certificate allows the load balancer to terminate the connection and decrypt incoming requests before passing them to the backend servers.</p>
+<h3 id="TOC-health-check">Health Check</h3>
+<p>A health check is a test to confirm the availability of backend servers. It can be a request or a connection attempt. The load balancer continuously monitors backend servers based on a specified time interval. If a server fails the health check, it is temporarily removed from rotation until it passes the health check again.</p>
+<h3 id="TOC-listener">Listener</h3>
+<p>A listener is a logical entity that checks for incoming traffic on the load balancer's IP address. Listeners are configured with a protocol (HTTP, HTTP/2, TCP, HTTPS) and a port number. Multiple listeners can be configured to handle different types of traffic.</p>
+<h3 id="TOC-load-balancing-policy">Load Balancing Policy</h3>
+<p>This policy dictates how the load balancer distributes incoming traffic to the backend servers. Common policies include round robin, least connections, and IP hash.</p>
+<h3 id="TOC-path-route-set">Path Route Set</h3>
+<p>A path route set contains rules to route traffic to the correct backend set without using multiple listeners or load balancers.</p>
+<h3 id="TOC-regions-and-availability-domains">Regions and Availability Domains</h3>
+<p>The load balancer service manages application traffic across availability domains within a region. A region is a localized geographic area, and an availability domain is one or more data centers within that region.</p>
+<h3 id="TOC-session-persistence">Session Persistence</h3>
+<p>Session persistence ensures that all requests from a single client are directed to the same backend server, maintaining session continuity.</p>
+<h3 id="TOC-shape">Shape</h3>
+<p>The shape determines the load balancer's total pre-provisioned maximum capacity (bandwidth). Available shapes include 10 Mbps, 100 Mbps, 400 Mbps, and 8000 Mbps. The 10 Mbps shape is eligible for the Always Free tier.</p>
+<h3 id=TOC-virtual-cloud-network-vcn">Virtual Cloud Network (VCN)</h3>
+<p>A VCN is a private network that you set up in OCI, within which you can deploy your load balancers and other resources</p>
+<h2 id="TOC-types-of-load-balancers">Types of Load Balancers</h2>
+<h3 id="TOC-flexible-load-balancer">Flexible Load Balancer</h3>
+<p>The flexible load balancer operates at both Layer 4 (transport layer) and Layer 7 (application layer) of the OSI model. It provides automated traffic distribution, SSL termination, and end-to-end SSL tunneling. It is suitable for applications requiring advanced proxy features and high availability.</p>
+<h3 id="TOC-network-load-balancer">Network Load Balancer</h3>
+<p>The network load balancer is optimized for latency-sensitive workloads and long-running connections. It operates at Layer 3 (network layer) and Layer 4, supporting TCP/UDP/ICMP protocols. It is a non-proxy solution, ensuring low latency and high availability by directing traffic only to healthy servers.</p>
+<h3 id="TOC-differences-between-layer-4-and-layer-7-load-balancing">Differences Between Layer 4 and Layer 7 Load Balancing</h3>
+<ul>
+<li><strong>Layer 4 Load Balancing</strong>: Operates at the transport layer, forwarding network packets without inspecting the content. It uses TCP connections and is suitable for basic traffic distribution.</li>
+<li><strong>Layer 7 Load Balancing</strong>: Operates at the application layer, inspecting the content of messages. It makes routing decisions based on HTTP/HTTPS headers, URL types, and cookies, providing more advanced traffic management.</li>
+</ul>

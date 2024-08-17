@@ -1,0 +1,140 @@
+---
+layout: default
+title: 'Configure Dynamic Groups, Network Sources, and Tag-Based Access Control'
+base-url: home/oci-2024-architect-associate/identity-and-access-management/configure-dynamic-groups-network-sources-and-tagbased-access-control.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Identity and Access Management'
+  url: home/oci-2024-architect-associate/identity-and-access-management.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: dynamic-groups
+  toc-text: 'Dynamic Groups'
+- toc-url: network-sources
+  toc-text: 'Network Sources'
+- toc-url: tag-based-access-control
+  toc-text: 'Tag-Based Access Control'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Dynamic groups, network sources, and Tag-Based Access Control (TBAC) allow for a finer-grain of control over policies through tags and IP addresses more than provided by user, group, and compartment definitions.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/home1.htm">IAM without Identity Domains</a></li>
+      <ul>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingdynamicgroups.htm">Managing Dynamic Groups</a></li>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/managingnetworksources.htm">Managing Network Sources</a></li>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Tagging/home.htm">Tagging</a></li>
+      </ul>
+  </ul>
+</ul>
+<h2 id="TOC-dynamic-groups">Dynamic Groups</h2>
+<p>The OCI CLI help text for <code>oci iam dynamic-group</code> says:</p>
+<blockquote>
+  <p>A dynamic group defines a matching rule. Every bare metal or virtual machine instance is deployed with an instance certificate. The certificate contains metadata about the instance. This includes the instance OCID and the compartment OCID, along with a few other optional properties. When an API call is made using this instance certificate as the authenticator, the certificate can be matched to one or multiple dynamic groups. The instance can then get access to the API based on the permissions granted in policies written for the dynamic groups.</p>
+  <p>This works like regular user/group membership. But in that case, the membership is a static relationship, whereas in a dynamic group, the membership of  an  instance  certificate  to  a  dynamic  group  is  determined  during runtime.&hellip;</p>
+</blockquote>
+<p>A dynamic group is for compute instances (instance principals) so that access by those compute instances to resources such as services can be controlled. The dynamic group can only exist in a tenancy, not in any subcompartment of the tenancy. The name of the dynamic group is immutable.</p>
+<p>To create a dynamic group that contains all compute instances in the <i>Sandbox</i> compartment, run the following commands:</p> 
+<pre class="bash-cmd">
+export sandbox_comp_ocid=$( \
+  oci iam compartment list  \
+    --name 'Sandbox'        \
+    --query 'data[0].id'    \
+    --raw-output            \
+)
+oci iam dynamic-group create                                          \
+  --name 'Sandbox-Servers'                                            \
+  --description 'Compute instances in the Sandbox'                    \
+  --matching-rule "instance.compartment.id = '${sandbox_comp_ocid}'"
+</pre>
+<p>The sample output is:</p>
+<pre class="text">
+{
+  "data": {
+    "compartment-id": "ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+    "defined-tags": {
+      "Oracle-Tags": {
+        "CreatedBy": "default/tenancy_admin",
+        "CreatedOn": "2024-07-12T20:31:31.690Z"
+      }
+    },
+    "description": "Compute instances in the Sandbox",
+    "freeform-tags": {},
+    "id": "ocid1.dynamicgroup.oc1..aaaaaaaaleu3nq4i6viqsy3on7yps6q3hxwfdwrog2tyn2fc73rksrtlg7ua",
+    "inactive-status": null,
+    "lifecycle-state": "ACTIVE",
+    "matching-rule": "instance.compartment.id = 'ocid1.compartment.oc1..aaaaaaaamoo6uz2qmix2adls2cgoqxxhdt4wuam3wbcrw6co6z4osweos6da'",
+    "name": "Sandbox-Servers",
+    "time-created": "2024-07-12T20:31:31.789000+00:00"
+  },
+  "etag": "b1e1ef5e1fe240cda8682db9c7db6589"
+}
+</pre>
+<p>To find members, a query will have to be contructed that matches the <i>matching-rule</i>.</p>
+<h2 id="TOC-network-sources">Network Sources</h2>
+<p>The help text for the <code>oci iam network-sources</code> command says:</p>
+<blockquote>
+  <p>A network source specifies a list of source IP addresses that are allowed to make authorization requests. Use the network source in policy statements to restrict access to only requests that come from the specified IPs.&hellip;</p>
+</blockquote>
+<p>To create a network sources for web servers in the <i>Sandbox</i>, run the following command:</p>
+<pre class="bash-cmd">
+oci iam network-sources create                                           \
+  --name 'Sandbox-Web-Servers'                                           \
+  --description 'Authorised IP addresses for Web Servers in the Sandbox' \
+  --public-source-list '["192.168.1.0/24"]'                              \
+  --compartment-id ${OCI_CLI_TENANCY}
+</pre>
+<p>This failed with the following error messages because the always free account does not have access to network sources:</p>
+<pre class="text">
+ServiceError:
+{
+    "client_version": "Oracle-PythonSDK/2.126.4, Oracle-PythonCLI/3.41.0",
+    "code": "UserCapacityExceeded",
+    "logging_tips": "Please run the OCI CLI command using --debug flag to find more debug information.",
+    "message": "Maximum number of network source for IP-based policy [0] reached in tenant ocid1.tenancy.oc1..aaaaaaaa7ilqdzmkbqduujc3tt6zrl2n2ytcughcjoidozg4memj2k4cm7na",
+    "opc-request-id": "F7C57B639C7843CABBB1B5919D31EF8A/24ED34561B43E5D30DBFB442FE411EAF/B68265767DF3721C5BA561861E20A702",
+    "operation_name": "create_network_source",
+    "request_endpoint": "POST https://identity.ap-sydney-1.oci.oraclecloud.com/20160918/networkSources",
+    "status": 409,
+    "target_service": "identity",
+    "timestamp": "2024-07-12T21:28:39.917292+00:00",
+    "troubleshooting_tips": "See [https://docs.oracle.com/iaas/Content/API/References/apierrors.htm] for more information about resolving this error. If you are unable to resolve this issue, run this CLI command with --debug option and contact Oracle support and provide them the full error message."
+}
+</pre>
+<p><span class="note">Note:</span> The <i>network sources</i> must be specified in a tenancy, not in any sub-compartment.</p>
+<h2 id="TOC-tag-based-access-control">Tag-Based Access Control</h2>
+<p>The study giude says:</p>
+<blockquote>
+  <ul>
+    <li>Tag-based access control (TBAC) allows to define policies with tags that span compartments, group, and resources</li>
+    <li>Scope access based on the tags applied to resource</li>
+    <li>TBAC = conditions + set of tag variables</li>
+    <li>Access can be controlled bases on a tag:</li>
+    <ul>
+      <li>On the requesting resource (group, dynamic group, or compartment)</li>
+      <li>On the target of the request (resource or compartment)</li>
+    </ul>
+  </ul>
+</blockquote>
+<p>Tag variables are of the form:</p>
+<ul>
+  <li>Requestor</li>
+  <ul>
+    <li><code>request.principal.group.tag.{tagnamespace}.{tagkey}='&lt;value&gt;'</code></li>
+    <li><code>request.principal.compartment.tag.{tagnamespace}.{tagkey}='&lt;value&gt;'</code></li>
+  </ul>
+  <li>Target</li>
+  <ul>
+    <li><code>target.resource.tag.{tagnamespace}.{tagkey}='&lt;value&gt;'</code></li>
+    <li><code>target.resource.compartment.tag.{tagnamespace}.{tagkey}='&lt;value&gt;'</code></li>
+  </ul>
+</ul>

@@ -1,0 +1,41 @@
+---
+layout: default
+title: 'Configure Site-to-Site VPN'
+base-url: home/oci-2024-architect-associate/networking/configure-sitetosite-vpn.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: site-to-site-vpn
+  toc-text: 'Site-to-Site VPN'
+---
+  
+<h2 id="TOC-summary">Summary</h2>
+<p>Site-to-site VPN allows customer premise to OCI connectivity over IPSec tunnels.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Tasks/workingwithIPsec.htm">Working with Site-to-Site VPN</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-site-to-site-vpn">Site-to-Site VPN</h2>
+<p><cite>Offers a simple and secure way to connect corporate network to OCI over an existing Internet connection.</cite></p>
+<p>Can be a redundant connection for FastConnect.</p>
+<p>Connects CPE (Customer Premises Equipment) to DRG (Dynamic Routing Gateway) via two (2) redundant IPsec tunnels.</p>
+<p>Need to create the following in OCI:</p>
+<ol>
+  <li>Dynamic Routing Gateway (DRG)</li>
+  <li>Customer Premise Equipment (CPE) representing the router in the customer's network.</li>
+</ol>

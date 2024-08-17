@@ -1,0 +1,57 @@
+---
+layout: default
+title: 'Explain the core concepts of Identity and Access Management'
+base-url: home/oci-2024-architect-associate/identity-and-access-management/explain-the-core-concepts-of-identity-and-access-management.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Identity and Access Management'
+  url: home/oci-2024-architect-associate/identity-and-access-management.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'references'
+  toc-text: 'References'
+- toc-url: 'authentication'
+  toc-text: 'Authentication'
+- toc-url: 'authorisation'
+  toc-text: 'Authorisation'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are two (2) basic concepts in security:</p>
+<ol>
+  <li><strong>Authentication (AuthN)</strong> identifies the person or entity attempting to access a secured resource.</li>
+  <li><strong>Authorisation (AuthZ)</strong> determines what level of access a person or entity has to a secured resource.</li>
+</ol>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/iaas/Content/home.htm">Oracle Cloud Infrastructure Documentation</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/baremetalintro.htm">Getting Started</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts.htm">Learn About Oracle Cloud Basics</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts-account.htm">Accounts and Access Concepts</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-authentication">Authentication</h2>
+<p>Authentication is the Identity part of IAM.</p>
+<p>People and entities can be aythenticated through various means:</p>
+<ul>
+  <li>User credentials such as userid and password. This can be strengthened through MFA (Multi-factor authentication) for connection directly to OCI.</li>
+  <li>Federated identity: credentials are authenticated by another service such as Microsoft AD, another cloud vendor, or another tenancy within OCI.</li>
+  <li>Programs can be authenticated through API keys and OAuth 2.0 tokens. Access is still associated with a defined user within the tenancy.</li>
+</ul>
+<p>Once a tenancy is provisioned, one (1) user is created (the tenancy administrator) and that user is part of the <i>Administrators</i> group in the <i>Default</i> identity domain.</p>
+<h2 id="TOC-authorisation">Authorisation</h2>
+<p>Authorisation is the Access Management part of IAM.</p>
+<p>Authorisation is managed through policies. There are initially two (2) policies:</p>
+<ol>
+  <li>Allow all members of the <i>Administrators</i> group in the <i>Default</i> identity domain can manage all resources within the tenancy. This policy allows the tenancy administrator to create enough resources to allow the tenancy to become self-substaining by provisioning other compartments, identity domains, and administrators for those identity domains and compartments.</li>
+  <li>Everything else is prohibited. This policy can not be removed. This forces administrators to explicitly allow access to resources.</li>
+</ol>

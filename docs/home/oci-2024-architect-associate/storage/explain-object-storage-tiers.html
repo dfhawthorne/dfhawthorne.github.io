@@ -1,0 +1,35 @@
+---
+layout: default
+title: 'Explain Object Storage tiers'
+base-url: home/oci-2024-architect-associate/storage/explain-object-storage-tiers.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Storage'
+  url: home/oci-2024-architect-associate/storage.html
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are three (3) storage tiers for objects: Standard; Infrequent Access; and Archive.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Object/home.htm">Object Storage</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/understandingstoragetiers.htm">Object Storage Storage Tiers</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-storage-tiers">Storage Tiers</h2>
+<table summary="Summary of storage tier options"><caption></caption><colgroup><col style="width:20%"><col style="width:20%"><col style="width:20%"><col style="width:20%"><col style="width:20%"></colgroup><thead>
+  <tr><th>Tier</th><th>Storage Cost</th><th>Minimum Retention Period</th><th>Retrieval Fee</th><th>Availability SLA</th></tr>
+  </thead>
+  <tbody>
+  <tr><td>Standard</td><td>Highest</td><td>None</td><td>No</td><td>99.9%</td></tr>
+  <tr><td>Infrequent Access</td><td>Cheaper</td><td>31 days</td><td>Yes</td><td>99%</td></tr>
+  <tr><td>Archive</td><td>Lowest</td><td>90 days</td><td>No</td><td>Data is offline and objects must be restored before they can be read. Restoration takes at most an hour from the time an Archive Storage restore request is made, to the time the first byte of data is retrieved.</td></tr>
+  </tbody>
+</table>

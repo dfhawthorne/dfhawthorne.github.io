@@ -1,0 +1,92 @@
+---
+layout: default
+title: 'Compute Instance VNIC Queries'
+base-url: home/procedures/oci-procedures/compute-instance-vnic-queries.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references
+  toc-text: References
+- toc-url: find-vnics
+  toc-text: 'Find VNICs'
+  toc-menu:
+  - toc-url: create-table-of-all-vnics
+    toc-text: 'Create Table of All VNICs'
+  - toc-url: create-json-file-of-all-vnics
+    toc-text: 'Create JSON File of All VNICs'
+file-download-dir:  home/procedures/oci-procedures/compute-instance-vnic-queries
+file-download:
+- 'sandbox_vnic.json'
+---
+
+{% raw %}
+<h2 id="TOC-summary">Summary</h2>
+<p>After creating a compute instance, I need to know what VNICs are available.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/index.html">OCI CLI Command Reference</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam.html">iam</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment.html">compartment</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/iam/compartment/list.html">list</a></li>
+      </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute.html">compute</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/instance.html">instance</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.1/oci_cli_docs/cmdref/compute/instance/list-vnics.html">list-vnics</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-find-images">Find VNICs</h2>
+<p>The data returned by the <code>oci compute image list-vnics</code> command can be returned in either tabular or JSON format. The tabular format is easier to scan, while the JSON can return all fields:</p>
+<h3 id="TOC-create-table-of-all-images">Create Table of All VNICs</h3>
+<p>To find what VNICs compute images have in the <span class="file-name">Sandbox</span> compartment, run the following commands to return a subset of fields in a tabular format:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+oci compute instance list-vnics                                                                                  \
+    --compartment-id $sandbox_ocid                                                                               \
+    --query 'data[*].{"Instance Name":"display-name",OCID:id,"Private IP":"private-ip","Public IP":"public-ip"}' \
+    --all                                                                                                        \
+    --output table
+</pre>
+<p>Sample output is:</p>
+<pre class="text">
++-------------------+-----------------------------------------------------------------------------------------+------------+----------------+
+| Instance Name     | OCID                                                                                    | Private IP | Public IP      |
++-------------------+-----------------------------------------------------------------------------------------+------------+----------------+
+| Sandbox public VM | ocid1.vnic.oc1.ap-sydney-1.abzxsljrmdbwvui6ojyck4je6tty3huincepn7sitgejznlf3ewjrv7mw4ra | 10.0.1.179 | 152.67.125.254 |
++-------------------+-----------------------------------------------------------------------------------------+------------+----------------+
+</pre>
+<h3 id="create-json-file-of-all-vnics">Create JSON File of All VNICs</h3>
+<p>To find what VNICs compute images have in the <span class="file-name">Sandbox</span> compartment, run the following commands to return all fields in JSON format:</p>
+<pre class="bash-cmd">
+export sandbox_ocid=$(              \
+    oci iam compartment list        \
+        --name        'Sandbox'     \
+        --query       'data[0].id'  \
+        --raw-output                \
+    )
+oci compute instance list-vnics        \
+    --compartment-id $sandbox_ocid     \
+    --all                              \
+    &gt;sandbox_vnic.json
+</pre>
+<p>The output has been uploaded as <a href="home/procedures/oci-procedures/compute-instance-vnic-queries/sandbox_vnic.json">sandbox_vnic.json</a>.</p>
+{% endraw %}

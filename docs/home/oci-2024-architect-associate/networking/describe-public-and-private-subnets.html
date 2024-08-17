@@ -1,0 +1,112 @@
+---
+layout: default
+title: 'Describe public and private subnets'
+base-url: home/oci-2024-architect-associate/networking/describe-public-and-private-subnets.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: references
+  toc-text: 'References'
+- toc-url: general-description
+  toc-text: 'General Description'
+- toc-url: general-considerations
+  toc-text: 'General Considerations'
+- toc-url: create-public-subnet
+  toc-text: 'Create Public Subnet'
+- toc-url: create-private-subnet
+  toc-text: 'Create Private Subnet'
+---
+
+{% raw %}
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are two (2) types of subnets: private; and public. Both can have egress to the Internet. However, only the public subnet can have ingress from the Internet.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/overview.htm">Networking Overview</a></li>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/scenarios.htm">Networking Scenarios</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/scenarioc.htm">Scenario C: Public and Private Subnets with a VPN</a></li>
+      </ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/VCNs.htm">VCNs and Subnets</a></li>
+      <ul>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Tasks/Overview_of_VCNs_and_Subnets.htm">Overview of VCNs and Subnets</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-general-description">General Description</h2>
+<p>The help text for the <code>oci network subnet create</code> command says:</p>
+<blockquote>
+  <p>Creates a new subnet in the specified VCN. You can’t change the size of the subnet after creation, so it’s important to think about the size of subnets you need before creating them. For more information, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingVCNs.htm">VCNs and Subnets</a>. For information on the number of subnets you can have in a VCN, see <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/servicelimits.htm">Service Limits</a>.</p>
+  <p>For the purposes of access control, you must provide the <a href="https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm">OCID</a> of the compartment where you want the subnet to reside. Notice that the subnet doesn’t have to be in the same compartment as the VCN, route tables, or other Networking Service  components. If you’re not sure which compartment to use, put the subnet in the same compartment as the VCN. For more information about compartments and access control, see <a href="https://docs.cloud.oracle.com/iaas/Content/Identity/Concepts/overview.htm">Overview of the IAM Service</a>. For information about  OCIDs, see <a href="https://docs.cloud.ora‐cle.com/iaas/Content/General/Concepts/identifiers.htm">Resource Identifiers</a>.</p>
+  <p>You may optionally associate a route table with the subnet. If you don’t, the subnet will use the VCN’s default route table. For more information about route tables, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingroutetables.htm">Route Tables</a>.</p>
+  <p>You may optionally associate a security list with the subnet. If you don’t, the subnet will use the VCN’s default security list. For more information about security lists, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm">Security Lists</a>.</p>
+  <p>You may optionally associate a set of DHCP options with the subnet. If you don’t, the subnet will use the VCN’s default set. For more information about DHCP options, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDHCP.htm">DHCP Options</a>.</p>
+  <p>You may optionally specify a display name for the subnet, otherwise a default is provided. It does not have to be unique, and you can change it. Avoid entering  confidential information.</p>
+  <p>You can also add a DNS label for the subnet, which is required if you want the Internet and VCN Resolver to resolve hostnames for instances in the subnet. For more information, see <a href="https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/dns.htm">DNS in Your Virtual Cloud Network</a>.</p>
+</blockquote>
+<h2 id="TOC-general-considerations">General Considerations</h2>
+<p>The critical parameter is <code>prohibit_public_ip_on_vnic</code>. This parameter determine whether the subnet is public or private. Setting this parameter to <code>false</code> forces the subnet to be public. Setting this parameter to <code>true</code> forces the subnet to be private.</p>
+<p>Only one (1) CIDR block can be specified for a subnet.</p>
+<h2 id="TOC-create-public-subnet">Create Public Subnet</h2>
+<p>The terraform code to create a public subnet can be expressed as:</p>
+<pre class="text">
+resource "oci_core_subnet" "sandbox_public_subnet" {
+  cidr_block                    = "10.0.1.0/24"
+  compartment_id                = local.sandbox_comp_ocid
+  vcn_id                        = oci_core_vcn.sandbox_vcn.id
+  display_name                  = "public subnet-sandbox-vcn"
+  dns_label                     = "public"
+  prohibit_internet_ingress     = false
+  prohibit_public_ip_on_vnic    = false
+}
+</pre>
+<p>The equivalent OCI CLI code is:</p>
+<pre class="bash-cmd">
+oci network subnet create                                     \
+  --cidr-block                  "10.0.1.0/24"                 \
+  --compartment-id              ${sandbox_comp_ocid}          \
+  --vcn-id                      ${sandbox_vcn_id}             \
+  --display-name                "public subnet-sandbox-vcn"   \
+  --dns-label                   "public"                      \
+  --prohibit-internet-ingress   false                         \
+  --prohibit-public-ip-on-vnic  false
+</pre>
+<h2 id="TOC-create-private-subnet">Create Private Subnet</h2>
+<p>The terraform code to create a private subnet can be expressed as:</p>
+<pre class="text">
+resource "oci_core_subnet" "sandbox_private_subnet" {
+  cidr_block                    = "10.0.2.0/24"
+  compartment_id                = local.sandbox_comp_ocid
+  vcn_id                        = oci_core_vcn.sandbox_vcn.id
+  display_name                  = "private subnet-sandbox-vcn"
+  dns_label                     = "private"
+  prohibit_internet_ingress     = true
+  prohibit_public_ip_on_vnic    = true
+}
+</pre>
+<p>The equivalent OCI CLI code is:</p>
+<pre class="bash-cmd">
+oci network subnet create                                     \
+  --cidr-block                  "10.0.2.0/24"                 \
+  --compartment-id              ${sandbox_comp_ocid}          \
+  --vcn-id                      ${sandbox_vcn_id}             \
+  --display-name                "private subnet-sandbox-vcn"  \
+  --dns-label                   "private"                     \
+  --prohibit-internet-ingress   true                          \
+  --prohibit-public-ip-on-vnic  true
+</pre>
+
+{% endraw %}

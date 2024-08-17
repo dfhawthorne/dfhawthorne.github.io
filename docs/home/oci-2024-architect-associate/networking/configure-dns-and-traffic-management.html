@@ -1,0 +1,81 @@
+---
+layout: default
+title: 'Configure DNS and Traffic Management'
+base-url: home/oci-2024-architect-associate/networking/configure-dns-and-traffic-management.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2024 Architect Associate'
+  url: home/oci-2024-architect-associate.html
+- title: 'Networking'
+  url: home/oci-2024-architect-associate/networking.html
+table-of-contents:
+- toc-url: summary
+  toc-text: 'Summary'
+- toc-url: reference
+  toc-text: 'Reference'
+- toc-url: dns
+  toc-text: 'DNS'
+- toc-url: oci-dns-capabilities
+  toc-text: 'OCI DNS Capabilities'
+- toc-url: traffic-management
+  toc-text: 'Traffic Management'
+  toc-menu:
+  - toc-url: configure-routing-policies
+    toc-text: 'Configure Routing Policies'
+  - toc-url: serve-intelligent-reponses-to-dns-queries
+    toc-text: 'Serve Intelligent Responses to DNS Queries'
+  - toc-url: define-logic-in-steering-policy
+    toc-text: 'Define Logic in Steering Policy'
+  - toc-url: serve-differnet-endpoints
+    toc-text: 'Serve Different Endpoints'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>OCI DNS can direct traffic to various different end-points based upon predefined rules to cater for failures, origin of requestor, and load-balancing.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/home.htm">Oracle Cloud Infrastructure Documentation </a></li>
+  <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+      <ul>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/DNS/home.htm">DNS and Traffic Management</a></li>
+          <ul>
+              <li><a href="https://docs.oracle.com/en-us/iaas/Content/TrafficManagement/Concepts/overview.htm">Traffic Management</a></li>
+          </ul>
+      </ul>
+  </ul>
+  <li><a href="https://www.ateam-oracle.com/post/oci-dns-geolocation-and-object-storage">OCI DNS Geolocation Traffic Steering and Object Storage</a></li>
+</ul>
+<h2 id="TOC-dns">DNS</h2>
+<p>Domain Name System (DNS) is the hieracrhical and decentralised naming system. DNS associate domains with other forms of information as well as IP addresses.</p>
+<h2 id="TOC-oci-dns-capabilities">OCI DNS Capabilities</h2>
+<p>The OCI DNS tool can:</p>
+<ul>
+  <li>Create and manage zones</li>
+  <li>Create and manage records</li>
+  <li>Import zone files</li>
+</ul>
+<h2 id="TOC-traffic-management">Traffic Management</h2>
+<p>Traffic management components are:</p>
+<ul>
+  <li>Steering policies</li>
+  <li>Attachments</li>
+  <li>Rules</li>
+  <li>Answers</li>
+</ul>
+<h3 id="TOC-configure-routing-policies">Configure Routing Policies</h3>
+<p>The dynamic DNS responses allow for routing policies.</p>
+<h3 id="TOC-serve-intelligent-reponses-to-dns-queries">Serve Intelligent Responses to DNS Queries</h3>
+<p>Instead of a static response to a DNS query, OCI DNS returns differing endpoints (IP addresses) based on the following criteria.</p>
+<h3 id="TOC-define-logic-in-steering-policy">Define Logic in Steering Policy</h3>
+<p>Traffic management steering policies types are:</p>
+<ul>
+  <li><strong>Load Balancer</strong> distributes traffic over several servers.</li>
+  <li><strong>Failover</strong> redirects traffic when primary is unavailable</li>
+  <li><strong>Geolocatiion</strong> routes traffic based on geographic conditions</li>
+  <li><strong>ASN</strong> routes traffic based on originating ASN number</li>
+  <li><strong>IP Prefix</strong> routes traffic based on originating IP prefix</li>
+</ul>
+<h3 id="TOC-serve-differnet-endpoints">Serve Different Endpoints</h3>
+<p>Different end-points can be served by DNS responses based on various criteria (see above for examples).</p>

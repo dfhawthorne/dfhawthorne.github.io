@@ -1,6 +1,186 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/creating-oci-policies-for-autonomous-dedicated.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/manage-maintenance-scheduling-patching.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/manage-encryption-keys.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/describe-adb-dedicated-and-adb-cloudcustomer-workflows-and-functionality.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/provision-dedicated-resources.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated/monitor-dedicated-infrastructure.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/use-autonomous-graph.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/developing-new-and-extending-existing-applications-with-natural-language-queries-using-generative-ai.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/use-autonomous-json-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/incorporate-locationbased-analysis-autonomous-spatial.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/data-lake-analytics-with-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/use-oracle-text.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database/integrate-object-storage-data.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/create-business-model.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/explain-data-analysis.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/apply-data-insights.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/explain-data-transforms.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/use-autonomous-database-with-oracle-machine-learning-apex-and-sql-developer-web-database-actions.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools/describe-autonomous-database-tools.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/migrating-to-autonomous-database/migrate-to-autonomous-database-using-data-pump.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/migrating-to-autonomous-database/describe-the-options-and-considerations-for-migrating-to-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/migrating-to-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/manage-autonomous-database-instances-rest-apis-oci-cli-patching-and-upgrading.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/use-services-in-adb-auto-indexing-data-safe-compartment-quotas.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/monitor-adb-performance-and-set-up-service-notifications.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/use-adb-connectivity-wallets-service-handles.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/use-access-control-list-acl-and-private-end-points.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/managing-and-maintaining-autonomous-database/configure-disaster-recovery-data-guard.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-dedicated.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-tools.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/developing-on-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/cloning.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/manage-autonomous-database-backups-and-restores.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/manage-users.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/describe-data-guard.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/database-consolidation-with-elastic-resource-pools.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/move-autonomous-database.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/monitor-autonomous-database-instances--events-and-alarms.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/autonomous-database-shared/create-autonomous-database-shared-instances--provisioning-scaling-ocpu-and-storage-start-and-stop.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database/describe-autonomous-database-architecture-and-integration.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database/describe-the-different-autonomous-database-offerings-and-license-types.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional/getting-started-with-autonomous-database/explain-autonomous-database-architectural-components-and-key-features.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/resource-allocations.html</loc>
     <lastmod>2024-05-16</lastmod>
   </url>
@@ -47,6 +227,14 @@
   <url>
     <loc>https://dfhawthorne.github.io/home/issues/linux-issues/root-password-is-unknown.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/issues/oci-issues.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/issues/oci-issues/unable-to-launch-image-wo-dns.html</loc>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/issues/oracle-enterprise-edition-issues.html</loc>
@@ -118,159 +306,163 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/troubleshoot-oci-networking-and-connectivity-issues.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/migrate-workloads-to-oci.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/oci-networking-best-practices.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-onpremises.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-another-cloud-service-provider.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-multicloud-scenarios.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/troubleshoot-oci-networking-and-connectivity-issues/select-the-right-products-for-various-troubleshooting-and-design-scenarios.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/troubleshoot-oci-networking-and-connectivity-issues/demonstrate-logging-expertise-in-oci.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/demonstrate-an-understanding-of-oci-loadbalancing-offerings-and-related-resources.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/recognize-ip-management-details-select-procedural-steps.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/demonstrate-knowledge-of-oci-dns-and-traffic-steering.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/demonstrate-cloudshell-functionalities.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/illustrate-network-firewall-characteristics.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/show-different-approaches-for-bastion-service-in-multitier-architectures.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/apply-connectivity-and-related-iam-concepts-to-intertenancy-communications.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/oci-networking-best-practices/demonstrate-knowledge-of-networking-connectivity-best-practices.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/oci-networking-best-practices/demonstrate-knowledge-of-networking-security-best-practices.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/oci-networking-best-practices/demonstrate-knowledge-of-networking-architecture-design-best-practices.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/oci-networking-best-practices/demonstrate-knowledge-of-logging-and-monitoring-best-practices.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/transitive-routing/synthesize-transitive-routing-configurations.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/transitive-routing/interpret-key-aspects-of-transitive-routing-with-drg-lpg-and-network-appliance-resources.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-mastery-in-applying-endpoints-to-a-networking-architecture.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/differentiate-the-vcn-gateways-roles.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/recognize-the-different-endpoints.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-an-understanding-of-ipv4ipv6-addressing.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/transitive-routing.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures/sustain-multicloud-connectivity-configurations.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures/evaluate-oci-vpn-services.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures/assess-knowledge-of-bgp.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures/demonstrate-command-of-drg-and-drg-attachments.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures/validate-knowhow-of-the-different-fastconnect-products-from-oci.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-05-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate.html</loc>
+    <lastmod>2024-06-24</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm.html</loc>
-    <lastmod>2024-05-16</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/11g-ocm/11g-ocm-data-and-data-warehouse-management/11g-ocm-configure-flashback-data-archive.html</loc>
@@ -582,7 +774,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures.html</loc>
-    <lastmod>2024-05-16</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/knowledge.html</loc>
@@ -1031,6 +1223,10 @@
   <url>
     <loc>https://dfhawthorne.github.io/home/12c-ocp-upgrade/section-2-key-dba-skills.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oracle-autonomous-database-cloud-2024-professional.html</loc>
+    <lastmod>2024-06-24</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/knowledge/demonstrations/analysis-of-effect-of-o_sync.html</loc>
@@ -1709,8 +1905,48 @@
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-image-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/create-oci-config.html</loc>
+    <lastmod>2024-06-14</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/subnet-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-capacity-report-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-shape-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/fault-domains-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/availability-domains-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/launch-compute-instance.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/work-requests-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/install-linux.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures.html</loc>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/miscellaneous.html</loc>
@@ -1891,6 +2127,218 @@
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/git-procedures.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/configure-sitetosite-vpn.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/describe-fastconnect.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/configure-virtual-cloud-network-routing-and-gateways.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/analyze-interregion-latency.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-network-command-center-services.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/configure-local-and-remote-peering.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-web-application-acceleration.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-capture-filters-and-virtual-test-access-points.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/explain-load-balancer-concepts.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/configure-dns-and-traffic-management.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/describe-public-and-private-dns-zones.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-and-manage-vcn-connectivity.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/configure-security-lists-and-network-security-groups.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/evaluate-vcn-connectivity-options.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-transit-routing-scenarios.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-and-manage-virtual-cloud-networks.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/troubleshoot-using-network-path-analyzer.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/describe-public-and-private-subnets.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/implement-network-visualizer.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/describe-public-and-private-ip-addresses-and-virtual-nics.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/configure-traffic-management-steering-policies.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking/describe-and-configure-load-balancer-and-network-load-balancer.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/identity-and-access-management/implement-iam-policies-to-control-access-to-resources.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/identity-and-access-management/create-and-manage-iam-domains-users-groups-and-compartments.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/identity-and-access-management/configure-dynamic-groups-network-sources-and-tagbased-access-control.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/identity-and-access-management/explain-the-core-concepts-of-identity-and-access-management.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-volume-groups-backups-clones.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-crossregion-replication.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/implement-and-manage-file-storage.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/implement-object-storage-versioning-life-cycle-management-and-retention-rules.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/analyze-file-system-usage-and-metering.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-and-manage-object-storage.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/explain-object-storage-tiers.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/explain-block-volume-performance-tiers.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/describe-file-storage-security.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-file-storage.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/deploy-block-and-boot-volumes.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/describe-object-storage-security.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-object-storage-replication.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/implement-file-storage-replication.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-file-system-snapshots-and-clone.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-multipart-uploads.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/deploy-and-manage-block-storage.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/networking.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute/configure-autoscaling.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute/explain-infrastructure-maintenance.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute/select-appropriate-computing-choices.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute/configure-compute-instances.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute/describe-and-configure-os-management.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute/describe-oci-compute-image-options.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/identity-and-access-management.html</loc>
+    <lastmod>2024-06-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/compute.html</loc>
+    <lastmod>2024-06-24</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/database-designs/much-ado-about-nothing/logical-design.html</loc>
@@ -2274,7 +2722,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/projects/github-projects.html</loc>
-    <lastmod>2024-05-18</lastmod>
+    <lastmod>2024-05-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm/10g-services.html</loc>
@@ -2746,7 +3194,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/issues.html</loc>
-    <lastmod>2024-05-16</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/database-designs.html</loc>
@@ -2758,11 +3206,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/announcements.html</loc>
-    <lastmod>2024-05-16</lastmod>
-  </url>
-  <url>
-    <loc>https://dfhawthorne.github.io/test.html</loc>
-    <lastmod>2024-05-20</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/book-reviews.html</loc>
@@ -2773,16 +3217,44 @@
     <lastmod>2024-02-28</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/announcements/2024-06-21.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/announcements/2012-03-12.html</loc>
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/announcements/2008-11-08.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/announcements/2024-06-12.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/announcements/2006-11-24.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/announcements/2020-01-20.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/announcements/2008-02-28.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/announcements/2012-03-27.html</loc>
-    <lastmod>2024-05-16</lastmod>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/announcements/2012-04-12.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/announcements/2024-06-09.html</loc>
+    <lastmod>2024-06-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/index.html</loc>

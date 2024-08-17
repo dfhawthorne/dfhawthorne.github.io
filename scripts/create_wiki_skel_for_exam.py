@@ -112,7 +112,7 @@ if args.verbose:
 
 date_visited = time.strftime('%Y-%m-%d')
 exam_home_page_content += f"""
-    <p>Based on the <a href="{ext_exam_url}">{exam_title}</a> (visited
+    <p>Based on the <a href="{ext_exam_url}">{exam_title}</a> examination objecives (visited
     {date_visited}). I rate myself as follows (1=poor to 5=good).</p>
     <table border="1">
       <thead>
