@@ -1380,7 +1380,7 @@
       - url: home/procedures/oci-procedures/compute-image-queries.html
         title: 'Compute Image Queries'
       - url: home/procedures/oci-procedures/compute-instance-vnic-queries.html
-        title: 'Compute Instance Vnic Queries'
+        title: 'Compute Instance VNIC Queries'
       - url: home/procedures/oci-procedures/compute-shape-queries.html
         title: 'Compute Shape Queries'
       - url: home/procedures/oci-procedures/create-oci-config.html
@@ -1449,6 +1449,25 @@
   - url: home/reading-notes.html
     title: 'Reading Notes'
     sub-pages:
+    - url: home/reading-notes/oracle-database-transactions-and-locking-revealed.html
+      title: 'Oracle Database Transactions and Locking Revealed'
+      sub-pages:
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch02_Locking_and_Blocking.html
+        title: 'Ch 02: Locking and Blocking'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch03_Locks_Latches_and_Mutexes.html
+        title: 'Ch 03: Locks, Latches, and Mutexes'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch04_Concurrency_and_Multiversioning.html
+        title: 'Ch 04: Concurrency and Multiversioning'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch05_Transactions.html
+        title: 'Ch 05: Transactions'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch06_Redo_and_Undo.html
+        title: 'Ch 06: Redo and Undo'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch07_Investigating_Redo.html
+        title: 'Ch 07: Investigating Redo'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch08_Investigating_Undo.html
+        title: 'Ch 08: Locking and Blocking'
+      - url: home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch09_Troubleshooting.html
+        title: 'Ch 09: Troubleshooting'
     - url: home/reading-notes/oracle-vm-implementation-and-administration-guide.html
       title: 'Oracle VM Implementation and Administration Guide'
     - url: home/reading-notes/pro-oracle-database-12c-administration.html
