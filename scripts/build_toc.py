@@ -79,7 +79,7 @@ if args.verbose:
 # Rebuild page header
 # ------------------------------------------------------------------------------
 
-new_page_header = f"---\n"
+new_page_header = f"---"
 skip_lines      = False
 regexp          = re.compile('^[ -]')
 for line in page_header.splitlines():
