@@ -68,6 +68,9 @@ scripts_dir           = os.path.dirname(os.path.realpath(__file__))
 abs_anchor_page_path  = os.path.abspath(input_anchor_page_path)
 docs_dir              = os.path.join(os.path.dirname(scripts_dir),'docs')
 rel_anchor_page_path  = os.path.relpath(abs_anchor_page_path, start=docs_dir)
+if rel_anchor_page_path.endswith(".md"):
+    base_anchor_page_path, _ = os.path.splitext(rel_anchor_page_path)
+    rel_anchor_page_path     = base_anchor_page_path + ".html"
 
 if args.nav_data is not None:
     nav_data_path     = args.nav_data
