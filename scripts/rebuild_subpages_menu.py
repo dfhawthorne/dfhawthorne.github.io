@@ -100,7 +100,7 @@ if args.verbose:
     args.log.write(in_file_buffer + '\n')
     args.log.write('in_file_buffer ================= (END) =================\n')
 (old_page_header,partition_str,page_content) = in_file_buffer.partition('\n---\n')
-old_page_header += partition_str
+# old_page_header += partition_str
 if args.verbose:
     args.log.write('old_page_header =============== (BEGIN) ================\n')
     args.log.write(old_page_header + '\n')
