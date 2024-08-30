@@ -19,3 +19,59 @@ breadcrumbs:
   <li>Local Peering Gateway routes traffic between non-overlapping subnets in different VCNs in the same region.</li>
   <li>Dynamic Routing Gateway routes traffic between non-overlapping subnets in different VCNs in the same or different regions, or between customer premise equipment (CPE).</li>
 </ul>
+
+<p>VCN can be connected to another VCN in the same region (local peering) and different region (remote peering). Remote peering is done through DRG. Local peering can be done in one of two (2) ways:</p>
+<ol>
+  <li>LPG: Local Peering Gateways</li>
+  <li>DRG: Dynamic Routing Gateway</li>
+</ol>
+<p>VCN can also be connected to the on-premises network through one (1) of three (3) options:</p>
+<ol>
+  <li>Public Internet</li>
+  <ul>
+    <li>using IG or NATGW</li>
+    <li>mainly for proof-of-concept</li>
+  </ul>
+  <li>Site-to-site VPN</li>
+  <ul>
+    <li>IPSec over Internet</li>
+    <li>no guarantee in service quality</li>
+    <li>Free service</li>
+  </ul>
+  <li>Fastconnect</li>
+  <ul>
+    <li>dedicated connection with low latency and high bandwidth up to 100 GB/sec</li>
+    <li>No egress fees</li>
+    <li>Only pay for hourly port charges</li>
+  </ul>
+</ol>
+
+<table border="1">
+  <thead>
+    <tr style="background-color:lightgreen">
+      <th>Cloud Connectivity Option</th>
+      <th>Considerations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fastconnect</td>
+      <td>Higher data throughput, lower latency, consistent performance<br />
+      Network costs may be higher than Internet costs</td>
+    </tr>
+    <tr>
+      <td>Site-to-Site VPN</td>
+      <td>Added layer of tunneled encryption to Internet connections;<br />
+      recommended for Proofs of Concepts<br />
+      <hr />
+      Best effort performance</td>
+    </tr>
+    <tr>
+      <td>Public Internet</td>
+      <td>Best effort performance<br />
+      <hr />
+      Suited ofr SaaS applications and consumer/SMB use</td>
+    </tr>
+  </tbody>
+</table>
+

@@ -50,7 +50,7 @@ nav {
 }
 
 header {
-    display: inline-grid;
+    display:                 inline-grid;
     grid-column:             2;
     grid-row:                2;
     grid-template-columns:   auto;
@@ -160,6 +160,11 @@ main h1 {
 main blockquote {
     font-style: italic;
   }
+
+main dt {
+    font-size:               12pt;
+    font-weight:             bold;
+}
   
 code {
     color:                   #006000;

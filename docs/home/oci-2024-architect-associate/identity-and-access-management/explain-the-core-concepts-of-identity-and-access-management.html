@@ -18,13 +18,18 @@ table-of-contents:
   toc-text: 'Authentication'
 - toc-url: 'authorisation'
   toc-text: 'Authorisation'
+- toc-url: 'account-and-access-concepts'
+  toc-text: 'Account and Access Concepts'
+  toc-menu:
+  - toc-url: 'tenancy'
+    toc-text: 'Tenancy'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
 <p>There are two (2) basic concepts in security:</p>
 <ol>
-  <li><strong>Authentication (AuthN)</strong> identifies the person or entity attempting to access a secured resource.</li>
-  <li><strong>Authorisation (AuthZ)</strong> determines what level of access a person or entity has to a secured resource.</li>
+<li><strong>Authentication (AuthN)</strong> identifies the person or entity attempting to access a secured resource.</li>
+<li><strong>Authorisation (AuthZ)</strong> determines what level of access a person or entity has to a secured resource.</li>
 </ol>
 <h2 id="TOC-references">References</h2>
 <ul>
@@ -34,8 +39,19 @@ table-of-contents:
     <ul>
       <li><a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts.htm">Learn About Oracle Cloud Basics</a></li>
       <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts-account.htm">Accounts and Access Concepts</a></li>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts-account.htm">Account and Access Concepts</a></li>
       </ul>
+    </ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/home.htm">IAM with Identity Doamins</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/serviceessentials.htm">Service Essentials</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/General/Concepts/tenancy_management.htm">Tenancy Management</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/General/Concepts/organization_management_overview.htm#organization_management_overview">Organization Management Overview</a></li>
     </ul>
   </ul>
 </ul>
@@ -43,15 +59,74 @@ table-of-contents:
 <p>Authentication is the Identity part of IAM.</p>
 <p>People and entities can be aythenticated through various means:</p>
 <ul>
-  <li>User credentials such as userid and password. This can be strengthened through MFA (Multi-factor authentication) for connection directly to OCI.</li>
-  <li>Federated identity: credentials are authenticated by another service such as Microsoft AD, another cloud vendor, or another tenancy within OCI.</li>
-  <li>Programs can be authenticated through API keys and OAuth 2.0 tokens. Access is still associated with a defined user within the tenancy.</li>
+<li>User credentials such as userid and password. This can be strengthened through MFA (Multi-factor authentication) for connection directly to OCI.</li>
+<li>Federated identity: credentials are authenticated by another service such as Microsoft AD, another cloud vendor, or another tenancy within OCI.</li>
+<li>Programs can be authenticated through API keys and OAuth 2.0 tokens. Access is still associated with a defined user within the tenancy.</li>
 </ul>
 <p>Once a tenancy is provisioned, one (1) user is created (the tenancy administrator) and that user is part of the <i>Administrators</i> group in the <i>Default</i> identity domain.</p>
 <h2 id="TOC-authorisation">Authorisation</h2>
 <p>Authorisation is the Access Management part of IAM.</p>
 <p>Authorisation is managed through policies. There are initially two (2) policies:</p>
 <ol>
-  <li>Allow all members of the <i>Administrators</i> group in the <i>Default</i> identity domain can manage all resources within the tenancy. This policy allows the tenancy administrator to create enough resources to allow the tenancy to become self-substaining by provisioning other compartments, identity domains, and administrators for those identity domains and compartments.</li>
-  <li>Everything else is prohibited. This policy can not be removed. This forces administrators to explicitly allow access to resources.</li>
+<li>Allow all members of the <i>Administrators</i> group in the <i>Default</i> identity domain can manage all resources within the tenancy. This policy allows the tenancy administrator to create enough resources to allow the tenancy to become self-substaining by provisioning other compartments, identity domains, and administrators for those identity domains and compartments.</li>
+<li>Everything else is prohibited. This policy can not be removed. This forces administrators to explicitly allow access to resources.</li>
 </ol>
+<h2 id="TOC-account-and-access-concepts">Account and Access Concepts</h2>
+<p>Summary from <a href="https://docs.oracle.com/en-us/iaas/Content/GSG/Concepts/concepts-account.htm">Account and Access Concepts</a>.</p>
+<h3 id="TOC-tenancy">Tenancy</h3>
+<p>A tenancy is created when an OCI account is created in the home region. A tenancy can be extended to other regions.</p>
+<p>There are two (2) types of tenancies:</p>
+<ol>
+  <li>One (1) parent tenancy that is associated with the subscription</li>
+  <li>Zero (0) or more child tenancies that can be mapped to different parts of the subscriber organisation</li>
+</ol>
+<p>However, multiple tenancies increases the management overhead as IAM policies, groups, and users cannot be shared.</p>
+<h3 id="TOC-compartments">Compartments</h3>
+<p>A compartment is a logical collection of related resources. A compartment is used to isolate and control access to those resources.</p>
+<p>A compartment diagram showing the tenancy/root compartment with two child compartments (Network and Storage) can be found <a href="https://docs.oracle.com/en-us/iaas/Content/GSG/images/gsg-concept-compartments.png">here</a>.</p>
+<p>The tenancy holds all OCI resources. The tenancy is treated as the root compartment.</p>
+<h3 id="TOC-identity-domains-and-policies">Identity Domains and Policies</h3>
+<blockquote><p>An <strong>identity domain</strong> is a container for managing users and roles, federating and provisioning of users, secure application integration through Oracle Single Sign-On (SSO) configuration, and OAuth administration.</p></blockquote>
+<p>A <strong>policy</strong> allows users or roles (aka groups) access to resources in specific compartments and their children under optional conditions.</p>
+<h3 id="TOC-oracle-cloud-identifier-ocid">Oracle Cloud Identifier (OCID)</h3>
+<p>An OCID (Oracle Cloud Identity) is unique throughout OCI.</p>
+<h3 id="TOC-security-zone">Security Zone</h3>
+<blockquote>
+  <p>&hellip;A security zone is associated with one or more <strong>compartments</strong> and a security zone recipe.</p>
+</blockquote>
+<h2 id="TOC-iam-components">IAM Components</h2>
+<p>According to <a href="https://docs.oracle.com/en-us/iaas/Content/Identity/getstarted/identity-domains.htm">Overview of IAM</a>, the major components of IAM are:</p>
+<dl>
+  <dt>Compartment</dt>
+  <dd>Logical partition of OCI resources in a tenancy for billing, usage statistics, access restrictions, and isolation.</dd>
+  <dt>Dynamic Groups</dt>
+  <dd>Group whose membership is determined by a rule rather than a list of memberships. An example is compute instances in a compartment. The membership exapands or contracts with launching or termination of compute instances. Another example is resources that have a specfic tag.</dd>
+  <dt>Federation</dt>
+  <dd>An identity provider outside of OCI, such as AD or another Cloud vendor, manages users and groups in the tenancy.</dd>
+  <dt>Group</dt>
+  <dd>Collection of users with the same access privileges. Basis of RBAC (role based access control).</dd>
+  <dt>Home Region</dt>
+  <dd>Source region for IAM resources</dd>
+  <dt>Identity Domain</dt>
+  <dd>Partition of users and groups. Allows for more delegated security administration. Associated with a compartment.</dd>
+  <dt>Identity Provider</dt>
+  <dd>See federation.</dd>
+  <dt>MFA</dt>
+  <dd>Multifactor authentication</dd>
+  <dt>Network Source</dt>
+  <dd>Collection of IP addresses given common access to OCI resources.</dd>
+  <dt>Resource</dt>
+  <dd>OCI object</dd>
+  <dt>Role</dt>
+  <dd>Set of administrative privileges</dd>
+  <dt>Security Policy</dt>
+  <dd>Who can access to what at what level where and when.</dd>
+  <dt>Sign-on Policy</dt>
+  <dd><cite>A sign-on policy allows identity domain administrators, security administrators, and application administrators to define criteria that determine whether to allow a user to sign in to an identity domain.</cite></dd>
+  <dt>Tags</dt>
+  <dd>Allows finer grain classification of resources.</dd>
+  <dt>Tenancy</dt>
+  <dd>Root compartment of all OCI resources in the subscription.</dd>
+  <dt>User</dt>
+  <dd>Individual or system that needs access to OCI resources.</dd>
+</dl>
