@@ -181,6 +181,30 @@ div.goog-toc {
     border:                  1px solid #ccc;
 }
 
+main div.language-text {
+    code {
+        color: black;
+    }
+    pre.highlight {
+        background-color:      lightgrey;
+        border:                  5px groove black;
+        margin-left:             10px;
+        padding:                 2px;
+    }
+}
+
+main div.language-sql {
+    code {
+        color: black;
+    }
+    pre.highlight {
+        background-color:      #ddf87c89;
+        border:                  5px groove black;
+        margin-left:             10px;
+        padding:                 2px;
+    }
+}
+
 pre.bash-cmd {
     border:                  5px groove black;
     margin-left:             10px;
