@@ -28,63 +28,75 @@ table-of-contents:
 <p>A FastConnect is a dedicated connection between customer premise and an OCI data centre.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
-<ul>
-<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
-<ul>
-<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/fastconnect.htm">FastConnect</a></li>
-</ul>
-</ul>
+    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+    <ul>
+        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+        <ul>
+            <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/fastconnect.htm">FastConnect</a></li>
+        </ul>
+    </ul>
 </ul>
 <h2 id="TOC-fastconnect-overview">FastConnect Overview</h2>
 <p><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/fastconnectoverview.htm#FastConnect_Overview">FastConnect Overview</a> says:</p>
 <blockquote>
-<p>Oracle Cloud Infrastructure FastConnect provides an easy way to create a dedicated, private connection between your data center and Oracle Cloud Infrastructure. FastConnect provides higher-bandwidth options, and a more reliable and consistent networking experience compared to internet-based connections.</p>
+    <p>Oracle Cloud Infrastructure FastConnect provides an easy way to create a dedicated, private connection between your data center and Oracle Cloud Infrastructure. FastConnect provides higher-bandwidth options, and a more reliable and consistent networking experience compared to internet-based connections.</p>
 </blockquote>
 <p>There are two (2) types of peering:</p>
 <ol>
-<li><strong>Private</strong> extends on-premises network to OCI using a physical connection.</li>
-<li><strong>Public</strong> allows access to public-facing resources in OCI without traffic passing the Internet.</li>
+    <li><strong>Private</strong> extends on-premises network to OCI using a physical connection.</li>
+    <li><strong>Public</strong> allows access to public-facing resources in OCI without traffic passing the Internet.</li>
 </ol>
 <h2 id="TOC-connectivity-models">Connectivity Models</h2>
 <p>There are three (3) models for connecting to OCI using FastConnect:</p>
 <ol>
-<li><strong>Oracle Partners</strong> have an existing relationship with Oracle that allows the partner to terminate network connections within OCI data centres.</li>
-<li><strong>Third-Party Provider</strong> require an letter of authority (LOA) to enter the OCI data centre in order to terminate a network link there by placing network equipment and links.</li>
-<li><strong>Colocation</strong> is where the customer provides their own equipment and link into an OCI data centre. A LOA is required for data center access. This works best if the customer already has a presence at the data centre.</li>
+    <li><strong>Oracle Partners</strong> have an existing relationship with Oracle that allows the partner to terminate network connections within OCI data centres.</li>
+    <li><strong>Third-Party Provider</strong> require an letter of authority (LOA) to enter the OCI data centre in order to terminate a network link there by placing network equipment and links.</li>
+    <li><strong>Colocation</strong> is where the customer provides their own equipment and link into an OCI data centre. A LOA is required for data center access. This works best if the customer already has a presence at the data centre.</li>
 </ol>
-<h2 id="TOC-fastconnect-demo">FastConnect Demo</h2>
-<p>Under <em>Customer Connection</em> in OCI Console,</p>
-<ol>
-<li>Choose <em>connection type</em> from one of:
-    <ul>
-<li>FastConnect Partner</li>
-<li>FastConnect Direct (3rd party connection or colocation) - creates LOA</li>
+<p>The last two (2) are called <em>FastConnect Direct</em>.</p>
+<h2 id="TOC-fastconnect-overview">FastConnect</h2>
+<p>FastConnect is a dedicated and private physical connection bewteen on-premises and OCI. Benefits are:</p>
+<ul>
+    <li>High bandwidth</li>
+    <li>More reliable</li>
+    <li>More consistent network experience</li>
 </ul>
-</li>
-</ol>
+<p>FastConnect location is at an Oracle datacentre. A Metro area has multiple FastConnect locations within a geographical region.</p>
+<p>Oracle Partners and Third Party Providers are network service providers. Oracle Partner has integrated with Oracle in a FastConnect Location.</p>
+<p>Co-Location is where customer has a cage at a FastConnect location into which the customer puts their edge servers.</p>
+<p>Cross-connect is the physical aspect of FastConnect, whereas virtual circuit is its logical aspect. Cross-connect is the cable that connects the customers premises with the FastConnect location. To expand capacity, a Cross-Connect Group of multiple cross-connects may be needed.</p>
+<p>A virtual circuit can be public or private. Public virtual circuit allows connection to public resources in OCI without going via the Internet. Private virtual circuit requires the use of a DRG for peering between on-premises and a VCN in OCI. A virtual circuit is an isolated network path.</p>
+<p>BGP session is an exchange of routing information between autonomous systems.</p>
+<p>BFD (Bidirectional Forwarding Detection) verifies connectivity between devices (does not exchange routing information). BFD is used to detect failures between adjacent networks.</p>
+<p>Oracle Edge consists of a physical device in an Oracle cage at a FastConnect location, and a logical device. The cross-connect is terminated by the physical device, and the virtual circuit is terminated by the logical device.</p>
+<p>LOA (Letter of Authorisation) allows a third-party provider to gain access to a FastConnect location so as to lay a physical cable. LOA is also needed for co-location.</p>
+<p><strong>FastConnect Direct</strong> is done through either Third-Party provider or Co-Location.</p>
+<p>No egress data transfer charges.</p>
+<h2 id="TOC-fastconnect-demo">FastConnect Demo</h2>
+<p>Under <em>Customer Connection</em> in OCI Console, choose <em>connection type</em> from one of:</p>
+<ul>
+    <li>FastConnect Partner</li>
+    <li>FastConnect Direct (3rd party connection or colocation) - creates LOA</li>
+</ul>
 <p>For FastConnect Partner,</p>
 <ol>
-<li>Choose type of virtual circuit:
+    <li>Choose type of virtual circuit:</li>
     <ul>
-<li>Private</li>
-<li>Public</li>
-</ul>
-</li>
-<li>Choose type of traffic to be sent to on-premises network:
+        <li>Private</li>
+        <li>Public</li>
+    </ul>
+    <li>Choose type of traffic to be sent to on-premises network:</li>
     <ul>
-<li>All traffic</li>
-<li>Only IPSec traffic</li>
-</ul>
-</li>
-<li>Need DRG</li>
-<li>Select provisioned bandwidth from 1 Gbps to 10 Gbps</li>
-<li>BGP IP addresses
+        <li>All traffic</li>
+        <li>Only IPSec traffic</li>
+    </ul>
+    <li>Need DRG</li>
+    <li>Select provisioned bandwidth from 1 Gbps to 10 Gbps</li>
+    <li>BGP IP addresses</li>
     <ul>
-<li>Customer side (/28 to /31)</li>
-<li>Oracle side</li>
-</ul>
-</li>
+        <li>Customer side (/28 to /31)</li>
+        <li>Oracle side</li>
+    </ul>
 </ol>
 <h2 id="TOC-fastconnect-redundancy-best-practices">FastConnect Redundancy Best Practices</h2>
 <blockquote>
