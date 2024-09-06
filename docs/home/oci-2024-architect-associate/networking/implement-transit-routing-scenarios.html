@@ -10,34 +10,40 @@ breadcrumbs:
 - title: 'Networking'
   url: home/oci-2024-architect-associate/networking.html
 table-of-contents:
-- toc-url: summary
+- toc-url: 'summary'
   toc-text: 'Summary'
-- toc-url: reference
+- toc-url: 'reference'
   toc-text: 'Reference'
-- toc-url: overview
+- toc-url: 'overview'
   toc-text: 'Overview'
+- toc-url: 'scenarios'
+  toc-text: 'Scenarios'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
 <p>There are three (3) primary transit routing scenarios:</p>
 <ol>
-  <li>Access between multiple networks through a single DRG with a firewall between networks</li>
-  <li>Access to multiple VCNs in the same region</li>
-  <li>Private access to Oracle service</li>
+<li>Access between multiple networks through a single DRG with a firewall between networks</li>
+<li>Access to multiple VCNs in the same region</li>
+<li>Private access to Oracle service</li>
 </ol>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
-  <ul>
-    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
-    <ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/transitrouting.htm">Transit Routing inside a hub VCN</a></li>
-    </ul>
-  </ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/transitrouting.htm">Transit Routing inside a hub VCN</a></li>
+</ul>
+</ul>
 </ul>
 <h2 id="TOC-overview">Overview</h2>
 <p><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/transitrouting.htm">Transit Routing inside a hub VCN</a> says:</p>
 <blockquote>
-  <p><i>Transit routing</i> is simply routing traffic to either a virtual cloud network (VCN) or an on-premises network through a central hub VCN. Here's a basic example of why you might use transit routing: you have a large organization with different departments, each with their own VCN. Your on-premises network needs access to the different VCNs, but you don't want the administration overhead of maintaining a secure connection from each VCN to the on-premises network. Instead you want to use a single FastConnect or Site-to-Site VPN.</p>
+<p><i>Transit routing</i> is simply routing traffic to either a virtual cloud network (VCN) or an on-premises network through a central hub VCN. Here's a basic example of why you might use transit routing: you have a large organization with different departments, each with their own VCN. Your on-premises network needs access to the different VCNs, but you don't want the administration overhead of maintaining a secure connection from each VCN to the on-premises network. Instead you want to use a single FastConnect or Site-to-Site VPN.</p>
 </blockquote>
 <p>All three (3) scenarios use a hub-and-spoke configuration with either a DRG or a VCN as the hub. The spokes are either other VCNs or OCI services.</p>
+<h2 id="TOC-scenarios">Scenarios</h2>
+<p>Normally, a single VCN is connected to the on-premises network either through FastConnect or Site-to-site VPN. If there are multiple VCNs in the customer's subscription, then the management and cost overhead of multiple connections can become an issue.</p>
+<p><strong>Transit Routing</strong> is based upon a single connection between the on-premises network and a hub VCN that has local peering connections to other VCNs. All spoke VCNs must be in the same region as the hub VCN.</p>
+<p>The online course only mentions a hub VCN. However, the online documentation mentions that the upgraded DRG can function as the hub with the VCNs as the spokes. This latter configuration simplifies the routing setup. In the original scenario, the spoke VCNs had to route to the LPG which is peered to the hub VCN.</p>
