@@ -25,3 +25,53 @@ breadcrumbs:
 </ul>
 <img src="home/oci-2024-architect-associate/compute/configure-compute-instances/lab-7-1.png" alt="Layout for lab 7-1. A student uses OCI console to access Internet Gateway attached to a VCN with a single compute instance in the public subnet." />
 </blockquote>
+<h2 id="TOC-demo">Demonstration</h2>
+<p>From the OCI console:</p>
+<ul>
+    <li>Select <em>Instances</em> (pinned by default)</li>
+    <li>Click on <em>Create Instance</em></li>
+    <li>On the <em>Create Compute Instance</em> page, enter the following information:</li>
+    <ul>
+        <li>Name (can be changed later - no need for uniqueness)</li>
+        <li>Availability Domain</li>
+        <li>Advanced options, on expansion, show:</li>
+        <ul>
+            <li>Capacity type: one of:</li>
+            <ul>
+                <li>On-demand (default)</li>
+                <li>Preemptible (instance will be terminated if capacity is needed elsewhere)</li>
+                <li>Capacity reservation</li>
+                <li>Dedicated host for isolation</li>
+            </ul>
+            <li>Choice of fault domain within an availability domain. Default is to let OCI choose the fault domain.</li>
+        </ul>
+        <li>Image and shape</li>
+        <ul>
+            <li>Image is the particular version and patch level of an operating system. Can have pre-configured software.</li>
+            <li>Shape is the configuration of the VM image:</li>
+            <ul>
+                <li>VM or bare metal machine</li>
+                <li>CPU type</li>
+                <li>number of CPUs</li>
+                <li>amount of RAM</li>
+            </ul>
+        </ul>
+        <li>Select or create VCN</li>
+        <li>Choose subnet</li>
+        <li>Enable public IP address</li>
+        <li>Add SSH keys: generated, uploaded public key file, paste public key, or no keys</li>
+        <li>Select size of boot volume: 50 GB to 32 TB</li>
+        <li>Advanced options:</li>
+        <ul>
+            <li>Management</li>
+            <ul>
+                <li>Initialisation script: can be used to install and configure software, configure firewall, etc. The lab uses this to install an Apache web server.</li>
+            </ul>
+            <li>Availability configuration</li>
+            <ul>
+                <li>Live migration</li>
+            </ul>
+        </ul>
+    </ul>
+</ul>
+
