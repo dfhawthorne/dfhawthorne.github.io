@@ -14,6 +14,10 @@ table-of-contents:
   toc-text: 'Summary'
 - toc-url: reference
   toc-text: 'Reference'
+- toc-url: relocating-a-vm-instance
+  toc-text: 'Relocating a VM Instance'
+- toc-url: vm-recovery-due-to-infrastructure-failure
+  toc-text: 'VM Recovery Due to Infrastructure Failure'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
@@ -29,21 +33,29 @@ table-of-contents:
 </ul>
 </ul>
 <h2 id="TOC-relocating-a-vm-instance">Relocating a VM Instance</h2>
-<ul>
+<p>When an underlying VM host needs maintenance, all VMs hosted there need to be relocated to another VM host in one (1) of three (3) ways:</p>
+<ol>
   <li>Live migration</li>
   <ul>
+    <li>Done by OCI</li>
     <li>VM instance migrated with minimal disruption</li>
     <li>Emits infrstructure maintenance event</li>
     <li>Not all shapes supported</li>
+    <li>Linux only</li>
   </ul>
   <li>Reboot migration</li>
   <ul>
+    <li>Fourteen (14) day notice given</li>
     <li>Short downtime</li>
     <li>Can proactively reboot before the maintenance due date</li>
   </ul>
   <li>Manual migration</li>
   <ul>
+    <li>Needs to be done by customer</li>
     <li>For instances without a date in the <strong>Reboot Maintenance Field</strong></li>
     <li>The instance needs to be terminated (do not forget to preserve the boot volume) and recreated.</li>
   </ul>
-</ul>
+</ol>
+<h2 id="TOC-vm-recovery-due-to-infrastructure-failure">VM Recovery Due to Infrastructure Failure</h2>
+<p>OCI handles infrastructure failure in a similar manner to <strong>Reboot Migration</strong> for <em>Standard VM</em> instances.</p>
+<p><strong>Dense I/O VM instances</strong> are recovered by rebooting the instance on the same physical host. If this is not possible, OCI notifies the customer to delete or terminate the instance within fourteen (14) days. If the customer fails to do so, OCI terminates the instance on the fourteenth day and deletes the instance seven (7) days later. Boot and attached volumes are retained.</p>
