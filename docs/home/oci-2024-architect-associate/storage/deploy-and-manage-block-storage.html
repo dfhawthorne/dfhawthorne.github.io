@@ -41,14 +41,55 @@ table-of-contents:
   <li><a href="https://www.ibm.com/topics/nvme">What is NVMe?</a></li>
 </ul>
 <h2 id="TOC-block-storage-basics">Block Storage - Basics</h2>
+<h3 id="TOC-summary-of-block-storage">Summary of Block Storage</h3>
+<p>Block storage can be summarised as follows:</p>
+<table border="1">
+  <thead>
+    <tr><th>&nbsp;</th><th>Local NVMe</th><th>Block Volume</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><strong>Type</strong></td><td>NVMe SSD-based temporary storage</td><td>NVMe SSD-based block storage</td></tr>
+    <tr><td><strong>Durability</strong></td><td>IP addresses. Non-persistent; survives reboots.</td><td>Durable (multiple copies in AD)</td></tr>
+    <tr><td><strong>Capacity</strong></td><td>Terabytes+</td><td>Petabytes+</td></tr>
+    <tr><td><strong>Unit Size</strong></td><td>51.2 TB for BM, 6.4-25.6 TB for VM</td><td>50 GB - 32 TB/vol. 32 Vols/instance</td></tr>
+    <tr><td><strong>Use Cases</strong></td><td>Big Data, OLTP, high performance workloads</td><td>Apps that require SAN like features (Oracle DB, Exchange)</td></tr>
+  </tbody>
+</table>
 <h3 id="TOC-overview-of-block-volume">Overview of Block Volume</h3>
 <p>Block volume is NVMe (Non-Volatile Memory Express) SSD-based storage that is durable (outlives the compute instance). Multiple block volumes can be created, attached, and detached from a compute instance. This allows block volumes to be relocated between compute instances.</p>
 <p>NVMe SSD devices can be locally attached for extremely low latency and high performance. But these devices do not outlive the compute instance.</p>
+<h3 id="TOC-block-volume-features-and-use-cases">Block Volume Features and Use Cases</h3>
+<ul>
+  <li>Provides durable and high performance storage</li>
+  <li>Store data beyond the lifespan of the compute instance</li>
+  <li>Create, attach, connect, and move more volumes as needed</li>
+  <li><strong>Typical Scenarios</strong></li>
+  <ul>
+    <li>Persistent storage</li>
+    <li>Expand a compute instance's storage</li>
+    <li>Instance Scaling</li>
+  </ul>
+</ul>
 <h3 id="TOC-volume-attachment-types">Volume Attachment Types</h3>
 <p>A block volume can be attached to an instance as iSCSI and paravirtualised (attached via the hypervisor).</p>
+<p><strong>iSCSI:</strong></p>
+<ul>
+  <li>Uses the internal storage stack in the guest OS and network hardware virtualisation</li>
+  <li>Does not use hypervisor in the attachment process</li>
+</ul>
+<p><strong>Paravirtualised:</strong></p>
+<ul>
+  <li>Light virtualisation technique</li>
+  <li>Hypervisor APIs used by VM to access remote storage</li>
+  <li>More efficient than full virtualisation</li>
+</ul>
 <h3 id="TOC-volume-types">Volume Access Types</h3>
-<p>Up to eight (8) compute instances can connect to the same block volume either as either R/W or R/O shareable access. A cluster file system needs to installed.</p>
-<p>A block volume can connected as R/W to a single compute instance.</p>
+<p>Multiple instances can connect to the same volume in one (1) of three (3) ways:</p>
+<ol>
+  <li><strong>R/W:</strong> can only be done by a single instance. This is the default.</li>
+  <li><strong>R/W shareable:</strong> Up to eight (8) compute instances can connect to the same block volume. A cluster file system needs to installed in order to prevent data corruption.</li>
+  <li><strong>R/O shareable:</strong> </li>
+</ol>
 <h3 id="TOC-boot-volumes">Boot Volumes</h3>
 <p>Launching a compute instance creates a new boot volume. On termination of the compute instance, the boot volume can be retained.</p>
 <p>This retained boot volume can be used for future launching of compute instances, or for diagnosing boot failures by attaching the boot volume to another compute instance.</p>
@@ -57,7 +98,7 @@ table-of-contents:
 <blockquote>
   <p><strong>Overview</strong></p>
   <p>The Oracle Cloud Infrastructure (OCI) Block Volume service lets you dynamically provision and manage block storage volumes. You can create, attach, connect, and move volumes, as well as change volume performance, as needed, to meet your storage, performance, and application requirements.</p>
-  <p>In this labm you'll:</p>
+  <p>In this lab, you'll:</p>
   <ol>
     <li>Create a Virtual Cloud Network and its components</li>
     <li>Create a VM instance</li>
@@ -69,3 +110,4 @@ table-of-contents:
   <p><strong>Create and Attach Block Volume and Online Resize of Block Volume</strong></p>
   <img src="home/oci-2024-architect-associate/storage/deploy-and-manage-block-storage/lab-11-1A.png" />
 </blockquote>
+<p>My solution can be found at <a href="https://github.com/dfhawthorne/terraform-oci-scripts/tree/main/oci-2024-certified-architect-associate/Lab_12_1_Block_Storage_Create_Attach_Detach_and_Resize_a_Block_Volume">Terraform OCI Scripts</a>.</p>
