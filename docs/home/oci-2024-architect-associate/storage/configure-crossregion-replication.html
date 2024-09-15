@@ -9,20 +9,60 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: 'ary'
+  toc-text: 'Summary'
+- toc-url: 'rence'
+  toc-text: 'Reference'
+- toc-url: 'view'
+  toc-text: 'Overview'
+- toc-url: 'lab'
+  toc-text: 'Lab'
 ---
 
+<h2 id="Summary">Summary</h2>
+<p>Boot and block volumes can be replicated between select regions. These replicas can be used for cloning. Resizing of source volumes is prohibited while the replication is active.</p>
+<h2 id="Reference">Reference</h2>
+<ul>
+<a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Oracle Cloud Infrastructure</a>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Block/home.htm">Block Volume</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Block/blockvolumes.htm">Working with Block Volumes</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/volumereplication.htm">Replicating a Volume</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<h2 id="Overview">Overview</h2>
+<p>Cross-region replication performs ongoing automatic asynchronous replication of both boot and block volumes to other regions. It does not replace backups as it only has the current data. The initial synchronisation can take several hours depending on the amount of existing data. There is no downtime or no impact on the source volumes.</p>
+<p>Cannot resize a volume that is being replicated. The replication needs to be removed; the source volume resized; and the replication reestablished.</p>
+<p>Replication is not supported for volumes encrypted using customer managed vault encryption keys.</p>
+<p>A new volume can be created from an activated replica.</p>
+<p>Costs for replication:</p>
+<ul>
+<li>Replica is billed using the Lower Cost option regardless of the performance level of the source volume</li>
+<li>Network costs for replication between regions</li>
+</ul>
+<p>Target regions are dependent on the source regions. Customer needs to be subscribed to the target region. See <a href="https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/volumereplication.htm#regionmapping">Source and Destination Region Mappings</a> for the current list of permissible combinations of source and target regions.</p>
+<p>Use cases are:</p>
+<ul>
+<li>Disaster recovery using volume creation from activated replicas</li>
+<li>Business expansion or migration</li>
+</ul>
 <h2 id="TOC-lab">Lab</h2>
 <p>This topic is covered by <i>Lab 13-1: Block Storage: Create a Volume Group and Enable Cross Region Replication</i>:</p>
 <blockquote>
-  <p><strong>Overview</strong></p>
-  <p>The Oracle Cloud Infrastructure (OCI) Block Volume service provides you with the capability to group together multiple volumes in a volume group. A volume group can include both types of volumes, boot volumes, which are the system disks for your compute instances, and block volumes, which are for data storage.</p>
-  <p>In this lab, you'll work with volume groups. You will:</p>
-  <ol>
-    <li>Create two block volumes</li>
-    <li>Create a volume group</li>
-    <li>Enable Cross-Region Replication for the volume group</li>
-    <li>Activate the Volume Group replica</li>
-    <li>Disable replication for a volume group</li>
-  </ol>
-  <img src="home/oci-2024-architect-associate/storage/configure-crossregion-replication/lab-13-1A.png" />
+<p><strong>Overview</strong></p>
+<p>The Oracle Cloud Infrastructure (OCI) Block Volume service provides you with the capability to group together multiple volumes in a volume group. A volume group can include both types of volumes, boot volumes, which are the system disks for your compute instances, and block volumes, which are for data storage.</p>
+<p>In this lab, you'll work with volume groups. You will:</p>
+<ol>
+<li>Create two block volumes</li>
+<li>Create a volume group</li>
+<li>Enable Cross-Region Replication for the volume group</li>
+<li>Activate the Volume Group replica</li>
+<li>Disable replication for a volume group</li>
+</ol>
+<img src="home/oci-2024-architect-associate/storage/configure-crossregion-replication/lab-13-1A.png"/>
 </blockquote>
