@@ -10,19 +10,23 @@ breadcrumbs:
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
 table-of-contents:
-- toc-url: summary
+- toc-url: 'summary'
   toc-text: 'Summary'
-- toc-url: reference
+- toc-url: 'reference'
   toc-text: 'Reference'
-- toc-url: lab
+- toc-url: 'overview'
+  toc-text: 'Overview'
+- toc-url: 'using-api'
+  toc-text: 'Using API'
+- toc-url: 'lab'
   toc-text: 'Lab'
-- toc-url: create-a-standard-bucket
+- toc-url: 'create-a-standard-bucket'
   toc-text: 'Create a Standard Bucket'
-- toc-url: perform-a-multipart-upload
+- toc-url: 'perform-a-multipart-upload'
   toc-text: 'Perform a Multipart Upload'
-- toc-url: abort-upload
+- toc-url: 'abort-upload'
   toc-text: 'Abort Upload'
-- toc-url: second-attempt
+- toc-url: 'second-attempt'
   toc-text: 'Second Attempt'
 ---
 
@@ -30,47 +34,47 @@ table-of-contents:
 <p>A multipart upload requires the use of OCI CLI.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Oracle Cloud Infrastructure</a></li>
-  <ul>
-    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/home.htm">Object Storage</a></li>
-    <ul>
-      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Tasks/usingmultipartuploads.htm">Multipart Uploads</a></li>
-      <ul>
-        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Tasks/usingmultipartuploads_topic-To_perform_a_multipart_upload_using_the_CLI.htm">Running a Multiple Upload</a></li>
-      </ul>
-    </ul>
-  </ul>
-  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
-  <ul>
-    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
-    <ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment.html"><code>compartment</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment/list.html"><code>list</code></a></li>
-      </ul>
-    </ul>
-    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os.html"><code>os</code></a></li>
-    <ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket.html"><code>bucket</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket/create.html"><code>create</code></a></li>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket/get.html"><code>get</code></a></li>
-      </ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/multipart.html"><code>multipart</code></a></li>
-      <ul>
-        <li><a href="https://docs.cloud.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/os/multipart/list.html"><code>list</code></a></li>
-      </ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/ns.html"><code>ns</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/ns/get.html"><code>get</code></a></li>
-      </ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object.html"><code>object</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object/list.html"><code>list</code></a></li>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object/put.html"><code>put</code></a></li>
-      </ul>
-    </ul>
-  </ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Oracle Cloud Infrastructure</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/home.htm">Object Storage</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Tasks/usingmultipartuploads.htm">Multipart Uploads</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Tasks/usingmultipartuploads_topic-To_perform_a_multipart_upload_using_the_CLI.htm">Running a Multiple Upload</a></li>
+</ul>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment.html"><code>compartment</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment/list.html"><code>list</code></a></li>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os.html"><code>os</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket.html"><code>bucket</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket/create.html"><code>create</code></a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/bucket/get.html"><code>get</code></a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/multipart.html"><code>multipart</code></a></li>
+<ul>
+<li><a href="https://docs.cloud.oracle.com/en-us/iaas/tools/oci-cli/latest/oci_cli_docs/cmdref/os/multipart/list.html"><code>list</code></a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/ns.html"><code>ns</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/ns/get.html"><code>get</code></a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object.html"><code>object</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object/list.html"><code>list</code></a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/os/object/put.html"><code>put</code></a></li>
+</ul>
+</ul>
+</ul>
 </ul>
 <h2 id="TOC-overview">Overview</h2>
 <p>An object, of size greater than 100MB, should be uploaded using multi-part upload. This will upload the data in parallel, and is faster and more efficient. Only failing parts need to be retried rather than the entire upload. Uploads can be paused and resumed later.</p>
@@ -79,27 +83,27 @@ table-of-contents:
 <h2 id="TOC-using-api">Using API</h2>
 <p>There are four (4) steps:</p>
 <ol>
-  <li>Split the object into parts</li>
-  <li>Initiate upload with <em>Create Multipart Upload</em> call and get ID</li>
-  <li>With that ID, start upload of a part with an <em>UploadPart</em> call. One (1) call per part.</li>
-  <li>When all parts have finished uploading, commit the upload with the <em>Commit Multipart Upload</em> call. Only then does Object Storage reconstruct the objects from the uploaded parts.</li>
+<li>Split the object into parts</li>
+<li>Initiate upload with <em>Create Multipart Upload</em> call and get ID</li>
+<li>With that ID, start upload of a part with an <em>UploadPart</em> call. One (1) call per part.</li>
+<li>When all parts have finished uploading, commit the upload with the <em>Commit Multipart Upload</em> call. Only then does Object Storage reconstruct the objects from the uploaded parts.</li>
 </ol>
 <h2 id="TOC-lab">Lab</h2>
 <p>This topic is covered by <i>Lab 11-1: Object Storage: Perform Multipart Upload Using CLI (Using Cloud Shell)</i>:</p>
 <blockquote>
-  <p><strong>Overview</strong></p>
-  <p>The Oracle Cloud Infrastructure (OCI) Object Storage supports multipart uploads for more efficient and resilent uploads, especially for large objects. With multipart uploads, the individual parts of an object can be uploaded in parallel to reduce the amount of time you spend uploading. In this lab, you will perform a multipart upload on the Command Line Interface (CLI) using Cloud Shell.</p>
-  <p>In this lab, you will:</p>
-  <ul>
-    <li>Access Cloud Shell via the Console</li>
-    <li>Create a standard default storage tier bucket using CLI (cloud Shell)</li>
-    <li>Upload a file (larger than 100 MiB) to Cloud Shell</li>
-    <li>Perform a multipart upload using the CLI (Cloud Shell)</li>
-  </ul>
-  <p><strong>Create a Standard default storage tier bucket using CLI (Cloud Shell) and Upload a File</strong></p>
-  <img src="home/oci-2024-architect-associate/storage/configure-multipart-uploads/lab-11-1A.png" />
-  <p><strong>Perform a multipart upload using CLI (Cloud Shell)</strong></p>
-  <img src="home/oci-2024-architect-associate/storage/configure-multipart-uploads/lab-11-1B.png" />
+<p><strong>Overview</strong></p>
+<p>The Oracle Cloud Infrastructure (OCI) Object Storage supports multipart uploads for more efficient and resilent uploads, especially for large objects. With multipart uploads, the individual parts of an object can be uploaded in parallel to reduce the amount of time you spend uploading. In this lab, you will perform a multipart upload on the Command Line Interface (CLI) using Cloud Shell.</p>
+<p>In this lab, you will:</p>
+<ul>
+<li>Access Cloud Shell via the Console</li>
+<li>Create a standard default storage tier bucket using CLI (cloud Shell)</li>
+<li>Upload a file (larger than 100 MiB) to Cloud Shell</li>
+<li>Perform a multipart upload using the CLI (Cloud Shell)</li>
+</ul>
+<p><strong>Create a Standard default storage tier bucket using CLI (Cloud Shell) and Upload a File</strong></p>
+<img src="home/oci-2024-architect-associate/storage/configure-multipart-uploads/lab-11-1A.png"/>
+<p><strong>Perform a multipart upload using CLI (Cloud Shell)</strong></p>
+<img src="home/oci-2024-architect-associate/storage/configure-multipart-uploads/lab-11-1B.png"/>
 </blockquote>
 <h2 id="TOC-create-a-standard-bucket">Create a Standard Bucket</h2>
 <p>The OCI CLI commands used to create a standard default storage tier bucket are:</p>
@@ -207,7 +211,7 @@ ServiceError:
 }
 </pre>
 <p>The Cloud Console shows the bucket information:</p>
-<img src="home/oci-2024-architect-associate/storage/configure-multipart-uploads/status_of_buckets.png" />
+<img src="home/oci-2024-architect-associate/storage/configure-multipart-uploads/status_of_buckets.png"/>
 <h2 id="TOC-abort-upload">Abort Upload</h2>
 <p>I used the following commands to abort the above failed multipart upload:</p>
 <pre class="bash-cmd">
