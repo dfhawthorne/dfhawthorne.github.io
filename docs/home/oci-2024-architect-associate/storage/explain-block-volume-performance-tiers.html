@@ -14,6 +14,8 @@ table-of-contents:
   toc-text: 'Summary'
 - toc-url: reference
   toc-text: 'Reference'
+- toc-url: overview
+  toc-text: 'Overview'
 - toc-url: block-volume-performance
   toc-text: 'Block Volume Performance'
 ---
@@ -30,6 +32,8 @@ table-of-contents:
       </ul>
     </ul>
 </ul>
+<h2 id="TOC-overview">Overview</h2>
+<p>A block volume is based on NVMe storage infrastructure with flexible and elastic performance. The default performance level is <em>Balance</em>, but this can be changed when provisioning or modified later.</p>
 <h2 id="TOC-block-volume-performance">Block Volume Performance</h2>
 <p>Virtual Performance Unit (VPU) is a measure of the I/O performance for a block volume that encompasses the following limits:</p>
 <ul>
@@ -41,8 +45,23 @@ table-of-contents:
 </ul>
 <p>Performance levels are:</p>
 <ul>
-  <li><strong>Ultra High Performance:</strong> Can purchase 30 -  120 VPUs per GB/month. Only available for block volumes.</li>
-  <li><strong>Higher Performance:</strong> Purchase 20 VPUs per GB/month</li>
-  <li><strong>Balanced:</strong> Default to 10 VPUs per GB/month</li>
-  <li><strong>Lower Cost:</strong> incurs only storage cost - no additional VPU cost. Only available for block volumes.</li>
+  <li><strong>Ultra High Performance:</strong> Can purchase 30 - 120 VPUs per GB/month. Only available for block volumes. Recommended for the most demanding, I/O intensive workloads. Limits (based on VPUs purchased) are:</li>
+  <ul>
+    <li>90-225 IOPS/GB with a maximum of 300K IOPS/volume</li>
+    <li>720-1800 KBPS/GB with a maximum of 2680 MBPS/volume</li>
+  </ul>
+  <li><strong>Higher Performance:</strong> Purchase 20 VPUs per GB/month. Recommended for workloads with high I/O requirements. Available for block and boot volumes. Limits are:</li>
+  <ul>
+    <li>75 IPOS/GB with a maximum of 50,000 IOPS/volume</li>
+    <li>600 KBPS/GB with a maximum of 680 MBPS/volume</li>
+  </ul>
+  <li><strong>Balanced:</strong> Default to 10 VPUs per GB/month (default for boot and block). Good balance between performance and cost savings. Limits are:</li>
+  <ul>
+    <li>60 IOPS/GB with a maximum of 25,000 IOPS/volume</li>
+    <li>480 KBPS/GB with a maximum of 480 MBPS/volume</li>
+  </ul>
+  <li><strong>Lower Cost:</strong> incurs only storage cost - no additional VPU cost. Only available for block volumes. Recommended for throughput intensive workloads with large sequential I/O (streaming, logs, DW) with the following limits:</li><ul>
+    <li>up to 2 IOPS/GB with a maximum of 3000 IOPS/Volume</li>
+    <li>up to 240 KBPS/GB with a maximum of 480 MBPS/Volume</li>
+  </ul> 
 </ul>
