@@ -9,27 +9,53 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'initial-security-tasks'
+  toc-text: 'Initial Security Tasks'
+- toc-url: 'routine-security-tasks'
+  toc-text: 'Routine Security Tasks'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
 <p>Objects can be either private or public. Pre-authenticated requests allow end-users access to an object for a limited time.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
-  <ul>
-    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/home.htm">Object Storage</a></li>
-    <ul>
-      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Concepts/objectstorageoverview.htm">Overview of Object Storage</a></li>
-    </ul>
-  </ul>
-  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Concepts/security.htm">Security</a></li>
-  <ul>
-    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Concepts/security_guide.htm">OCI Security Guide</a></li>
-    <ul>
-      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Reference/configuration_security.htm">Security Best Practices</a></li>
-      <ul>
-        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Reference/objectstorage_security.htm">Securing Object Storage</a></li>
-      </ul>
-    </ul>
-  </ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/home.htm">Object Storage</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Object/Concepts/objectstorageoverview.htm">Overview of Object Storage</a></li>
+</ul>
+</ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Concepts/security.htm">Security</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Concepts/security_guide.htm">OCI Security Guide</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Reference/configuration_security.htm">Security Best Practices</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Security/Reference/objectstorage_security.htm">Securing Object Storage</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<h2 id="TOC-initial-security-tasks">Initial Security Tasks</h2>
+<ul>
+<li>Use IAM Policies to grant access to users and resources</li>
+<li>Restrict access to requests that originate from an allowed IP address using network source</li>
+<li>Prevent deletion of buckets and objects</li>
+<li>Encrypt resources using a custom key</li>
+<li>Secure network access to resources (TLS 1.2)</li>
+<li>Create a security zone</li>
+</ul>
+<h2 id="TOC-routine-security-tasks">Routine Security Tasks</h2>
+<ul>
+<li>Rotate encryption keys</li>
+<li>Perform a security audit</li>
+<li>Use object versioning to minimize data loss due to malicious deletions.</li>
+<p>Only give `BUCKET_DELETE` and `OBJECT_DELETE` permission to a minimum set of IAM users or groups</p>
+<p>Ensure the integrity of the data when it is moved/copied to a different location. MD5SUM is generated for all uploads.</p>
 </ul>
