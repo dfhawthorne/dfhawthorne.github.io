@@ -72,6 +72,18 @@ table-of-contents:
     </ul>
   </ul>
 </ul>
+<h2 id="TOC-overview">Overview</h2>
+<p>An object, of size greater than 100MB, should be uploaded using multi-part upload. This will upload the data in parallel, and is faster and more efficient. Only failing parts need to be retried rather than the entire upload. Uploads can be paused and resumed later.</p>
+<p>An object can be divided into a maximum of 10,000 parts each with a maximum size of 50GB. Maximum object size is 0.5PB.</p>
+<p>Can create a lifecycle rule for multi-part uploads to automatically delete uncommitted multipart uploads after a specified number of days.</p>
+<h2 id="TOC-using-api">Using API</h2>
+<p>There are four (4) steps:</p>
+<ol>
+  <li>Split the object into parts</li>
+  <li>Initiate upload with <em>Create Multipart Upload</em> call and get ID</li>
+  <li>With that ID, start upload of a part with an <em>UploadPart</em> call. One (1) call per part.</li>
+  <li>When all parts have finished uploading, commit the upload with the <em>Commit Multipart Upload</em> call. Only then does Object Storage reconstruct the objects from the uploaded parts.</li>
+</ol>
 <h2 id="TOC-lab">Lab</h2>
 <p>This topic is covered by <i>Lab 11-1: Object Storage: Perform Multipart Upload Using CLI (Using Cloud Shell)</i>:</p>
 <blockquote>
