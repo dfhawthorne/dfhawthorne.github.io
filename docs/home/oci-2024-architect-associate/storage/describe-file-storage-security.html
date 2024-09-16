@@ -33,6 +33,19 @@ table-of-contents:
     </ul>
   </ul>
 </ul>
+<h2 id="TOC-overview">Overview</h2>
+<p>There are four (4) layers of security:</p>
+<table border="1">
+  <thead>
+    <tr><th>Security Layer</th><th>Resources</th><th>Control</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>IAM Service</td><td>Users and policies</td><td>Creating instances (NFS clients) ans FSS VCNs; creating, listing, associating file systems and mount targets</td></tr>
+    <tr><td>Network Security</td><td>IP addresses, CIDR blocks, security lists, network security groups.</td><td>Connecting the NFS client instances to the mount target</td></tr>
+    <tr><td>NFS Export Options</td><td>File syste, exports, IP addresses, UNIX users</td><td>Privileged source port connection, reading and writing files, and limiting root user access on a per-file basis.</td></tr>
+    <tr><td>Unix Security</td><td>UNIX user, file mode bits</td><td>Mounting file systems, reading and writing files</td></tr>
+  </tbody>
+</table>
 <h2 id="TOC-lab">Lab</h2>
 <p>This topic is covered by <i>Lab 15-1: File Storage: Configure NFS Export Options</i>:</p>
 <blockquote>
