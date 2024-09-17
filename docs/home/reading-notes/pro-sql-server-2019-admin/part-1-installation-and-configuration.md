@@ -11,9 +11,9 @@ breadcrumbs:
   url: home/reading-notes/pro-sql-server-2019-admin.html
 sub-pages:
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/01-planning-the-deployment.html
-  title: '01 Planning the Deployment'
+  title: '01. Planning the Deployment'
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/02-gui-installation.html
-  title: '02 Gui Installation'
+  title: '02. GUI Installation'
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/03-server-core-installation.html
   title: '03 Server Core Installation'
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/04-installation-on-heterogeneous-operating-system.html
