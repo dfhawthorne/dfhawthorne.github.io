@@ -15,9 +15,9 @@ sub-pages:
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/02-gui-installation.html
   title: '02. GUI Installation'
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/03-server-core-installation.html
-  title: '03 Server Core Installation'
+  title: '03. Server Core Installation'
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/04-installation-on-heterogeneous-operating-system.html
-  title: '04 Installation On Heterogeneous Operating System'
+  title: '04. Installation On Heterogeneous Operating System'
 - url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/05-configuring-the-instance.html
-  title: '05 Configuring The Instance'
+  title: '05. Configuring The Instance'
 ---

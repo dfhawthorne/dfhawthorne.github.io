@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '02. GUI Installation'
-base-url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/02-gui-installation.html
+base-url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/02-gui-installation.html
 breadcrumbs:
 - title: Home
   url: index.html
