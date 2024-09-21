@@ -35,4 +35,41 @@ SELECT * FROM sys.configurations
 
 ## Processor Affinity
 
+SSIS is incorporated into the DB engine. When SSIS (SQLServerInt.Serv) run, they run in a separate process and are not restricted by processor affinity.
 
+Align processors on same NUMA node.
+
+Do not use processor affinity with VM oversubscription because NUMA boundaries are not restricted.
+
+For active/active failover, processor affinity should be so as to guarantee sonsistent performance in the event of a failover.
+
+Processor affinity avoids overhead associated with moving threads between processors at the operating system level.
+
+Afinity I/O mask:
+
+- lazy writer
+- usually used on 32 bit systems
+
+Do align Affinity I/O Mask and processor mask onto the same core.
+
+Bitmap in signed 32-bit integer or 64-bit.
+
+```sql
+EXEC sp_configure 'affinitt mask',15 RECONFIGURE
+```
+
+For 256 logical processors (max), use:
+
+```sql
+ALTER SERVER CONFIGURATION SET PROCESS AFFINITY CPU=4 TO 3
+ALTER SERVER CONFIGURATION SET PROCESS AFFINITY NUMANODE=0,14
+```
+
+__MAXDOP__ will set the maximum number of cores that will be made available to each individual execution of a query.
+
+`CXPACKET` want type
+
+```text
+MAXDOP = min(8, #cores, #cores in NUMA node)
+0 = all visible cores
+```
