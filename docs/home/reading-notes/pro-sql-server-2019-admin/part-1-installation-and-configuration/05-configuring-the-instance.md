@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '05. Installation on Heterogeneous Operating Systems'
+title: '05. Configuring the Instance'
 base-url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/05-configuring-the-instance.html
 breadcrumbs:
 - title: Home
