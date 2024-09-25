@@ -9,8 +9,8 @@ breadcrumbs:
   url: home/reading-notes.html
 - title: 'Pro SQL Server 2019 Adminstration'
   url: home/reading-notes/pro-sql-server-2019-admin.html
-- title: 'Part I. Installation and Configuration'
-  url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration.html
+- title: 'Part II. Database Administrator'
+  url: home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator
 ---
 
 Database:
