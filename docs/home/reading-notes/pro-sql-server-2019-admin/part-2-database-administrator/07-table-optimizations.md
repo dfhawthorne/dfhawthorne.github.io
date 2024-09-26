@@ -71,3 +71,85 @@ Sliding windows:
 `MERGE` and `SPLIT` can be used with different filegroup. This causes performance impact.
 
 ## Table Compression
+
+Improves performance for I/O bound workload. Compression uses minimal data type needed to hold value. Single byte for Unicode. Row compression.
+
+Page compression:
+
+- row compression
+- prefix compression  (longest value anchor)
+- dictionary compression (duplicate values)
+
+- `COLUMNSTORE` (is imcompatible with page compression) 2012+
+- `COLUMNSTORE_ARCHIVE` 2014+ for infrequently accessed data
+
+```sql
+EXEC sp_estimate_data_compression_savings
+ALTER TABLE t
+    REBUILD WITH (
+        DATA_COMPRESSION=<ROW|NONE>
+    );
+ALTER TABLE t
+    REBUILD PARTITION p WITH ...
+```
+
+Table -> Storage -> Manage Compression
+
+For heap tables, new pages are not auto-compressed. Needs regular manual rebuild.
+
+- `SWITCH` both have same compression level
+- `MERGE` set to destination compression level
+- `SPLIT` inherit from parent
+
+## Memory-Optimized Tables
+
+- disk-based versions - unstructured in `FILESTREAM`
+- memory optimized checkpoints happen more frequently
+  - autocheckpoint after log grows by 512MB since last checkpoint
+  - less data logged - only tables not indexes
+
+In-memory OLTP reduces CPU overhead through natively compiled procedures.
+
+- Increases memory pressure
+- Designed for OLTP
+- No latching for access
+- Uses new optimistic concurrency
+
+- `SCHEMA_AND_DATA` all logged plus data persisted
+- `SCHEMA_ONLY` no logging or persistence
+
+Needs memory-optimized filegroup. Must include an index:
+
+- nonclustered hash index
+- nonclustered index
+
+#memory buckets is appox. equal to twice #distinct keys
+
+Cannot aletr table or index
+
+Performance test:
+
+```sql
+SET STATISTICS TIME ON
+DBCC FREEPROCCACHE
+DBCC DROPCLEANBUFFERS
+```
+
+DLL created for memory-optimized table
+
+- recompiled everytime DB server restarts
+- auto-deleted when table is dropped
+
+## Natively Compiled Stored Procedures
+
+```sql
+BEGIN ATOMIC
+```
+
+Autocommit at end
+
+```sql
+WITH NATIVE_COMPILATION
+    SCHEMA_BINDING /* prevents DDL on reference objects */
+    EXECUTE AS ... /* DEFAULT of CALLER is not valid here */
+```
