@@ -1,7 +1,7 @@
 ---
 layout: default
 title: '07. Table Optimizations'
-base-url: home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator/07-table-optimizations.md
+base-url: home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator/07-table-optimizations.html
 breadcrumbs:
 - title: Home
   url: index.html
@@ -123,7 +123,7 @@ Needs memory-optimized filegroup. Must include an index:
 - nonclustered hash index
 - nonclustered index
 
-#memory buckets is appox. equal to twice #distinct keys
+\#memory buckets is appox. equal to twice #distinct keys
 
 Cannot aletr table or index
 
