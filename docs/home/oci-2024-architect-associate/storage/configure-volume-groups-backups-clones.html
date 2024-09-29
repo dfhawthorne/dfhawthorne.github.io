@@ -9,53 +9,72 @@ breadcrumbs:
   url: home/oci-2024-architect-associate.html
 - title: 'Storage'
   url: home/oci-2024-architect-associate/storage.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'create-volume-group'
+  toc-text: 'Create Volume Group'
+- toc-url: 'backup-volume-group'
+  toc-text: 'Backup Volume Group'
+- toc-url: 'clone-volume-group'
+  toc-text: 'Clone Volume Group'
+- toc-url: 'list-volume-groups'
+  toc-text: 'List Volume Groups'
+- toc-url: 'oracle-defined-backup-policies'
+  toc-text: 'Oracle Defined Backup Policies'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
 <p>A volume group can be created from a list of volume IDs, another volume group (cloning), or a backup.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-  <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
-  <ul>
-    <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/home.htm">Block Volume</a></li>
-    <ul>
-      <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/volumegroups.htm">Volume Groups</a></li>
-      <ul>
-        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/create-volume-group.htm">Creating a Volume Group</a></li>
-        <li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/clone-volume-group.htm">Cloning a Volume Group</a></li>
-      </ul>
-    </ul>
-  </ul>
-  <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
-  <ul>
-    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv.html"><code>bv</code></a></li>
-    <ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume.html"><code>volume</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume/create.html"><code>create</code></a></li>
-      </ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group.html"><code>volume-group</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group/create.html"><code>create</code></a></li>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group/list.html"><code>list</code></a></li>
-      </ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group-backup.html"><code>volume-group-backup</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group-backup/create.html"><code>create</code></a></li>
-      </ul>
-    </ul>
-    <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
-    <ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/availability-domain.html"><code>availability-domain</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/availability-domain/list.html"><code>list</code></a></li>
-      </ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment.html"><code>compartment</code></a></li>
-      <ul>
-        <li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment/list.html"><code>list</code></a></li>
-      </ul>
-    </ul>
-  </ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/home.htm">Block Volume</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/volumegroups.htm">Volume Groups</a></li>
+<ul>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/create-volume-group.htm">Creating a Volume Group</a></li>
+<li><a href="https://docs.public.oneportal.content.oci.oraclecloud.com/en-us/iaas/Content/Block/Concepts/clone-volume-group.htm">Cloning a Volume Group</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Block/Concepts/blockvolumebackups.htm">Overview of Block Volume Backups</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Block/Tasks/schedulingvolumebackups.htm">Policy-Based Backups</a></li>
+</ul>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/index.html"><code>oci</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv.html"><code>bv</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume.html"><code>volume</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume/create.html"><code>create</code></a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group.html"><code>volume-group</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group/create.html"><code>create</code></a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group/list.html"><code>list</code></a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group-backup.html"><code>volume-group-backup</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/bv/volume-group-backup/create.html"><code>create</code></a></li>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam.html"><code>iam</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/availability-domain.html"><code>availability-domain</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/availability-domain/list.html"><code>list</code></a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment.html"><code>compartment</code></a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/tools/oci-cli/3.45.0/oci_cli_docs/cmdref/iam/compartment/list.html"><code>list</code></a></li>
+</ul>
+</ul>
+</ul>
 </ul>
 <h2 id="TOC-create-volume-group">Create Volume Group</h2>
 <p>The sample procedure to create a volume group is:</p>
@@ -272,3 +291,23 @@ oci bv volume-group list              \
 | bPBR:AP-SYDNEY-1-AD-1 | Sandbox Volume Group Replica |
 +-----------------------+------------------------------+
 </pre>
+<h2 id="TOC-oracle-defined-backup-policies">Oracle Defined Backup Policies</h2>
+<p>There are three Oracle defined backup policies:</p>
+<table border="1">
+<thead>
+<tr><th rowspan="2">Policy</th><th colspan="4">Incremental Backups</th><th colspan="4">Retention</th></tr>
+<tr><th>Daily</th><th>Weekly</th><th>Monthly</th><th>Yearly</th><th>Daily</th><th>Weekly</th><th>Monthly</th><th>Yearly</th></tr>
+</thead>
+<tbody>
+<tr><td>Bronze</td><td>No</td><td>No</td><td>Yes</td><td>Yes</td><td> </td><td> </td><td>12 mths</td><td>5 years</td></tr>
+<tr><td>Silver</td><td>No</td><td>Yes</td><td>Yes</td><td>Yes</td><td> </td><td>4 weeks</td><td>12 mths</td><td>5 years</td></tr>
+<tr><td>Gold</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>7 days</td><td>4 weeks</td><td>12 mths</td><td>5 years</td></tr>
+</tbody>
+</table>
+<p>Backups are done on:</p>
+<ul>
+  <li>1 January for yearly cycle</li>
+  <li>First of the month for monthly cycle</li>
+  <li>Sunday for weekly cycle</li>
+</ul>
+<p><span class="note">Note:</span> Full backups are no longer part of an Oracle defined backup policy. <cite>Incremental backups are functionally the same as full backups for data recovery purposes.</cite></p>
