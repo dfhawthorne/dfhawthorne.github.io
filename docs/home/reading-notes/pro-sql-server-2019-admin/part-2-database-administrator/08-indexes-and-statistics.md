@@ -117,3 +117,64 @@ Index fragmentation:
 
 `ONLINE` rebuild will fail if `ALLOW_PAGE_LOCKS` is off.
 
+`MAXDOP=1` can reduce some residual fragmentation:
+
+```sql
+ALTER INDEX idx ON t REBUILD WITH (MAXDOP=1);
+```
+
+2019+ Resumable index operations:
+
+- can pause, then resume
+- reduces log usage
+- no long running transactions
+- degrades write performance during pause
+
+```sql
+WITH (MAXDOP=1,ONLINE=ON,RESUMABLE=ON)
+ALTER INDEX idx ON t PAUSE
+                     RESUME
+                     ABORT
+ALTER DATABASE SCOPED CONFIGURATION SET
+```
+
+## Statistics
+
+`AUTO_CREATE_STATISTICS` - not for multi-column or filtered
+
+Statistics always collected on index creation.
+
+`AUTO_UPDATE_STATISTICS` process synchronisation and blocking
+
+```text
+AUTO_UPDATE_STATS_ASYNC
+AUTO_CREATE_STATISTICS ON(INCREMENTAL=ON)
+AUTO_UPDATE_STATISTICS ON WITH NO_WAIT
+AUTO_UPDATE_STATS_ASYNC WITH NO_WAIT
+```
+
+Filtered statistics `WHERE`
+
+Incremental statistics per partition not allowed in certain situations.
+
+## Managing Statistics
+
+`CREATE STATISTICS` filtered statistics require `WHERE`
+
+```sql
+CREATE STATISTICS sn ON t(...)
+  FULLSCAN /* 100% */
+  SAMPLE n /* n=0 means no collection */
+  NORECOMPUTE
+  INCREMENTAL;
+UPDATE STATISTICS sn|t;
+  RESAMPLE
+  ON PARTITIONS ...
+  ALL|COLUMN|INDEX
+EXEC sp_updatestats 'RESAMPLE'; /* for database */
+```
+
+2019+
+
+- `WAIT_ON_SYNC_STATISTICS_REFRESH`
+- `SELECT (STATMAN)` indicates `SELECT` is waiting for statistics collection to complete
