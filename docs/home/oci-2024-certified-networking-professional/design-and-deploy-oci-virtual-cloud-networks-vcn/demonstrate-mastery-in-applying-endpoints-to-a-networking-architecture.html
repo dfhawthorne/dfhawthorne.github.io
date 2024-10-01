@@ -15,7 +15,27 @@ breadcrumbs:
 <p></p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-  <li><a href="</li>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Servcies</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/home.htm">Resource Manager</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/private-endpoints.htm">Managing Private Endpoints</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security.htm">Security</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_guide.htm">Oracle Cloud Infrastructure Security Guide</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/configuration_security.htm">Security Best Practices</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/resourcemanager_security.htm">Securing Resource Manager</a></li>
+        <ul>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/resourcemanager_security.htm#iam-policies__private-endpoints">Manage Private Endpoints</a></li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+
 </ul>
 <h2 id="TOC-course-notes">Course Notes</h2>
 <p>Course notes:</p>
@@ -100,3 +120,22 @@ breadcrumbs:
     </tbody>
   </table>
 </blockquote>
+<h2 id="TOC-security-policies">Security Policies</h2>
+<p>The <a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/resourcemanager_security.htm#iam-policies__private-endpoints">security policies</a> needed to manage private endpoints in a tenancy are:</p>
+<pre class="text">
+Allow group &lt;group_name&gt; to manage orm-private-endpoints in tenancy
+Allow group &lt;group_name&gt; to use virtual-network-family in tenancy
+  where any request.operation={'CreatePrivateEndpoint'}"
+</pre>
+<p>The summary of <a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/resourcemanagerpolicyreference.htm#ormprivateendpoints">security permissions</a> for private endpoints is:</p>
+<table border="1">
+  <thead>
+    <tr><th>Verbs</th><th>Permissions</th><th>APIs Fully Covered</th><th>APIs Partially Covered</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>inspect</td><td>ORM_PRIVATE_ENDPOINT_INSPECT</td><td>ListPrivateEndpoints </td><td>none</td></tr>
+    <tr><td>read</td><td>ORM_PRIVATE_ENDPOINT_READ</td><td>GetPrivateEndpoint<br />GetReachableIp</td><td>none</td></tr>
+    <tr><td>use</td><td>ORM_PRIVATE_ENDPOINT_UPDATE</td><td>UpdatePrivateEndpoint</td><td>none</td></tr>
+    <tr><td>manage</td><td>ORM_PRIVATE_ENDPOINT_CREATE<br />ORM_PRIVATE_ENDPOINT_DELETE<br />ORM_PRIVATE_ENDPOINT_MOVE</td><td>ChangePrivateEndpointCompartment<br />CreatePrivateEndpoint<br />DeletePrivateEndpoint</td><td>none</td></tr>
+      </tbody>
+</table>
