@@ -1,7 +1,7 @@
 ---
 layout: default
 title: 'Autonomous Database Queries'
-base-url: docs/home/procedures/oci-procedures/identity-domains-queries.html
+base-url: home/procedures/oci-procedures/identity-domains-queries.html
 breadcrumbs:
 - title: 'Home'
   url: index.html
