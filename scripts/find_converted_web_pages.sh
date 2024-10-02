@@ -9,14 +9,17 @@ docs_path="$(dirname $(dirname $(realpath $0)))/docs"
 
 while read file_name
 do 
-    [[ "${file_name}" =~ /_site/ ]] && continue
-    [[ "${file_name}" =~ /_includes/ ]] && continue
-    [[ "${file_name}" =~ /_layouts/ ]] && continue
     [[ "${file_name}" =~ /google ]] && continue
     [[ "${file_name}" =~ /ASH_report_ ]] && continue
     [[ "${file_name}" =~ /workload_report_ ]] && continue
     [[ "$(head -n 1 ""${file_name}"")" == '---' ]] && \
         printf "%s\n" "${file_name}"
-done < <(find "${docs_path}" -name "*.html" -type f)
+done < <(                                               \
+    find "${docs_path}"                                 \
+        -regextype posix-extended                       \
+        -type d -regex '.*/(\.|_)[^/]*$' -prune -false  \
+        -o                                              \
+        -type f -regex '.*\.(html|md)$'                 \
+        )
 
 exit 0

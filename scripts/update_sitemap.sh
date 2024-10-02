@@ -15,13 +15,14 @@ cat > "${site_map_loc}/sitemap.xml" <<DONE
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 DONE
 
-"${script_loc}/find_converted_web_pages.sh" | \
-    xargs -I@ stat --print "${url_fmt}" "@" | \
-    sed -re 's!/./!/!g' \
-        -e "s!${site_base_loc}!!" \
-        -e 's!//!/!g' \
-        -e 's!:/!://!' \
+"${script_loc}/find_converted_web_pages.sh" |       \
+    xargs -I@ stat --print "${url_fmt}" "@" |       \
+    sed -re 's!/./!/!g'                             \
+        -e "s!${site_base_loc}!!"                   \
+        -e 's!//!/!g'                               \
+        -e 's!:/!://!'                              \
         -e 's!(<lastmod>.{10}).*(</lastmod>)!\1\2!' \
+        -e 's!.md<!.html<!'                         \
     >> "${site_map_loc}/sitemap.xml"
 
 cat >> "${site_map_loc}/sitemap.xml" <<DONE

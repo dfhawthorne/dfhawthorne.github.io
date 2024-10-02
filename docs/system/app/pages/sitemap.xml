@@ -289,12 +289,184 @@
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed.html</loc>
+    <lastmod>2024-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload.html</loc>
+    <lastmod>2024-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator.html</loc>
+    <lastmod>2024-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/05-configuring-the-instance.html</loc>
+    <lastmod>2024-09-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/02-gui-installation.html</loc>
+    <lastmod>2024-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/03-server-core-installation.html</loc>
+    <lastmod>2024-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/01-planning-the-deployment.html</loc>
+    <lastmod>2024-10-02</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/04-installation-on-heterogeneous-operating-system.html</loc>
+    <lastmod>2024-09-20</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator/06-database-configuration.html</loc>
+    <lastmod>2024-09-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator/07-table-optimizations.html</loc>
+    <lastmod>2024-09-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator/08-indexes-and-statistics.html</loc>
+    <lastmod>2024-09-30</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-2-database-administrator/09-database-consistency.html</loc>
+    <lastmod>2024-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/10-sql-server-security-model.html</loc>
+    <lastmod>2024-10-01</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration.html</loc>
+    <lastmod>2024-09-19</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance.html</loc>
+    <lastmod>2024-09-17</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/pro-sql-server-2019-admin.html</loc>
+    <lastmod>2024-09-17</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/pro-oracle-database-12c-administration.html</loc>
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch04_Concurrency_and_Multiversioning.html</loc>
+    <lastmod>2024-08-24</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch02_Locking_and_Blocking.html</loc>
+    <lastmod>2024-08-23</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch09_Troubleshooting.html</loc>
+    <lastmod>2024-08-29</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch07_Investigating_Redo.html</loc>
+    <lastmod>2024-08-27</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch06_Redo_and_Undo.html</loc>
+    <lastmod>2024-08-26</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch05_Transactions.html</loc>
+    <lastmod>2024-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch08_Investigating_Undo.html</loc>
+    <lastmod>2024-08-28</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-database-transactions-and-locking-revealed/Ch03_Locks_Latches_and_Mutexes.html</loc>
+    <lastmod>2024-08-23</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch17-Case-Study-Foreign-Keys.html</loc>
+    <lastmod>2024-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch13-Case-Study-Flush-Locks.html</loc>
+    <lastmod>2024-09-11</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch15-Case-Study-Record-Level-Locks.html</loc>
+    <lastmod>2024-09-13</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch07-InnoDB-Locks.html</loc>
+    <lastmod>2024-09-05</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch14-Case-Study-Metadata-and-Schema-Locks.html</loc>
+    <lastmod>2024-09-12</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch05-Lock-Access-Levels.html</loc>
+    <lastmod>2024-09-03</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch16-Case-Study-Deadlocks.html</loc>
+    <lastmod>2024-09-14</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch01-Introduction.html</loc>
+    <lastmod>2024-08-30</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch09-Reducing-Lock-Issues.html</loc>
+    <lastmod>2024-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch04-Transactions-in-the-Performance-Schema.html</loc>
+    <lastmod>2024-09-02</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch08-Working-with-Lock-Conflicts.html</loc>
+    <lastmod>2024-09-06</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch06-High-Level-Locks-Types.html</loc>
+    <lastmod>2024-09-04</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch12-Transaction-Isolation-Levels.html</loc>
+    <lastmod>2024-09-10</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch18-Case-Study-Semaphores.html</loc>
+    <lastmod>2024-09-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch02-Monitoring-Locks-and-Mutexes.html</loc>
+    <lastmod>2024-08-31</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch10-Indexes-and-Foreign-Keys.html</loc>
+    <lastmod>2024-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch03-Monitoring-InnoDB-Transactions.html</loc>
+    <lastmod>2024-09-01</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency/Ch11-Transactions.html</loc>
+    <lastmod>2024-09-09</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/oracle-vm-implementation-and-administration-guide.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/reading-notes/mysql-concurrency.html</loc>
+    <lastmod>2024-08-29</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/system-builds.html</loc>
@@ -354,7 +526,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/recognize-ip-management-details-select-procedural-steps.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-10-02</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/demonstrate-knowledge-of-oci-dns-and-traffic-steering.html</loc>
@@ -406,7 +578,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-mastery-in-applying-endpoints-to-a-networking-architecture.html</loc>
-    <lastmod>2024-08-17</lastmod>
+    <lastmod>2024-10-02</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/examine-vcnsubnets-characteristics.html</loc>
@@ -458,7 +630,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional.html</loc>
-    <lastmod>2024-06-22</lastmod>
+    <lastmod>2024-10-02</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm.html</loc>
@@ -1909,7 +2081,19 @@
     <lastmod>2024-08-17</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/install-oci-cli.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-image-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/identity-domains-queries.html</loc>
+    <lastmod>2024-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compartment-queries.html</loc>
     <lastmod>2024-06-22</lastmod>
   </url>
   <url>
@@ -1929,6 +2113,10 @@
     <lastmod>2024-06-22</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/oci-limits-queries.html</loc>
+    <lastmod>2024-10-02</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/fault-domains-queries.html</loc>
     <lastmod>2024-06-22</lastmod>
   </url>
@@ -1945,12 +2133,16 @@
     <lastmod>2024-08-17</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/autonomous-database-queries.html</loc>
+    <lastmod>2024-10-02</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/install-linux.html</loc>
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures.html</loc>
-    <lastmod>2024-08-17</lastmod>
+    <lastmod>2024-10-02</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/miscellaneous.html</loc>
@@ -2019,6 +2211,10 @@
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/create-oracle-database/create-12c-non-cdb-database-without-omf.html</loc>
     <lastmod>2024-05-16</lastmod>
+  </url>
+  <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/git-procedures/set-up-wip-for-git.html</loc>
+    <lastmod>2024-05-22</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/install-oracle-rdbms.html</loc>
@@ -2234,11 +2430,11 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/identity-and-access-management/explain-the-core-concepts-of-identity-and-access-management.html</loc>
-    <lastmod>2024-08-30</lastmod>
+    <lastmod>2024-09-19</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-volume-groups-backups-clones.html</loc>
-    <lastmod>2024-08-17</lastmod>
+    <lastmod>2024-09-30</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-architect-associate/storage/configure-crossregion-replication.html</loc>

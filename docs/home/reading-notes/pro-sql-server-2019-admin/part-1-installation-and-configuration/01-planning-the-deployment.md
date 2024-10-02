@@ -1,6 +1,6 @@
 ---
 layout: default
-title: '01 Planning the Deployment'
+title: '01. Planning the Deployment'
 base-url: home/reading-notes/pro-sql-server-2019-admin/part-1-installation-and-configuration/01_planning_the_deployment.html
 breadcrumbs:
 - title: Home
