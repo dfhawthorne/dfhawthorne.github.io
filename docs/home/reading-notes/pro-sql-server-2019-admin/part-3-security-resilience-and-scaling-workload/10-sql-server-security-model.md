@@ -81,7 +81,142 @@ DENY ALTER ON LOGIN::[domain\user] TO user;
 
 ## Database Roles
 
-Role Name | Description
---- | ---
-`db_accessadmin` | add/remove users
+| Role Name | Description |
+| --- | --- |
+| `db_accessadmin` | add/remove users |
+| `db_backupoperator` | for native backup. Backup tools usually require `sysadmin` |
+| `db_datareader` | `SELECT ANY TABLE` |
+| `db_datawriter` | DML against `ANY TABLE` |
+| `db_denydatawriter` | Opposite to `db_datawriter` |
+| `db_denydatareader` | Opposite to `db_datareader` |
+| `db_ddladmin` | DDL against `ANY TABLE` |
+| `db_owner` | Everything restricted by `DENY` |
+| `db_securityadmin` | DCL except `db_owner` |
 
+`system` -> `dbo`
+
+```sql
+USE db;
+CREATE ROLE r AUTHORIZATION dbo;
+ALTER ROLE r ADD MEMBER m;
+GRANT SELECT ON dbo.t TO r;
+DENY dml;
+```
+
+Use `DENY` sparingly.
+
+## Schemas
+
+2005+ user now owns a schema
+
+Permissions on schema:
+
+```sql
+USE db;
+CREATE SCHEMA s;
+GRANT SELECT ON SCHEMA::s TO u;
+ALTER SCHEMA s TRANSFER obj;
+```
+
+## Contained Database
+
+User not mapped to a login. Database is easier to move between Availability Group.
+
+| Level | Description |
+| --- | --- |
+| `NONE` | Default |
+| `PARTIAL` | Metadata within database. Logins can use database. |
+| `FULL` | Not yet implemented |
+
+Needs to be enabled:
+
+- server through `sp_configure`
+- database through `ALTER DATABASE`
+
+```sql
+USE MASTER;
+RECONFIGURE;
+EXEC sp_configure 'contained database authentication' '1'
+RECONFIGURATION WITH OVERRIDE
+ALTER DATABASE db SET CONTAINMENT=PARTIAL WITH NO_WAIT;
+CREATE USER u WITH PASSWORD=pw DEFAULT_SCHEMA=dbo;
+
+CREATE DATABASE db;
+ALTER DATABASE db SET CONTAINMENT=PARTIAL WITH NO_WAIT;
+USE db;
+CREATE USER u WITH PASSWORD=pw SID=s;
+SELECT sid s FROM sys.databse_principals WHERE name='u';
+
+ALTER DAtABASE db SET TRUSTWORTHY ON;
+```
+
+Can access via `GUEST` account.
+
+## Implementing Object-Level Security
+
+```sql
+GRANT SELECT ON OBJECT::obj TO u;
+```
+
+Can drop `OBJECT::` prefix
+
+```sql
+GRANT SELECT ON t(col) TO u;
+```
+
+## Server Audit
+
+Can log to a file - rotate, maximum size
+
+```sql
+USE MASTER;
+CREATE SERVER AUDIT a
+  TO FILE(
+    FILEPATH='...',
+    MAXSIZE=nMB,
+    MAX_ROLLOVER_FILES=n,
+    RESERVE_DISK_SPACE=OFF
+  )
+  WITH (
+    QUEUE_DELAY=t,
+    ON_FAILUER=CONTINUE
+  )
+  WHERE object_name='sysadmin';
+CREATE SERVER AUDIT SPECIFICATION spe
+  FOR SERVER AUDIT a
+  ADD (
+    SERVER_ROLE_MEMBER_CHAnGE_GROUP
+  );
+ALTER SERVER AUDIT a
+  WITH (
+    STATE=ON
+  );
+ALTER SERVER AUDIT SPECIFICATION spe
+  WITH (
+    STATE=ON
+  );
+```
+
+- `sys.dm_audit_class_type_map`
+- `sys.dm_audit_actions`
+
+```sql
+USE db;
+CREATE DATABASE AUDIT SPECIFICATION spe
+  FOR SERVER AUDIT a
+  ADD (INSERT ON ... BY PUBLIC),
+  ADD (...);
+ALTER DATABASE AUDIT SPECIFICATION spe
+  WITH (
+    STATE=ON
+  );
+EXECUTE AS USER='u';
+REVERT;
+/* AUDIT_CHANGE_GROUP */
+```
+
+- Tasks
+  - Data Discovery and Classification
+    - Classify Data
+  - Vulverability Assessment
+    - Scan for Vulnerabilities
