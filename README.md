@@ -44,7 +44,7 @@ I am allowing one (1) week per milestone. There are seven (7) milestones for eac
  --- | ---: | ---: | ---
 V3R0 | 24 May 2024 | 25 May 2024 | Set up OCI environment for study
 V3R1 | 1 June 2024 | 2 October 2024 | Study "Design and Deploy OCI Virtual Cloud Networks (VCN)" objective
-V3R2 | 8 June 2024 | | Study "Plan and Design OCI Networking Solutions and App Services" objective
+V3R2 | 8 June 2024 | 9 October 2024 | Study "Plan and Design OCI Networking Solutions and App Services" objective
 V3R3 | 15 June 2024 | | Study "Design for Hybrid Networking Architectures" objective
 V3R4 | 22 June 2024 | | Study "Transitive Routing" objective
 V3R5 | 29 June 2024 | | Study "Implement and Operate Secure OCI Networking and Connectivity Solutions" objective
