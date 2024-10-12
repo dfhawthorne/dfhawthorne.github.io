@@ -10,3 +10,35 @@ breadcrumbs:
 - title: 'Design for Hybrid Networking Architectures'
   url: home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures.html
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingDRGs.htm">Dynamic Routing Gateways</a></li>
+    </ul>
+  </ul>
+</ul>
+<!-- p.105 -->
+<h2 id="TOC-dynamic-routing-gateway">Dynamic Routing Gateway</h2>
+<blockquote>
+  <p>A DRG can have <a href="https://docs.oracle.com/iaas/Content/General/Concepts/servicelimits.htm#DRG_limits">many network attachments</a> of each of the following types:</p>
+  <ul>
+    <li><strong>VCN attachments</strong>: you can attach many VCNs to a single DRG. Each VCN can be in the same tenancy as the DRG, or in a different tenancy (provided appropriate policies are set). A VCN can attach to one and only one DRG.</li>
+    <li><strong>RPC attachments</strong>: you can peer a DRG to other DRGs using remote peering connections. The other DRG can be in other regions or tenancies, or in the same region.</li>
+    <li><strong>IPSEC_TUNNEL attachments</strong>: you can use Site-to-Site VPN to attach two or more IPSec tunnels to your DRG to connect to on-premises networks. This is also allowed across tenancies.</li>
+    <li><strong>VIRTUAL_CIRCUIT attachments</strong>: you can attach one or more FastConnect virtual circuits to your DRG to connect to on-premises networks.</li>
+    <li><strong>LOOPBACK attachments</strong>: you can use Site-to-Site VPN to encrypt FastConnect virtual circuits. See <a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/fastconnectsecurity.htm#fastconnectsecurity_topic-loopback">Loopback Attachments</a> for details.</li>
+  </ul>
+  <p>Creating DRG route tables and DRG route distributions lets you define routing policies that route traffic between attachments. Routes can be dynamically imported and exported through these attachments. A route table must be associated with an attachment for that table's configuration to be applied, but an unassociated routing table can exist. DRG route distributions are of an explicit type (either import or export) and don't inherit an action that depends on where they're associated.</p>
+</blockquote>
+<h2 id="TOC-labs">Labs</h2>
+<p>Associated labs are:</p>
+<ul>
+  <li><a href="https://github.com/dfhawthorne/OCI_CNP/tree/main/terraform/Lab_02_Configure_Local_VCN_Peering">Lab 02: Networking - Virtual Cloud Network: Configure Local VCN Peering</a></li>
+  <li><a href="https://github.com/dfhawthorne/OCI_CNP/tree/main/terraform/Lab_03_Configure_Remote_VCN_Peering">Lab 03: Networking - Virtual Cloud Network: Configure Remote VCN Peering</a></li>
+</ul>
