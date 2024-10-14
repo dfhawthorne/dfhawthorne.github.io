@@ -9,4 +9,93 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Design for Hybrid Networking Architectures'
   url: home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'introduction-to-bgp'
+  toc-text: 'Introduction to BGP'
+  toc-menu:
+  - toc-url: 'border-gateway-protocol-bgp'
+    toc-text: 'Border Gateway Protocol (BGP)'
+  - toc-url: 'routing-overview'
+    toc-text: 'Routing Overview'
+  - toc-url: 'equal-cost-multi-path-routing-ecmp'
+    toc-text: 'Equal-Cost Multi-Path Routing (ECMP)'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>BGP is a protocol that operates at the level of Autonomous Systems (AS) (an interconnected group of IP addresses under a single authority - customer or ISP). This protocol is used by DRGs within OCI.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingDRGs.htm">Dynamic Routing Gateways</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p.288 -->
+<h2 id="TOC-introduction-to-bgp">Introduction to BGP</h2>
+<!-- p.289 -->
+<h3 id="TOC-border-gateway-protocol-bgp">Border Gateway Protocol (BGP)</h3>
+<blockquote>
+<ul>
+<li>Routing protocol for the Internet</li>
+<li>Exchange routing information between autonomous systems (AS)</li>
+<li>Autonomous Systems: Collection of connected IP networks</li>
+<li>Looks at all of the available paths that data could travel</li>
+<li>Picks the best route, which usually means hopping between autonomous systems</li>
+<!-- p. 291 -->
+<li>Site-to-Site VPN can use either BGP or static routing, or a combination</li>
+<li>FastConnect always uses BGP for route advertisements</li>
+</ul>
+</blockquote>
+<!-- p.292 -->
+<h3 id="TOC-routing-overview">Routing Overview</h3>
+<blockquote>
+<ul>
+<li>More-specific route preferred over less-specific route</li>
+<li>If the same route is advertised across multipole connections to OCI, the shortest AS PATH is used as a tiebreaker when sending traffic back to on-premises</li>
+<li>Modify the BGP local preference attribute on your on-premises router to influence which path to use when sending traffic to OCI.</li>
+<li>By default, Oracle implement AS PATH prepending to determining which connection to take if your on-premises device advertises the same route over multiple diverse connections.</li>
+</ul>
+<table border="1">
+<thead>
+<tr style="background-color: lightgreen;">
+<th>Oracle Preference</th>
+<th>Path</th>
+<th>Resulting AS PATH</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: lightgrey;">
+<td style="text-align: center">1</td>
+<td>FastConnect</td>
+<td>Your ASN</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>IPSec VPN with BGP</td>
+<td>Private ASN,<br/>Your ASN</td>
+</tr>
+<tr style="background-color: lightgrey;">
+<td style="text-align: center;">3</td>
+<td>IPSec with static</td>
+<td>Private ASN,<br/>Private ASN,<br/>Private ASN</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- p.294 -->
+<h3 id="TOC-equal-cost-multi-path-routing-ecmp">Equal-Cost Multi-Path Routing (ECMP)</h3>
+<blockquote>
+<ul>
+<li>ECMP enables flow-based laod balancing of network traffic over multiple virtual circuits or multiple IPSec tunnels (not a mix) using BGP</li>
+<li>It allows active-active load balancing and failover of network traffic between a maximum of eight circuits.</li>
+<li>5-tuple is used to distinguish flows. Multiple flows will be necessary to utilise all available bandwidth.</li>
+<li>ECMP is off by default ancd can be enables per DRG route table.</li>
+</ul>
+</blockquote>
