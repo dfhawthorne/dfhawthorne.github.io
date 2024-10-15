@@ -9,4 +9,217 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Design for Hybrid Networking Architectures'
   url: home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'fastconnect'
+  toc-text: 'FastConnect'
+  toc-menu:
+  - toc-url: 'fastconnect-product-overview'
+    toc-text: 'FastConnect: Product Overview'
+  - toc-url: 'fastconnect-connectivity-models'
+    toc-text: 'FastConnect Connectivity Models'
+  - toc-url: 'fastconnect-virtual-circuits'
+    toc-text: 'FastConnect Virtual Circuits'
+  - toc-url: 'fastconnect-private-peering-and-public-peering'
+    toc-text: 'FastConnect: Private Peering and Public Peering'
+  - toc-url: 'fastconnect-partner-layer-2-connections'
+    toc-text: 'FastConnect Partner: Layer 2 Connections'
+  - toc-url: 'fastconnect-partner-layer-3-connections'
+    toc-text: 'FastConnect Partner: Layer 3 Connections'
+  - toc-url: 'fastconnect-with-vpn-backup'
+    toc-text: 'FastConnect with VPN Backup'
+  - toc-url: 'remote-onramp'
+    toc-text: 'Remote Onramp'
+  - toc-url: 'multiple-region-redundancy'
+    toc-text: 'Multiple Region Redundancy'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>FastConnect is a service for connecting the customer network to OCI. Connection options are Oracle Partner, Co-location, or Third-Party provider. FastConnect can be used with IPSec VPN for redundancy.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/fastconnect.htm">FastConnect</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p.316 -->
+<h2 id="TOC-fastconnect">FastConnect</h2>
+<!-- p.318 -->
+<h3 id="TOC-fastconnect-product-overview">FastConnect: Product Overview</h3>
+<blockquote>
+<ul>
+<li>Dedicated, private, secure network connectivity t oconnect customer locations to OCI</li>
+<li>Alternative to Internet-based connectivity, which can be unpredictable and may not satisfy compliance/security requirements</li>
+<li><strong>Features</strong></li>
+<ul>
+<li>1G, 100G, and 100G port bandwidth options with FastConnect</li>
+<li>Multiple bandwidth options with FastConnect through a Partner</li>
+<li>Cost effective - No egress data transfer charges and lower port charges on hourly basis</li>
+<li>Private Peering - extends corporate network to Oracle Cloud</li>
+<li>Public Peering - Internet alternative to connect to public Oracle Cloud resources</li>
+</ul>
+</ul>
+</blockquote>
+<!-- p.319 -->
+<h3 id="TOC-fastconnect-connectivity-models">FastConnect Connectivity Models</h3>
+<blockquote>
+<dl>
+<dt>FastConnect: With an Oracle Partner</dt>
+<dd>
+<ul>
+<li>Connectivity between customer and Oracle through a pre-established FastConnect Connectivity Partner</li>
+<li>Most flexible and typically least expensive to deploy</li>
+</ul>
+</dd>
+<dt>FastConnect: Colocation</dt>
+<dd>
+<ul>
+<li>Direct connection beteen customer and Oracle via fiber cross-connect</li>
+<li>Godd model if customer is alreeady collocated in the same data center facility</li>
+</ul>
+</dd>
+<dt>FastConnect: With a Third-Party Provider</dt>
+<dd>
+<ul>
+<li>Direct connection between customer and Oracle with a private or dedicated circuit from a third-party network carrier</li>
+<li>Good model if customer has an existing relationship with certain network carriers and/or if the customer data center is not served by any of Oracle's FastConnect partners</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.323 -->
+<h3 id="TOC-fastconnect-virtual-circuits">FastConnect Virtual Circuits</h3>
+<blockquote>
+<dl>
+<dt>Private Peering (Infrastructure Extension)</dt>
+<dd>Extend your existing infrastructure into OCI resoureces using Private IPs in a VCN accessed via FastConnect</dd>
+<dt>Public Peering (Internet Alternative)</dt>
+<dd>
+<ul>
+<li>In provides an alternative to public Internet access for customers to connect to their public resources in OCI</li>
+<li>Connect to Public IPv4 resources (for example Public VCN subnets in OCI) and services such as Object Storage or Public Load Balancer via FastConnect</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.324 -->
+<h3 id="TOC-fastconnect-private-peering-and-public-peering">FastConnect: Private Peering and Public Peering</h3>
+<blockquote>
+<table border="1">
+<thead>
+<tr style="background-color: green; color: white;">
+<th> </th>
+<th>FastConnect-Private Peering Infrastructure Extension</th>
+<th>FastConnect-Public Peering Internet Alternative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Use Case</td>
+<td>To manage VCN resources privately - Infrastructure Extension</td>
+<td>To access OCI's public service offering - Internet Alternative</td>
+</tr>
+<tr style="background-color: lightgreen;">
+<td>Typically Bandwidth</td>
+<td>Higher bandwidth; increments of 1 Gbps, 10 Gbps, 100 Gbps</td>
+<td>Higher bandwidth; increments of 1 Gbps, 10 Gbps, 100 Gbps</td>
+</tr>
+<tr>
+<td>Protocols</td>
+<td>BGP</td>
+<td>BGP</td>
+</tr>
+<tr style="background-color: lightgreen;">
+<td>Point-to-Point BGP IPs</td>
+<td>Customer assigns IPs (/28 to /31)</td>
+<td>Oracle assign IPs</td>
+</tr>
+<tr>
+<td>Prefix Advertisement</td>
+<td>OCI advertises VCN subnet routes by default</td>
+<td>OCI advertises public VCN routes and public services routes (default market level routes)</td>
+</tr>
+<tr style="background-color: lightgreen;">
+<td>Prefix validation</td>
+<td>Not needed</td>
+<td>OCI validates whether prefixes are owned by customer</td>
+</tr>
+<tr>
+<td>Prefix Limit</td>
+<td>2,000</td>
+<td>200</td>
+</tr>
+<tr style="background-color: lightgreen;">
+<td>Customer BGP ASN</td>
+<td>Any ASN</td>
+<td>Public ASN</td>
+</tr>
+</tbody>
+</table>
+<!-- p.325 -->
+<p>For Fastconnect redundancy, oracle provides:</p>
+<ul>
+<li>Multiple partners for each region</li>
+<li>Multiple physical connections between each Oracle partner and Oracle (for a given region)</li>
+<li>At least one FastConnect location for each region</li>
+<li>A minimum of two FastConnect routers in each FastConnect location</li>
+</ul>
+</blockquote>
+<!-- p.328 -->
+<h3 id="TOC-fastconnect-partner-layer-2-connections">FastConnect Partner: Layer 2 Connections</h3>
+<blockquote>
+<ul>
+<li>The FastConnect BGP session is directly between the customer edge and Oracle</li>
+<li>At minimum, each partner has two separate physical conenctions to Oracle</li>
+<li>Each virtual circuit should go to a different physical router in the FastConnect location</li>
+<li>Use BGP attributes such as local preferences and AS PATH prepending to influence egress/ingress routing</li>
+</ul>
+</blockquote>
+<!-- p.330 -->
+<h3 id="TOC-fastconnect-partner-layer-3-connections">FastConnect Partner: Layer 3 Connections</h3>
+<blockquote>
+<ul>
+<li>A single vurtual circuit is automatically redundant and diverse</li>
+<li>The FastConnect BGP session is between the customer edge and Oracle Partner</li>
+<li>There are separate, already established, redundant BGP sessions between Oracle and the Oracle Partner</li>
+<li>Ensure that the connection between the customer edge and the provider is redundant and diverse</li>
+<li>Use BGP attributes such as local preference and AS PATH prepending to influence egree/ingress routing</li>
+</ul>
+</blockquote>
+<!-- p. 332 -->
+<h3 id="TOC-fastconnect-with-vpn-backup">FastConnect with VPN Backup</h3>
+<blockquote>
+<ul>
+<li>Configure at least one available tunnel</li>
+<li>Use ECMP across multiple tunnels for additional VPN bandwidth</li>
+<li>Prefer FastConnect as primary</li>
+<li>Use BGP for route exchange</li>
+<li>FastConnect is preferred over VPN when the same route and routing attributes are advertised over each connection</li>
+</ul>
+</blockquote>
+<!-- p.334 -->
+<h3 id="TOC-remote-onramp">Remote Onramp</h3>
+<blockquote>
+<ul>
+<li>FastConnect or Site-to-Site IPSec VPN in Region A</li>
+<li>Access resources in Region A and region B</li>
+<li>Use the OCI private backbone</li>
+</ul>
+</blockquote>
+<!-- p.335 -->
+<h3 id="TOC-multiple-region-redundancy">Multiple Region Redundancy</h3>
+<blockquote>
+<ul>
+<li>FastConnect ro Site-to-Site IPSec VPN is available in both regions</li>
+<li>It uses the OCI private backbone</li>
+<li>Use BGP attributes such as local preference and AS PATH prepending to influence egress/ingress routing</li>
+<li>Oracle prefers local region egress in case of routing tiebreaks</li>
+</ul>
+</blockquote>
