@@ -9,4 +9,145 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Design for Hybrid Networking Architectures'
   url: home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'site-to-site-vpn'
+  toc-text: 'Site-to-Site VPN'
+  toc-menu:
+  - toc-url: 'connecting-on-premises-to-oci'
+    toc-text: 'Connecting On-Premises to OCI'
+  - toc-url: 'site-to-site-vpn-use-cases'
+    toc-text: 'Site-to-Site VPN: Use Cases'
+  - toc-url: 'site-to-site-vpn-redundancy-overview'
+    toc-text: 'Site-to-Site VPN: Redundancy Overview'
+  - toc-url: 'site-to-site-vpn-routing-overview'
+    toc-text: 'Site-to-Site VPN: Routing Overview'
+  - toc-url: 'site-to-site-vpn-negotiation-behaviour'
+    toc-text: 'Site-to-Site VPN: Negotiation, Behaviour'
+  - toc-url: 'policy-based-and-route-based-vpns'
+    toc-text: 'Policy-Based and Route-BAsed VPNs'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Site-to-site VPN connects on-premises equipment through a CPE and a DRG with tunnels of encrypted traffic passing over the Internet.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingIPsec.htm">Site-to-Site VPN</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p.297 -->
+<h2 id="TOC-site-to-site-vpn">Site-to-Site VPN</h2>
+<!-- p.298 -->
+<h3 id="TOC-connecting-on-premises-to-oci">Connecting On-Premises to OCI</h3>
+<dl>
+<dt>Public Internet</dt>
+<dd>
+<ul>
+<li>Connectivity over Internet via Internet Gateway or NAT Gateway</li>
+<li>For apps in development, or in test/pilot phase</li>
+</ul>
+</dd>
+<dt>Site-to-Site VPN</dt>
+<dd>
+<ul>
+<li>Secure connectivity over Internet through encryption of data, then tunnels it through the public Internet for enhanced security and privacy with an IPSec VPN connection</li>
+<li>No throughput guarantee</li>
+<li>OCI-managed service with easy setup on Console with no provider negaitiations or circuits provisioning</li>
+<li>Free service - no tunnel or egree data transfer charges</li>
+<li>For site connectivity when geographically isolated from OCI regions or lacks partner connections</li>
+<!-- p.299 -->
+<li>Industry Standard Security Protocol - IPSec adn IKEv1/IKEv2</li>
+<li>Hign Availability support</li>
+<li>Static or BGP routing</li>
+<li>Route-based or policy-based VPN support</li>
+</ul>
+</dd>
+<dt>FastConnect</dt>
+<dd>
+<ul>
+<li>Dedicated, secure connectivity</li>
+<li>Low larency interconnect</li>
+<li>High Bandwidth - up to 100 Gbps</li>
+<li>OCI-managed service</li>
+<li>Competitive pricing</li>
+<li>For business-critical applications</li>
+</ul>
+</dd>
+</dl>
+<!-- p.300 -->
+<h3 id="TOC-site-to-site-vpn-use-cases">Site-to-Site VPN: Use Cases</h3>
+<blockquote>
+<dl>
+<dt>Secure connectivity from on-premises to OCI</dt>
+<dd>Securely connect your existing infrastructure to the cloud</dd>
+<dt>Connect multiple locations to the cloud</dt>
+<dd>Connect your headquarters, branch locations, and private data centers to OCI so all of your offices can access applications directly.</dd>
+<dt>Build redundant connectivity for FastConnect</dt>
+<dd>Already have Oracle FastConnect? Site-to-Site IPSec VPN can provide a redundant connection to Oracle Cloud Infrastructure</dd>
+<dt>Use for Proof of Concept</dt>
+<dd>No contracts or commitment. Build as many VPN tunnels to Oracle Cloud Infrastructure as desired and decide how long you want them active.</dd>
+</dl>
+</blockquote>
+<!-- p.301 -->
+<h3 id="TOC-site-to-site-vpn-redundancy-overview">Site-to-Site VPN: Redundancy Overview</h3>
+<blockquote>
+<ul>
+<li>OCI provisions redundant IPSec VPN tunnels located on physically and logically diverse tunnel endpoints in the same region.</li>
+<li>Routing type can be configured per tunnel. It is higly recommended to use the same routing type for all tunnels.</li>
+<li>Use routing to configure active/passive or active/active tunnels and failover behaviour</li>
+<li>By default, redundancy is provided only on the Oracle end. Customers must ensure end-to-end redundancy by configuring redundant tunnels to 1 or more CPEs, and 1 or more Internet providers.</li>
+</ul>
+</blockquote>
+<!-- p.305 -->
+<h3 id="TOC-site-to-site-vpn-routing-overview">Site-to-Site VPN: Routing Overview</h3>
+<blockquote>
+<dl>
+<dt>Longest Prefix Match</dt>
+<dd>Adverise more specific routes for the preferred primary tunnel</dd>
+<dt>BGP Local Preference</dt>
+<dd>Configure on CPE to influence traffic egressing on-premises</dd>
+<dt>BGP AS PATH Prepending</dt>
+<dd>Use prepending when advertising routes to OCI to influence which tunnel has the shortest path for any given route. Oracle will use the shortest AS PATH as a tiebreaker when sending traffic to on-premises</dd>
+</dl>
+</blockquote>
+<!-- p.309 -->
+<h3 id="TOC-site-to-site-vpn-negotiation-behaviour">Site-to-Site VPN: Negotiation, Behaviour</h3>
+<blockquote>
+<ul>
+<li>Phase 1: Participants authenticate the IPSec peer and a secure channel to negotiate the IPSec Security Associations (SA). The outcome of a Phase 1 negotiation is the IKE SA (Phase 1 SA)</li>
+<li>Phase 2: Using keying material derived from the Pahse 1 negotiation, participants negotiate IPSec SAs (Phase 2 SA) which will specify what traffic to send over the VPN and how to encrypt/authenticate the traffic.</li>
+<li>When traffic is routed to a VPN, a SA lookeup is performed before encrypting traffic.</li>
+<li>A similar method is performed for an icoming packet.</li>
+</ul>
+</blockquote>
+<!-- p.310 -->
+<h3 id="TOC-policy-based-and-route-based-vpns">Policy-Based and Route-BAsed VPNs</h3>
+<blockquote>
+<ul>
+<li>CPE configuration mechanism. Different with each vendor. Some vendors may support both methods.</li>
+<li>The main difference is the encryption decision.</li>
+<li>Policy based</li>
+<ul>
+<li>A subset of traffic flowing through an interface is encrypted according to a specific policy.</li>
+<li>A special policy is used to determine whether specific traffic is sent across a VPN tunnel.</li>
+<li>An IPSec SA is created for each source/destination policy combination. This may also be referred to as an encryption domain.</li>
+<li>Each encryption domain is treated as a separate tunnel.</li>
+<li>Example: 1 local subnet, 3 remote subnets = 3 IPSec SAs.</li>
+</ul>
+<li>Route based</li>
+<ul>
+<li>Uses a Virtual Tunnel Interface (VTI). Any traffic routed to the VTI is encrypted and sent to the remote VPN peer.</li>
+<li>Relies on routing decisions to determine if specific is sent across a VPN tunnel.</li>
+<li>A single IPSec SA is generated for each VPN tunnel.</li>
+<li>Default VTI encryption domain of any/any, meaning any traffic routed to the VTI is encrypted without an additional policy lookup.</li>
+</ul>
+</ul>
+</blockquote>
