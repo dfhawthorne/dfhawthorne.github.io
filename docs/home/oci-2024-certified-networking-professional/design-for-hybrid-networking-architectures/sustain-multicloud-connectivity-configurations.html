@@ -9,4 +9,87 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Design for Hybrid Networking Architectures'
   url: home/oci-2024-certified-networking-professional/design-for-hybrid-networking-architectures.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'amazon-web-services'
+  toc-text: 'Amazon Web Services'
+- toc-url: 'microsoft-azure'
+  toc-text: 'Microsoft Azure'
+- toc-url: 'google-cloud'
+  toc-text: 'Google Cloud'
+  toc-menu:
+  - toc-url: 'connecting-google-cloud-to-oracle-cloud'
+    toc-text: 'Connecting Google Cloud to Oracle Cloud'
+  - toc-url: 'example-google-cloud'
+    toc-text: 'Example: Google Connect'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Cross-cloud connection is currently available only in certain regions through partners that have presence in both vendors' clouds.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices-networking/toc.htm">Best practices for hybrid and multicloud OCI networking design</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices-networking/define-workload-requirements1.html#GUID-AE03BC68-08A2-4A89-9EF5-8803AE52FF83">Define Workload Requirements</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices-networking/define-workload-requirements1.html#GUID-1C45F1FF-B958-4188-817B-1063CD4A8AE6">Hybrid and Multicloud Requirements</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices-networking/define-workload-requirements1.html#GUID-E026BD1A-4640-40D0-AF25-12516E1C71BF">Connect to Amazon Web Services</a></li>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices-networking/define-workload-requirements1.html#GUID-367EA29F-E0FC-4300-AB7A-69DAD7BED82A">Connect to Microsoft Azure</a></li>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices-networking/define-workload-requirements1.html#GUID-B2AEF5BD-52D0-4E39-BB1F-E1E3185CCCC1">Connect to Google Cloud</a></li>
+</ul>
+</ul>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/azure.htm">Access to Microsoft Azure</a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/access-to-google-cloud-platform.htm">Access to Google Cloud Platform</a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/libreswan.htm">Access to Other Clouds with Libreswan</a></li>
+</ul>
+</ul>
+</ul>
+<h2 id="TOC-amazon-web-services">Amazon Web Services</h2>
+<p>Connection between OCI and AWS is done through Megaport:</p>
+<img alt="This image shows multicloud connectivity between Oracle Cloud Infrastructure (OCI) and Amazon Web Services (AWS) using Oracle's connectivity partner Megaport backbone.
+
+The Megaport Backbone shows a Megaport Cloud Router interconnects the VXC which attach to the Oracle Cloud Infrastructure FastConnect and the AWS Direct Connect Private VIF circuits.
+
+The OCI region shows a Virtual Cloud Network (VCN) with the Exadata cloud service deployed. The VCN that's used for the database has a dynamic routing gateway (DRG). The Exadata cloud service connects to VXC within the Megaport Backbone using FastConnect through the dynamic routing gateway.
+
+The AWS Region shows Virtual Private Cloud (VPC) running on a compute EC2 instance. In the AWS region, the VPC that's used for the compute instance has a virtual gateway (VGW). An AWS Direct Connect Private VIF is used to associate the VGW with AWS Direct Connect." src="https://docs.oracle.com/en/solutions/oci-best-practices-networking/img/connect-public-cloud-oci-aws.png"/>
+<h2 id="TOC-microsoft-azure">Microsoft Azure</h2>
+<blockquote>
+<ul>
+<li>You can connect a Microsoft Azure virtual network (VNet) with an Oracle Cloud Infrastructure (OCI) Virtual Cloud Network (VCN) and run a cross-cloud workload. In the typical use case, you deploy your Oracle Database on OCI, and deploy an Oracle, .NET, or custom application in Microsoft Azure.</li>
+<li>The two virtual networks must belong to the same company and not have overlapping CIDRs. The connection requires you to create an Azure ExpressRoute circuit and an OCI FastConnect virtual circuit.</li>
+</ul>
+</blockquote>
+<p>There are direct connections between OCI and Azure in certain regions:</p>
+<img alt="The image shows the preintegration of an Azure region with an OCI region using ExpressRoute and FastConnect.
+
+The Azure region contains a VNet which hosts an App VM. The VNet uses the ExpressRoute Gateway to connect to ExpressRoute and then FastConnect.
+
+FastConnect connects to the OCI region's VCN using DRG. The OCI region contains a VCN which hosts the Exadata cloud service." src="https://docs.oracle.com/en/solutions/oci-best-practices-networking/img/connect-public-cloud-oci-azure-interconnect.png"/>
+<p>This is a specific configuration based on the following:</p>
+<img alt="This diagram shows the connection between an Azure VNet and Oracle VCN." src="https://docs.oracle.com/en-us/iaas/Content/Network/Images/network_azure_basic_diagram.svg"/>
+<h2 id="TOC-google-cloud">Google Cloud</h2>
+<h3 id="TOC-connecting-google-cloud-to-oracle-cloud">Connecting Google Cloud to Oracle Cloud</h3>
+<ol>
+<li>In Google Cloud, provision a Partner Cross-Cloud Interconnect connection. You’ll need a single or redundant pair of VLAN attachments in your virtual private cloud (VPC) network. Notate the pairing key you receive from Google Cloud.</li>
+<li>Create a FastConnect port for your Partner Cross-Cloud Interconnect connection.</li>
+<li>Configure OCI resources such as VCN, DRG, and Virtual Circuits</li>
+</ol>
+<h3 id="TOC-example-google-cloud">Example: Google Connect</h3>
+<p>Connection between OCI and Google is done through Equinix:</p>
+<img alt="This image shows multicloud connectivity between Oracle Cloud Infrastructure (OCI) and Google Cloud (GCP) using Oracle's connectivity partner Equinix.
+
+Equinix includes two Fabric Virtual Connection circuits that interconnect an Equinix Network Edge which attaches to the FastConnect to the OCI Region.
+
+The OCI region shows a Virtual Cloud Network (VCN) with the Exadata cloud service deployed. The VCN that's used for the database has a dynamic routing gateway (DRG). The Exadata cloud service connects to Equinix Fabric Virtual Connection within Equinix using FastConnect through the dynamic routing gateway.
+
+The GCP Region shows Virtual Private Cloud (VPC) running on a compute engine instance. In the GCP region, the VPC that's used for the compute instance has a cloud router. An Partner Interconnect is used to associate the Cloud Router with Partner Interconnect." src="https://docs.oracle.com/en/solutions/oci-best-practices-networking/img/connect-public-cloud-oci-gcp.png"/>
