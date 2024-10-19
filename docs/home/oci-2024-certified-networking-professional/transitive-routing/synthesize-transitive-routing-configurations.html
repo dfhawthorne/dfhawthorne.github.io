@@ -9,4 +9,84 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Transitive Routing'
   url: home/oci-2024-certified-networking-professional/transitive-routing.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'introduction-to-oci-transit-routing'
+  toc-text: 'Introduction to OCI Transit Routing'
+  toc-menu:
+  - toc-url: 'what-is-oci-transit-routing'
+    toc-text: 'What Is OCI Transit Routing?'
+  - toc-url: 'transit-routing-options'
+    toc-text: 'Transit Routing Options'
+- toc-url: 'oci-transit-routing-via-lpg'
+  toc-text: 'OCI Transit Routing via LPG'
+- toc-url: 'oci-transit-routing-via-drg'
+  toc-text: 'OCI Transit Routing via DRG'
+- toc-url: 'oci-transit-routing-with-third-party-appliance'
+  toc-text: 'OCI Transit Routing with Third Party Appliance'
+- toc-url: 'oci-transit-routing-remote-peering-connection'
+  toc-text: 'OCI Transit Routing, Remote Peering Connection'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Instead of multiple virtual circuits from on-premises to VCNs, a hub (either a VCN or upgraded DRG) is used to connect the VCNs with on-premises by allowing transit of traffic through the hub.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/VCNpeering.htm">Access to Other VCNs: Peering</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/localVCNpeering.htm#Local_VCN_Peering_Within_Region">Local VCN Peering using Local Peering Gateways</a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/scenario_e.htm#scenario_e">Remote VCN Peering through an Upgraded DRG</a></li>
+</ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/scenarios.htm">Networking Scenarios</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/transitrouting.htm">Transit Routing inside a hub VCN</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<!-- p.344 -->
+<h2 id="TOC-introduction-to-oci-transit-routing">Introduction to OCI Transit Routing</h2>
+<!-- p.346 -->
+<h3 id="TOC-what-is-oci-transit-routing">What Is OCI Transit Routing?</h3>
+<blockquote>
+<ul>
+<li>The OCI VCN Transit Routing solution is based on the hub-and-spoke topology and anbles the hub VCN to provide transit between multiple spoke VCNs (within the OCI region) and on-premises network.</li>
+<li>Transit routing can also be used to transit from one OCI region to another OCI region leveraging the OCI backbone.</li>
+</ul>
+</blockquote>
+<!-- p.347 -->
+<h3 id="TOC-transit-routing-options">Transit Routing Options</h3>
+<blockquote>
+<p>OCI Transit Routing will leverage one or more of the components.</p>
+<ul>
+<li>Local Peering Gateway</li>
+<li>Dynamic Routing Gateway</li>
+<ul>
+<li>Route Tables</li>
+<li>Import Route Distributions</li>
+</ul>
+<li>Third Party Appliance</li>
+<li>Remote Peering Connection</li>
+</ul>
+</blockquote>
+<!-- p.349 -->
+<h2 id="TOC-oci-transit-routing-via-lpg">OCI Transit Routing via LPG</h2>
+<p>A hub VCN is connected to on-premises network through a DRG and either FastConnect or Site-to-Site VPN. This VCN could be peered with up to ten (10) other VCNs in the same region using LPGs. The traffic to/from on-premises has to transit the hub VCN to reach the target VCN.</p>
+<!-- p.354 -->
+<h2 id="TOC-oci-transit-routing-via-drg">OCI Transit Routing via DRG</h2>
+<p>Instead of having the hub as a VCN, the hub can be the DRG that terminates a virtual circuit from on-premises. This is only available with the upgraded DRG. For earlier versions of DRG, transit routing via LPG has to be used.</p>
+<!-- p.359 -->
+<h2 id="TOC-oci-transit-routing-with-third-party-appliance">OCI Transit Routing with Third Party Appliance</h2>
+<p>A third-party security appliance is the hub. The appliance must be in a VCN.</p>
+<!-- p.364 -->
+<h2 id="TOC-oci-transit-routing-remote-peering-connection">OCI Transit Routing, Remote Peering Connection</h2>
+<p>Again the hub is a DRG that terminates a virtual circuit from on-premises. The spoke VCNs can be in different regions and tenancies. This is achieved through a remote peering connection to another DRG.</p>
+<!-- p.368 -->
+<!-- Demo -->
