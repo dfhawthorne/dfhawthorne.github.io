@@ -9,4 +9,188 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'Implement and Operate Secure OCI Networking and Connectivity Solutions'
   url: home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'implement-and-operate-secure-oci-networking-and-connectivity-solutions'
+  toc-text: 'Implement and Operate Secure OCI Networking and Connectivity Solutions'
+  toc-menu:
+  - toc-url: 'inter-tenancy-connectivity'
+    toc-text: 'Inter Tenancy Connectivity'
+    toc-menu:
+    - toc-url: 'local-versus-remote-peering-scenarios'
+      toc-text: 'Local Versus Remote Peering Scenarios'
+    - toc-url: 'inter-tenancy-peering-example'
+      toc-text: 'Inter Tenancy Peering: Example'
+    - toc-url: 'inter-tenancy-peering-information'
+      toc-text: 'Inter Tenancy Peering Information'
+    - toc-url: 'special-iam-policy-statements-define'
+      toc-text: 'Special IAM Policy Statements: Define'
+    - toc-url: 'special-iam-policy-statements-endorse'
+      toc-text: 'Special IAM Policy Statements: Endorse'
+    - toc-url: 'special-iam-policy-statements-admit'
+      toc-text: 'Special IAM Policy Statements: Admit'
+    - toc-url: 'inter-tenancy-connectivity-using-local-peering-gateways-tasks'
+      toc-text: 'Inter Tenancy Connectivity Using Local Peering Gateways: Tasks'
+    - toc-url: 'inter-tenancy-connectivity-using-remote-peering-gateways-tasks'
+      toc-text: 'Inter Tenancy Connectivity Using Remote Peering Gateways: Tasks'
+    - toc-url: 'inter-tenancy-connectivity-using-drg-attachments-tasks'
+      toc-text: 'Inter Tenancy Connectivity Using DRG Attachments: Tasks'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Inter-tenancy connection can be done within the same region (LPG or DRG and RPC)or different regions (DRG and RPC)</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/solutions/?lang=en">Architecture Center</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/solutions/?lang=en&amp;cType=reference-architectures">Reference Architectures</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en/solutions/xregion-pvt-connectivity-oci/index.html">Configure cross-region private connectivity between tenancies</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p. 370 -->
+<h2 id="TOC-implement-and-operate-secure-oci-networking-and-connectivity-solutions">Implement and Operate Secure OCI Networking and Connectivity Solutions</h2>
+<h3 id="TOC-inter-tenancy-connectivity">Inter Tenancy Connectivity</h3>
+<!-- p.374 -->
+<h4 id="TOC-local-versus-remote-peering-scenarios">Local Versus Remote Peering Scenarios</h4>
+<blockquote>
+<table border="1">
+<thead>
+<tr style="background-color: lightgreen; color: white;">
+<th>Workload Location</th>
+<th>Same Tenancy</th>
+<th>Different Tenancy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Same Region</td>
+<td>Possible with peering using LPG, RPC, and DRG attachments</td>
+<td>Possible with peering using LPG, RPC, and DRG attachments</td>
+</tr>
+<tr>
+<td>Different Region</td>
+<td>Possible with peering using RPC attachments</td>
+<td>Possible with peering using RPC attachments</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- p.375 -->
+<h4 id="TOC-inter-tenancy-peering-example">Inter Tenancy Peering: Example</h4>
+<blockquote>
+<ol>
+<li>Declare one tenancy REQUESTOR, and other ACCEPTOR</li>
+<li>Initiate Peering relationship from REQUESTOR tenancy</li>
+<li>Each Tenancy Administrator configures own tenancy</li>
+<li>Administrators share inter tenancy peering information</li>
+</ol>
+</blockquote>
+<!-- p.376 -->
+<h4 id="TOC-inter-tenancy-peering-information">Inter Tenancy Peering Information</h4>
+<blockquote>
+<dl>
+<dt>Requestor Tenancy</dt>
+<dd>
+<ul>
+<li><strong>Acceptor Tenancy OCID</strong></li>
+<li>Requestor Group Name</li>
+<li>Requestot Group OCID</li>
+<li>Compartment Name where Peering resources are deployed</li>
+<li>Acceptot LPG/RPC/DRG Attachment OCID</li>
+</ul>
+</dd>
+<dt>Acceptor Tenancy</dt>
+<dd>
+<ul>
+<li><strong>Resquestor Tenancy OCID</strong></li>
+<li>Requestor Group Name</li>
+<li>Requestot Group OCID</li>
+<li>Compartment Name where Peering resources are deployed</li>
+<li>Acceptot LPG/RPC/DRG Attachment OCID</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.377 -->
+<h4 id="TOC-special-iam-policy-statements-define">Special IAM Policy Statements: Define</h4>
+<blockquote>
+<ul>
+<li>Assign an alias to a tenancy OCID for Endorse and Admit Policy statements</li>
+<li>`Define` statements must be the first in the policy</li>
+<li>Required in both Requestor and Acceptor tenancy to assign an alias to the resource IAM group OCID for `Admit` statements</li>
+</ul>
+<p>Example: (Policy written in Requestor tenancy)</p>
+<pre>
+    Define tenancy Acceptor as ocdi1.tenancy.oc1..<unique_id>
+  </unique_id></pre>
+</blockquote>
+<!-- p.378 -->
+<h4 id="TOC-special-iam-policy-statements-endorse">Special IAM Policy Statements: Endorse</h4>
+<blockquote>
+<ul>
+<li>Allows set of abilities that a group in your tenancy can perform in other tenancies</li>
+<li>Always belongs in the tenancy that contains the group of users crossing the boundaries into the other tenancy to work with that tenancy's resources</li>
+</ul>
+<p>Example: (Policy written in Requestor tenancy)</p>
+<pre>
+    Endorse group StorageAdmins to manage object-family in tenancy Acceptor
+  </pre>
+</blockquote>
+<!-- p.379 -->
+<h4 id="TOC-special-iam-policy-statements-admit">Special IAM Policy Statements: Admit</h4>
+<blockquote>
+<ul>
+<li>Identifies the group of users that requires resources access from the Requestor tenancy and are identified with a corresponding `Endorse` statement</li>
+<li>Belongs in the tenancy who is granting "admittance" to that tenancy</li>
+</ul>
+<p>Example: (Written in Acceptor tenancy)</p>
+<pre>
+    Admit group StorageAdmins of tenancy Requestor to manage object-family in compartment SharedBuckets
+  </pre>
+</blockquote>
+<!-- p.381 -->
+<h4 id="TOC-inter-tenancy-connectivity-using-local-peering-gateways-tasks">Inter Tenancy Connectivity Using Local Peering Gateways: Tasks</h4>
+<blockquote>
+<ol>
+<li>Create IAM policy required to set up Peering in Requestor and Acceptor tenancy in the same region, that is, Ashburn (IAD)</li>
+<li>Create VCN, Subnet, Route Table, Security List, and compute resources in IAD for Requestor tenancy</li>
+<li>Create LPG and attach to VCN in IAD for Requestor tenancy</li>
+<li>Create VCN, Subnet, Route Table, Security List, and compute resources in IAD for Acceptor tenancy</li>
+<li>Create LPG and attach to VCN in IAD for Acceptor tenancy</li>
+<li>Configure the Route Table and Security List in both tenancies</li>
+<li>Validate the Inter Tenancy communication between servers in the same region</li>
+</ol>
+</blockquote>
+<!-- p.383 -->
+<h4 id="TOC-inter-tenancy-connectivity-using-remote-peering-gateways-tasks">Inter Tenancy Connectivity Using Remote Peering Gateways: Tasks</h4>
+<blockquote>
+<ol>
+<li>Create IAM policy required to set up Peering in Requestor and Acceptor tenancy in different regions, that is, Ashburn (IAD) and Phoenix (PHX)</li>
+<li>Create VCN-A, Subnet, Route Table, Security List, and compute resources in IAD for Requestor tenancy IAD region</li>
+<li>Create VCN-B, Subnet, Route Table, Security List, and compute resources in IAD for Acceptor tenancy PHX region</li>
+<li>Create Dynamic Routing Gateways in both VCNs</li>
+<li>Create a Remote Peering Connection in both DRGs and establish a Remote Peering Connection between them</li>
+<li>Configure the Route Table and Security List in both VCNs</li>
+<li>Validate the Inter Tenancy communication between servers in different regions</li>
+</ol>
+</blockquote>
+<!-- p.385 -->
+<h4 id="TOC-inter-tenancy-connectivity-using-drg-attachments-tasks">Inter Tenancy Connectivity Using DRG Attachments: Tasks</h4>
+<blockquote>
+<ol>
+<li>Create IAM policy required to set up Peering in Requestor and Acceptor tenancy in the same region, that is, Ashburn (IAD)</li>
+<li>Create VCN-A, Subnet, Route Table, Security List, and compute resources in the Requestor tenancy</li>
+<li>Create DRG in the Requestor tenancy</li>
+<li>Create a VCN-A attachment to attach VCN to DRG</li>
+<li>Create VCN-B, Subnet, Route Table, Security List, and compute resources in the Acceptor tenancy</li>
+<li>Create DRG in the Acceptor tenancy</li>
+<li>Create a VCN-B attachment to attach VCN to DRG</li>
+<li>Configure the Route Table and Security List in both tenancies</li>
+<li>Validate the Inter Tenancy communication between servers in the same region</li>
+</ol>
+</blockquote>
