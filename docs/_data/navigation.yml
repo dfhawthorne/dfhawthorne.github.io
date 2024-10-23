@@ -21,6 +21,8 @@
     title: '12 June 2024'
   - url: announcements/2024-06-21.html
     title: '21 June 2024'
+  - url: announcements/2024-10-14.html
+    title: '14 October 2024'
 - url: book-reviews.html
   title: 'Book Reviews'
 - url: home.html
@@ -1451,6 +1453,63 @@
   - url: home/reading-notes.html
     title: 'Reading Notes'
     sub-pages:
+    - url: home/reading-notes/database-design-and-relational-theory.html
+      title: 'Database Design and Relational Theory: Normal Forms and All That Jazz'
+      sub-pages:
+      - url: home/reading-notes/database-design-and-relational-theory/appendices.html
+        title: 'Appendices'
+        sub-pages:
+        - url: home/reading-notes/database-design-and-relational-theory/appendices/appendix-a-primary-keys-are-nice-but-not-essential.html
+          title: 'Appendix A: Primary Keys are Nice but Not Essential'
+        - url: home/reading-notes/database-design-and-relational-theory/appendices/appendix-b-redundancy-revisited.html
+          title: 'Appendix B: Redundancy Revisited'
+        - url: home/reading-notes/database-design-and-relational-theory/appendices/appendix-c-historical-notes.html
+          title: 'Appendix C: Historical Notes'
+      - url: home/reading-notes/database-design-and-relational-theory/part-1-setting-the-scene.html
+        title: 'Part 1 Setting the Scene'
+        sub-pages:
+        - url: home/reading-notes/database-design-and-relational-theory/part-1-setting-the-scene/ch-01-preliminaries.html
+          title: 'Ch 01: Preliminaries'
+        - url: home/reading-notes/database-design-and-relational-theory/part-1-setting-the-scene/ch-02-prerequisites.html
+          title: 'Ch 02: Prerequisites'
+      - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters.html
+        title: 'Part 2 Functional Dependencies, Boyce/Codd Normal Form, and Related Matters'
+        sub-pages:
+        - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-03-normalization-some-generalities.html
+          title: 'Ch 03: Normalization: Some Generalities'
+        - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-04-fd-and-bcnf-informal.html
+          title: 'Ch 04: FD and BCNF (Informal)'
+        - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-05-fd-and-bcnf-formal.html
+          title: 'Ch 05: FD and BCNF (Formal)'
+        - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-06-preserving-fds.html
+          title: 'Ch 06: Preserving FDs'
+        - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-07-fd-axiomatization.html
+          title: 'Ch 07: FD Axiomatization'
+        - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-08-denormalization.html
+          title: 'Ch 08: Denormalization'
+      - url: home/reading-notes/database-design-and-relational-theory/part-3-join-dependencies-5nf-and-related-matters.html
+        title: 'Part 3 Join Dependencies 5NF and Related Matters'
+        sub-pages:
+        - url: home/reading-notes/database-design-and-relational-theory/part-3-join-dependencies-5nf-and-related-matters/ch-09-jds-and-5nf-informal.html
+          title: 'Ch 09: JDs and 5NF (Informal)'
+        - url: home/reading-notes/database-design-and-relational-theory/part-3-join-dependencies-5nf-and-related-matters/ch-10-jds-and-5nf-formal.html
+          title: 'Ch 10: JDs and 5NF (Formal)'
+        - url: home/reading-notes/database-design-and-relational-theory/part-3-join-dependencies-5nf-and-related-matters/ch-11-implicit-dependencies.html
+          title: 'Ch 11: Implicit Dependencies'
+        - url: home/reading-notes/database-design-and-relational-theory/part-3-join-dependencies-5nf-and-related-matters/ch-12-mvds-and-4nf.html
+          title: 'Ch 12: MVDs and 4NF'
+        - url: home/reading-notes/database-design-and-relational-theory/part-3-join-dependencies-5nf-and-related-matters/ch-13-additional-normal-forms.html
+          title: 'Ch 13: Additional Normal Forms'
+      - url: home/reading-notes/database-design-and-relational-theory/part-4-orthogonality.html
+        title: 'Part 4 Orthogonality'
+        sub-pages:
+        - url: home/reading-notes/database-design-and-relational-theory/part-4-orthogonality/ch-14-the-principle-of-orthogonal-design.html
+          title: 'Ch 14: The Principle of Orthogonal Design'
+      - url: home/reading-notes/database-design-and-relational-theory/part-5-redundancy.html
+        title: 'Part 5 Redundancy'
+        sub-pages:
+        - url: home/reading-notes/database-design-and-relational-theory/part-5-redundancy/ch-15-we-need-more-science.html
+          title: 'Ch 15: We Need More Science'
     - url: home/reading-notes/mysql-concurrency.html
       title: 'MySQL Concurrency'
       sub-pages:
@@ -1546,36 +1605,36 @@
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/10-sql-server-security-model.html
           title: '10. SQL Server Security Model'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/11-encryption.html
-          title: '11 Encryption'
+          title: '11. Encryption'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/12-backups-and-restores.html
-          title: '12 Backups And Restores'
+          title: '12. Backups and Restores'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/13-high-availability-and-disaster-recovery-concepts.html
-          title: '13 High Availability And Disaster Recovery Concepts'
+          title: '13. High Availability and Disaster Recovery Concepts'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/14-implementing-alwayson-availability-groups.html
-          title: '14 Implementing Alwayson Availability Groups'
+          title: '14. Implementing Always On Availability Group'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/15-implementing-log-shipping.html
-          title: '15 Implementing Log Shipping'
+          title: '15. Implementing Log Shipping'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-3-security-resilience-and-scaling-workload/16-scaling-workloads.html
-          title: '16 Scaling Workloads'
+          title: '16. Scaling Workloads'
       - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance.html
         title: 'Part IV. Performance and Maintenance'
         sub-pages:
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/17-sql-server-metadata.html
-          title: '17 Sql Server Metadata'
+          title: '17. SQL Server Metadata'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/18-locking-and-blocking.html
-          title: '18 Locking And Blocking'
+          title: '18. Locking and Blocking'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/19-extended-events.html
-          title: '19 Extended Events'
+          title: '19. Extended Events'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/20-query-store.html
-          title: '20 Query Store'
+          title: '20. Query Store'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/21-distributed-replay.html
-          title: '21 Distributed Replay'
+          title: '21. Distributed Replay'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/22-automating-maintenance-routines.html
-          title: '22 Automating Maintenance Routines'
+          title: '22. Automating Maintenance Routines'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/23-policy-based-management.html
-          title: '23 Policy Based Management'
+          title: '23. Policy-Based Management'
         - url: home/reading-notes/pro-sql-server-2019-admin/part-4-performance-and-maintenance/24-resource-governor.html
-          title: '24 Resource Governor'
+          title: '24. Resource Governor'
   - url: home/resource-allocations.html
     title: 'Resource Allocations'
     sub-pages:
