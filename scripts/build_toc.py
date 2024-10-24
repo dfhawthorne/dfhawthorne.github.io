@@ -76,6 +76,26 @@ if args.verbose:
     args.log.write(f"Page Header:\n{page_header}\nPage Body:\n{page_body}\n")
 
 # ------------------------------------------------------------------------------
+# Build translation table for converting text to a file name
+# - Removes characters other than white space, letters, and digits
+# - Changes white space to a dash ('-')
+# - Leaves letters and digits unchanged
+# ------------------------------------------------------------------------------
+
+trans_dict = dict()
+for byte in str(bytes([b for b in range(256)])):
+    if byte.isalnum():
+        if byte.isupper():
+            trans_dict[byte] = byte.lower()
+        continue
+    if byte.isspace():
+        trans_dict[byte] = '-'
+    else:
+        trans_dict[byte] = None # removes character
+
+trans_table = str.maketrans(trans_dict)
+
+# ------------------------------------------------------------------------------
 # Rebuild page header
 # ------------------------------------------------------------------------------
 
@@ -99,7 +119,6 @@ for line in page_header.splitlines():
 
 soup = BeautifulSoup(page_body, 'html.parser')
 
-trans_tbl = str.maketrans(" :.", "---")
 toc_header = f"table-of-contents:\n"
 
 prev_tag_level = 1
@@ -107,7 +126,7 @@ for tag in soup.find_all(re.compile('^h[1-6]')):
     if args.verbose:
         args.log.write(f"Heading: {tag.name}['id']='{tag.get('id')}' '{str(tag.string)}'\n")
     if tag.get('id') is None and tag.string is not None:
-        tag['id'] = "TOC-" + tag.string.translate(trans_tbl)
+        tag['id'] = "TOC-" + tag.string.translate(trans_table)
         if args.verbose:
             args.log.write(f"Heading: {tag.name}['id'] updated to '{tag.get('id')}'\n")
     if tag.get('id') is not None:
