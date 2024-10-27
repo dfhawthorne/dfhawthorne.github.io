@@ -46,8 +46,8 @@ V3R0 | 24 May 2024 | 25 May 2024 | Set up OCI environment for study
 V3R1 | 1 June 2024 | 2 October 2024 | Study "Design and Deploy OCI Virtual Cloud Networks (VCN)" objective
 V3R2 | 8 June 2024 | 9 October 2024 | Study "Plan and Design OCI Networking Solutions and App Services" objective
 V3R3 | 15 June 2024 | 17 October 2024 | Study "Design for Hybrid Networking Architectures" objective
-V3R4 | 22 June 2024 | | Study "Transitive Routing" objective
-V3R5 | 29 June 2024 | | Study "Implement and Operate Secure OCI Networking and Connectivity Solutions" objective
+V3R4 | 22 June 2024 | 22 October 2024 | Study "Transitive Routing" objective
+V3R5 | 29 June 2024 | 28 October 2024 | Study "Implement and Operate Secure OCI Networking and Connectivity Solutions" objective
 V3R6 | 6 July 2024 | | Study "Migrate Workloads to OCI" objective
 V3R7 | 13 July 2024 | | Study "Troubleshoot OCI Networking and Connectivity Issues" objective
 V3R8 | 20 July 2024 | | Study "OCI Networking Best Practices" objective
