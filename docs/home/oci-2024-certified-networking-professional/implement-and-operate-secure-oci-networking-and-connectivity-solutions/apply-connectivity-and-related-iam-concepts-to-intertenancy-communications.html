@@ -194,3 +194,28 @@ table-of-contents:
 <li>Validate the Inter Tenancy communication between servers in the same region</li>
 </ol>
 </blockquote>
+<h2>Demonstrations</h2>
+<h3>LPG Demonstration</h3>
+<p>Sample policies are:</p>
+<pre class="text">
+Define tenancy Requestor as ocid.tenancy.oc1....
+Define group RequestorGrp as ocid.group.oc1.... 
+Admit group RequestorGrp of tenancy Requestor to manage local-peering-to in compartment ...
+Admit group RequestorGrp of tenancy Requestor to associate local-peering-gateways in tenancy Requestor with local-peering-gateways in compartment ...
+Admit group RequestorGrp of tenancy Requestor to manage remote-peering-to in compartment ...
+</pre>
+<h3>Same Region DRG Demonstration</h3>
+<p>Sample policies on the Requestor for using a DRG in the same region are:</p>
+<pre class="text">
+Define tenancy VCN as &lt;vcn-tenant-ocid&gt;
+Define group VCN-Admin as &lt;vcn-group-ocid&gt;
+Endorse group DRG-Admin to manage drg-attachment in tenancy VCN
+Admit group VCN-Admin of tenancy VCN to manage drg in tenancy
+</pre>
+<p>Sample policies on the Acceptor for using a DRG in the same region are:</p>
+<pre class="text">
+Define tenancy DRG as &lt;drg-tenant-ocid&gt;
+Define group DRG-Admin as &lt;drg-group-ocid&gt;
+Admit group DRG-Admin of tenancy DRG to manage drg-attachment in tenancy
+Endorse group VCN-Admin to manage drg-attachment in tenancy DRG
+</pre>

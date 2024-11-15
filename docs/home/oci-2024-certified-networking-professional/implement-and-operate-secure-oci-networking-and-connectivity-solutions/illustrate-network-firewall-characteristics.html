@@ -31,19 +31,21 @@ table-of-contents:
     toc-text: 'Logging, Monitoring, and Analytics'
   - toc-url: 'flexible-deployment-options'
     toc-text: 'Flexible Deployment Options'
+- toc-url: 'demonstration'
+  toc-text: 'Demonstration'
 ---
 
 <h2 id="TOC-summary">Summary</h2>
 <p>Network Firewall as a Service secures traffic into OCI and between VCNs.</p>
 <h2 id="TOC-reference">Reference</h2>
 <ul>
-  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
-  <ul>
-    <li><a href="https://docs.oracle.com/en-us/iaas/Content/network-firewall/home.htm">Network Firewall</a></li>
-    <ul>
-      <li><a href="https://docs.oracle.com/en-us/iaas/Content/network-firewall/overview.htm">Overview of the Network Firewall Service</a></li>
-    </ul>
-  </ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/network-firewall/home.htm">Network Firewall</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/network-firewall/overview.htm">Overview of the Network Firewall Service</a></li>
+</ul>
+</ul>
 </ul>
 <!-- p. 414 -->
 <h2 id="TOC-oci-network-firewall">OCI Network Firewall</h2>
@@ -152,3 +154,59 @@ table-of-contents:
 <dd>A dedicated Network Firewall is deployed in each VCN.</dd>
 </dl>
 </blockquote>
+<h2 id="TOC-demonstration">Demonstration</h2>
+<p>This demonstration only allows HTTPS traffic from the VCN (10.0.0.0/16) to Orqcle YUM repositories. The route tables for the client subnet and NAT gateway forces all egress to and ingress from the Internet to go through the Network firewall:</p>
+<ul>
+<li>Client Subnet 10.0.0.0/24</li>
+<ul>
+<li>Route table</li>
+<ul>
+<li>0.0.0.0/0 10.0.1.100 (Network Firewall)</li>
+</ul>
+</ul>
+<li>Firewall Subnet 10.0.1.0/24</li>
+<ul>
+<li>Network Firewall 10.0.1.100</li>
+<li>Network Firewall Policy</li>
+<table border="1">
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Protocol/Port</th>
+<th>URL</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.0.0.0.24</td>
+<td>Any</td>
+<td>TCP/443</td>
+<td>yum-us-phoenix-1.oracle.com<br/>yum-us-phoenix-1.oci.oraclecloud.com</td>
+<td>Allow</td>
+</tr>
+</tbody>
+</table>
+<li>Route Table</li>
+<ul>
+<li>0.0.0.0/0 NAT Gateway</li>
+</ul>
+</ul>
+<li>NAT Gateway</li>
+<ul>
+<li>Route Table</li>
+<ul>
+<li>10.0.0.0/16 10.0.1.100 (Network Firewall)</li>
+</ul>
+</ul>
+</ul>
+<p>In order to create a Network Firewall, a Network Firewall Policy (NFWP) needs to exist. A dummy NFWP can be created and then replaced after Network Firewall is created. An empty NWFP denies all traffic.</p>
+<p>Creating a NFWP:</p>
+<ol>
+<li>Create URL list of permitted URLs</li>
+<li>Create a service for TCP/443</li>
+<li>Create service list for the service</li>
+<li>Create Address List for sources (10.0.0.0/16)</li>
+<li>Create security rule</li>
+</ol>
