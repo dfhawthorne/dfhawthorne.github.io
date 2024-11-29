@@ -1102,7 +1102,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures.html</loc>
-    <lastmod>2024-11-29</lastmod>
+    <lastmod>2024-11-30</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/knowledge.html</loc>
@@ -2237,6 +2237,10 @@
     <lastmod>2024-11-29</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/bastion-queries.html</loc>
+    <lastmod>2024-11-30</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-instance-vnic-queries.html</loc>
     <lastmod>2024-08-17</lastmod>
   </url>
@@ -2302,7 +2306,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures.html</loc>
-    <lastmod>2024-11-29</lastmod>
+    <lastmod>2024-11-30</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/miscellaneous.html</loc>
