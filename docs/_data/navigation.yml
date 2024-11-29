@@ -1138,6 +1138,8 @@
     - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci.html
       title: 'Migrate Workloads to OCI'
       sub-pages:
+      - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/course_notes.html
+        title: 'Course_Notes'
       - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-another-cloud-service-provider.html
         title: 'Outline optimal connectivity strategy for a cloud migration from another Cloud Service Provider'
       - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-onpremises.html
@@ -1383,6 +1385,8 @@
         title: 'Compute Image Queries'
       - url: home/procedures/oci-procedures/compute-instance-vnic-queries.html
         title: 'Compute Instance VNIC Queries'
+      - url: home/procedures/oci-procedures/compute-plugins-queries.html
+        title: 'Compute Plugins Queries'
       - url: home/procedures/oci-procedures/compute-shape-queries.html
         title: 'Compute Shape Queries'
       - url: home/procedures/oci-procedures/create-oci-config.html
@@ -1478,7 +1482,7 @@
         - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-03-normalization-some-generalities.html
           title: 'Ch 03: Normalization: Some Generalities'
         - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-04-fd-and-bcnf-informal.html
-          title: 'Ch 04: FD and BCNF (Informal)'
+          title: 'Ch 04: Functional Dependency and BCNF (Informal)'
         - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-05-fd-and-bcnf-formal.html
           title: 'Ch 05: FD and BCNF (Formal)'
         - url: home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-06-preserving-fds.html

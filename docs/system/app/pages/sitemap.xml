@@ -298,7 +298,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-04-fd-and-bcnf-informal.html</loc>
-    <lastmod>2024-10-24</lastmod>
+    <lastmod>2024-11-23</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-07-fd-axiomatization.html</loc>
@@ -310,7 +310,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-03-normalization-some-generalities.html</loc>
-    <lastmod>2024-10-24</lastmod>
+    <lastmod>2024-10-29</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/database-design-and-relational-theory/part-2-functional-dependencies-boycecodd-normal-form-and-related-matters/ch-05-fd-and-bcnf-formal.html</loc>
@@ -330,7 +330,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/database-design-and-relational-theory/part-1-setting-the-scene/ch-02-prerequisites.html</loc>
-    <lastmod>2024-10-24</lastmod>
+    <lastmod>2024-10-26</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/reading-notes/database-design-and-relational-theory/part-1-setting-the-scene/ch-01-preliminaries.html</loc>
@@ -650,7 +650,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-onpremises.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-11-23</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-another-cloud-service-provider.html</loc>
@@ -690,23 +690,23 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/demonstrate-cloudshell-functionalities.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-10-24</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/illustrate-network-firewall-characteristics.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-11-12</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/show-different-approaches-for-bastion-service-in-multitier-architectures.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-10-24</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/apply-connectivity-and-related-iam-concepts-to-intertenancy-communications.html</loc>
-    <lastmod>2024-10-23</lastmod>
+    <lastmod>2024-11-03</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture.html</loc>
-    <lastmod>2024-05-26</lastmod>
+    <lastmod>2024-10-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/oci-networking-best-practices/demonstrate-knowledge-of-networking-connectivity-best-practices.html</loc>
@@ -726,11 +726,11 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/transitive-routing/synthesize-transitive-routing-configurations.html</loc>
-    <lastmod>2024-10-19</lastmod>
+    <lastmod>2024-11-03</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/transitive-routing/interpret-key-aspects-of-transitive-routing-with-drg-lpg-and-network-appliance-resources.html</loc>
-    <lastmod>2024-10-22</lastmod>
+    <lastmod>2024-11-03</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-mastery-in-applying-endpoints-to-a-networking-architecture.html</loc>
@@ -786,7 +786,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/oci-2024-certified-networking-professional.html</loc>
-    <lastmod>2024-10-23</lastmod>
+    <lastmod>2024-10-28</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/10g-ocm.html</loc>
@@ -1102,7 +1102,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures.html</loc>
-    <lastmod>2024-08-17</lastmod>
+    <lastmod>2024-11-29</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/knowledge.html</loc>
@@ -2233,6 +2233,10 @@
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-plugins-queries.html</loc>
+    <lastmod>2024-11-29</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-instance-vnic-queries.html</loc>
     <lastmod>2024-08-17</lastmod>
   </url>
@@ -2298,7 +2302,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures.html</loc>
-    <lastmod>2024-10-02</lastmod>
+    <lastmod>2024-11-29</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/miscellaneous.html</loc>
