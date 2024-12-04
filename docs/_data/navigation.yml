@@ -1401,6 +1401,8 @@
         title: 'Install OCI CLI'
       - url: home/procedures/oci-procedures/launch-compute-instance.html
         title: 'Launch Compute Instance'
+      - url: home/procedures/oci-procedures/lb-backend-health-status-queries.html
+        title: 'LB Backend Health Status Queries'
       - url: home/procedures/oci-procedures/oci-limits-queries.html
         title: 'OCI Limits Queries'
       - url: home/procedures/oci-procedures/subnet-queries.html

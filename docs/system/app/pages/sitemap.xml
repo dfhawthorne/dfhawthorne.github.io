@@ -1102,7 +1102,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures.html</loc>
-    <lastmod>2024-11-30</lastmod>
+    <lastmod>2024-12-05</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/knowledge.html</loc>
@@ -2233,6 +2233,10 @@
     <lastmod>2024-05-16</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/lb-backend-health-status-queries.html</loc>
+    <lastmod>2024-12-05</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compute-plugins-queries.html</loc>
     <lastmod>2024-11-29</lastmod>
   </url>
@@ -2306,7 +2310,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures.html</loc>
-    <lastmod>2024-11-30</lastmod>
+    <lastmod>2024-12-05</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/miscellaneous.html</loc>
