@@ -1407,6 +1407,8 @@
         title: 'OCI Limits Queries'
       - url: home/procedures/oci-procedures/subnet-queries.html
         title: 'Subnet Queries'
+      - url: home/procedures/oci-procedures/waf-protection-capabilities-queries.html
+        title: 'WAF Protection Capabilities Queries'
       - url: home/procedures/oci-procedures/work-requests-queries.html
         title: 'Work Requests Queries'
     - url: home/procedures/patch-oracle-database.html

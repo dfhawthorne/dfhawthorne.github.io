@@ -1102,7 +1102,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures.html</loc>
-    <lastmod>2024-12-05</lastmod>
+    <lastmod>2024-12-06</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/knowledge.html</loc>
@@ -2261,6 +2261,10 @@
     <lastmod>2024-06-22</lastmod>
   </url>
   <url>
+    <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/waf-protection-capabilities-queries.html</loc>
+    <lastmod>2024-12-06</lastmod>
+  </url>
+  <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures/compartment-queries.html</loc>
     <lastmod>2024-06-22</lastmod>
   </url>
@@ -2310,7 +2314,7 @@
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/oci-procedures.html</loc>
-    <lastmod>2024-12-05</lastmod>
+    <lastmod>2024-12-06</lastmod>
   </url>
   <url>
     <loc>https://dfhawthorne.github.io/home/procedures/miscellaneous.html</loc>
