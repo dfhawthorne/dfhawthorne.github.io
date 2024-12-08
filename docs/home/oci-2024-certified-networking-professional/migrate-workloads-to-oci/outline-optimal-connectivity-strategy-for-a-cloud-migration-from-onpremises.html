@@ -10,3 +10,35 @@ breadcrumbs:
 - title: 'Migrate Workloads to OCI'
   url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci.html
 ---
+
+<h2>Summary</h2>
+<p>The optimal network configuration is a hub-and-spoke design with a FastConnect backbone for the link between on-premises and OCI. Migration to OCI encompasses moving large amounts of data to either block volumes or object storage.</p>
+<h2>Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/cloud-migration/home.htm">Oracle Cloud Migrations</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/cloud-migration/cloud-migration-overview.htm">Overview of Oracle Cloud Migrations</a></li>
+    </ul>
+  </ul>
+</ul>
+<h2>Network Overview</h2>
+<p>The following diagram shows four (4) connection methods:</p>
+<ol>
+<li>Data Transfer Appliance</li>
+<li>Internet connection to Oracle SaaS</li>
+<li>FastConnect Public Peering to Oracle Edge</li>
+<li>FastConnect Private Peering to an OCI region</li>
+</ol>
+<img src="home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-onpremises/data_migration.png" />
+<h2>Design Criteria</h2>
+<p>The following design criteria need to be considered:</p>
+<dl>
+  <dt>Connection redundancy</dt>
+  <dd>Whether there are multiple FastConnect links, or site-to-site VPN as backup</dd>
+  <dt>Load Balancing</dt>
+  <dd>Use OCI load balancing accross links to improve resource utilisation, allow scaling, and allow high availability</dd>
+  <dt>Bypass the internet for public resources</dt>
+  <dd>Implement FastConnect with public peering to access public OCI services without using the internet, or use a service gateway to allow cloud resources without public IP addresses to privately access Oracle services.</dd>
+</dl>
