@@ -49,5 +49,5 @@ V3R3 | 15 June 2024 | 17 October 2024 | Study "Design for Hybrid Networking Arch
 V3R4 | 22 June 2024 | 22 October 2024 | Study "Transitive Routing" objective
 V3R5 | 29 June 2024 | 28 October 2024 | Study "Implement and Operate Secure OCI Networking and Connectivity Solutions" objective
 V3R6 | 6 July 2024 | 18 December 2024 | Study "Migrate Workloads to OCI" objective
-V3R7 | 13 July 2024 | | Study "Troubleshoot OCI Networking and Connectivity Issues" objective
+V3R7 | 13 July 2024 | 19 December 2024 | Study "Troubleshoot OCI Networking and Connectivity Issues" objective
 V3R8 | 20 July 2024 | | Study "OCI Networking Best Practices" objective
