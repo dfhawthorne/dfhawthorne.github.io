@@ -9,4 +9,29 @@ breadcrumbs:
   url: home/oci-2024-certified-networking-professional.html
 - title: 'OCI Networking Best Practices'
   url: home/oci-2024-certified-networking-professional/oci-networking-best-practices.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'fullyredundant-network-connectivity'
+  toc-text: 'Fully-Redundant Network Connectivity'
+- toc-url: 'network-connectivity-best-practice'
+  toc-text: 'Network Connectivity: Best Practice'
 ---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Redundant FastConnects between on-premises and OCI is best when obtained through an Oracle FastConnect Partner.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en/solutions/oci-best-practices/reliable-and-resilient-cloud-topology-practices1.html#GUID-14AE6070-E47B-412D-B316-8CCDF36268E9">About Reliable and Resilient Cloud Topology Practices</a></li>
+</ul>
+<!-- p.605 -->
+<h2 id="TOC-fullyredundant-network-connectivity">Fully-Redundant Network Connectivity</h2>
+<p>A fully-redundant network connectivity is needed to preserve business continuity, and to ensure availability of applications and workloads during both planned and unplanned outages.</p>
+<p>Inspection of the network design should reveal no single points of failure (SPOF). Fastconnects are not redundant if they terminate at the same POP or edge router. An Oracle FastConnect partner is required to have redundant connections, thereby alleviating the customer from verifying such.</p>
+<p>Network redundnacy should be verified with regular failover tests.</p>
+<!-- p. 607 -->
+<h2 id="TOC-network-connectivity-best-practice">Network Connectivity: Best Practice</h2>
+<p>Carefully review the trade-offs between FastConnect and VPN with respect to performance and costs.</p>
+<p>Although auto-generated DRG tables and import route distributions are fine for the most basic scenarios, custom ones should be created for more complex DRG scenarios in order to match the requirements.</p>
