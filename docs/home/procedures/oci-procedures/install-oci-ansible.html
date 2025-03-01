@@ -1,0 +1,129 @@
+---
+layout: default
+title: 'Install OCI Ansible'
+base-url: home/procedures/oci-procedures/install-oci-ansible.html
+breadcrumbs:
+- title: 'Home'
+  url: index.html
+- title: 'Procedures'
+  url: home/procedures.html
+- title: 'OCI Procedures'
+  url: home/procedures/oci-procedures.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'install-virtual-environment'
+  toc-text: 'Install Virtual Environment'
+- toc-url: 'create-shell-function'
+  toc-text: 'Create Shell Function'
+- toc-url: 'install-oci-ansible'
+  toc-text: 'Install OCI Ansible'
+  toc-menu:
+  - toc-url: 'test-installation'
+    toc-text: 'Test Installation'
+---
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-install-virtual-environment">Install Virtual Environment</h2>
+<p>Run the following commands to create a Python virtual environment, called <code>oci-ansible</code>:</p>
+<pre class="bash-cmd">mkdir -p ~/.venv
+cd ~/.venv
+python3 -m venv  oci-ansible
+</pre>
+<h2 id="TOC-create-shell-function">Create Shell Function</h2>
+<p>The shell function, <code>activate</code>, is used several times in this procedure. Its definition is:</p>
+<pre class="bash-cmd">activate ()
+{
+    [[ $# -eq 0 ]] &amp;&amp; return 1;
+    [[ ! -d ~/.venv/$1/bin ]] &amp;&amp; return 1;
+    source ~/.venv/$1/bin/activate;
+    return 0
+}
+</pre>
+<h2 id="TOC-install-oci-ansible">Install OCI Ansible</h2>
+<p>Run the following commands to install OCI Ansible environment in the virtual environment:</p>
+<pre class="bash-cmd">cd
+activate oci-ansible
+pip3 install oci ansible
+</pre>
+<p>The sample output is:</p>
+<pre class="text">Collecting oci
+  Using cached oci-2.141.1-py3-none-any.whl.metadata (5.3 kB)
+Collecting ansible
+  Downloading ansible-11.1.0-py3-none-any.whl.metadata (8.0 kB)
+Collecting certifi (from oci)
+  Using cached certifi-2024.12.14-py3-none-any.whl.metadata (2.3 kB)
+Collecting cryptography&lt;46.0.0,&gt;=3.2.1 (from oci)
+  Using cached cryptography-44.0.0-cp39-abi3-manylinux_2_28_x86_64.whl.metadata (5.7 kB)
+Collecting pyOpenSSL&lt;25.0.0,&gt;=17.5.0 (from oci)
+  Using cached pyOpenSSL-24.3.0-py3-none-any.whl.metadata (15 kB)
+Collecting python-dateutil&lt;3.0.0,&gt;=2.5.3 (from oci)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz&gt;=2016.10 (from oci)
+  Using cached pytz-2024.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting circuitbreaker&lt;3.0.0,&gt;=1.3.1 (from oci)
+  Using cached circuitbreaker-2.0.0-py2.py3-none-any.whl.metadata (7.7 kB)
+Collecting ansible-core~=2.18.1 (from ansible)
+  Downloading ansible_core-2.18.1-py3-none-any.whl.metadata (7.7 kB)
+Collecting jinja2&gt;=3.0.0 (from ansible-core~=2.18.1-&gt;ansible)
+  Downloading jinja2-3.1.5-py3-none-any.whl.metadata (2.6 kB)
+Collecting PyYAML&gt;=5.1 (from ansible-core~=2.18.1-&gt;ansible)
+  Downloading PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+Collecting packaging (from ansible-core~=2.18.1-&gt;ansible)
+  Downloading packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+Collecting resolvelib&lt;1.1.0,&gt;=0.5.3 (from ansible-core~=2.18.1-&gt;ansible)
+  Downloading resolvelib-1.0.1-py2.py3-none-any.whl.metadata (4.0 kB)
+Collecting cffi&gt;=1.12 (from cryptography&lt;46.0.0,&gt;=3.2.1-&gt;oci)
+  Using cached cffi-1.17.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+Collecting six&gt;=1.5 (from python-dateutil&lt;3.0.0,&gt;=2.5.3-&gt;oci)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting pycparser (from cffi&gt;=1.12-&gt;cryptography&lt;46.0.0,&gt;=3.2.1-&gt;oci)
+  Using cached pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+Collecting MarkupSafe&gt;=2.0 (from jinja2&gt;=3.0.0-&gt;ansible-core~=2.18.1-&gt;ansible)
+  Downloading MarkupSafe-3.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+Using cached oci-2.141.1-py3-none-any.whl (28.6 MB)
+Downloading ansible-11.1.0-py3-none-any.whl (51.4 MB)
+   <font color="#5FAF00">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00AA00">51.4/51.4 MB</font> <font color="#AA0000">4.2 MB/s</font> eta <font color="#00AAAA">0:00:00</font>
+Downloading ansible_core-2.18.1-py3-none-any.whl (2.2 MB)
+   <font color="#5FAF00">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00AA00">2.2/2.2 MB</font> <font color="#AA0000">3.0 MB/s</font> eta <font color="#00AAAA">0:00:00</font>
+Using cached circuitbreaker-2.0.0-py2.py3-none-any.whl (7.6 kB)
+Using cached cryptography-44.0.0-cp39-abi3-manylinux_2_28_x86_64.whl (4.2 MB)
+Using cached pyOpenSSL-24.3.0-py3-none-any.whl (56 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2024.2-py2.py3-none-any.whl (508 kB)
+Using cached certifi-2024.12.14-py3-none-any.whl (164 kB)
+Using cached cffi-1.17.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (479 kB)
+Downloading jinja2-3.1.5-py3-none-any.whl (134 kB)
+   <font color="#5FAF00">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00AA00">134.6/134.6 kB</font> <font color="#AA0000">2.8 MB/s</font> eta <font color="#00AAAA">0:00:00</font>
+Downloading PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (767 kB)
+   <font color="#5FAF00">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00AA00">767.5/767.5 kB</font> <font color="#AA0000">5.0 MB/s</font> eta <font color="#00AAAA">0:00:00</font>
+Downloading resolvelib-1.0.1-py2.py3-none-any.whl (17 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading packaging-24.2-py3-none-any.whl (65 kB)
+   <font color="#5FAF00">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00AA00">65.5/65.5 kB</font> <font color="#AA0000">1.5 MB/s</font> eta <font color="#00AAAA">0:00:00</font>
+Downloading MarkupSafe-3.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+Using cached pycparser-2.22-py3-none-any.whl (117 kB)
+Installing collected packages: resolvelib, pytz, circuitbreaker, six, PyYAML, pycparser, packaging, MarkupSafe, certifi, python-dateutil, jinja2, cffi, cryptography, pyOpenSSL, ansible-core, oci, ansible
+Successfully installed MarkupSafe-3.0.2 PyYAML-6.0.2 ansible-11.1.0 ansible-core-2.18.1 certifi-2024.12.14 cffi-1.17.1 circuitbreaker-2.0.0 cryptography-44.0.0 jinja2-3.1.5 oci-2.141.1 packaging-24.2 pyOpenSSL-24.3.0 pycparser-2.22 python-dateutil-2.9.0.post0 pytz-2024.2 resolvelib-1.0.1 six-1.17.0
+</pre>
+<p>Download and install OCI Ansible modules:</p>
+<pre class="bash-cmd">ansible-galaxy collection install -f oracle.oci</pre>
+<p>Sample output is:</p>
+<pre class="text">Starting galaxy collection install process
+Process install dependency map
+Starting collection install process
+Downloading https://galaxy.ansible.com/api/v3/plugin/ansible/content/published/collections/artifacts/oracle-oci-5.3.0.tar.gz to /home/mylearn/.ansible/tmp/ansible-local-12202k7hbuif2/tmpc9r0zqa6/oracle-oci-5.3.0-8p7c875y
+Installing 'oracle.oci:5.3.0' to '/home/mylearn/.ansible/collections/ansible_collections/oracle/oci'
+oracle.oci:5.3.0 was installed successfully
+</pre>
+<h3 id="TOC-test-installation">Test Installation</h3>
+<p>Run the following commands to test installation:</p>
+<pre class="bash-cmd">activate oci-ansible
+ansible localhost -m oracle.oci.oci_object_storage_namespace_facts</pre>
+<p>The sample output is:</p>
+<pre class="text"><font color="#FF55FF"><b>[WARNING]: No inventory was parsed, only implicit localhost is available</b></font>
+<font color="#00AA00">localhost | SUCCESS =&gt; {</font>
+<font color="#00AA00">    "changed": false,</font>
+<font color="#00AA00">    "namespace": "sdorfvwhnhvj"</font>
+<font color="#00AA00">}</font>
+</pre>

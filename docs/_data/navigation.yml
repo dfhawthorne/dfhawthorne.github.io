@@ -1138,8 +1138,6 @@
     - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci.html
       title: 'Migrate Workloads to OCI'
       sub-pages:
-      - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/course_notes.html
-        title: 'Course_Notes'
       - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-another-cloud-service-provider.html
         title: 'Outline optimal connectivity strategy for a cloud migration from another Cloud Service Provider'
       - url: home/oci-2024-certified-networking-professional/migrate-workloads-to-oci/outline-optimal-connectivity-strategy-for-a-cloud-migration-from-onpremises.html
@@ -1397,6 +1395,8 @@
         title: 'Fault Domains Queries'
       - url: home/procedures/oci-procedures/identity-domains-queries.html
         title: 'Identity Domains Queries'
+      - url: home/procedures/oci-procedures/install-oci-ansible.html
+        title: 'Install OCI Ansible'
       - url: home/procedures/oci-procedures/install-oci-cli.html
         title: 'Install OCI CLI'
       - url: home/procedures/oci-procedures/launch-compute-instance.html
