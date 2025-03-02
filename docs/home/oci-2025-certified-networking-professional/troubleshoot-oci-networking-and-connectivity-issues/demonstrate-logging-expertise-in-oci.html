@@ -1,0 +1,53 @@
+---
+layout: default
+title: 'Demonstrate logging expertise in OCI'
+base-url: home/oci-2025-certified-networking-professional/troubleshoot-oci-networking-and-connectivity-issues/demonstrate-logging-expertise-in-oci.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Troubleshoot OCI Networking and Connectivity Issues'
+  url: home/oci-2025-certified-networking-professional/troubleshoot-oci-networking-and-connectivity-issues.html
+---
+
+<h2>Summary</h2>
+<p></p>
+<h2>References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/net_command_center.htm">Network Command Centre</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/vcn-flow-logs.htm">VCN Flow Logs</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2>Highlights</h2>
+<blockquote>
+  <li>VCN flow logs show details about traffic that passes through a VCN.</li>
+  <li>VCN flow logs help you audit traffic and troubleshoot security lists.</li>
+  <li>Enable and manage flow logs from the Network Command Center.</li>
+  <li>Use capture filters to evaluate and select traffic to include in the flow log.</li>
+  <li>Flow logs leverage the Logging service to send log information to a specified log group. For more information, see <a href="https://docs.oracle.com/iaas/Content/Logging/Concepts/loggingoverview.htm">Logging Overview</a>.</li>
+  <li>Enable flow logs for all VNICs in a VCN or subnet, or target specific instances, network load balancers, or resource VNICs as enablement points.</li>
+</blockquote>
+<h2>Enablement Points</h2>
+<p>There are four (4) points at which flow logs can be enabled:</p>
+<ol>
+  <li>VCN (includes all existing and future VNICs)</li>
+  <li>Subnet (includes all existing and future VNICs)</li>
+  <li>VNIC</li>
+  <li>Resources (targeted instance or network load balancer)</li>
+</ol>
+<p>Even though the flow log can be enabled at the VCN or subnet level, the log record is generated for an individual VNIC.</p>
+<h2>Capture Filters</h2>
+<p>A capture filter has one (1) to ten (10) rules. These rules can specify:</p>
+<ul>
+  <li>Sampling rate (percentage of network flows to capture)</li>
+  <li>Inclusion/exclusion of packets</li>
+</ul>
+<p>Flow logs are batched before being sent to the logging service.</p>

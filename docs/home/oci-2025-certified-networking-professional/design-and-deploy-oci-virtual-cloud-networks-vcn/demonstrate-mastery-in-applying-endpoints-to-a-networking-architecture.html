@@ -1,0 +1,141 @@
+---
+layout: default
+title: 'Demonstrate mastery in applying EndPoints to a Networking Architecture'
+base-url: home/oci-2025-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-mastery-in-applying-endpoints-to-a-networking-architecture.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Design and Deploy OCI Virtual Cloud Networks (VCN)'
+  url: home/oci-2025-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn.html
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p></p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Servcies</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/home.htm">Resource Manager</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/ResourceManager/Tasks/private-endpoints.htm">Managing Private Endpoints</a></li>
+    </ul>
+  </ul>
+  <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security.htm">Security</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Concepts/security_guide.htm">Oracle Cloud Infrastructure Security Guide</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/configuration_security.htm">Security Best Practices</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/resourcemanager_security.htm">Securing Resource Manager</a></li>
+        <ul>
+          <li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/resourcemanager_security.htm#iam-policies__private-endpoints">Manage Private Endpoints</a></li>
+        </ul>
+      </ul>
+    </ul>
+  </ul>
+
+</ul>
+<h2 id="TOC-course-notes">Course Notes</h2>
+<p>Course notes:</p>
+<blockquote>
+  <p><strong>Introducing Private Endpoints</strong></p>
+  <p>In traditional security architectures, data tier services are deployed deep inside the customer private network with many layers of security access control above it.</p>
+  <p>Customers who migrate to the cloud want their services to ubiquitously accessible from their private network.</p>
+  <p><strong>Private Endpoints</strong></p>
+  <img src="home/oci-2025-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-mastery-in-applying-endpoints-to-a-networking-architecture/private-endpoints.png" />
+  <p>Private endpoints (PE) is an evolution of the private connectivity model whereby customers access Oracle services over a private IP allocated from a private subnet within their VCN.</p>
+  <ul>
+    <li>In this setup, the VCN CIDRs are advertised to the on-premises network by the DRG using BGP.</li>
+    <li>The DRG routes the inbound traffic that is from the on-premises network and destined for the PE that represents a supported Oracle service.</li>
+    <p>Traffic destined to the PE is tunneled directly to the supported Oracle service.</p>
+    <p>Private endpoints provide the following benefits:</p>
+    <ul>
+      <li>Extended private connectivity</li>
+      <li>Enhanced security</li>
+      <li>Seamless service integration</li>
+      <li>Simplified management</li>
+      <li>Reverse connection, proxy services (DNS, SCAN)</li>
+    </ul>
+  </ul>
+  <p><strong>Reverse Connection Endpoints</strong></p>
+  <img src="home/oci-2025-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-mastery-in-applying-endpoints-to-a-networking-architecture/reverse-connection-endpoints.png" />
+  <p>A set of services require Service to Consumer (S2C) private connectivity to initiate connections back into the consumer network.</p>
+  <ul>
+    <li>The PE reverse connection endpoints (RCE) feature allows services to connect to servers (typically data sources) in the customer's private private network.</li>
+    <li>Reverse connections is an optional feature of PE</li>
+    <li>In case a service requires only the RCE feature, a forward connection private endpoint is still provisioned.</li>
+    <li>RCE introduces new constructs:</li>
+    <ul>
+      <li>DNS Proxy: Pseudo-DNS resolver</li>
+      <li>SCAN Proxy: Proxy to handle SCAN protocol</li>
+    </ul>
+  </ul>
+  <p><strong>Service Gateway Versus PE</strong></p>
+  <table border="1">
+    <thead style="background-color:khaki;">
+      <tr>
+        <th>Functionality</th>
+        <th>Private Endpoint</th>
+        <th>Service Gateway</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ease of access</td>
+        <td>Consumers can't open acess to multiple services with one service private endpoint. They need to create a service private endpoint for each service (or service instance) they need to access.</td>
+        <td>Consumers have open access to all services or just Object Storage by using a single service gateway.</td>
+      </tr>
+      <tr style="background-color: lightgray;">
+        <td>Limiting services</td>
+        <td>Further limit traffic by using security lists or NSGs applied to a single service.</td>
+        <td>Further limit traffic by using security lists or NSGs specifying all services or a single service using specific IP ranges.</td>
+      </tr>
+      <tr>
+        <td>Private connectivity direction</td>
+        <td>Service private endpoint supports connections in both directions</td>
+        <td>Consumers can initiate a connection to the service, but a service can't initiate a connection to the consumer private network.</td>
+      </tr>
+      <tr style="background-color: lightgray;">
+        <td>Resource limits</td>
+        <td>Private endpoint isn't counted as a customer resource.</td>
+        <td>Service gateway is counted as a customer resource</td>
+      </tr>
+      <tr>
+        <td>Selective access</td>
+        <td>Single endpoint provides access to a single service.</td>
+        <td>Single gateway provides access to multiple services.</td>
+      </tr>
+      <tr style="background-color: lightgray;">
+        <td>Service endpoint representation</td>
+        <td>Represented using the private IP address inside the consumer network.</td>
+        <td>Represented as a gateway to enable provide private access. Service is represented using the public IP address outside the consumer network.</td>
+      </tr>
+      <tr>
+        <td>Specific address</td>
+        <td>Need to know specific private IP addresses for the service's PE, which are inside the VCN's CIDR.</td>
+        <td>Service's public endpoints are represented as an "all services in OSN" object.</td>
+      </tr>
+    </tbody>
+  </table>
+</blockquote>
+<h2 id="TOC-security-policies">Security Policies</h2>
+<p>The <a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/resourcemanager_security.htm#iam-policies__private-endpoints">security policies</a> needed to manage private endpoints in a tenancy are:</p>
+<pre class="text">
+Allow group &lt;group_name&gt; to manage orm-private-endpoints in tenancy
+Allow group &lt;group_name&gt; to use virtual-network-family in tenancy
+  where any request.operation={'CreatePrivateEndpoint'}"
+</pre>
+<p>The summary of <a href="https://docs.oracle.com/en-us/iaas/Content/Identity/Reference/resourcemanagerpolicyreference.htm#ormprivateendpoints">security permissions</a> for private endpoints is:</p>
+<table border="1">
+  <thead>
+    <tr><th>Verbs</th><th>Permissions</th><th>APIs Fully Covered</th><th>APIs Partially Covered</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>inspect</td><td>ORM_PRIVATE_ENDPOINT_INSPECT</td><td>ListPrivateEndpoints </td><td>none</td></tr>
+    <tr><td>read</td><td>ORM_PRIVATE_ENDPOINT_READ</td><td>GetPrivateEndpoint<br />GetReachableIp</td><td>none</td></tr>
+    <tr><td>use</td><td>ORM_PRIVATE_ENDPOINT_UPDATE</td><td>UpdatePrivateEndpoint</td><td>none</td></tr>
+    <tr><td>manage</td><td>ORM_PRIVATE_ENDPOINT_CREATE<br />ORM_PRIVATE_ENDPOINT_DELETE<br />ORM_PRIVATE_ENDPOINT_MOVE</td><td>ChangePrivateEndpointCompartment<br />CreatePrivateEndpoint<br />DeletePrivateEndpoint</td><td>none</td></tr>
+      </tbody>
+</table>

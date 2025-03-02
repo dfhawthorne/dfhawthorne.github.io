@@ -1,0 +1,69 @@
+---
+layout: default
+title: 'Demonstrate an understanding of IPv4/IPv6 addressing'
+base-url: home/oci-2025-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn/demonstrate-an-understanding-of-ipv4ipv6-addressing.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Design and Deploy OCI Virtual Cloud Networks (VCN)'
+  url: home/oci-2025-certified-networking-professional/design-and-deploy-oci-virtual-cloud-networks-vcn.html
+table-of-contents:
+- toc-url: summary
+  toc-text: Summary
+- toc-url: references 
+  toc-text: References
+- toc-url: ipv6-addresses 
+  toc-text: 'IPv6 Addresses'
+  toc-menu:
+  - toc-url: ipv6-glossary
+    toc-text: 'IPv6 Glossary'
+  - toc-url: ipv6-notes
+    toc-text: 'IPv6 Notes'
+- toc-url: ipv4-notes
+  toc-text: 'IPv4 Notes'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>RFC 1918 addresses are to be used for private IPv4 addresses within the cloud and on-premises. These addresses are not routable to the public Internet.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+  <li><a href="https://docs.oracle.com/iaas/Content/home.htm">Oracle Cloud Infrastructure Documentation</a></li>
+  <ul>
+    <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+    <ul>
+      <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipaddressesanddns.htm">IP Management</a></li>
+      <ul>
+        <li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipv6.htm#IPv6_Addresses">IPv6 Addresses</a></li>
+      </ul>
+    </ul>
+  </ul>
+</ul>
+<h2 id="TOC-ipv6-addresses">IPv6 Addresses</h2>
+<p>These notes are from "<a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipv6.htm#IPv6_Addresses">IPv6 Addresses</a>".</p>
+<h3 id="TOC-ipv6-glossary">IPv6 Glossary</h3>
+<ul>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">BYOIP</span>: <a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/BYOIP.htm#BYOIP">Bring Your Own IP</a>. IPv6 requires a prefix of /48 or larger.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">DRG</span>: dynamic routing gateway which is used to route private traffic between a VCN and an on-premise network.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">dual-stack</span>: support IPv4 and, optionally, IPv6.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">GUA</span>: global unicast address. OCI uses /56 prefix.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">LPG</span>: local peering gateway which is used to route traffic between VCNs.</li>
+  <li><span style="font-family: Arial, Helvetica, sans-serif; font-weight: bold;">ULA</span>: unique local address. <cite>This prefix is internally routable within your OCI network, and is equivalent to IPv4 private addressing. With ULA, you can assign a /64 prefix or larger to a VCN.</cite> The prefix is /64 or larger.</li>
+</ul>
+<h3 id="TOC-ipv6-notes">IPv6 Notes</h3>
+<p>Each IPv6 address is 128 bits long and is written as hexadecimal digits in eight (8) blocks of four (4) digits separated by colons (':'). Consectitive blocks of zeroes can be replaced by two (2) colons ('::'). Only one (1) such abbreviation can be written in an address.</p>
+<h2 id="TOC-ipv4-notes">IPv4 Notes</h2>
+<p>Each IPv4 address is 32 bits long and is written as decimal digits in four (4) blocks separated by periods ('.'). Each block is a number between zero (0) and 255.</p>
+<p><a href="https://www.rfc-editor.org/rfc/rfc1918">RFC 1918</a> (p.4):</p>
+<table>
+  <thead>
+    <tr><th>Prefix</th><th>Mask</th><th>IP Address Range</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>10.0.0.0/8</td><td>255.0.0.0</td><td>10.0.0.0 to 10.255.255.255</td><td>Class A network</td></tr>
+    <tr><td>172.16.0.0/12</td><td>255.240.0.0</td><td>172.16.0.0 to 172.31.255.255</td><td>16 class B networks</td></tr>
+    <tr><td>192.168.0.0/16</td><td>255.255.0.0</td><td>192.168.0.0 to 192.168.255.255</td><td>256 class C networks</td></tr>
+  </tbody>
+</table>
+<p>OCI requires VCN size ranges from /16 (64K - 3 hosts) to /30 (1 host).</p>

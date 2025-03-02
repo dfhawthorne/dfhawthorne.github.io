@@ -1,0 +1,643 @@
+---
+layout: default
+title: 'Evaluate WAF/Edge/Certificates/services in a Networking multi-tier architecture'
+base-url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Implement and Operate Secure OCI Networking and Connectivity Solutions'
+  url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'oci-web-application-firewall-waf'
+  toc-text: 'OCI Web Application Firewall (WAF)'
+- toc-url: 'benefits-of-oci-waf'
+  toc-text: 'Benefits of OCI WAF'
+  toc-menu:
+  - toc-url: 'oci-waf-solutions'
+    toc-text: 'OCI WAF Solutions'
+  - toc-url: 'waf-service-components'
+    toc-text: 'WAF Service Components'
+  - toc-url: 'oci-waf-architecture'
+    toc-text: 'OCI WAF Architecture'
+  - toc-url: 'waf-point-of-presences-pops'
+    toc-text: 'WAF Point of Presences (PoPs)'
+  - toc-url: 'oci-waf-use-cases'
+    toc-text: 'OCI WAF Use Cases'
+  - toc-url: 'prerequisites-for-using-waf'
+    toc-text: 'Prerequisites for Using WAF'
+  - toc-url: 'iam-policy'
+    toc-text: 'IAM Policy'
+  - toc-url: 'security-responsibilities'
+    toc-text: 'Security Responsibilities'
+  - toc-url: 'capabilities-and-limits'
+    toc-text: 'Capabilities and Limits'
+  - toc-url: 'getting-started-with-waf-workflow'
+    toc-text: 'Getting Started with WAF: Workflow'
+- toc-url: 'web-application-firewall-waf-features-and-policies'
+  toc-text: 'Web Application Firewall (WAF): Features and Policies'
+  toc-menu:
+  - toc-url: 'oci-waf-features-edge'
+    toc-text: 'OCI WAF Features (Edge)'
+  - toc-url: 'oci-web-application-firewall-policy'
+    toc-text: 'OCI Web Application Firewall Policy'
+    toc-menu:
+    - toc-url: 'access-control'
+      toc-text: 'Access Control'
+    - toc-url: 'access-rules'
+      toc-text: 'Access Rules'
+    - toc-url: 'conditions'
+      toc-text: 'Conditions'
+    - toc-url: 'action'
+      toc-text: 'Action'
+  - toc-url: 'waf-protection-capabilities'
+    toc-text: 'WAF Protection Capabilities'
+    toc-menu:
+    - toc-url: 'protection-rules-exclusions'
+      toc-text: 'Protection Rules: Exclusions'
+    - toc-url: 'rate-limiting'
+      toc-text: 'Rate Limiting'
+  - toc-url: 'bot-management'
+    toc-text: 'Bot Management'
+  - toc-url: 'caching-rule'
+    toc-text: 'Caching Rule'
+  - toc-url: 'threat-intelligence'
+    toc-text: 'Threat Intelligence'
+- toc-url: 'certificates'
+  toc-text: 'Certificates'
+  toc-menu:
+  - toc-url: 'what-is-a-digital-certificate'
+    toc-text: 'What is a Digital Certificate?'
+  - toc-url: 'certificate-authority-ca'
+    toc-text: 'Certificate Authority (CA)'
+  - toc-url: 'types-of-certificates'
+    toc-text: 'Types of Certificates'
+  - toc-url: 'elements-of-a-certificate'
+    toc-text: 'Elements of a Certificate'
+  - toc-url: 'steps-for-securing-a-certificate'
+    toc-text: 'Steps for Securing a Certificate'
+  - toc-url: 'oci-certificates'
+    toc-text: 'OCI Certificates'
+  - toc-url: 'tls-connection'
+    toc-text: 'TLS Connection'
+  - toc-url: 'mutual-tls-connection'
+    toc-text: 'Mutual TLS Connection'
+  - toc-url: 'oci-certificates-concepts'
+    toc-text: 'OCI Certificates; Concepts'
+  - toc-url: 'certificate-authority'
+    toc-text: 'Certificate Authority'
+  - toc-url: 'chain-of-trust'
+    toc-text: 'Chain of Trust'
+  - toc-url: 'oci-certificates-modes-of-operation'
+    toc-text: 'OCI Certificates: Modes of Operation'
+  - toc-url: 'certificate-rule'
+    toc-text: 'Certificate Rule'
+  - toc-url: 'certificate-profile'
+    toc-text: 'Certificate Profile'
+  - toc-url: 'integrations'
+    toc-text: 'Integrations'
+  - toc-url: 'oci-certificates-lifecycle-management-features'
+    toc-text: 'OCI Certificates: Lifecycle Management Features'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>OCI WAF examines incoming HTTP traffic for attacks, and provides counter-measures. OCI certificates are managed automatically.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/certificates/managing-certificateCertics.htm">Managing Certificates</a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/WAF/home.htm">Web Application Firewall</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/WAF/Policies/waf-policy_management.htm">Web Application Firewall Policies</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/WAF/Concepts/overview.htm">Overview of Web Application Firewall</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<!-- p. 439 -->
+<h2 id="TOC-oci-web-application-firewall-waf">OCI Web Application Firewall (WAF)</h2>
+<!-- p.440 -->
+<blockquote>
+<p>A cloud-based, PCI-compliant, global web application firewall service that protects applications from malicious and unwanted Internet traffic.</p>
+<p>Can protect any Internet-facing endpoint, providing consistent rule enforcement across a customer's applications.</p>
+</blockquote>
+<!-- p.441 -->
+<h2 id="TOC-benefits-of-oci-waf">Benefits of OCI WAF</h2>
+<blockquote>
+<ul>
+<li>Consolidates threat intelligence</li>
+<li>Pushes malicious traffic farther away from your origin</li>
+<li>Augments Security Operations Center (SOC)</li>
+<li>Provides better metrics visibility</li>
+<li>Consolidates governance</li>
+<li>Off-loads patching and maintenance</li>
+<li>Manages and optimises global traffic</li>
+<li>Consolidates WAF policy</li>
+</ul>
+</blockquote>
+<!-- p. 442 -->
+<h3 id="TOC-oci-waf-solutions">OCI WAF Solutions</h3>
+<blockquote>
+<dl>
+<dt>WAF Edge Policy</dt>
+<dd>A <strong>global</strong> solution with allowlist Oracle nodes throughout the world</dd>
+<dt>WAF Policy</dt>
+<dd>A <strong>regional</strong> solution that works as a plug-in for your load balancer</dd>
+</dl>
+</blockquote>
+<!-- p.443 -->
+<h3 id="TOC-waf-service-components">WAF Service Components</h3>
+<blockquote>
+<dl>
+<dt>Edge Policy</dt>
+<dd>
+<ul>
+<li>It ncompasses the overall configuration of the WAF service on OCI</li>
+<li>Define a default origin and optional HTTP headers</li>
+</ul>
+</dd>
+<dt>Origin Management</dt>
+<dd>An Origin:
+      <ul>
+<li>Is an endpoint protected by WAF</li>
+<li>Can be an OCI load balancer's public IP address</li>
+<li>Can set up HTTP headers for outbound traffic from the WAF to the origin server</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.444 -->
+<h3 id="TOC-oci-waf-architecture">OCI WAF Architecture</h3>
+<img alt="OCI WAF Architecture consists of four tiers: Internet Clients; DNS Optimized Routing for HA; WAF Edge Nodes; and OCI Region" src="home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture/oci_waf_architecture.png"/>
+<!-- p.445 -->
+<h3 id="TOC-waf-point-of-presences-pops">WAF Point of Presences (PoPs)</h3>
+<img alt="WAF points of presences" src="home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture/waf-points-of-presences.png"/>
+<!-- p.446 -->
+<h3 id="TOC-oci-waf-use-cases">OCI WAF Use Cases</h3>
+<blockquote>
+<ul>
+<li>Protection Against Cyberattacks</li>
+<li>Access Control for Data Privacy Standards</li>
+<li>Integration with Existing Management System</li>
+<li>Bot Management</li>
+</ul>
+</blockquote>
+<!-- p.447 -->
+<h3 id="TOC-prerequisites-for-using-waf">Prerequisites for Using WAF</h3>
+<blockquote>
+<ul>
+<li>An OCI account with required IAM service policy</li>
+<li>Corresponding private key for the site</li>
+<li>Ability to updateDNS records for the domain</li>
+<li>Public certificate for the FQDN of the application</li>
+<li>IP address of a Load Balancer with an HTTP listener</li>
+<li>Application running only on port 80/443</li>
+</ul>
+</blockquote>
+<!-- p.448 -->
+<h3 id="TOC-iam-policy">IAM Policy</h3>
+<blockquote>
+<dl>
+<dt>To manage policies in WAF:</dt>
+<dd>
+<pre class="text">Allow group &lt;group-name&gt; to manage waas-policy in compartment &lt;compartment_name&gt;
+Allow group &lt;group-name&gt; to read waas-work-request in compartment &lt;compartment_name&gt;</pre>
+</dd>
+<dt>To manage certificates in WAF:</dt>
+<dd>
+<pre class="text">Allow group &lt;group-name&gt; to manage waas-certificate in compartment &lt;compartment_name&gt;</pre>
+</dd>
+<dt>To view policies in WAF:</dt>
+<dd>
+<pre class="text">Allow group &lt;group-name&gt; to read waas-policy in compartment &lt;compartment_name&gt;</pre>
+</dd>
+</dl>
+</blockquote>
+<!-- p.449 -->
+<h3 id="TOC-security-responsibilities">Security Responsibilities</h3>
+<blockquote>
+<p>Security in the cloud in a shared responsibility. Oracle provides security of cloud infrastructure and operations. Customers are responsible for securely configuring cloud resources.</p>
+<table border="1">
+<thead>
+<tr style="background-color: gold;">
+<th>Responsibility</th>
+<th>Oracle</th>
+<th>Customer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configure WAF on boarding reponsibilities (DNS, Ingress Rule, Network)</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+</tr>
+<tr style="background-color: lightgrey;">
+<td>Construct new rules based on the new vulnerabilities and mitigation</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+</tr>
+<tr>
+<td>Review and accept new recommended rules</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+</tr>
+<tr style="background-color: lightgrey;">
+<td>Keep WAF infrastructure patched and up-to-date</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+</tr>
+<tr>
+<td>Monitor data-plane logs for abnormal, undesired behaviour</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+</tr>
+<tr style="background-color: lightgrey;">
+<td>Monitor for DDOS</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+</tr>
+<tr>
+<td>Provide HA for WAF</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+</tr>
+<tr style="background-color: lightgrey;">
+<td>Tune the WAF access rules and Bot management strategies for your traffic</td>
+<td style="text-align: center; color: red; font-weight: bold;">No</td>
+<td style="text-align: center; color: green; font-weight: bold;">Yes</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- p.450 -->
+<h3 id="TOC-capabilities-and-limits">Capabilities and Limits</h3>
+<blockquote>
+<ul>
+<li>Allows 100 policies per tenant</li>
+<li>Does not support Network Load Balancer</li>
+<li>TCP Listener not compatible / Layer 7 WAF</li>
+<li>Supports IPv6</li>
+<li>Policies regional only</li>
+<li>Allows using one policy with multiple load balancers in the same region</li>
+<li>Supports traffic only on ports 80/443</li>
+</ul>
+</blockquote>
+<!-- p.451 -->
+<h3 id="TOC-getting-started-with-waf-workflow">Getting Started with WAF: Workflow</h3>
+<ol>
+<li>Create a WAF policy</li>
+<li>Update Origin - Keep Alive timeout</li>
+<li>Update DNS to enable WAF</li>
+<li>Upload your certificate and key</li>
+<li>Test your application</li>
+<li>Enable WAF to passively detect rules</li>
+<li>Test the rules</li>
+</ol>
+<!-- p.453 -->
+<h2 id="TOC-web-application-firewall-waf-features-and-policies">Web Application Firewall (WAF): Features and Policies</h2>
+<!-- p.454 -->
+<h3 id="TOC-oci-waf-features-edge">OCI WAF Features (Edge)</h3>
+<img alt="OCI WAF Features (Edge)" src="home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture/oci-waf-features-edge.png"/>
+<br/>
+<!-- p.455 -->
+<!-- p.456 -->
+<h3 id="TOC-oci-web-application-firewall-policy">OCI Web Application Firewall Policy</h3>
+<blockquote>
+<p>WAF policy is a <strong>regional</strong> solution that works as a plug-in for your <strong>load balancer</strong>.</p>
+<p>Edge policy is a <strong>global</strong> solution. To use this solution, allowlist Oracle nodes throughout the world and use DNS to point your application to the CNAME that we provide.</p>
+</blockquote>
+<!-- p.457 -->
+<h4 id="TOC-access-control">Access Control</h4>
+<p><cite>Allows you to control access to your critical web applications, data, and services on conditions</cite> such as:</p>
+<ul>
+<li>Request Headers</li>
+<li>Request cookies</li>
+<li>URL Query</li>
+<li>Region</li>
+<li>Source IP Addresses</li>
+<li>Host</li>
+</ul>
+<p><cite>Consists of creating and managing access rules for requests and responses.</cite></p>
+<!-- p.458 -->
+<h4 id="TOC-access-rules">Access Rules</h4>
+<blockquote>
+<ul>
+<li>Define the <strong>actions</strong> to be taken when <strong>conditions</strong> are met</li>
+<li>Distinct for <strong>request control</strong> and <strong>response control</strong> of a WAF policy</li>
+</ul>
+</blockquote>
+<!-- p.459 -->
+<h4 id="TOC-conditions">Conditions</h4>
+<blockquote>
+<ul>
+<li>A JMESPath expression specifies the criteria for matching a request or a response to a rule</li>
+<li>Each rule accepts a JMESPath expression as the condition</li>
+<pre class="text">Request.geo.countryCode == 'US'</pre>
+<li>HTTP requests or HTTP responses trigger WAF rules</li>
+<li>A complex condition can be created using operators and regular expressions</li>
+</ul>
+</blockquote>
+<!-- p.460 -->
+<h4 id="TOC-action">Action</h4>
+<blockquote>
+<p>Defines the behaviour of your WAF policy when a request or response matches a condition:</p>
+<dl>
+<dt>Allow</dt>
+<dd>Define the behaviour of your WAF policy when a request or response matches a condition</dd>
+<dt>Check</dt>
+<dd>Generates a log message documenting the result of rule execution</dd>
+<dt>Return HTTP Response</dt>
+<dd>Terminates further processing of an HTTP request or response and returns a predefined HTTP response</dd>
+</dl>
+</blockquote>
+<!-- p.462 -->
+<h3 id="TOC-waf-protection-capabilities">WAF Protection Capabilities</h3>
+<blockquote>
+<ul>
+<li>Protects web applications against malicious cyberattacks</li>
+<li>Inspects incoming requests for attack payloads</li>
+<li>Blocks or alerts of threats such as SQL injection, cross-site scripting, and HTML injection</li>
+</ul>
+</blockquote>
+<!-- p.463 -->
+<h4 id="TOC-protection-rules-exclusions">Protection Rules: Exclusions</h4>
+<blockquote>
+<ul>
+<li>Sometimes a protection rule can trigger a false positive</li>
+<li>You can configure an exception if the request generating the false positive have a particular argument or cookie</li>
+</ul>
+<p>You can create exclusions using the OCI Console or through the API. Use the following exclusion parameters:</p>
+<table border="1">
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>REQUEST_COOKIES</td>
+<td>Cookie value</td>
+</tr>
+<tr>
+<td>ARGS</td>
+<td>Argument (Query Parameter or POST/PUT data)</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- p.465 -->
+<h4 id="TOC-rate-limiting">Rate Limiting</h4>
+<blockquote>
+<ul>
+<li>Allows inspections of HTTP request properties</li>
+<li>Limits the frequency of requests for each unique client IP address</li>
+<li>Helps protect web application from DDosS attacks by blocking or logging requests</li>
+</ul>
+</blockquote>
+<!-- p.467 -->
+<h3 id="TOC-bot-management">Bot Management</h3>
+<blockquote>
+<p>Enables you to mitigate undesired bot traffic from your site using CAPTCHA and JavaScript detection tools, while enabling known published bot providers to bypass these controls</p>
+<ul>
+<li>JavaScript Challenge</li>
+<li>Human Interaction Challenge</li>
+<li>CAPTCHS Challenge</li>
+<li>Device Fingerprint Challenge</li>
+<li>Good Bot Allow List Management</li>
+</ul>
+</blockquote>
+<!-- p.468 -->
+<h3 id="TOC-caching-rule">Caching Rule</h3>
+<blockquote>
+<p>Allows you to improve the performance and availability of your web application by selectively caching requested content on OCI's edge servers</p>
+<dl>
+<dt>Available Cache Rule Criteria</dt>
+<dd>Determines if the requeseted content should be cached, such as URL_IS, URL_STARTS_WITH, and so on</dd>
+<dt>Available Cache Rule Actions</dt>
+<dd>Can be set to take one or two available actions: CACHE or BYPASS_CACHE</dd>
+</dl>
+</blockquote>
+<!-- p.469 -->
+<h3 id="TOC-threat-intelligence">Threat Intelligence</h3>
+<blockquote>
+<p>Get real-time threat intelligence data from multiple sources and block requests from known malicious IP addresses.</p>
+<table border="1">
+<thead>
+<tr>
+<th>Source</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Webroot BotNets</td>
+<td>Botnet C&amp;C channels and infected zombie machines</td>
+</tr>
+<tr>
+<td>Webroot Scanners</td>
+<td>Reconnaisance attacks</td>
+</tr>
+<tr>
+<td>Webroot Spam Sources</td>
+<td>Tunneling spam messages</td>
+</tr>
+<tr>
+<td>Webroot Windows Exploits</td>
+<td>Active IP addresses distributing threats</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<!-- p.472 -->
+<h2 id="TOC-certificates">Certificates</h2>
+<!-- p.474 -->
+<h3 id="TOC-what-is-a-digital-certificate">What is a Digital Certificate?</h3>
+<p>A digital certificate is <cite>a special ID card that websites use to show that they are safe and trustworthy</cite>, and <cite>helps users and computers to communicate with websitses securely and privately.</cite></p>
+<!-- p. 475 -->
+<h3 id="TOC-certificate-authority-ca">Certificate Authority (CA)</h3>
+<blockquote>
+<p>Organization that issues and manages digital cerificates for websites and other online entities</p>
+<dl>
+<dt>Public CA</dt>
+<dd>
+<ul>
+<li>A third-party oragnisation trusted by browsers, client, operating systems, and applications</li>
+<li>Trusted by a large group of people. For example, Let's Encrypy, DigiCert, etc.</li>
+</ul>
+</dd>
+<dt>Private CA</dt>
+<dd>
+<ul>
+<li>An internal organisation known and trusted by its network and IT environment</li>
+<li>Trusted by a small group of people. For example, internal IT departments, Keytos</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.476 -->
+<h3 id="TOC-types-of-certificates">Types of Certificates</h3>
+<blockquote>
+<dl>
+<dt>Self-Signed Certificate</dt>
+<dd>
+<ul>
+<li>Signed by own <strong>private key</strong></li>
+<li>Used to encrypt and decrypt data</li>
+<li>Cannot be trusted by a browser</li>
+</ul>
+</dd>
+<dt>Root Certificate</dt>
+<dd>
+<ul>
+<li>Self-signed and issued by a <strong>CA</strong></li>
+<li>Used to secure and authenticate websites</li>
+<li>Can be trusted by a browser</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.477 -->
+<h3 id="TOC-elements-of-a-certificate">Elements of a Certificate</h3>
+<blockquote>
+<ul>
+<li>Version</li>
+<li>Serial Number</li>
+<li>Issuer</li>
+<li>Issued date and time</li>
+<li>Expiration</li>
+<li>Subject</li>
+<li>Pupose</li>
+</ul>
+</blockquote>
+<!-- p.478 -->
+<h3 id="TOC-steps-for-securing-a-certificate">Steps for Securing a Certificate</h3>
+<blockquote>
+<dl>
+<dt>Generate Request</dt>
+<dd>Create a <strong>Certificate Signing Request (CSR)</strong></dd>
+<dt>Prove Identity</dt>
+<dd>Submit documents for verification</dd>
+<dt>Get Certificate</dt>
+<dd>Pay the required amount and get your certificate</dd>
+</dl>
+</blockquote>
+<!-- p.479 -->
+<h3 id="TOC-oci-certificates">OCI Certificates</h3>
+<blockquote>
+<ul>
+<li>Creates and manages TLS certificates, certificate authorities (CAs), and CA budles</li>
+<li>Provide organisations with certificate issurance, storage, and management capabilities, including revocation and automatic renewal</li>
+<li>Enables native integration with OCI services like Load Balancer and API Gateway</li>
+<li>Imports cerificates issued by a third-party CA to use in an OCI tenancy</li>
+<li>Free of cost</li>
+</ul>
+</blockquote>
+<!-- p.481 -->
+<h3 id="TOC-tls-connection">TLS Connection</h3>
+<img alt="TLS Connection" src="home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture/tls_connection.png"/>
+<!-- p.482 -->
+<h3 id="TOC-mutual-tls-connection">Mutual TLS Connection</h3>
+<img alt="Mutual TLS Connection" src="home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture/mutual_tls_connection.png"/>
+<!-- p.483 -->
+<h3 id="TOC-oci-certificates-concepts">OCI Certificates; Concepts</h3>
+<blockquote>
+<dl>
+<dt>Certificates</dt>
+<dd>Digital document that confirms its subject is the owner of the public key</dd>
+<dt>Certifiate Authorities (CA)</dt>
+<dd>Issues certificates and subordinate CAs</dd>
+<dt>CA Bundles</dt>
+<dd>Includes root and intermediate certicates, certificate properties, user-provided contextual metadata</dd>
+<dt>Certificate Chains</dt>
+<dd>List of certificates from the end-entity certificat to the root certificate</dd>
+<dt>Certificate Revocation List</dt>
+<dd>Contains all CAs and certificates that the issuing CA has revoked prior to their expiration dates.</dd>
+</dl>
+</blockquote>
+<!-- p.485 -->
+<h3 id="TOC-certificate-authority">Certificate Authority</h3>
+<blockquote>
+<ul>
+<li>Only HSM Private Keys provided through OCI KMS supported</li>
+<li>No access to read customer's private key</li>
+<li>Conform with RFC5280</li>
+<li>Supported Key Algorithm</li>
+<ul>
+<li>RSA_2048</li>
+<li>RSA_4096</li>
+<li>ECDSA_P256</li>
+<li>ECDSA_P384</li>
+</ul>
+<li>Supported Signing Algorithms</li>
+<ul>
+<li>SHA256_WITH_RSA</li>
+<li>SHA384_WITH_RSA</li>
+<li>SHA512_WITH_RSA</li>
+<li>SHA256_WITH_ECDSA</li>
+<li>SHA384_WITH_ECDSA</li>
+<li>SHA512_WITH_ECDSA</li>
+</ul>
+</ul>
+</blockquote>
+<!-- p.486 -->
+<h3 id="TOC-chain-of-trust">Chain of Trust</h3>
+<img alt="Chain of Trust" src="home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/evaluate-wafedgecertificatesservices-in-a-networking-multitier-architecture/chain_of_trust.png"/>
+<!-- p.487 -->
+<h3 id="TOC-oci-certificates-modes-of-operation">OCI Certificates: Modes of Operation</h3>
+<blockquote>
+<ul>
+<li>Manage Internally</li>
+<li>Manage Externally</li>
+<li>Bring Your Own Certificate (BYOC)</li>
+</ul>
+</blockquote>
+<!-- p.488 -->
+<h3 id="TOC-certificate-rule">Certificate Rule</h3>
+<blockquote>
+<dt>Renewal Intervals</dt>
+<dd>Frequency with which the certificate is automatically renewed</dd>
+<dt>Advance Renewal Period</dt>
+<dd>Advance period of the certificate expriration when the certificate is renewed</dd>
+</blockquote>
+<!-- p.489 -->
+<h3 id="TOC-certificate-profile">Certificate Profile</h3>
+<blockquote>
+<p>OCI Certificates have four (4) predefined profiles to easily create certificates for particular use cases:</p>
+<ol>
+<li>TLS Server or Client</li>
+<li>TLS Server</li>
+<li>TLS Client</li>
+<li>TLS Code Sign</li>
+</ol>
+</blockquote>
+<!-- p.490 -->
+<h3 id="TOC-integrations">Integrations</h3>
+<blockquote>
+<ul>
+<li>Native Integration with Load Balancer, API Gateway. OCI IAM, OCI Audit, Cloud Guard, and so on</li>
+<li>Automatic revocation and deployments</li>
+<li>No accidental deletion of used certificate</li>
+<li>Immediate effect of revocation</li>
+</ul>
+</blockquote>
+<!-- p.491 -->
+<h3 id="TOC-oci-certificates-lifecycle-management-features">OCI Certificates: Lifecycle Management Features</h3>
+<blockquote>
+<ul>
+<li>Create CAs, Certificates, and CA bundles</li>
+<li>Import Certificates</li>
+<li>Update, tag, or delete CA, certificate, or CA bundle metadata</li>
+<li>Renew Certificate</li>
+<li>Configure Rules</li>
+<li>Specify current version</li>
+<li>Revoke a CA or certificate version</li>
+</ul>
+</blockquote>

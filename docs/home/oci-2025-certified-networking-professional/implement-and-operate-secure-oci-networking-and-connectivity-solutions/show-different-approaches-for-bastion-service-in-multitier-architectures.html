@@ -1,0 +1,123 @@
+---
+layout: default
+title: 'Show different approaches for Bastion service in multi-tier architectures'
+base-url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/show-different-approaches-for-bastion-service-in-multitier-architectures.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Implement and Operate Secure OCI Networking and Connectivity Solutions'
+  url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'oci-bastion-service'
+  toc-text: 'OCI Bastion Service'
+  toc-menu:
+  - toc-url: 'traditional-bastion'
+    toc-text: 'Traditional Bastion'
+  - toc-url: 'challenges-with-traditional-bastion'
+    toc-text: 'Challenges with Traditional Bastion'
+  - toc-url: 'oci-bastion'
+    toc-text: 'OCI Bastion'
+  - toc-url: 'oci-bastion-service-network-architecture'
+    toc-text: 'OCI Bastion Service Network Architecture'
+  - toc-url: 'session-types'
+    toc-text: 'Session Types'
+  - toc-url: 'oci-bastion-details'
+    toc-text: 'OCI Bastion Details'
+  - toc-url: 'usage-of-resource-type-bastionfamily'
+    toc-text: 'Usage of Resource Type: bastion-family'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>A bastion service is an OCI service that allows secure and managed access to resources within a private subnet using SSH or SSH tunneling</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Bastion/home.htm">Bastion</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Bastion/Concepts/bastionoverview.htm">Bastion Overview</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p.397 -->
+<h2 id="TOC-oci-bastion-service">OCI Bastion Service</h2>
+<img alt="Network diagram showing a SSH client using a Bastion session to connect to port 22 on an instance in a private subnet. Also, a Bastion session is used for a SSH tunnel to connect a DB client to an autonomous DB in a private subnet." src="https://docs.oracle.com/en-us/iaas/Content/Bastion/images/bastion-overview-diagram.png"/>
+<!-- p.398 -->
+<h3 id="TOC-traditional-bastion">Traditional Bastion</h3>
+<blockquote>
+<ul>
+<li>Linux or Window instance placed in a DMZ subnet</li>
+<li>Forward connections from Internet to private networks</li>
+<li>Needs a public IP</li>
+<li>Cannot be deployed in private subnets and security zones</li>
+</ul>
+</blockquote>
+<p>Also known as a <em>Jump Host</em>.</p>
+<!-- p.399 -->
+<h3 id="TOC-challenges-with-traditional-bastion">Challenges with Traditional Bastion</h3>
+<blockquote>
+<ul>
+<li>Security</li>
+<li>Scale and Performance</li>
+<li>Disaster Recovery</li>
+<li>Cost</li>
+</ul>
+</blockquote>
+<!-- p. 400 -->
+<h3 id="TOC-oci-bastion">OCI Bastion</h3>
+<blockquote>
+<ul>
+<li>No Public IP needed</li>
+<li>AuthZ through IAM policies</li>
+<li>Managed by OCI</li>
+<li>Added scurity with CIDR block allowlist</li>
+<li>Time-limited access to targt resource</li>
+</ul>
+</blockquote>
+<!-- p.401 -->
+<h3 id="TOC-oci-bastion-service-network-architecture">OCI Bastion Service Network Architecture</h3>
+<blockquote>
+<ul>
+<li>Private endpoint connects to target subnets</li>
+<li>Target subnet may be reached directly or via an intermediary subnet</li>
+<li>Backend service routes traffic to VCN through Service Gateway</li>
+</ul>
+</blockquote>
+<!-- p. 404 -->
+<h3 id="TOC-session-types">Session Types</h3>
+<dl>
+<dt>Managed SSH session</dt>
+<dd>Target is Linux only with an OpenSSH server</dd>
+<dt>SSH port forwarding session</dt>
+<dd><cite>Port forwarding (also known as SSH tunneling) creates a secure connection between a specific port on the client machine and a specific port on the target resource. Using this connection you can relay other protocols.</cite></dd>
+<dt>Dynamic port forwarding session</dt>
+<dd><cite>A dynamic port forwarding (SOCKS5) session has the same benefits of an SSH port forwarding session, but allows you to dynamically connect to any target resource in a private subnet. Unlike other session types that you configure to connect to a specific target resource (IP address or DNS name), with a dynamic port forwarding (SOCKS5) session you create a tunnel to a target subnet and the client decides which resource and port to connect to.</cite></dd>
+</dl>
+<!-- p.408 -->
+<h3 id="TOC-oci-bastion-details">OCI Bastion Details</h3>
+<blockquote>
+<dl>
+<dt>Bastion</dt>
+<dd>20 bastions per tenancy</dd>
+<dt>Session</dt>
+<dd>5 sessions per bastion</dd>
+<dt>Session time</dt>
+<dd>180 minutes maximum</dd>
+<dt>Assocaition</dt>
+<dd>Single VCN only</dd>
+<dt>Dependency</dt>
+<dd>Oracle agent must be running and the Bastion plugin is enabled</dd>
+</dl>
+</blockquote>
+<!-- p.409 -->
+<h3 id="TOC-usage-of-resource-type-bastionfamily">Usage of Resource Type: bastion-family</h3>
+<p>A policy to allow users in a group to create, update, and delete all Bastion resources (<strong>bastion-family</strong>) in entire tenancy (scope).</p>
+<pre class="text">
+  Allow group &lt;group-name&gt; to manage bastion-family in tenancy
+</pre>

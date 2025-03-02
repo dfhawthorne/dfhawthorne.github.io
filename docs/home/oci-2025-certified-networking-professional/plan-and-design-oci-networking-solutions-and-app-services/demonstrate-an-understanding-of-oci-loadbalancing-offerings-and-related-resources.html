@@ -1,0 +1,328 @@
+---
+layout: default
+title: 'Demonstrate an understanding of OCI load-balancing offerings and related resources'
+base-url: home/oci-2025-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/demonstrate-an-understanding-of-oci-loadbalancing-offerings-and-related-resources.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Plan and Design OCI Networking Solutions and App Services'
+  url: home/oci-2025-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'load-balancing'
+  toc-text: 'Load Balancing'
+  toc-menu:
+  - toc-url: 'oci-load-balancer-shapes'
+    toc-text: 'OCI Load Balancer: Shapes'
+  - toc-url: 'content-based-routing-host-based'
+    toc-text: 'Content-Based Routing: Host Based'
+  - toc-url: 'content-based-routing-path-based'
+    toc-text: 'Content-Based Routing: Path Based'
+  - toc-url: 'public-load-balancer'
+    toc-text: 'Public Load Balancer'
+  - toc-url: 'private-load-balancer'
+    toc-text: 'Private Load Balancer'
+  - toc-url: 'load-balancing-policies'
+    toc-text: 'Load Balancing Policies'
+  - toc-url: 'health-check'
+    toc-text: 'Health Check'
+  - toc-url: 'metrics'
+    toc-text: 'Metrics'
+- toc-url: 'web-application-acceleration'
+  toc-text: 'Web Application Acceleration'
+  toc-menu:
+  - toc-url: 'web-application-acceleration-overview'
+    toc-text: 'Web Application Acceleration: Overview'
+  - toc-url: 'web-application-acceleration-understanding'
+    toc-text: 'Web Application Acceleration: Understanding'
+- toc-url: 'network-load-balancer'
+  toc-text: 'Network Load Balancer'
+  toc-menu:
+  - toc-url: 'concepts'
+    toc-text: 'Concepts'
+  - toc-url: 'public-network-load-balancer'
+    toc-text: 'Public Network Load Balancer'
+  - toc-url: 'private-network-load-balancer-use-case'
+    toc-text: 'Private Network Load Balancer: Use Case'
+- toc-url: 'load-balancing-comparison'
+  toc-text: 'Load Balancing: Comparison'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>There are two (2) types of load balancers: Load Balancer service; and Network Load Balancer. The IP address is assigned to the load balancer listener.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Servcies</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+</ul>
+</ul>
+</ul>
+<h2 id="TOC-load-balancing">Load Balancing</h2>
+<p>A load balancer distributes requests across multiple servers from a single entry point. There are two (2) types of load balancers:</p>
+<ol>
+<li>Load Balancer Service</li>
+<ul>
+<li>Works at layers 4 and 7 for the HTTP, HTTPS, and TCP traffic. Used for load balanicng applications and processes.</li>
+<li>Acts as a reverse proxy</li>
+<li>Can achieve <strong>up to 8Gbps</strong> per load balancer</li>
+<li>Supports backend autoscaling</li>
+<li>Can terminate SSL connections</li>
+<li>Can have a web application firewall</li>
+<li>One load balancer instance for free (<em>limited to 10 Mbps</em>)</li>
+</ul>
+<li>Network Load Balancer</li>
+<ul>
+<li>Can load balance packet forwarding, network traffic, and application for TCP, UDP, ICMP, and IP traffic.</li>
+<li>Can preserve the client header information</li>
+<li>Capabale of scaling to multi-terabits per second</li>
+<li>Supports backend autoscaling</li>
+<li>Low-latency network integrated load balancer</li>
+<li>Network load balancers are <em>Always Free tier</em></li>
+</ul>
+</ol>
+<h3 id="TOC-oci-load-balancer-shapes">OCI Load Balancer: Shapes</h3>
+<p>The load balancer has a flexible shape for a range of bandwidth (10 - 8000 Mbps):</p>
+<ul>
+<li><cite>Minimum bandwidth provides instant readiness for load</cite></li>
+<li><cite>Maximum bandwidth allows control of maximum cost</cite></li>
+</ul>
+<h3 id="TOC-content-based-routing-host-based">Content-Based Routing: Host Based</h3>
+<p><cite>Host-based routing: Multiple websites using a single load balancer and a specified set of back-end servers.</cite></p>
+<p>Different back-end sets are routed to based on a combination of host name, port, and protocol. For example,</p>
+<ul>
+<li><code>http://host1.example.com:80</code> can be routed to one back-end set</li>
+<li><code>https://host2.example.com:443</code> can be routed to another back-end set</li>
+</ul>
+<h3 id="TOC-content-based-routing-path-based">Content-Based Routing: Path Based</h3>
+<p><cite>Path-based routing: Optimize resource utilization by routing to independent back-end sets based on URL paths</cite></p>
+<p>This is an extension of host based routing in which the URL is considered as well:</p>
+<ul>
+<li><code>http://host1.example.com:80/app</code> can be routed to one back-end set</li>
+<li><code>http://host1.example.com:80/videos</code> can be routed to another back-end set</li>
+</ul>
+<h3 id="TOC-public-load-balancer">Public Load Balancer</h3>
+<p>The public load balancer is associated with a public listener which has a public IP address and is reachable from the Internet. This is restricted to a single region. The load balancer configuration is:</p>
+<ul>
+<li>in a regional public subnet, or</li>
+<li>in a AD-specific subnet with a standby load balancer in another AD-specific subnet in the same region.</li>
+</ul>
+<h3 id="TOC-private-load-balancer">Private Load Balancer</h3>
+<p>Private load balancer is created with a private IP address. Primary and standby load balancers can be in the same subnet, but they require an extra private IP address.</p>
+<h3 id="TOC-load-balancing-policies">Load Balancing Policies</h3>
+<p>Load balancing policy is one of:</p>
+<dl>
+<dt>Round Robin</dt>
+<dd>Requests are routed to next server in back-end set. Good for short requests.</dd>
+<dt>Least Connections</dt>
+<dd>Requests are routed to the server in the back-end set with the least connections. Good for long running requests</dd>
+<dt>IP Hash</dt>
+<dd>Requests are routed based on the IP address of the client. Good for short requests from a large number of simultaneous clients</dd>
+</dl>
+<blockquote>
+<p>Load balancer policy decisions apply differently fo:</p>
+<ul>
+<li>TCP load balancer</li>
+<li>Cookie-bases session persistent HTTP request (sicky requests)</li>
+<li>Nonsticky HTTP requests</li>
+</ul>
+</blockquote>
+<h3 id="TOC-health-check">Health Check</h3>
+<blockquote>
+<ul>
+<li>Health check:</li>
+<ul>
+<li>Confirms availability of back-end servers</li>
+<li>Continuously monitors back-end servers</li>
+<li>Configures TCP-level or HTTP-level</li>
+<li>Is activated for:</li>
+<ul>
+<li>Back end</li>
+<li>Back-end set</li>
+<li>Overall Load Balancer</li>
+</ul>
+</ul>
+<li>Configure your health check protocol to match your application or service.</li>
+</ul>
+</blockquote>
+<h3 id="TOC-metrics">Metrics</h3>
+<blockquote>
+<ul>
+<li>The OCI Metrics feature relays data about the health, capacity, and performance of your cloud resources.</li>
+<li>Load Balancer metrics provide citical metrics to manage/monitor your local OCI balancer infrastructure:</li>
+<ul>
+<li>The metrics(~40) are broken down by Listener, Back-end set, and overall Load Balancer level.</li>
+<li>These metrics are statistics calculated from relevant data points as an ordered set of time-series data.</li>
+</ul>
+</ul>
+</blockquote>
+<!-- p.200 -->
+<h2 id="TOC-web-application-acceleration">Web Application Acceleration</h2>
+<h3 id="TOC-web-application-acceleration-overview">Web Application Acceleration: Overview</h3>
+<dl>
+<dt>Anticipated Outcomes:</dt>
+<dd>
+<ul>
+<li>Improves customer experience</li>
+<li>Reduces application latency and system load</li>
+</ul>
+</dd>
+<dt>Use Cases:</dt>
+<dd>
+<dl>
+<dt>Scenario 1</dt>
+<dd>
+<ul>
+<li>Improve application performance and decrease server load.</li>
+<li><u>Action:</u> Leverage WAA caching.</li>
+</ul>
+</dd>
+<dt>Scenario 2</dt>
+<dd>
+<ul>
+<li>Decrease network load and further reduce latency.</li>
+<li><u>Action:</u> Use WAA compression.</li>
+</ul>
+</dd>
+<dt>Scenario 3</dt>
+<dd>
+<ul>
+<li>Monitor and observe.</li>
+<li><u>Action:</u> View request logs and metrics to confirm caching and compression.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Customer Workflow:</dt>
+<dd>
+<ul>
+<li><strong>Step 1</strong> - Create a WAA policy with caching and compression and apply to load balancer.</li>
+</ul>
+</dd>
+</dl>
+<!-- p.201 -->
+<h3 id="TOC-web-application-acceleration-understanding">Web Application Acceleration: Understanding</h3>
+<blockquote>
+<p><strong>Works with Layer 7 http/https protocols only. This is a policy that is attached to OCI Load Balancers.</strong></p>
+<p><strong>Caching</strong></p>
+<ul>
+<li>Only HEAD and GET requests are cached</li>
+<li>Only reponse that return HTTP status 200 are cached</li>
+<li>Cached content might not stay current with content on the back-end servers until the cache expires or is purged</li>
+<li>Content is cached until it expires or is purged even if the file is removed from the back-end server</li>
+<li>Back-end servers can get a drastic increase in traffic when any of the following events occur:</li>
+<ul>
+<li>Multiple cache items expire at the same time</li>
+<li>The cache is purged</li>
+<li>The Web Application Acceleration service is disabled</li>
+</ul>
+<li>The maximum size of the cache is 100 MB. After this maximum size is reached, the Web Application Acceleration service removes those resources that have been accessed the fewest times until the maximum size is no longer exceeded.</li>
+<li>You cannot cache files over 100 MB</li>
+</ul>
+</blockquote>
+<!-- 211 -->
+<h2 id="TOC-network-load-balancer">Network Load Balancer</h2>
+<blockquote>
+<ul>
+<li>Provides automated traffic distribution from one entry point to multiple servers in a VCN</li>
+<li>Is an ideal load balancing solution for latency-sensitive workloads (i.e., VoIP and IoT)</li>
+<ul>
+<li>Optimized for long-running connections in the order of days or months (i.e., database or WebSocket applications)</li>
+</ul>
+<li>Supports public and private load balancers</li>
+<li>Load-balances connections based on Layer 3/Layer 4 (IP protocol) data</li>
+<ul>
+<li>TCP/UDP/ICMP traffic can be load balanced</li>
+</ul>
+<li>Is offered as a free service</li>
+<!-- 212 -->
+<li>Load Balancing Policy: Tells the load balancer how to distribute incoming traffic to the back-end servers:</li>
+<ul>
+<li>5-tuple Hash (source IP and port, destination IP and port, protocol)</li>
+<li>5-tuple Hash (source IP, destination IP, protocol)</li>
+<li>2-tuple Hash (source IP, destination IP)</li>
+</ul>
+<li>Key differentiators:</li>
+<ul>
+<li>Private or public load balancer (with public IP address</li>
+<li>Scales up or down with no bandwidth configuration</li>
+<li>Source and destination IP addresses, and port preservation</li>
+<ul>
+<li>For source and/or destination IP preservation to be enabled, the OCI NLB must be a private NLB.</li>
+</ul>
+</ul>
+</ul>
+</blockquote>
+<!-- p.213 -->
+<h3 id="TOC-concepts">Concepts</h3>
+<blockquote>
+<dl>
+<dt>Back-end Server:</dt>
+<dd>Application server responsible for generating content in response to the incoming TCP, UDP, or ICMP traffic</dd>
+<dt>Backend Set:</dt>
+<dd>Logical entity defined by a list of back-end servers (compute instances, IP addresses, or both), a load balancing policy, and a helath check policy</dd>
+<dt>Load Balancing Policy:</dt>
+<dd>Tells the load balancer how to distribute incoming traffic to the back-end servers</dd>
+<!-- p.214 -->
+<dt>Session Persistence (session affinity):</dt>
+<dd>The 5-Tuple Hash policy provides session affinity with a given TCP or UDP session, where packets in the same session are directed to the same back-end server behind the network load balncer. Use a 3-Tuple or 2-Tuple network load balancing policy to provide session affinity beyond the lifetime of a given session.</dd>
+<dt>Health Checks:</dt>
+<dd>A test to confirm the availability of back-end servers. Support HTTP-level, HTTPS-level, TCP-level, and UDP-level helath checks.</dd>
+<dt>Listener:</dt>
+<dd>An entity that checks for incoming traffic on the load balancer's IP address</dd>
+</dl>
+</blockquote>
+<!-- p.215 -->
+<h3 id="TOC-public-network-load-balancer">Public Network Load Balancer</h3>
+<blockquote>
+<ul>
+<li>Assigns a public IP address to the listener</li>
+<li>Is highly available in a region</li>
+<li>Requires public subnets (regional subnet)</li>
+<li>Needs one private IP address from the subnet</li>
+<li>Ensures high availability and accessibility even when one of the availability domains has on outage</li>
+</ul>
+</blockquote>
+<!-- p.216 -->
+<h3 id="TOC-private-network-load-balancer-use-case">Private Network Load Balancer: Use Case</h3>
+<blockquote>
+<p><strong>Transparent NLB</strong></p>
+<ul>
+<li><strong>Private Network Load Balancer as Next Hop Route Target with VCN Transit Routing</strong> (bump in the wire):</li>
+<ul>
+<li>The network load balancer routes user traffic to the firewall instances hosted behind it in the Hub VCN using VCN route tables. This user traffic would otherwise flow from the source directly to the destination.</li>
+<li>In this mode, the network load balancer does not modify the client packet characteristics and preserves the client source and destination IP header information</li>
+<li>Source/destination header (IP, port) preservation must be enabled on the OCI Network Load Balancer</li>
+</ul>
+</ul>
+</blockquote>
+<!-- p.218 -->
+<h2 id="TOC-load-balancing-comparison">Load Balancing: Comparison</h2>
+<table border="1">
+<thead>
+<tr><th>Features</th><th>Load Balancer Service</th><th>Network Load Balancer</th></tr>
+</thead>
+<tbody>
+<tr><td>Load Balancing</td><td>Layer 4 and layer 7</td><td>Layer 3 and Layer 4</td></tr>
+<tr><td>Cipher Suite Support</td><td>Yes</td><td>No</td></tr>
+<tr><td>TLS Support</td><td>1.0, 1.1, 1.2</td><td>No</td></tr>
+<tr><td>HA</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Session Persistence</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Application Cookie Stickiness</td><td>Yes</td><td>No</td></tr>
+<tr><td>Load Balancer Cookie Stickiness</td><td>Yes</td><td>No</td></tr>
+<tr><td>SSL Termination</td><td>Yes</td><td>No</td></tr>
+<tr><td>Web Application Firewall Protection</td><td>Yes</td><td>No</td></tr>
+<tr><td>IPv6 Support</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Client Header Preservation</td><td>No</td><td>Yes</td></tr>
+<tr><td>Private or Public</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Health Check</td><td>TCP, HTTP</td><td>HTTP, HTTPS, TCP. UDP</td></tr>
+<tr><td>Policy</td><td>Round Robin<br/>IP hash<br/>least Connection</td><td>5-Tuple Hash<br/>3-Tuple Hash<br/>2-Tuple Hash</td></tr>
+<tr><td>Bandwidth</td><td>Flexible or legacy<br/>(10Mbps, 100MBos, 400Mbps, 8Gbps)</td><td>Scales up or down with no bandwidth configuration</td></tr>
+</tbody>
+</table>

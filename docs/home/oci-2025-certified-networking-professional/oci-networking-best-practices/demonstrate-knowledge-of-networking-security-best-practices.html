@@ -1,0 +1,55 @@
+---
+layout: default
+title: 'Demonstrate knowledge of Networking Security best practices'
+base-url: home/oci-2025-certified-networking-professional/oci-networking-best-practices/demonstrate-knowledge-of-networking-security-best-practices.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'OCI Networking Best Practices'
+  url: home/oci-2025-certified-networking-professional/oci-networking-best-practices.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'references'
+  toc-text: 'References'
+- toc-url: 'cis-landing-zone'
+  toc-text: 'CIS Landing Zone'
+- toc-url: 'network-security-groups'
+  toc-text: 'Network Security Groups'
+- toc-url: 'network-design-best-practices'
+  toc-text: 'Network Design: Best Practices'
+---
+
+<!-- p. 599 -->
+<h2 id="TOC-summary">Summary</h2>
+<p>The reference architecture should be followed.</p>
+<h2 id="TOC-references">References</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Security/Reference/configuration_security.htm">Security Best Practices</a></li>
+<li><a href="https://docs.oracle.com/en/solutions/cis-oci-benchmark/index.html">Deploy a secure landing zone that meets the CIS Foundations Benchmark for Oracle Cloud</a></li>
+</ul>
+<h2 id="TOC-cis-landing-zone">CIS Landing Zone</h2>
+<p>The reference architecture is:</p>
+<img src="https://docs.oracle.com/en/solutions/cis-oci-benchmark/img/oci-cis-landingzone.png"/>
+<p>Description of above image can be found <a href="https://docs.oracle.com/en/solutions/cis-oci-benchmark/img_text/oci-cis-landingzone.html">here</a>.</p>
+<h2 id="TOC-network-security-groups">Network Security Groups</h2>
+<p>Network Security Groups (NSGs) should be used for the following reasons:</p>
+<ul>
+<li>More granular filtering and control when compared to security lists</li>
+<li>Micro-segmentation</li>
+<li>NSG are prioritised over security lists</li>
+</ul>
+<p>NSGs are created for groups of resources that have the same network security requirements. NSGs should be specific as possible.</p>
+<!-- p. 602 -->
+<h2 id="TOC-network-design-best-practices">Network Design: Best Practices</h2>
+<p>Consider the following best practices:</p>
+<dl>
+<dt>Bastion Service</dt>
+<dd>Bastion service is free and simple with time-limited sessios for greater security.</dd>
+<dt>Restrict Access</dt>
+<dd>Prevent unauthorised users from managing critical network services.</dd>
+<dt>Network Firewall</dt>
+<dd>A network firewall is another layer of security above security lists and NSGs by using capabilities  such as IPS, URL Filtering, and SSL Inspection.</dd>
+</dl>

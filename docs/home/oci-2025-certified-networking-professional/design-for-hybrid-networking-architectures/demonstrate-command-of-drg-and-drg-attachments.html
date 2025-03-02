@@ -1,0 +1,101 @@
+---
+layout: default
+title: 'Demonstrate command of DRG and DRG Attachments'
+base-url: home/oci-2025-certified-networking-professional/design-for-hybrid-networking-architectures/demonstrate-command-of-drg-and-drg-attachments.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Design for Hybrid Networking Architectures'
+  url: home/oci-2025-certified-networking-professional/design-for-hybrid-networking-architectures.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'dynamic-routing-gateway'
+  toc-text: 'Dynamic Routing Gateway'
+- toc-url: 'drg-attachments'
+  toc-text: 'DRG Attachments'
+- toc-url: 'drg-import-route-distributions-and-route-tables'
+  toc-text: 'DRG Import Route Distributions and Route Tables'
+- toc-url: 'drg-metrics'
+  toc-text: 'DRG Metrics'
+- toc-url: 'labs'
+  toc-text: 'Labs'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>DRG (Dynamic Routing Gateway) can connect to various OCI network objects through DRG attachments. For each attachments, DRG import route tables so that traffic can be routed to the correct attachment.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Tasks/managingDRGs.htm">Dynamic Routing Gateways</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p.105 -->
+<!-- p.275 -->
+<h2 id="TOC-dynamic-routing-gateway">Dynamic Routing Gateway</h2>
+<blockquote>
+<p>A DRG can have <a href="https://docs.oracle.com/iaas/Content/General/Concepts/servicelimits.htm#DRG_limits">many network attachments</a> of each of the following types:</p>
+<ul>
+<li><strong>VCN attachments</strong>: you can attach many VCNs to a single DRG. Each VCN can be in the same tenancy as the DRG, or in a different tenancy (provided appropriate policies are set). A VCN can attach to one and only one DRG.</li>
+<li><strong>RPC attachments</strong>: you can peer a DRG to other DRGs using remote peering connections. The other DRG can be in other regions or tenancies, or in the same region.</li>
+<li><strong>IPSEC_TUNNEL attachments</strong>: you can use Site-to-Site VPN to attach two or more IPSec tunnels to your DRG to connect to on-premises networks. This is also allowed across tenancies.</li>
+<li><strong>VIRTUAL_CIRCUIT attachments</strong>: you can attach one or more FastConnect virtual circuits to your DRG to connect to on-premises networks.</li>
+<li><strong>LOOPBACK attachments</strong>: you can use Site-to-Site VPN to encrypt FastConnect virtual circuits. See <a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/fastconnectsecurity.htm#fastconnectsecurity_topic-loopback">Loopback Attachments</a> for details.</li>
+</ul>
+<p>Creating DRG route tables and DRG route distributions lets you define routing policies that route traffic between attachments. Routes can be dynamically imported and exported through these attachments. A route table must be associated with an attachment for that table's configuration to be applied, but an unassociated routing table can exist. DRG route distributions are of an explicit type (either import or export) and don't inherit an action that depends on where they're associated.</p>
+</blockquote>
+<!-- p.279 -->
+<h2 id="TOC-drg-attachments">DRG Attachments</h2>
+<p>The objects that can be attached to a DRG are:</p>
+<ul>
+<li>VCN</li>
+<li>RPC</li>
+<li>IPSEC_TUNNEL</li>
+<li>VIRTUAL_CIRCUIT</li>
+<li>LOOPBACK</li>
+<li>CROSS-TENANCY</li>
+</ul>
+<!-- p.281 -->
+<h2 id="TOC-drg-import-route-distributions-and-route-tables">DRG Import Route Distributions and Route Tables</h2>
+<blockquote>
+<ul>
+<li>Configuration</li>
+<ul>
+<li>Import route distributions are associated with DRG route tables</li>
+<li>DRG route tables are associated with attachments</li>
+<li>Configuration structure is designed to scale to large tenancies</li>
+</ul>
+<li>Operation</li>
+<ul>
+<li>Import route distributions control what routes appear in a route table through a declarative policy language</li>
+</ul>
+</ul>
+</blockquote>
+<!-- p. 282 -->
+<h2 id="TOC-drg-metrics">DRG Metrics</h2>
+<blockquote>
+<ul>
+<li>Metrics available for traffic to/from specific DRg attachments in bytes, packets, and drops.</li>
+<li>Additional dimensions available for DRG route table, attachment type, and peer region (for RPC)</li>
+<li>Drop type:</li>
+<ul>
+<li>Throughput - Packet drops from exceeding the allocated bandwidth.</li>
+<li>No available route - Drops dueto no route to destination</li>
+<li>Other - Exceed MTU, TTL expired in transit, packet traverses OCI as transit (on-prem to on-prem)</li>
+</ul>
+</ul>
+</blockquote>
+<h2 id="TOC-labs">Labs</h2>
+<p>Associated labs are:</p>
+<ul>
+<li><a href="https://github.com/dfhawthorne/OCI_CNP/tree/main/terraform/Lab_02_Configure_Local_VCN_Peering">Lab 02: Networking - Virtual Cloud Network: Configure Local VCN Peering</a></li>
+<li><a href="https://github.com/dfhawthorne/OCI_CNP/tree/main/terraform/Lab_03_Configure_Remote_VCN_Peering">Lab 03: Networking - Virtual Cloud Network: Configure Remote VCN Peering</a></li>
+</ul>

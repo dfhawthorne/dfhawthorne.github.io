@@ -1,0 +1,164 @@
+---
+layout: default
+title: 'Recognize IP Management details, select procedural steps'
+base-url: home/oci-2025-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services/recognize-ip-management-details-select-procedural-steps.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Plan and Design OCI Networking Solutions and App Services'
+  url: home/oci-2025-certified-networking-professional/plan-and-design-oci-networking-solutions-and-app-services.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'ip-management-byoip'
+  toc-text: 'IP Management: BYOIP'
+  toc-menu:
+  - toc-url: 'byoip-use-cases'
+    toc-text: 'BYOIP Use Cases'
+  - toc-url: 'byoip-limits'
+    toc-text: 'BYOIP Limits'
+- toc-url: 'ip-management-reserved-public-ips'
+  toc-text: 'IP Management: Reserved Public IPs'
+  toc-menu:
+  - toc-url: 'public-ip-addresses'
+    toc-text: 'Public IP Addresses'
+  - toc-url: 'reserved-public-ips'
+    toc-text: 'Reserved Public IPs'
+  - toc-url: 'public-ip-comparison'
+    toc-text: 'Public IP Comparison'
+- toc-url: 'ip-management-ip-pools'
+  toc-text: 'IP Management: IP Pools'
+  toc-menu:
+  - toc-url: 'public-ip-pools'
+    toc-text: 'Public IP Pools'
+  - toc-url: 'public-ip-pools-use-cases'
+    toc-text: 'Public IP Pools: Use Cases'
+- toc-url: 'byoip-process-overview'
+  toc-text: 'BYOIP Process Overview'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>BYOIP moves the customer's public IP addresses (IPv4 and IPv6) into OCI. The regional internet registry needs to notified of the new arrangement in order to direct BGP routing away from the customer towards OCI ASN.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Servcies</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/landing.htm">Networking</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/ipaddressesanddns.htm">IP Management</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/BYOIP.htm">Bring Your Own IP</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<h2 id="TOC-ip-management-byoip">IP Management: BYOIP</h2>
+<p>Bring Your Own IP (BYOIP) allows the customer to import public IP addresses that the customer owns into OCI for use by resources, such as load balancer listeners and compute instance public IP addresses. The customer needs to liaise with both Oralce and the Regional Internet Registry that assigned those addresses.</p>
+<h3 id="TOC-byoip-use-cases">BYOIP Use Cases</h3>
+<dl>
+<dt>Migration</dt>
+<dd>Hard-coded IP addresses can be migrated to OCI.</dd>
+<dt>IP Pool Management</dt>
+<dd>Allows pools of contiguous IP addresses instead of isolated IP addresses allocated by OCI</dd>
+<dt>IP reputation</dt>
+<dd>Published Internet services sometimes rely on contiguous IP addresses.</dd>
+</dl>
+<h3 id="TOC-byoip-limits">BYOIP Limits</h3>
+<ul>
+<li>Can only be imported into a single region</li>
+<li>IPv4 CIDR block ranges from /8 to /24</li>
+<li>Ipv6 prefix must be /48 or larger</li>
+<li>Up to 20 IPv4 CIDR blocks or IPv6 prefixes or a combination to an OCI account</li>
+<li>An address range can only be assigned to a single compartment</li>
+<li>Can assign up to 5 IPv6 prefixes per VCN and up to one per subnet. Can assign IPv4 addresses from one prefix to a VNIC</li>
+</ul>
+<h2 id="TOC-ip-management-reserved-public-ips">IP Management: Reserved Public IPs</h2>
+<h3 id="TOC-public-ip-addresses">Public IP Addresses</h3>
+<p>A compute instance can communicate with the Internet by:</p>
+<ul>
+<li>Placement in a public subnet of a VCN with an Internet Gateway attached. Security rules need to be established to allow this.</li>
+<li>Allowing OCI to assign a public IP address to a VNIC</li>
+</ul>
+<h3 id="TOC-reserved-public-ips">Reserved Public IPs</h3>
+<p>A public is either:</p>
+<dl>
+<dt>Ephemeral</dt>
+<dd>Temporary public IP address assigned to a compute instance or load balancer listener for the lifetime of that resource.</dd>
+<dt>Reserved</dt>
+<dd>Persistent public IP address that is assigned to a resource by the customer.</dd>
+</dl>
+<h3 id="TOC-public-ip-comparison">Public IP Comparison</h3>
+<table border="0">
+<thead style="background-color: gold;">
+<tr><th>Characteristic</th><th>Ephemeral Public IPs</th><th>Reserved Public Ips</th></tr>
+</thead>
+<tbody>
+<tr style="background-color: antiquewhite;">
+<td style="font-weight: bold;">Allowed assignment</td>
+<td>
+        To VNICs primary private IP only<br/>
+        Limits:
+        <ul>
+<li>One per VNIC</li>
+<li>Two per VM instance, and 16 per bare metal instance</li>
+</ul>
+</td>
+<td>To either a primary or secondary private IP<br/>
+      Limit: 32 per VNIC</td>
+</tr>
+<tr style="background-color: burlywood;">
+<td style="font-weight: bold;">Creation</td>
+<td>Optionally created and assigned during instance launch or secondary VNIC creation. You can create and assign one later if the VNIC doesn't already have one.</td>
+<td>You can create one at any time. You can then assign it when you like.<br/>Limit: You can create 50 per region.</td>
+</tr>
+<tr style="background-color: antiquewhite;">
+<td style="font-weight: bold;">Unassignment</td>
+<td>You can unassign it at any time, which deletes it.</td>
+<td>You can unassign it at any time, which returns it to your tenancy's pool of reserved public IPs.</td>
+</tr>
+<tr style="background-color: burlywood;">
+<td style="font-weight: bold;">Moving to a different resource</td>
+<td>You cannot move an ephermeral public IP address to a different private IP address</td>
+<td>You can move it (unassign and then reassign it) at any time to another private IP in the same region</td>
+</tr>
+<tr style="background-color: antiquewhite;">
+<td style="font-weight: bold;">Automatic deletion</td>
+<td>Its lifetime is tied to the private IP on the VM instance.</td>
+<td>Never. Exists until you delete it.</td>
+</tr>
+<tr style="background-color: burlywood;">
+<td style="font-weight: bold;">Scope</td>
+<td>Availability doamin</td>
+<td>Regional (can be assigned to a private IP in any AD in the region)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="TOC-ip-management-ip-pools">IP Management: IP Pools</h2>
+<h3 id="TOC-public-ip-pools">Public IP Pools</h3>
+<p><cite>A public IP pool is simply a set of IPv4 CIDR blocks alocated to a tenacny. These CIDR blocks can be all or part of a BYOIP CIDR block. Public IP CIDR blocks assigned to a pool are available only for your tenancy. Public IP pools are available as a source for IP allocation when launching a NAT gateway, load balancer, or compute instance. You can add more IP CIDR blocks to a public IP pool at any time.</cite></p>
+<h3 id="TOC-public-ip-pools-use-cases">Public IP Pools: Use Cases</h3>
+<dl>
+<dt>Create Reserved IP</dt>
+<dd>Addresses from a public IP pool can be reserved, and then attached to resources, as required.</dd>
+<dt>Direct launch from pool</dt>
+<dd>Resources can be launched from a pool without previously reserving an IP adddress</dd>
+<dt>Delete CIDR blocks and pools</dt>
+<dd>Entire pools or CIDR blocks within a pool can be deleted if there are no resources using any of those addresses.</dd>
+</dl>
+<h2 id="TOC-byoip-process-overview">BYOIP Process Overview</h2>
+<p><a href="https://docs.oracle.com/en-us/iaas/Content/Network/Concepts/BYOIP.htm#BYOIP__process">BYOIP Process Overview</a> shows the following overview:</p>
+<img alt="Swimlane diagram for importing a BYOIP range" src="https://docs.oracle.com/en-us/iaas/Content/Network/Images/network_byoip_swimlane.svg"/>
+<p>There are seven (7) steps in the above swimlane diagram to import a BYOIP range:</p>
+<ol>
+<li>The customer submits a request to OCI to import either a public IPv4 CIDR block or IPv6 prefix</li>
+<li>Oracle issues a verification token</li>
+<li>The customer submits the verification token and the required IP address block to the Regional Internet Registry (RIR)</li>
+<li>The customer negotiates a Route Origin Authorisation (ROA) with the RIR so that OCI can host the IP block/prefix</li>
+<li>The customer asks OCI to complete the import process</li>
+<li>Oracle assigns the IP block/prefix to the selected compartment</li>
+<li>The customer then manages the BYOIP resource</li>
+</ol>

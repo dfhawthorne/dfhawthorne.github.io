@@ -1,0 +1,212 @@
+---
+layout: default
+title: 'Illustrate Network Firewall characteristics'
+base-url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/illustrate-network-firewall-characteristics.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Implement and Operate Secure OCI Networking and Connectivity Solutions'
+  url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'oci-network-firewall'
+  toc-text: 'OCI Network Firewall'
+  toc-menu:
+  - toc-url: 'oci-network-firewall-versus-thirdprty-firewall'
+    toc-text: 'OCI Network Firewall Versus Third-Prty Firewall'
+  - toc-url: 'use-case-1-perimeter-security'
+    toc-text: 'Use Case 1: Perimeter Security'
+  - toc-url: 'use-case-2-intrusion-detection-and-prevention'
+    toc-text: 'Use Case 2: Intrusion Detection and Prevention'
+  - toc-url: 'use-case-3-selective-access-to-oracle-services-network-osn'
+    toc-text: 'Use Case 3: Selective Access to Oracle Services Network (OSN)'
+  - toc-url: 'use-case-4-application-segmentation-and-serotrust'
+    toc-text: 'Use Case 4: Application Segmentation and Sero-Trust'
+  - toc-url: 'logging-monitoring-and-analytics'
+    toc-text: 'Logging, Monitoring, and Analytics'
+  - toc-url: 'flexible-deployment-options'
+    toc-text: 'Flexible Deployment Options'
+- toc-url: 'demonstration'
+  toc-text: 'Demonstration'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Network Firewall as a Service secures traffic into OCI and between VCNs.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/services.htm">Infrastructure Services</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/network-firewall/home.htm">Network Firewall</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/network-firewall/overview.htm">Overview of the Network Firewall Service</a></li>
+</ul>
+</ul>
+</ul>
+<!-- p. 414 -->
+<h2 id="TOC-oci-network-firewall">OCI Network Firewall</h2>
+<!-- p. 415 -->
+<blockquote>
+<p><strong>OCI Network Firewall</strong> is a cloud-native firewall powered by industry-leading <strong>Palo Alto Networks'</strong> next-generation firewall technology.</p>
+<ul>
+<li>Advanced threat prevention to help block malware, spyware, command-and-control (C2) attacks, and vulnerability exploits.</li>
+<li>Adopt without needing additional third-party security infrastructure</li>
+<li>Addresses regulatory requirements with granular security controls</li>
+</ul>
+<p>Features are:</p>
+<ul>
+<li>Stateful Rules</li>
+<li>IDS and IPS</li>
+<li>URL and FQDN filtering</li>
+<li>Flexible Policy Enforcement</li>
+<li>Customer applications</li>
+</ul>
+</blockquote>
+<!-- p.416 -->
+<h3 id="TOC-oci-network-firewall-versus-thirdprty-firewall">OCI Network Firewall Versus Third-Prty Firewall</h3>
+<blockquote>
+<dl>
+<dt>OCI Network Firewall</dt>
+<dd>
+<ul>
+<li>Oracle-managed FWaaS</li>
+<ul>
+<li>Simple deployment</li>
+<li>Built in HA</li>
+<li>Patch management and maintenance</li>
+<li>Customer still responsible for policy</li>
+</ul>
+<li>Direct integration with OCI (Logging, Vaults, and so on)</li>
+<li>No requirement for specialized third-party skills and expertise</li>
+</ul>
+</dd>
+<dt>Thir-Party Firewall</dt>
+<dd>
+<ul>
+<li>Flexible deployment options:</li>
+<ul>
+<li>BYOL</li>
+<li>Choose your vendor</li>
+</ul>
+<li>Familiar interface and feature set for existing customers of  a third-party vendor</li>
+<li>Support for more advanced features</li>
+<li>Integrate with existing tools</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.417 -->
+<h3 id="TOC-use-case-1-perimeter-security">Use Case 1: Perimeter Security</h3>
+<blockquote>
+<p>Protect your applications and network agianst known vulnerabilities, until you have time to patch/update</p>
+<ul>
+<li>Enforce allow or deny stateful filtering rules based on 5-tuple information (source and destination IP address (both IPv4 and IPv6), port, and protocol)</li>
+<li>Apply rules in any combination of white/black/grey lists for greater flexibility to help meet business compliance or regulatory goals.</li>
+</ul>
+</blockquote>
+<!-- p.418 -->
+<h3 id="TOC-use-case-2-intrusion-detection-and-prevention">Use Case 2: Intrusion Detection and Prevention</h3>
+<blockquote>
+<p>Integrated IDS and IPS solution built with Palo Alto Networks' threat analysis engine and Unit 42 - security research teams that identify new threat signatures and detection mechanisms</p>
+<ul>
+<li>Helps detect (IDS) and block (IPS) known exploits, malware, malicious URLs, spyware, command and control (C2) attacks</li>
+</ul>
+</blockquote>
+<!-- p.419 -->
+<h3 id="TOC-use-case-3-selective-access-to-oracle-services-network-osn">Use Case 3: Selective Access to Oracle Services Network (OSN)</h3>
+<blockquote>
+<p>OCI Network Firewall can enforce URL inspection rules that grant access ONLY if no threats are detected and to restrict access to specified list of services.</p>
+<ul>
+<li>Protect against outbound data exfiltration - For example, allow Ubuntu servers to only do apt-get to *.canonical.com for updates</li>
+</ul>
+</blockquote>
+<!-- p.420 -->
+<h3 id="TOC-use-case-4-application-segmentation-and-serotrust">Use Case 4: Application Segmentation and Sero-Trust</h3>
+<blockquote>
+<p>Implement a secure, zero-trust architecture between trust domains. Block threats from moving laterally (East-West) between trust domains.</p>
+<ul>
+<li>Allow communication from web to app and from app to database, but block web to database communication</li>
+<li>Allow only approved DB admins to run only SQL transactions</li>
+</ul>
+</blockquote>
+<!-- p.421 -->
+<h3 id="TOC-logging-monitoring-and-analytics">Logging, Monitoring, and Analytics</h3>
+<blockquote>
+<ul>
+<li>Network Firewall metrics help monitor the health and performance of firewall policies and resources</li>
+<li>Alarms and Notifications can be configured to notify you when metrics alarm-specified triggers</li>
+<li>Network Firewall logs enable you to understnad what rules and countermeasures are triggered by requests</li>
+<li>Logging Analytics helps analyze patterns, create dashboards, provide topology drill downs, and much more</li>
+</ul>
+</blockquote>
+<!-- p.422 -->
+<h3 id="TOC-flexible-deployment-options">Flexible Deployment Options</h3>
+<blockquote>
+<dl>
+<dt>Centralized deployment</dt>
+<dd>Network Firewall is deployed in a Hub VCN and connected to spoke VCNs trhough dynamic routing gateway.</dd>
+<!-- p.423 -->
+<dt>Distributed deployment</dt>
+<dd>A dedicated Network Firewall is deployed in each VCN.</dd>
+</dl>
+</blockquote>
+<h2 id="TOC-demonstration">Demonstration</h2>
+<p>This demonstration only allows HTTPS traffic from the VCN (10.0.0.0/16) to Orqcle YUM repositories. The route tables for the client subnet and NAT gateway forces all egress to and ingress from the Internet to go through the Network firewall:</p>
+<ul>
+<li>Client Subnet 10.0.0.0/24</li>
+<ul>
+<li>Route table</li>
+<ul>
+<li>0.0.0.0/0 10.0.1.100 (Network Firewall)</li>
+</ul>
+</ul>
+<li>Firewall Subnet 10.0.1.0/24</li>
+<ul>
+<li>Network Firewall 10.0.1.100</li>
+<li>Network Firewall Policy</li>
+<table border="1">
+<thead>
+<tr>
+<th>Source</th>
+<th>Destination</th>
+<th>Protocol/Port</th>
+<th>URL</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.0.0.0.24</td>
+<td>Any</td>
+<td>TCP/443</td>
+<td>yum-us-phoenix-1.oracle.com<br/>yum-us-phoenix-1.oci.oraclecloud.com</td>
+<td>Allow</td>
+</tr>
+</tbody>
+</table>
+<li>Route Table</li>
+<ul>
+<li>0.0.0.0/0 NAT Gateway</li>
+</ul>
+</ul>
+<li>NAT Gateway</li>
+<ul>
+<li>Route Table</li>
+<ul>
+<li>10.0.0.0/16 10.0.1.100 (Network Firewall)</li>
+</ul>
+</ul>
+</ul>
+<p>In order to create a Network Firewall, a Network Firewall Policy (NFWP) needs to exist. A dummy NFWP can be created and then replaced after Network Firewall is created. An empty NWFP denies all traffic.</p>
+<p>Creating a NFWP:</p>
+<ol>
+<li>Create URL list of permitted URLs</li>
+<li>Create a service for TCP/443</li>
+<li>Create service list for the service</li>
+<li>Create Address List for sources (10.0.0.0/16)</li>
+<li>Create security rule</li>
+</ol>

@@ -1,0 +1,124 @@
+---
+layout: default
+title: 'Demonstrate CloudShell functionalities'
+base-url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions/demonstrate-cloudshell-functionalities.html
+breadcrumbs:
+- title: Home
+  url: index.html
+- title: 'Oracle Cloud Infrastructure 2025 Certified Networking Professional'
+  url: home/oci-2025-certified-networking-professional.html
+- title: 'Implement and Operate Secure OCI Networking and Connectivity Solutions'
+  url: home/oci-2025-certified-networking-professional/implement-and-operate-secure-oci-networking-and-connectivity-solutions.html
+table-of-contents:
+- toc-url: 'summary'
+  toc-text: 'Summary'
+- toc-url: 'reference'
+  toc-text: 'Reference'
+- toc-url: 'cloud-shell'
+  toc-text: 'Cloud Shell'
+  toc-menu:
+  - toc-url: 'what-is-cloud-shell'
+    toc-text: 'What Is Cloud Shell?'
+- toc-url: 'cloud-shell-user-access'
+  toc-text: 'Cloud Shell User Access'
+  toc-menu:
+  - toc-url: 'cloud-shell-public-network'
+    toc-text: 'Cloud Shell Public Network'
+  - toc-url: 'cloud-shell-private-network'
+    toc-text: 'Cloud Shell Private Network'
+  - toc-url: 'private-network-definition-vs-ephemeral-private-network'
+    toc-text: 'Private Network Definition vs Ephemeral Private Network'
+  - toc-url: 'cloud-shell-private-network-beyond-home-region'
+    toc-text: 'Cloud Shell Private Network Beyond Home Region'
+---
+
+<h2 id="TOC-summary">Summary</h2>
+<p>Cloud Shell is a browser-based application that connects to a Linux shell with OCI CLI pre-authorised, among other functions. This shell can connect to resources in private subnets in the home region. Access to subnets in other regions need to be done through peering. Authorisation is done at the tenancy level only.</p>
+<h2 id="TOC-reference">Reference</h2>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/devtoolshome.htm">Developer Resources</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/API/Concepts/devtoolslanding.htm">Developer Guide</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cloudshellintro.htm">Cloud Shell</a></li>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cloudshellintro.htm">Working with Cloud Shell</a></li>
+<ul>
+<li><a href="https://docs.oracle.com/en-us/iaas/Content/API/Concepts/cloudshellintro_topic-Cloud_Shell_Networking.htm">Cloud Shell networking</a></li>
+</ul>
+</ul>
+</ul>
+</ul>
+<!-- p.427 -->
+<h2 id="TOC-cloud-shell">Cloud Shell</h2>
+<!-- p.428 -->
+<h3 id="TOC-what-is-cloud-shell">What Is Cloud Shell?</h3>
+<blockquote>
+<ul>
+<li>Browser-based Linux terminal</li>
+<li>Pre-authenticated OCI CLI</li>
+<li>Tools such as ansible, python preinstalled</li>
+<li>Integrates with IAM</li>
+<li>Free to use</li>
+</ul>
+</blockquote>
+<!-- p.249 -->
+<h2 id="TOC-cloud-shell-user-access">Cloud Shell User Access</h2>
+<blockquote>
+<pre class="text">allow group &lt;group-name&gt; to use cloud-shell in tenancy</pre>
+<ul>
+<li>Cloud Shell IAM policy defines who is allowed use Cloud Shell</li>
+<li>Policy definition is not supported at compartment level</li>
+<li>Policy does not provide additional access</li>
+<li>Operations are allowed according to assigned IAM policies only</li>
+</ul>
+</blockquote>
+<!-- p.430 -->
+<h3 id="TOC-cloud-shell-public-network">Cloud Shell Public Network</h3>
+<blockquote>
+<ul>
+<li>Access instances in public subnet</li>
+<li>Target host SSH key required</li>
+</ul>
+</blockquote>
+<!-- p.431 -->
+<h3 id="TOC-cloud-shell-private-network">Cloud Shell Private Network</h3>
+<blockquote>
+<ul>
+<li>Access private instances in home region</li>
+<li>Private network definition or ephemeral private network</li>
+<li>Cloud Shell private endpoint</li>
+<li>Target host SSH key required</li>
+</ul>
+<p><span class="note">Note:</span> Only VCNs, subnets, and NSGs in your home region are available. If you need to access a subnet that is not in your home region, you can use peering from the subnet used by private network to reach it.</p>
+</blockquote>
+<!-- p.432 -->
+<h3 id="TOC-private-network-definition-vs-ephemeral-private-network">Private Network Definition vs Ephemeral Private Network</h3>
+<blockquote>
+<dl>
+<dt>Private Network Definition</dt>
+<dd>
+<ul>
+<li>Frequent connections saved as templates</li>
+<li>Switch between network definitions</li>
+<li>Mark the required definition as active and use</li>
+</ul>
+</dd>
+<dt>Ephemeral Private Network</dt>
+<dd>
+<ul>
+<li>Temporary connection</li>
+<li>After session is closed or expires, create a new session</li>
+<li>Connection only active until Cloud Shell session expires</li>
+</ul>
+</dd>
+</dl>
+</blockquote>
+<!-- p.433 -->
+<h3 id="TOC-cloud-shell-private-network-beyond-home-region">Cloud Shell Private Network Beyond Home Region</h3>
+<blockquote>
+<ul>
+<li>Easily access Home Region VCN's private resources</li>
+<li>Remotely peer other region VCNs to Home region VCN</li>
+<li>Access private resources of other region VCNs using Cloud Shell</li>
+</ul>
+</blockquote>
